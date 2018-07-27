@@ -554,7 +554,7 @@ One first novelty is that the variable $p$ is itself a random variable.
 
 %\subsection{Generative model: the binomial switching model}
 %-------------------------------------------------------------%
-%: FIGURE 2 fig:results_raw
+%: FIGURE 2 fig:results_raw ~\seeFig{results_raw}
 \begin{figure}%[b!]
 \centering{\includegraphics[width=\linewidth]{2_results_enregistrement}}
 % cf 2_Methodes.ipynb ??
@@ -861,6 +861,26 @@ that changes at some trials (clear red).
 The predicted probability $\hat{p}$ ($\tau=N_{trial}/4$ tells the BCP 
 that the probability is more susceptible to change every $N_{trial}/4$), 
 continue and dotted dark red lines shows the $p$$-$estimation.
+\LP{ older stuff: ``We show two panels, one below which displays 
+the value of the belief for the different run-length, 
+and one above where we will show the resulting prediction of the next outcome.
+We obtain for any given sequence different values at the given trial
+in the form of columns for any possible run-length: 
+the belief, and the sufficient statistics for the beta distribution 
+which allow to provide with an estimate of the current probability.
+First, we show the value of probability, 
+low probabilities are blueish while high probabilities. 
+At every trial, the agent evaluates the value 
+for the different possible run lengths, generating a column. 
+By showing all columns we generate this image 
+which shows the evaluation along the sequence of trials.
+Second we show above the sequence of observations 
+that were shown to the agent in a light black line. 
+The red line gives an evaluation of the most probable 
+a posteriori probability as the probability to the run-length 
+the maximum a posteriori belief on the different beliefs about run-lengths. ''
+%using the estimate of the precision at this
+}
 ~\textbf{B} shows the probability of the run length, 
 the probability of the having same probability consecutive trials. 
 The red line represents the $\hat{r}$, 
@@ -942,7 +962,7 @@ This prediction/update cycle applied to the BSM and using~\seeEq{bsm}
 will constitute the BCP detection model.
 
 %-------------------------------------------------------------%
-%: 2bc online estimation: prediction 
+%: 2Bc online estimation: prediction 
 %-------------------------------------------------------------%
 %Following the principle of Active Inference, % POMDP / active exploration of feature space
 In practice, beliefs are set to prior values at the first trial $t=0$.
@@ -988,7 +1008,7 @@ at the the next trial $t$: $P (r_t | x_{1:t})$ and $P (x_{t+1} | x_{1:t})$.
 %projecting beliefs backwards and forward  : the algorithm is online et the price of memory
 
 %-------------------------------------------------------------%
-%: 2bd update = Computing the likelihood 
+%: 2Bd update = Computing the likelihood 
 %  use p log p + (1-p) log (1-p ) as in logistic regression?
 %-------------------------------------------------------------%
 By introducing the run-length as a latent variable of our ideal observer, 
@@ -1027,57 +1047,51 @@ The full algorithm is summarized in~\seeApp{bcp}.
 % ------------------------------------------------------------------
 \subsection{Quantitative analysis of the Bayesian change point algorithm}
 % ------------------------------------------------------------------
-
-%: python scripts
-
-
-%* an implementation of
-%%[Adams &amp; MacKay 2007 "Bayesian Online Changepoint Detection"](http://arxiv.org/abs/0710.3742)
-%in Python.
-%
-%
-%* adapted from https://github.com/JackKelly/bayesianchangepoint by Jack Kelly (2013) for a binomial input.
-%
-%* This code is based on the  [MATLAB implementation](http://www.inference.phy.cam.ac.uk/rpa23/changepoint.php) provided by Ryan Adam. Was available at http://hips.seas.harvard.edu/content/bayesian-online-changepoint-detection
-%
-% * full code @ https://github.com/laurentperrinet/bayesianchangepoint are available at \url{https://github.com/laurentperrinet/bayesianchangepoint}.
-
-\seeFig{bayesianchangepoint}~\textbf{A} shows one instance of a sequence of simulated datas of leftward and rightward trials with a probability $p$ of being rightward with possible variations through times. It also shows the predicted probability $\hat{p}$ by using the BCP algorithm. Fig~\ref{fig:BCP_figB} illustrates the belief r on the predicted probability $\hat{p}$ at a given trial. On Fig~\ref{fig:BCP_figC} and Fig~\ref{fig:BCP_figD}, we can see the belief on the run length estimation.
-
-we see that as in the synthetic example above,
-there is a correct detection of switch after a short delay of a few trials
-- we show two panels, one below which displays the value of the belief for the different run-length, and one above where we will show the resaulting prediction of the next outcome.
-we obtain for any given sequence different values at the given trial in the form of columns for any possible run-length: the belief,
-and the sufficient statistics for the beta distirbution which allow to provide with an estimate of the current probability
-
-- first, we show the value of probability, low probabilities are blueish while high probabilities. at every trial, the agent evluates the value for the different possible run lengths, generating a column. by showing all columns we generate this image which shows the evaluation along the sequence of trials.
-
-- second we show above the sequence of observations that were shown to the agent in a light black line. the read line gives an evaluation of the most probable a posteriori probability as the probability to hte run-length the maximum a posteriori belief on the differettn beliefs about run-lengths. using the estimate of the precision at this
-
-We remark two main observations:
-
-- first, beliefs grow at the beginning along a linear ridge, as we begin our model by assuming there was a switch at time 0. Then we observe that at a switch (hidden to the model), the model
-such that belief is more stronlgly diffused until the probability
-
--second, we may use this information to read-out the information the most probable probability and the confidence interval as shown by the red dashed lines (.05, and .95)
-
-again, we see that a fixed length model gives a similar output
-but with the two disadvantages described above
-
-This is in contrast with a fixed length model, for which
-- the delay will always be similar
-- there is no dynamic upDATE OF THE INFERRD probability
-
-Note, the fixed-length is imply implemented by a (broken) line with fixed run-length $r_t=\tau$) - this allows for a simple comparison
-
-
-in particular, from this correct detection,
+%-------------------------------------------------------------%
+%: 2Ca python scripts : qualitative analysis
+%-------------------------------------------------------------%
+We have implemented this algorithm using a set of python scripts.
+This code is detailed in~\seeApp{bcp} and provides also some control script
+to test the behavior of the algorithm with synthetic data.
+Indeed, this allows to qualitatively and quantitatively asses 
+this ideal observer with a knwon ground truth before using it 
+on the data that was used for the experiments (see~\seeFig{results_raw}).
+%TODO : synchronize with FIGURE 3 fig:bayesianchangepoint
+\seeFig{bayesianchangepoint}~\textbf{A} shows 
+one instance of a sequence of simulated datas 
+of leftward and rightward trials with a probability $p$ 
+of being rightward with possible variations through times. 
+It also shows the predicted probability $\hat{p}$ by using the BCP algorithm. 
+\seeFig{bayesianchangepoint}~\textbf{B} illustrates the belief r on the predicted probability $\hat{p}$ at a given trial.
+On \seeFig{bayesianchangepoint}~\textbf{C}, we can see the belief on the run length estimation.
+We see that as in the synthetic example above,
+there is a correct detection of switch after a short delay of a few trials.
+We remark two main observations. 
+First, beliefs grow at the beginning along a linear ridge, 
+as we begin our model by assuming there was a switch at time 0. 
+Then we observe that at a switch (hidden to the model), 
+the model such that belief is more strongly diffused until the probability.
+Second, we may use this information to read-out the information 
+the most probable probability and the confidence interval 
+as shown by the red dashed lines (.05, and .95)
+Note, the fixed-length is simply implemented 
+by an agent with a fixed run-length $r_t=\tau$ (see broken dashed line in \seeFig{bayesianchangepoint}~\textbf{B})
+this allows for a simple comparison of the BCP model with the leaky integrator.
+Again, we see that a fixed length model gives a similar output
+but with the two disadvantages described above,  namely that 
+1/ the delay will always be similar, 
+2/ there is no dynamic update of the inferred probability
+In particular, from this correct detection,
 the value of the inferred probability approaches
-the true one as the number of observations increase in one subblock.
+the true one as the number of observations increase in one sub-block.
 
-
-%: different read-outs : see 2018-02-12 journal club bayesian changepoint chloe.pdf p.33/ p.42
-Let's now see the application of our model to a simple synthetic example before applying it to the experimental protocol that we used in our two experiments
+%-------------------------------------------------------------%
+%: 2Cb quantitative analysis / different read-outs 
+% see 2018-02-12 journal club bayesian changepoint chloe.pdf p.33/ p.42
+%-------------------------------------------------------------%
+Let's now see the application of our model 
+to a more extensive synthetic example before applying it to the experimental protocol 
+that we used in our two experiments.
 
 MAX - expectation - hindsight
 
@@ -1086,18 +1100,22 @@ Mututual information = likelihood /
 
 
 
-%: perspectives
+%-------------------------------------------------------------%
+%: 2Cc perspectives
+%-------------------------------------------------------------%
 See also Radillo / Brady 2017 - Rats and dyncmac envt - allows to extend to the continuous case
 
-
-remember it is one hazard rate
-
-as a summary, for any given sequence,
- we get an estimate of the probability given by the ideal observer.
- we will now see how we can apply that to our experimental protocol.
- We expect it to be harder than the previous protocol
- in fixed-length blocks
-
+Then, remember that the only free parameter of this model is the hazard rate $h$ 
+assumed by the agent 
+Though there exist solutions ~\citep{Wilson13,Wilson18}
+we will keep this parameter fixed for any agent, but evaluate 
+how well it fits tot he experimental outcomes at the different scales of the protocol:
+within sub-blocks, for each su-block or for any individual observer. 
+As a summary, for any given sequence,
+we get an estimate of the probability given by the ideal observer.
+we will now see how we can apply that to our experimental protocol.
+We expect it to be harder than the previous protocol
+in fixed-length blocks.
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\section{Results: psychophysics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1561,6 +1579,16 @@ where $\KL{\hat p}{p}$ is the Kullback-Leibler divergence between samples $\hat 
 
 
 % TODO: show as python code
+%* an implementation of
+%%[Adams &amp; MacKay 2007 "Bayesian Online Changepoint Detection"](http://arxiv.org/abs/0710.3742)
+%in Python.
+%
+%
+%* adapted from https://github.com/JackKelly/bayesianchangepoint by Jack Kelly (2013) for a binomial input.
+%
+%* This code is based on the  [MATLAB implementation](http://www.inference.phy.cam.ac.uk/rpa23/changepoint.php) provided by Ryan Adam. Was available at http://hips.seas.harvard.edu/content/bayesian-online-changepoint-detection
+%
+% * full code @ https://github.com/laurentperrinet/bayesianchangepoint are available at \url{https://github.com/laurentperrinet/bayesianchangepoint}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Appendix 3: Mathematical derivation of the likelihood}
