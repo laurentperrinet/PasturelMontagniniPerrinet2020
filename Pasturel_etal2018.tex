@@ -905,12 +905,10 @@ The longer the run-length, the more precise the estimate.
 %sufficient statistics of a beta distribution
 Mathematically, such a belief on $p$ is well represented 
 by the conjugate probability distribution of the binomial distribution,
-that is the beta-distribution $B(\alpha, \beta)$.
-The mode of the distribution is the estimated value $E(\hat{p})=\frac{\alpha}{\alpha + \beta}$,
-while the variance 
-The agent may therefore,
-knowing some estimate of the timing of a switch,
-may give different weights to the information using an evaluation of each bits' precision.
+that is the beta-distribution, see~\seeApp{likelihood}.
+Knowing some estimate of the timing of a switch,
+The agent may therefore give different weights to the information 
+using an evaluation of each bits' precision.
 We have designed such an agent 
 adapted the Bayesian Online Change-Point (BCP) detection model~\citep{AdamsMackay2007},
 which defines the agent as an inversion of a similar switching generative model 
