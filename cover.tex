@@ -48,10 +48,12 @@ tata
 \widowpenalty=1000
 \clubpenalty=1000
 
-\newsavebox{\Lpalmb} \sbox{\Lpalmb}{\parbox[t]{1.75in}{\includegraphics[width=.25\textwidth]{ens.jpg}\includegraphics[width=.2\textwidth]{int.png}\includegraphics[width=.12\textwidth]{unic.png}}}%
+%\newsavebox{\Lpalmb} \sbox{\Lpalmb}%{\parbox[t]{1.75in}{\includegraphics[width=.25\textwidth]{ens.jpg}\includegraphics[width=.2\textwidth]{int.png}%\includegraphics[width=.12\textwidth]{unic.png}}
+%}%
 %\makelth{Homea}{\Lheader{\usebox{\Lpalms}}}%
 %
-\Lheader{\usebox{\Lpalmb}}
+\Lheader{%\usebox{\Lpalmb}
+tata}
 
 \newlfmP{headermarginskip=2pt}
 \newlfmP{sigsize=2pt}
