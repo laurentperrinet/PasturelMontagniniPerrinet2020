@@ -52,6 +52,7 @@ human cognitive abilities in uncertain and dynamic environments.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[profile,final,english,draft]{article}%
 \usepackage{babel}
+\usepackage{csquotes}
 % MATHS (AMS)
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -124,7 +125,8 @@ human cognitive abilities in uncertain and dynamic environments.
 \graphicspath{{./figures/}}% TODO remove {./figures/},  at the end
 %============ bibliography ===================
 %\usepackage[numbers,comma,sort&compress,round]{natbib} %
-\usepackage[style=apa,
+\usepackage[
+style=apa,
 %maxcitenames=2,
 %maxnames = 2,
 firstinits=true,
@@ -139,7 +141,8 @@ autocite=superscript,
 backend=biber,
 %articletitle=false
 ]{biblatex}%
-\addbibresource{Pasturel_etal2018.bib}%
+%\addbibresource{Pasturel_etal2018.bib}%
+\bibliography{Pasturel_etal2018.bib} % the ref.bib file
 \newcommand{\citep}[1]{\parencite{#1}}
 \newcommand{\citet}[1]{\textcite{#1}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -810,7 +813,7 @@ The challenge is not to validate if the brain would use Bayes' theorem,
 but rather to test different hypothesis about the generative models
 that agents may use. 
 As such, it is essential that these two sources of discrepancy
-should be controlled independently~\citep{beck and pouget}.
+should be controlled independently~\citep{BeckPouget}.
 Now, since we defined a first generative model
 and the ideal observer which it corresponds too,
 we will define a more complex model
