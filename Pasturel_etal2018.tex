@@ -1,7 +1,7 @@
 %!TeX TS-program = pdflatex
 %!TeX encoding = UTF-8 Unicode
 %!TeX spellcheck = en-US
-%!BIB TS-program = biber
+%!BIB TS-program = bibtex
 % -*- coding: UTF-8; -*-
 % vim: set fenc=utf-8
 %: METADATA
@@ -126,7 +126,9 @@ human cognitive abilities in uncertain and dynamic environments.
 %============ bibliography ===================
 %\usepackage[numbers,comma,sort&compress,round]{natbib} %
 \usepackage[
-style=apa,
+%style=alphabetic-verb,
+style=authoryear-comp,
+%style=apa,
 %maxcitenames=2,
 %maxnames = 2,
 firstinits=true,
@@ -138,7 +140,7 @@ eprint=false,
 texencoding=utf8,
 bibencoding=utf8,
 autocite=superscript,
-backend=biber,
+backend=bibtex,
 %articletitle=false
 ]{biblatex}%
 %\addbibresource{Pasturel_etal2018.bib}%
@@ -618,14 +620,14 @@ which compensate for the variability of sensory sequences,
 one may introduce a parametric mechanism controlling for their volatility.
 By definition, volatility measures the temporal variability
 of the sufficient parameters of a random variable.
-In the HGF model~\citep{Matthys2011} for instance,
+In the HGF model~\citep{Mathys11} for instance,
 volatility is controlled as the non-linear transformation
 of a random walk (modeled itself by a Brownian motion with a given diffusion factor).
 This models allows to ultimately generate a sequence of binary choices
 where the variability fluctuates along a given trajectory.
 Such a forward probabilistic model is invertible
 using some simplifying assumptions and allows
-to extract an inference of the agent's belief about volatility~\citep{Voessel??}.
+to extract an inference of the agent's belief about volatility~\citep{Vossel14}.
 Herein, we will use a simpler model where
 the bias in target direction varies according of a piecewise-constant function
 %(that is, a step function varying between~$0$ and~$1$),
@@ -719,7 +721,7 @@ offer some perspectives for future work~\seeSec{outro}.
 %
 As we saw above, Bayesian methods provide with
 a powerful framework for studying human behavior.
-In the HGF model~\citep{Matthys2011} for instance,
+In the HGF model~\citep{Mathys11} for instance,
 authors defined a multi-layered generative model for
 sequences of input stimuli.
 By ``inverting'' this stochastic forward process,
@@ -800,7 +802,7 @@ However, one should be careful with such conclusions whenever
 this trajectory is fitted to behavioral data.
 For instance, if the inversion of the forward model is here simple,
 one has to use approximations in more complex models,
-such as the HGF~\citep{Matthys2011} or~\citep{Wilson2013}
+such as the HGF~\citep{Mathys11} or~\citep{Wilson2013}
 and the discrepancy could first originate from these approximations
 at the algorithmic level.
 Second, if we assume that the inversion of the model is perfect
