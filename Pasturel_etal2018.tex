@@ -347,22 +347,22 @@ and therefore allow for a better understanding of such predictive processes. %
 %: FIGURE 1 fig:intro
 \begin{figure}%[b!]
 \centering{
-\includegraphics[width=\linewidth]{figure1}
-%\begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
-%% cf 0_protocole.ipynb
-%\node [anchor=north west]  (img2) at (0.000\linewidth,.618\linewidth){\includegraphics[width=0.5\linewidth]{protocol_recording_ms}};
-%% cf 0_protocole_Trace_Moyenne.ipynb
-%
-%\node [anchor=north west]  (img2) at (0.51\linewidth,.628\linewidth){\includegraphics[width=0.33\linewidth]{Trace_moyenne}};
-%%\node [anchor=north west]  (img2) at (0.5\linewidth,.618\linewidth){\includegraphics[width=0.25\linewidth]{image_anna_1}};
-%% cf 0_protocole.ipynb
-%\node [anchor=north west]  (img2) at (0.844\linewidth,.538\linewidth){\includegraphics[width=0.156\linewidth]{protocol_bet_simple}};
-%
-%%\node [anchor=north west]  (img2) at (0.75\linewidth,.618\linewidth){\includegraphics[width=0.25\linewidth]{protocol_bet_simple}};
-%\draw [anchor=north west] (0.000\linewidth, .6\linewidth) node {$\mathsf{(A)}$};
-%\draw [anchor=north west] (0.54\linewidth, .6\linewidth) node {$\mathsf{(B)}$};
-%\draw [anchor=north west] (0.844\linewidth, .6\linewidth) node {$\mathsf{(C)}$};
-%\end{tikzpicture}
+%\includegraphics[width=\linewidth]{figure1}
+\begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
+% cf 0_protocole.ipynb
+\node [anchor=north west]  (img2) at (0.000\linewidth,.618\linewidth){\includegraphics[width=0.5\linewidth]{1_A_protocol_recording}};
+% cf 0_protocole_Trace_Moyenne.ipynb
+\node [anchor=north west]  (img2) at (0.51\linewidth,.628\linewidth){\includegraphics[width=0.33\linewidth]{1_B_Trace_moyenne}};
+%\node [anchor=north west]  (img2) at (0.5\linewidth,.618\linewidth){\includegraphics[width=0.25\linewidth]{image_anna_1}};
+% cf 0_protocole.ipynb
+\node [anchor=north west]  (img2) at (0.844\linewidth,.538\linewidth){\includegraphics[width=0.156\linewidth]{1_C_protocol_bet_simple}};
+
+%\node [anchor=north west]  (img2) at (0.75\linewidth,.618\linewidth){\includegraphics[width=0.25\linewidth]{protocol_bet_simple}};
+\draw [anchor=north west] (0.000\linewidth, .6\linewidth) node {$\mathsf{(A)}$};
+\draw [anchor=north west] (0.54\linewidth, .6\linewidth) node {$\mathsf{(B)}$};
+\draw [anchor=north west] (0.844\linewidth, .6\linewidth) node {$\mathsf{(C)}$};
+\end{tikzpicture}
+
 }
 \caption{\emph{Anticipatory SPEM (aSPEM): psychophysics and results} %
 \textbf{(A)}~Human observers were presented $600$ trials % TODO:check
@@ -556,20 +556,8 @@ One first novelty is that the variable $p$ is itself a random variable.
 %-------------------------------------------------------------%
 %: FIGURE 2 fig:results_raw
 \begin{figure}%[b!]
-\begin{center}
-\includegraphics[width=\linewidth]{figure2}
-\end{center}
-%\centering{\includegraphics[width=\linewidth]{results_enregistrement}}
-%\begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
-%	% cf 1_generative-model.ipynb
-%	\node [anchor=north west]  (img1) at (0.000\linewidth,.618\linewidth){\includegraphics[width=0.2\linewidth]{bayesianchangepoint}};
-%	% cf 3_Results_2.ipynb ??
-%	\node [anchor=north west]  (img2) at (0.200\linewidth,.618\linewidth){\includegraphics[width=0.8\linewidth]{results_enregistrement}};
-%	% cf 0_protocole.ipynb
-%	\draw [anchor=north west] (0.000\linewidth, .618\linewidth) node {$\mathsf{(A)}$};
-%	\draw [anchor=north west] (0.200\linewidth, .618\linewidth) node {$\mathsf{(B)}$};
-%\end{tikzpicture}
-%}	% cf 2_Methodes.ipynb ??
+\centering{\includegraphics[width=\linewidth]{2_results_enregistrement}}
+% cf 2_Methodes.ipynb ??
 % ou cf 3_Results_2.ipynb
 \caption{
 %\caption{
@@ -957,11 +945,14 @@ will constitute the BCP detection model.
 %: 2bc online estimation: prediction 
 %-------------------------------------------------------------%
 %Following the principle of Active Inference, % POMDP / active exploration of feature space
-
-* at trial zero, there is no information, so we intiialize to the prior values
-%		\item    $P(r_0)= S(r)$ or $P(r_0=0)=1$ and
-%		\item    $\nu^{(0)}1 = \nu_{prior}$ and $\chi^{(0)}1 = \chi_{prior}$
-
+In practice, beliefs are set to prior values at the first trial $t=0$.
+In terms of probabiiities, this amounts to set :
+\eqa{
+P(r_0)= S(r) \quad \text{,} \quad P(r_0=0)=1 \quad \text{and} \\
+\nu^{(r=0)}_0 = \nu_{prior}\quad \text{and} \quad \chi^{(r=0)}_0 = \chi_{prior}
+}
+where $\nu$ and $\chi$ represent the sufficient statistics of the (Beta-distribution) pdf
+at each node $r$ for a given trial $t$.
 
 projecting beliefs backwards and forward  : the algorithm is online et the price of memory
 
