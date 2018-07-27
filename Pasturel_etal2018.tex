@@ -946,55 +946,66 @@ will constitute the BCP detection model.
 %-------------------------------------------------------------%
 %Following the principle of Active Inference, % POMDP / active exploration of feature space
 In practice, beliefs are set to prior values at the first trial $t=0$.
-In terms of probabiiities, this amounts to set :
+In terms of probabilities, this amounts to set :
 \eqa{
 P(r_0)= S(r) \quad \text{,} \quad P(r_0=0)=1 \quad \text{and} \\
 \nu^{(r=0)}_0 = \nu_{prior}\quad \text{and} \quad \chi^{(r=0)}_0 = \chi_{prior}
 }
 where $\nu$ and $\chi$ represent the sufficient statistics of the (Beta-distribution) pdf
 at each node $r$ for a given trial $t$.
-
-projecting beliefs backwards and forward  : the algorithm is online et the price of memory
-
-%    \item    Update Sufficient Statistics : representation of precisions
-%	\begin{itemize}
-%		\item    $\nu^{(0)}_{t+1} = \nu_{prior}$, $\chi^{(0)}_{t+1} = \chi_{prior}$
-%		\item    $\nu^{(r+1)}_{t+1} = \nu^{(r)}_{t} +1$, $\chi^{(r+1)}_{t+1} = \chi^{(r)}_{t} + u(x_t)$
-%	\end{itemize}
-
-%    \item    Perform Prediction $P (x_{t+1} | x_{1:t}) = P (x_{t+1}|x_{1:t} , r_t) P (r_t|x_{1:t})$
-
-
-\seeFig{bayesianchangepoint}
-run-length we will put in competition different leaky integrators in parallel + evazluate them 
-
-
-The agent infers at each trial the likelihood  of r and then deduces the optimal $\hat{p}$ (we used the expected value and the max as readouts) and the uncertainty associated to it. 
-
+Then the transition matrix as defined by the graph  (see \seeFig{bayesianchangepoint}-A)
+allows to update this sufficient statistics following :
+\eqa{
+\nu^{(0)}_{t+1} = \nu_{prior}$, $\chi^{(0)}_{t+1} = \chi_{prior} \\
+\nu^{(r+1)}_{t+1} = \nu^{(r)}_{t} +1$, $\chi^{(r+1)}_{t+1} = \chi^{(r)}_{t} + u(x_t)
+}
+This updates the inferred values for both the mode and precisions at the current trial
+based on the belief that was accumulated at trial $t-1$ (see \seeFig{bayesianchangepoint}-B).
 % (mathematically, we will use the family of exponenetial distributions:, gaussians, binomials) among which the beta distribution belongs
-First, we initialize the first node to prior values
-\eql{\choice{
-%    \item    Calculate Growth Probabilities $P(r_t=r_{t-1}+1, x_{1:t}) = P(r_{t-1}, x_{1:t-1}) \pi^{(r)}_t (1-H(r^{(r)}_{t-1}))$
-%    \item    Calculate Changepoint Probabilities $P(r_t=0, x_{1:t})= \sum_{r_{t-1}} P(r_{t-1}, x_{1:t-1}) \pi^{(r)}_t \cdot H(r^{(r)}_{t-1})$
-P(r^t = 0) = 1 / \lambda  \\
-\text{and else} \quad r^t = r^{t-1} +1 }\label{eq:run_length2}}
-
-%    \item    Determine Run Length Distribution $P (r_t | x_{1:t}) = P (r_t, x_{1:t})/P (x_{1:t}) $
-transition matrix see Treillis
-
-Contrary to the forgetful-agent model where~$\tau$ was a fixed parameter, the BCP use a changing~$\tau$ parameter. In the latter the~$\tau$ parameter informs the BCP model that the probability is suspected to change every~$\tau$ trials.
-
+This allows to calculate growth probabilities
+\eqa{
+P(r_t=r_{t-1}+1, x_{1:t}) = P(r_{t-1}, x_{1:t-1}) \pi^{(r)}_t (1-H(r^{(r)}_{t-1}))
+}
+and Changepoint Probabilities 
+\eqa{
+P(r_t=0, x_{1:t})= \sum_{r_{t-1}} P(r_{t-1}, x_{1:t-1}) \pi^{(r)}_t \cdot H(r^{(r)}_{t-1})}
+and determine Run Length Distribution 
+\eqa{
+P (r_t | x_{1:t}) = P (r_t, x_{1:t})/P (x_{1:t}) 
+}
+Finally, one can perform prediction 
+\eqa{
+P (x_{t+1} | x_{1:t}) = P (x_{t+1}|x_{1:t} , r_t) P (r_t|x_{1:t})
+}
+Contrary to the forgetful-agent model where~$\tau$ was a fixed parameter, 
+the BCP use a changing~$\tau$ parameter. 
+In the latter the~$\tau$ parameter informs the BCP model 
+that the probability is suspected to change every~$\tau$ trials.
+This parameter is also called the \emph{hazard rate} $h=\frac 1 \tau$.
+Note that the resulting operations are online, that is,
+that only the belief at trial $t-1$ is sufficient to predict all probabilities 
+at the the next trial $t$: $P (r_t | x_{1:t})$ and $P (x_{t+1} | x_{1:t})$.
 
 %-------------------------------------------------------------%
 %: 2bd update = Computing the likelihood 
 %  use p log p + (1-p) log (1-p ) as in logistic regression?
 %-------------------------------------------------------------%
+run-length we will put in competition different leaky integrators in parallel + evazluate them 
 
-The main difference between our algorithm and that of Adams is the way that the likelihood is computed.
+ The main difference between our algorithm and that of~\citep{AdamsMackay2007},
+is that the observed data is Gaussian and not binomial as in our case. 
+
+As such, the only difference is the way that the likelihood is computed.
+%https://en.wikipedia.org/wiki/Likelihood_function
+%https://stats.stackexchange.com/questions/2641/what-is-the-difference-between-likelihood-and-probability
+
+The agent infers at each trial the likelihood  of r and 
+then deduces the optimal $\hat{p}$ (we used the expected value and the max as readouts) and the uncertainty associated to it. 
 
 
 Two hypothesis $1$ or $0$ - each will have a likelihood
-%    \item    Evaluate Predictive Probability $\pi_{1:t} = P(x |\nu^{(r)}_t,\chi^{(r)}_t)$
+$L(o) = P(o |\nu^{(r)}_t,\chi^{(r)}_t)$
+%$\pi_{1:t} = P(x |\nu^{(r)}_t,\chi^{(r)}_t)$
 %    \item    go to (2)
 
 
@@ -1003,8 +1014,9 @@ Two hypothesis $1$ or $0$ - each will have a likelihood
 %cf p33 de 2018-02-12 journal club bayesian changepoint chloe.pdf
 
 now we reach end of the cycle - go to new datum
+projecting beliefs backwards and forward  : the algorithm is online et the price of memory
 
-The full algorithm is summarized in%~\SeeApp{bcp}.
+The full algorithm is summarized in~\SeeApp{bcp}.
 % ------------------------------------------------------------------
 \subsection{Quantitative analysis of the Bayesian change point algorithm}
 % ------------------------------------------------------------------
