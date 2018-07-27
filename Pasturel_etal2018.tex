@@ -956,8 +956,8 @@ at each node $r$ for a given trial $t$.
 Then the transition matrix as defined by the graph  (see \seeFig{bayesianchangepoint}-A)
 allows to update this sufficient statistics following :
 \eqa{
-\nu^{(0)}_{t+1} = \nu_{prior}$, $\chi^{(0)}_{t+1} = \chi_{prior} \\
-\nu^{(r+1)}_{t+1} = \nu^{(r)}_{t} +1$, $\chi^{(r+1)}_{t+1} = \chi^{(r)}_{t} + u(x_t)
+\nu^{(0)}_{t+1} = \nu_{prior}\quad \text{,} \quad \chi^{(0)}_{t+1} = \chi_{prior} \\
+\nu^{(r+1)}_{t+1} = \nu^{(r)}_{t} +1\quad \text{,} \quad \chi^{(r+1)}_{t+1} = \chi^{(r)}_{t} + u(x_t)
 }
 This updates the inferred values for both the mode and precisions at the current trial
 based on the belief that was accumulated at trial $t-1$ (see \seeFig{bayesianchangepoint}-B).
@@ -985,38 +985,45 @@ This parameter is also called the \emph{hazard rate} $h=\frac 1 \tau$.
 Note that the resulting operations are online, that is,
 that only the belief at trial $t-1$ is sufficient to predict all probabilities 
 at the the next trial $t$: $P (r_t | x_{1:t})$ and $P (x_{t+1} | x_{1:t})$.
+%projecting beliefs backwards and forward  : the algorithm is online et the price of memory
 
 %-------------------------------------------------------------%
 %: 2bd update = Computing the likelihood 
 %  use p log p + (1-p) log (1-p ) as in logistic regression?
 %-------------------------------------------------------------%
-run-length we will put in competition different leaky integrators in parallel + evazluate them 
-
- The main difference between our algorithm and that of~\citep{AdamsMackay2007},
+By introducing the run-length as a latent variable of our ideal observer, 
+this algorithm introduced by~\citep{AdamsMackay2007}
+It is equivalent as putting in competition different 
+different leaky integrators in parallel, 
+one for each value of $r$ aznd to evaluate the probability for each of these hypothesis.
+The agent infers at each trial the likelihood  of r and 
+then deduces the optimal $\hat{p}$ 
+%(we used the expected value and the max as readouts) 
+and the uncertainty associated to it. 
+The main difference between our algorithm and that of~\citep{AdamsMackay2007},
 is that the observed data is Gaussian and not binomial as in our case. 
-
 As such, the only difference is the way that the likelihood is computed.
 %https://en.wikipedia.org/wiki/Likelihood_function
 %https://stats.stackexchange.com/questions/2641/what-is-the-difference-between-likelihood-and-probability
-
-The agent infers at each trial the likelihood  of r and 
-then deduces the optimal $\hat{p}$ (we used the expected value and the max as readouts) and the uncertainty associated to it. 
-
-
-Two hypothesis $1$ or $0$ - each will have a likelihood
-$L(o) = P(o |\nu^{(r)}_t,\chi^{(r)}_t)$
+To perform this computation, 
+we have computed the probability of each model parameztrized by $r$
+for the two hypothesis $1$ or $0$.
+This defines the likelihood
+$L(o) = P(o |\nu^{(r)}_t,\chi^{(r)}_t)$.
 %$\pi_{1:t} = P(x |\nu^{(r)}_t,\chi^{(r)}_t)$
+Following the formulation of a binomial probability, it follows:
+\eqa{% TODO: check formula
+\Ll(o | p, r)&=\frac{L(o | p, r)}{L(o=1 | p, r) + L(o=1 | p, r)}  \\
+&= \frac{ {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} }{
+ {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r )}^{(1- p)\cdot r }  +
+  {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
+} 
+}
+The derivation of this function is detailed in~\seeApp{likelihood}.
 %    \item    go to (2)
-
-
-% TODO : check http://www.princeton.edu/~rcw2/papers/WilsonEtAl_PLOSCompBiol2013.pdf and bernouilli case + evaluation
-
-%cf p33 de 2018-02-12 journal club bayesian changepoint chloe.pdf
-
-now we reach end of the cycle - go to new datum
-projecting beliefs backwards and forward  : the algorithm is online et the price of memory
-
-The full algorithm is summarized in~\SeeApp{bcp}.
+Now that we have the likelihoods $\pi_{1:t}$, 
+one can update probabilities and perform the next prediction for trial $t+1$.
+The full algorithm is summarized in~\seeApp{bcp}.
 % ------------------------------------------------------------------
 \subsection{Quantitative analysis of the Bayesian change point algorithm}
 % ------------------------------------------------------------------
@@ -1515,7 +1522,7 @@ While being sensible to recording errors, this allows us to extract the
 \subsection{Appendix 2: BCP algorithm}
 \label{app:bcp}
 
-To summarize, the algorithm % uncover progressively
+To summarize, the algorithm
 
 \begin{enumerate}
 	\item     Initialize
@@ -1558,7 +1565,9 @@ where $\KL{\hat p}{p}$ is the Kullback-Leibler divergence between samples $\hat 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Appendix 3: Mathematical derivation of the likelihood}
 \label{app:likelihood}
-
+%\seeApp{likelihood}
+% TODO : check http://www.princeton.edu/~rcw2/papers/WilsonEtAl_PLOSCompBiol2013.pdf and bernouilli case + evaluation
+%cf p33 de 2018-02-12 journal club bayesian changepoint chloe.pdf
 %cf p52 de 2017-10-05 chloe inverting the process rem jb.pdf
 
 Bernouilli $p(x | p) = p^x \cdot (1-p)^{1-x}$
