@@ -903,7 +903,11 @@ grows linearly with the number of samples:
 The longer the run-length, the more precise the estimate.
 % it can be the mean and variance of a Gaussian, but in general it will be 2 parameters. in our case, we wish to estimate p (between zero and one) - it is characterized by the beta distribution (mathematically it is the conjugate of the bernouilli distribution)
 %sufficient statistics of a beta distribution
-
+Mathematically, such a belief on $p$ is well represented 
+by the conjugate probability distribution of the binomial distribution,
+that is the beta-distribution $B(\alpha, \beta)$.
+The mode of the distribution is the estimated value $E(\hat{p})=\frac{\alpha}{\alpha + \beta}$,
+while the variance 
 The agent may therefore,
 knowing some estimate of the timing of a switch,
 may give different weights to the information using an evaluation of each bits' precision.
@@ -947,9 +951,9 @@ This prediction/update cycle applied to the BSM and using~\seeEq{bsm}
 will constitute the BCP detection model.
 
 %-------------------------------------------------------------%
-%: 2bc online estimation: prediction / estimation=likelihood cycle
+%: 2bc online estimation: prediction 
 %-------------------------------------------------------------%
-Following the principle of Active Inference, % POMDP / active exploration of feature space
+%Following the principle of Active Inference, % POMDP / active exploration of feature space
 
 * at trial zero, there is no information, so we intiialize to the prior values
 %		\item    $P(r_0)= S(r)$ or $P(r_0=0)=1$ and
@@ -988,7 +992,8 @@ Contrary to the forgetful-agent model where~$\tau$ was a fixed parameter, the BC
 
 
 %-------------------------------------------------------------%
-%: Computing the likelihood /  use p log p + (1-p) log (1-p ) as in logistic regression?
+%: 2bd update = Computing the likelihood 
+%  use p log p + (1-p) log (1-p ) as in logistic regression?
 %-------------------------------------------------------------%
 
 The main difference between our algorithm and that of Wilson is the way that the likelihood is computed.
@@ -1118,7 +1123,7 @@ it seems qualitatively that both traces evolve with a good fit.
 First, both have similar delays in detecting a switch,
 reflecting the time (of the order a few trials) taken to integrate enough information
 to switch to a novel probability bias value in the binomial process.
-Second, the precision (that is, the inverse of the variancve)
+Second, the precision (that is, the inverse of the variance)
 of the inferred probability $\hat{p}$ seems to increase
 in bigger sub-blocks as information is integrated over more trials.
 As a result, the inferred probability as a function of time
@@ -1546,7 +1551,7 @@ where $\KL{\hat p}{p}$ is the Kullback-Leibler divergence between samples $\hat 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Appendix 3: Mathematical derivation of the likelihood}
-\label{app:lieklihood}
+\label{app:likelihood}
 
 %cf p52 de 2017-10-05 chloe inverting the process rem jb.pdf
 
