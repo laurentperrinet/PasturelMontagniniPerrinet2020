@@ -10,7 +10,7 @@
 \newcommand{\AuthorA}{Chlo\'e Pasturel}
 \newcommand{\AuthorB}{Anna Montagnini}%
 \newcommand{\AuthorC}{Laurent U.~Perrinet}%
-\newcommand{\Address}{Institut de Neurosciences de la Timone, CNRS / Aix-Marseille Universit\'e - Marseille, France}%
+\newcommand{\Address}{Institut de Neurosciences de la Timone, CNRS / Aix-Marseille Université - Marseille, France}%
 \newcommand{\Website}{http://invibe.net/LaurentPerrinet}%
 \newcommand{\Email}{Laurent.Perrinet@univ-amu.fr}%
 \newcommand{\Title}{
@@ -537,7 +537,7 @@ was used within blocks of fixed lengths.
 Indeed, observers may potentially pick up
 the information on this fixed length
 to predict the occurrence of switches in conditions.
-Additionnally, we observed that following the switch from
+Additionally, we observed that following the switch from
 one condition to the next,
 the strength of aSPEM changed gradually,
 consistently with other adaptation paradigms~\citep{Souto13},
@@ -746,7 +746,7 @@ not prematurely discarding information still of value
 for slowly changing contexts  ($\lambda \approx 0$).
 Equivalently, one can define $\tau = 1 / \lambda$ as
 a characteristic time for the integration of information.
-At trial $t$, this model can be expresed with the following equation:
+At trial $t$, this model can be expressed with the following equation:
 %TODO fix the notation \hat{p}^{t+1} > \hat{p}(t+1)
 \eql{%\choice{
 % p^t = 0 \quad \text{if} \quad x_2^t=0 \\
@@ -779,10 +779,10 @@ is an ideal observer as the solution
 to the generative model assuming a fixed drift in the probability bias.
 
 %: using \hat{p} as a regressor
-The correspondance that we proved between the moving average heuristic
+The correspondence that we proved between the moving average heuristic
 and the ideal observer model as a solution to a generative model drives
 us to several interim conclusions.
-First, the trajectory $\hat{p}$ can serve as a useful regressor
+First, the trajectory $\hat{p}$ can serve as a regressor
 to test whether human observers follow the same strategy.
 In particular, one could test the parameter $\tau$
 which is relative to the agents' belief in the decay,
@@ -838,7 +838,9 @@ with the volatility of the environment
 \begin{figure}%[b!]
 % cf 3_Results_2.ipynb
 \begin{center}
-\includegraphics[width=\linewidth]{figure3}
+%\includegraphics[width=\linewidth]{figure3}
+% cf : 3_Results_1
+\includegraphics[width=1\linewidth]{3_BCP_readouts}
 \end{center}
 \caption{\emph{Bayesian change point model}
 ~\textbf{A} shows hypothetic datas that works as a binomial choice, either $0$ or $1$. 
@@ -850,7 +852,7 @@ that is, for which there is a progression of the run length at the next step.
 The red line stands for the possibility that a switch happened, 
 and then falls back to zero. 
 The black curve stands for 
-the run length of simulated datas in~\textbf{A} 
+the run length of simulated data in~\textbf{A} 
 as a function of time (r$_t$). 
 We can see that 
 the run length drops back to zero 
@@ -1027,7 +1029,7 @@ As such, the only difference is the way that the likelihood is computed.
 %https://en.wikipedia.org/wiki/Likelihood_function
 %https://stats.stackexchange.com/questions/2641/what-is-the-difference-between-likelihood-and-probability
 To perform this computation, 
-we have computed the probability of each model parameztrized by $r$
+we have computed the probability of each model parameterized by $r$
 for the two hypothesis $1$ or $0$.
 This defines the likelihood
 $L(o) = P(o |\nu^{(r)}_t,\chi^{(r)}_t)$.
@@ -1055,11 +1057,11 @@ We have implemented this algorithm using a set of python scripts.
 This code is detailed in~\seeApp{bcp} and provides also some control script
 to test the behavior of the algorithm with synthetic data.
 Indeed, this allows to qualitatively and quantitatively asses 
-this ideal observer with a knwon ground truth before using it 
+this ideal observer with a known ground truth before using it 
 on the data that was used for the experiments (see~\seeFig{results_raw}).
 %TODO : synchronize with FIGURE 3 fig:bayesianchangepoint
 \seeFig{bayesianchangepoint}~\textbf{A} shows 
-one instance of a sequence of simulated datas 
+one instance of a sequence of simulated data
 of leftward and rightward trials with a probability $p$ 
 of being rightward with possible variations through times. 
 It also shows the predicted probability $\hat{p}$ by using the BCP algorithm. 
@@ -1118,7 +1120,7 @@ assumed by the agent
 Though there exist solutions ~\citep{Wilson13,Wilson18}
 we will keep this parameter fixed for any agent, but evaluate 
 how well it fits tot he experimental outcomes at the different scales of the protocol:
-within sub-blocks, for each su-block or for any individual observer. 
+within sub-blocks, for each sub-block or for any individual observer. 
 As a summary, for any given sequence,
 we get an estimate of the probability given by the ideal observer.
 we will now see how we can apply that to our experimental protocol.
@@ -1148,10 +1150,10 @@ the true value of the true (hidden) value
 of the binomial process (horizontal black segments).
 In general, results are more variable when the bias is weak ($p\approx .5$)
 than when it is strong (close to zero or one),
-consitent with the dependence of the variance of the binomial process
+consistent with the dependence of the variance of the binomial process
 as a function of the probabilistic bias ($p$).
 Let's now see how this applies to our experimental results
-by comparing human observers to our bayesian agent.
+by comparing human observers to our Bayesian agent.
 More interestingly, we also superposed
 the observed value of the strength of aSPEM
 (the total velocity VEM, red line)
@@ -1216,8 +1218,8 @@ has a positive linear relationship with the aSPEM velocity.
 Note that since the BCP is a probabilistic model,
 we can also compute the Mutual Information and
 compare that value with that obtained by other models~\seeApp{bcp}.
-The corresponding Pearson correlatio coefficient
-is slightly higer than that found in
+The corresponding Pearson correlation coefficient
+is slightly higher than that found in
 the classical experiment with fixed blocks~\seeFig{intro}-B.
 This is surprising at a first sight as the blocks are of random length,
 and that participants have to adapt to such a volatile environment.
@@ -1231,7 +1233,7 @@ and which is well captured by the BCP model.
 In particular, the model predicts the different facets
 from the experimental results,
 from the variability as a function of the inferred probability,
-to the dynamics of the bahaviour following a (hidden) switch.
+to the dynamics of the bahavior following a (hidden) switch.
 As a consequence this provides with a stronger correlation,
 as measured by the Pearson coefficient.
 We deduce that the trace of inferred probabilities is a powerful regressor
@@ -1252,7 +1254,7 @@ Similarly to the strength of aSPEM,
 as compared to a random choice),
 (2) stronger biases lead to lower variabilities in the estimate,
 (3) a (hidden) switch in the value of the bias is
-most of the time correctly idetified after only a few trials.
+most of the time correctly identified after only a few trials.
 Note also that at every pause (black vertical bar),
 participants tended to provides with more neutral scales
 than at the end of a sub-block of trials.
@@ -1260,7 +1262,7 @@ This would correspond to a resetting mechanism
 of the predicted value of the next outcome.
 As a consequence, the experiment performed in the second session
 shows that the value that is consciously evaluated by participants
-are qualitatively similar to that which is unconsciously generated behaviourally
+are qualitatively similar to that which is unconsciously generated behaviorally
 in the form of the strength of aSPEM.
 
 %: quantitative analysis
@@ -1268,40 +1270,40 @@ Similarly to~\seeFig{results_psycho}-A,
 we now compare quantitatively the value of rating scale
 as measured during the second session.
 The KDE estimate shown in~\seeFig{results_psycho}-B,
-represents the reliationship between
-the estimated proability
+represents the relationship between
+the estimated probability
 and the value which was predicted at each trial
 by participants for the outcome of the next trial.
-This exhibits a consistant relationship
+This exhibits a consistent relationship
 but which now follows a non-linear trace.
 In particular, this relationship was finer
 in comparison with a other agents
 such as the forgetful agent~\seeApp{results_psycho}
-We modelled this behaviour as
+We modeled this behavior as
 a logistic regression over
 the log-odd ratio estimated by the agent.
 %TODO
 This analysis provides with regression factors for each participant.
 It shows that the bias (intercept)
-was negligeable, while the slope (logistic factor)
+was negligible, while the slope (logistic factor)
 was always positive.
 This indicates a generic aversion to risk~\citep{Kahneman13}
 such that the value of a possible outcome
-is down-weighted by the precision of the inferrence.
+is down-weighted by the precision of the inference.
 Our logistic regression analyses
 suggests that this may come from a multiplicative weight
 on the (log-) odd-ratio which is chosen as a rating scaled
 compared to the (log-)odd-ratio of the inferred probability.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results: Analyzing inter-individual differences}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:inter}
 %: separate above analysis
 So far, our quantitative analysis was performed independently
 for the different participants.
 In particular, we have shown a representative example in~\seeFig{results_raw}
-but results varried across participants~\seeApp{results_psycho}.
+but results varied across participants~\seeApp{results_psycho}.
 This was best characterized qualitatively in both sessions by differences
 in the variability of the responses but also for instance
 with different characteristic delays after a switch.
@@ -1309,7 +1311,7 @@ This reflects the spectrum of individual choices
 between exploration and exploiting behaviors~\citep{Behrens07}.
 Here, we were interested into characterizing the preference
 of each individual participant, but also to characterize
-if this preference covaried accross the two sessions.
+if this preference covaried across the two sessions.
 Crucially, we have seen that the BCP model is controlled by a single parameter,
 the hazard rate, that is by its inverse, the time characteristics $\tau$.
 Also, we have shown that knowing an observed sequence,
@@ -1323,7 +1325,9 @@ we can expect to characterise inter individual differences.
 % TODO présente une meta analyse qui montre une correlation par sujet (scatter plot) entre h_a et h_bet (see 2017-11-16 chloe figures.pdf ) y-a-til un continuum entre explorateurs et conservatezurs?, voir de montrer une causalité entre les 2 expériences - on pourrait superposer aussi les résultats si on avait utilisé un fixed-length ?
 \begin{figure}%[b!]
 \begin{center}
-    \includegraphics[width=1\linewidth]{figure5}
+  %\includegraphics[width=1\linewidth]{figure5}
+	% cf : 4_Meta_analysis.ipynb
+  \includegraphics[width = 1 \linewidth]{5_inter-individual_differences}
 \end{center}
 \caption{\emph{Analyzing inter-individual differences}
 % \textbf{(A)}
@@ -1342,7 +1346,7 @@ If the average is close to the (hidden) value used to generate the sequence
 (with $\tau = XX~\ms \pm XX~\ms$ for the first session and
  $\tau = XX~\ms \pm XX~\ms$ for the second),
  we observe a variability which is characteristic of the spectrum of individual choices.
-More importantly, there is a slight but consistant
+More importantly, there is a slight but consistent
 correlation between the values for each participant for one session
 as compared to the second session.
 % TODO - Granger / transfer entropy
@@ -1368,7 +1372,7 @@ It can serve as a biomarker...
 
 %: theory / computationnally-driven experiments
 % it's a main novelty
-genrative models for changing environments allows to know the ground truth compared to natural stimulation (see Rust eand Movshon)%
+generative models for changing environments allows to know the ground truth compared to natural stimulation (see Rust eand Movshon)%
 Let's remember our hierarchical generative model.
 
 At any given trial, we wish to construct an algorithm which
@@ -1408,7 +1412,7 @@ perspectives:
 % - there is a correlation in the anticiapatory response of eye movements
 % in a volatile environment that is captured if we know the true probability
 % - that a fixed length models captures some of this correlation, but that
-% - our online bayesian changep[oint model better captures this correlation
+% - our online bayesian changepoint model better captures this correlation
 % and that this may hint at the neural mechanisms used to anticipate
 % in a dynamic environment
 %
@@ -1457,7 +1461,7 @@ In summary, the design of our experimental setting is therefore very similar to 
 
 - with an average block length of 40 trials
 
-We anticipated that such an  experiment for which we simply recordedd the eye movements should be more difficult for observers compared to the classical experiments with longer (400 trials), fixed blocks and...
+We anticipated that such an  experiment for which we simply recorded the eye movements should be more difficult for observers compared to the classical experiments with longer (400 trials), fixed blocks and...
 
 \subsection{The Bet}
 In this first part, the subjects must simply answer before each trial at the question \textit{ ``How sure are you that the target will go left or right''}. This was performed by adjusting a cursor on the screen using the mouse (see Figure).
