@@ -195,28 +195,32 @@ the adaptation of cognitive systems}
 %: general volatility and perceptual learning
 We live in a fundamentally volatile world for which
 our cognitive system has to constantly adapt.
-\LP{Anna , you had a better example which was less dramatic than ``
-Think for instance of the variability of environmental contingencies
-present in global climate and
-the probability of a change in its dynamic
-since the switch of civilization in an industrialized organization:
-We have access to (possibly noisy and heterogeneous) measurements
-of some (few) markers, such as carbon dioxide concentration and
-wish to predict the range of the mean temperature on Earth.
-This reveals some of the dynamics of
-the complex system constituted by the atmosphere
-and of acceptable levels of temperature for civilization.
-Based on past history and prior knowledge about
-the effect of our own emissions of carbon dioxide
-(for instance priming evidence of the link between carbon dioxide
-concentration and an elevation of temperature),
-one should be able to predict at best if either
-one could continue to exploit a similar strategy (emit gases)
-or if it is necessary to explore different paradigms (limit emissions).
-''}
-\AM{this is my idea, LAurent:
-...
-}
+% \LP{Anna , you had a better example which was less dramatic than ``
+% Think for instance of the variability of environmental contingencies
+% present in global climate and
+% the probability of a change in its dynamic
+% since the switch of civilization in an industrialized organization:
+% We have access to (possibly noisy and heterogeneous) measurements
+% of some (few) markers, such as carbon dioxide concentration and
+% wish to predict the range of the mean temperature on Earth.
+% This reveals some of the dynamics of
+% the complex system constituted by the atmosphere
+% and of acceptable levels of temperature for civilization.
+% Based on past history and prior knowledge about
+% the effect of our own emissions of carbon dioxide
+% (for instance priming evidence of the link between carbon dioxide
+% concentration and an elevation of temperature),
+% one should be able to predict at best if either
+% one could continue to exploit a similar strategy (emit gases)
+% or if it is necessary to explore different paradigms (limit emissions).
+% ''}
+Imagine for instance you are a doctor (general practitioner) and 
+that you usually report an average number of 
+one person infected by measles per month.
+
+% \AM{this is my idea, LAurent:
+% ...
+% }
 % * the evolution  of prices on the stock market: Any Socio-economic contextual index may make the price evolve up or down, slowly or more Rapidly
 % * ecological change
 % * the side (left or right of the field) in which the ball is on a soccer field
@@ -359,9 +363,9 @@ and therefore allow for a better understanding of such predictive processes. %
 \node [anchor=north west]  (img2) at (0.844\linewidth,.538\linewidth){\includegraphics[width=0.156\linewidth]{1_C_protocol_bet_simple}};
 
 %\node [anchor=north west]  (img2) at (0.75\linewidth,.618\linewidth){\includegraphics[width=0.25\linewidth]{protocol_bet_simple}};
-\draw [anchor=north west] (0.000\linewidth, .6\linewidth) node {$\mathsf{(A)}$};
-\draw [anchor=north west] (0.54\linewidth, .6\linewidth) node {$\mathsf{(B)}$};
-\draw [anchor=north west] (0.844\linewidth, .6\linewidth) node {$\mathsf{(C)}$};
+\draw [anchor=north west] (0.000\linewidth, .62\linewidth) node {$\mathsf{(A)}$};
+\draw [anchor=north west] (0.505\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
+\draw [anchor=north west] (0.842\linewidth, .62\linewidth) node {$\mathsf{(C)}$};
 \end{tikzpicture}
 
 }
@@ -396,8 +400,8 @@ in the direction of the bias and before any visually-driven component:
 This phase is the Anticipatory SPEM (aSPEM).
 As reported previously~\citep{Montagnini2010, SantosKowler2017},
 the slope of this ramp correlates with the strength of the bias.
-This is shown in the inset showing the average gain in velocity ($\pm$ SEM)
-before any visually driven information (here, at $t=50~\ms$).
+\LP{say this in words: "This is shown in the inset showing the average gain in velocity ($\pm$ SEM)
+before any visually driven information (here, at $t=50~\ms$)."}
 \textbf{(C)}~In this paper, we extended this experiment in two aspects.
 First, we generalized the generation of random sequences
 by using random-length blocks
@@ -556,10 +560,9 @@ One first novelty is that the variable $p$ is itself a random variable.
 %\subsection{Generative model: the binomial switching model}
 %-------------------------------------------------------------%
 %: FIGURE 2 fig:results_raw ~\seeFig{results_raw}
+% cf 1_generative-model.ipynb
 \begin{figure}%[b!]
 \centering{\includegraphics[width=\linewidth]{2_results_enregistrement}}
-% cf 2_Methodes.ipynb ??
-% ou cf 3_Results_2.ipynb
 \caption{
 %\caption{
 \emph{The binomial switching model and raw psychophysical results.}%
@@ -1173,14 +1176,21 @@ with the strength of aSPEM.
 
 %-------------------------------------------------------------%
 %: FIGURE 4  fig:results_psycho \seeFig{results_psycho}
+% cf 3_Results_2_velocity.ipynb
 \begin{figure}%[b!]
-% cf 3_Results_2.ipynb
-\begin{center}
-\includegraphics[width=\linewidth]{figure4}
-\end{center}
-%    \includegraphics[width=1\linewidth]{results_KDE_VEM_vs_p_hat}
-%    \includegraphics[width=1\linewidth]{results_KDE_bet_vs_p_hat}
-\caption{\emph{Psychophysical results over all participants}
+\centering{
+\begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
+\node [anchor=north west]  (img4) at (0.000\linewidth,.618\linewidth){\includegraphics[width=0.49\linewidth]{4_A_result_psycho_velo}};
+\node [anchor=north west]  (img4) at (0.51\linewidth,.618\linewidth){\includegraphics[width=0.49\linewidth]{4_B_result_psycho_bet}};
+
+\draw [anchor=north west] (0.000\linewidth, .618\linewidth) node {$\mathsf{(A)}$};
+\draw [anchor=north west] (0.5\linewidth, .618\linewidth) node {$\mathsf{(B)}$};
+
+\end{tikzpicture}
+}
+
+\caption{ \emph{Psychophysical results over all participants}
+\CP{Attention KDE mean !}
 Each trial in our experimental results in an estimate of
 the strength of aSPEM (as measured by VEM)
 and a rating scale value.
@@ -1201,8 +1211,10 @@ of the problem, but a consistent slope showing an aversion to risk
 (cf Kahneman13).
 %\textbf{(C)}
 }
+
 \label{fig:results_psycho}
 \end{figure}
+
 %%-------------------------------------------------------------%
 %: quantitive analysis
 Quantitatively, we wanted to look at the quality of fit
@@ -1323,16 +1335,35 @@ we can expect to characterise inter individual differences.
 %-------------------------------------------------------------%
 %: FIGURE 5  fig:results_inter \seeFig{results_inter}
 % TODO présente une meta analyse qui montre une correlation par sujet (scatter plot) entre h_a et h_bet (see 2017-11-16 chloe figures.pdf ) y-a-til un continuum entre explorateurs et conservatezurs?, voir de montrer une causalité entre les 2 expériences - on pourrait superposer aussi les résultats si on avait utilisé un fixed-length ?
+% cf https://github.com/laurentperrinet/bayesianchangepoint/blob/master/notebooks/test_hazardrate.ipynb
+% cf : 4_Meta_analysis.ipynb
 \begin{figure}%[b!]
-\begin{center}
-  %\includegraphics[width=1\linewidth]{figure5}
-	% cf : 4_Meta_analysis.ipynb
-  \includegraphics[width = 1 \linewidth]{5_inter-individual_differences}
-\end{center}
+\centering{
+\begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
+\node [anchor=north west]  (img4) at (0.000\linewidth,.588\linewidth){\includegraphics[width=0.25\linewidth]{5_A_h_bet}};
+\node [anchor=north west]  (img4) at (0.000\linewidth,.28\linewidth){\includegraphics[width=0.25\linewidth]{5_A_h_va}};
+\node [anchor=north west]  (img4) at (0.26\linewidth,.618\linewidth){\includegraphics[width=0.618\linewidth]{5_inter-individual_differences_fit}};
+
+\draw [anchor=north west] (0.000\linewidth, .618\linewidth) node {$\mathsf{(A)}$};
+\draw [anchor=north west] (0.25\linewidth, .618\linewidth) node {$\mathsf{(B)}$};
+
+\end{tikzpicture}
+}
+
+
+%\begin{figure}%[b!]
+%\begin{center}
+%  %\includegraphics[width=1\linewidth]{figure5}
+%	
+%  \includegraphics[width = 1 \linewidth]{5_inter-individual_differences}
+%\end{center}
 \caption{\emph{Analyzing inter-individual differences}
-% \textbf{(A)}
-% TODO show fit with different hazard rates
-% \textbf{(B)}
+\textbf{(A)}
+\LP{ show fit with different hazard rates for one observer / one block}
+\CP{sujet IP 2eme block,  en haut: MI entre les bet et le bcp pour les differents h, en bas: MI entre les vitesse d'anticipation et le bcp pour different h}
+\textbf{(B)}
+result of fits for different observers / SEM across blocks
+\CP{il y a aussi la figure pour les h selectiones avec le MI (5 inter individual differences MI)}
 }
 \label{fig:results_inter}
 \end{figure}
@@ -1381,7 +1412,7 @@ We will introduce a fundamental component of Bayesian models : a latent variable
 
 this new variable will be used to test different hypothesis which will be evaluated to predict future states. it is called latent because it aims at representing a variable that is latent (or hidden) to the observer
 
-in our case, we will assume that the bayesian model knows about the structure of the generative model and we will set it to the current run-length $r$, that is, at any given trial, the hypothesis that the past r observations belong to the same block. of course a wrong choice of a latent variables (let's say the temperture in the experimental room) may give unexpected results, even is the bayesian model is "optimal" - an essential point to understand in bayesian inference
+in our case, we will assume that the Bayesian model knows about the structure of the generative model and we will set it to the current run-length $r$, that is, at any given trial, the hypothesis that the past r observations belong to the same block. of course a wrong choice of a latent variables (let's say the temperture in the experimental room) may give unexpected results, even is the Bayesian model is "optimal" - an essential point to understand in Bayesian inference
 
 extension to multi-nomioal( daniele + fred danion)
 
@@ -1392,7 +1423,7 @@ extension to multi-nomioal( daniele + fred danion)
 
 perspectives:
 - RL : use hindsight example of localization for saccades: get the changepoints then improve estimate of reward allows to optimize the association between the set of measures and their utility (compared to Q-learning where it is a fixed length)
-- interindividual differences : markers for the berhaviour traces - traces of the network implementation
+- interindividual differences : markers for the berhaviour traces - traces of the network implementation / testing different h
 - the brain is weakly Bayesian (it does not care about equations but more about sugar)
 
 
