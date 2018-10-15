@@ -439,6 +439,8 @@ between "sure left", to "unsure" and finally "sure right".
 \label{fig:intro}
 \end{figure}
 %-------------------------------------------------------------%
+%: >>>> LuP is here <<<<
+% TODO : say here WHAT we wish to do and in the next section (contributions) HOW we do it
 %: adaptation to volatility in EMs : seen as an anticipation in SPEM - principle and function
 % % TODO add saccadic adaptation ?
 Humans are able to accurately track a moving object
@@ -466,11 +468,11 @@ for which participant are not aware of.
 As such, this behavior is a useful marker
 to study expectancy-based oculomotor behavior,
 and in particular as to how sensorimotor expectancy interacts
-with context contingencies in shaping (oculomotor) behavior.
+with contextual contingencies in shaping (oculomotor) behavior.
 
 %: linear relationship (talk about santos & kowler and others)
 Typically, aSPEM is observed after a temporal cue and
-ahead of target motion onset~\citep{Kowler1979a,Kowler1979b, Kowler1984}~(see \seeFig{intro}-A).
+ahead of target motion onset~\citep{Kowler1979a,Kowler1979b, Kowler1984}.%~(see \seeFig{intro}-A).
 It is generally assumed that the role of anticipatory eye movements is
 to limit as fast as possible the behavioral impairment due
 to the amplitude of eye-to-target position and velocity mismatch.
@@ -499,14 +501,14 @@ driving anticipatory behavior to optimize a rapid and
 precise foveation of the target on its most expected future path.
 
 %: how we do it : TODO remove redundancy with "contributions" (1.4)
-To extend such results to more generic experimental conditions,
-we have modified the experimental protocol of~\citep{Montagnini2010} in three aspects.
+To further test such results to more generic experimental conditions,
+it is necessary to extend the experimental protocol of~\citep{Montagnini2010} in three aspects.
 First, it seems important to investigate the integration of environmental statistical regularities
 in this smooth tracking task with
 a large family of direction-biases for the target motion.
-As such, instead of a finite set of probability biases ($.25$, $.5$, $.75$, $.9$ and $1.$, see \seeFig{intro}-B),
-we have used a continuous range of probability bias $p$ 
-which we were sampling from a fixed prior distribution.
+As such, instead of a finite set of probability biases, % ($.25$, $.5$, $.75$, $.9$ and $1.$, see \seeFig{intro}-B),
+we should use a continuous range of probability bias $p$.
+%which we were sampling from a fixed prior distribution.
 Second,~\citet{Maus2015} have recently shown that
 both perceptual adaptation and priming of aSPEM could occur simultaneously.
 They found a robust repulsive adaptation effect
@@ -533,22 +535,20 @@ Such history length can still be considered
 short in comparison to the several hundreds
 of trials that are commonly used in psychophysical studies.
 To study the effect of history length in all generality,
-we have extended the protocol such that the probability bias is fixed in sub-blocks,
-and that the duration of these blocks is drawn randomly with given statistics.
-The equations for this protocol will be detailed below~(\seeSec{bayesian_change_point}).
-Last, we replicated part of those results by repeating the same protocol
-in a psychophysical judgement task in a day subsequent to the recording of eye movements.
-In this task, we asked to the participants,
-to evaluate their confidence for the next trial 
-(\emph{prior} to the appearance of the target)
-on a rating scale
-between "sure left", to "unsure" and finally "sure right"~(see \seeFig{intro}-C).
-%: >>>> LuP is here <<<<
+we should therefore extend the protocol such that the probability bias 
+is fixed in sub-blocks of a large variety of block's length.
+%The equations for this protocol will be detailed below~(\seeSec{bayesian_change_point}).
+Last, it is crucial to generalize those results by repeating the same protocol
+in a psychophysical judgement task in parallel to the recording of eye movements.
+In such a task, we should evaluate for each participant their confidence for the next trial 
+(\emph{prior} to the appearance of the target).
+%on a rating scale
+%between "sure left", to "unsure" and finally "sure right"~(see \seeFig{intro}-C).
 % ------------------------------------------------------------------
 \subsection{Contributions}%Outline}
 % ------------------------------------------------------------------
 %: limits of the previous method
-The goal of this study is to generalize the adaptive process
+More specifically, the goal of this study is to generalize the adaptive process
 observed in the aSPEM response to more ecological settings but
 also to broaden its scope by showing that such unconscious process
 also occurs at the conscious level.
@@ -583,7 +583,7 @@ an explicit estimate of probabilities is unknown.
 To alleviate this problem, we developed a new paradigm
 in order to address this question
 by explicitly modeling a dynamic process with a given volatility:
-One first novelty is that the variable $p$ is itself a random variable.
+One first novelty of our study is that the variable $p$ is itself a random variable.
 
 %\subsection{Generative model: the binomial switching model}
 %-------------------------------------------------------------%
@@ -600,7 +600,6 @@ One first novelty is that the variable $p$ is itself a random variable.
 %It is represented as a graphical model representing
 %the three levels of the stochastic model. %
 %
-\LP{TODO: only show block 2 ??}
 Above, we plot the sequence of target directions
 that were presented to observers
 (red or black dots for respectively left or right directions :TODO).
@@ -637,7 +636,7 @@ to follow a similar trajectory.
 %: design of the binomial switching generative model
 Indeed, to assess the dynamics of the adaptive processes
 which compensate for the variability of sensory sequences,
-one may introduce a parametric mechanism controlling for their volatility.
+one may introduce a parametric mechanism controlling for the volatility.
 By definition, volatility measures the temporal variability
 of the sufficient parameters of a random variable.
 In the HGF model~\citep{Mathys11} for instance,
@@ -658,7 +657,7 @@ with a given mean frequency,
 and that the bias in target direction is stationary between two switches:
 The value $p$ of the bias only changes at the moment of a switch,
 independently of the previous bias' value.
-Such a sequence is presented in~\seeFig{results_psycho},
+Such a sequence is presented in~\seeFig{results_psycho}, %TODO : blue line
 where we show the realization of above target's directions and
 below of the underlying (hidden) bias' probability.
 Mathematically, for each trial,
@@ -679,14 +678,16 @@ the following definition:
 \eql{\choice{
 x_2^t \propto \Bb(1/\lambda) \\
 % TODO: nest the choice
-x_1^t = x_1^{t-1} \quad \text{if} \quad x_2^t=0 \quad \text{and else} \quad x_1^t \propto \Pp \quad \text{for} \quad x_2^t=1 \\
+\choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
+\text{else} \quad x_1^t \propto \Pp  \\
+} \\
 x_0^t \propto \Bb(x_1^t)
 }\label{eq:bsm}}
 Note that the prior distribution $\Pp$ can be for instance
 the uniform distributions on $ [ 0, 1 ] $ or
 Jeffrey's prior $\Jj$~(see \seeApp{bcp} (TODO: put in appendix).
 There is always a switch at $t=0$ and for each pause.
-In conclusion, the experimental setup of the first session
+To sum up, the experimental setup of the first session
 is similar to that presented in~\seeFig{intro}-A, except for
 this new generative model for the pseudo-random sequence of binary events
 which randomizes the occurrence of the switches
@@ -701,7 +702,7 @@ After this introduction where we presented the motivation for this study,
 the next section~(\seeSec{bayesian_change_point}) will present
 an inversion of the forward probabilistic model defined in~\seeEq{bsm}.
 There is yet to our knowledge no such algorithm and
-we will here provide with a solution
+we will here provide with an analytical solution
 by extending previous results from~\citet{AdamsMackay2007}
 to the case of binomial data as in the presented binomial switching model.
 In addition, this solution is \emph{online},
