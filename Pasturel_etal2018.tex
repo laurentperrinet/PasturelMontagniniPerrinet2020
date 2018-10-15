@@ -10,7 +10,7 @@
 \newcommand{\AuthorA}{Chlo\'e Pasturel}
 \newcommand{\AuthorB}{Anna Montagnini}%
 \newcommand{\AuthorC}{Laurent Perrinet}%
-\newcommand{\Address}{Institut de Neurosciences de la Timone, CNRS / Aix-Marseille Université - Marseille, France}%
+\newcommand{\Address}{Institut de Neurosciences de la Timone, CNRS / Aix-Marseille Universit\'e - Marseille, France}%
 \newcommand{\Website}{http://invibe.net/LaurentPerrinet}%
 \newcommand{\Email}{Laurent.Perrinet@univ-amu.fr}%
 \newcommand{\Title}{
@@ -220,19 +220,20 @@ Imagine for instance you are a doctor (general practitioner) and
 that you usually report an average number of 
 one person infected by measles per month.
 On the past few days however,
-the rate increased to 3 to 4 cases per week.
+the rate increased to 4 cases per week.
 As such, two alternate strategies are open to us:
 Either, there is an outbreak of measles and 
-one should estimate its strength (as measured as the rate of new cases)
+one should estimate its strength 
+(as measured as the rate of new cases)
 since the onset of the outbreak.
 Alternatively, these cases are false positives:
-they are just coincidences that come from
+they are coincidences that come from
 the (possibly noisy and heterogeneous) process 
 that generated these observations.
-A possibility is then to readjust the baseline rate of infection
+Then, a possibility is to readjust the baseline rate of infection
 with this new data.
 This example illustrates one basic problem with which our cognitive system is faced:
-observing new sensory evidence, 
+when observing new sensory evidence, 
 should I stay and continue to integrate this novel data 
 to my current beliefs about the environment's state
 or should I go and adopt a new hypothesis 
@@ -334,10 +335,10 @@ the predictive and iterative nature of the probabilistic model.
 Indeed, once the belief about latent variables
 is formed from the sensory input,
 this belief can be used to update
-the prior over of future beliefs on latent variables~\citep{Montagnini2007}
+the prior over of future beliefs on latent variables~\citep{Montagnini2007}.
 Thus, the comparisons between expectations and actual data produces
-a constant update the estimates of the model under a mechanism
-that is labeled as the~\textit{active inference}~\citep{Friston2003, Friston2010}.
+constant updates to the estimates of the model under a mechanism
+that is labeled as~\textit{active inference}~\citep{Friston2003, Friston2010}.
 Such methodology thus allows to infer latent variables at present
 but also to understand longer time effects such as adaptation and learning
 through variational inference over
@@ -363,6 +364,8 @@ in an attempt to capture human behavior.
 Interestingly, the observation of priming effects
 have also been observed for anticipatory smooth eye movements (aSPEM)
 and therefore allow to further deepen our understanding of such predictive processes. %
+%As a consequence, Bayesian inference allows to compare the explanatory power
+%of different models...
 % ------------------------------------------------------------------
 \subsection{Anticipatory Smooth Pursuit Eye Movements (aSPEM)}
 % ------------------------------------------------------------------
@@ -388,21 +391,24 @@ and therefore allow to further deepen our understanding of such predictive proce
 
 }
 \caption{\emph{Anticipatory SPEM (aSPEM): psychophysics and results} %
-\textbf{(A)}~Human observers were presented $600$ trials % TODO:check
-which each consists of sequentially:
+\textbf{(A)}~We replicated the results of~\citep{Montagnini2010}, 
+in which human observers were presented $600$ trials 
+of target motions with a probabilistic bias.% TODO:check
+Each trial consists of sequentially:
 a fixation dot (of random duration between $400$ and $600$~\ms),
 a blank screen (of fixed duration of  $300$~\ms) and
 a moving dot (at $15$ deg/s) which the observers were instructed to follow.
 The direction of the dot was drawn pseudo-randomly
-using a probabilistic bias $p$ which defines the parameter
-of the binomial distribution
+according to a binomial distribution
+parameterized by a probabilistic bias $p$ 
 ($0\leq p\leq 1 $). The direction is unbiased for $p=0.5$,
 always left for $p=0$ and always right if $p=1$.
 In a first experiment,
-we replicated the experiment of~\citep{Montagnini2010} and
-tested sequentially for $5$ different values of $p$:
+we %replicated the experiment of~\citep{Montagnini2010} and
+tested $5$ different values of $p$:
 $.5$, $.25$, $.75$, $.9$ and $1.$,
 in fixed blocks of $120$ trials each.
+% TODO : dans notre plot on a des range de valeurs pour p :-/
 \textbf{(B)}~Velocity traces of eyes movements
 averaged for each bias condition
 over conditions and observers.
@@ -410,15 +416,15 @@ These traces are aligned to the onset of the moving dot.
 Saccades were removed using a thresholding method~(see \seeApp{em}) and
 error bars show one standard deviation over all samples.
 In the unbiased condition, one can distinguish
-a visually-driven component (after a latency of $\approx 80~\ms$),
-which corresponds to Smooth Pursuit Eye Movements (SPEM).
+a visually-driven component (after a latency of $\approx 80~\ms$)
+which corresponds to a standard Smooth Pursuit Eye Movements (SPEM).
 When introducing a bias in the direction,
 one observes that the velocity of the eye progressively ramps
 in the direction of the bias and before any visually-driven component:
 This phase is the Anticipatory SPEM (aSPEM).
 As reported previously~\citep{Montagnini2010, SantosKowler2017},
 the slope of this ramp correlates with the strength of the bias.
-\LP{say this in words: "This is shown in the inset showing the average gain in velocity ($\pm$ SEM)
+\LP{say this in words or in the ANnex: "This is shown in the inset showing the average gain in velocity ($\pm$ SEM)
 before any visually driven information (here, at $t=50~\ms$)."}
 \textbf{(C)}~In this paper, we extended this experiment in three aspects.
 First, we used probability biases in a continuous space,
@@ -426,7 +432,7 @@ as drawn from a prior distribution for the values of $p$.
 Second, we generalized the generation of random sequences
 by using random-length blocks
 to avoid potential inter-blocks confounds (see \seeFig{results_raw}).
-Third, to asses this adaptive mechanism at the conscious level,
+Third, to titrate this adaptive mechanism at the conscious level,
 we asked each observer to perform the same experiment on a subsequent day,
 and asked participants to rate the level of confidence
 for their estimate of the direction of the dot before each trial.
@@ -439,6 +445,7 @@ between "sure left", to "unsure" and finally "sure right".
 \label{fig:intro}
 \end{figure}
 %-------------------------------------------------------------%
+%: >>>> LuP is here <<<<
 %: adaptation to volatility in EMs : seen as an anticipation in SPEM - principle and function
 Humans are able to accurately track a moving object
 with a combination of saccades and
@@ -477,7 +484,7 @@ The compromise between speed and accuracy is shaped
 by the variability introduced by the neural noise
 at the neuro-motor junction~\citep{Harris98}.
 Overall, this reduces the typical sensorimotor delay
-between target motion onset and foveation~\citep{PerrinetAdamasFriston2014}.
+between target motion onset and foveation~\citep{ref}.
 In a previous study~\citep{Montagnini2010},
 we have analyzed how forthcoming motion properties,
 such as target speed or direction, can be
@@ -485,14 +492,14 @@ predicted and anticipated with coherently oriented eye movements~(see \seeFig{in
 It has been observed that the strength of anticipation,
 as measured by the mean anticipatory eye velocity, 
 increases when the target repeatedly moves in the same direction~\citep{Kowler1984, Kowler1989, Heinen2005}.
-We similarly found a graded effect of both the speed and the direction-bias,
+We similarly found a graded effect of both the speed and the direction-bias
 on the strength of aSPEM (see \seeFig{intro}-B).
 In particular, this effect is linearly related 
 to the probability of motion's speed or direction~(see \seeFig{intro}-B).
 These results are coherent within previous oculomotor findings
 by our and also other groups~\citep{SantosKowler2017}.
 These results imply that the probability bias over a target's direction is
-one additional factor beyond other physical and cognitive cues~\citep{Kowler2014, SantosKowler2017},
+one additional factor beyond other physical and cognitive cues~\citep{Kowler2014, SantosKowler2017}
 that modulate the common predictive framework
 driving anticipatory behavior to optimize a rapid and
 precise foveation of the target on its most expected future path.
