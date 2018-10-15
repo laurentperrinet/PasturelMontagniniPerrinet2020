@@ -9,13 +9,13 @@
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\AuthorA}{Chlo\'e Pasturel}
 \newcommand{\AuthorB}{Anna Montagnini}%
-\newcommand{\AuthorC}{Laurent U.~Perrinet}%
+\newcommand{\AuthorC}{Laurent Perrinet}%
 \newcommand{\Address}{Institut de Neurosciences de la Timone, CNRS / Aix-Marseille Université - Marseille, France}%
 \newcommand{\Website}{http://invibe.net/LaurentPerrinet}%
 \newcommand{\Email}{Laurent.Perrinet@univ-amu.fr}%
 \newcommand{\Title}{
 %Principles and psychophysics of Active Inference in anticipating a dynamic probabilistic bias
-Humans adapt to the volatility of visual motion properties, and know about it
+Should I stay or should I go? Humans adapt to the volatility of visual motion properties, and know about it
 %Anticipating a volatile probabilistic bias in visual motion direction
 %Humans adapt to the volatility of visual motion properties :  eye movements and explicit guesses
 }
@@ -27,18 +27,20 @@ For an agent interacting with such an environment,
 it is important to respond to such switches with the shortest delay.
 However, this operation has in general to be done with noisy sensory inputs
 and solely based on the information available at the present time.
-Here, we tested the ability of humans observers to accurately anticipate,
-with their eye movements,
-a target's motion direction
-throughout random sequences of rightward/leftward motion alternations,
-with random-length contextual blocks of different biases in direction probability.
+For instance, it was already shown that human observers can accurately anticipate
+a target's motion direction with their eye movements 
+throughout random sequences of rightward/leftward motions
+which were biased in direction probability.
+Here, we tested the ability of these observers
+to anticipate random different biases
+within random-length contextual blocks.
 Experimental results were compared to
-those of a probabilistic agent optimized
+those of a probabilistic agent which is optimal
 with respect to this switching model.
 We found a better fit between
 the behaviorally observed anticipatory response
 with that of the probabilistic agent
-compared to other models such as the leaky-integrator model.
+compared to other models such as a leaky-integrator model.
 Moreover, we could similarly fit
 the level of confidence given by human observers
 with that provided by the model and
@@ -47,7 +49,7 @@ titrating their level of preference between exploration and exploitation.
 Such results provide evidence that
 human observers may efficiently represent an anticipatory belief
 along with its precision and
-they support a novel approach to more generically test
+support a novel approach to more generically test
 human cognitive abilities in uncertain and dynamic environments.
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -195,7 +197,7 @@ the adaptation of cognitive systems}
 %: general volatility and perceptual learning
 We live in a fundamentally volatile world for which
 our cognitive system has to constantly adapt.
-% \LP{Anna , you had a better example which was less dramatic than ``
+% \LP{Anna, I found a better example which was less dramatic than ``
 % Think for instance of the variability of environmental contingencies
 % present in global climate and
 % the probability of a change in its dynamic
@@ -213,27 +215,44 @@ our cognitive system has to constantly adapt.
 % one should be able to predict at best if either
 % one could continue to exploit a similar strategy (emit gases)
 % or if it is necessary to explore different paradigms (limit emissions).
-% ''}
+% '' Hope you like it :-) }
 Imagine for instance you are a doctor (general practitioner) and 
 that you usually report an average number of 
 one person infected by measles per month.
+On the past few days however,
+the rate increased to 3 to 4 cases per week.
+As such, two alternate strategies are open to us:
+Either, there is an outbreak of measles and 
+one should estimate its strength (as measured as the rate of new cases)
+since the onset of the outbreak.
+Alternatively, these cases are false positives:
+they are just coincidences that come from
+the (possibly noisy and heterogeneous) process 
+that generated these observations.
+A possibility is then to readjust the baseline rate of infection
+with this new data.
+This example illustrates one basic problem with which our cognitive system is faced:
+observing new sensory evidence, 
+should I stay and continue to integrate this novel data 
+to my current beliefs about the environment's state
+or should I go and adopt a new hypothesis 
+since the detection of a switch in the environment?
 
-% \AM{this is my idea, LAurent:
-% ...
-% }
 % * the evolution  of prices on the stock market: Any Socio-economic contextual index may make the price evolve up or down, slowly or more Rapidly
 % * ecological change
 % * the side (left or right of the field) in which the ball is on a soccer field
 Such a strategy is effective at this large scale level
 but also at all levels which are behaviorally relevant,
 such as contextual changes in our everyday life.
-Inferring near future state in a dynamic environment ---
+Inferring near-future states in a dynamic environment ---
 or at least to form beliefs as precise as possible
 about a future environmental context ---
 are ubiquitous to cognitive systems
-such that one can act upon them at the present time~\citep{ref}.
-In the long term, such capacity is essential to the adaptation
-of the behavior through reinforcement learning~\citep{ref}.
+such that one can act upon them at the present time~\citep{PerrinetAdamasFriston2014}.
+In the long term, how the human brain manages 
+the trade-off between exploitation and exploration
+is essential to the adaptation
+of the behavior through reinforcement learning~\citep{Cohen2007}.
 In visual psychophysics, that is,
 in controlled experimental settings challenging visual perception,
 such adaptive processes have been mostly put in evidence
@@ -249,7 +268,7 @@ the sensitivity to recurrently presented stimuli and
 thus to re-calibrate perceptual experience~\citep{Clifford2007, Webster2011, Kohn2007}.
 Recent examples of positive biases in perceptual discrimination are
 numerous and show that the visual system tends
-to favor stimulus' temporal and spatial stability:
+to favor temporal and spatial stability of the stimulus:
 For instance, priming is a facilitatory effect that
 enhances the stimulus identification of repeated motion~\citep{Verstraten1994, Tiest2009}.
 % An example, is Priming: Repeated stimulations
@@ -258,7 +277,7 @@ enhances the stimulus identification of repeated motion~\citep{Verstraten1994, T
 % priming leads to faster responses in perceptual detection or identification of probes.
 % It also occurs specifically for visual motion stimuli~\citep{Anstis1987, Campana2002, Pinkus1997}.
 This type of perceptual learning mainly produces improvements in discrimination
-with long-term training on a perceptual judgement~\citep{Lu2009}.
+with long-term training on a perceptual judgment~\citep{Lu2009}.
 The ability to detect sequential regularities
 thus appears as a fundamental ability
 for the adaptive behavior of species.
@@ -296,11 +315,12 @@ a range of hypothesis about the processing
 of available information by observers~\citep{Deneve1999, Diaconescu2014, Daunizeau10a}.
 A key principle in the Bayesian inference approach is
 that each stated hypothesis is quantitatively formalized
+using a generative model for the input / output response
 such that measurements and outcomes may be linked by
-a generic probabilistic model. %, the generative model.
-This model is parameterized by some structural variables
+generic probabilistic computations.
+The generative model is parameterized by some structural variables
 (such as weights, non-linear gain functions or prior knowledge)
-and some relevant latent variables
+and transforms some relevant latent variables
 which may be represented as probabilities.
 Then, using the rules of probability calculus
 one can progressively update beliefs about the latent variables,
@@ -317,19 +337,18 @@ this belief can be used to update
 the prior over of future beliefs on latent variables~\citep{Montagnini2007}
 Thus, the comparisons between expectations and actual data produces
 a constant update the estimates of the model under a mechanism
-that is labelled as the~\textit{active inference}~\citep{Friston2003, Friston2010}.
-Such methodology thus allows to infer present latent variables
+that is labeled as the~\textit{active inference}~\citep{Friston2003, Friston2010}.
+Such methodology thus allows to infer latent variables at present
 but also to understand longer time effects such as adaptation and learning
 through variational inference over
 the parameters of the probabilistic model~\citep{ref}.
-In a recent study,~\citet{Meyniel16} simulated
-a model over five different set of datas
-previously published~\citep{Squires1976, Huettel2002, Kolossa2013, Cho2002, Falk1997}.
+In a recent study,~\citet{Meyniel16} simulated a model 
+over five previously published datasets~\citep{Squires1976, Huettel2002, Kolossa2013, Cho2002, Falk1997}.
 Their main conclusion was that
 a learning of local transition probabilities
 was sufficient to explain the large repertoire
 of experimental effects reported in these studies.
-They concluded that transitions probabilities constitute
+They concluded that transition probabilities constitute
 a core building block of sequence knowledge in the brain,
 which then applies to a variety of sensory modalities and
 experimental situations.
@@ -340,13 +359,12 @@ The critical difference lies in the content
 of what is learned (transition probabilities versus item frequencies)
 in an attempt to capture human behavior.
 %TODO say it is an optimization that is, a measure of the dynamic compromise between exploration and exploitation
-
 %Chopin and %Mamassian and the use of visual confidence  (see Ann rev of Vision 2016)
 Interestingly, the observation of priming effects
-have been observed for anticipatory smooth eye movements (aSPEM)
-and therefore allow for a better understanding of such predictive processes. %
+have also been observed for anticipatory smooth eye movements (aSPEM)
+and therefore allow to further deepen our understanding of such predictive processes. %
 % ------------------------------------------------------------------
-\subsection{Anticipatory SPEM (aSPEM)}
+\subsection{Anticipatory Smooth Pursuit Eye Movements (aSPEM)}
 % ------------------------------------------------------------------
 %-------------------------------------------------------------%
 %: FIGURE 1 fig:intro
@@ -402,20 +420,21 @@ As reported previously~\citep{Montagnini2010, SantosKowler2017},
 the slope of this ramp correlates with the strength of the bias.
 \LP{say this in words: "This is shown in the inset showing the average gain in velocity ($\pm$ SEM)
 before any visually driven information (here, at $t=50~\ms$)."}
-\textbf{(C)}~In this paper, we extended this experiment in two aspects.
-First, we generalized the generation of random sequences
+\textbf{(C)}~In this paper, we extended this experiment in three aspects.
+First, we used probability biases in a continuous space,
+as drawn from a prior distribution for the values of $p$.
+Second, we generalized the generation of random sequences
 by using random-length blocks
 to avoid potential inter-blocks confounds (see \seeFig{results_psycho}).
-Second, to asses this adaptive mechanism at the conscious level,
+Third, to asses this adaptive mechanism at the conscious level,
 we asked each observer to perform the same experiment on a subsequent day,
-but with different instructions.
-Indeed, we simply asked to rate the level of confidence
+and asked participants to rate the level of confidence
 for their estimate of the direction of the dot before each trial.
 This was performed by moving a mouse cursor on a rating scale
 between "sure left", to "unsure" and finally "sure right".
-Eye movements were not recorded.
-Due to the (pseudo-)random nature of the sequence no observer noticed
-that the same sequence of directions was used in the experiment.
+%Eye movements were not recorded.
+%Due to the (pseudo-)random nature of the sequence no observer noticed
+%that the same sequence of directions was used in the experiment.
 }
 \label{fig:intro}
 \end{figure}
@@ -453,21 +472,24 @@ with context contingencies in shaping (oculomotor) behavior.
 Typically, aSPEM is observed after a temporal cue and
 ahead of target motion onset~\citep{Kowler1979a,Kowler1979b, Kowler1984}~(see \seeFig{intro}-A).
 It is generally assumed that the role of anticipatory eye movements is
-to limit the behavioral impairment due
-to the amplitude of eye-to-target position and velocity mismatch and
-of the variability introduced by the neural noise
+to limit as fast as possible the behavioral impairment due
+to the amplitude of eye-to-target position and velocity mismatch.
+The compromise between speed and accuracy is shaped
+by the variability introduced by the neural noise
 at the neuro-motor junction~\citep{Harris98}.
-This reduces the typical sensorimotor delay
+Overall, this reduces the typical sensorimotor delay
 between target motion onset and foveation~\citep{PerrinetAdamasFriston2014}.
 In a previous study~\citep{Montagnini2010},
 we have analyzed how forthcoming motion properties,
 such as target speed or direction, can be
-predicted and anticipated with coherent orienting eye movements.
-It has been observed that aSPEM increase in velocity
-when the target repeatedly moves in the same direction~\citep{Kowler1984, Kowler1989, Heinen2005}.
+predicted and anticipated with coherently oriented eye movements~(see \seeFig{intro}-A).
+It has been observed that the strength of anticipation,
+as measured by the mean anticipatory eye velocity, 
+increases when the target repeatedly moves in the same direction~\citep{Kowler1984, Kowler1989, Heinen2005}.
 We similarly found a graded effect of both the speed and the direction-bias,
-with mean anticipatory eye velocity
-linearly related to the probability of motion's speed or direction~(see \seeFig{intro}-B).
+on the strength of aSPEM (see \seeFig{intro}-B).
+In particular, this effect is linearly related 
+to the probability of motion's speed or direction~(see \seeFig{intro}-B).
 These results are coherent within previous oculomotor findings
 by our and also other groups~\citep{SantosKowler2017}.
 These results imply that the probability bias over a target's direction is
@@ -477,16 +499,15 @@ driving anticipatory behavior to optimize a rapid and
 precise foveation of the target on its most expected future path.
 
 %: how we do it : TODO remove redundancy with "contributions" (1.4)
-To extend such results to more generic experimental condition,
-we have modified the experimental protocol in two manners.
-At first, it seems important to investigate the integration of environmental statistical regularities
-in a smooth tracking task with
-a family of direction-biases for the target motion.
-As such, we have used a more complex input pattern
-for which the probability $p$ was varying randomly
-within blocks of random-length.
-The details of this protocol will be detailed below~(\seeSec{bayesian_change_point}).
-Additionally,~\citet{Maus2015} have recently shown that
+To extend such results to more generic experimental conditions,
+we have modified the experimental protocol of~\citep{Montagnini2010} in three aspects.
+First, it seems important to investigate the integration of environmental statistical regularities
+in this smooth tracking task with
+a large family of direction-biases for the target motion.
+As such, instead of a finite set of probability biases ($.25$, $.5$, $.75$, $.9$ and $1.$, see \seeFig{intro}-B),
+we have used a continuous range of probability bias $p$ 
+which we were sampling from a fixed prior distribution.
+Second,~\citet{Maus2015} have recently shown that
 both perceptual adaptation and priming of aSPEM could occur simultaneously.
 They found a robust repulsive adaptation effect
 with perceptual judgements being biased faster
@@ -511,11 +532,18 @@ adaptation for longer stimulus history, around $15$ trials.
 Such history length can still be considered
 short in comparison to the several hundreds
 of trials that are commonly used in psychophysical studies.
-Here, we replicated part of those results
-by asking to the participants,
-\emph{prior} to see the target,
-to evaluate their confidence for the next trial on a rating scale
+To study the effect of history length in all generality,
+we have extended the protocol such that the probability bias is fixed in sub-blocks,
+and that the duration of these blocks is drawn randomly with given statistics.
+The equations for this protocol will be detailed below~(\seeSec{bayesian_change_point}).
+Last, we replicated part of those results by repeating the same protocol
+in a psychophysical judgement task in a day subsequent to the recording of eye movements.
+In this task, we asked to the participants,
+to evaluate their confidence for the next trial 
+(\emph{prior} to the appearance of the target)
+on a rating scale
 between "sure left", to "unsure" and finally "sure right"~(see \seeFig{intro}-C).
+%: >>>> LuP is here <<<<
 % ------------------------------------------------------------------
 \subsection{Contributions}%Outline}
 % ------------------------------------------------------------------
