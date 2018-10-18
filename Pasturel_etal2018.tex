@@ -40,7 +40,7 @@ with respect to this switching model.
 We found a better fit between
 the behaviorally observed anticipatory response
 with that of the probabilistic agent
-compared to other models such as a leaky-integrator model.
+compared to other models such as a leaky integrator model.
 Moreover, we could similarly fit
 the level of confidence given by human observers
 with that provided by the model and
@@ -192,6 +192,7 @@ pdfauthor={\AuthorA},%< \Email > \Address},%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Volatility of sensory contingencies and
 the adaptation of cognitive systems}
+% SUMMARY : cognition adaptation to volatility
 % ------------------------------------------------------------------
 % /!\ some parts of this subsection remotely originate from JB's thesis...
 %: general volatility and perceptual learning
@@ -369,6 +370,7 @@ and therefore allow to further deepen our understanding of such predictive proce
 % ------------------------------------------------------------------
 \subsection{Anticipatory Smooth Pursuit Eye Movements (aSPEM)}
 % ------------------------------------------------------------------
+% SUMMARY : particluar case of aSPEM
 %-------------------------------------------------------------%
 %: FIGURE 1 fig:intro
 \begin{figure}%[b!]
@@ -393,7 +395,7 @@ and therefore allow to further deepen our understanding of such predictive proce
 \caption{\emph{Anticipatory SPEM (aSPEM): psychophysics and results} %
 \textbf{(A)}~We replicated the results of~\citep{Montagnini2010}, 
 in which human observers were presented $600$ trials 
-of target motions with a probabilistic bias.% TODO:check
+of target motions with a probabilistic bias. % TODO:check
 Each trial consists of sequentially:
 a fixation dot (of random duration between $400$ and $600$~\ms),
 a blank screen (of fixed duration of  $300$~\ms) and
@@ -406,10 +408,10 @@ always left for $p=0$ and always right if $p=1$.
 In a first experiment,
 we %replicated the experiment of~\citep{Montagnini2010} and
 tested $5$ different values of $p$:
-$.5$, $.25$, $.75$, $.9$ and $1.$,
+$.25$, $.5$, $.75$, $.9$ and $1.$,
 in fixed blocks of $120$ trials each.
 % TODO : dans notre plot on a des range de valeurs pour p :-/
-\textbf{(B)}~Velocity traces of eyes movements
+\textbf{(B)}~Velocity traces of eye movements
 averaged for each bias condition
 over conditions and observers.
 These traces are aligned to the onset of the moving dot.
@@ -425,7 +427,7 @@ This phase is the Anticipatory SPEM (aSPEM).
 As reported previously~\citep{Montagnini2010, SantosKowler2017},
 the slope of this ramp correlates with the strength of the bias.
 \LP{say this in words or in the ANnex: "This is shown in the inset showing the average gain in velocity ($\pm$ SEM)
-before any visually driven information (here, at $t=50~\ms$)."}
+before any visually driven information (here, at $t=50~\ms$)." or refer to the recent publication from JB}
 \textbf{(C)}~In this paper, we extended this experiment in three aspects.
 First, we used probability biases in a continuous space,
 as drawn from a prior distribution for the values of $p$.
@@ -436,7 +438,8 @@ Third, to titrate this adaptive mechanism at the conscious level,
 we asked each observer to perform the same experiment on a subsequent day,
 and asked participants to rate the level of confidence
 for their estimate of the direction of the dot before each trial.
-This was performed by moving a mouse cursor on a rating scale
+As shown in this sample screenshot, 
+this was performed by moving a mouse cursor on a rating scale
 between "sure left", to "unsure" and finally "sure right".
 %Eye movements were not recorded.
 %Due to the (pseudo-)random nature of the sequence no observer noticed
@@ -445,7 +448,6 @@ between "sure left", to "unsure" and finally "sure right".
 \label{fig:intro}
 \end{figure}
 %-------------------------------------------------------------%
-%: >>>> LuP is here <<<<
 %: adaptation to volatility in EMs : seen as an anticipation in SPEM - principle and function
 Humans are able to accurately track a moving object
 with a combination of saccades and
@@ -468,7 +470,7 @@ in different aspects.
 First, it is relatively fast and only a few trials are sufficient
 to pick up some regularity in the binary sequence of directions.
 Second, it is by large an unconscious process
-for which participant are not aware of.
+of which participants are not aware of.
 As such, this behavior is a useful marker
 to study expectancy-based oculomotor behavior,
 and in particular as to how sensorimotor expectancy interacts
@@ -478,7 +480,7 @@ with contextual contingencies in shaping (oculomotor) behavior.
 Typically, aSPEM is observed after a temporal cue and
 ahead of target motion onset~\citep{Kowler1979a,Kowler1979b, Kowler1984}. %~(see \seeFig{intro}-A).
 It is generally assumed that the role of anticipatory eye movements is
-to limit as fast as possible the behavioral impairment due
+to minimize as fast as possible the behavioral impairment due
 to the amplitude of eye-to-target position and velocity mismatch.
 The compromise between speed and accuracy is shaped
 by the variability introduced by the neural noise
@@ -504,14 +506,14 @@ that modulate the common predictive framework
 driving anticipatory behavior to optimize a rapid and
 precise foveation of the target on its most expected future path.
 
-%: how we do it : TODO remove redundancy with "contributions" (1.4)
+%: limits of the previous method
 To further test such results to more generic experimental conditions,
 it is necessary to extend the experimental protocol of~\citep{Montagnini2010} in three aspects.
 First, it seems important to investigate the integration of environmental statistical regularities
 in this smooth tracking task with
 a large family of direction-biases for the target motion.
 As such, instead of a finite set of probability biases, % ($.25$, $.5$, $.75$, $.9$ and $1.$, see \seeFig{intro}-B),
-we should use a continuous range of probability bias $p$.
+we should use a continuous range of probability biases~$p$. 
 %which we were sampling from a fixed prior distribution.
 Second,~\citet{Maus2015} have recently shown that
 both perceptual adaptation and priming of aSPEM could occur simultaneously.
@@ -550,12 +552,13 @@ In such a task, we should evaluate for each participant their confidence for the
 %between "sure left", to "unsure" and finally "sure right"~(see \seeFig{intro}-C).
 % ------------------------------------------------------------------
 \subsection{Contributions}%Outline}
+% SUMMARY : what is novel in our work
 % ------------------------------------------------------------------
-%: limits of the previous method
+%: how we do it : or rather why we do it this way (and not like Matthys)
 More specifically, the goal of this study is to generalize the adaptive process
 observed in the aSPEM response to more ecological settings but
 also to broaden its scope by showing that such unconscious process
-also occurs at the conscious level.
+also occurs at the conscious level. 
 Indeed, by manipulating the probability for target motion direction,
 as measured during a fixed duration gap
 before target ramp-motion onset~(see \seeFig{intro}-A),
@@ -563,6 +566,8 @@ it is possible to bias the direction and mean velocity of aSPEM~(see \seeFig{int
 This suggests that probabilistic information may be used
 to inform the internal representation of motion prediction
 for the initiation of anticipatory movements~\citep{Montagnini2010}.
+However, it is yet unclear what method to use
+to dynamically manipulate the probability of the input sequence. 
 First, one possible confound in the previous study
 is that the range of possible biases is finite and
 that there is no direct experimental evidence that
@@ -587,7 +592,9 @@ an explicit estimate of probabilities is unknown.
 To alleviate this problem, we developed a new paradigm
 in order to address this question
 by explicitly modeling a dynamic process with a given volatility:
-In particular, one first novelty of our study is that the variable $p$ is itself a random variable.
+In particular, our design will make sure that one can manipulate the variable $p$ 
+as a function of time by making it itself a random variable,
+but also that we can devise an ideal observer for each sequence of inputs.
 
 %\subsection{Generative model: the binomial switching model}
 %-------------------------------------------------------------%
@@ -599,10 +606,15 @@ In particular, one first novelty of our study is that the variable $p$ is itself
 \emph{The binomial switching model and raw psychophysical results.}%
 ~\textbf{(A)}
 This diagram represents an instance of a sequence of directions
-as generated by the binomial switching model
+as generated by the binomial switching model. %
 %It is represented as a graphical model representing
 %the three levels of the stochastic model. %
-Above, we plot the sequence of target directions
+\LP{"TD" > "BSM" + make A bigger compared to B}
+We plot 
+1/ the (hidden) evolution of the value of $p$ (horizontal blue areas)
+and the underlying times for switches (vertical black lines : TODO).
+\LP{legende pour la trace bleue}
+2/ the sequence of target directions
 and that were presented to observers
 (red or black dots for respectively left or right directions :TODO).
 It is a binary random variable which varies dynamically
@@ -615,19 +627,18 @@ Note that we introduced pauses every $50$ trials to prevent from fatigue.
 % Each block is divided in 4 sub-blocks of $50$ trials as denoted by vertical black bars
 Using a pseudo-random number generator with the same seed,
 we could present the exact same sequence to all subjects. %
-Below, we have superposed the trace of
-1/ the (hidden) evolution of the value of $p$ (horizontal gray areas)
-and the underlying times for switches (vertical black lines : TODO).
+We have superposed the trace of
+1/ as above (hidden) dynamics of $p$ and switches (vertical black lines : TODO).
 2/ the recorded aSPEM strength as measured by the horizontal displacement
 at the onset of the visually-driven SPEM (black line);
 these values were here scaled according to their extremal values,
-\LP{>CP: TODO:and we show as an horizontal dashed line the zero value.}
+and we show as an horizontal dashed line the zero value. 
 3/ the response to the rating scale experiment (red line) and
 %3/ the result of the BCP model (blue line)
 %along with the confidence interval for this estimate (blue shaded area).
-\LP{>CP: TODO: yticks pour les 2 sujets sopnt pas pareils}
+\LP{"Bet of probability" > "Value of bet"}
 Qualitatively, there seems to be a trend with the polarity of aSPEM
-to be negative for p values below .5 and positive for values above .5,
+to be negative for $p$ values below $.5$ and positive for values above $.5$,
 but also that the consciously predicted value
 for the next outcome
 to follow a similar trajectory.
@@ -638,7 +649,8 @@ to follow a similar trajectory.
 %: design of the binomial switching generative model
 Indeed, to assess the dynamics of the adaptive processes
 which compensate for the variability of sensory sequences,
-one may introduce a parametric mechanism controlling for the volatility.
+one may generate trajectories for the value of $p$
+with a parametric mechanism controlling for the volatility at each trial.
 By definition, volatility measures the temporal variability
 of the sufficient parameters of a random variable.
 In the HGF model~\citep{Mathys11} for instance,
@@ -650,9 +662,11 @@ Such a forward probabilistic model is invertible
 using some simplifying assumptions and allows
 to extract an inference of the agent's belief about volatility~\citep{Vossel14}.
 Herein, we will use a simpler model where
-the bias in target direction varies according of a piecewise-constant function
+the bias $p$ in target direction varies according of a piecewise-constant function
 %(that is, a step function varying between~$0$ and~$1$),
 similarly to~\citet{Meyniel13}.
+Indeed, within each sub-block, the volatility of the value of $p$
+progressively decreases as we accumulate samples.
 It means that instead of a complex stochastic trajectory,
 we draw random events (that we denote as ``switches'')
 with a given mean frequency,
@@ -662,6 +676,8 @@ independently of the previous bias' value.
 Such a sequence is presented in~\seeFig{results_raw}-A, %TODO : add A + blue line
 where we show the realization of above target's directions and
 below the trajectory of the underlying (hidden) bias' probability.
+
+% equations
 Mathematically, this can also be considered as a three-layered hierarchical model
 defining the evolution of the model for each trial $t$ as the vector  $(x_2^t, x_1^t, x_0^t)$.
 At the topmost layer,
@@ -679,24 +695,31 @@ parameterized by the direction bias $p=x_1^t$.
 Mathematically, this is easily described
 by a 3-layered graphical model according to %~(\seeFig{results_psycho}-A) and
 the following equations:
-\eql{\choice{
-x_2^t \propto \Bb(1/\lambda) \\
-% TODO: nest the choice
-\choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
-\text{else} \quad x_1^t \propto \Pp  \\
-} \\
-x_0^t \propto \Bb(x_1^t)
-}\label{eq:bsm}}
+\begin{itemize}
+    \item Occurrence of a switch: $x_2^t \propto \Bb(1/\lambda)$
+    \item Dynamics of probabilistic bias: \eql{\choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
+\text{else} \quad x_1^t \propto \Pp  }\label{eq:bsm}}
+    \item Sequence of directions:  $x_0^t \propto \Bb(x_1^t)$
+\end{itemize}
+% \eql{\choice{
+% x_2^t \propto \Bb(1/\lambda) \\
+% % TODO: nest the choice
+% \choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
+% \text{else} \quad x_1^t \propto \Pp  \\
+% } \\
+% x_0^t \propto \Bb(x_1^t)
+% }\label{eq:bsm}}
 Note that the prior distribution $\Pp$ can be for instance
 the uniform distribution $\Uu$ on $ [ 0, 1 ] $ or
 Jeffrey's prior $\Jj$~(see \seeApp{bcp} (TODO: put in appendix).
 There is always a switch at $t=0$ (that is, $x_2^0=1$) and for each pause.
 To sum up, the experimental protocol
 is similar to that presented in~\seeFig{intro}-A, except for
-this new generative model for the pseudo-random sequence of binary events
-which randomizes the occurrence of the switches
-and the range of bias' values that are explored.
-To sum up, \seeEq{bsm} defines the binomial switching model 
+this new generative model for the pseudo-random sequence $x_0^t$ of binary events. 
+This randomizes the occurrence of the switches,
+the length of sub-blocks 
+and the continuous range of bias' values that are explored.
+To sum up, \seeEq{bsm} defines the Binomial Switching Model (BSM)
 which we will use both for the generation of sequences in experiments
 but also as the basis of an ideal observer model.
 
@@ -704,7 +727,8 @@ but also as the basis of an ideal observer model.
 This paper is organized in five parts.
 After this introduction where we presented the motivation for this study,
 the next section~(\seeSec{bayesian_change_point}) will present
-an inversion of the forward probabilistic model defined in~\seeEq{bsm}.
+an inversion of the BSM forward probabilistic model,
+coined the Binomial Bayesian Change Point (BBCP) model.
 There is yet to our knowledge no such algorithm and
 we will here provide with an analytical solution
 by extending previous results from~\citet{AdamsMackay2007}
@@ -719,15 +743,21 @@ to validate the generalization of previous results%.
 %In a first session, participants observe a target moving horizontally
 %with constant speed from the center
 %either to the right or left across trials
-~(see \seeFig{intro}-A \& B).
+with this novel protocol~(see \seeFig{intro}-A \& B). 
+Such results will allow us to fit the inverse model and to compare
+its prediction compared to classical models such as the leaky integrator model.
 %The probability of either motion direction changes randomly in time.
 In a second session, participants are asked to estimate
 ``how much they are confident that
 the target will move to the right or left in the next trial'' and
 to adjust the cursor's position on the screen accordingly~(see \seeFig{intro}-C).
-The results will be presented in~\seeSec{rating_scale}.
-In~\seeSec{inter}, we will analyze the inference of the volatility
-for each individual participant.
+The results will be presented in~\seeSec{rating_scale}
+and compared to the results for eye movements.
+Similarly, we will show that these results fit well
+with the inverse model. 
+In~\seeSec{inter}, we will synthesize these results 
+by inferring the volatility parameters extracted
+for each individual participant and session.
 This will allow the analysis of inter-individual behavioral responses for each session
 and in particular if one could predict observers' prior volatility,
 that is, a measure of the dynamic compromise between exploration and exploitation
@@ -736,7 +766,7 @@ at the unconscious and conscious levels.
 Finally, we will summarize and conclude this study and
 offer some perspectives for future work in~\seeSec{outro}.
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results: Bayesian change point model}
+\section{Results: Binomial Bayesian Change Point (BBCP) model}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:bayesian_change_point}
@@ -753,7 +783,8 @@ sequences of input stimuli.
 By ``inverting'' this stochastic forward process,
 one could extract relevant descriptors at the different levels of the model
 and fit that parameters with the recorded behavior.
-Here, we will use a similar approach but on a different generative model.
+Here, we will use a similar approach but on a different generative model,
+as defined in~\seeEq{bsm}.
 First, we will define a control ideal observer
 which assumes that data is stationary in a fixed history window.
 Then, we will extend this control model to the case
