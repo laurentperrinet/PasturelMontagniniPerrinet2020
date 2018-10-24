@@ -32,7 +32,7 @@ a target's motion direction with their eye movements
 throughout random sequences of rightward/leftward motions
 which were biased in direction probability.
 Here, we tested the ability of these observers
-to anticipate random different biases
+to anticipate different random biases
 within random-length contextual blocks.
 Experimental results were compared to
 those of a probabilistic agent which is optimal
@@ -48,8 +48,8 @@ draw a common marker for subject inter-variability,
 titrating their level of preference between exploration and exploitation.
 Such results provide evidence that
 human observers may efficiently represent an anticipatory belief
-along with its precision and
-support a novel approach to more generically test
+along with its precision.
+This work opens up a novel approach to more generically test
 human cognitive abilities in uncertain and dynamic environments.
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -221,7 +221,7 @@ Imagine for instance you are a doctor (general practitioner) and
 that you usually report an average number of 
 one person infected by measles per month.
 On the past few days however,
-the rate increased to 4 cases per week.
+the rate increased to four cases per week.
 As such, two alternate strategies are open to us:
 Either, there is an outbreak of measles and 
 one should estimate its strength 
@@ -283,7 +283,7 @@ with long-term training on a perceptual judgment~\citep{Lu2009}.
 The ability to detect sequential regularities
 thus appears as a fundamental ability
 for the adaptive behavior of species.
-A same response presented several times could indeed
+The same stimulus presented several times could indeed
 lead to faster and more accurate responses and,
 on the other hand, lead to impairment in the behavior
 when a presented stimulus was going
@@ -308,7 +308,7 @@ in some pathological disorders such as schizophrenia~\citep{Adams12}.
 There is therefore a necessity to select
 a modeling approach to best understand the function of such phenomena
 and in particular how such sequential effects are integrated.
-At present, Bayesian inference is an effective methodology
+At present, Bayesian inference offers an effective methodology
 to deal with this question.
 
 %: Bayesian methods & role of predictive processing for this adaptive response
@@ -419,12 +419,12 @@ Saccades were removed using a thresholding method~(see \seeApp{em}) and
 error bars show one standard deviation over all samples.
 In the unbiased condition, one can distinguish
 a visually-driven component (after a latency of $\approx 80~\ms$)
-which corresponds to a standard Smooth Pursuit Eye Movements (SPEM).
+which corresponds to a standard Smooth Pursuit Eye Movement (SPEM).
 When introducing a bias in the direction,
 one observes that the velocity of the eye progressively ramps
 in the direction of the bias and before any visually-driven component:
 This phase is the Anticipatory SPEM (aSPEM).
-As reported previously~\citep{Montagnini2010, SantosKowler2017},
+As reported previously~\citep{Montagnini2010, SantosKowler2017,Damasse18},
 the slope of this ramp correlates with the strength of the bias.
 \LP{say this in words or in the ANnex: "This is shown in the inset showing the average gain in velocity ($\pm$ SEM)
 before any visually driven information (here, at $t=50~\ms$)." or refer to the recent publication from JB}
@@ -440,7 +440,7 @@ and asked participants to rate the level of confidence
 for their estimate of the direction of the dot before each trial.
 As shown in this sample screenshot, 
 this was performed by moving a mouse cursor on a rating scale
-between "sure left", to "unsure" and finally "sure right".
+between ``sure left'', to ``unsure'' and finally ``sure right''.
 %Eye movements were not recorded.
 %Due to the (pseudo-)random nature of the sequence no observer noticed
 %that the same sequence of directions was used in the experiment.
@@ -527,9 +527,10 @@ a common internal representation of stimulus' speed
 that has been build upon the mean velocity of last encountered speeds.
 Then, the comparison of the internal representation of speed
 with the current stimulus velocity could explain repulsive aftereffects and
-at the same time, be used to elicit for next stimulus occurrences
-an aSPEM component at the appropriate velocity.
-~\citet{Maus2015} main conclusion was that
+at the same time, be used to elicit 
+an aSPEM component at the appropriate velocity
+for next stimulus occurrences.
+The main conclusion from~\citet{Maus2015} was that
 perceptual adaptation and oculomotor priming
 both have a weight in building an~\textit{a priori} knowledge
 that will be used to generate aSPEM.
@@ -593,8 +594,8 @@ To alleviate this problem, we developed a new paradigm
 in order to address this question
 by explicitly modeling a dynamic process with a given volatility:
 In particular, our design will make sure that one can manipulate the variable $p$ 
-as a function of time by making it itself a random variable,
-but also that we can devise an ideal observer for each sequence of inputs.
+as a function of trial order by making it itself a random variable. %,
+% but also that we can devise an ideal observer for each sequence of inputs.
 
 %\subsection{Generative model: the binomial switching model}
 %-------------------------------------------------------------%
@@ -605,7 +606,7 @@ but also that we can devise an ideal observer for each sequence of inputs.
 \caption{
 \emph{The binomial switching model and raw psychophysical results.}%
 ~\textbf{(A)}
-This diagram represents an instance of a sequence of directions
+This diagram represents an instance of a sequence of directions (one ``block'')
 as generated by the binomial switching model. %
 %It is represented as a graphical model representing
 %the three levels of the stochastic model. %
@@ -619,9 +620,9 @@ and that were presented to observers
 (red or black dots for respectively left or right directions :TODO).
 It is a binary random variable which varies dynamically
 as a function of the number of trials.
-It is composed of 3 blocks of $200$ trials,
-each trial being either the eye recording~(see \seeFig{intro}-A)
-or in a subsequent day the rating scale~(see \seeFig{intro}-C).
+Each participant see 3 blocks of $200$ trials,
+once for eye recording~(see \seeFig{intro}-A)
+and in a subsequent day for the rating scale experiment~(see \seeFig{intro}-C).
 Note that we introduced pauses every $50$ trials to prevent from fatigue.
 ~\textbf{(B)} Raw results for two characteristic observers.
 % Each block is divided in 4 sub-blocks of $50$ trials as denoted by vertical black bars
@@ -638,10 +639,10 @@ and we show as an horizontal dashed line the zero value.
 %along with the confidence interval for this estimate (blue shaded area).
 \LP{"Bet of probability" > "Value of bet"}
 Qualitatively, there seems to be a trend with the polarity of aSPEM
-to be negative for $p$ values below $.5$ and positive for values above $.5$,
+to be negative for $p$ values below~$.5$ and positive for values above~$.5$,
 but also that the consciously predicted value
 for the next outcome
-to follow a similar trajectory.
+seem to follow a similar trend.
 }
 \label{fig:results_raw}
 \end{figure}
@@ -662,7 +663,7 @@ Such a forward probabilistic model is invertible
 using some simplifying assumptions and allows
 to extract an inference of the agent's belief about volatility~\citep{Vossel14}.
 Herein, we will use a simpler model where
-the bias $p$ in target direction varies according of a piecewise-constant function
+the bias $p$ in target direction varies according to a piecewise-constant function
 %(that is, a step function varying between~$0$ and~$1$),
 similarly to~\citet{Meyniel13}.
 Indeed, within each sub-block, the volatility of the value of $p$
@@ -694,7 +695,7 @@ This direction is drawn from a Bernoulli process $\Bb$
 parameterized by the direction bias $p=x_1^t$.
 Mathematically, this is easily described
 by a 3-layered graphical model according to %~(\seeFig{results_psycho}-A) and
-the following equations:
+the following equation:
 \begin{itemize}
     \item Occurrence of a switch: $x_2^t \propto \Bb(1/\lambda)$
     \item Dynamics of probabilistic bias: \eql{\choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
@@ -711,7 +712,7 @@ the following equations:
 % }\label{eq:bsm}}
 Note that the prior distribution $\Pp$ can be for instance
 the uniform distribution $\Uu$ on $ [ 0, 1 ] $ or
-Jeffrey's prior $\Jj$~(see \seeApp{bcp} (TODO: put in appendix).
+Jeffrey's prior $\Jj$~(see \seeApp{bcp}).
 There is always a switch at $t=0$ (that is, $x_2^0=1$) and for each pause.
 To sum up, the experimental protocol
 is similar to that presented in~\seeFig{intro}-A, except for
@@ -732,18 +733,18 @@ coined the Binomial Bayesian Change Point (BBCP) model.
 There is yet to our knowledge no such algorithm and
 we will here provide with an analytical solution
 by extending previous results from~\citet{AdamsMackay2007}
-to the case of binomial data as in the presented binomial switching model.
+to the case of binomial data as in the BSM presented above.
 In addition, this solution is \emph{online},
 that is, that all computations on the sequence may be done 
 using solely the variables available at the present trial.
 We will also provide with a computational implementation
 and a quantitative evaluation of this algorithm.
 Then, we will present in~\seeSec{eye_rec} psychophysics on eye movements
-to validate the generalization of previous results%.
+to validate the generalization of previous results %.
 %In a first session, participants observe a target moving horizontally
 %with constant speed from the center
 %either to the right or left across trials
-with this novel protocol~(see \seeFig{intro}-A \& B). 
+with this novel protocol. %~(see \seeFig{intro}-A \& B). 
 Such results will allow us to fit the inverse model and to compare
 its prediction compared to classical models such as the leaky integrator model.
 %The probability of either motion direction changes randomly in time.
@@ -757,10 +758,11 @@ Similarly, we will show that these results fit well
 with the inverse model. 
 In~\seeSec{inter}, we will synthesize these results 
 by inferring the volatility parameters extracted
-for each individual participant and session.
+for each individual participant. % and session.
 This will allow the analysis of inter-individual behavioral responses for each session
 and in particular if one could predict observers' prior volatility,
-that is, a measure of the dynamic compromise between exploration and exploitation
+that is, a measure of the dynamic compromise between exploration (``should I stay?'')
+and exploitation (``should I go?'')
 across the two different sessions testing predictive adaptive processes
 at the unconscious and conscious levels.
 Finally, we will summarize and conclude this study and
@@ -771,7 +773,6 @@ offer some perspectives for future work in~\seeSec{outro}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:bayesian_change_point}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%: >>>> LuP is here <<<<
 %
 %: short intro
 %
@@ -785,7 +786,7 @@ one could extract relevant descriptors at the different levels of the model
 and fit that parameters with the recorded behavior.
 Here, we will use a similar approach but on a different generative model,
 as defined in~\seeEq{bsm}.
-First, we will define a control ideal observer
+First, we will define a first ideal observer as a control
 which assumes that data is stationary in a fixed history window.
 Then, we will extend this control model to the case
 where switches of the probabilistic bias occur during the experiment,
@@ -806,13 +807,13 @@ the temporal evolution for the expectation $\hat{p}$ of a given event
 can be modeled by making a simple assumption:
 the update of the estimated probability for an event is based
 on the discount of the previous estimated probability
-by a factor$~\lambda \in [0, 1]$, relative to new information.
+by a factor$~\rho \in [0, 1]$, relative to new information.
 The value of the scalar $~\lambda$ represents
 a compromise between responding rapidly
-to genuine changes in the environment ($\lambda \approx 1$) and
+to genuine changes in the environment ($\rho \approx 1$) and
 not prematurely discarding information still of value
-for slowly changing contexts  ($\lambda \approx 0$).
-Equivalently, one can define $\tau = 1 / \lambda$ as
+for slowly changing contexts  ($\rho \approx 0$).
+Equivalently, one can define $\tau = 1 / \rho$ as
 a characteristic time for the integration of information.
 At trial $t$, this model can be expressed with the following equation:
 %TODO fix the notation \hat{p}^{t+1} > \hat{p}(t+1)
@@ -824,22 +825,23 @@ At trial $t$, this model can be expressed with the following equation:
 where $\hat{p}^0$ is equal to some prior value ($.5$ in the unbiased case).
 % NOTE: it's an AR(1) process https://stats.stackexchange.com/questions/358162/writing-ar1-as-a-ma-infty-process
 %: from heuristics to ideal observer
+The estimated  probability $\hat{p}$ is the integration of previous instances
+with a progressive discount of past information:
+It is a form of a moving average.
 Looking more closely at this expression,
-the "forgetful agent" computed in \seeEq{leaky}
+the ``forgetful agent'' computed in \seeEq{leaky}
 consists in an exponentially-weighted moving average:
 \eql{
 \hat{p}^{t+1} = \sum_{0\leq i \leq t} (1 - 1/\tau)^{t-i} \cdot x_0^{t-i}
 % TODO add normalization \sum_{0\leq i \leq t} (1 - 1/\tau)^{t-i}
 \label{eq:leaky2}}
-The estimated  probability $\hat{p}$ is the integration of previous instances
-with a progressive discount of past information:
-It is a form of a moving average.
 Inversely, let us assume that at each trial,
 the true probability bias changes with a rate of once
 every $\tau$ trials.
 % TODO: find the right formulation...
 % urn model ?
-Then, the optimal solution to this problem is the
+Ignoring the temporal occurrence of the switch, 
+the optimal solution to this problem is the
 ideal observer defined in~\seeEq{leaky2},
 which finds an online solution in~\seeEq{leaky}.
 We proved here that the heuristic derived from~\citep{Anderson2006}
@@ -868,7 +870,7 @@ this means that by fitting different ideal observers
 to the data, one evaluates as a matter of fact the adequacy to
 a generative model, not to probabilistic calculus.
 This is a common confusion around the idea of a ``Bayesian brain''.
-The challenge is not to validate if the brain would use Bayes' theorem,
+We believe here that the challenge is not to validate if the brain would use Bayes' theorem,
 but rather to test different hypothesis about the generative models
 that agents may use. 
 As such, it is essential that these two sources of discrepancy
@@ -895,12 +897,13 @@ To address this hypothesis, our next model work will be inspired
 by a Bayesian Change-point detection model~\citep{AdamsMackay2007},
 which mimics an ideal agent inferring
 both the likelihood of a specific event's occurrence
-with the volatility of the environment
-(e.g the duration since a change in bias).
+along with the volatility of the environment
+(e.g the duration since the occurrence of a switch).
 % ------------------------------------------------------------------
-\subsection{Bayesian change point model}
+\subsection{Binomial Bayesian Change Point model}
 % ------------------------------------------------------------------
 %-------------------------------------------------------------%
+%: >>>> LuP is here <<<<
 %: FIGURE 3 fig:bayesianchangepoint \seeFig{bayesianchangepoint}
 %: TODO présente (A) le principe de l'algorithme, (B) le résultat sur une séquence et (C) une analyse quantitative qui permettra de l'utiliser pour les expériences psycho
 \begin{figure}%[b!]
@@ -910,12 +913,12 @@ with the volatility of the environment
 % cf : 3_Results_1
 \includegraphics[width=1\linewidth]{3_BCP_readouts}
 \end{center}
-\caption{\emph{Bayesian change point model}
-~\textbf{A} shows hypothetic datas that works as a binomial choice, either $0$ or $1$. 
+\caption{\emph{Binomial Bayesian Change Point model}
+~\textbf{(A)} shows hypothetic datas that works as a binomial choice, either $0$ or $1$. 
 In particular, the probability switched at trials 6 and 10. 
 We show the graph (treillis) on which the message indicates that 
 mass probability is being passed. 
-Black lines denotes "upwards", 
+Black lines denotes ``upwards'', 
 that is, for which there is a progression of the run length at the next step. 
 The red line stands for the possibility that a switch happened, 
 and then falls back to zero. 
@@ -952,7 +955,7 @@ a posteriori probability as the probability to the run-length
 the maximum a posteriori belief on the different beliefs about run-lengths. ''
 %using the estimate of the precision at this
 }
-~\textbf{B} shows the probability of the run length, 
+~\textbf{(B)} shows the probability of the run length, 
 the probability of the having same probability consecutive trials. 
 The red line represents the $\hat{r}$, 
 that represents the sum of he products of each r
@@ -1477,7 +1480,7 @@ We will introduce a fundamental component of Bayesian models : a latent variable
 
 this new variable will be used to test different hypothesis which will be evaluated to predict future states. it is called latent because it aims at representing a variable that is latent (or hidden) to the observer
 
-in our case, we will assume that the Bayesian model knows about the structure of the generative model and we will set it to the current run-length $r$, that is, at any given trial, the hypothesis that the past r observations belong to the same block. of course a wrong choice of a latent variables (let's say the temperture in the experimental room) may give unexpected results, even is the Bayesian model is "optimal" - an essential point to understand in Bayesian inference
+in our case, we will assume that the Bayesian model knows about the structure of the generative model and we will set it to the current run-length $r$, that is, at any given trial, the hypothesis that the past r observations belong to the same block. of course a wrong choice of a latent variables (let's say the temperture in the experimental room) may give unexpected results, even is the Bayesian model is ``optimal'' - an essential point to understand in Bayesian inference
 
 extension to multi-nomioal( daniele + fred danion)
 
@@ -1647,6 +1650,12 @@ While being sensible to recording errors, this allows us to extract the
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Appendix 2: BCP algorithm}
 \label{app:bcp}
+
+TODO: actually put in appendix :
+Note that the prior distribution $\Pp$ can be for instance
+the uniform distribution $\Uu$ on $ [ 0, 1 ] $ or
+Jeffrey's prior $\Jj$~(see \seeApp{bcp} ).
+
 
 To summarize, the algorithm
 
