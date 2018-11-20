@@ -19,7 +19,7 @@ Should I stay or should I go? Humans adapt to the volatility of visual motion pr
 %Anticipating a volatile probabilistic bias in visual motion direction
 %Humans adapt to the volatility of visual motion properties :  eye movements and explicit guesses
 }
-\newcommand{\Acknowledgments}{PACE-ITN - code and material @ \url{\Website/Publications/Pasturel_etal2018}. TODO: RIck + Karl + JB + Laurent Madelain }
+\newcommand{\Acknowledgments}{PACE-ITN - code and material @ \url{\Website/Publications/PasturelMontagniniPerrinet2019}. TODO: RIck + Karl + JB + Laurent Madelain }
 \newcommand{\Abstract}{
 The brain has to constantly adapt to changes in the environment,
 for instance when a contextual probabilistic variable switched its state.
@@ -53,7 +53,11 @@ This work opens up a novel approach to more generically test
 human cognitive abilities in uncertain and dynamic environments.
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[profile,final,english,draft]{article}%
+%\documentclass[profile,final,english,draft,24pt]{article}%
+\documentclass[12pt,english]{article}%
+\usepackage{fullpage}
+% https://www.overleaf.com/learn/latex/Page_size_and_margins
+\usepackage[pass]{geometry}
 \usepackage{babel}
 \usepackage{csquotes}
 % MATHS (AMS)
@@ -77,6 +81,7 @@ human cognitive abilities in uncertain and dynamic environments.
 \newcommand{\eqset}{\ensuremath{\stackrel{\mbox{\upshape\tiny set}}{=}}}
 \newcommand{\eq}[1]{\begin{equation*}#1\end{equation*}}
 \newcommand{\eql}[1]{\begin{equation}#1\end{equation}}
+\newcommand{\eqs}[1]{\begin{align*}#1\end{align*}}
 \newcommand{\eqa}[1]{\begin{align}#1\end{align}}
 
 \DeclareMathOperator{\argmin}{argmin}
@@ -147,7 +152,7 @@ backend=bibtex,
 %articletitle=false
 ]{biblatex}%
 %\addbibresource{Pasturel_etal2018.bib}%
-\bibliography{Pasturel_etal2018.bib} % the ref.bib file
+\bibliography{Pasturel_etal2019.bib} % the ref.bib file
 \newcommand{\citep}[1]{\parencite{#1}}
 \newcommand{\citet}[1]{\textcite{#1}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -170,6 +175,31 @@ pdfauthor={\AuthorA},%< \Email > \Address},%
 \newcommand{\LP}[1]{\textbf{\textcolor{red}{[LP: #1]}}}
 \newcommand{\AM}[1]{\textbf{\textcolor{blue}{[AM: #1]}}}
 \newcommand{\CP}[1]{\textbf{\textcolor{green}{[CP: #1]}}}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+%============ code ===================
+\usepackage{listings}
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{\Title}%
 \author{\AuthorA,
@@ -261,6 +291,7 @@ such adaptive processes have been mostly put in evidence
 by precisely analyzing the history in a sequence of experimental trials,
 such that one could put them in evidence
 at the time scale of one to several minutes.
+% TODO: talk about Gallistel / Sugrue / Brody
 
 %: Past history of sensory event integration in vision
 Indeed, stimulus history of visual events influences
@@ -372,7 +403,7 @@ and therefore allow to further deepen our understanding of such predictive proce
 % ------------------------------------------------------------------
 % SUMMARY : particluar case of aSPEM
 %-------------------------------------------------------------%
-%: FIGURE 1 fig:intro
+%: FIGURE 1 fig:intro ~\seeFig{intro}
 \begin{figure}%[b!]
 \centering{
 %\includegraphics[width=\linewidth]{figure1}
@@ -426,8 +457,8 @@ in the direction of the bias and before any visually-driven component:
 This phase is the Anticipatory SPEM (aSPEM).
 As reported previously~\citep{Montagnini2010, SantosKowler2017,Damasse18},
 the slope of this ramp correlates with the strength of the bias.
-\LP{say this in words or in the ANnex: "This is shown in the inset showing the average gain in velocity ($\pm$ SEM)
-before any visually driven information (here, at $t=50~\ms$)." or refer to the recent publication from JB}
+%\LP{say this in words or in the ANnex: "This is shown in the inset showing the average gain in velocity ($\pm$ SEM)
+%before any visually driven information (here, at $t=50~\ms$)." or refer to the recent publication from JB}
 \textbf{(C)}~In this paper, we extended this experiment in three aspects.
 First, we used probability biases in a continuous space,
 as drawn from a prior distribution for the values of $p$.
@@ -635,7 +666,7 @@ at the onset of the visually-driven SPEM (black line);
 these values were here scaled according to their extremal values,
 and we show as an horizontal dashed line the zero value. 
 3/ the response to the rating scale experiment (red line) and
-%3/ the result of the BCP model (blue line)
+%3/ the result of the BBCP model (blue line)
 %along with the confidence interval for this estimate (blue shaded area).
 \LP{"Bet of probability" > "Value of bet"}
 Qualitatively, there seems to be a trend with the polarity of aSPEM
@@ -683,8 +714,8 @@ Mathematically, this can also be considered as a three-layered hierarchical mode
 defining the evolution of the model for each trial $t$ as the vector  $(x_2^t, x_1^t, x_0^t)$.
 At the topmost layer,
 the occurrence $x_2^t \in \{ 0, 1 \}$ of a switch ($1$ for true, $0$ for false)
-is  drawn from a Bernoulli process with parameter its frequency $1/\lambda$.
-The value of $\lambda$ thus gives the average length (in number of trials)
+is  drawn from a Bernoulli process with parameter its frequency $1/\tau$.
+The value of $\tau$ thus gives the average length (in number of trials)
 between the occurrence of two switches.
 The probability bias $p$ in target direction is a random variable that we define as $x_1^t \in [0, 1]$.
 It is chosen at random from a prior distribution $\Pp$ at the moment of a switch,
@@ -695,15 +726,15 @@ This direction is drawn from a Bernoulli process $\Bb$
 parameterized by the direction bias $p=x_1^t$.
 Mathematically, this is easily described
 by a 3-layered graphical model according to %~(\seeFig{results_psycho}-A) and
-the following equation:
+the following equations:
 \begin{itemize}
-    \item Occurrence of a switch: $x_2^t \propto \Bb(1/\lambda)$
+    \item Occurrence of a switch: $x_2^t \propto \Bb(1/\tau)$
     \item Dynamics of probabilistic bias: \eql{\choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
 \text{else} \quad x_1^t \propto \Pp  }\label{eq:bsm}}
     \item Sequence of directions:  $x_0^t \propto \Bb(x_1^t)$
 \end{itemize}
 % \eql{\choice{
-% x_2^t \propto \Bb(1/\lambda) \\
+% x_2^t \propto \Bb(1/\tau) \\
 % % TODO: nest the choice
 % \choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
 % \text{else} \quad x_1^t \propto \Pp  \\
@@ -714,9 +745,9 @@ Note that the prior distribution $\Pp$ can be for instance
 the uniform distribution $\Uu$ on $ [ 0, 1 ] $ or
 Jeffrey's prior $\Jj$~(see \seeApp{bcp}).
 There is always a switch at $t=0$ (that is, $x_2^0=1$) and for each pause.
-To sum up, the experimental protocol
-is similar to that presented in~\seeFig{intro}-A, except for
-this new generative model for the pseudo-random sequence $x_0^t$ of binary events. 
+Herein, the experimental protocol is similar 
+to that presented in~\seeFig{intro}-A, 
+except for the pseudo-random sequence of directions $x_0^t$. 
 This randomizes the occurrence of the switches,
 the length of sub-blocks 
 and the continuous range of bias' values that are explored.
@@ -786,14 +817,15 @@ one could extract relevant descriptors at the different levels of the model
 and fit that parameters with the recorded behavior.
 Here, we will use a similar approach but on a different generative model,
 as defined in~\seeEq{bsm}.
-First, we will define a first ideal observer as a control
-which assumes that data is stationary in a fixed history window.
-Then, we will extend this control model to the case
-where switches of the probabilistic bias occur during the experiment,
-as defined by the forward probabilistic model defined in~\seeEq{bsm}.
+First, as a control, we will define a first ideal observer
+which assumes that volatility is stationary with a fixed frequency.
+Then, we will extend it by modeling an agent 
+which assumes that volatility  of the probabilistic bias occurs 
+at specific (yet randomly drawn) trials (switches),
+as was modeled by the forward probabilistic model defined in~\seeEq{bsm}.
 %
 % ------------------------------------------------------------------
-\subsection{Forgetful-agent model (Leaky integrator)}
+\subsection{Forgetful-agent model (Leaky integrator)}%
 % ------------------------------------------------------------------
 %: justification from previous studies
 Following~\citep{Maus2015},
@@ -802,68 +834,74 @@ in which we wanted to test
 a realistic model of how trial-history shapes
 adaptive processes in human behavior,
 for instance motion expectation in a direction-biased experiment.
-According to~\citet{Anderson2006},
-the temporal evolution for the expectation $\hat{p}$ of a given event
-can be modeled by making a simple assumption:
-the update of the estimated probability for an event is based
+First, according to~\citet{Anderson2006},
+the temporal evolution for the expectation $p=x_1^t$ of a given event
+can be modeled by making a simple heuristic:
+The update of the estimated probability for an event is based
 on the discount of the previous estimated probability
-by a factor$~\rho \in [0, 1]$, relative to new information.
-The value of the scalar $~\lambda$ represents
-a compromise between responding rapidly
-to genuine changes in the environment ($\rho \approx 1$) and
-not prematurely discarding information still of value
-for slowly changing contexts  ($\rho \approx 0$).
-Equivalently, one can define $\tau = 1 / \rho$ as
-a characteristic time for the integration of information.
+by a factor $1 - h \in [0, 1]$, relative to new information.
 At trial $t$, this model can be expressed with the following equation:
 %TODO fix the notation \hat{p}^{t+1} > \hat{p}(t+1)
 \eql{%\choice{
 % p^t = 0 \quad \text{if} \quad x_2^t=0 \\
-\hat{p}^{t+1} = (1 - 1/\tau) \cdot \hat{p}^{t} + 1/\tau \cdot x_0^t
+\hat{x_1}^{t} = (1 - h) \cdot \hat{x_1}^{t-1} + h \cdot x_0^t
 % }
 \label{eq:leaky}}
-where $\hat{p}^0$ is equal to some prior value ($.5$ in the unbiased case).
+where $\hat{x_1}^{t=0}$ is equal to some prior value ($.5$ in the unbiased case).
 % NOTE: it's an AR(1) process https://stats.stackexchange.com/questions/358162/writing-ar1-as-a-ma-infty-process
 %: from heuristics to ideal observer
-The estimated  probability $\hat{p}$ is the integration of previous instances
-with a progressive discount of past information:
-It is a form of a moving average.
+The estimated  probability $\hat{x_1}^{t}$ is the integration of previous instances
+with a progressive discount of past information.
+The value of the scalar $h$ represents
+a compromise between responding rapidly
+to changes in the environment ($h \approx 1$) and
+not prematurely discarding information still of value
+for slowly changing contexts  ($h \approx 0$).
+In the following, we will call this scalar the hazard rate.
+Equivalently, one can define $\tau = 1 / h$ as
+a characteristic time for the integration of information.
 Looking more closely at this expression,
 the ``forgetful agent'' computed in \seeEq{leaky}
-consists in an exponentially-weighted moving average:
+consists in an exponentially-weighted moving average (see \seeApp{leaky}).
+It is thus a form of a moving average:
 \eql{
-\hat{p}^{t+1} = \sum_{0\leq i \leq t} (1 - 1/\tau)^{t-i} \cdot x_0^{t-i}
-% TODO add normalization \sum_{0\leq i \leq t} (1 - 1/\tau)^{t-i}
+\hat{x_1}^{t} = h \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i}
 \label{eq:leaky2}}
 Inversely, let us assume that at each trial,
 the true probability bias changes with a rate of once
 every $\tau$ trials.
-% TODO: find the right formulation...
-% urn model ?
-Ignoring the temporal occurrence of the switch, 
+As a consequence, the probability that the bias does not change is $Pr(x_2^t=0)=1-1/\tau$ at each trial.
+Assuming independence of these occurrences, the probability is thus the sum
+of the observations weighted by the beliefs $i$ trials in the past, that is,
+as defined in~\seeEq{leaky2}.
+This shows that ignoring the temporal occurrence of the switch, 
 the optimal solution to this problem is the
 ideal observer defined in~\seeEq{leaky2},
 which finds an online solution in~\seeEq{leaky}.
-We proved here that the heuristic derived from~\citep{Anderson2006}
-is an ideal observer as the solution
-to the generative model assuming a fixed drift in the probability bias.
+% and which believes that changes occur at a constant rate ($\hat{x_2}^t=h$
+We therefore proved here that the heuristic derived from~\citep{Anderson2006}
+is an ideal inversion of the generative model 
+which assumes a fixed drift in the probability bias.
 
 %: using \hat{p} as a regressor
 The correspondence that we proved between the moving average heuristic
 and the ideal observer model as a solution to a generative model drives
 us to several interim conclusions.
-First, the trajectory $\hat{p}$ can serve as a regressor
+First, the trajectory $\hat{x_1}^{t}$ can serve as a regressor
 to test whether human observers follow the same strategy.
 In particular, one could test the parameter $\tau$
 which is relative to the agents' belief in the decay,
-and which may be fitted with the data.
+and which may be fitted with the data,
+for instance the data shown in~\seeFig{results_raw}.
 However, one should be careful with such conclusions whenever
 this trajectory is fitted to behavioral data.
-For instance, if the inversion of the forward model is here simple,
+For instance, if the inversion of the forward model is here exact,
 one has to use approximations in more complex models,
 such as the HGF~\citep{Mathys11} or~\citep{Wilson13,Wilson18}
-and the discrepancy could first originate from these approximations
+and the discrepancy could originate from these approximations
 at the algorithmic level.
+As such, it is essential that these two sources of discrepancy
+should be controlled independently~\citep{Beck12}.
 Second, if we assume that the inversion of the model is perfect
 (that is, that no approximation has been done),
 this means that by fitting different ideal observers
@@ -873,17 +911,17 @@ This is a common confusion around the idea of a ``Bayesian brain''.
 We believe here that the challenge is not to validate if the brain would use Bayes' theorem,
 but rather to test different hypothesis about the generative models
 that agents may use. 
-As such, it is essential that these two sources of discrepancy
-should be controlled independently~\citep{Beck12}.
-Now, since we defined a first generative model
-and the ideal observer which it corresponds too,
-we will define a more complex model
-in order to alleviate the limits of the leaky integrator.
+This may be essential in designing the experimental protocol,
+or in evaluating quantitatively the results.
 
 %: limits of the leaky integrator
-Indeed, a first critic could be that
+Now, since we defined a first generative model
+and the ideal observer which it corresponds to,
+we will define a more complex model
+in order to alleviate the limits of the leaky integrator.
+Indeed, a first criticism could be that
 this model may be too rigid and does not sufficiently
-accounts for the concepts of volatility~\citep{Behrens07}
+account for the dynamics of volatility~\citep{Behrens07}
 or Bayesian uncertainty~\citep{Vilares2011}.
 It seems plausible that the memory (history length) the brain uses
 for inference is varying and that this variation could be related
@@ -892,20 +930,18 @@ The model presented in~\seeEq{leaky2} uses a constant weight
 (decaying with the distance to the current trial)
 for all trials, while precision of each trial
 can be potentially evaluated and used
-for precision-weighted estimation of $\hat{p}$.
+for precision-weighted estimation of the probability bias.
 To address this hypothesis, our next model work will be inspired
 by a Bayesian Change-point detection model~\citep{AdamsMackay2007},
-which mimics an ideal agent inferring
-both the likelihood of a specific event's occurrence
-along with the volatility of the environment
-(e.g the duration since the occurrence of a switch).
+which models an ideal agent inferring
+both the trajectory of the probability bias ($x_1^t$)
+along with the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 % ------------------------------------------------------------------
 \subsection{Binomial Bayesian Change Point model}
 % ------------------------------------------------------------------
 %-------------------------------------------------------------%
 %: >>>> LuP is here <<<<
 %: FIGURE 3 fig:bayesianchangepoint \seeFig{bayesianchangepoint}
-%: TODO présente (A) le principe de l'algorithme, (B) le résultat sur une séquence et (C) une analyse quantitative qui permettra de l'utiliser pour les expériences psycho
 \begin{figure}%[b!]
 % cf 3_Results_2.ipynb
 \begin{center}
@@ -914,7 +950,8 @@ along with the volatility of the environment
 \includegraphics[width=1\linewidth]{3_BCP_readouts}
 \end{center}
 \caption{\emph{Binomial Bayesian Change Point model}
-~\textbf{(A)} shows hypothetic datas that works as a binomial choice, either $0$ or $1$. 
+% (A) le principe de l'algorithme, 
+~\textbf{(A)} shows a synthesized sequence of events that works as a binomial choice, either $0$ or $1$. 
 In particular, the probability switched at trials 6 and 10. 
 We show the graph (treillis) on which the message indicates that 
 mass probability is being passed. 
@@ -928,12 +965,13 @@ as a function of time (r$_t$).
 We can see that 
 the run length drops back to zero 
 when change occurs at trials 6 and 10.
+%(B) le résultat sur une séquence et
 ~\textbf{(B)} is a sequence of points representing 
 leftward (0) of rightward trials (1) 
 with a given probability $p$ of being rightward and 
 that changes at some trials (clear red). 
-The predicted probability $\hat{p}$ ($\tau=N_{trial}/4$ tells the BCP 
-that the probability is more susceptible to change every $N_{trial}/4$), 
+The predicted probability $\hat{p}$ ($\tau=N_{trial}/4$ tells the BBCP 
+that the probability is more susceptible to change every $1/h=N_{trial}/4$), 
 continue and dotted dark red lines shows the $p$$-$estimation.
 \LP{ older stuff: ``We show two panels, one below which displays 
 the value of the belief for the different run-length, 
@@ -954,6 +992,7 @@ The red line gives an evaluation of the most probable
 a posteriori probability as the probability to the run-length 
 the maximum a posteriori belief on the different beliefs about run-lengths. ''
 %using the estimate of the precision at this
+% (C) une analyse quantitative qui permettra de l'utiliser pour les expériences psycho
 }
 ~\textbf{(B)} shows the probability of the run length, 
 the probability of the having same probability consecutive trials. 
@@ -976,148 +1015,226 @@ But here, $\hat{p}$ is closer from $p$ that is equal to 0.75.
 %-------------------------------------------------------------%
 %: 2Ba precision in our belief of \hat{p}
 %-------------------------------------------------------------%
-A crucial difference in the simple agent presented above (see~\seeEq{leaky2})
-and the binomial switching model (BSM, see~\seeEq{bsm})
-is that at any moment during the experiment, the time since a switch may vary.
-An agent may therefore have a belief over the number of trial since the switch.
+There is a crucial difference between the simple agent presented above 
+which believes that changes occur at a constant rate ($\hat{x_2}^t=h$, see~\seeEq{leaky2})
+and one that would invert the binomial switching model (BSM, see~\seeEq{bsm}).
+Indeed, at any trial during the experiment, 
+the agent may infer beliefs about the trajectory of the volatility $x_2^t$
+which itself is driving the trajectory of the probability bias $x_1^t$.
+Knowing that the latter is piece-wise constant,
+an agent may therefore have a belief over the number of trials since the last switch.
 This number, that we will call the \emph{run-length}, is useful in two manners. 
-First, it allows in theory for the agent to restrict the evaluation of $\hat{p}$ 
-to only that samples produced until the switch,
-knowing that those before the switch are independent from the true value $p$.
-Second, it is known in all generality that the precision of the estimate  
-(that is, the inverse its variance)
+First, it allows for the agent to restrict the estimation $\hat{x_1}^{t}$ of $x_1^t$ 
+to only that samples $x_0^t$ produced since the switch and until $t$.
+Indeed, those before the switch are drawn independently from the present true value $x_1^t$.
+Second, it is known that for  this estimate, the precision 
+(that is, the inverse of its variance)
 grows linearly with the number of samples:
-The longer the run-length, the more precise the estimate.
-% it can be the mean and variance of a Gaussian, but in general it will be 2 parameters. in our case, we wish to estimate p (between zero and one) - it is characterized by the beta distribution (mathematically it is the conjugate of the bernouilli distribution)
-%sufficient statistics of a beta distribution
-Mathematically, such a belief on $p$ is well represented 
-by the conjugate probability distribution of the binomial distribution,
-that is the beta-distribution, see~\seeApp{likelihood}.
-Knowing some estimate of the timing of a switch,
-The agent may therefore give different weights to the information 
-using an evaluation of each bits' precision.
-We have designed such an agent 
-adapted the Bayesian Online Change-Point (BCP) detection model~\citep{AdamsMackay2007},
-which defines the agent as an inversion of a similar switching generative model 
-but for which the observed data is Gaussian and not binomial as in our case. 
+The longer the run-length, the sharper the corresponding (probabilistic) belief.
+%Knowing a distributed belief on each different possible run-lengths, %  about different hypothesis
+%as represented by the probability distribution of each hypothesis,
+%the agent may therefore give different weights to the information 
+%using an evaluation of the precision of each respective hypothesis.
+We have designed such an agent by extending 
+the Bayesian Change-Point (BCP) detection model~\citep{AdamsMackay2007}.
+This model defines the agent as an inversion of a switching generative model 
+for which the observed data (input) is Gaussian.
+We will here present an exact solution for the case of the BSM,
+that is, were the input is binomial (see~\seeEq{bsm}). 
 
 %-------------------------------------------------------------%
 %: 2Bb overcoming this difficulty using a latent variable - prediction/update cycle
 %-------------------------------------------------------------%
-In order to define in all generality the BCP detection model,
+In order to define in all generality the detection model,
 we will describe the fundamental steps of its computation,
-while giving the algorithmic details in~\seeApp{bcp}.
+while giving the full algorithmic details in~\seeApp{bcp}.
 A fundamental procedure in Bayesian predictive models is to introduce
-a latent variable which helps describe the input.
-This latent variable is the run-length and
-knowing that the data is generated by the BSM (see~\seeEq{bsm}),
+a latent variable which helps the agent to represent the input.
+%By construction of the generative model, 
+%a relevant latent variable is here the run-length. 
+Knowing that the data is generated by the BSM (see~\seeEq{bsm}),
 the run-length is either null at the moment of a switch,
-or is incremented :
-% message passing / 
+or is incremented by $1$ if no switch occurred:
 \eql{\choice{
 r^t = 0 \quad \text{if} \quad x_2^t=0 \\
-\text{and else} \quad r^t = r^{t-1} +1 }\label{eq:run_length}}
+\text{and else} \quad r^t = r^{t-1} +1 }\label{eq:run_length}}%see~\seeEq{run_length}
 This may be represented in a graph 
-in which information will be represented at different nodes (see \seeFig{bayesianchangepoint}-A). 
-Each node represents a belief 
-which is represented by the probability distribution 
-over the set of parameters that we wish to describe.
-In discrete time, such is the case here as we observe the sequence of trials,
-predictive coding is most often implemented as a two-step procedure: % it is markovian
-First, knowing an estimate for our belief on the different variables at the previous time,
-we will make a prediction for our belief of the state at the current trial,
-prior to the observation of a new datum.
-In the graph above, this corresponds to a message passing from the nodes at time $t-1$
-to that at time $t$.
-Second, we will update beliefs on all nodes at trial $t$
-by multiplying the predicted beliefs 
-with the likelihood of the new belief knowing the belief at each node.
-This prediction/update cycle applied to the BSM and using~\seeEq{bsm}
-will constitute the BCP detection model.
+in which information will be represented at the different nodes for each trial $t$ (see \seeFig{bayesianchangepoint}-A). 
+Using this latent variable, the goal of predictive coding is to 
+infer the probability $Pr(x_0^t | x_0^{0:t-1})$ of the next datum 
+knowing what has been observed and 
+the prior of the agent on the generation of the data. 
+Mathematically, we will define the run length $r^t$ distribution 
+at each trial $t$ to represent our belief 
+for all different hypothesis as $\beta^{(r)}_t=Pr(r^t | x_0^{0:t-1})$.
+%At each node, this assigns a probability strength 
+This allows to compute the marginal predictive distribution:
+\eqa{
+%\hat{x_1}^{t} = 
+Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  \beta^{(r)}_t \\
+%Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  Pr(r^{t} | x_0^{0:t-1})\\
+%\text{with} \quad Pr(r^{t} | x_0^{0:t-1}) &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  Pr(r^{t-1} | x_0^{0:t-2})
+\text{with} \quad \beta^{(r)}_t &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  \beta^{(r)}_{t-1}
+\label{eq:pred}
+}
+%to represent our belief at trial $t$ 
+%or to determine the pdf for $x_1^t$ as a mixture of Beta distributions:
+%\eqa{
+%\hat{x_1}^{t} =  \sum_{r^{t}} Pr(x_1^t | r^{t}, x_0^{0:t}) \cdot Pr(r^{t} | x_0^{0:t})
+%}
+
+First, we will \emph{update} beliefs on all nodes at trial $t$
+by computing the likelihood of the new datum $x_0^t$ knowing the current belief at each node that we define as $\pi^{(r)}_t=Pr(x_0^t | r^{t-1}, x_0^{0:t-1})$. 
+Second, knowing this probability strength, % an estimate for our belief on the different variables at the previous trial $t-1$,
+we will make a \emph{prediction} for our belief of the state at the current trial $t$,
+prior to the observation of a new datum $x_0^{t+1}$.
+In the graph, this corresponds to a message passing from the nodes at time $t-1$
+to that at time $t$ and formalized by the transition matrix $Pr(r^t | r^{t-1})$.
+Finally, this update / prediction cycle applied to the BSM and using~\seeEq{bsm}
+will constitute the Binomial Bayesian Change Point (BBCP) detection model.
 
 %-------------------------------------------------------------%
-%: 2Bc online estimation: prediction 
+%: 2Bc online estimation: initialization 
 %-------------------------------------------------------------%
 %Following the principle of Active Inference, % POMDP / active exploration of feature space
-In practice, beliefs are set to prior values at the first trial $t=0$.
+% it can be the mean and variance of a Gaussian, but in general it will be 2 parameters. in our case, we wish to estimate p (between zero and one) - it is characterized by the beta distribution (mathematically it is the conjugate of the bernouilli distribution)
+%s of a beta distribution
+The main difference between our algorithm and that of~\citep{AdamsMackay2007},
+is that the observed data is binomial and not Gaussian as in their case. 
+The random variable $x_1^t$ is the probability bias used 
+to generate the sequence of events $x_0^t$ through a binomial trial. 
+Mathematically, a belief on the probability bias $p$ defining the binomial trial
+is well represented by the conjugate probability distribution of the binomial distribution,
+that is, by the beta-distribution $B(p; \mu, \nu)$, 
+where this distribution is here parameterized by its sufficient statistics,
+the mean $\mu$ and sample size $\nu$
+(see~\seeApp{likelihood} for our choice of parameterization).
+First, beliefs are set at $t=0$ to prior values before observing the first trial.
 In terms of probabilities, this amounts to set :
 \eqa{
-P(r_0)= S(r) \quad \text{,} \quad P(r_0=0)=1 \quad \text{and} \\
-\nu^{(r=0)}_0 = \nu_{prior}\quad \text{and} \quad \chi^{(r=0)}_0 = \chi_{prior}
+& \beta^{(0)}_0=Pr(r^0=0)=1 \text{,}\quad \forall r^0>0 \text{, } \beta^{(r)}_0=Pr(r^0)=0 \quad \text{and} \\
+& Pr(x_1^0 | r^0=0) \propto B(x_1^0; \mu_{prior}, \nu_{prior})
+%& P(r_0)= S(r) \quad \text{,} \mu^{(r=0)}_0 = \mu_{prior}\quad \text{and} \quad \nu^{(r=0)}_0 = \nu_{prior}
 }
-where $\nu$ and $\chi$ represent the sufficient statistics of the (Beta-distribution) pdf
-at each node $r$ for a given trial $t$.
-Then the transition matrix as defined by the graph  (see \seeFig{bayesianchangepoint}-A)
-allows to update this sufficient statistics following :
-\eqa{
-\nu^{(0)}_{t+1} = \nu_{prior}\quad \text{,} \quad \chi^{(0)}_{t+1} = \chi_{prior} \\
-\nu^{(r+1)}_{t+1} = \nu^{(r)}_{t} +1\quad \text{,} \quad \chi^{(r+1)}_{t+1} = \chi^{(r)}_{t} + u(x_t)
-}
-This updates the inferred values for both the mode and precisions at the current trial
-based on the belief that was accumulated at trial $t-1$ (see \seeFig{bayesianchangepoint}-B).
-% (mathematically, we will use the family of exponenetial distributions:, gaussians, binomials) among which the beta distribution belongs
-This allows to calculate growth probabilities
-\eqa{
-P(r_t=r_{t-1}+1, x_{1:t}) = P(r_{t-1}, x_{1:t-1}) \pi^{(r)}_t (1-H(r^{(r)}_{t-1}))
-}
-and Changepoint Probabilities 
-\eqa{
-P(r_t=0, x_{1:t})= \sum_{r_{t-1}} P(r_{t-1}, x_{1:t-1}) \pi^{(r)}_t \cdot H(r^{(r)}_{t-1})}
-and determine Run Length Distribution 
-\eqa{
-P (r_t | x_{1:t}) = P (r_t, x_{1:t})/P (x_{1:t}) 
-}
-Finally, one can perform prediction 
-\eqa{
-P (x_{t+1} | x_{1:t}) = P (x_{t+1}|x_{1:t} , r_t) P (r_t|x_{1:t})
-}
-Contrary to the forgetful-agent model where~$\tau$ was a fixed parameter, 
-the BCP use a changing~$\tau$ parameter. 
-In the latter the~$\tau$ parameter informs the BCP model 
-that the probability is suspected to change every~$\tau$ trials.
-This parameter is also called the \emph{hazard rate} $h=\frac 1 \tau$.
-Note that the resulting operations are online, that is,
-that only the belief at trial $t-1$ is sufficient to predict all probabilities 
-at the the next trial $t$: $P (r_t | x_{1:t})$ and $P (x_{t+1} | x_{1:t})$.
-%projecting beliefs backwards and forward  : the algorithm is online et the price of memory
+where $\mu_{prior}$ and $\nu_{prior}$ represent the sufficient statistics 
+of the prior (Beta-distribution) pdf $\Pp$
+for the probability bias 
+at the occurrence of a switch (here at node $r^0=0$).
+By recurrence, one can show that at any trial $t$, 
+this pdf will always be beta-distributions, 
+but with varying sufficient statistics.
+In the following, we will define the probability distribution at each node $r^t$, 
+knowing the data observed from the first trial and before $t$ such that 
+%$Pr(x_1^t | r^t, x_0^{0:t-1}) ~ B(x_1^t; \mu^{(r)}_{t}, \nu^{(r)}_{t})$.
+%\eql{
+$
+\pi^{(r)}_t = B( x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t}) 
+$. %}
 
 %-------------------------------------------------------------%
 %: 2Bd update = Computing the likelihood 
-%  use p log p + (1-p) log (1-p ) as in logistic regression?
 %-------------------------------------------------------------%
-By introducing the run-length as a latent variable of our ideal observer, 
-this algorithm introduced by~\citep{AdamsMackay2007}
-It is equivalent as putting in competition different 
-different leaky integrators in parallel, 
-one for each value of $r$ aznd to evaluate the probability for each of these hypothesis.
-The agent infers at each trial the likelihood  of r and 
-then deduces the optimal $\hat{p}$ 
-%(we used the expected value and the max as readouts) 
-and the uncertainty associated to it. 
-The main difference between our algorithm and that of~\citep{AdamsMackay2007},
-is that the observed data is Gaussian and not binomial as in our case. 
-As such, the only difference is the way that the likelihood is computed.
+%By introducing the run-length as a latent variable of our ideal observer, 
+%this algorithm introduced by~\citep{AdamsMackay2007} 
+%allows to infer the instantaneous volatility of the input sequence.
+%It is equivalent as putting in competition 
+%different leaky integrators in parallel, 
+%one for each value of $r$ and to evaluate the probability $Pr(r_t | x_0^{0:t})$ for each of these hypothesis.
+%and the uncertainty associated to it. 
+%As such, the main difference is the way that the likelihood is computed.
 %https://en.wikipedia.org/wiki/Likelihood_function
 %https://stats.stackexchange.com/questions/2641/what-is-the-difference-between-likelihood-and-probability
-To perform this computation, 
-we have computed the probability of each model parameterized by $r$
-for the two hypothesis $1$ or $0$.
+% https://en.wikipedia.org/wiki/Rule_of_succession
+In particular, as we sequentially observe new data, 
+we will first implement an update step that 
+computes the likelihood of this datum $x_0^t$ with respect to 
+the current beliefs at trial $t$ at each node $r$.
+In all generality, to perform this computation for some data $o$, 
+we have computed the probability of each model 
+parameterized by the mean $p$ and the sample size $r$
+for the two hypothesis $o=1$ or $o=0$.
 This defines the likelihood
-$L(o) = P(o |\nu^{(r)}_t,\chi^{(r)}_t)$.
-%$\pi_{1:t} = P(x |\nu^{(r)}_t,\chi^{(r)}_t)$
-Following the formulation of a binomial probability, it follows:
-\eqa{% TODO: check formula
-\Ll(o | p, r)&=\frac{L(o | p, r)}{L(o=1 | p, r) + L(o=1 | p, r)}  \\
-&= \frac{ {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} }{
- {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r )}^{(1- p)\cdot r }  +
-  {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
-} 
+$\Ll(o | p, r) = \frac{1}{Z} Pr(o |p, r)$ 
+with $Z$ such that $\Ll(p | o=1, r) + \Ll(p | o=1, r)=1$.
+It measures the relative frequency of observing an occurrence of $o$ at trial $t$,
+as the probability of the updated 
+probability bias of $\frac{p\cdot r + o}{r+1}$
+knowing a sample size of $r+1$.
+%$\pi_{0:t} = P(x |\mu^{(r)}_t,\nu^{(r)}_t)$
+Following the formulation of the beta probability distribution, it follows:
+\eql{% TODO: check formula
+\Ll(o | p, r) = \frac{1}{Z} \cdot {(p\cdot r + o)}^{p\cdot r + o} \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} 
+\label{eq:likelihood}
+}
+where 
+\eq{
+Z = {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r )}^{(1- p)\cdot r }  +
+    {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1} 
 }
 The derivation of this function is detailed in~\seeApp{likelihood}.
-%    \item    go to (2)
-Now that we have the likelihoods $\pi_{1:t}$, 
+%The full algorithm is summarized in~\seeApp{bcp}.
+
+%-------------------------------------------------------------%
+%: 2Bd online estimation: prediction 
+%-------------------------------------------------------------%
+%This computation is detailed below (see \seeEq{likelihood}). 
+In the second step, one can perform prediction 
+using the graph defined in \seeFig{bayesianchangepoint}-A.
+Now that we have the vector of likelihoods $\pi^{(r)}_t=\Ll(x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$, 
 one can update probabilities and perform the next prediction for trial $t+1$.
-The full algorithm is summarized in~\seeApp{bcp}.
+%On the one hand, we determine the run length distribution 
+%\eqa{
+%\beta^{(r)}_t = Pr(r_t | x_0^{0:t-1}) = Pr(r_t, x_0^{0:t-1}) / \sum_{r_{t}}  Pr(r_t, x_0^{0:t-1}) 
+%}
+%Based on the belief that was accumulated at trial $t$ %(see \seeFig{bayesianchangepoint}-B), 
+The transition matrix % defined by the graph,
+allows to compute growth probabilities : %, that is, the belief at the next trial before observing a new datum:
+\eqa{
+\beta^{(r+1)}_t = \frac{1}{B} \cdot \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot (1-h)
+}
+and also the change-point probabilities:
+\eqa{
+\beta^{(0)}_t  = \frac{1}{B} \cdot \sum_{r} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot h
+}
+with $B$ such that $\sum_{r} \beta^{(r)}_{t} = 1$.
+% Note that at $\forall t$,  $\beta^{(0}_{t}= h $
+On the other hand, we update the sufficient statistics to be used in the computation of the likelihood at the next trial following:
+\eqa{
+& \mu^{(0)}_{t+1} = \mu_{prior} \text{,} \quad \nu^{(0)}_{t+1} = \nu_{prior} \\
+& \mu^{(r+1)}_{t+1} = r/(r+1) \cdot \mu^{(r)}_{t} + 1/(r+1) \cdot x_0^t \text{,} \quad \nu^{(r+1)}_{t+1} = \nu^{(r)}_{t} + 1
+}
+Note that $\mu^{(r+1)}_{t+1}$ is a moving average at trial $t$ on the $r$ last samples, 
+and $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the initial condition: 
+$\nu^{(r)}_{t} = r + \nu_{prior}$.
+This updates for each node the sufficient statistics of the pdf at the current trial.
+This finalizes the prediction step.
+
+The agent may infer at each trial the belief
+and use for instance the expected value or the maximum a posteriori as readouts.
+More precisely, we define these two strategies as following:
+Either by chosing
+at each trial the run-length with maximal probability
+and then assigning the predicted probability bias 
+as the probability bias for that run-length:
+\eql{
+\hat{x_1}^t = \mu^{(r^\ast)}_{t} \quad \text{with} \quad r^\ast = \argmax_r \beta^{(r)}_{t}
+}
+A second strategy consists in computing 
+at each trial the conditional mean of the probability bias
+as the expected value over all run-lengths:
+\eql{
+\hat{x_1}^t = \sum_{r} \beta^{(r)}_{t} \cdot \mu^{(r)}_{t}
+}
+Contrary to the leaky integrator for which the inference $\hat{x_2}=h$ was fixed, 
+the BBCP model uses a dynamical model, but still with only one parameter. 
+As for the latter, this parameter~$h=\frac 1 \tau$ informs the BBCP model 
+that the probability bias  changes \emph{on average} every~$\tau$ trials.
+As in \seeEq{leaky}, this defines the \emph{hazard rate}.
+Note that the resulting operations are online, that is,
+that only the belief at trial $t$ and the new datum $x_0^t$ 
+are sufficient to predict all probabilities.
+%at the next trial $t+1$: $Pr(r_t | x_0^{0:t})$, $\mu^{(r)}_{t+1}$ and $\nu^{(r)}_{t+1}$.
+%projecting beliefs backwards and forward  : the algorithm is online et the price of memory
 % ------------------------------------------------------------------
 \subsection{Quantitative analysis of the Bayesian change point algorithm}
 % ------------------------------------------------------------------
@@ -1125,32 +1242,36 @@ The full algorithm is summarized in~\seeApp{bcp}.
 %: 2Ca python scripts : qualitative analysis
 %-------------------------------------------------------------%
 We have implemented this algorithm using a set of python scripts.
-This code is detailed in~\seeApp{bcp} and provides also some control script
+This algorithm is detailed in~\seeApp{bcp} and provides also some control script
 to test the behavior of the algorithm with synthetic data.
 Indeed, this allows to qualitatively and quantitatively asses 
 this ideal observer with a known ground truth before using it 
 on the data that was used for the experiments (see~\seeFig{results_raw}).
 %TODO : synchronize with FIGURE 3 fig:bayesianchangepoint
 \seeFig{bayesianchangepoint}~\textbf{A} shows 
-one instance of a sequence of simulated data
-of leftward and rightward trials with a probability $p$ 
+one instance of a sequence of simulated data $x_0^t$
+of leftward and rightward trials with a probability $x_1^t$
 of being rightward with possible variations through times. 
-It also shows the predicted probability $\hat{p}$ by using the BCP algorithm. 
-\seeFig{bayesianchangepoint}~\textbf{B} illustrates the belief r on the predicted probability $\hat{p}$ at a given trial.
-On \seeFig{bayesianchangepoint}~\textbf{C}, we can see the belief on the run length estimation.
+It also shows the predicted probability $\hat{x_1^t}$ 
+as computed using the BBCP algorithm. 
+\seeFig{bayesianchangepoint}~\textbf{B} illustrates 
+the belief on the predicted probability $\hat{p}$ at a given trial.
+On \seeFig{bayesianchangepoint}~\textbf{C}, 
+we can see the belief on the run length estimation.
 We see that as in the synthetic example above,
 there is a correct detection of switch after a short delay of a few trials.
 We remark two main observations. 
 First, beliefs grow at the beginning along a linear ridge, 
-as we begin our model by assuming there was a switch at time 0. 
-Then we observe that at a switch (hidden to the model), 
-the model such that belief is more strongly diffused until the probability.
+as we begin our model by assuming there was a switch at trial $0$. 
+Then, we observe that after a switch (hidden to the model), 
+the belief is diffused more strongly until the relative probability 
+is less that that assigned to a lower run-length.
 Second, we may use this information to read-out the information 
 the most probable probability and the confidence interval 
-as shown by the red dashed lines (.05, and .95)
+as shown by the red dashed lines (respectively $.05$ and $.95$).
 Note, the fixed-length is simply implemented 
 by an agent with a fixed run-length $r_t=\tau$ (see broken dashed line in \seeFig{bayesianchangepoint}~\textbf{B})
-this allows for a simple comparison of the BCP model with the leaky integrator.
+this allows for a simple comparison of the BBCP model with the leaky integrator.
 Again, we see that a fixed length model gives a similar output
 but with the two disadvantages described above,  namely that 
 1/ the delay will always be similar, 
@@ -1162,41 +1283,55 @@ the true one as the number of observations increase in one sub-block.
 %-------------------------------------------------------------%
 %: 2Cb quantitative analysis / different read-outs 
 % see 2018-02-12 journal club bayesian changepoint chloe.pdf p.33/ p.42
+% TODO include these quantitative results in a figure
 %-------------------------------------------------------------%
-Let's now see the application of our model 
+Let's now see the application of our model when applied
 to a more extensive synthetic example before applying it to the experimental protocol 
 that we used in our two experiments.
+To quantitatively evaluate the algorithm, 
+we computed the average negative log-likelihood (in bits) of the estimate 
+knowing the ground truth:
+\eql{
+\Ll =  \sum_{t} -\log_2 B(\hat{x_1}^t ; x_1^t, r^t )
+}
+Similar measures based on the predicted readout $\hat{x_0}^t$ 
+gave similar results but would need more data to converge.
+We have tested $100$ blocks of $2000$ trials for each read-out.
+In general, the inference is better for the mean read-out 
+than for the 'max' read-out and lowest for the 'fixed' read-out. 
+Moreover, by testing different values of $h$ assumed by the agent
+but for a fixed $h=1/40$ in the BSM,
+we found that this is true for a range of values of $h$. 
+Importantly, this shows that inference is best for a hazard rate 
+equal to that in the generative model.
+This will be important to guess the hazard rate assumed by an individual agent
+when we observe the set of responses it gives to a given sequence of stimuli
+(see~\seeSec{inter}).
 
-MAX - expectation - hindsight
-
-Mututual information = likelihood /
-
-
-
-
+% TODO: say somethig about convergence?
 %-------------------------------------------------------------%
 %: 2Cc perspectives
 %-------------------------------------------------------------%
 There are limits to the agent that we have defined. 
 First, data is considered to be a sequence of discrete steps.
-Such an analysis could be extended to continuous time~\citep{RadilloBrady2017}.
+Such an analysis could be extended to continuous time~\citep{RadilloBrady2017}:
 In this experiments, the licking behavior of rats in a dynamic environment
 was analyzed.
 A similar approach using a Poisson point process allows to extend to the continuous case.
 This extension is beyond the scope of our current protocol,
 but could consist in a natural extension of the protocol 
-to more complex and ecological settings.
+to more complex and ecological settings about the timing of stimuli.
 Then, remember that the only free parameter of this model is the hazard rate $h$ 
-assumed by the agent 
-Though there exist solutions ~\citep{Wilson13,Wilson18}
-we will keep this parameter fixed for any agent, but evaluate 
-how well it fits tot he experimental outcomes at the different scales of the protocol:
+assumed by the agent (as in the fixed-length agent).
+Though there exist more generic solutions~\citep{Wilson13,Wilson18},
+we will keep this parameter fixed for any fitted agent, but evaluate 
+how well it fits to the experimental outcomes at the different scales of the protocol:
 within sub-blocks, for each sub-block or for any individual observer. 
 As a summary, for any given sequence,
-we get an estimate of the probability given by the ideal observer.
-we will now see how we can apply that to our experimental protocol.
-We expect it to be harder than the previous protocol
-in fixed-length blocks.
+we get an estimate of the probability bias assumed  by the ideal observer.
+We will now see how we can apply that to our experimental protocol.
+In particular, we expect intuitively the results to be more variable
+compared to the previous protocol with fixed-length blocks (see~\seeFig{intro}-C).
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\section{Results: psychophysics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1205,7 +1340,7 @@ in fixed-length blocks.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:eye_rec}
 %: raw results show a qualitative trend
-We applied the binomial switching model
+We applied the BSM model
 to generate the (pseudo-)random sequence of
 the dot's directions (the alternating output of leftward/rightward trials)
 as the sequence of observations.
@@ -1222,9 +1357,9 @@ of the binomial process (horizontal black segments).
 In general, results are more variable when the bias is weak ($p\approx .5$)
 than when it is strong (close to zero or one),
 consistent with the dependence of the variance of the binomial process
-as a function of the probabilistic bias ($p$).
+as a function of the probabilistic bias ($var(p)=n\cdot p \cdot (1-p)$).
 Let's now see how this applies to our experimental results
-by comparing human observers to our Bayesian agent.
+by comparing human observers to the ideal observers we defined.
 More interestingly, we also superposed
 the observed value of the strength of aSPEM
 (the total velocity VEM, red line)
@@ -1233,7 +1368,7 @@ the value of the readout inferred probability
 Comparing the raw eye movement results with the latter,
 it seems qualitatively that both traces evolve with a good fit.
 First, both have similar delays in detecting a switch,
-reflecting the time (of the order a few trials) taken to integrate enough information
+reflecting the time (in the order of a few trials) taken to integrate enough information
 to switch to a novel probability bias value in the binomial process.
 Second, the precision (that is, the inverse of the variance)
 of the inferred probability $\hat{p}$ seems to increase
@@ -1272,7 +1407,7 @@ In \textbf{(A)}, we have overlaid is a regression line which shows
 a high correlation factor ($R=XXX$) which is superior to that found
 with the fixed-length design (see Appendix ...)
 but also with other models described in the text
-(fixed-length estimator, maximum BCP - see Appendix ... ).
+(fixed-length estimator, maximum BBCP - see Appendix ... ).
 In \textbf{(B)}, we have fitted the data with a logistic regression
 showing a negligeable intercept (no bias) linked to the symmetry
 of the problem, but a consistent slope showing an aversion to risk
@@ -1287,20 +1422,20 @@ of the problem, but a consistent slope showing an aversion to risk
 %: quantitive analysis
 Quantitatively, we wanted to look at the quality of fit
 between the strength of aSPEM and
-the probability $\hat{p}$ computed by the BCP algorithm.
+the probability $\hat{p}$ computed by the BBCP algorithm.
 In~\seeFig{results_psycho}-A, we have plotted for all subjects
 this strength as a function of the inferred probability
 that was coded at the second layer and which is unknown to the observer.
 % TODO: First, the trend that we put in evidence is the identity of the observer
 As we can see in~\seeFig{results_psycho}-A,
-the probability $\hat{p}$ computed by the BCP algorithm
+the probability $\hat{p}$ computed by the BBCP algorithm
 has a positive linear relationship with the aSPEM velocity.
-Note that since the BCP is a probabilistic model,
-we can also compute the Mutual Information and
-compare that value with that obtained by other models~\seeApp{bcp}.
 The corresponding Pearson correlation coefficient
 is slightly higher than that found in
 the classical experiment with fixed blocks~\seeFig{intro}-B.
+Note that since the BBCP is a probabilistic model,
+we can also compute the Mutual Information and
+compare that value with that obtained by other models (see~\seeApp{bcp}).
 This is surprising at a first sight as the blocks are of random length,
 and that participants have to adapt to such a volatile environment.
 However, when faced with some new observations,
@@ -1309,13 +1444,13 @@ to either exploit this information by considering that
 this observation belongs to the same sub-block or to explore
 a novel hypothesis.
 This compromise is one of the crucial component that we wish to explore
-and which is well captured by the BCP model.
+and which is well captured by the BBCP model.
 In particular, the model predicts the different facets
 from the experimental results,
 from the variability as a function of the inferred probability,
 to the dynamics of the bahavior following a (hidden) switch.
 As a consequence this provides with a stronger correlation,
-as measured by the Pearson coefficient.
+as measured by the Pearson coefficient and Mutual information.
 We deduce that the trace of inferred probabilities is a powerful regressor
 to explain the strength of aSPEM.
 We will now try to extend this result
@@ -1328,15 +1463,15 @@ to the second session with rating scales.
 As we could assess qualitatively in~\seeFig{results_raw}-B,
 the trace of the rating scale seems to correlate well
 with the inferred probability $\hat{p}$.
-Similarly to the strength of aSPEM,
-(1) this traces exhibits also a positive correlation
-(the next outcome will in general be correctly inferred,
-as compared to a random choice),
-(2) stronger biases lead to lower variabilities in the estimate,
-(3) a (hidden) switch in the value of the bias is
+Similarly to the strength of aSPEM, we find the following results:
+(1) This trace exhibits a positive correlation:
+the next outcome will in general be correctly inferred,
+as compared to a random choice.
+(2) A stronger bias leads to a lower variabilities in the estimate.
+(3) A (hidden) switch in the value of the bias is
 most of the time correctly identified after only a few trials.
 Note also that at every pause (black vertical bar),
-participants tended to provides with more neutral scales
+participants tended to provide with more neutral scales
 than at the end of a sub-block of trials.
 This would correspond to a resetting mechanism
 of the predicted value of the next outcome.
@@ -1357,12 +1492,12 @@ by participants for the outcome of the next trial.
 This exhibits a consistent relationship
 but which now follows a non-linear trace.
 In particular, this relationship was finer
-in comparison with a other agents
-such as the forgetful agent~\seeApp{results_psycho}
+in comparison with 
+the forgetful agent (see~\seeApp{results_psycho}).
 We modeled this behavior as
 a logistic regression over
 the log-odd ratio estimated by the agent.
-%TODO
+%TODO model this relationship by a logistic regression
 This analysis provides with regression factors for each participant.
 It shows that the bias (intercept)
 was negligible, while the slope (logistic factor)
@@ -1383,7 +1518,7 @@ compared to the (log-)odd-ratio of the inferred probability.
 So far, our quantitative analysis was performed independently
 for the different participants.
 In particular, we have shown a representative example in~\seeFig{results_raw}
-but results varied across participants~\seeApp{results_psycho}.
+but results varied across participants (see~\seeApp{results_psycho}).
 This was best characterized qualitatively in both sessions by differences
 in the variability of the responses but also for instance
 with different characteristic delays after a switch.
@@ -1392,7 +1527,7 @@ between exploration and exploiting behaviors~\citep{Behrens07}.
 Here, we were interested into characterizing the preference
 of each individual participant, but also to characterize
 if this preference covaried across the two sessions.
-Crucially, we have seen that the BCP model is controlled by a single parameter,
+Crucially, we have seen that the BBCP model is controlled by a single parameter,
 the hazard rate, that is by its inverse, the time characteristics $\tau$.
 Also, we have shown that knowing an observed sequence,
 we could fit the best value of $\tau$ which would explain it~\seeFig{bayesianchangepoint}-C.
@@ -1486,7 +1621,7 @@ extension to multi-nomioal( daniele + fred danion)
 
 
 
-% Still, only Bayesian models recover an explicit probabilistic representation of change in likelihood. Recent experimental studies suggest, indeed, that the brain is able of estimating a hierarchical model of the environment and that humans can explicitly report sudden changes in sequences~\citep{Meyniel15, Gallistel2014}. Ultimately, we passed over one of leaky integrator models' main default, having a too fixed and rigid memory parameter. In our work the memory parameter is constantly inferred by the BCP algorithm over the observation of the number of trials where this inference stayed reliable and then globally represented probabilistic representation of changes in likelihood and actualization of~\textit{a priori} knowledge.
+% Still, only Bayesian models recover an explicit probabilistic representation of change in likelihood. Recent experimental studies suggest, indeed, that the brain is able of estimating a hierarchical model of the environment and that humans can explicitly report sudden changes in sequences~\citep{Meyniel15, Gallistel2014}. Ultimately, we passed over one of leaky integrator models' main default, having a too fixed and rigid memory parameter. In our work the memory parameter is constantly inferred by the BBCP algorithm over the observation of the number of trials where this inference stayed reliable and then globally represented probabilistic representation of changes in likelihood and actualization of~\textit{a priori} knowledge.
 
 
 perspectives:
@@ -1646,55 +1781,42 @@ the velocity traces: maximum speed, latency, temporal inertia ($\tau$)
 While being sensible to recording errors, this allows us to extract the
  anticipatory component of SPEMs and..
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Appendix 2: BCP algorithm}
+\subsection{Appendix : leaky integrator}
+\label{app:leaky}
+Given a series of observations $\{x_0^i\}_{0\leq i \leq t}$ 
+with $\forall i, x_0^i \in \{0, 1 \}$, we defined
+\eqs{
+\hat{x_1}^{t} &= 1/\tau \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i}\\
+			  &= h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
+}
+%is true for $t=1$: by definition $\hat{x_1}^{0}=x_0^0$ and 
+%\eq{
+%\hat{x_1}^{1} = (1 - \rho) \cdot \hat{x_1}^{0} + \rho \cdot x_0^1
+%}
+If we write it for trial $t-1$, we have
+\eqs{
+\hat{x_1}^{t-1}	&= h \cdot \sum_{0\leq i \leq t-1} (1 - h)^{i} \cdot x_0^{t-1-i} \\
+                &= h \cdot \sum_{1\leq j \leq t} (1 - h)^{j-1} \cdot x_0^{t-j} \\ % j = i+1
+(1 - h) \cdot \hat{x_1}^{t-1} &= h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i} 
+                }
+As such, the relation 
+\eqs{
+\hat{x_1}^{t}	&= h \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i} \\
+				&= h \cdot x_0^{t} + h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i} \\
+				&= h \cdot x_0^{t} + (1 - h) \cdot \hat{x_1}^{t-1} \\
+}
+such that finally
+\eq{
+\hat{x_1}^{t} = (1 - h) \cdot \hat{x_1}^{t-1} + h \cdot x_0^t
+}
+As such, the definitions in~\seeEq{leaky} and ~\seeEq{leaky2} are equivalent.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Appendix 2: BBCP algorithm}
 \label{app:bcp}
 
-TODO: actually put in appendix :
-Note that the prior distribution $\Pp$ can be for instance
-the uniform distribution $\Uu$ on $ [ 0, 1 ] $ or
-Jeffrey's prior $\Jj$~(see \seeApp{bcp} ).
 
-
-To summarize, the algorithm
-
-\begin{enumerate}
-	\item     Initialize
-
-	\begin{itemize}
-		\item    $P(r_0)= S(r)$ or $P(r_0=0)=1$ and
-		\item    $\nu^{(0)}1 = \nu_{prior}$ and $\chi^{(0)}1 = \chi_{prior}$
-	\end{itemize}
-
-	\item    Observe New Datum $x_t$,
-    \item    Evaluate Predictive Probability $\pi_{1:t} = P(x_t |\nu^{(r)}_t,\chi^{(r)}_t)$.
-    \item    Calculate Growth Probabilities $P(r_t=r_{t-1}+1, x_{1:t}) = P(r_{t-1}, x_{1:t-1}) \pi^{(r)}_t (1-H(r^{(r)}_{t-1}))$,
-    \item    Calculate Changepoint Probabilities $P(r_t=0, x_{1:t})= \sum_{r_{t-1}} P(r_{t-1}, x_{1:t-1}) \pi^{(r)}_t \cdot H(r^{(r)}_{t-1})$,
-    \item    Calculate Evidence $P(x_{1:t}) = \sum_{r_{t-1}} P (r_t, x_{1:t})$,
-    \item    Determine Run Length Distribution $P (r_t | x_{1:t}) = P (r_t, x_{1:t})/P (x_{1:t}) $.
-    \item    Update Sufficient Statistics :
-	\begin{itemize}
-		\item    $\nu^{(0)}_{t+1} = \nu_{prior}$, $\chi^{(0)}_{t+1} = \chi_{prior}$,
-		\item    $\nu^{(r+1)}_{t+1} = \nu^{(r)}_{t} + x_t/r$ (???), $\chi^{(r+1)}_{t+1} = \chi^{(r)}_{t} + u(x_t)$ TODO define u.
-	\end{itemize}
-
-    \item    Perform Prediction $P (x_{t+1} | x_{1:t}) = P (x_{t+1}|x_{1:t} , r_t) P (r_t|x_{1:t})$,
-    \item    go to the observation of the new datum (2).
-\end{enumerate}
-
-
-%on $\[O, 1\]$ or is Jeffrey's prior  $\Jj = BB(\frac 1 2 , \frac 1 2 )$~\seeApp{bcp}(TODO: put in appendix). There is always a switch at t=zero.
-
-
-
-% use that distance to compute optimal hazard rates
-where $\KL{\hat p}{p}$ is the Kullback-Leibler divergence between samples $\hat p$ and model $p$ under a Bernouilli distribution
-\begin{equation}
-\KL{\hat p}{p} = \hat{p} \log\pa{\frac{\hat p}{p}} + (1-\hat p) \log\pa{\frac{1-\hat p}{1-p}}.
-\end{equation}
-
-
+To summarize, the algorithm that we presented 
 % TODO: show as python code
 %* an implementation of
 %%[Adams &amp; MacKay 2007 "Bayesian Online Changepoint Detection"](http://arxiv.org/abs/0710.3742)
@@ -1707,6 +1829,109 @@ where $\KL{\hat p}{p}$ is the Kullback-Leibler divergence between samples $\hat 
 %
 % * full code @ https://github.com/laurentperrinet/bayesianchangepoint are available at \url{https://github.com/laurentperrinet/bayesianchangepoint}.
 
+Knowing $p$ and $r$, the sufficient statistics of the beta distribution $B(\alpha, \beta)$ :
+
+
+\subsubsection{The binomial and Beta distributions}
+
+binomial
+\eq{
+\Pr(k;n,p) = \Pr(X = k) = {n\choose k}p^k(1-p)^{n-k}
+}
+
+
+Bernouilli $p(x | p) = p^x \cdot (1-p)^{1-x}$
+%TODO say Bernoulli instead of binomial when just one draw
+Wikipedia: For example, the beta distribution can be used in Bayesian analysis to describe initial knowledge concerning probability of success such as the probability that a space vehicle will successfully complete a specified mission. The beta distribution is a suitable model for the random behavior of percentages and proportions. 
+
+conjugate is the Beta-distribution of shape parameters $\alpha = p\cdot r$ and $\beta = (1- p)\cdot r$:
+$ P(p | \alpha, \beta ) = \frac{1}{B(\alpha, \beta)} \cdot p^{\alpha -1} \cdot (1-p)^{\beta - 1} $
+
+\eqs{
+        \alpha &= p*r \\
+        \beta  &= (1-p)*r
+    }
+inversely, $\alpha + \beta = r$ and $p = \frac{\alpha}{\alpha +\beta} = 1- \frac{\beta}{\alpha + \beta}$
+%var = \frac {\alpha-1}{(\alpha +\beta+2)\cdot(\alpha +\beta+3)}$
+
+
+
+\subsubsection{Initialization}
+
+	\begin{itemize}
+		\item    $P(r_0)= S(r)$ or $P(r_0=0)=1$ and
+		\item    $\mu^{(0)}1 = \mu_{prior}$ and $\nu^{(0)}1 = \nu_{prior}$
+	\end{itemize}
+
+Note that the prior distribution is a Beta distribution: 
+$\Pp\propto B(p; \mu_{prior}, \nu_{prior})$.
+It will by symmetry be unbiased: $\mu_{prior}=.5$.
+Concerning the shape, it can be for instance
+the uniform distribution $\Uu$ on $ [ 0, 1 ] $, that is $\nu_{prior}=2$ or
+Jeffrey's prior $\Jj$, that is $\nu_{prior}=1$.
+
+Wikipedia: Beta(1/2, 1/2): The arcsine distribution probability density was proposed by Harold Jeffreys to represent uncertainty for a Bernoulli or a binomial distribution in Bayesian inference, and is now commonly referred to as Jeffreys prior: p−1/2(1 − p)−1/2. This distribution also appears in several random walk fundamental theorems
+
+\subsubsection{Update}
+
+    Observe New Datum $x_t$,
+
+\subsubsection{Prediction: run-length distribution}
+
+\eqs{
+%\hat{x_1}^{t} = 
+Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  \beta^{(r)}_t \\
+Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  Pr(r^{t} | x_0^{0:t-1})\\
+\text{with} \quad Pr(r^{t} | x_0^{0:t-1}) &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  Pr(r^{t-1} | x_0^{0:t-2})
+\text{with} \quad \beta^{(r)}_t &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  \beta^{(r)}_{t-1}
+}
+
+
+\begin{enumerate}
+
+\item    Evaluate Predictive Probability $\pi_{0:t} = P(x_t |\mu^{(r)}_t,\nu^{(r)}_t)$.
+    \item    Calculate Growth Probabilities $P(r_t=r_{t-1}+1, x_{0:t}) = P(r_{t-1}, x_{0:t-1}) \pi^{(r)}_t (1-H(r^{(r)}_{t-1}))$,
+    \item    Calculate Changepoint Probabilities $P(r_t=0, x_{0:t})= \sum_{r_{t-1}} P(r_{t-1}, x_{0:t-1}) \pi^{(r)}_t \cdot H(r^{(r)}_{t-1})$,
+    \item    Calculate Evidence $P(x_{0:t}) = \sum_{r_{t-1}} P (r_t, x_{0:t})$,
+    \item    Determine Run Length Distribution $P (r_t | x_{0:t}) = P (r_t, x_{0:t})/P (x_{0:t}) $.
+\end{enumerate}
+\subsubsection{Prediction: sufficient statistics}
+We need to update the sufficient statistics at every node for the next trial $t+1$:
+:
+	\begin{itemize}
+		\item    $\mu^{(0)}_{t+1} = \mu_{prior}$, $\nu^{(0)}_{t+1} = \nu_{prior}$,
+		\item    $\mu^{(r+1)}_{t+1} = \mu^{(r)}_{t} + x_t/r$ (???), $\nu^{(r+1)}_{t+1} = \nu^{(r)}_{t} + u(x_t)$ TODO define u.
+	\end{itemize}
+
+
+The recursive formulation comes from the expression
+\eq{
+\mu^{(r)}_{t} = \frac 1 r \sum_{i=t-r-1}^{t-1} x_0^i
+}
+and therefore
+\eqs{
+\mu^{(r+1)}_{t+1} 	&= \frac{1}{r+1} \sum_{i=t+1-r-1-1}^{t+1-1} x_0^i \\
+					&= \frac{1}{r+1} \sum_{i=t-r-1}^{t} x_0^i \\
+					&= \frac{r}{r+1} \mu^{(r)}_{t} + \frac{1}{r+1} x_0^t
+}
+
+\subsubsection{Readout}
+\label{app:readout}
+
+Perform Prediction $P (x_0^{t+1} | x_{0:t}) = P (x_0^{t+1}|x_{0:t} , r_t) P (r_t|x_{0:t})$,
+
+Can we get  $P (x_2^{t+1} | x_{0:t}) $ ? would be nice to see the inferrence of surprise / would fit with pupil size...
+
+\subsubsection{Quantitative evaluation}
+
+% use that distance to compute optimal hazard rates
+%  use p log p + (1-p) log (1-p ) as in logistic regression?
+where $\KL{\hat p}{p}$ is the Kullback-Leibler divergence between samples $\hat p$ and model $p$ under a Bernouilli distribution
+\begin{equation}
+\KL{\hat p}{p} = \hat{p} \log\pa{\frac{\hat p}{p}} + (1-\hat p) \log\pa{\frac{1-\hat p}{1-p}}.
+\end{equation}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Appendix 3: Mathematical derivation of the likelihood}
 \label{app:likelihood}
@@ -1715,25 +1940,28 @@ where $\KL{\hat p}{p}$ is the Kullback-Leibler divergence between samples $\hat 
 %cf p33 de 2018-02-12 journal club bayesian changepoint chloe.pdf
 %cf p52 de 2017-10-05 chloe inverting the process rem jb.pdf
 
-Bernouilli $p(x | p) = p^x \cdot (1-p)^{1-x}$
-conjugate is the Beta-distribution of shape parameters $\alpha = p\cdot r$ and $\beta = (1- p)\cdot r$:
-$ P(p | \alpha, \beta ) = \frac{1}{B(\alpha, \beta)} \cdot p^{\alpha -1} \cdot (1-p)^{\beta - 1} $
 
-inversely, $\alpha + \beta = r$ and $p = \frac{\alpha}{\alpha +\beta} = 1- \frac{\beta}{\alpha + \beta}$
-%var = \frac {\alpha-1}{(\alpha +\beta+2)\cdot(\alpha +\beta+3)}$
+
+the likelihood of observing $o=1$ is that of a binomial of
+	\begin{itemize}
+		\item  mean rate of chosing hypothesis "o=1" = (p*r + o)/(r+1),
+		\item number of choices where  "o=1" equals to p*r+1.
+	\end{itemize}
+
+
 
 
 % differentiate likelihood from proba
 $\Ll(o=0)+\Ll(o=1)=1$
-We want to compute $\Ll(o| p, r) = P(o | p, r)$ where $o \in \{ 0, 1 \}$ such that we can evaluate Predictive Probability $\pi_{1:t} = P(x_t |\nu^{(r)}_t,\chi^{(r)}_t)$ in the algorithm above with $p=\nu^{(r)}_t$ and $\chi^{(r)}_t$ .
+We want to compute $\Ll(o| p, r) = P(o | p, r)$ where $o \in \{ 0, 1 \}$ such that we can evaluate Predictive Probability $\pi_{0:t} = P(x_t |\mu^{(r)}_t,\nu^{(r)}_t)$ in the algorithm above with $p=\mu^{(r)}_t$ and $\nu^{(r)}_t$ .
 
 by observing $o$, the new rate is $p^{'} = \frac{p\cdot r + o}{r+1}$.
 The likelihood will give the probability of this novel rate given the know parameters and their update (in particular $r^{'}=r+1$:
 
 
-\eqa{
+\eqs{
 L(o | p, r)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r + o}{r+1})^{r + o - (p\cdot r + o)} \\
-&= \frac{1}{({r+1})^{r+1}} \cdot {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o}
+&= \frac{1}{({r+1})^{r+1}} \cdot {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} \\
 &= \frac{ (1-o) \cdot {(p\cdot r)}^{p\cdot r}  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
 + o \cdot {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r)}^{(1- p)\cdot r}
  }{
@@ -1742,8 +1970,10 @@ L(o | p, r)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r
 }  \\
 }
 
-such that it follows
-\eqa{
+    since both likelihood sum to 1, the likelihood of drawing o in the set {0, 1}
+    is equal to
+
+\eqs{
 \Ll(o | p, r)&=\frac{L(o | p, r)}{L(o=1 | p, r) + L(o=1 | p, r)}  \\
 &= \frac{ {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} }{
  {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r )}^{(1- p)\cdot r }  +
@@ -1759,17 +1989,42 @@ such that it follows
 }
 that is, for a given run-length and knowing sufficient statistics describing
 
-% TODO: show as python code
+\subsubsection{Python code}
 
+\begin{lstlisting}
+def likelihood(o, p, r):
+    """
+    Knowing $p$ and $r$, the sufficient statistics of the beta distribution $B(\alpha, \beta)$ :
+    $$
+        alpha = p*r
+        beta  = (1-p)*r
+    $$
+    the likelihood of observing o=1 is that of a binomial of
 
-%: properties / symmetries
-$\forall r >0$, $\Ll(o|p=0, r)=1-o$ and $\Ll(o|p=1, r)=o$
+        - mean rate of chosing hypothesis "o=1" = (p*r + o)/(r+1)
+        - number of choices where  "o=1" equals to p*r+1
 
-if $r=0$, the likelihood is uniform $\Ll(o)=1/2$
+    since both likelihood sum to 1, the likelihood of drawing o in the set {0, 1}
+    is equal to
 
-$P(o | p, r)=P(1-o | 1-p, r)$
+    """
+    L =  (1-o) * ( 1 - 1 / (p * r + 1) )**(p*r) * ((1-p) * r + 1) + o * ( 1 - 1 / ((1-p) * r + 1) )**((1-p)*r) * (p * r + 1)
+    L /=         ( 1 - 1 / (p * r + 1) )**(p*r) * ((1-p) * r + 1) +     ( 1 - 1 / ((1-p) * r + 1) )**((1-p)*r) * (p * r + 1)
 
-as $r$ grows, it gets sharper
+    return L
+\end{lstlisting}
+
+\subsubsection{Properties}
+This function has some properties, notably symmetries:
+	\begin{itemize}
+		\item  $\forall r >0$, $\Ll(o|p=0, r)=1-o$ and $\Ll(o|p=1, r)=o$,
+		\item if $r=0$, the likelihood is uniform $\Ll(o)=1/2$,
+		\item $P(o | p, r)=P(1-o | 1-p, r)$.
+	\end{itemize}
+
+Note also that as $r$ grows, it gets sharper.
+
+% TODO : put figure from https://github.com/laurentperrinet/bayesianchangepoint/blob/master/notebooks/test_tracebase.ipynb
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
