@@ -1,0 +1,169 @@
+%!TeX TS-program = Lualatex 
+%!TeX encoding = UTF-8 Unicode 
+%!TeX spellcheck = en-US
+
+\documentclass[stdletter,8pt,dateno]{newlfm}%
+%\usepackage{kpfonts}
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\@zfancyhead}{\fancy@reset}{\f@nch@reset}{}{}
+\patchcmd{\@set@em@up}{\f@ncyolh}{\f@nch@olh}{}{}
+\patchcmd{\@set@em@up}{\f@ncyolh}{\f@nch@olh}{}{}
+\patchcmd{\@set@em@up}{\f@ncyorh}{\f@nch@orh}{}{}
+\makeatother
+
+\usepackage{url}
+%: METADATA
+%: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\AuthorA}{Chlo\'e Pasturel}
+\newcommand{\AuthorB}{Anna Montagnini}%
+\newcommand{\AuthorC}{Laurent U.~Perrinet}%
+\newcommand{\Address}{Institut de Neurosciences de la Timone, CNRS / Aix-Marseille Universit\'e - Marseille, France}%
+\newcommand{\Website}{http://invibe.net/LaurentPerrinet}%
+\newcommand{\Email}{Laurent.Perrinet@univ-amu.fr}%
+\newcommand{\Title}{
+%Principles and psychophysics of Active Inference in anticipating a dynamic probabilistic bias
+Humans adapt to the volatility of visual motion properties, and know about it
+%Anticipating a volatile probabilistic bias in visual motion direction
+%Humans adapt to the volatility of visual motion properties :  eye movements and explicit guesses
+}
+\newcommand{\Acknowledgments}{PACE-ITN - code and material @ \url{\Website/Publications/Pasturel_etal2018}. TODO: RIck + Karl + JB + Laurent Madelain }
+\newcommand{\Abstract}{
+The brain has to constantly adapt to changes in the environment,
+for instance when a contextual probabilistic variable switched its state.
+For an agent interacting with such an environment,
+it is important to respond to such switches with the shortest delay.
+However, this operation has in general to be done with noisy sensory inputs
+and solely based on the information available at the present time.
+Here, we tested the ability of humans observers to accurately anticipate,
+with their eye movements,
+a target's motion direction
+throughout random sequences of rightward/leftward motion alternations,
+with random-length contextual blocks of different biases in direction probability.
+Experimental results were compared to
+those of a probabilistic agent optimized
+with respect to this switching model.
+We found a better fit between
+the behaviorally observed anticipatory response
+with that of the probabilistic agent
+compared to other models such as the leaky-integrator model.
+Moreover, we could similarly fit
+the level of confidence given by human observers
+with that provided by the model and
+draw a common marker for subject inter-variability,
+titrating their level of preference between exploration and exploitation.
+Such results provide evidence that
+human observers may efficiently represent an anticipatory belief
+along with its precision and
+they support a novel approach to more generically test
+human cognitive abilities in uncertain and dynamic environments.
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newcommand{\Journal}{Journal of Vision}%
+%\newcommand{\Journal}{PLoS Computational Biology}%
+\newcommand{\Journal}{Neural Computation}%
+\widowpenalty=1000
+\clubpenalty=1000
+
+%\newsavebox{\Lpalmb} \sbox{\Lpalmb}%{\parbox[t]{1.75in}{\includegraphics[width=.25\textwidth]{ens.jpg}\includegraphics[width=.2\textwidth]{int.png}%\includegraphics[width=.12\textwidth]{unic.png}}
+%}%
+%\makelth{Homea}{\Lheader{\usebox{\Lpalms}}}%
+%
+\Lheader{%\usebox{\Lpalmb}
+tata}
+
+\newlfmP{headermarginskip=2pt}
+\newlfmP{sigsize=2pt}
+\newlfmP{dateskipafter=2pt}
+%\newlfmP{addrfromphone}
+\newlfmP{addrfromemail}
+\PhrPhone{Phone}
+\PhrEmail{Email}
+
+\namefrom{
+%\AuthorA\ , \FirstNameA , 
+%\AuthorB\ , \FirstNameB  and 
+\FirstNameA\ \AuthorA\ 
+}
+\addrfrom{%
+\FirstNameA\ \AuthorA\ \\
+\Institute \\
+%\AuthorB\\[6pt]
+    \Address\\[6pt]
+%\AuthorA\\[6pt]
+%%    \AddressA
+%    \LongAddressA
+}
+%        \phonefrom{\PhoneA}
+\emailfrom{\EmailA\\[6pt]
+    \today
+    }
+
+\addrto{%
+}
+
+\greetto{
+To the editorial board member of \emph{\Journal},%
+%To Whom It May Concern,
+%Dear XXX
+}
+\closeline{Sincerely,}
+
+\begin{document}
+%\begin{newlfm}
+%5. Cover Letter
+%Submissions should be accompanied by a brief covering letter from the corresponding author including full postal address, telephone number and e-mail address. This letter should contain two (100-word or shorter) summaries: a concise paragraph to the editor indicating the scientific grounds why the paper should be considered for a topical, interdisciplinary journal rather than for a single-discipline or archival journal; and a separate, 100-word summary of the paper's appeal to a popular (non-scientific) audience.
+
+Please consider our original manuscript ``{\it \Title }'' that we submit for publication in \Journal . All the authors have been involved with the work, have approved the manuscript and agreed to its submission.
+
+Hereby, we submit our revised manuscript, entitled ``{\it \Title }'' ,  along  with  our  response  to  the  reviewers  and  corresponding  supplementary  information.  
+
+
+% TO UPDATE = short description
+The present study details the complete formulation of a generative
+model of artificial textures intended to probe visual perception. It is first derived in a set of
+axiomatic steps constrained by biological plausibility. We then extend previous contributions
+by detailing three equivalent formulations of the Gaussian dynamic texture
+model. Our model enables real-time on-the-fly texture synthesis using time-discretized autoregressive
+processes. We use the model to probe speed perception in humans psychophysically using zoom-like changes
+in stimulus spatial frequency content. The data replicates previous findings that relative perceived speed is positively biased by spatial
+frequency increments. The effect cannot be fully accounted for by previous models,
+but a parametric Bayesian model successfully accounts for the perceptual bias.
+%
+Our  response  to  the  reviewers  includes  the  point-by-point  responses  to  each  issue  raised  by  
+both reviewers. The reviewers’ comments were helpful, and we feel that the manuscript is substantially improved.  
+We have ensured that our manuscript complies with all formatting and editorial requirements.  
+
+
+% AM: I think this section should go after the description of the science
+% 'We ensure that n' - i think this is unnecessary, also 'a long version should be elaborated on below... '
+None of the material has been published or is under consideration for
+publication in other journals. This work constitutes a comprehensive extension to the conference paper referenced as \textit{Biologically Inspired Dynamic Textures for Probing Motion Perception.
+J. Vacher, A.I. Meso, L.U. Perrinet, G. Peyr\'e -- Advances in Neural Information Processing Systems, 2015.}
+
+% AM: I have also suggested some wording changes below... just minor ones, remove 'As such, ...' I also removed 'experimental' before neuroscience
+We believe that this work presents a novel contribution of broad interest in neuroscience and psychophysics. We must stress that it combines the expertise in different fields for understanding neural computations: theoretical, computational and experimental. In addition, we demonstrate that a Bayesian model for vision is able to account for the effect of scene zooming, manipulated through spatial frequency on speed perception. We believe that these two contributions will be of significant interest to the readership of \Journal.
+
+
+We  suggest  the  following  five  potential  review
+ers.  All  of  them  are  the  experts  in  the  
+relevant areas of our manuscript. 
+
+
+Following the change to the competing interests policy, we have revised the our ‘Conflict of interest’ statement to the following: 
+‘
+Competing interests: The authors declare no competing interests’
+Thank you for your consideration, and we look forward to your response. 
+
+We did not have any prior discussions with 
+a \Journal Editorial Board Member 
+about the work described in the manuscript. 
+
+Thank you for your consideration.%, and I look forward to hearing whether this article can be sent out for review.
+
+
+Sincerely, on behalf of all co-authors, 
+
+%\end{newlfm}
+\end{document}
