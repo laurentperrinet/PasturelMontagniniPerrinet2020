@@ -253,7 +253,7 @@ such as contextual changes in our everyday life.
 Inferring near-future states in a dynamic environment, such that one can prepare to act upon them ahead of their occurrence~\citep{PerrinetAdamasFriston2014} ---
 or at least forming beliefs as precise as possible
 about a future environmental context ---
-are ubiquitous \AM{challenges} for cognitive systems.
+are ubiquitous challenges for cognitive systems.
 In the long term, how the human brain manages
 the trade-off between exploitation and exploration
 is essential to the adaptation
@@ -261,20 +261,20 @@ of the behavior through reinforcement learning~\citep{Cohen2007}.
 In controlled experimental settings challenging visual perception or sensorimotor associations,
 such adaptive processes have been mostly put in evidence
 by precisely analyzing the participants' behavior in a sequence of experimental trials,
-\AM{typically highlighting sequential effects}
+typically highlighting sequential effects
 at the time scale of one to several minutes.
 % TODO: talk about Gallistel / Sugrue / Brody
 
 %: Past history of sensory event integration in vision
 Indeed, stimulus history of visual events influences
-how current stimuli are perceived \AM{(REFFS: Sotiropoulos et al. 2011; Adams et al ...)} and acted upon \AM{REFFS Carpenter and Williams 1995; Maus et al. Damasse ....}.
-\AM{Two qualitatively opposite effects of the stimulus history have been described, priming and perceptual adaptation. Adaptation} reduces
+how current stimuli are perceived~\citep{Sotiropoulos2011, Adams12} and acted upon~\citep{Carpenter1995, Maus2015,Damasse18}.
+Two qualitatively opposite effects of the stimulus history have been described, priming and perceptual adaptation. Adaptation reduces
 the sensitivity to recurrently presented stimuli and
 thus to re-calibrate perceptual experience~\citep{Clifford2007, Webster2011, Kohn2007}.
-Recent examples of \AM{positive? do you rather mean NEGATIVE?} biases in perceptual discrimination are
-numerous \AM{REFFS} and show that the visual system tends
+Recent examples of negative biases in perceptual discrimination are
+numerous~\citep{REFFS} and show that the visual system tends
 to favor temporal and spatial stability of the stimulus:
-\AM{On the other hand}, priming is a facilitatory effect that
+On the other hand, priming is a facilitatory effect that
 enhances the identification of repeated stimuli~\citep{Verstraten1994, Tiest2009}.
 % An example, is Priming: Repeated stimulations
 % creates a facilitation in perception~\citep{Kristjnsson2010WherePM, Maljkovic1994, Tulving1990}.
@@ -303,15 +303,12 @@ where new contingencies can arise at every moment.
 % and can last for period of ten seconds~\citep{Anstis1998}.
 Overall, the ability to detect statistical regularities in the event sequence
 thus appears as a fundamental ability
-for the adaptive behavior of species. \AM{Very few studies have addressed the question of whether
+for the adaptive behavior of species. Very few studies have addressed the question of whether
 the estimate of such regularities is explicit, and whether verbal reports of the dynamic statistical
-estimates would eventually correlate to the measures of behavioral adaptation. Here we aim at investigating this question in the specific case of motion direction processing.}.
-\AM{I WOULD POSTPONE THIS TO THE DISCUSSION :One remaining question though, is to understand why in cognitive systems
-this adaptation occurs and
-in particular why it may deviate
-in some pathological disorders such as schizophrenia~\citep{Adams12}.}
-\AM{In addition, we attempt to palliate to the lack of a solid modeling approach to best understand the computation underlying behavioral adaptation to the environment's statistics},
-and in particular how sequential effects are integrated \AM{within a hierarchical statistical framework}.
+estimates would eventually correlate to the measures of behavioral adaptation. Here we aim at investigating this question in the specific case of motion direction processing.
+In addition, we attempt to palliate to the lack of a solid modeling approach to best understand the computation underlying behavioral adaptation to the environment's statistics,
+and in particular how sequential effects are integrated
+within a hierarchical statistical framework.
 At present, Bayesian inference offers an effective methodology
 to deal with this question.
 
@@ -398,12 +395,13 @@ and therefore allow to further deepen our understanding of such predictive proce
 \draw [anchor=north west] (0.842\linewidth, .62\linewidth) node {$\mathsf{(C)}$};
 \end{tikzpicture}
 
-\caption{\emph{Anticipatory SPEM (aSPEM): experimental design and results. \textbf{(A)}~\AM{I THINK THAT WE SHOULD MOVE THIS PART IN THE MAIN TEXT}: We replicated the results of~\citet{Montagnini2010},
+\caption{\emph{Anticipatory SPEM (aSPEM): experimental design and results. \textbf{(A)}~# TODO: MOVE THIS PART IN THE MAIN TEXT}:
+We replicated the results of~\citet{Montagnini2010},
 in which human observers were presented with several $500$ trials blocks of horizontal target motion with a block-dependent direction probability bias, and they were asked to track the target with their gaze.} % TODO:check
 The eye-movements task was an atapted version of a task developed by ~\citet{Montagnini2010}. Each one of $600$ trials consisted of sequentially:
 a fixation dot (of random duration between $400$ and $600$~\ms),
 a blank screen (of fixed duration of  $300$~\ms) and
-a moving dot (at \AM{CHECK! $10$ deg/s}) which the observers were instructed to follow.
+a moving dot (at \AM{TODO CHECK! $10$ deg/s}) which the observers were instructed to follow.
 The direction of the dot was drawn pseudo-randomly
 according to a binomial distribution
 parameterized by a probabilistic bias $p$
@@ -437,8 +435,8 @@ as drawn from a prior distribution for the values of $p$.
 Second, \AM{we generated the random sequence of trials
 by concatenating random-length blocks (see \seeFig{results_raw}),
 to avoid potential confounds related to the previously used blocked-design}.
-Third, in order to titrate \AM{the adaptation to the environmental volatility} at the conscious level,
-we invited each observer to perform \AM{a variant of the direction-biased} experiment on a subsequent day,
+Third, in order to titrate the adaptation to the environmental volatility at the conscious level,
+we invited each observer to perform a variant of the direction-biased experiment on a subsequent day,
 where, instead of recording their eye movements, we asked participants to rate the level of confidence
 for their estimate of the forthcoming direction of the dot before each trial.
 As shown in this sample screenshot,
@@ -464,12 +462,12 @@ This process is retarded by different factors such as axonal transduction,
 neural processing and the inertia of the oculomotor system~\citep{Krauzlis89}.
 When predictive information is available about target motion,
 anticipatory SPEM (aSPEM) are
-efficiently generated before target's appearance~\citep{Westheimer1954, Kowler1979a, Kowler1979b} \AM{thereby reducing visuomotor latency}.
+efficiently generated before target's appearance~\citep{Westheimer1954, Kowler1979a, Kowler1979b} thereby reducing visuomotor latency.
 Moreover, some experiments have demonstrated the existence
 of prediction-based smooth pursuit during
 the transient disappearance of a moving target~\citep{Badler2006,BeckerFuchs1985}.
-Overall, \AM{although the initiation of SPEM is almost always driven by a visual motion signal}, it is now clear that smooth pursuit behavior
-can be modulated \AM{by extra-retinal, predictive information} even in the absence of a direct visual stimulation.
+Overall, although the initiation of SPEM is almost always driven by a visual motion signal, it is now clear that smooth pursuit behavior
+can be modulated by extra-retinal, predictive information even in the absence of a direct visual stimulation.
 The anticipatory smooth pursuit behavior is remarkable
 in different aspects.
 First, its buildup is relatively fast, such that only a few trials are sufficient
@@ -489,7 +487,7 @@ to the amplitude of eye-to-target position and velocity mismatch.
 by the variability introduced by the neural noise
 at the neuro-motor junction~\citep{Harris98}.}
 Overall, this reduces the typical sensorimotor delay
-between target motion onset and foveation~ \AM{REF??}.
+between target motion onset and foveation~\citep{REFNEEDED}.
 In a previous study~\citep{Montagnini2010},
 we have analyzed how forthcoming motion properties,
 such as target speed or direction, can be
@@ -510,7 +508,7 @@ driving anticipatory behavior to optimize a rapid and
 precise foveation of the target on its expected future path.
 
 %: limits of the previous method
-\AM{In order to generalize} such results to more ecological conditions,
+In order to generalize such results to more ecological conditions,
 it is necessary to extend the experimental protocol of~\citet{Montagnini2010} in three aspects.
 First, it seems important to investigate the integration of environmental statistical regularities
 in this smooth tracking task with
@@ -1608,6 +1606,11 @@ perspectives:
 - interindividual differences : markers for the berhaviour traces - traces of the network implementation / testing different h
 - the brain is weakly Bayesian (it does not care about equations but more about sugar)
 
+
+One remaining question though, is to understand why in cognitive systems
+this adaptation occurs and
+in particular why it may deviate
+in some pathological disorders such as schizophrenia~\citep{Adams12}.
 
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
