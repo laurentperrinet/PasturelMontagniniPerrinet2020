@@ -517,51 +517,43 @@ As such, instead of a finite set of probability biases, % ($.25$, $.5$, $.75$, $
 we decided to use a continuous range of probability biases~$p$.
 %which we were sampling from a fixed prior distribution.
 Second,~\citet{Maus2015} have recently shown that
-both perceptual adaptation \AM{for speed estimation} and priming of aSPEM could occur simultaneously.
+both perceptual adaptation for speed estimation
+and priming of aSPEM could occur simultaneously.
 They found a robust repulsive adaptation effect
 with perceptual judgements biased in favor of faster percepts
 after seeing stimuli that were slower and~\textit{vice-versa}. \AM{Concurrently, these authors also found
 a positive effect on anticipatory smooth pursuit, with faster anticipation after faster stimuli.}
 Indeed, both priming and adaptation can hypothetically share
 a common internal representation of stimulus' speed,
-\AM{reasonably built according to} the mean velocity of the last observed movements.
+reasonably built according to the mean velocity of the last observed movements.
 The comparison of the internal representation of speed
 with the current stimulus velocity could explain repulsive aftereffects and,
 at the same time, be used to elicit
 an aSPEM component at the appropriate velocity
 for next stimulus occurrences.
-\AM{UNCLEAR: The main conclusion from~\citet{Maus2015} was that
-perceptual adaptation and oculomotor priming
-both have a weight in building an~\textit{a priori} knowledge
-that will be used to generate aSPEM. I WOULD SAY: The main conclusion from~\citet{Maus2015} was that
-perceptual adaptation and oculomotor priming
-are the result of two distinct readout computational processes using the same internal representation of motion regularities}
 \citet{Maus2015} estimated the past history effects over different times scales,
 with the priming effects being maximized
 for short stimulus histories (around $2$ trials) and
 adaptation for longer stimulus history, around $15$ trials.
+Their main conclusion was that
+perceptual adaptation and oculomotor priming
+are the result of two distinct readout computational processes using the same internal representation of motion regularities.
 Both these history lengths can be considered
 short in comparison to the several hundreds
-of trials that are commonly used in psychophysics \AM{and sensorimotor adaptation} studies.
-To analyse the effect of history length in all generality,
-we therefore extended the protocol such that the probability bias
-is fixed in sub-blocks of a variable block-length.
-%The equations for this protocol will be detailed below~(\seeSec{bayesian_change_point}).
-Last, \AM{in order to understand the nature of the representation of motion regularities underlying eye movement adaptive behavior,} it is crucial to collect verbal explicit judgments about expectations on motion direction, in addition to the recording of eye movements.
-In such an explicit judgment task, we evaluated for each participant their confidence for the next trial direction
-(\emph{prior} to the appearance of the target).
-%on a rating scale
-%between "sure left", to "unsure" and finally "sure right"~(see \seeFig{intro}-C).
+of trials that are commonly used in psychophysics and sensorimotor adaptation studies.
 % ------------------------------------------------------------------
 \subsection{Contributions}%Outline}
 % SUMMARY : what is novel in our work
 % ------------------------------------------------------------------
 %: how we do it : or rather why we do it this way (and not like Matthys)
-\AM{this section is very nice but it is kind of redundant with the last part of the previous section!}
 The goal of this study is to generalize the adaptive process
 observed in the aSPEM response to more ecological settings but
 also to broaden its scope by showing that such unconscious process
 also occurs at the conscious level.
+To analyse the effect of history length in all generality,
+we therefore extended the protocol such that the probability bias
+is fixed in sub-blocks with variable block lengths.
+%The equations for this protocol will be detailed below~(\seeSec{bayesian_change_point}).
 Indeed, by manipulating the probability for target motion direction,
 as measured during a fixed duration gap
 before target ramp-motion onset~(see \seeFig{intro}-A),
@@ -571,6 +563,7 @@ to inform the internal representation of motion prediction
 for the initiation of anticipatory movements~\citep{Montagnini2010}.
 However, it is yet unclear what method to use
 to dynamically manipulate the probability of the input sequence.
+
 First, one possible confound in the previous study
 is that the range of possible biases is finite and
 that there is no direct experimental evidence that
@@ -581,11 +574,11 @@ was used within blocks of fixed lengths.
 Indeed, observers may potentially pick up
 the information on this fixed length
 to predict the occurrence of switches in conditions.
-Additionally, we observed that following the switch from
+
+Additionally, we observed qualitatively that following the switch from
 one condition to the next,
 the strength of aSPEM changed gradually,
-consistently with other adaptation paradigms \AM{IS THIS THE CORRECT REFERENCE? ~\citep{Souto13}; I WOULD SUGGEST MORE CLASSIC
-STUDIES ON THE SO CALLED PURSUIT ADAPTATION E.G. Fukushima et al., 1996; Kahlon and Lisberger, 1996 OR THE STUDIES OF SACCADE ADAPTATION WITH TIME-COURSE FITTING },
+consistently with other adaptation paradigms~\citep{Fukushima1996,Kahlon1996,Souto13},
 but for which the adaptation mechanism was only fitted.
 As a consequence, such estimate may become particularly
 challenging in a dynamic context,
@@ -599,6 +592,13 @@ by explicitly modeling a dynamic process with a given volatility:
 In particular, our design will make sure that one can manipulate the variable $p$
 as a function of trial number by making $p$ itself a random variable. %,
 % but also that we can devise an ideal observer for each sequence of inputs.
+% TODO check transition
+In order to understand the nature of the representation of motion regularities underlying eye movement adaptive behavior, it is crucial to collect verbal explicit judgments about expectations on motion direction, in addition to the recording of eye movements.
+In such an explicit judgment task, we evaluated for each participant their confidence for the next trial direction
+(\emph{prior} to the appearance of the target).
+%on a rating scale
+%between "sure left", to "unsure" and finally "sure right"~(see \seeFig{intro}-C).
+
 
 %\subsection{Generative model: the binomial switching model}
 %-------------------------------------------------------------%
@@ -653,11 +653,12 @@ seem to follow a similar trend.
 %: design of the binomial switching generative model
 Indeed, to assess the dynamics of the adaptive processes
 which compensate for the variability of sensory sequences,
-one may generate \AM{trajectories RATHER random sequences} for the value of $p$,
+one may generate random sequences for the value of $p$,
 with a parametric mechanism controlling for the volatility at each trial.
 By definition, volatility measures the temporal variability
-of the sufficient parameters of a random variable. \AM{THEN I HAVE A QUESTION: GIVEN THIS DEFINITION, DOES VOLATILITY CHANGE AT EACH TRIAL IN OUR CASE, OR IS VOLATILITY FIXED ONCE THE TAU=40 PARAMETER HAS BEEN CHOSEN?}
-In the  model \emph{Hierarchical Gaussian Filter} model (HGF, ~\citet{Mathys11}) for instance,
+of the sufficient parameters of a random variable.
+% \AM{THEN I HAVE A QUESTION: GIVEN THIS DEFINITION, DOES VOLATILITY CHANGE AT EACH TRIAL IN OUR CASE, OR IS VOLATILITY FIXED ONCE THE TAU=40 PARAMETER HAS BEEN CHOSEN?} it is given by tau /on average/
+In the \emph{Hierarchical Gaussian Filter} model (HGF, ~\citet{Mathys11}) for instance,
 volatility is controlled as a non-linear transformation
 of a random walk (modeled itself by a Brownian motion with a given diffusion factor).
 This hierarchical model allows to ultimately generate a sequence of binary choices
@@ -716,14 +717,15 @@ the following equations:
 Note that the prior distribution $\Pp$ can be for instance
 the uniform distribution $\Uu$ on $ [ 0, 1 ] $ or
 Jeffrey's prior $\Jj$~(see \seeApp{bcp}).
-There is always a switch at $t=0$ (that is, $x_2^0=1$) and for each pause \AM{Is this true?}.
+There is always a switch at $t=0$ (that is, $x_2^0=1$). % and optionnally for each pause \AM{Is this true?} no it wasn't.
 Herein, the experimental protocol is similar
 to that presented in~\seeFig{intro}-A,
 except for the pseudo-random sequence of directions $x_0^t$.
 This randomizes the occurrence of the switches,
 the length of sub-blocks
 and the continuous range of bias' values that are explored.
-To sum up, \seeEq{bsm} \AM{Shouldn't we rather refer to a system of 3 equations?} defines the Binomial Switching Model (BSM)
+To sum up, The system of three equations~\seeEq{bsm}
+defines the Binomial Switching Model (BSM)
 which we will use for the generation of sequences in experiments
 but also as the basis of an ideal observer model.
 
@@ -739,7 +741,8 @@ by extending previous results from~\citet{AdamsMackay2007}
 to the case of binomial data as in the BSM presented above.
 In addition, this solution is \emph{online},
 that is, that all computations on the sequence may be done
-using solely the variables available at the present trial \AM{AND THE PREVIOUS TRIALS IN THE SEQUENCE RIGHT?}.
+using solely the variables available at the present trial,
+compactly representing all history see in previous trials.
 We will also provide a computational implementation
 and a quantitative evaluation of this algorithm.
 Then, in~\seeSec{eye_rec} we will present  the analysis of anticipatory eye movements
@@ -792,7 +795,7 @@ as defined in~\seeEq{bsm}.
 First, as a control, we will define a first ideal observer
 which assumes that volatility is stationary with a fixed frequency.
 Then, we will extend it by modeling an agent
-which assumes that volatility  of the probabilistic bias \AM{occurs OR RATHER changes?}
+which assumes that the value of the probabilistic bias changes only
 at specific (yet randomly drawn) trials (switches),
 as was modeled by the forward probabilistic model defined in~\seeEq{bsm}.
 %
@@ -802,7 +805,7 @@ as was modeled by the forward probabilistic model defined in~\seeEq{bsm}.
 %: justification from previous studies
 Following~\citet{Maus2015},
 we modeled a first ideal observer,
-\AM{which represents a widespread}
+which represents a widespread
 realistic model of how trial-history shapes
 adaptive processes in human behavior,
 for instance motion expectation in a direction-biased experiment.
@@ -841,38 +844,38 @@ It is thus a form of moving average:
 \label{eq:leaky2}}
 \AM{In principle there should also be a term proportional to $(1-h)^{t}$$\hat{x_1}^{t=0}$, true? Which tends to $0$ for large $t$...}
 Inversely, let us assume that at each trial,
-the true probability bias changes \AM{randomly} with a rate of once
+the true probability bias changes randomly with a rate of once
 every $\tau$ trials.
 As a consequence, the probability that the bias does not change is $Pr(x_2^t=0)=1-1/\tau$ at each trial.
 Assuming independence of these occurrences, the estimated probability $p=\hat{x_1}^{t}$ is thus the sum
-of the past observations weighted by the \AM{belief that the bias has not changed} $i$ trials in the past, that is exactly
+of the past observations weighted by the belief that the bias has not changed during $i$ trials in the past, that is exactly
 as defined in~\seeEq{leaky2}.
 This shows that ignoring the temporal occurrence of the switch,
 the optimal solution to this problem is the
 ideal observer defined in~\seeEq{leaky2},
-which finds an online \AM{recursive} solution in~\seeEq{leaky}.
+which finds an online recursive solution in~\seeEq{leaky}.
 % and which believes that changes occur at a constant rate ($\hat{x_2}^t=h$
 We therefore proved here that the heuristic derived from~\citet{Anderson2006}
 is an ideal inversion of the generative model
-which assumes a fixed drift \AM{or rather duration?} in the probability bias. \AM{It seems to me that the main limit of this ideal observer is that it is lazy: it knows that on average things change every tau trials but it does nothing to actively estimate and account for these changes: maybe we should have a sentence here to introduce this concept of "active"/"adaptive" observer?}
+which assumes a fixed duration for the probability bias. %\AM{It seems to me that the main limit of this ideal observer is that it is lazy: it knows that on average things change every tau trials but it does nothing to actively estimate and account for these changes: maybe we should have a sentence here to introduce this concept of "active"/"adaptive" observer?} - LP : right, ours is indeed a more active agent, but that's quite subjective...
 
 %: using \hat{p} as a regressor
-The correspondence that we proved between the \AM{weighted} moving average heuristic
+The correspondence that we proved between the weighted moving average heuristic
 and the ideal observer model as a solution to a generative model lead
 us to several interim conclusions.
-First, the trajectory \AM{or time series?} $\hat{x_1}^{t}$ \AM{or ${x_0}^{t}$?} can serve as a regressor
+First, the time series of $\hat{x_1}^{t}$ values can serve as a regressor
 to test whether human observers follow the same strategy.
-In particular, one could test the parameter $\tau$, relative to the agents' belief in the \AM{weight} decay:
+In particular, one could test the parameter $\tau$, relative to the agents' belief in the weight decay:
 importantly $\tau$ may be fitted to the data,
 for instance to the data shown in~\seeFig{results_raw}.
 However, one should be careful with such conclusions whenever
-this \AM{trajectory} is fitted to behavioral data.
+this trajectory is fitted to behavioral data.
 For instance, if the inversion of the forward model is exact in the present case,
 one has to use approximations in more complex models,
-such as with the HGF~\citep{Mathys11} \AM{or the models developed by}~\citet{Wilson13,Wilson18}
-and \AM{some} discrepancy could originate from these approximations
+such as with the HGF~\citep{Mathys11} or the models developed by~\citet{Wilson13,Wilson18}
+and some discrepancy could originate from these approximations
 at the algorithmic level.
-As such, it is essential that these two \AM{two? this is not clear, which one is the second one?} sources of discrepancy
+As such, it is essential that these both sources of discrepancy (intrinsic versus extrinsic)
 should be controlled independently~\citep{Beck12}.
 Second, if we assume that the inversion of the model is perfect
 (that is, that no approximation has been done),
