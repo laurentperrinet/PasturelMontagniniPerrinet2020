@@ -196,10 +196,9 @@ pdfauthor={\AuthorA},%< \Email > \Address},%
 the adaptation of cognitive systems}
 % SUMMARY : cognition adaptation to volatility
 % ------------------------------------------------------------------
-% /!\ some parts of this subsection remotely originate from JB's thesis...
-%: general volatility and perceptual learning
-We live in a fundamentally volatile world for which
-our cognitive system has to constantly adapt.
+% * the evolution  of prices on the stock market: Any Socio-economic contextual index may make the price evolve up or down, slowly or more Rapidly
+% * ecological change
+% * the side (left or right of the field) in which the ball is on a soccer field
 % \LP{Anna, I found a better example which was less dramatic than ``
 % Think for instance of the variability of environmental contingencies
 % present in global climate and
@@ -220,6 +219,9 @@ our cognitive system has to constantly adapt.
 % or if it is necessary to explore different paradigms (limit emissions).
 % '' Hope you like it :-) }
 % \AM{ I like the green example too: it only demands to define the variable that would correspond to the time series to be tracked: carbon dioxide measurements at a given critical location? Also, the fact that a switch detection may inform important decision is nice for the example but we do not really have an analogy to it in our task. Yet I am very happy with both examples, both very much on fashion, are we more ecology, or pro-vax activists?!}
+%: general volatility and perceptual learning
+We live in a fundamentally volatile world for which
+our cognitive system has to constantly adapt.
 Imagine for instance you are a doctor (general practitioner) and
 that you usually report an average number of
 one person infected by measles per month.
@@ -234,19 +236,17 @@ Alternatively, these cases are
 ``unlucky'' coincidences that originate from the volatility
 of a genuinely stationary and heterogeneous random process
 that underly and generated these observations.
-In that option, it may be possible to readjust the estimated baseline rate of infection
-with this new data.
-This example illustrates one basic problem with which our cognitive system is faced:
+In that option, it may be possible to readjust
+the estimated baseline rate of infection with this new data.
+This example illustrates one fundamental problem
+with which our cognitive system is faced:
 when observing new sensory evidence,
 \emph{should I stay} and continue to integrate this novel data
 to my current beliefs about the environment's state
-or \emph{should} I go and adopt a new hypothesis
+or \emph{should I go} and adopt a new hypothesis
 about the random process generating the observations
 since the detection of a switch in the environment?
 
-% * the evolution  of prices on the stock market: Any Socio-economic contextual index may make the price evolve up or down, slowly or more Rapidly
-% * ecological change
-% * the side (left or right of the field) in which the ball is on a soccer field
 Such \emph{meta-analysis} of the environmental statistical properties is an effective strategy at the large scale level of our example,
 but also at all levels which are behaviorally relevant,
 such as contextual changes in our everyday life.
@@ -271,40 +271,28 @@ how current stimuli are perceived~\citep{Sotiropoulos2011, Adams12} and acted up
 Two qualitatively opposite effects of the stimulus history have been described, priming and perceptual adaptation. Adaptation reduces
 the sensitivity to recurrently presented stimuli and
 thus to re-calibrate perceptual experience~\citep{Clifford2007, Webster2011, Kohn2007}.
-Recent examples of negative biases in perceptual discrimination are
+Examples of negative biases in perceptual discrimination are
 numerous~\citep{REFFS} and show that the visual system tends
 to favor temporal and spatial stability of the stimulus:
 On the other hand, priming is a facilitatory effect that
 enhances the identification of repeated stimuli~\citep{Verstraten1994, Tiest2009}.
-% An example, is Priming: Repeated stimulations
-% creates a facilitation in perception~\citep{Kristjnsson2010WherePM, Maljkovic1994, Tulving1990}.
-% Indeed, after exposure to a similar stimulus,
-% priming leads to faster responses in perceptual detection or identification of probes.
-% It also occurs specifically for visual motion stimuli~\citep{Anstis1987, Campana2002, Pinkus1997}.
 This type of perceptual learning leads to improvements in discrimination
 with long-term training on a perceptual judgment~\citep{Lu2009}.
-In sensorimotor control, the same stimulus presented several times could indeed
+In sensorimotor control,
+the same stimulus presented several times could indeed
 lead to faster and more accurate responses and,
 on the other hand, lead to critically suboptimal behavior
 when a presented stimulus is not coherent
 with the participant's expectations~\citep{Hyman1953, Yu2009}.
 This process is highly dynamic especially in complex environments
 where new contingencies can arise at every moment.
-% In the case of visual motions,
-% the process of visual adaptation in mostly defined
-% by repeated exposures of stimuli and
-% after-effects related to those statistical regularities~\citep{Thompson2009}.
-% An example, is Motion Aftereffect:
-% Prolonged exposure to a stimulus moving in one direction results
-% in a motion aftereffect: a stationary stimulus is perceived to move
-% in the opposite direction as the adapting stimulus~\citep{Anstis1998, Mather2011}.
-% The motion aftereffect usually builds up over time~\citep{Hershenson1993},
-% sometimes after relatively short exposures~\citep{Kanai2005, Pavan2010}
-% and can last for period of ten seconds~\citep{Anstis1998}.
-Overall, the ability to detect statistical regularities in the event sequence
+Overall, the ability to detect
+statistical regularities in the event sequence
 thus appears as a fundamental ability
-for the adaptive behavior of species. Very few studies have addressed the question of whether
-the estimate of such regularities is explicit, and whether verbal reports of the dynamic statistical
+for the adaptive behavior of living species.
+Very few studies have addressed the question of whether
+the estimate of such regularities is explicit,
+and whether verbal reports of the dynamic statistical
 estimates would eventually correlate to the measures of behavioral adaptation. Here we aim at investigating this question in the specific case of motion direction processing.
 In addition, we attempt to palliate to the lack of a solid modeling approach to best understand the computation underlying behavioral adaptation to the environment's statistics,
 and in particular how sequential effects are integrated
@@ -315,11 +303,13 @@ to deal with this question.
 %: Bayesian methods & role of predictive processing for this adaptive response
 In all generality, Bayesian methods allow to define and quantitatively assess
 a range of hypotheses about the processing
-of available information by observers~\citep{Deneve1999, Diaconescu2014, Daunizeau10a}.
-\AM{HARD TO FOLLOW.. A key principle in the Bayesian inference approach is
+of (possibly noisy) information
+by some formal agents~\citep{Deneve1999, Diaconescu2014, Daunizeau10a}.
+A key principle in the Bayesian inference approach is
 that each stated hypothesis is quantitatively formalized
-using a generative model for the input / output response
-such that measurements and outcomes may be linked by
+using a generative model for the input / output response function
+by defining a graph of dependencies between defined variables.
+It then follows that measurements and outcomes may be linked by
 generic probabilistic computations.
 The generative model is parameterized by some structural variables
 (such as weights, non-linear gain functions or prior knowledge)
@@ -328,7 +318,7 @@ which may be represented as probabilities.
 Then, using the rules of probability calculus
 one can progressively update beliefs about the latent variables,
 such that one can finally infer the hidden structure of received inputs~\citep{Hoyer2003, Ma2014}.
-For instance, using Bayes's rule one can combine
+For instance, using Bayes's rule, one can combine
 the likelihood of observations given the generative model and
 the prior of these latent variables~\citep{Janes2014}.
 Of particular interest for us is the possibility to
@@ -339,13 +329,10 @@ is formed from the sensory input,
 this belief can be used to update
 the prior over of future beliefs on latent variables~\citep{Montagnini2007}.
 Thus, the comparisons between expectations and actual data produces
-constant updates to the estimates of the model under a mechanism
-that is labeled as~\textit{active inference}~\citep{Friston2003, Friston2010}.
-Such methodology thus allows to infer latent variables at present
-but also to understand longer time effects such as adaptation and learning
-through variational inference over
-the parameters of the probabilistic model~\citep{ref}.}
-
+constant updates to the estimates of the model and
+is formalized in all generality within the~\textit{active inference} framework~\citep{Friston2003, Friston2010}.
+In summary, Active Inference allows to predict latent variables
+but also to understand longer time effects such as adaptation and learning.
 
 In a recent study,~\citet{Meyniel16} simulated a model
 over five previously published datasets~\citep{Squires1976, Huettel2002, Kolossa2013, Cho2002, Falk1997}.
