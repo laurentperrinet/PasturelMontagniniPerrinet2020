@@ -918,8 +918,10 @@ and the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 \includegraphics[width=1\linewidth]{3_BCP_readouts}
 \end{center}
 \caption{\emph{Binomial Bayesian Change Point model (BBCP)}
-~\textbf{(A)} This plot shows a synthesized sequence of events that correspond to a binomial choice, either $0$ or $1$, which will then correspond to a leftward or rightward movement of the target.
-Here, the probability switched at trial $5$ from a value of $.25$ to $.75$.
+~\textbf{(A)} This plot shows a synthesized sequence of $10$ events
+that each correspond to a binomial choice, either $0$ or $1$,
+which will then correspond to a leftward or rightward movement of the target.
+Here, the probability switched from a value of $.25$ to $.75$ at trial $5$.
 The BBCP model tries to capture the occurences of switches by inferring run lengths,
 that is, the number of trials since a switch.
 At any new datum (trial), this defines a Hidden Markov Model
@@ -932,9 +934,9 @@ The run length falls back to zero.
 The blue curve stands for
 the actual run length of simulated data in~\textbf{A}
 as a function of time (r$_t$).
-~\textbf{(B)} On a longer sequence of $200$ trials
+~\textbf{(B)} On a longer sequence of $200$ trials,
 characteristic of our psychophysical experiments,
-but where we switched the probability at trial $100$ from a value of $.25$ to $.75$,
+for which we switched the probability from a value of $.25$ to $.75$ at trial $100$,
 we show
 % the inferred probability of different run lengths at each trial and
 % below, we superpose
@@ -942,25 +944,16 @@ the actual events which are observed by the agent (fine black lines),
 the probability inferred by a leaky integrator (red line)
 and the results of the BBCP model (blue line),
 along with $95\%$ confidence intervals.
-This shows that the BBCP,
-the probability of the having same probability consecutive trials.
-The red line represents the $\hat{r}$,
-that represents the sum of he products of each r
-(number of consecutive trials having the same probability)
-$\sum_{r=0}^\infty r \cdot P(r)$.
-~\textbf{C} represent the probability of each r for trials 50 and 250
-along their $\hat{r}$ and their $\hat{p}$.
-For instance, for trial 50, we can observe that $\hat{r}$ is close
-from the real number of trials during the probability has not changed (real $p$ stayed for 50 trials).
-$\hat{p}$ is also pretty close from the real $p$ ($p=1$).
-~\textbf{D} shows that at trial 250 $\hat{r}$ is more far than the real r
-that is also equal to 50 trials.
-But here, $\hat{p}$ is closer from $p$ that is equal to 0.75.
+This shows that for the BBCP model,
+the accuracy of the estimated value of the probability bias $\hat{x_1}^t$
+is closer than that from the leaky integrator.
+Note also that, while it takes some trials to detect the switch,
+once it is estimated that there is a new sub-block,
+integration is faster than for the leaky integrator.
 }
 \label{fig:bayesianchangepoint}
 \end{figure}
 %-------------------------------------------------------------%
-%: >>>> LuP is here <<<<
 %-------------------------------------------------------------%
 %: 2Ba precision in our belief of \hat{p}
 %-------------------------------------------------------------%
@@ -977,21 +970,18 @@ First, it allows for the agent to restrict the estimation $\hat{x_1}^{t}$ of $x_
 to only those samples $x_0^t$ produced since the last switch and until $t$.
 Indeed, the samples $x_0^t$ occurred before the switch are drawn independently from the present true value $x_1^t$
 and thus cannot help estimating the latter.
-Second, it is known that for  this estimate, the precision
+Second, it is known that for this estimate, the precision
 (that is, the inverse of its variance)
 grows linearly with the number of samples:
 The longer the run-length, the sharper the corresponding (probabilistic) belief.
-%Knowing a distributed belief on each different possible run-lengths, %  about different hypothesis
-%as represented by the probability distribution of each hypothesis,
-%the agent may therefore give different weights to the information
-%using an evaluation of the precision of each respective hypothesis.
-We have designed such an agent by extending
+We have designed an agent inverting the BSM by extending
 the Bayesian Change-Point (BCP) detection model~\citep{AdamsMackay2007}.
-This model defines the agent as an inversion of a switching generative model
+The latter model defines the agent as an inversion of a switching generative model
 for which the observed data (input) is Gaussian.
 We will here present an exact solution for the case of the BSM,
-that is, were the input is binomial (see~\seeEq{bsm}).
+that is, where the input is binomial (see~\seeEq{bsm}).
 
+%: >>>> LuP is here <<<<
 %-------------------------------------------------------------%
 %: 2Bb overcoming this difficulty using a latent variable - prediction/update cycle
 %-------------------------------------------------------------%
