@@ -909,7 +909,6 @@ and the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 \subsection{Binomial Bayesian Change Point model}
 % ------------------------------------------------------------------
 %-------------------------------------------------------------%
-%: >>>> LuP is here <<<<
 %: FIGURE 3 fig:bayesianchangepoint \seeFig{bayesianchangepoint}
 \begin{figure}%[b!]
 % cf 3_Results_2.ipynb
@@ -918,52 +917,32 @@ and the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 % cf : 3_Results_1
 \includegraphics[width=1\linewidth]{3_BCP_readouts}
 \end{center}
-\caption{\emph{Binomial Bayesian Change Point model}
-% (A) le principe de l'algorithme, \AM{Caption does not correspond to the figure!}
-~\textbf{(A)} shows a synthesized sequence of events that works as a binomial choice, either $0$ or $1$.
-In particular, the probability switched at trials 6 and 10.
-We show the graph (treillis) on which the message indicates that
-mass probability is being passed.
-Black lines denotes ``upwards'',
-that is, for which there is a progression of the run length at the next step.
-The red line stands for the possibility that a switch happened,
-and then falls back to zero.
-The black curve stands for
-the run length of simulated data in~\textbf{A}
+\caption{\emph{Binomial Bayesian Change Point model (BBCP)}
+~\textbf{(A)} This plot shows a synthesized sequence of events that correspond to a binomial choice, either $0$ or $1$, which will then correspond to a leftward or rightward movement of the target.
+Here, the probability switched at trial $5$ from a value of $.25$ to $.75$.
+The BBCP model tries to capture the occurences of switches by inferring run lengths,
+that is, the number of trials since a switch.
+At any new datum (trial), this defines a Hidden Markov Model
+as a graph (treillis) of possible run lengths.
+Edges of this graph indicate that a message is being passed
+to update each node's probability.
+Black lines denote a progression of the run length at the next step (no switch),
+while red lines stand for the possibility that a switch happened:
+The run length falls back to zero.
+The blue curve stands for
+the actual run length of simulated data in~\textbf{A}
 as a function of time (r$_t$).
-We can see that
-the run length drops back to zero
-when change occurs at trials 6 and 10.
-%(B) le résultat sur une séquence et
-~\textbf{(B)} is a sequence of points representing
-leftward (0) of rightward trials (1)
-with a given probability $p$ of being rightward and
-that changes at some trials (clear red).
-The predicted probability $\hat{p}$ ($\tau=N_{trial}/4$ tells the BBCP
-that the probability is more susceptible to change every $1/h=N_{trial}/4$),
-continue and dotted dark red lines shows the $p$$-$estimation.
-\LP{ older stuff: ``We show two panels, one below which displays
-the value of the belief for the different run-length,
-and one above where we will show the resulting prediction of the next outcome.
-We obtain for any given sequence different values at the given trial
-in the form of columns for any possible run-length:
-the belief, and the sufficient statistics for the beta distribution
-which allow to provide with an estimate of the current probability.
-First, we show the value of probability,
-low probabilities are blueish while high probabilities.
-At every trial, the agent evaluates the value
-for the different possible run lengths, generating a column.
-By showing all columns we generate this image
-which shows the evaluation along the sequence of trials.
-Second we show above the sequence of observations
-that were shown to the agent in a light black line.
-The red line gives an evaluation of the most probable
-a posteriori probability as the probability to the run-length
-the maximum a posteriori belief on the different beliefs about run-lengths. ''
-%using the estimate of the precision at this
-% (C) une analyse quantitative qui permettra de l'utiliser pour les expériences psycho
-}
-~\textbf{(B)} shows the probability of the run length,
+~\textbf{(B)} On a longer sequence of $200$ trials
+characteristic of our psychophysical experiments,
+but where we switched the probability at trial $100$ from a value of $.25$ to $.75$,
+we show
+% the inferred probability of different run lengths at each trial and
+% below, we superpose
+the actual events which are observed by the agent (fine black lines),
+the probability inferred by a leaky integrator (red line)
+and the results of the BBCP model (blue line),
+along with $95\%$ confidence intervals.
+This shows that the BBCP,
 the probability of the having same probability consecutive trials.
 The red line represents the $\hat{r}$,
 that represents the sum of he products of each r
@@ -981,6 +960,7 @@ But here, $\hat{p}$ is closer from $p$ that is equal to 0.75.
 \label{fig:bayesianchangepoint}
 \end{figure}
 %-------------------------------------------------------------%
+%: >>>> LuP is here <<<<
 %-------------------------------------------------------------%
 %: 2Ba precision in our belief of \hat{p}
 %-------------------------------------------------------------%
