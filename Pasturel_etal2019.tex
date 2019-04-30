@@ -1036,13 +1036,9 @@ to that at time $t$ and formalized by the transition matrix $Pr(r^t | r^{t-1})$.
 Finally, this update / prediction cycle applied to the BSM and using~\seeEq{bsm}
 will constitute the Binomial Bayesian Change Point (BBCP) detection model.
 
-%: >>>> LuP is here <<<<
 %-------------------------------------------------------------%
 %: 2Bc online estimation: initialization
 %-------------------------------------------------------------%
-%Following the principle of Active Inference, % POMDP / active exploration of feature space
-% it can be the mean and variance of a Gaussian, but in general it will be 2 parameters. in our case, we wish to estimate p (between zero and one) - it is characterized by the beta distribution (mathematically it is the conjugate of the bernouilli distribution)
-%s of a beta distribution
 The main difference between our algorithm and that of~\citep{AdamsMackay2007},
 is that the observed data is binomial and not Gaussian as in their case.
 The random variable $x_1^t$ is the probability bias used
@@ -1058,7 +1054,6 @@ In terms of probabilities, this amounts to set :
 \eqa{
 & \beta^{(0)}_0=Pr(r^0=0)=1 \text{,}\quad \forall r^0>0 \text{, } \beta^{(r)}_0=Pr(r^0)=0 \quad \text{and} \\
 & Pr(x_1^0 | r^0=0) \propto B(x_1^0; \mu_{prior}, \nu_{prior})
-%& P(r_0)= S(r) \quad \text{,} \mu^{(r=0)}_0 = \mu_{prior}\quad \text{and} \quad \nu^{(r=0)}_0 = \nu_{prior}
 }
 where $\mu_{prior}$ and $\nu_{prior}$ represent the sufficient statistics
 of the prior (Beta-distribution) probability density function (pdf) $\Pp$
@@ -1069,26 +1064,14 @@ this pdf will always be a beta-distribution,
 and with sufficient statistics $(\mu^{(r)}_{t}, \nu^{(r)}_{t})$.
 In the following, we will define the probability distribution at each node $r^t$,
 knowing the data observed from the first trial and before $t$ such that
-%$Pr(x_1^t | r^t, x_0^{0:t-1}) ~ B(x_1^t; \mu^{(r)}_{t}, \nu^{(r)}_{t})$.
-%\eql{
 $
 \pi^{(r)}_t = B( x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t})
 $. %}
+We can now detail the update / prediction cycle.
 
 %-------------------------------------------------------------%
 %: 2Bd update = Computing the likelihood
 %-------------------------------------------------------------%
-%By introducing the run-length as a latent variable of our ideal observer,
-%this algorithm introduced by~\citep{AdamsMackay2007}
-%allows to infer the instantaneous volatility of the input sequence.
-%It is equivalent as putting in competition
-%different leaky integrators in parallel,
-%one for each value of $r$ and to evaluate the probability $Pr(r_t | x_0^{0:t})$ for each of these hypothesis.
-%and the uncertainty associated to it.
-%As such, the main difference is the way that the likelihood is computed.
-%https://en.wikipedia.org/wiki/Likelihood_function
-%https://stats.stackexchange.com/questions/2641/what-is-the-difference-between-likelihood-and-probability
-% https://en.wikipedia.org/wiki/Rule_of_succession
 In particular, as we sequentially observe new data,
 we will first implement an update step that
 computes the likelihood of this datum $x_0^t$ with respect to
@@ -1103,7 +1086,6 @@ with $Z$ such that $\Ll(p | o=1, r) + \Ll(p | o=1, r)=1$.
 It measures the relative frequency of observing an occurrence of $o$ at trial $t$,
 as the updated estimation of the probability bias of $\frac{p\cdot r + o}{r+1}$
 knowing a sample size of $r+1$.
-%$\pi_{0:t} = P(x |\mu^{(r)}_t,\nu^{(r)}_t)$
 Following the formulation of the Beta probability distribution, it follows:
 \eql{% TODO: check formula
 \Ll(o | p, r) = \frac{1}{Z} \cdot {(p\cdot r + o)}^{p\cdot r + o} \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o}
@@ -1115,23 +1097,17 @@ Z = {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r )}^{(1- p)\cdot r }  
     {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
 }
 The derivation of this function is detailed in~\seeApp{likelihood}.
-%The full algorithm is summarized in~\seeApp{bcp}.
 
 %-------------------------------------------------------------%
-%: 2Bd online estimation: prediction
+%: 2Be online estimation: prediction
 %-------------------------------------------------------------%
-%This computation is detailed below (see \seeEq{likelihood}).
 In the second step, one can perform prediction
 using the graph defined in \seeFig{bayesianchangepoint}-A.
 Now that we have the vector of likelihoods $\pi^{(r)}_t=\Ll(x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$,
 one can update probabilities and perform the next prediction for trial $t+1$.
-%On the one hand, we determine the run length distribution
-%\eqa{
-%\beta^{(r)}_t = Pr(r_t | x_0^{0:t-1}) = Pr(r_t, x_0^{0:t-1}) / \sum_{r_{t}}  Pr(r_t, x_0^{0:t-1})
-%}
-%Based on the belief that was accumulated at trial $t$ %(see \seeFig{bayesianchangepoint}-B),
 The transition matrix % defined by the graph,
-allows to compute growth probabilities : %, that is, the belief at the next trial before observing a new datum:
+allows to compute growth probabilities for each run-length $r \geq 0$, 
+that is, the belief at the next trial before observing a new datum:
 \eqa{
 \beta^{(r+1)}_t = \frac{1}{B} \cdot \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot (1-h)
 }
@@ -1141,8 +1117,8 @@ but also the change-point probabilities:
 \beta^{(0)}_t  = \frac{1}{B} \cdot \sum_{r} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot h
 }
 with $B$ such that $\sum_{r} \beta^{(r)}_{t} = 1$.
-% Note that at $\forall t$,  $\beta^{(0}_{t}= h $
-On the other hand, we update the sufficient statistics to be used in the computation of the likelihood at the next trial following:
+On the other hand, we update the sufficient statistics to be used 
+in the computation of the likelihood at the next trial following:
 \eqa{
 & \mu^{(0)}_{t+1} = \mu_{prior} \text{,} \quad \nu^{(0)}_{t+1} = \nu_{prior} \\
 & \mu^{(r+1)}_{t+1} = r/(r+1) \cdot \mu^{(r)}_{t} + 1/(r+1) \cdot x_0^t \text{,} \quad \nu^{(r+1)}_{t+1} = \nu^{(r)}_{t} + 1
@@ -1156,7 +1132,7 @@ This finalizes the prediction step.
 The agent may infer at each trial the belief
 and use for instance the expected value or the maximum a posteriori as readouts.
 More precisely, we define these two strategies as following:
-Either by chosing
+Either by choosing
 at each trial the run-length with maximal probability
 and then assigning the predicted probability bias
 as the probability bias for that run-length:
@@ -1234,7 +1210,7 @@ To quantitatively evaluate the algorithm,
 we computed the average negative log-likelihood (in bits) of the estimate
 knowing the ground truth:
 \eql{
-\Ll =  \sum_{t} -\log_2 B(\hat{x_1}^t ; x_1^t, r^t )
+\Cc =  \sum_{t} -\log_2 B(\hat{x_1}^t ; x_1^t, r^t )
 }
 Similar measures based on the predicted readout $\hat{x_0}^t$
 gave similar results but would need more data to converge.
@@ -1250,7 +1226,7 @@ This will be important to guess the hazard rate assumed by an individual agent
 when we observe the set of responses it gives to a given sequence of stimuli
 (see~\seeSec{inter}).
 
-% TODO: say somethig about convergence?
+% TODO: say something about convergence?
 %-------------------------------------------------------------%
 %: 2Cc perspectives
 %-------------------------------------------------------------%
