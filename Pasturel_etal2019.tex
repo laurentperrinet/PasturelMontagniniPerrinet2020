@@ -780,11 +780,12 @@ one could extract relevant descriptors at the different levels of the model
 and fit these parameters with the recorded behavior.
 Here, we will use a similar approach but on a different generative model,
 as defined in~\seeEq{bsm}.
-First, as a control, we will define a first ideal observer
+First, we will define a first ideal observer as a control
 which assumes that volatility is stationary with a fixed frequency.
 Then, we will extend it by modeling an agent
-which assumes that the value of the probabilistic bias changes only
-at specific (yet randomly drawn) trials (switches),
+which assumes the existence of switches, that is,
+that the value of the probabilistic bias may change
+at specific (yet randomly drawn) trials,
 as was modeled by the forward probabilistic model defined in~\seeEq{bsm}.
 %
 % ------------------------------------------------------------------
@@ -793,27 +794,26 @@ as was modeled by the forward probabilistic model defined in~\seeEq{bsm}.
 %: justification from previous studies
 Following~\citet{Maus2015},
 we modeled a first ideal observer,
-which represents a widespread
+which represents a classical, widespread and
 realistic model of how trial-history shapes
-adaptive processes in human behavior,
-for instance motion expectation in a direction-biased experiment.
-First, according to~\citet{Anderson2006},
-the temporal evolution of the expectation $p=x_1^t$ of a given event
+adaptive processes in human behavior.
+It is adapted to model motion expectation in a direction-biased experiment.
+In this model, the temporal evolution of the expectation $p=x_1^t$ of a given event
 can be modeled by making a simple heuristic:
 the update of the estimated probability for an event is based
 on the discount of the previously estimated probability
-by a factor $1 - h \in [0, 1]$, relative to new information.
+by a factor $1 - h \in [0, 1]$, relative to new information~\citet{Anderson2006}.
 At trial $t$, this model can be expressed with the following equation:
-%TODO fix the notation \hat{p}^{t+1} > \hat{p}(t+1)
-\eql{%\choice{
-% p^t = 0 \quad \text{if} \quad x_2^t=0 \\
+\eql{
 \hat{x_1}^{t} = (1 - h) \cdot \hat{x_1}^{t-1} + h \cdot x_0^t
-% }
 \label{eq:leaky}}
-where $\hat{x_1}^{t=0}$ is equal to some prior value ($.5$ in the unbiased case).
+where $\hat{x_1}^{t=0}$ is equal to some prior value ($.5$ in the unbiased case),
+thjat is for the best guess before observing any data.
 % NOTE: it's an AR(1) process https://stats.stackexchange.com/questions/358162/writing-ar1-as-a-ma-infty-process
+
 %: from heuristics to ideal observer
-The estimated  probability $\hat{x_1}^{t}$ results then from the integration of previous instances
+The estimated probability $\hat{x_1}^{t}$ is computed
+from the integration of previous instances
 with a progressive discount of past information.
 The value of the scalar $h$ represents
 a compromise between responding rapidly
@@ -822,59 +822,65 @@ not prematurely discarding information still of value
 for slowly changing contexts  ($h \approx 0$).
 In the following, we will call this scalar the hazard rate.
 Equivalently, one can define $\tau = 1 / h$ as
-a characteristic time for the integration of information.
+a characteristic time (in units of number of trials)
+for the integration of information.
 Looking more closely at this expression,
 the ``forgetful agent'' computed in \seeEq{leaky}
-consists in an exponentially-weighted moving average (see \seeApp{leaky}).
-It is thus a form of moving average:
+consists of an exponentially-weighted moving average (see \seeApp{leaky}).
+It may thus be equivalently written in the form of a moving average:
 \eql{
 \hat{x_1}^{t} = h \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i}
 \label{eq:leaky2}}
-\AM{In principle there should also be a term proportional to $(1-h)^{t}$$\hat{x_1}^{t=0}$, true? Which tends to $0$ for large $t$...}
+% \AM{In principle there should also be a term proportional to $(1-h)^{t}$$\hat{x_1}^{t=0}$, true? Which tends to $0$ for large $t$...}
+% \LP{it's the term for $i=t$ - ok?}
 Inversely, let us assume that at each trial,
 the true probability bias changes randomly with a rate of once
 every $\tau$ trials.
 As a consequence, the probability that the bias does not change is $Pr(x_2^t=0)=1-1/\tau$ at each trial.
 Assuming independence of these occurrences, the estimated probability $p=\hat{x_1}^{t}$ is thus the sum
-of the past observations weighted by the belief that the bias has not changed during $i$ trials in the past, that is exactly
-as defined in~\seeEq{leaky2}.
-This shows that ignoring the temporal occurrence of the switch,
-the optimal solution to this problem is the
+of the past observations weighted by the belief that the bias has not changed during $i$ trials in the past, that is, exactly as defined in~\seeEq{leaky2}.
+This shows that
+assuming that changes occur at a constant rate ($\hat{x_2}^t=h$)
+but ignoring the temporal occurrence of the switch,
+the optimal solution to this inference problem is the
 ideal observer defined in~\seeEq{leaky2},
 which finds an online recursive solution in~\seeEq{leaky}.
-% and which believes that changes occur at a constant rate ($\hat{x_2}^t=h$
 We therefore proved here that the heuristic derived from~\citet{Anderson2006}
 is an ideal inversion of the generative model
-which assumes a fixed duration for the probability bias. %\AM{It seems to me that the main limit of this ideal observer is that it is lazy: it knows that on average things change every tau trials but it does nothing to actively estimate and account for these changes: maybe we should have a sentence here to introduce this concept of "active"/"adaptive" observer?} - LP : right, ours is indeed a more active agent, but that's quite subjective...
+which assumes a fixed average duration for the probability bias.
+% \AM{It seems to me that the main limit of this ideal observer is that it is lazy: it knows that on average things change every tau trials but it does nothing to actively estimate and account for these changes: maybe we should have a sentence here to introduce this concept of "active"/"adaptive" observer?} - LP : right, ours is indeed a more active agent, but that's quite subjective...
 
 %: using \hat{p} as a regressor
 The correspondence that we proved between the weighted moving average heuristic
-and the ideal observer model as a solution to a generative model lead
+and the ideal observer model as a solution to that generative model leads
 us to several interim conclusions.
-First, the time series of $\hat{x_1}^{t}$ values can serve as a regressor
-to test whether human observers follow the same strategy.
-In particular, one could test the parameter $\tau$, relative to the agents' belief in the weight decay:
-importantly $\tau$ may be fitted to the data,
+First, the time series of inferred $\hat{x_1}^{t}$ values can serve as a regressor
+to test whether human observers follow a similar strategy.
+In particular, one could test the free parameter $\tau$,
+relative to the agents' belief in the weight decay:
+Importantly, $\tau$ may be fitted to the data,
 for instance to the data shown in~\seeFig{results_raw}.
 However, one should be careful with such conclusions whenever
 this trajectory is fitted to behavioral data.
 For instance, if the inversion of the forward model is exact in the present case,
 one has to use approximations in more complex models,
-such as with the HGF~\citep{Mathys11} or the models developed by~\citet{Wilson13,Wilson18}
-and some discrepancy could originate from these approximations
+such as with the HGF~\citep{Mathys11}
+or with the models developed by~\citet{Wilson13,Wilson18}.
+As a result, some discrepancy could originate from these approximations
 at the algorithmic level.
 As such, it is essential that these both sources of discrepancy (intrinsic versus extrinsic)
 should be controlled independently~\citep{Beck12}.
 Second, if we assume that the inversion of the model is perfect
-(that is, that no approximation has been done),
+(that is, that no algorithmic approximation has been done in the inferrence),
 this means that by fitting different ideal observers
 to the data, one evaluates as a matter of fact the adequacy of
 a generative model, not to probabilistic calculus.
 This is a common confusion around the idea of a ``Bayesian brain''.
 We believe here that the challenge is not to validate the hypothesis that the brain uses or not the Bayes' theorem,
-but rather to test different hypotheses about the generative models
+but rather to test different hypotheses
+about the different generative models
 that agents may use.
-This may be essential in designing the experimental protocol,
+This methodological point may be essential in designing the experimental protocol,
 or in evaluating quantitatively the results.
 
 %: limits of the leaky integrator
@@ -894,7 +900,7 @@ The model presented in~\seeEq{leaky2} uses a constant weight
 for all trials, while precision of each trial
 can be potentially evaluated and used
 for precision-weighted estimation of the probability bias.
-To address this hypothesis, our next model work will be inspired
+To address this hypothesis, our next model will be inspired
 by a Bayesian Change-point detection model~\citep{AdamsMackay2007},
 which models an ideal agent inferring
 both the trajectory of the probability bias ($x_1^t$)
@@ -1750,7 +1756,7 @@ Remark that the eyelink provides with the periods of saccades or
 - fitting method which allows to extract some key components of
 the velocity traces: maximum speed, latency, temporal inertia ($\tau$)
  and most interestingly acceleration before motion onset.
- We cross-validated that this method was givinfg similar results
+ We cross-validated that this method was giving similar results
   to other classical methods but in a more robust fashion/
 
 While being sensible to recording errors, this allows us to extract the
