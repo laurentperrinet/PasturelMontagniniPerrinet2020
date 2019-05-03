@@ -369,11 +369,11 @@ and therefore allow to further deepen our understanding of such predictive proce
 \centering{
 %\includegraphics[width=\linewidth]{figure1}
 \begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
-\node [anchor=north west]  (imgA) at (0.000\linewidth,.600\linewidth){\includegraphics[width=0.300\linewidth]{1_A_Experiment_randomblock}};
-\node [anchor=north west]  (imgB) at (0.305\linewidth,.618\linewidth){\includegraphics[width=0.500\linewidth]{1_B_protocol_recording}};
+\node [anchor=north west]  (imgA) at (0.000\linewidth,.600\linewidth){\includegraphics[width=0.330\linewidth]{1_A_Experiment_randomblock}};
+\node [anchor=north west]  (imgB) at (0.315\linewidth,.618\linewidth){\includegraphics[width=0.450\linewidth]{1_B_protocol_recording}};
 \node [anchor=north west]  (imgC) at (0.844\linewidth,.538\linewidth){\includegraphics[width=0.156\linewidth]{1_C_protocol_bet_simple}};
 \draw [anchor=north west] (0.000\linewidth, .62\linewidth) node {$\mathsf{(A)}$};
-\draw [anchor=north west] (0.300\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
+\draw [anchor=north west] (0.310\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
 \draw [anchor=north west] (0.842\linewidth, .62\linewidth) node {$\mathsf{(C)}$};
 \end{tikzpicture}
 }
@@ -393,12 +393,9 @@ The eye-movements task was an adapted version of a task developed by ~\citet{Mon
 Each one of $600$ trials consisted of sequentially:
 a fixation dot (of random duration between $400$ and $800$~\ms),
 a blank screen (of fixed duration of  $300$~\ms) and
-a moving ring-shaped target (with $10\degree/s$ velocity) which the observers were instructed to follow.
+a moving ring-shaped target (with $15~\degree/s$ velocity) which the observers were instructed to follow.
 The direction of the target (right or left) was drawn pseudo-randomly
-according to a binomial distribution
-parameterized by a probabilistic bias $p$
-($0\leq p\leq 1 $). The direction is unbiased for $p=0.5$,
-always left for $p=0$ and always right if $p=1$. 
+according to the generative model defined above. 
 \textbf{(C)}~In order to titrate the adaptation 
 to the environmental volatility of motion direction at the conscious level,
 we invited each observer to perform a new variant of the direction-biased experiment on a subsequent day,
@@ -408,8 +405,8 @@ for their estimate of the forthcoming direction of the target.
 As shown in this sample screenshot,
 this was performed by moving a mouse cursor on a continuous rating scale
 between ``sure left'', to ``unsure'' and finally ``sure right''.
-Due to the (pseudo-)random nature of the sequence no observer noticed
-that the same sequence of directions was used in both experiments.
+No observer noticed
+that the same (pseudo-)random sequence of target directions was used in both experiments.
 }
 \label{fig:intro}
 \end{figure}
