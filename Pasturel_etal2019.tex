@@ -870,15 +870,14 @@ and the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 \begin{figure}%[b!]   
 % cf 3_Results_2.ipynb
 \centering{
-%\includegraphics[width=\linewidth]{figure1}
-\begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
-\node [anchor=north west]  (imgA) at (0.000\linewidth,.600\linewidth){\includegraphics[width=0.325
+\begin{tikzpicture}[thick,scale=.95]
+\node [anchor=north west]  (imgA) at (0.000\linewidth,.580\linewidth){\includegraphics[width=0.382
 \linewidth]{3_BCP_model}};
-\node [anchor=north west]  (imgB) at (0.340\linewidth,.580\linewidth){\includegraphics[width=0.6\linewidth]{3_BCP_readouts}};
+\node [anchor=north west]  (imgB) at (0.382\linewidth,.580\linewidth){\includegraphics[width=0.618\linewidth]{3_BCP_readouts}};
 \draw [anchor=north west] (0.000\linewidth, .62\linewidth) node {$\mathsf{(A)}$};
-\draw [anchor=north west] (0.330\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
+\draw [anchor=north west] (0.382\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
 \end{tikzpicture}
-}
+} 
 \caption{\emph{Binomial Bayesian Change Point model (BBCP)}
 ~\textbf{(A)} This plot shows a synthesized sequence of $10$ events
 that each correspond to a binomial choice, either $0$ or $1$,
