@@ -335,7 +335,6 @@ is formalized in all generality within the~\textit{active inference} framework~\
 In summary, Active Inference allows to predict latent variables
 but also to understand longer time effects such as adaptation and learning.
 
-% <----- Laurent is here ----->
 In a recent study,~\citet{Meyniel16} simulated a model
 over five previously published datasets~\citep{Squires1976, Huettel2002, Kolossa2013, Cho2002, Falk1997}.
 Their main conclusion was that
@@ -363,33 +362,33 @@ and therefore allow to further deepen our understanding of such predictive proce
 % ------------------------------------------------------------------
 \subsection{Anticipatory Smooth Pursuit Eye Movements (aSPEM)}
 % ------------------------------------------------------------------
-% SUMMARY : particluar case of aSPEM
+% SUMMARY : particular case of aSPEM
 %-------------------------------------------------------------%
-%: FIGURE 1 fig:intro ~\seeFig{intro}
+%: FIGURE 1A fig:intro ~\seeFig{intro}
 \begin{figure}%[b!]
 \centering{
 %\includegraphics[width=\linewidth]{figure1}
 \begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
-% cf 0_protocole.ipynb
-\node [anchor=north west]  (img2) at (0.000\linewidth,.618\linewidth){\includegraphics[width=0.5\linewidth]{1_A_protocol_recording}};
-% cf 0_protocole_Trace_Moyenne.ipynb
-\node [anchor=north west]  (img2) at (0.51\linewidth,.628\linewidth){\includegraphics[width=0.33\linewidth]{1_B_Trace_moyenne}};
-%\node [anchor=north west]  (img2) at (0.5\linewidth,.618\linewidth){\includegraphics[width=0.25\linewidth]{image_anna_1}};
-% cf 0_protocole.ipynb
-\node [anchor=north west]  (img2) at (0.844\linewidth,.538\linewidth){\includegraphics[width=0.156\linewidth]{1_C_protocol_bet_simple}};
-
-%\node [anchor=north west]  (img2) at (0.75\linewidth,.618\linewidth){\includegraphics[width=0.25\linewidth]{protocol_bet_simple}};
+\node [anchor=north west]  (imgA) at (0.000\linewidth,.628\linewidth){\includegraphics[width=0.250\linewidth]{1_B_Trace_moyenne}};
+\node [anchor=north west]  (imgB) at (0.250\linewidth,.618\linewidth){\includegraphics[width=0.500\linewidth]{1_B_protocol_recording}};
+\node [anchor=north west]  (imgC) at (0.844\linewidth,.538\linewidth){\includegraphics[width=0.156\linewidth]{1_C_protocol_bet_simple}};
 \draw [anchor=north west] (0.000\linewidth, .62\linewidth) node {$\mathsf{(A)}$};
-\draw [anchor=north west] (0.505\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
+\draw [anchor=north west] (0.250\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
 \draw [anchor=north west] (0.842\linewidth, .62\linewidth) node {$\mathsf{(C)}$};
 \end{tikzpicture}
 }
+% <----- Laurent is here ----->
 \caption{
 %\emph{Anticipatory SPEM (aSPEM): experimental design and results.} 
 %\textbf{(A)}~TODO: MOVE THIS PART IN THE MAIN TEXT:
-\emph{Behavioral experiments: tracking eye movements and confidence rating}
-\AM{I WOULD SKIP THIS SENTENCE: We replicated the results of~\citet{Montagnini2010},
-in which human observers were presented with several $500$ trials blocks of horizontal target motion with a block-dependent direction probability bias, and they were asked to track the target with their gaze.} 
+\emph{Behavioral experiments: tracking eye movements and confidence rating in a volatile environment}
+\textbf{(A)}~
+We tested the capacity of human subjects to adapt to a volatile environment 
+by using a simple, 3-layered generative model of fluctuations.
+At the lowest layer, a binary variable is chosen using a Bernouilli trial of a given probability bias.
+This bias is chosen from a given prior and is constant for as many trials until a switch is generated.
+Switches are generated in the third layer as a Bernouilli trial with a given hazard rate.
+\textbf{(B)}~
 The eye-movements task was an adapted version of a task developed by ~\citet{Montagnini2010}. 
 Each one of $600$ trials consisted of sequentially:
 a fixation dot (of random duration between $400$ and $800$~\ms),
@@ -399,13 +398,46 @@ The direction of the target (right or left) was drawn pseudo-randomly
 according to a binomial distribution
 parameterized by a probabilistic bias $p$
 ($0\leq p\leq 1 $). The direction is unbiased for $p=0.5$,
-always left for $p=0$ and always right if $p=1$. Participants' eye movement were recorded all along the trial sequence.
-\AM{An important difference with the study of~\citet{Montagnini2010} is that their experiment was made of several $500$ trials blocks of target motion with a block-dependent direction probability bias selected among a few predetermined values, whereas in the present study $p$ can change at any moment during the sequence and take any value between $0$ and $1$.}
+always left for $p=0$ and always right if $p=1$. 
+\textbf{(C)}~In order to titrate the adaptation 
+to the environmental volatility of motion direction at the conscious level,
+we invited each observer to perform a new variant of the direction-biased experiment on a subsequent day,
+where, instead of recording their eye movements, 
+we asked participants to rate, before each trial, the level of confidence
+for their estimate of the forthcoming direction of the target.
+As shown in this sample screenshot,
+this was performed by moving a mouse cursor on a continuous rating scale
+between ``sure left'', to ``unsure'' and finally ``sure right''.
+Due to the (pseudo-)random nature of the sequence no observer noticed
+that the same sequence of directions was used in both experiments.
+}
+\label{fig:intro}
+\end{figure}
+
+
+%: FIGURE 1B fig:introB ~\seeFig{introB}
+\begin{figure}%[b!]
+\centering{
+%\includegraphics[width=\linewidth]{figure1}
+\begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
+\node [anchor=north west]  (img2) at (0.51\linewidth,.33\linewidth){\includegraphics[width=0.33\linewidth]{1_B_Trace_moyenne}};
+%\draw [anchor=north west] (0.000\linewidth, .62\linewidth) node {$\mathsf{(A)}$};
+%\draw [anchor=north west] (0.505\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
+\end{tikzpicture}
+}
+\caption{
+%\emph{Anticipatory SPEM (aSPEM): experimental design and results.} 
+%\textbf{(A)}~TODO: MOVE THIS PART IN THE MAIN TEXT:
+\emph{Behavioral experiments: anticipatory Smooth Pursuit Eye Movements}
 % TODO : dans notre plot on a des range de valeurs pour p :-/ -> C'EST PARCE QUE LE PLOT REPRESENTE DEJA LA VITESSE MOYENNE OBTENUE DANS LA TACHE AVEC SWITCHES!
-\textbf{(B)}~Horizontal eye velocity traces 
+%\textbf{(B)}~
+We first replicated the results of~\citet{Montagnini2010},
+in which human observers were presented with several $500$ trials blocks of horizontal target motion with a block-dependent direction probability bias, and they were asked to track the target with their gaze.
+An important difference with that study is that their experiment was made of several blocks of target motion with a block-dependent direction probability bias selected among a few predetermined values, whereas in the present study $p$ can change in each different block as a random number between $0$ and $1$.
+Horizontal eye velocity traces 
 averaged, over rightward trials and all observers, for five different intervals of the direction bias.
 These traces are aligned to the onset of the moving dot (the $0$ on the $x-axis$).
-Saccades were removed using a thresholding method~(see \seeApp{em}) and
+Saccades were removed using a thresholding method~(see~\seeApp{em}) and
 the shaded area around the traces represent one standard deviation over all velocity samples.
 In the unbiased or weakly biased condition ($0.4\leq p\leq 0.6 $), one can distinguish
 a visually-driven component (after a latency of $\approx 100~\ms$)
@@ -416,25 +448,14 @@ in the direction of the expected velocity, starting during the GAP phase and wel
 This phase is the anticipatory SPEM (aSPEM).
 As previously reported~\citep{Montagnini2010, SantosKowler2017,Damasse18},
 the slope of this ramp correlates with the strength of the bias.
-%\LP{say this in words or in the ANnex: "This is shown in the inset showing the average gain in velocity ($\pm$ SEM)
-%before any visually driven information (here, at $t=50~\ms$)." or refer to the recent publication from JB}
-\textbf{(C)}\AM{I WOULD NOT WRITE ALL THIS IN THE FIGURE CAPTION: ~In this study, we extended this experiment in three aspects.
+In this study, we extended this experiment in three aspects.
 First, we used probability biases in a continuous space,
 as drawn from a prior distribution for the values of $p$.
 Second, we generated the random sequence of trials
 by concatenating random-length blocks (see \seeFig{results_raw}),
 to avoid potential confounds related to the previously used blocked-design.
-Third, } In order to titrate the adaptation to the environmental volatility of motion direction at the conscious level,
-we invited each observer to perform a new variant of the direction-biased experiment on a subsequent day,
-where, instead of recording their eye movements, we asked participants to rate, before each trial, the level of confidence
-for their estimate of the forthcoming direction of the target.
-As shown in this sample screenshot,
-this was performed by moving a mouse cursor on a continuous rating scale
-between ``sure left'', to ``unsure'' and finally ``sure right''.
-Due to the (pseudo-)random nature of the sequence no observer noticed
-that the same sequence of directions was used in both experiments.
 }
-\label{fig:intro}
+\label{fig:introB}
 \end{figure}
 
 %-------------------------------------------------------------%
@@ -619,12 +640,6 @@ to be negative for $p$ values below~$.5$ and positive for values above~$.5$.
 In addition, the explicit predictive rating
 for the next trial's motion direction
 seems to follow a similar trend.
-%
-\AM{I WOULD MOVE THIS PART IN THE CAPTION OF FIG 1 OR IN THE TEXT : Globally, each of the $12$ participant see 3 blocks of $200$ trials,
-once for eye recording~(see \seeFig{intro}-A)
-and in a subsequent day for the rating scale experiment~(see \seeFig{intro}-C).
-Using a pseudo-random number generator with the same seed,
-we could present the exact same sequence to all participants.} %
 Note that we introduced short pauses every $50$ trials (as denoted by vertical black lines), to prevent from fatigue and check for possible drifts of the recorded eye position.
 }
 \label{fig:results_raw}
