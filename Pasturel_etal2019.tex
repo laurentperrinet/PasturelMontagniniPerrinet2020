@@ -379,9 +379,7 @@ and therefore allow to further deepen our understanding of such predictive proce
 }
 % <----- Laurent is here ----->
 \caption{
-%\emph{Anticipatory SPEM (aSPEM): experimental design and results.} 
-%\textbf{(A)}~TODO: MOVE THIS PART IN THE MAIN TEXT:
-\emph{Behavioral experiments: tracking eye movements and confidence rating in a volatile environment}
+\emph{Tracking eye movements and confidence rating in a volatile environment}
 \textbf{(A)}~
 We tested the capacity of human subjects to adapt to a volatile environment 
 by using a simple, 3-layered generative model of fluctuations.
@@ -412,50 +410,6 @@ Due to the (pseudo-)random nature of the sequence no observer noticed
 that the same sequence of directions was used in both experiments.
 }
 \label{fig:intro}
-\end{figure}
-
-
-%: FIGURE 1B fig:introB ~\seeFig{introB}
-\begin{figure}%[b!]
-\centering{
-%\includegraphics[width=\linewidth]{figure1}
-\begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
-\node [anchor=north west]  (img2) at (0.51\linewidth,.33\linewidth){\includegraphics[width=0.33\linewidth]{1_B_Trace_moyenne}};
-%\draw [anchor=north west] (0.000\linewidth, .62\linewidth) node {$\mathsf{(A)}$};
-%\draw [anchor=north west] (0.505\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
-\end{tikzpicture}
-}
-\caption{
-%\emph{Anticipatory SPEM (aSPEM): experimental design and results.} 
-%\textbf{(A)}~TODO: MOVE THIS PART IN THE MAIN TEXT:
-\emph{Behavioral experiments: anticipatory Smooth Pursuit Eye Movements}
-% TODO : dans notre plot on a des range de valeurs pour p :-/ -> C'EST PARCE QUE LE PLOT REPRESENTE DEJA LA VITESSE MOYENNE OBTENUE DANS LA TACHE AVEC SWITCHES!
-%\textbf{(B)}~
-We first replicated the results of~\citet{Montagnini2010},
-in which human observers were presented with several $500$ trials blocks of horizontal target motion with a block-dependent direction probability bias, and they were asked to track the target with their gaze.
-An important difference with that study is that their experiment was made of several blocks of target motion with a block-dependent direction probability bias selected among a few predetermined values, whereas in the present study $p$ can change in each different block as a random number between $0$ and $1$.
-Horizontal eye velocity traces 
-averaged, over rightward trials and all observers, for five different intervals of the direction bias.
-These traces are aligned to the onset of the moving dot (the $0$ on the $x-axis$).
-Saccades were removed using a thresholding method~(see~\seeApp{em}) and
-the shaded area around the traces represent one standard deviation over all velocity samples.
-In the unbiased or weakly biased condition ($0.4\leq p\leq 0.6 $), one can distinguish
-a visually-driven component (after a latency of $\approx 100~\ms$)
-which corresponds to the standard Smooth Pursuit Eye Movement (SPEM) initiation.
-When introducing a bias in the direction,
-the average eye velocity progressively ramps
-in the direction of the expected velocity, starting during the GAP phase and well before the visually-driven component:
-This phase is the anticipatory SPEM (aSPEM).
-As previously reported~\citep{Montagnini2010, SantosKowler2017,Damasse18},
-the slope of this ramp correlates with the strength of the bias.
-In this study, we extended this experiment in three aspects.
-First, we used probability biases in a continuous space,
-as drawn from a prior distribution for the values of $p$.
-Second, we generated the random sequence of trials
-by concatenating random-length blocks (see \seeFig{results_raw}),
-to avoid potential confounds related to the previously used blocked-design.
-}
-\label{fig:introB}
 \end{figure}
 
 %-------------------------------------------------------------%
@@ -1693,6 +1647,48 @@ In order to extract the relevant parameters of the oculomotor responses, we deve
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+%: FIGURE 1B fig:introB ~\seeFig{introB}
+\begin{figure}%[b!]
+\centering{
+%\includegraphics[width=\linewidth]{figure1}
+\begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
+\node [anchor=north west]  (img2) at (0.51\linewidth,.33\linewidth){\includegraphics[width=0.33\linewidth]{1_B_Trace_moyenne}};
+%\draw [anchor=north west] (0.000\linewidth, .62\linewidth) node {$\mathsf{(A)}$};
+%\draw [anchor=north west] (0.505\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
+\end{tikzpicture}
+}
+\caption{
+%\emph{Anticipatory SPEM (aSPEM): experimental design and results.} 
+%\textbf{(A)}~TODO: MOVE THIS PART IN THE MAIN TEXT:
+\emph{Behavioral experiments: anticipatory Smooth Pursuit Eye Movements}
+% TODO : dans notre plot on a des range de valeurs pour p :-/ -> C'EST PARCE QUE LE PLOT REPRESENTE DEJA LA VITESSE MOYENNE OBTENUE DANS LA TACHE AVEC SWITCHES!
+%\textbf{(B)}~
+We first replicated the results of~\citet{Montagnini2010},
+in which human observers were presented with several $500$ trials blocks of horizontal target motion with a block-dependent direction probability bias, and they were asked to track the target with their gaze.
+An important difference with that study is that their experiment was made of several blocks of target motion with a block-dependent direction probability bias selected among a few predetermined values, whereas in the present study $p$ can change in each different block as a random number between $0$ and $1$.
+Horizontal eye velocity traces 
+averaged, over rightward trials and all observers, for five different intervals of the direction bias.
+These traces are aligned to the onset of the moving dot (the $0$ on the $x-axis$).
+Saccades were removed using a thresholding method~(see~\seeApp{em}) and
+the shaded area around the traces represent one standard deviation over all velocity samples.
+In the unbiased or weakly biased condition ($0.4\leq p\leq 0.6 $), one can distinguish
+a visually-driven component (after a latency of $\approx 100~\ms$)
+which corresponds to the standard Smooth Pursuit Eye Movement (SPEM) initiation.
+When introducing a bias in the direction,
+the average eye velocity progressively ramps
+in the direction of the expected velocity, starting during the GAP phase and well before the visually-driven component:
+This phase is the anticipatory SPEM (aSPEM).
+As previously reported~\citep{Montagnini2010, SantosKowler2017,Damasse18},
+the slope of this ramp correlates with the strength of the bias.
+In this study, we extended this experiment in three aspects.
+First, we used probability biases in a continuous space,
+as drawn from a prior distribution for the values of $p$.
+Second, we generated the random sequence of trials
+by concatenating random-length blocks (see \seeFig{results_raw}),
+to avoid potential confounds related to the previously used blocked-design.
+}
+\label{fig:introB}
+\end{figure}
 
 
 I show here a typical velocity traces for one subject / 2 trials
