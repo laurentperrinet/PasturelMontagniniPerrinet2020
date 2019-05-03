@@ -369,11 +369,11 @@ and therefore allow to further deepen our understanding of such predictive proce
 \centering{
 %\includegraphics[width=\linewidth]{figure1}
 \begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
-\node [anchor=north west]  (imgA) at (0.000\linewidth,.628\linewidth){\includegraphics[width=0.250\linewidth]{1_B_Trace_moyenne}};
-\node [anchor=north west]  (imgB) at (0.250\linewidth,.618\linewidth){\includegraphics[width=0.500\linewidth]{1_B_protocol_recording}};
+\node [anchor=north west]  (imgA) at (0.000\linewidth,.618\linewidth){\includegraphics[width=0.300\linewidth]{1_A_Experiment_randomblock}};
+\node [anchor=north west]  (imgB) at (0.290\linewidth,.618\linewidth){\includegraphics[width=0.500\linewidth]{1_B_protocol_recording}};
 \node [anchor=north west]  (imgC) at (0.844\linewidth,.538\linewidth){\includegraphics[width=0.156\linewidth]{1_C_protocol_bet_simple}};
 \draw [anchor=north west] (0.000\linewidth, .62\linewidth) node {$\mathsf{(A)}$};
-\draw [anchor=north west] (0.250\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
+\draw [anchor=north west] (0.290\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
 \draw [anchor=north west] (0.842\linewidth, .62\linewidth) node {$\mathsf{(C)}$};
 \end{tikzpicture}
 }
@@ -382,10 +382,12 @@ and therefore allow to further deepen our understanding of such predictive proce
 \emph{Tracking eye movements and confidence rating in a volatile environment}
 \textbf{(A)}~
 We tested the capacity of human subjects to adapt to a volatile environment 
-by using a simple, 3-layered generative model of fluctuations.
-At the lowest layer, a binary variable is chosen using a Bernouilli trial of a given probability bias.
-This bias is chosen from a given prior and is constant for as many trials until a switch is generated.
-Switches are generated in the third layer as a Bernouilli trial with a given hazard rate.
+by using a simple, 3-layered generative model of fluctuations in target directions.
+This binary variable is chosen using a Bernouilli trial of a given probability bias.
+This bias is itself chosen at random from a given prior 
+and is constant for as many trials until a switch is generated.
+Switches are generated in the third layer as a Bernouilli trial 
+with a given hazard rate (here on average once every $40$ trials).
 \textbf{(B)}~
 The eye-movements task was an adapted version of a task developed by ~\citet{Montagnini2010}. 
 Each one of $600$ trials consisted of sequentially:
