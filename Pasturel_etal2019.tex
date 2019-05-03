@@ -32,6 +32,7 @@ Animal behavior has to constantly adapt to changes, for instance when unexpected
 \usepackage[pass]{geometry}
 \usepackage{babel}
 \usepackage{csquotes}
+\usepackage{gensymb}
 % MATHS (AMS)
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -386,57 +387,52 @@ and therefore allow to further deepen our understanding of such predictive proce
 \caption{
 %\emph{Anticipatory SPEM (aSPEM): experimental design and results.} 
 %\textbf{(A)}~TODO: MOVE THIS PART IN THE MAIN TEXT:
-We replicated the results of~\citet{Montagnini2010},
-in which human observers were presented with several $500$ trials blocks of horizontal target motion with a block-dependent direction probability bias, and they were asked to track the target with their gaze. 
+\emph{Behavioral experiments: tracking eye movements and confidence rating}
+\AM{I WOULD SKIP THIS SENTENCE: We replicated the results of~\citet{Montagnini2010},
+in which human observers were presented with several $500$ trials blocks of horizontal target motion with a block-dependent direction probability bias, and they were asked to track the target with their gaze.} 
 The eye-movements task was an adapted version of a task developed by ~\citet{Montagnini2010}. 
 Each one of $600$ trials consisted of sequentially:
-a fixation dot (of random duration between $400$ and $600$~\ms),
+a fixation dot (of random duration between $400$ and $800$~\ms),
 a blank screen (of fixed duration of  $300$~\ms) and
-a moving dot (at $10$ deg/s) which the observers were instructed to follow.
-The direction of the dot was drawn pseudo-randomly
+a moving ring-shaped target (with $10\degree/s$ velocity) which the observers were instructed to follow.
+The direction of the target (right or left) was drawn pseudo-randomly
 according to a binomial distribution
 parameterized by a probabilistic bias $p$
 ($0\leq p\leq 1 $). The direction is unbiased for $p=0.5$,
-always left for $p=0$ and always right if $p=1$.
-%\AM{I DON'T THINK THAT WE HAVE DONE THIS EXPERIMENT! 
-In a first experiment,
-we %replicated the experiment of~\citep{Montagnini2010} and
-tested $5$ different values of $p$:
-$.25$, $.5$, $.75$, $.9$ and $1.$,
-in fixed blocks of $120$ trials each.
+always left for $p=0$ and always right if $p=1$. Participants' eye movement were recorded all along the trial sequence.
+\AM{An important difference with the study of~\citet{Montagnini2010} is that their experiment was made of several $500$ trials blocks of target motion with a block-dependent direction probability bias selected among a few predetermined values, whereas in the present study $p$ can change at any moment during the sequence and take any value between $0$ and $1$.}
 % TODO : dans notre plot on a des range de valeurs pour p :-/ -> C'EST PARCE QUE LE PLOT REPRESENTE DEJA LA VITESSE MOYENNE OBTENUE DANS LA TACHE AVEC SWITCHES!
-\textbf{(B)}~Velocity traces of eye movements
-averaged, over observers, for five different intervals of the direction bias.
-These traces are aligned to the onset of the moving dot.
+\textbf{(B)}~Horizontal eye velocity traces 
+averaged, over rightward trials and all observers, for five different intervals of the direction bias.
+These traces are aligned to the onset of the moving dot (the $0$ on the $x-axis$).
 Saccades were removed using a thresholding method~(see \seeApp{em}) and
-error bars show one standard deviation over all samples.
-In the unbiased condition, one can distinguish
+the shaded area around the traces represent one standard deviation over all velocity samples.
+In the unbiased or weakly biased condition ($0.4\leq p\leq 0.6 $), one can distinguish
 a visually-driven component (after a latency of $\approx 100~\ms$)
-which corresponds to a standard Smooth Pursuit Eye Movement (SPEM).
+which corresponds to the standard Smooth Pursuit Eye Movement (SPEM) initiation.
 When introducing a bias in the direction,
-one observes that the average velocity of the eye progressively ramps
+the average eye velocity progressively ramps
 in the direction of the expected velocity, starting during the GAP phase and well before the visually-driven component:
-This phase is the Anticipatory SPEM (aSPEM).
-As reported previously~\citep{Montagnini2010, SantosKowler2017,Damasse18},
+This phase is the anticipatory SPEM (aSPEM).
+As previously reported~\citep{Montagnini2010, SantosKowler2017,Damasse18},
 the slope of this ramp correlates with the strength of the bias.
 %\LP{say this in words or in the ANnex: "This is shown in the inset showing the average gain in velocity ($\pm$ SEM)
 %before any visually driven information (here, at $t=50~\ms$)." or refer to the recent publication from JB}
-\textbf{(C)}~In this paper, we extended this experiment in three aspects.
+\textbf{(C)}\AM{I WOULD NOT WRITE ALL THIS IN THE FIGURE CAPTION: ~In this study, we extended this experiment in three aspects.
 First, we used probability biases in a continuous space,
 as drawn from a prior distribution for the values of $p$.
 Second, we generated the random sequence of trials
 by concatenating random-length blocks (see \seeFig{results_raw}),
 to avoid potential confounds related to the previously used blocked-design.
-Third, in order to titrate the adaptation to the environmental volatility at the conscious level,
-we invited each observer to perform a variant of the direction-biased experiment on a subsequent day,
-where, instead of recording their eye movements, we asked participants to rate the level of confidence
-for their estimate of the forthcoming direction of the dot before each trial.
+Third, } In order to titrate the adaptation to the environmental volatility of motion direction at the conscious level,
+we invited each observer to perform a new variant of the direction-biased experiment on a subsequent day,
+where, instead of recording their eye movements, we asked participants to rate, before each trial, the level of confidence
+for their estimate of the forthcoming direction of the target.
 As shown in this sample screenshot,
-this was performed by moving a mouse cursor on a rating scale
+this was performed by moving a mouse cursor on a continuous rating scale
 between ``sure left'', to ``unsure'' and finally ``sure right''.
-Eye movements were not recorded.
 Due to the (pseudo-)random nature of the sequence no observer noticed
-that the same sequence of directions was used in the experiment.
+that the same sequence of directions was used in both experiments.
 }
 \label{fig:intro}
 \end{figure}
@@ -598,45 +594,38 @@ In such an explicit judgment task, we evaluated for each participant their confi
 \begin{figure}%[b!]
 \centering{\includegraphics[width=\linewidth]{2_results_enregistrement}}
 \caption{
-\emph{The binomial switching model and raw psychophysical results.}%
-~\textbf{(A)}
-This diagram represents an instance of a sequence of directions (one ``block'')
+\emph{The binomial switching model to generate a trial sequence, and raw behavioral results.}%
+ This diagram represents one instance of $200$ trials
 as generated by the binomial switching model. %
-%It is represented as a graphical model representing
-%the three levels of the stochastic model. %
-\LP{"TD" > "BSM" + make A bigger compared to B}
 We plot
-1/ the (hidden) evolution of the value of $p$ (horizontal blue areas)
-and the underlying times for switches (vertical black lines : TODO).
-\LP{legende pour la trace bleue}
-2/ the sequence of target directions
-and that were presented to observers
-(red or black dots for respectively left or right directions :TODO).
-It is a binary random variable which varies dynamically
+on the top row the sequence of target directions (TD)
+that were presented to observers.
+TD is a binary random variable (right/left) which varies dynamically
 as a function of the number of trials.
-Each participant see 3 blocks of $200$ trials,
+Below, we plot the (hidden) evolution of the underlying value 
+of the probability bias $p$ used to generate the TD sequence (red shaded areas).
+The dynamic of $p$ is piecewise constant and 
+one can infer the underlying times for switches (illustrated by steps in the red-shaded areas).
+%
+Overlaid on this plot, we show  the trace of
+raw results for two representative observers.
+We have namely 
+1/ the recorded aSPEM strength as measured by the horizontal eye velocity estimated right before
+the onset of the visually-driven SPEM (black line);
+these values were here scaled according to their extremal values,
+2/ the rating scale confidence judgments (red line).
+Qualitatively, one can observe a trend with the polarity of aSPEM velocity
+to be negative for $p$ values below~$.5$ and positive for values above~$.5$.
+In addition, the explicit predictive rating
+for the next trial's motion direction
+seems to follow a similar trend.
+%
+\AM{I WOULD MOVE THIS PART IN THE CAPTION OF FIG 1 OR IN THE TEXT : Globally, each of the $12$ participant see 3 blocks of $200$ trials,
 once for eye recording~(see \seeFig{intro}-A)
 and in a subsequent day for the rating scale experiment~(see \seeFig{intro}-C).
-Note that we introduced pauses every $50$ trials to prevent from fatigue.
-~\textbf{(B)} Raw results for two characteristic observers.
-% Each block is divided in 4 sub-blocks of $50$ trials as denoted by vertical black bars
 Using a pseudo-random number generator with the same seed,
-we could present the exact same sequence to all subjects. %
-We have superposed the trace of
-1/ as above (hidden) dynamics of $p$ and switches (vertical black lines : TODO).
-2/ the recorded aSPEM strength as measured by the horizontal displacement
-at the onset of the visually-driven SPEM (black line);
-these values were here scaled according to their extremal values,
-and we show as an horizontal dashed line the zero value.
-3/ the response to the rating scale experiment (red line) and
-%3/ the result of the BBCP model (blue line)
-%along with the confidence interval for this estimate (blue shaded area).
-\LP{"Bet of probability" > "Value of bet"}
-Qualitatively, there seems to be a trend with the polarity of aSPEM
-to be negative for $p$ values below~$.5$ and positive for values above~$.5$,
-but also that the consciously predicted value
-for the next outcome
-seem to follow a similar trend.
+we could present the exact same sequence to all participants.} %
+Note that we introduced short pauses every $50$ trials (as denoted by vertical black lines), to prevent from fatigue and check for possible drifts of the recorded eye position.
 }
 \label{fig:results_raw}
 \end{figure}
@@ -913,7 +902,7 @@ and the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 % ------------------------------------------------------------------
 %-------------------------------------------------------------%
 %: FIGURE 3 fig:bayesianchangepoint \seeFig{bayesianchangepoint}
-\begin{figure}%[b!]
+\begin{figure}%[b!]   
 % cf 3_Results_2.ipynb
 \begin{center}
 %\includegraphics[width=\linewidth]{figure3}
@@ -1264,7 +1253,7 @@ the dot's directions (the alternating output of leftward/rightward trials)
 as the sequence of observations.
 In a first session, we recorded the participants' eye movements.
 Among our $12$ subjects,
-we show one representative example in~\seeFig{results_raw}-B.
+we show two representative examples in~\seeFig{results_raw}-B.
 This representative participant was chosen as that
 with the median fit in the quantitative analysis
 that will follow (\seeSec{inter}).
@@ -1301,16 +1290,15 @@ for preditcitng the strength of aSPEM.
 
 %-------------------------------------------------------------%
 %: FIGURE 4  fig:results_psycho \seeFig{results_psycho}
-% cf 3_Results_2_velocity.ipynb
 \begin{figure}%[b!]
 \centering{
 \begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
 \node [anchor=north west]  (img4) at (0.000\linewidth,.618\linewidth){\includegraphics[width=0.49\linewidth]{4_A_result_psycho_aSPEM}};
 \node [anchor=north west]  (img4) at (0.51\linewidth,.618\linewidth){\includegraphics[width=0.49\linewidth]{4_B_result_psycho_bet}};
-
+%
 \draw [anchor=north west] (0.000\linewidth, .618\linewidth) node {$\mathsf{(A)}$};
 \draw [anchor=north west] (0.5\linewidth, .618\linewidth) node {$\mathsf{(B)}$};
-
+%
 \end{tikzpicture}
 }
 
