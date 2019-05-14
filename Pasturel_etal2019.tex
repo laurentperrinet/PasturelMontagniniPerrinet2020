@@ -684,7 +684,7 @@ using solely the variables available at the present trial,
 compactly representing all history see in previous trials.
 We will also provide a computational implementation
 and a quantitative evaluation of this algorithm.
-Then, in~\seeSec{eye_rec} we will present  the analysis of anticipatory eye movements
+Then, in~\seeSec{results_psycho} we will present the analysis of experimental evidence
 to validate the generalization of previous results %.
 %In a first session, participants observe a target moving horizontally
 %with constant speed from the center
@@ -693,12 +693,12 @@ with this novel protocol. %~(see \seeFig{intro}-A \& B).
 Such results will allow us to fit the inverse model and to compare
 its prediction compared to classical models such as the leaky integrator model.
 %The probability of either motion direction changes randomly in time.
-In a second experimental session, participants were asked to estimate
+While in a first session, we recorded anticipatory eye movements, 
+in a second experimental session, participants were asked to estimate
 ``how much they are confident that
 the target will move to the right or left in the next trial'' and
 to adjust the cursor's position on the screen accordingly~(see \seeFig{intro}-C).
-The results will be presented in~\seeSec{rating_scale}
-and compared to the results for eye movements.
+These results will be compared to the results for eye movements.
 Similarly, we will show that these results fit well
 with the inverse model.
 In~\seeSec{inter}, we will synthesize these results
@@ -1232,7 +1232,7 @@ compared to the previous protocol with fixed-length blocks (see~\seeFig{intro}-C
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results: Eye movements recordings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{sec:eye_rec}
+\label{sec:results_psycho}
 %: FIGURE 2 fig:results_psycho ~\seeFig{results_psycho} 
 \begin{figure}%[b!]
 \centering{\includegraphics[width=\linewidth]{2_results_enregistrement}}
@@ -1264,17 +1264,15 @@ to prevent from fatigue and check for possible drifts of the recorded eye positi
 \label{fig:results_psycho}
 \end{figure}
 %-------------------------------------------------------------%
-
-%: <----- Laurent is here ----->
 %-------------------------------------------------------------%
-%: 3Aa raw results show a qualitative trend
+%: 3A raw results in aSPEM
 %-------------------------------------------------------------%
 We used the BSM model
 to generate the (pseudo-)random sequence of
 the dot's directions (the alternating output of leftward/rightward trials)
 as the sequence of observations.
 In a first session, we recorded the participants' eye movements and 
-extracted  aSPEM velocity.
+extracted the aSPEM velocity (for details, \seeApp{em}).
 Among our $12$ subjects,
 we show two representative examples in~\seeFig{results_psycho}.
 These representative participants were chosen as that
@@ -1282,41 +1280,58 @@ with the median fit in the quantitative analysis
 that will follow (\seeSec{inter}).
 In particular, we show in the top panel the actual sequence of binary choices
 (TD, leftward or rightward)
-of the Bernouilli trial (TD) and in the bottom panels,
-we compare the evolution .
-
+of the Bernoulli trial (TD) and in the bottom panels,
+we compare the evolution of the recorded aSPEM with
 the true value of the true (hidden) value $x_1$
-Qualitatively, one can observe a trend with the polarity of aSPEM velocity
-to be negative for $p$ values below~$.5$ and positive for values above~$.5$.
-Both curve seem to lag of few trials 
-after the occurrence of a switch
-(also hidden to the observers).
-In general, results are more variable when the bias is weak ($p\approx .5$)
-than when it is strong (close to zero or one),
-consistent with the dependence of the variance of a Bernouilli trial
-as a function of the probabilistic bias ($var(p)= p \cdot (1-p)$).
-More interestingly, we also superposed
-the observed value of the strength of aSPEM
-(the total velocity VEM, red line) %  \AM{isn't this somehow normalized?} - re-scaled on the figure as the units are not the same
-
-Let's now see how this applies to our experimental results
-by comparing human observers to the ideal observers we defined.and the value of the model-inferred (predicted) probability bias
-(as a blue line, along with its confidence interval in a shaded area).
+and the value inferred using the BBCP model (see~\seeFig{bayesianchangepoint}-B,
+as a blue line, along with its confidence interval in a shaded area).
 Comparing the raw eye movement results with the latter,
 it seems qualitatively that both traces evolve in good agreement.
-First, both have similar delays in \emph{detecting} and taking into account a switch,
+First, one can observe in both a trend with the polarity of aSPEM velocity
+to be negative for $p$ values below~$.5$ and positive for values above~$.5$.
+Moreover, both curve seem to lag of few trials 
+after the occurrence of a switch
+(also hidden to the observers).
+Both have similar delays in \emph{detecting} and taking into account a switch,
 reflecting the time (in the order of a few trials) taken to integrate enough information
 to switch to a novel probability bias value in the binomial process.
-Second, the precision (i.e. the inverse of the variance)
+In general, results are more variable when the bias is weak ($p\approx .5$)
+than when it is strong (close to zero or one),
+consistent with the dependence of the variance of a Bernoulli trial
+as a function of the probabilistic bias ($var(p)= p \cdot (1-p)$).
+More precisely, the precision (i.e. the inverse of the variance)
 of the inferred probability-bias $\hat{p}$ seems to increase
 in bigger sub-blocks as information is integrated over more trials.
 As a result, the inferred probability as a function of time
 seems qualitatively to constitute a reliable regressor
-for preditcitng the strength of aSPEM.
+for predicting the strength of aSPEM.
 
-% TODO: in addition, the plot shows that there is an independence of the variance of V with respect to p - meaning that this "noise" is invariant of the bias (motor noise?)
-
-% TODO : functional description of the linear slope: delay of the oculo-motor system knowing the fixed duration of the gap? but we do not want to make more experiments ! (at the moment...)
+%: <----- Laurent is here ----->
+%-------------------------------------------------------------%
+%: 3B Results: bias rating scale measurements
+%-------------------------------------------------------------%
+\label{sec:rating_scale}
+%: qualitative analysis \seeFig{results_psycho}-B
+As we could assess qualitatively in~\seeFig{results_psycho},
+the trace of the rating scale seems to correlate well
+with the inferred probability $\hat{p}$.
+%In addition, the explicit bet score
+%for the next trial's motion direction
+%seems to follow a similar trend.
+Similarly to the strength of aSPEM, we actually found that:
+(1) The series of the paricipants' bias guesses exhibits a positive correlation with $\hat{p}$:
+as a consequence, the next outcome of $x_{0}^{t}$ will in general be correctly inferred,
+as compared to a random choice. %\AM{DID WE ACTUALLY PERFORM THIS COMPARISON?} - LP  it is visual / we could do it / I do not know if that would be useful...
+(2) A stronger bias leads to a lower variability in the bias estimate.
+(3) A (hidden) switch in the value of the bias is
+most of the time correctly identified after only a few trials.
+Note also that at every pause (black vertical bar in~\seeFig{results_psycho}),
+participants tended to favor unbiased guesses, close to $0.5$
+than at the end of a sub-block of trials.
+We can speculate that this phenomenon would correspond to a resetting mechanism of the internal belief on the probability bias.
+As a consequence, the experiment performed in the second session
+shows that the probability-bias values that are consciously estimated by participants
+are qualitatively similar to the implicit (and unconscious) ones which supposedly underlie the generation of anticipatory aSPEM with variable strength.
 
 %-------------------------------------------------------------%
 %: FIGURE 4  fig:results_psycho \seeFig{results_psycho}
@@ -1355,11 +1370,42 @@ of the problem, but a consistent slope showing an aversion to risk
 %\textbf{(C)}
 % we should comapre with the original slope obtained by Anna?
 }
-
 \label{fig:results_psycho}
 \end{figure}
-
 %%-------------------------------------------------------------%
+%-------------------------------------------------------------%
+%: 3C quantitative analysis
+%-------------------------------------------------------------%
+Similarly to~\seeFig{results_psycho}-A,
+we now compare quantitatively the value of rating scale
+as measured during the second experimental session with the model-inferred $\hat{p}$.
+The KDE estimate shown in~\seeFig{results_psycho}-B,
+represents the relationship between
+the model-estimated probability-bias
+and the rating value which was provided at each trial
+by participants for the outcome of the next trial.
+This analysis exhibits a consistent relationship
+but which now follows a non-linear trace.
+In particular, the fit was more accurate
+in comparison with
+the forgetful agent (see~\seeApp{results_psycho}).
+We modeled this behavior as
+a logistic regression over
+the log-odd ratio estimated by the agent.
+%TODO model this relationship by a logistic regression
+This analysis provides with regression factors for each participant.
+It shows that the bias (intercept)
+was negligible, while the slope (logistic factor)
+was always positive.
+This indicates a generic aversion to risk~\citep{Kahneman13}
+such that the value of a possible outcome
+is down-weighted by the precision of the inference.
+Our logistic regression analyses
+suggests that this may come from a multiplicative weight
+on the (log-) odd-ratio which is chosen as a rating scaled
+compared to the (log-)odd-ratio of the inferred probability. %\AM{Is it worth to discuss more in depth the different functional dependence on p of the two experimental measures? Cite Santos and Kowler discussion about this!} - LP: that would certainly be a great addition...
+
+
 %: quantitive analysis
 Quantitatively, we wished to look at the quality of the fit
 between the strength of aSPEM and
@@ -1398,62 +1444,6 @@ to explain the strength of aSPEM.
 We will now try to extend this result
 to the second experimental session
 where participants had to provide their rating scales.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results: bias rating scale measurements}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{sec:rating_scale}
-%: qualitative analysis \seeFig{results_psycho}-B
-As we could assess qualitatively in~\seeFig{results_psycho},
-the trace of the rating scale seems to correlate well
-with the inferred probability $\hat{p}$.
-%In addition, the explicit bet score
-%for the next trial's motion direction
-%seems to follow a similar trend.
-Similarly to the strength of aSPEM, we actually found that:
-(1) The series of the paricipants' bias guesses exhibits a positive correlation with $\hat{p}$:
-as a consequence, the next outcome of $x_{0}^{t}$ will in general be correctly inferred,
-as compared to a random choice. %\AM{DID WE ACTUALLY PERFORM THIS COMPARISON?} - LP  it is visual / we could do it / I do not know if that would be useful...
-(2) A stronger bias leads to a lower variability in the bias estimate.
-(3) A (hidden) switch in the value of the bias is
-most of the time correctly identified after only a few trials.
-Note also that at every pause (black vertical bar in~\seeFig{results_psycho}),
-participants tended to favor unbiased guesses, close to $0.5$
-than at the end of a sub-block of trials.
-We can speculate that this phenomenon would correspond to a resetting mechanism of the internal belief on the probability bias.
-As a consequence, the experiment performed in the second session
-shows that the probability-bias values that are consciously estimated by participants
-are qualitatively similar to the implicit (and unconscious) ones which supposedly underlie the generation of anticipatory aSPEM with variable strength.
-
-%: quantitative analysis
-Similarly to~\seeFig{results_psycho}-A,
-we now compare quantitatively the value of rating scale
-as measured during the second experimental session with the model-inferred $\hat{p}$.
-The KDE estimate shown in~\seeFig{results_psycho}-B,
-represents the relationship between
-the model-estimated probability-bias
-and the rating value which was provided at each trial
-by participants for the outcome of the next trial.
-This analysis exhibits a consistent relationship
-but which now follows a non-linear trace.
-In particular, the fit was more accurate
-in comparison with
-the forgetful agent (see~\seeApp{results_psycho}).
-We modeled this behavior as
-a logistic regression over
-the log-odd ratio estimated by the agent.
-%TODO model this relationship by a logistic regression
-This analysis provides with regression factors for each participant.
-It shows that the bias (intercept)
-was negligible, while the slope (logistic factor)
-was always positive.
-This indicates a generic aversion to risk~\citep{Kahneman13}
-such that the value of a possible outcome
-is down-weighted by the precision of the inference.
-Our logistic regression analyses
-suggests that this may come from a multiplicative weight
-on the (log-) odd-ratio which is chosen as a rating scaled
-compared to the (log-)odd-ratio of the inferred probability. %\AM{Is it worth to discuss more in depth the different functional dependence on p of the two experimental measures? Cite Santos and Kowler discussion about this!} - LP: that would certainly be a great addition...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results: Analyzing inter-individual differences}
