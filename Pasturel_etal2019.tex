@@ -22,7 +22,7 @@ Should I stay or should I go? Humans adapt to the volatility of visual motion pr
 }
 \newcommand{\Acknowledgments}{PACE-ITN - code and material @ \url{\Website/Publications/PasturelMontagniniPerrinet2019}. TODO: RIck + Karl + JB + Laurent Madelain }
 \newcommand{\Abstract}{
-Animal behavior has to constantly adapt to changes, for instance when unexpectedly switching the state of an environmental context. For an agent interacting with this kind of volatile environment, it is important to respond to such switches accurately and with the shortest delay. However, this operation has in general to be performed in presence of noisy sensory inputs and solely based on the currently available information. It has already been shown that human observers can accurately anticipate the motion direction of a visual target with their eye movements when this random sequence of rightward/leftward motions is defined by a bias in direction probability. Here, we generalized the capacity of these observers to anticipate different random biases within random-length contextual blocks. Experimental results were compared to those of a probabilistic agent which is optimal with respect to this switching model. We found a better fit between the behaviorally observed anticipatory response with that of the probabilistic agent compared to other models such as a leaky integrator model. Moreover, we could similarly fit the level of confidence reported by human observers with that provided by the model and derive a common marker for subject inter-variability, titrating their level of preference between exploration and exploitation. Such results provide evidence that in such a volatile environment human observers may still efficiently represent an internal belief, along with its precision, and use this representation for sensorimotor control as well as for explicit judgments. This work proposes a novel approach to more generically test human cognitive abilities in uncertain and dynamic environments.
+Animal behavior has to constantly adapt to changes, for instance when unexpectedly switching the state of an environmental context. For an agent interacting with this kind of volatile environment, it is important to respond to such switches accurately and with the shortest delay. However, this operation has in general to be performed in presence of noisy sensory inputs and solely based on the currently available information. It has already been shown that human observers can accurately anticipate the motion direction of a visual target with their eye movements when this random sequence of rightward/leftward motions is defined by a bias in direction probability. Here, we generalized the capacity of these observers to anticipate different random biases within random-length contextual blocks. Experimental results were compared to those of a probabilistic agent which is optimal with respect to this switching model. We found a better fit between the behaviorally observed anticipatory response with that of the probabilistic agent compared to other models such as a leaky integrator model. Moreover, we could similarly fit the level of confidence reported by human observers with that provided by the model and derive a common marker for participant inter-variability, titrating their level of preference between exploration and exploitation. Such results provide evidence that in such a volatile environment human observers may still efficiently represent an internal belief, along with its precision, and use this representation for sensorimotor control as well as for explicit judgments. This work proposes a novel approach to more generically test human cognitive abilities in uncertain and dynamic environments.
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\documentclass[profile,final,english,draft,24pt]{article}%
@@ -381,7 +381,7 @@ and therefore allow to further deepen our understanding of such predictive proce
 \caption{
 \emph{Tracking eye movements and confidence rating in a volatile switching environment}
 \textbf{(A)}~
-We tested the capacity of human subjects to adapt to a volatile environment 
+We tested the capacity of human participants to adapt to a volatile environment 
 by using a simple, 3-layered generative model of fluctuations in target directions (TD).
 This binary variable is chosen using a Bernoulli trial of a given probability bias.
 This probability is itself chosen at random from a given prior 
@@ -575,13 +575,13 @@ In such an explicit judgment task, we evaluated for each participant their confi
 %%1/ the recorded aSPEM strength as measured by the horizontal eye velocity estimated right before
 %%the onset of the visually-driven SPEM (black line);
 %%these values were here scaled according to their extremal values,
-%%2/ the bet score as given by the rating scale (red line),
+%%2/ the rating scale as given by the rating scale (red line),
 %%3/ the evolution of the value 
 %%of the probability bias $p$ used to generate the TD sequence (red shaded areas)
 %%and which are hidden to the observers.
 %%Qualitatively, one can observe a trend with the polarity of aSPEM velocity
 %%to be negative for $p$ values below~$.5$ and positive for values above~$.5$.
-%%In addition, the explicit bet score
+%%In addition, the explicit rating scale
 %%for the next trial's motion direction
 %%seems to follow a similar trend.
 %%Both curve seem to lag of few trials 
@@ -1181,13 +1181,14 @@ knowing the ground truth
 and averaged over all trials:
 \eql{
 \Cc =  \sum_{t} -\log_2 B(x_1^t ; \hat{x_1}^t, r^t )
+\label{eq:MI}
 }
 This measure explictly corresponds to the average score of our model,
 where the score is the likelihood of the inferred belief about the probability bias
 as given by its mean $\hat{x_1}^t$ along with its precision $r^t$ and
 compared to the hidden ground truth $x_1^t$. 
 %\eql{
-%B(x_1^t ; \hat{x_1}^t, r^t ) =  \sum_{t} -\log_2 B(\hat{x_1}^t ; x_1^t, r^t )
+%B(x_1^t ; \hat{x_1}^t, r^t ) =  \hat{x_1}^t \log_2( x_1^t) + (1-\hat{x_1}^t) \log_2( 1- x_1^t)
 %}
 Similar measures based on the predicted readout $\hat{x_0}^t$
 gave similar results but would need more data to converge.
@@ -1247,7 +1248,7 @@ for two representative observers:
 The recorded aSPEM strength as measured 
 by the horizontal eye velocity estimated right before
 the onset of the visually-driven SPEM (black line);
-and the bet score as given by the rating scale (red line).
+and the rating scale (red line).
 These values were here scaled according to their extremal values.
 We also show the evolution of the value 
 of the probability bias $p$ (red shaded areas)
@@ -1273,7 +1274,7 @@ the dot's directions (the alternating output of leftward/rightward trials)
 as the sequence of observations.
 In a first session, we recorded the participants' eye movements and 
 extracted the aSPEM velocity (for details, \seeApp{em}).
-Among our $12$ subjects,
+Among our $12$ participants,
 we show two representative examples in~\seeFig{results_psycho}.
 These representative participants were chosen as that
 with the median fit in the quantitative analysis
@@ -1297,7 +1298,7 @@ to switch to a novel probability bias value for the Bernoulli trial.
 In general, results are more variable when the bias is weak ($p\approx .5$)
 than when it is strong (close to zero or one),
 consistent with the dependence of the variance of a Bernoulli trial
-as a function of the probabilistic bias ($Var(p)= p \cdot (1-p)$).
+as a function of the probabilistic bias ($\textrm{Var}(p)= p \cdot (1-p)$).
 In addition, the precision (i.e. the inverse of the variance)
 of the inferred probability-bias $\hat{x_1}$ seems to increase
 in bigger inter-switch blocks as information is integrated over more trials.
@@ -1309,18 +1310,20 @@ for predicting the strength of aSPEM.
 %: 3B Results: bias rating scale measurements
 %-------------------------------------------------------------%
 \label{sec:rating_scale}
-%: qualitative analysis \seeFig{results_psycho}-B
-In addition, the explicit bet score
+In addition, the explicit rating scale
 for the next trial's motion direction
-seems to follow a similar trend.
-Similarly to the strength of aSPEM, we compared
+provided by the second experiment
+seems to qualitatively follow the same trend.
+Indeed, similarly to the strength of aSPEM, we compared
 qualitatively in~\seeFig{results_psycho},
-the trace of the rating scale seems to correlate well
+the trace of the rating scale 
 with the inferred probability $\hat{x_1}$.
 As with aSPEM, the series of the participants' bias guesses 
 exhibits a positive correlation with $\hat{p}$:
 The next outcome of $x_{0}^{t}$ will in general be correctly inferred,
-as compared to a random choice. 
+as compared to a random choice: 
+Equipped with this generative BSM model and the ideal observer given by the BBCP model,
+the agent is able to predict the next outcome better than chance level. 
 Moreover, we show that a stronger bias leads to a lower variability in the bias estimate.
 Finally, a (hidden) switch in the value of the bias is
 most of the time correctly identified after only a few trials.
@@ -1335,122 +1338,115 @@ are qualitatively similar to the implicit (and unconscious) ones
 which supposedly underlie the generation of anticipatory aSPEM with variable strength.
 
 %-------------------------------------------------------------%
-%: FIGURE 4  fig:results_psycho \seeFig{results_psycho}
+%: FIGURE 4  fig:results_psycho_all \seeFig{results_psycho_all}
 \begin{figure}%[b!]
 \centering{
 \begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
 \node [anchor=north west]  (img4) at (0.000\linewidth,.618\linewidth){\includegraphics[width=0.49\linewidth]{4_A_result_psycho_aSPEM}};
 \node [anchor=north west]  (img4) at (0.51\linewidth,.618\linewidth){\includegraphics[width=0.49\linewidth]{4_B_result_psycho_bet}};
 %
-\draw [anchor=north west] (0.000\linewidth, .618\linewidth) node {$\mathsf{(A)}$};
-\draw [anchor=north west] (0.5\linewidth, .618\linewidth) node {$\mathsf{(B)}$};
+\draw [anchor=north west] (0.000\linewidth, .638\linewidth) node {$\mathsf{(A)}$};
+\draw [anchor=north west] (0.5\linewidth, .638\linewidth) node {$\mathsf{(B)}$};
 %
 \end{tikzpicture}
 }
-\caption{ \emph{Psychophysical results over all participants}
-%\CP{Attention KDE mean !}
-Each trial in our experimental results in an estimate of
-the strength of aSPEM (as measured by VEM)
-and a rating scale value.
+\caption{%
+\emph{Psychophysical results over all participants.} %
+For all participants, we collected all trials as an estimate of
+the strength of aSPEM and a rating scale value.
 Relating those values with the corresponding inferred value $\hat{p}$
-of the probability bias,
+of the probability bias inferred by the BBCP model,
 this constitutes a scatter of values.
-We display these relationships using a
-Kernel Density Estimation (KDE) of the relationship between $p$ (abscissa)
-and \textbf{(A)} VEM and \textbf{(B)} the value of bet (in ordinates).
-In \textbf{(A)}, we have overlaid is a regression line which shows
-a high correlation factor ($R=XXX$) which is superior to that found
-with the fixed-length design (see Appendix ...)
-but also with other models described in the text
-(fixed-length estimator, maximum BBCP - see Appendix ... ).
-In \textbf{(B)}, we have fitted the data with a logistic regression
-showing a negligeable intercept (no bias) linked to the symmetry
-of the problem, but a consistent slope showing an aversion to risk
-(cf Kahneman13).
-%\textbf{(C)}
-% we should comapre with the original slope obtained by Anna?
+We display these relationships using a contour plot over 
+the Kernel Density Estimation (KDE) of the relationship between $p$ in abscissa
+and in ordinates \textbf{(A)} strength of aSPEM and \textbf{(B)} rating scale.
+The density of strokes represent increasing probability strengths.
+As a comparison we have plotted in XXX color the KDE computed over
+the probability bias estimates obtained with a leaky integrator.
+Additionally, we have computed the mutual information which
+shows quantitatively that for both experiments, 
+there is a strong dependency between 
+the behavioral results and the results of the model, 
+but also that this result is stronger than that obtained 
+with the leaky integrator.
 }
-\label{fig:results_psycho}
+\label{fig:results_psycho_all}
 \end{figure}
 %%-------------------------------------------------------------%
-%: <----- Laurent is here ----->
 %-------------------------------------------------------------%
 %: 3C quantitative analysis
 %-------------------------------------------------------------%
-Compiling results from all subjects (see~\seeFig{results_psycho}),
-we now compare quantitatively the value of rating scale
-as measured during the second experimental session with the model-inferred $\hat{p}$.
-The KDE estimate shown in~\seeFig{results_psycho}-B,
-represents the relationship between
-the model-estimated probability-bias
-and the rating value which was provided at each trial
-by participants for the outcome of the next trial.
-This analysis exhibits a consistent relationship
-but which now follows a non-linear trace.
-In particular, the fit was more accurate
-in comparison with
-the forgetful agent (see~\seeApp{results_psycho}).
-We modeled this behavior as
-a logistic regression over
-the log-odd ratio estimated by the agent.
-%TODO model this relationship by a logistic regression
-This analysis provides with regression factors for each participant.
-It shows that the bias (intercept)
-was negligible, while the slope (logistic factor)
-was always positive.
-This indicates a generic aversion to risk~\citep{Kahneman13}
-such that the value of a possible outcome
-is down-weighted by the precision of the inference.
-Our logistic regression analyses
-suggests that this may come from a multiplicative weight
-on the (log-) odd-ratio which is chosen as a rating scaled
-compared to the (log-)odd-ratio of the inferred probability. %\AM{Is it worth to discuss more in depth the different functional dependence on p of the two experimental measures? Cite Santos and Kowler discussion about this!} - LP: that would certainly be a great addition...
-
-
-%: quantitive analysis
-Quantitatively, we wished to look at the quality of the fit
-between the strength of aSPEM and
-the probability $\hat{p}$ computed by the BBCP algorithm.
-In~\seeFig{results_psycho}-A, we have plotted for all subjects
-this strength as a function of the inferred probability
+Quantitatively, we now compare the experimental results
+with the value of probability bias $\hat{x_1}$
+computed by the BBCP algorithm.
+Compiling results (see~\seeFig{results_psycho}) from all participants,
+we have plotted in~\seeFig{results_psycho_all}
+the aSEPM strength (panel A) and the rating scale (panel B) as a function of the inferred probability
 that was coded at the second layer and which is unknown to the observer.
-% TODO: First, the trend that we put in evidence is the identity of the observer
-As we can see in~\seeFig{results_psycho}-A,
+All trials from all participants were collected to generate a scatter plot 
+which was then  converted to a kernel density estimate 
+for a better visualization (kernel size of $XX$).
+We also estimated the mutual information $\Cc$ (\seeEq{MI})
+between the raw data and the model.
+Details of this analysis is presented in~\seeApp{bcp}.
+As a comparison, the same method was applied to the leaky integrator.
+First, as we can see in~\seeFig{results_psycho_all}-A,
 the probability $\hat{p}$ computed by the BBCP algorithm
 is positively linearly correlated with the aSPEM velocity.
 The corresponding Pearson correlation coefficient
 is slightly higher than that found in
-the classical experiment with fixed blocks~\seeFig{intro}-B.
-Note that since the BBCP is a probabilistic model,
-we can also compute the Mutual Information and
-compare that value with that obtained by other models.
-This analysis is presented in~\seeApp{bcp}).
-This relatively strong correlation is surprising at a first sight as the probability blocks have random length,
+the classical experiment with fixed blocks~\seeFig{intro}-B,
+but much better to that computed with the result of the leaky-integrator.
+This relatively strong correlation is surprising at a first sight 
+as the probability blocks have random length,
 and participants have to adapt to such a volatile environment.
 However, when faced with some new observations,
 the observer has to constantly adapt his response
 to either exploit this information by considering that
 this observation belongs to the same sub-block or to explore
 a novel hypothesis.
-This compromise is one of the crucial component that we wish to explore
+This compromise is one of the crucial component that we wished to explore
 and which is well captured by the BBCP model.
 In particular, the model predicts the different facets
 from the experimental results,
 from the variability as a function of the inferred probability,
-to the dynamics of the bahavior following a (hidden) switch.
-As a consequence this leads to a stronger correlation,
-as measured by the Pearson coefficient and Mutual information.
-We deduce that the trace of inferred probabilities is a powerful regressor
-to explain the strength of aSPEM.
-We will now try to extend this result
-to the second experimental session
-where participants had to provide their rating scales.
-
+to the dynamics of the behavior following a (hidden) switch.
+Second, the KDE estimate shown in~\seeFig{results_psycho}-B,
+represents the relationship between
+the model-estimated probability-bias
+and the rating value which was provided at each trial
+by participants for the outcome of the next trial.
+%This analysis exhibits a consistent relationship
+%but which now follows a non-linear trace.
+%We modeled this behavior as
+%a logistic regression over
+%the log-odd ratio estimated by the agent.
+%TODO model this relationship by a logistic regression
+%This analysis provides with regression factors for each participant.
+%It shows that the bias (intercept)
+%was negligible, while the slope (logistic factor)
+%was always positive.
+%This indicates a generic aversion to risk~\citep{Kahneman13}
+%such that the value of a possible outcome
+%is down-weighted by the precision of the inference.
+%Our logistic regression analyses
+%suggests that this may come from a multiplicative weight
+%on the (log-) odd-ratio which is chosen as a rating scaled
+%compared to the (log-)odd-ratio of the inferred probability. %\AM{Is it worth to discuss more in depth the different functional dependence on p of the two experimental measures? Cite Santos and Kowler discussion about this!} - LP: that would certainly be a great addition...
+Similarly to the aSPEM strength, the rating scale is jointly coupled
+with the probability bias given by the model, as given by the average  mutual information.
+Moreover, this value is higher for the BBCP model than 
+for the leaky integrator.
+We deduce that the trace of inferred probabilities given by the BBCP model
+is a powerful regressor to explain both the strength of aSPEM and the rating scale.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results: Analyzing inter-individual differences}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:inter}
-%: separate above analysis
+%: <----- Laurent is here ----->
+%-------------------------------------------------------------%
+%: 4A separate above analysis
+%-------------------------------------------------------------%
 So far, our quantitative analysis was performed independently
 for the different participants.
 In particular, we have shown a representative example in~\seeFig{results_psycho}
@@ -1467,10 +1463,9 @@ Crucially, we have seen that the BBCP model is controlled by a single parameter,
 the hazard rate, or equivalently by its inverse, the characteristic time $\tau$.
 Also, we have shown that knowing an observed sequence of behavioral responses,
 we could fit the best value of $\tau$ which would explain it~\seeFig{bayesianchangepoint}-C.
-Thus, by extracting the parameters for every subject
+Thus, by extracting the parameters for every participant
 we can expect to characterise inter individual differences.
 
-%: results
 %-------------------------------------------------------------%
 %: FIGURE 5  fig:results_inter \seeFig{results_inter}
 % TODO présente une meta analyse qui montre une correlation par sujet (scatter plot) entre h_a et h_bet (see 2017-11-16 chloe figures.pdf ) y-a-til un continuum entre explorateurs et conservatezurs?, voir de montrer une causalité entre les 2 expériences - on pourrait superposer aussi les résultats si on avait utilisé un fixed-length ?
@@ -1488,8 +1483,6 @@ we can expect to characterise inter individual differences.
 %
 \end{tikzpicture}
 }
-
-
 %\begin{figure}%[b!]
 %\begin{center}
 %  %\includegraphics[width=1\linewidth]{figure5}
@@ -1507,6 +1500,9 @@ result of fits for different observers / SEM across blocks
 }
 \label{fig:results_inter}
 \end{figure}
+%-------------------------------------------------------------%
+%-------------------------------------------------------------%
+%: 4B results
 %-------------------------------------------------------------%
 Hence, we have fitted the sequence of responses generated by each participant and
 for each session, that is for the eye movements and the rating scale experiments.
@@ -1572,31 +1568,12 @@ in particular why it may deviate
 in some pathological disorders such as schizophrenia~\citep{Adams12}.
 
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{Conclusions}
-
-
 \begin{itemize}\setlength{\itemsep}{0ex}
-\item \AM{ We observed a good correlation between the largely unconscious anticipatory smooth eye movements and the explicit rating of confidence on expected stimulus motion direction },
-\item There is a strong correlation between the real probability and the value of the direction confidence rating,
-
-\item there is a stong correlation between the strength of anticipation and the probability of the process,
-
-\item we have developed a Bayesian model of an agent estimating the probability of changing points. This allows to dynamically infer the direction probability and directly compare model and human behaviour.
-\item \AM{ The quality of the correlation with the experimental measures (confidence rating and anticipatory eye movements) is enhanced when the model-predicted direction bias $\hat{p}$ is taken as regressor instead of the real probability bias, suggesting that this model captures some of the brain computations underlying expectancy based motion prediction},
-\item \AM{CONCLUSION on individual differences?}
-
-
-% to summarize, we have shown that
-% - there is a correlation in the anticiapatory response of eye movements
-% in a volatile environment that is captured if we know the true probability
-% - that a fixed length models captures some of this correlation, but that
-% - our online bayesian changepoint model better captures this correlation
-% and that this may hint at the neural mechanisms used to anticipate
-% in a dynamic environment
-%
-% the brain is not strongly a bayesian machine, but weakly
-
+\item We have developed a Bayesian model of an agent estimating the probability bias of a volatile environment with changing points (switches), such that the agent may decide to stay on a current hypothesis or go to a novel one. This allows to dynamically infer the probability bias and directly compare model and experimental data such as human behavior.
+\item We applied such a framework to a probability bias in a visual task where we manipulated the direction of the target. We observed a good match between the largely unconscious anticipatory smooth eye movements and the results of the model, replicating and extending previous results.
+\item We also found a good match explicit rating of confidence on expected stimulus motion direction, a novel result suggesting that this model captures some of the brain computations underlying expectancy based motion prediction, both at the unconscious and conscious levels.
+\item Finally, we found that the experimental data of each different participant matched different intrinsic levels of beliefs on the volatility of the experiment, some being more or less conservative, but that this level matched relatively in both experiments (unconsciously or consciously). 
 \end{itemize}
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Material and Methods}
@@ -1614,7 +1591,7 @@ The paradigm included two experiments performed on two consecutive days by each 
 
 \subsection{Eye movements experiment}
 Eye movements were recorded continuously with an eye tracking system (Eyelink 1000, SR Research Ltd., sampled at 1000 Hz), using the Python module Pylink 0.1.0. Horizontal and vertical eye position data were transferred, stored, and analyzed offline using programs written in Ipython notebooks.
-To minimize measurement errors, the subject's head movements were restrained using a chin and forehead rest, so that the eyes in primary gaze position were directed towards the center of the screen. In order to enforce accuracy in gaze position and tracking, we implemented an automatic procedure of fixation control. If the distance between the gaze position and the central fixation point during the fixation epoch exceeded $2\degree$ of visual angles, the fixation point started flickering and the counter for the fixation duration was reset to $0$. 
+To minimize measurement errors, the participant's head movements were restrained using a chin and forehead rest, so that the eyes in primary gaze position were directed towards the center of the screen. In order to enforce accuracy in gaze position and tracking, we implemented an automatic procedure of fixation control. If the distance between the gaze position and the central fixation point during the fixation epoch exceeded $2\degree$ of visual angles, the fixation point started flickering and the counter for the fixation duration was reset to $0$. 
 
 The recorded horizontal and vertical row gaze position data were numerically differentiated to obtain velocity measures \AM{any other details?}. We adopted an automatic conjoint acceleration and velocity threshold method (the default saccade detection implemented by SR Research) to detect ocular saccades. Saccades and eye-blinks were excluded from eye velocity traces (and replaced by NaN values in the numerical arrays) before trial averaging. 
 In order to extract the relevant parameters of the oculomotor responses, we developed new tools based on a best-fitting procedure of predefined oculomotor patterns and in particular the typical smooth pursuit velocity profile that was recorded in our experiment (Top row). This analysis was applied to each trial individually and it allowed in particular to estimate the anticipatory smooth pursuit velocity. More details abut the oculomotor data processing and parameter extraction are provided in Appendix \ref{app:em} 
@@ -1624,7 +1601,7 @@ The python scripts used to analyse eye movements are available at \url{https://g
 \subsection{The Bet experiment}
 The aim of the second experiment (occurring the following day after the Eye Movement experiment) was to collect data related to the individual conscious estimate of the probability of target motion direction. At the beginning of each trial, before the presentation of the moving target, participants had simply to answer to the question \textit{ ``How sure are you that the target will go left or right''}. This was performed by adjusting a cursor on the screen using the mouse (see Figure~\seeFig{intro}-C). The cursor could be placed at any point along a horizontal segment representing a linear rating scale with three ticks labeled as \textit{ ``Left''}, \textit{``Right''} (at the extreme left and right end of the segment respectively), and \textit{``Unsure''} in the middle. Participants had to validate their choice by clicking on the mouse left-button and the actual target motion was shown thereafter. The rationale to collect rating responses on a continuous scale instead of a simple binary prediction (Right/Left) was to be able to infer the individual estimate of the direction bias at the single trial scale (in analogy to the continuous interval for the strength of aSPEM velocity).
 
-We called this experiment the \textit{ ``Bet''} experiment, as subjects were explicitly encouraged to make reasonable rating estimates, as though they had to bet money on the next trial outcome. Every $50$ trials, a \textit{``score''} was displayed on the screen, corresponding to the proportion of correct direction predictions (Right or Left of the \textit{``Unsure''} tick) weighted by the confidence attributed to each answer (the distance of the cursor from the center).
+We called this experiment the \textit{ ``Bet''} experiment, as participants were explicitly encouraged to make reasonable rating estimates, as though they had to bet money on the next trial outcome. Every $50$ trials, a \textit{``score''} was displayed on the screen, corresponding to the proportion of correct direction predictions (Right or Left of the \textit{``Unsure''} tick) weighted by the confidence attributed to each answer (the distance of the cursor from the center).
 
 
 %\subsection{Eye movements analysis}
@@ -1685,7 +1662,7 @@ to avoid potential confounds related to the previously used blocked-design.
 \end{figure}
 
 
-I show here a typical velocity traces for one subject / 2 trials
+I show here a typical velocity traces for one participant / 2 trials
 
 - x-axis is time in milliseconds aligned on target onset,
 and we show respectively from left to right the fixation in gray,
