@@ -383,10 +383,10 @@ and therefore allow to further deepen our understanding of such predictive proce
 \textbf{(A)}~
 We tested the capacity of human subjects to adapt to a volatile environment 
 by using a simple, 3-layered generative model of fluctuations in target directions (TD).
-This binary variable is chosen using a Bernouilli trial of a given probability bias.
+This binary variable is chosen using a Bernoulli trial of a given probability bias.
 This probability is itself chosen at random from a given prior 
 and is constant for as many trials until a switch is generated.
-Switches are generated in the third layer as a Bernouilli trial 
+Switches are generated in the third layer as a Bernoulli trial 
 with a given hazard rate (defined here as $1/40$ per trial).
 \textbf{(B)}~
 The eye-movements task was an adapted version of a task developed by~\citet{Montagnini2010}. 
@@ -1279,10 +1279,9 @@ These representative participants were chosen as that
 with the median fit in the quantitative analysis
 that will follow (\seeSec{inter}).
 In particular, we show in the top panel the actual sequence of binary choices
-(TD, leftward or rightward)
-of the Bernoulli trial (TD) and in the bottom panels,
-we compare the evolution of the recorded aSPEM with
-the true value of the true (hidden) value $x_1$
+(TD, leftward or rightward) of the Bernoulli trial  and 
+in the bottom panels, we compare the evolution of the recorded aSPEM with
+the ground truth value of the (hidden) probability bias $x_1$
 and the value inferred using the BBCP model (see~\seeFig{bayesianchangepoint}-B,
 as a blue line, along with its confidence interval in a shaded area).
 Comparing the raw eye movement results with the latter,
@@ -1294,7 +1293,7 @@ after the occurrence of a switch
 (also hidden to the observers).
 Both have similar delays in \emph{detecting} and taking into account a switch,
 reflecting the time (in the order of a few trials) taken to integrate enough information
-to switch to a novel probability bias value in the binomial process.
+to switch to a novel probability bias value for the Bernoulli trial.
 In general, results are more variable when the bias is weak ($p\approx .5$)
 than when it is strong (close to zero or one),
 consistent with the dependence of the variance of a Bernoulli trial
@@ -1770,7 +1769,7 @@ binomial
 }
 
 
-Bernouilli $p(x | p) = p^x \cdot (1-p)^{1-x}$
+Bernoulli $p(x | p) = p^x \cdot (1-p)^{1-x}$
 %TODO say Bernoulli instead of binomial when just one draw
 Wikipedia: For example, the beta distribution can be used in Bayesian analysis to describe initial knowledge concerning probability of success such as the probability that a space vehicle will successfully complete a specified mission. The beta distribution is a suitable model for the random behavior of percentages and proportions.
 
@@ -1856,7 +1855,7 @@ Can we get  $P (x_2^{t+1} | x_{0:t}) $ ? would be nice to see the inferrence of 
 
 % use that distance to compute optimal hazard rates
 %  use p log p + (1-p) log (1-p ) as in logistic regression?
-where $\KL{\hat p}{p}$ is the Kullback-Leibler divergence between samples $\hat p$ and model $p$ under a Bernouilli distribution
+where $\KL{\hat p}{p}$ is the Kullback-Leibler divergence between samples $\hat p$ and model $p$ under a Bernoulli distribution
 \begin{equation}
 \KL{\hat p}{p} = \hat{p} \log\pa{\frac{\hat p}{p}} + (1-\hat p) \log\pa{\frac{1-\hat p}{1-p}}.
 \end{equation}
@@ -1866,7 +1865,7 @@ where $\KL{\hat p}{p}$ is the Kullback-Leibler divergence between samples $\hat 
 \subsection{Appendix 3: Mathematical derivation of the likelihood}
 \label{app:likelihood}
 %\seeApp{likelihood}
-% TODO : check http://www.princeton.edu/~rcw2/papers/WilsonEtAl_PLOSCompBiol2013.pdf and bernouilli case + evaluation
+% TODO : check http://www.princeton.edu/~rcw2/papers/WilsonEtAl_PLOSCompBiol2013.pdf and Bernoulli case + evaluation
 %cf p33 de 2018-02-12 journal club bayesian changepoint chloe.pdf
 %cf p52 de 2017-10-05 chloe inverting the process rem jb.pdf
 
