@@ -1577,8 +1577,9 @@ The paradigm included two experiments performed on two consecutive days by each 
 
 \subsection{Eye movements experiment}
 Eye movements were recorded continuously with an eye tracking system (Eyelink 1000, SR Research Ltd., sampled at 1000 Hz), using the Python module Pylink 0.1.0. Horizontal and vertical eye position data were transferred, stored, and analyzed offline using programs written in Ipython notebooks.
- Si le signal enregistré n'est pas présent dans une fenêtre de $120\times 120$ px autour du point de fixation ou si il n’est pas stable (clignement, mauvais enregistrement…), la durée de fixation recommence. 
-To minimize measurement errors, the subject's head movements were restrained using a chin and forehead rest, so that the eyes in primary gaze position were directed towards the center of the screen. If the gaze position during  The recorded horizontal and vertical row gaze position data were numerically differentiated to obtain velocity measures \AM{any other details?}. We adopted an automatic conjoint acceleration and velocity threshold method (the default saccade detection implemented by SR Research) to detect ocular saccades. Saccades and eye-blinks were excluded from eye velocity traces (and replaced by NaN values in the numerical arrays) before trial averaging. 
+To minimize measurement errors, the subject's head movements were restrained using a chin and forehead rest, so that the eyes in primary gaze position were directed towards the center of the screen. In order to enforce accuracy in gaze position and tracking, we implemented an automatic procedure of fixation control. If the distance between the gaze position and the central fixation point during the fixation epoch exceeded $2\degree$ of visual angles, the fixation point started flickering and the counter for the fixation duration was reset to $0$. 
+
+The recorded horizontal and vertical row gaze position data were numerically differentiated to obtain velocity measures \AM{any other details?}. We adopted an automatic conjoint acceleration and velocity threshold method (the default saccade detection implemented by SR Research) to detect ocular saccades. Saccades and eye-blinks were excluded from eye velocity traces (and replaced by NaN values in the numerical arrays) before trial averaging. 
 In order to extract the relevant parameters of the oculomotor responses, we developed new tools based on a best-fitting procedure of predefined oculomotor patterns and in particular the typical smooth pursuit velocity profile that was recorded in our experiment (Top row). This analysis was applied to each trial individually and it allowed in particular to estimate the anticipatory smooth pursuit velocity. More details abut the oculomotor data processing and parameter extraction are provided in Appendix \ref{app:em} 
 
 The python scripts used to analyse eye movements are available at \url{https://github.com/invibe/ANEMO}.
@@ -1586,17 +1587,16 @@ The python scripts used to analyse eye movements are available at \url{https://g
 \subsection{The Bet experiment}
 In the second experiment (occurring the following day after the Eye Movement experiment), at each trial participants had simply to answer, before the presentation of the moving target, to the question \textit{ ``How sure are you that the target will go left or right''}. This was performed by adjusting a cursor on the screen using the mouse (see Figure~\seeFig{intro}-C). The cursor could be placed at any point along a horizontal segment representing a linear rating scale with three ticks labeled as \textit{ ``Left''}, \textit{``Right''} (at the extreme left and right end of the segment respectively), and \textit{``Unsure''} in the middle. Participants had to validate their choice by clicking on the mouse left-button. 
 
-%\textbf{ Un point de fixation blanc de 10px de large est affiché au début d'un essai. Les sujets doivent ajuster le curseur sur une échelle blanche gradué placé en desous. Cette échelle présente 3 graduations : 'gauche' et 'droite' au extrémité et 'incertain' au millieu. Pour validé leurs choix, les sujets doivent cliquer sur la souris. L’échelle et le point de fixation disparaissent et une cible en mouvement à 15°/s (voir pour LB$_Bet$ 20°/s) s’affiche à l’écran. La cible est un cercle blanc mesurant 10px de large et 2px de lineWidth.}
 
 
 
 
 
-This is why we added a supplementary experiment for each observer but on a different day for which we asked at every trial to give a subjective, conscious evaluation of the direction of the next trial + a confidence about this inference. Once this information given by the subject, we were showing the actual outcome.
+%This is why we added a supplementary experiment for each observer but on a different day for which we asked at every trial to give a subjective, conscious evaluation of the direction of the next trial + a confidence about this inference. Once this information given by the subject, we were showing the actual outcome.
 
-Interestingly, we used exactly the same sequence, allowing to make a direct comparison of the results of both experiments
 
-We called this experiment the bet experiment.
+
+%We called this experiment the bet experiment.
 
 
 \textbf{Tous les 50 essais le 'score' du sujet sur les 50 derniers essais est affiché au centre de l'écran, le sujet doit appuyer sur la barre espace du clavier pour continuer (doit dire a l'expérimentateur quand il veux continué, on ne pouvais pas brancher une souris et un clavier en même temps). Ce score est égal à $\sum_{x=0}^{50} \frac{Bet_{x} \times dir_x}{50} \times 100$. Où $Bet_x$ est le parie du sujet à chaque début d'essaie comprie entre -1 pour la gauche et 1 pour la droite, $dir_x$ est la direction de la cible pour chaque essai, -1 pour la gauche et 1 pour la droite.}
