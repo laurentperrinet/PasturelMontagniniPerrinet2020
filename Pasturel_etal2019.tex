@@ -1345,8 +1345,8 @@ which supposedly underlie the generation of anticipatory aSPEM with variable str
 \node [anchor=north west]  (img4) at (0.000\linewidth,.618\linewidth){\includegraphics[width=0.49\linewidth]{4_A_result_psycho_aSPEM}};
 \node [anchor=north west]  (img4) at (0.51\linewidth,.618\linewidth){\includegraphics[width=0.49\linewidth]{4_B_result_psycho_bet}};
 %
-\draw [anchor=north west] (0.000\linewidth, .618\linewidth) node {$\mathsf{(A)}$};
-\draw [anchor=north west] (0.5\linewidth, .618\linewidth) node {$\mathsf{(B)}$};
+\draw [anchor=north west] (0.000\linewidth, .638\linewidth) node {$\mathsf{(A)}$};
+\draw [anchor=north west] (0.5\linewidth, .638\linewidth) node {$\mathsf{(B)}$};
 %
 \end{tikzpicture}
 }
@@ -1357,9 +1357,10 @@ the strength of aSPEM and a rating scale value.
 Relating those values with the corresponding inferred value $\hat{p}$
 of the probability bias inferred by the BBCP model,
 this constitutes a scatter of values.
-We display these relationships using a
-Kernel Density Estimation (KDE) of the relationship between $p$ in abscissa
+We display these relationships using a contour plot over 
+the Kernel Density Estimation (KDE) of the relationship between $p$ in abscissa
 and in ordinates \textbf{(A)} strength of aSPEM and \textbf{(B)} rating scale.
+The density of strokes represent increasing probability strengths.
 As a comparison we have plotted in XXX color the KDE computed over
 the probability bias estimates obtained with a leaky integrator.
 Additionally, we have computed the mutual information which
