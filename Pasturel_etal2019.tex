@@ -1166,7 +1166,6 @@ In particular, from this correct detection,
 the value of the inferred probability converges more rapidly to the ground truth
 as the number of observations increase after a switch.
 
-% <----- Laurent is here ----->
 %-------------------------------------------------------------%
 %: 2Cb quantitative analysis / different read-outs
 % see 2018-02-12 journal club bayesian changepoint chloe.pdf p.33/ p.42
@@ -1176,25 +1175,34 @@ Let's now see the application of our model when applied
 to the experimental protocol
 that we used in our psycho-physical experiments.
 To quantitatively evaluate the algorithm,
-we computed the average negative log-likelihood (in bits) of the estimate
-knowing the ground truth:
+we computed the  negative log-likelihood (in bits) of the estimate
+knowing the ground truth 
+and averaged over all trials:
 \eql{
-\Cc =  \sum_{t} -\log_2 B(\hat{x_1}^t ; x_1^t, r^t )
+\Cc =  \sum_{t} -\log_2 B(x_1^t ; \hat{x_1}^t, r^t )
 }
+This measure explictly corresponds to the average score of our model,
+where the score is the likelihood of the inferred belief about the probability bias
+as given by its mean $\hat{x_1}^t$ along with its precision $r^t$ and
+compared to the hidden ground truth. 
+%\eql{
+%B(x_1^t ; \hat{x_1}^t, r^t ) =  \sum_{t} -\log_2 B(\hat{x_1}^t ; x_1^t, r^t )
+%}
 Similar measures based on the predicted readout $\hat{x_0}^t$
 gave similar results but would need more data to converge.
 We have tested $100$ blocks of $2000$ trials for each read-out.
-In general, the inference is better for the mean read-out
+In general, we found that the inference is better for the 'mean' read-out
 than for the 'max' read-out and lowest for the 'fixed' read-out.
 Moreover, by testing different values of $h$ assumed by the agent
 but for a fixed $h=1/40$ in the BSM,
 we found that this is true for a range of values of $h$.
 Importantly, this shows that inference is best for a hazard rate
-equal to that in the generative model.
-This will be important to guess the hazard rate assumed by an individual agent
+equal to that in the generative model and which is hidden to the model.
+This property will be important to guess the hazard rate assumed by an individual agent
 when we observe the set of responses it gives to a given sequence of stimuli
 (see~\seeSec{inter}).
 
+% <----- Laurent is here ----->
 % TODO: say something about convergence?
 %-------------------------------------------------------------%
 %: 2Cc perspectives
