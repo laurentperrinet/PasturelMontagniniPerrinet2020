@@ -886,12 +886,12 @@ to update each node's probability.
 Black lines denote a progression of the run length at the next step (no switch),
 while red lines stand for the possibility that a switch happened:
 The run length falls back to zero.
-The black and blue curve repsectively represent for
+The black and blue curve respectively represent for
 the actual and inferred run length of the simulated data
 as a function of trial number.
 ~\textbf{(B)} On a longer sequence of $200$ trials,
 characteristic of our psychophysical experiments (see~\seeFig{intro}-A and ~\seeFig{results_raw}),
-we show above
+we show in the top plot
 the actual events which are observed by the agent (TD, fine black lines),
 along with the hidden dynamics of the probability bias $x_1$,
 the value inferred by a leaky integrator ($\bar{x_1}^t$, green line)
@@ -1114,47 +1114,59 @@ are sufficient to predict all probabilities.
 % ------------------------------------------------------------------
 \subsection{Quantitative analysis of the Bayesian change point algorithm}
 % ------------------------------------------------------------------
-% <----- Laurent is here ----->
 %-------------------------------------------------------------%
 %: 2Ca python scripts : qualitative analysis
 %-------------------------------------------------------------%
-We have implemented this algorithm using a set of python scripts.
-This algorithm is detailed in~\seeApp{bcp} and provides also some control script
+This algorithm is detailed in~\seeApp{bcp} and 
+we have implemented it using a set of python scripts.
+This implementation provides also with some control scripts
 to test the behavior of the algorithm with synthetic data.
 Indeed, this allows to qualitatively and quantitatively asses
 this ideal observer with a known ground truth before applying it
-on the trial sequence that was used for the experiments and compare it to the human behavior (see~\seeFig{results_raw}).
+on the trial sequence that was used for the experiments and 
+ultimately comparing it to the human behavior (see~\seeFig{results_raw}).
 %TODO : synchronize with FIGURE 3 fig:bayesianchangepoint
-\seeFig{bayesianchangepoint}~\textbf{A} shows
-one instance of a sequence of simulated data $x_0^t$
+\seeFig{bayesianchangepoint}~\textbf{A} shows for illustration purpose
+one instance of a short sequence of simulated data $x_0^t$
 of leftward and rightward trials with a probability $x_1^t$
 of being rightward with possible variations across time.
 It also shows the predicted probability $\hat{x_1^t}$
 as computed using the BBCP algorithm.
-\seeFig{bayesianchangepoint}~\textbf{B} illustrates
+It illustrates
 the belief on the predicted probability $\hat{p}$ at a given trial.
-On \seeFig{bayesianchangepoint}~\textbf{C},
-we can see the belief on the run length estimation.
-We see that as in the synthetic example above,
-there is a correct detection of switch after a short delay of a few trials.
+On \seeFig{bayesianchangepoint}~\textbf{B},
+we applied the BBCP model to 
+a longer sequence of $200$ trials,
+characteristic of our psychophysical experiments.
+Below, 
+we can see the dynamical evolution of the belief on the latent variable (run length),
+while we show above the results of the inference along with confidence intervals.
+As for the synthetic example above,
+there is a correct detection of switch after a short delay of a few trials,
+as shown with the comparison with the ground truth.
 We remark two main observations.
-First, beliefs grow at the beginning along a linear ridge,
-as we begin our model by assuming there was a switch at trial $0$.
+First, after each detected switch, beliefs align along a linear ridge,
+as our model integrates belief about a current phase during two switches (it 'stays').
 Then, we observe that after a switch (hidden to the model),
-the belief is diffused more strongly until the relative probability
-is less that that assigned to a lower run-length.
+the belief is diffused strongly until the relative probability
+is less that that assigned to a lower run-length:
+There is a transition to a new state (it 'goes').
 Second, we may use this information to read-out the most probable probability-bias and the confidence interval
 as shown by the red dashed lines (respectively $.05$ and $.95$).
 Note, the fixed-length is simply implemented
 by an agent with a fixed run-length $r_t=\tau$ (see broken dashed line in \seeFig{bayesianchangepoint}~\textbf{B})
 this allows for a simple comparison of the BBCP model with the leaky integrator.
 Again, we see that a fixed length model gives a similar output
-but with the two disadvantages described above,  namely that
-1/ the delay will always be similar,
-2/ there is no dynamic update of the inferred probability
+but with the two disadvantages described above, namely that
+1/ the delay after the occurrence of a switch will always be similar,
+2/ there is no dynamic update of the inferred probability 
+while in the BBCP model, the precision of each new datum 
+is higher after a switch.
 In particular, from this correct detection,
-the value of the inferred probability tends to the true one as the number of observations increase in one sub-block.
+the value of the inferred probability converges more rapidly to the ground truth
+as the number of observations increase after a switch.
 
+% <----- Laurent is here ----->
 %-------------------------------------------------------------%
 %: 2Cb quantitative analysis / different read-outs
 % see 2018-02-12 journal club bayesian changepoint chloe.pdf p.33/ p.42
@@ -1526,7 +1538,7 @@ in some pathological disorders such as schizophrenia~\citep{Adams12}.
 \item there is a stong correlation between the strength of anticipation and the probability of the process,
 
 \item we have developed a Bayesian model of an agent estimating the probability of changing points. This allows to dynamically infer the direction probability and directly compare model and human behaviour.
-\item \AM{ The quality of the correlation with the experimental measures (confidence rating and anticipatory eye movements) is enhanced when the model-predicted direction bias \hat{p} is taken as regressor instead of the real probability bias, suggesting that this model captures some of the brain computations underlying expectancy based motion prediction},
+\item \AM{ The quality of the correlation with the experimental measures (confidence rating and anticipatory eye movements) is enhanced when the model-predicted direction bias $\hat{p}$ is taken as regressor instead of the real probability bias, suggesting that this model captures some of the brain computations underlying expectancy based motion prediction},
 \item \AM{CONCLUSION on individual differences?}
 
 
