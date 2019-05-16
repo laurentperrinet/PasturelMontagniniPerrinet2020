@@ -539,12 +539,7 @@ stacked in a sequence of conditions on the probability bias.
 Indeed, observers may potentially pick up
 the information on this fixed length
 to predict the occurrence of a switch (a change in probability bias) during the experiment.
-To analyze the effect of history length in all generality,
-we therefore extended the protocol such that the probability bias
-is fixed in sub-blocks with variable block lengths,
-that is, by introducing switches occurring at random times.
-
-From the previous study, we observed qualitatively that following a switch,
+Moreover, we observed qualitatively that following a switch,
 the strength of aSPEM changed gradually,
 consistently with other adaptation paradigms~\citep{Fukushima1996,Kahlon1996,Souto13}.
 The estimate of the characteristic parameters for this  adaptation mechanism 
@@ -553,22 +548,12 @@ where the probabilistic contingencies vary in time in an unpredictable way.
 In addition, whether and how the information processing underlying
 the buildup of aSPEM and its dynamics is linked to
 an explicit estimate of probabilities is unknown.
-A possible confound in this study
-is that the range of possible biases is finite and
-that there is no direct experimental evidence that
-any continuous value within the possible range (that is, the segment $[ 0, 1 ]$)
-may be picked up by the visual system.
-To alleviate this problem, we developed a new paradigm
-in order to address this question
-by explicitly modeling a dynamic process with a given volatility:
-In particular, our design will make sure that one can manipulate the probability bias
-as a function of trial number by defining it as a random variable $p$. %,
 
 %%%-------------------------------------------------------------%
 %: 1Cb design of the binomial switching generative model
-Indeed, to assess the dynamics of the adaptive processes
-which compensate for the variability of sensory sequences,
-one may generate random sequences for the value of $p$,
+To assess the dynamics of the adaptive processes
+which compensate for the variability within sensory sequences,
+one may generate random sequences for the value of the probability bias $p = \text{Pr}(\text{TD is 'right'})$,
 with a parametric mechanism controlling for the volatility at each trial.
 In the Hierarchical Gaussian Filter model (HGF,~\citet{Mathys11}), for instance,
 volatility is controlled as a non-linear transformation
@@ -577,22 +562,32 @@ This hierarchical model allows to ultimately generate a sequence of binary choic
 where the variability fluctuates along a given trajectory.
 Such a forward probabilistic model is invertible
 using some simplifying assumptions and allows
-to extract an inference of the \AM{time-varying} agent's belief about volatility~\citep{Vossel14}.
+to extract a time-varying inference of the agent's belief about volatility~\citep{Vossel14}.
 Herein, we will use a simpler model where
 the bias $p$ in target direction varies according to a piecewise-constant function
-%(that is, a step function varying between~$0$ and~$1$),
 similarly to~\citet{Meyniel13}.
-Indeed, within each sub-block, the volatility \AM{? RATHER: UNCERTAINTY ABOUT?} of the value of $p$
-progressively decreases as we accumulate samples.
-It means that instead of a complex stochastic trajectory,
-we draw random events (that we denote as ``switches'')
-with a given mean frequency,
-and that the bias in target direction is stationary between two switches:
-The value $p$ of the bias only changes at the moment of a switch,
-independently of the previous bias' value.
-Such a sequence is presented in~\seeFig{intro}-A, %TODO : add A + blue line
-where we show the realization of the target's directions sequence, and
-the trajectory of the underlying (hidden) probability bias.
+To analyze the effect of history length in all generality,
+we therefore extended the protocol of~\citep{Montagnini2010} such that the probability bias
+is fixed within blocks but that these block had variable lengths,
+that is, by introducing switches occurring at random times.
+%We expect that within each sub-block, the uncertainty about of the value of $p$
+%will progressively decrease as we accumulate samples.
+A possible confound in that study
+was that the range of possible biases is finite and 
+may be picked up by the visual system.
+To alleviate this problem, we extended the paradigm
+by drawing $p$ as a random variable on continuous values 
+within the possible range (that is, the segment $[ 0, 1 ]$)
+As a summary, we first draw random events (that we denote as ``switches'')
+with a given mean frequency called the hazard rate and which controls the strength of the volatility.
+Second, the value $p$ of the bias only changes at the moment of a switch,
+independently of the previous bias' value
+and is stationary between two switches.
+Third, target directions are drawn asd a Bernoulli trial using $p$.
+Such a sequence is presented in~\seeFig{intro}-A, 
+where we show the realization of the target's directions sequence,
+the trajectory of the underlying (hidden) probability bias, and
+the occurrences of switches.
 
 % equations
 Mathematically, this can also be considered as a three-layered hierarchical model
