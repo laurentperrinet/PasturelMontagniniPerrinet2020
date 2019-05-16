@@ -577,7 +577,7 @@ To alleviate this problem, we extended the paradigm
 by drawing $p$ as a random variable on continuous values 
 within the possible range (that is, the segment $[ 0, 1 ]$)
 As a summary, we first draw random events (that we denote as ``switches'')
-with a given mean frequency called the hazard rate and which controls the strength of the volatility.
+with a given mean frequency and which controls the strength of the volatility.
 Second, the value $p$ of the bias only changes at the moment of a switch,
 independently of the previous bias' value
 and is stationary between two switches.
@@ -587,64 +587,68 @@ where we show the realization of the target's directions sequence,
 the trajectory of the underlying (hidden) probability bias, and
 the occurrences of switches.
 
-% equations
+%: 1Cc  equations
 Mathematically, this can also be considered as a three-layered hierarchical model
-defining the evolution of the model for each trial $t$ as the vector  $(x_2^t, x_1^t, x_0^t)$.
+defining the evolution of the model at each trial $t$ as the vector  $(x_2^t, x_1^t, x_0^t)$.
 At the topmost layer,
 the occurrence $x_2^t \in \{ 0, 1 \}$ of a switch ($1$ for true, $0$ for false)
-is  drawn from a Bernoulli process with the switch's frequency $1/\tau$ as the main parameter.
-The value of $\tau$ thus gives the average length (in number of trials)
+is  drawn from a Bernoulli trial $\Bb$ parameterized by its frequency $h$, or \emph{hazard rate}.
+The value of $\tau=\frac 1 h$ thus gives the average length (in number of trials)
 between the occurrence of two switches.
 The probability bias $p$ in target direction is a random variable that we define as $x_1^t \in [0, 1]$.
 It is chosen at random from a prior distribution $\Pp$ at the moment of a switch,
 and else it is constant until the next occurrence of a switch.
 Finally, a target moves either to the left or to the right,
 and we denote this variable (target direction) as $x_0^t \in \{ 0, 1 \}$.
-This direction is drawn from a Bernoulli process $\Bb$
+This direction is drawn from a Bernoulli trial
 parameterized by the direction bias $p=x_1^t$.
-Mathematically, this is easily described
-by a 3-layered graphical model according to %~(\seeFig{results_psycho}-A) and
-the following equations:
-\begin{itemize}
-    \item Occurrence of a switch: $x_2^t \propto \Bb(1/\tau)$
-    \item Dynamics of probabilistic bias: \eql{\choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
-\text{else} \quad x_1^t \propto \Pp  }\label{eq:bsm}}
-    \item Sequence of directions:  $x_0^t \propto \Bb(x_1^t)$
-\end{itemize}
-% \eql{\choice{
-% x_2^t \propto \Bb(1/\tau) \\
-% % TODO: nest the choice
-% \choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
-% \text{else} \quad x_1^t \propto \Pp  \\
-% } \\
-% x_0^t \propto \Bb(x_1^t)
-% }\label{eq:bsm}}
+Mathematically, this is  described according to the following equations:
+%\begin{itemize}
+%    \item Occurrence of a switch: $x_2^t \propto \Bb(h)$
+%    \item Dynamics of probabilistic bias: \eql{\choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
+%\text{else} \quad x_1^t \propto \Pp  }\label{eq:bsm}}
+%    \item Sequence of directions:  $x_0^t \propto \Bb(x_1^t)$
+%\end{itemize}
+ \eql{\choice{
+\text{Occurrence of a switch: } x_2^t \propto \Bb(1/\tau) \\
+ % TODO: nest the choice
+\text{Dynamics of probabilistic bias: } 
+ \choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
+ \text{else} \quad x_1^t \propto \Pp  \\
+ } \\
+\text{Sequence of directions: } x_0^t \propto \Bb(x_1^t)
+ }\label{eq:bsm}}
 Note that the prior distribution $\Pp$ can be for instance
 the uniform distribution $\Uu$ on $ [ 0, 1 ] $ or
 Jeffrey's prior $\Jj$~(see \seeApp{bcp}).
-There is always a switch at $t=0$ (that is, $x_2^0=1$). \AM{In addition, we imposed a switch to occur after $200$ and $400$ trials, in order to be able to compare adaptation properties across different chunks of the trials sequence.
-The model generating the experimental sequence of trial directions, as well as the experimental protocol are illustrated in~\seeFig{intro}. With a three-layers structure, the model generates the randomized occurrence of the switches,
+There is always a switch at $t=0$ (that is, $x_2^0=1$). 
+In addition, we imposed in our sequence of $600$ trials that a switch 
+occurs after trial numbers $200$ and $400$, 
+in order to be able to compare adaptation properties across different chunks of the trials sequence.
+%The model generating the experimental sequence of trial directions, as well as the experimental protocol are illustrated in~\seeFig{intro}-A. 
+With such a three-layers structure, the model generates the randomized occurrence of the switches,
 the length of sub-blocks with constant direction probability
-(chosen in the continuous range of possible bias' values), and finally the random sequence of trial direction occurrences?
+(chosen in the continuous range of possible biases' values), 
+and finally the random sequence of trial direction occurrences.
 In conclusion, the system of three equations~\seeEq{bsm}
 defines the Binomial Switching Model (BSM)
 which we used for the generation of experimental sequences presented to human participants in the experiments,
-but also as the basis of an ideal observer model.}
+but also as the basis of an ideal observer model.
 
-%: outline
+%: 1Cd outline
 This paper is organized in five parts.
 After this introduction where we presented the motivation for this study,
 the next section~(\seeSec{bayesian_change_point}) will present
 an inversion of the BSM forward probabilistic model,
 coined the Binomial Bayesian Change Point (BBCP) model.
-To our knowledge, such algorithm is not available yet, and
+To our knowledge, such algorithm was not yet available, and
 we will here provide it with an analytical solution,
 by extending previous results from~\citet{AdamsMackay2007}
 to the case of binomial data as in the BSM presented above.
 In addition, this solution is \emph{online},
 that is, that all computations on the sequence may be done
 using solely the variables available at the present trial,
-compactly representing all history see in previous trials.
+compactly representing all the sequence history seen in previous trials.
 We will also provide a computational implementation
 and a quantitative evaluation of this algorithm.
 Then, in~\seeSec{results_psycho} we will present the analysis of experimental evidence
