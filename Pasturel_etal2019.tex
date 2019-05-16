@@ -548,7 +548,7 @@ the buildup of aSPEM and its dynamics is linked to
 an explicit estimate of probabilities is unknown.
 
 %%%-------------------------------------------------------------%
-%: 1Cb design of the binomial switching generative model
+%: 1Cb design of the binary switching generative model
 To assess the dynamics of the adaptive processes
 which compensate for the variability within sensory sequences,
 one may generate random sequences for the value of the probability bias $p = \text{Pr}(\text{TD is 'right'})$,
@@ -631,7 +631,7 @@ the length of sub-blocks with constant direction probability
 (chosen in the continuous range of possible biases' values), 
 and finally the random sequence of trial direction occurrences.
 In conclusion, the system of three equations~\seeEq{bsm}
-defines the Binomial Switching Model (BSM)
+defines the Binary Switching Model (BSM)
 which we used for the generation of experimental sequences presented to human participants in the experiments,
 but also as the basis of an ideal observer model.
 
@@ -640,11 +640,11 @@ This paper is organized in five parts.
 After this introduction where we presented the motivation for this study,
 the next section~(\seeSec{bayesian_change_point}) will present
 an inversion of the BSM forward probabilistic model,
-coined the Binomial Bayesian Change Point (BBCP) model.
+coined the Binary Bayesian Change Point (BBCP) model.
 To our knowledge, such algorithm was not yet available, and
 we will here provide it with an analytical solution,
 by extending previous results from~\citet{AdamsMackay2007}
-to the case of binomial data as in the BSM presented above.
+to the case of binary data as in the BSM presented above.
 In addition, this solution is \emph{online},
 that is, that all computations on the sequence may be done
 using solely the variables available at the present trial,
@@ -689,7 +689,7 @@ Finally, we will summarize and conclude this study and
 offer some perspectives for future work in~\seeSec{outro}.
 %
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results: Binomial Bayesian Change Point (BBCP) detection model}
+\section{Results: Binary Bayesian Change Point (BBCP) detection model}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:bayesian_change_point}
@@ -808,7 +808,7 @@ of an ideal agent inferring
 both the trajectory in time of the probability bias ($x_1^t$)
 and the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 % ------------------------------------------------------------------
-\subsection{Binomial Bayesian Change Point model}
+\subsection{Binary Bayesian Change Point model}
 % ------------------------------------------------------------------
 %-------------------------------------------------------------%
 %: FIGURE 3 fig:bayesianchangepoint \seeFig{bayesianchangepoint}
@@ -823,9 +823,9 @@ and the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 \draw [anchor=north west] (0.382\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
 \end{tikzpicture}
 } 
-\caption{\emph{Binomial Bayesian Change Point model (BBCP)}
+\caption{\emph{Binary Bayesian Change Point model (BBCP)}
 ~\textbf{(A)} This plot shows a synthesized sequence of $10$ events,
-each of them corresponding to a binomial choice, either $0$ or $1$,
+each of them corresponding to a binary choice, either $0$ or $1$,
 and representing in turn a leftward or rightward movement of the target (TD).
 Here, the probability switched from a value of $.1$ to $.9$ at trial $5$.
 The BBCP model tries to capture the occurrences of a switch by inferring run lengths,
@@ -870,7 +870,7 @@ integration is thus faster than for the leaky integrator, as illustrated above.
 %-------------------------------------------------------------%
 There is a crucial difference between the forgetful agent presented above
 %\AM{WE CAN SKIP THIS:which believes that changes occur at a constant rate ($\hat{x_2}^t=h$, see~\seeEq{leaky2})}
-and an ideal agent which would invert the binomial switching model (BSM, see~\seeEq{bsm}).
+and an ideal agent which would invert the binary switching model (BSM, see~\seeEq{bsm}).
 Indeed, at any trial during the experiment,
 the agent may infer beliefs about the probability of the volatility $x_2^t$
 which itself is driving the trajectory of the probability bias $x_1^t$.
@@ -889,7 +889,7 @@ We have designed an agent inverting the BSM by extending
 the Bayesian Change-Point (BCP) detection model~\citep{AdamsMackay2007}.
 The latter model defines the agent as an inversion of a switching generative model
 for which the observed data (input) is Gaussian.
-We present here an exact solution for the case of the BSM, where the input is binomial (see~\seeEq{bsm}).
+We present here an exact solution for the case of the BSM, where the input is binary (see~\seeEq{bsm}).
 
 %-------------------------------------------------------------%
 %: 2Bb overcoming this difficulty using a latent variable - prediction/update cycle
@@ -943,16 +943,16 @@ where $\beta^{(r)}_t$ is scaled such that $\sum_r \beta^{(r)}_t = 1$.
 In the graph, this corresponds to a message passing from the nodes at time $t-1$
 to that at time $t$ and formalized by the transition matrix $Pr(r^t | r^{t-1})$.
 Finally, this update / prediction cycle applied to the BSM and using~\seeEq{bsm}
-will constitute the Binomial Bayesian Change Point (BBCP) detection model.
+will constitute the Binary Bayesian Change Point (BBCP) detection model.
 
 %-------------------------------------------------------------%
 %: 2Bc online estimation: initialization
 %-------------------------------------------------------------%
 The main difference between our algorithm and that of~\citep{AdamsMackay2007},
-is that the observed data is binomial and not Gaussian as in their case.
+is that the observed data is a Bernoulli trial and not a Gaussian random variable as in their case.
 The random variable $x_1^t$ is the probability bias used
-to generate the sequence of events $x_0^t$ through a binomial trial.
-Mathematically, a belief on the probability bias $p$ defining the binomial trial (and thus to the process corresponding to the trial sequence),
+to generate the sequence of events $x_0^t$ through a Bernoulli trial.
+Mathematically, a belief on the probability bias $p$ defining the Bernoulli trial (and thus to the process corresponding to the trial sequence),
 is well represented by the conjugate probability distribution of the binomial distribution,
 that is, by the beta-distribution $B(p; \mu, \nu)$.
 It is parameterized here by its sufficient statistics,
@@ -1064,7 +1064,7 @@ are sufficient to predict all probabilities.
 %at the next trial $t+1$: $Pr(r_t | x_0^{0:t})$, $\mu^{(r)}_{t+1}$ and $\nu^{(r)}_{t+1}$.
 %projecting beliefs backwards and forward  : the algorithm is online et the price of memory
 % ------------------------------------------------------------------
-\subsection{Quantitative analysis of the Binomial Bayesian Change Point detection algorithm}
+\subsection{Quantitative analysis of the Binary Bayesian Change Point detection algorithm}
 % ------------------------------------------------------------------
 %-------------------------------------------------------------%
 %: 2Ca python scripts : qualitative analysis
@@ -1196,7 +1196,7 @@ compared to the previous protocol with fixed-length blocks (see~\seeFig{intro}-C
 The top row represents the sequence of target directions (TD)
 that were presented to observers
 for a sequence of $200$ trials
-as generated by the binomial switching model (see~\seeFig{intro}-A).
+as generated by the binary switching model (see~\seeFig{intro}-A).
 Bottom rows show the raw behavioral results 
 for two representative observers:
 The recorded aSPEM strength as measured 
@@ -1738,7 +1738,7 @@ To summarize, the algorithm that we presented
 %in Python.
 %
 %
-%* adapted from https://github.com/JackKelly/bayesianchangepoint by Jack Kelly (2013) for a binomial input.
+%* adapted from https://github.com/JackKelly/bayesianchangepoint by Jack Kelly (2013) for a binary input.
 %
 %* This code is based on the  [MATLAB implementation](http://www.inference.phy.cam.ac.uk/rpa23/changepoint.php) provided by Ryan Adam. Was available at http://hips.seas.harvard.edu/content/bayesian-online-changepoint-detection
 %
