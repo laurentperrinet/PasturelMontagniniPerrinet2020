@@ -836,24 +836,24 @@ and the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 \end{tikzpicture}
 } 
 \caption{\emph{Binomial Bayesian Change Point model (BBCP)}
-~\textbf{(A)} This plot shows a synthesized sequence of $10$ events
-that each correspond to a binomial choice, either $0$ or $1$,
-which will then correspond to a leftward or rightward movement of the target (TD).
+~\textbf{(A)} This plot shows a synthesized sequence of $10$ events,
+each of them corresponding to a binomial choice, either $0$ or $1$,
+and representing in turn a leftward or rightward movement of the target (TD).
 Here, the probability switched from a value of $.1$ to $.9$ at trial $5$.
 The BBCP model tries to capture the occurrences of a switch by inferring run lengths,
 that is, the number of trials since a switch.
 At any new datum (trial), this defines a Hidden Markov Model
 as a graph (treillis) of possible run lengths.
-Edges of this graph indicate that a message is being passed
+Edges \AM{Arrows?} of this graph indicate that a message is being passed
 to update each node's probability.
 Black lines denote a progression of the run length at the next step (no switch),
 while red lines stand for the possibility that a switch happened:
 The run length falls back to zero.
-The black and green curve respectively represent for
+The black and green curve respectively represent 
 the actual and inferred run length of the simulated data
-as a function of trial number.
+as a function of trial number. \AM{In this example the inferred switch is delayed by one trial with respect to the true switch.}
 ~\textbf{(B)} On a longer sequence of $200$ trials,
-characteristic of our psychophysical experiments (see~\seeFig{intro}-A), % and~\seeFig{results_raw}),
+representative of a sub-part of our experimental sequence (see~\seeFig{intro}-A), % and~\seeFig{results_raw}),
 we show in the top plot
 the actual events which are observed by the agent (TD, fine black lines),
 along with the hidden dynamics of the probability bias $x_1$,
@@ -1049,18 +1049,17 @@ This updates for each node the sufficient statistics of the pdf at the current t
 This finalizes the prediction step.
 
 The agent may infer at each trial the belief
-and use for instance the expected value or the maximum a posteriori as readouts.
-More precisely, we define these two strategies as following:
-Either by choosing
-at each trial the run-length with maximal probability
-and then assigning the predicted probability bias
+and use for instance the maximum a posteriori or the expected value as readouts.
+More precisely, we define these two strategies as following.
+For the maximum a posteriori readout
+at each trial the run-length with maximal probability is selected
+and then the predicted probability bias is estimated
 as the probability bias for that run-length:
 \eql{
 \hat{x_1}^t = \mu^{(r^\ast)}_{t} \quad \text{with} \quad r^\ast = \argmax_r \beta^{(r)}_{t}
 }
-A second strategy consists in computing
-at each trial the conditional mean of the probability bias
-as the expected value over all run-lengths:
+For the conditional mean readout strategy, the probability bias is estimated
+at each trial as the expected value over all run-lengths:
 \eql{
 \hat{x_1}^t = \sum_{r} \beta^{(r)}_{t} \cdot \mu^{(r)}_{t}
 }
@@ -1069,8 +1068,8 @@ the BBCP model uses a dynamical model, but still with only one parameter.
 As for the latter, this parameter~$h=\frac 1 \tau$ informs the BBCP model
 that the probability bias  changes \emph{on average} every~$\tau$ trials.
 As in \seeEq{leaky}, this defines the \emph{hazard rate}.
-Note that the resulting operations are online, that is,
-that only the belief at trial $t$ and the new datum $x_0^t$
+Note that the resulting operations can be implemented \textit{online}, that is,
+only the belief at trial $t$ and the new datum $x_0^t$
 are sufficient to predict all probabilities.
 %at the next trial $t+1$: $Pr(r_t | x_0^{0:t})$, $\mu^{(r)}_{t+1}$ and $\nu^{(r)}_{t+1}$.
 %projecting beliefs backwards and forward  : the algorithm is online et the price of memory
