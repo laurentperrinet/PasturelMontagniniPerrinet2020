@@ -1123,7 +1123,7 @@ as the number of observations increase after a switch.
 % see 2018-02-12 journal club bayesian changepoint chloe.pdf p.33/ p.42
 % TODO include these quantitative results in a figure
 %-------------------------------------------------------------%
-Let's now see the application of our model to 
+Let's now see the performance of the BBCP model to fit behavioural data.
 To quantitatively evaluate the algorithm,
 we computed the  negative log-likelihood (in bits) of the estimate
 knowing the ground truth 
@@ -1147,10 +1147,10 @@ than for the 'max' read-out and lowest for the 'fixed' read-out.
 Moreover, by testing different values of $h$ assumed by the agent
 but for a fixed $h=1/40$ in the BSM,
 we found that this is true for a range of values of $h$.
-Importantly, this shows that inference is best for a hazard rate
-equal to that in the generative model and which is hidden to the model.
-This property will be important to guess the hazard rate assumed by an individual agent
-when we observe the set of responses it gives to a given sequence of stimuli
+Importantly, this analysis shows that inference is best for a hazard rate
+equal to that implemented in the generative model and which is hidden to the BBCP agent.
+This property will be important to estimate the hazard rate implicitly assumed by an individual participant
+on the basis of the set of responses given to the  sequence of stimuli
 (see~\seeSec{inter}).
 
 %-------------------------------------------------------------%
