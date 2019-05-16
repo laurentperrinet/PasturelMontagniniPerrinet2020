@@ -296,7 +296,7 @@ Overall, the ability to detect
 statistical regularities in the event sequence
 thus appears as a fundamental ability
 for the adaptive behavior of living species.
-Very few studies have addressed the question of whether
+Moreover, few studies have addressed the question of whether
 the estimate of such regularities is explicit,
 and whether verbal reports of the dynamic statistical
 estimates would eventually correlate to the measures of behavioral adaptation. 
@@ -309,19 +309,21 @@ within a hierarchical statistical framework.
 
 %: Bayesian methods & role of predictive processing for this adaptive response
 % TODO : clarify this paragraph
-At present, Bayesian inference offers an effective methodology
+As such, Bayesian inference offers an effective methodology
 to deal with this question.
 In all generality, Bayesian methods allow to define and quantitatively assess
 a range of hypotheses about the processing by some formal agents
 of (possibly noisy) information~\citep{Deneve1999, Diaconescu2014, Daunizeau10a}.
 A key principle in the Bayesian inference approach is
-that each stated hypothesis is quantitatively formalized
+to introduce latent variables and hypothesis about how these predict measurements.
+Each stated hypothesis is quantitatively formalized
 using a generative model for the input / output response function
-by defining a graph of dependencies between defined variables.
+by defining a graph of dependencies between defined variables
+representing prior knowledge about the structure of the model.
 The generative model is parameterized by structural variables
-(such as weights, non-linear gain functions or prior knowledge)
-and transforms some relevant latent variables
-which may be represented as probabilities.
+(such as weights or non-linear gain functions)
+such that beliefs about latent variables
+may be represented as probabilities.
 Then, using the rules of probability calculus
 one can progressively update beliefs about the latent variables,
 such that one can finally infer the hidden structure of received inputs~\citep{Hoyer2003, Ma2014}.
@@ -329,18 +331,18 @@ For instance, using Bayes's rule, one can combine
 the likelihood of observations given the generative model and
 the prior of these latent variables~\citep{Janes2014}.
 Of particular interest for us is the possibility to
-quantitatively represent
-the predictive and iterative nature of the probabilistic model.
+quantitatively represent in the probabilistic model
+the predictive and iterative nature of a sequence of events.
 Indeed, once the belief about latent variables
 is formed from the sensory input,
 this belief can be used to update
-the prior over future beliefs on latent variables~\citep{Montagnini2007}.
+the prior over future beliefs~\citep{Montagnini2007}.
 Thus, the comparisons between expectations and actual data produces
 constant updates to the estimates of the model.
-Such a process is formalized in all generality 
-within the~\textit{active inference} framework~\citep{Friston2003, Friston2010}.
-In summary, Active Inference allows to predict latent variables
-but also to understand longer time effects such as adaptation and learning.
+%Such a process is formalized in all generality 
+%within the~\textit{active inference} framework~\citep{Friston2003, Friston2010}.
+%In summary, Active Inference allows to predict latent variables
+%but also to understand longer time effects such as adaptation and learning.
 
 There are numerous examples of such Bayesian approaches
 applied to the the study of the adaptation to volatility
@@ -362,8 +364,8 @@ of what is learned (transition probabilities versus item frequencies)
 in an attempt to capture human behavior.
 %TODO say it is an optimization that is, a measure of the dynamic compromise between exploration and exploitation
 %Chopin and %Mamassian and the use of visual confidence  (see Ann rev of Vision 2016)
-Interestingly, the observation of priming effects
-have also been observed for anticipatory smooth eye movements (aSPEM)
+Interestingly, the observation of priming effects at cognitive levels
+have also been observed for simpler levels such as anticipatory smooth eye movements (aSPEM)
 and therefore allow to further deepen our understanding of such predictive processes. %
 %As a consequence, Bayesian inference allows to compare the explanatory power
 %of different models...
