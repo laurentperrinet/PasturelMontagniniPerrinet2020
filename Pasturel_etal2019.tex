@@ -193,9 +193,8 @@ pdfauthor={\AuthorA},%< \Email > \Address},%
 \label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Volatility of sensory contingencies and
-the adaptation of cognitive systems}
-%: 1A : cognitiove adaptation to volatility; general volatility and perceptual learning
+\subsection{Volatility of sensory contingencies and the adaptation of cognitive systems}
+%: 1A : cognitive adaptation to volatility; general volatility and perceptual learning
 %-------------------------------------------------------------%
 % ------------------------------------------------------------------
 % * the evolution  of prices on the stock market: Any Socio-economic contextual index may make the price evolve up or down, slowly or more Rapidly
@@ -226,7 +225,7 @@ our cognitive system has to constantly adapt.
 Imagine for instance you are a general practitioner and
 that you usually report an average number of
 three person infected by measles per week.
-However, this rate is volatile and
+However, this rate is variable and
 over the past week
 the rate increased to ten cases.
 As such, two alternate interpretations are available:
@@ -235,8 +234,8 @@ one should estimate its incidence
 (as measured as the rate of new cases)
 since an estimate of the outbreak's onset.
 Alternatively, these cases are
-``unlucky'' coincidences that originate from the volatility
-of a genuinely stationary and heterogeneous random process
+``unlucky'' coincidences that originate from the variability
+of an instance of values drawn from a stationary random process
 that generated these observations.
 In that option, it may be possible to readjust
 the estimated baseline rate of infection with this new data.
@@ -249,6 +248,8 @@ or \emph{should I go} and explore a new hypothesis
 about the random process generating the observations
 since the detection of a switch in the environment?
 
+By definition, volatility measures the temporal variability
+of the sufficient parameters of a random variable.
 Such \emph{meta-analysis} of the environment's statistical properties 
 is an effective strategy at the large scale level of our example,
 but also at all levels which are behaviorally relevant,
@@ -518,104 +519,57 @@ of trials that are commonly used in psychophysics and sensorimotor adaptation st
 % ------------------------------------------------------------------
 %: 1C : what is novel in our work
 % ------------------------------------------------------------------
-%: how we do it : or rather why we do it this way (and not like Matthys)
+%: 1Ca how we do it : or rather why we do it this way (and not like Matthys)
 The goal of this study is to generalize the adaptive process
 observed in the aSPEM response to more ecological settings but
-also to broaden its scope by showing that such unconscious process
+also to broaden its scope by showing that such adaptive process
 also occurs at the conscious level.
-To analyse the effect of history length in all generality,
-we therefore extended the protocol such that the probability bias
-is fixed in sub-blocks with variable block lengths.
 %The equations for this protocol will be detailed below~(\seeSec{bayesian_change_point}).
-Indeed, by manipulating the probability for target motion direction,
-as measured during a fixed duration gap
-before target ramp-motion onset~(see \seeFig{intro}-A),
-it is possible to bias the direction and mean velocity of aSPEM~(see \seeFig{intro}-B).
+Indeed, we saw above that by manipulating the probability bias for target motion direction,
+it is possible to bias the direction and mean velocity of aSPEM~\citep{Montagnini2010}.
 This suggests that probabilistic information may be used
 to inform the internal representation of motion prediction
-for the initiation of anticipatory movements~\citep{Montagnini2010}.
-However, it is yet unclear what method to use
-to dynamically manipulate the probability of the input sequence.
-
-First, one possible confound in the previous study
-is that the range of possible biases is finite and
-that there is no direct experimental evidence that
-any continuous value within the possible range (that is, the segment $[ 0, 1 ]$)
-may be picked up by the visual system.
-Second, another possible caveat comes from the fact that the sequence of blocks of conditions on $p$
-was used within blocks of fixed lengths.
+for the initiation of anticipatory movements.
+However, it is yet unclear what generative model to use
+to dynamically manipulate the probability bias
+and generate an ecologically relevant input sequence of target directions.
+A possible caveat comes from the fact that 
+this study used blocks of fixed lengths 
+stacked in a sequence of conditions on the probability bias.
 Indeed, observers may potentially pick up
 the information on this fixed length
-to predict the occurrence of switches in conditions.
+to predict the occurrence of a switch (a change in probability bias) during the experiment.
+To analyze the effect of history length in all generality,
+we therefore extended the protocol such that the probability bias
+is fixed in sub-blocks with variable block lengths,
+that is, by introducing switches occurring at random times.
 
-Additionally, we observed qualitatively that following the switch from
-one condition to the next,
+From the previous study, we observed qualitatively that following a switch,
 the strength of aSPEM changed gradually,
-consistently with other adaptation paradigms~\citep{Fukushima1996,Kahlon1996,Souto13},
-but for which the adaptation mechanism was only fitted.
-As a consequence, such estimate may become particularly
-challenging in a dynamic context,
+consistently with other adaptation paradigms~\citep{Fukushima1996,Kahlon1996,Souto13}.
+The estimate of the characteristic parameters for this  adaptation mechanism 
+may become particularly challenging in a dynamic context,
 where the probabilistic contingencies vary in time in an unpredictable way.
 In addition, whether and how the information processing underlying
 the buildup of aSPEM and its dynamics is linked to
 an explicit estimate of probabilities is unknown.
+A possible confound in this study
+is that the range of possible biases is finite and
+that there is no direct experimental evidence that
+any continuous value within the possible range (that is, the segment $[ 0, 1 ]$)
+may be picked up by the visual system.
 To alleviate this problem, we developed a new paradigm
 in order to address this question
 by explicitly modeling a dynamic process with a given volatility:
-In particular, our design will make sure that one can manipulate the variable $p$
-as a function of trial number by making $p$ itself a random variable. %,
-% but also that we can devise an ideal observer for each sequence of inputs.
-% TODO check transition
-In order to understand the nature of the representation of motion regularities underlying eye movement adaptive behavior, it is crucial to collect verbal explicit judgments about expectations on motion direction, in addition to the recording of eye movements.
-In such an explicit judgment task, we evaluated for each participant their confidence for the next trial direction
-(\emph{prior} to the appearance of the target).
-%on a rating scale
-%between "sure left", to "unsure" and finally "sure right"~(see \seeFig{intro}-C).
+In particular, our design will make sure that one can manipulate the probability bias
+as a function of trial number by defining it as a random variable $p$. %,
 
-
-%\subsection{Generative model: the binomial switching model}
-%-------------------------------------------------------------%
-%%%: FIGURE 2 fig:results_raw ~\seeFig{results_raw} 
-%%% cf 1_generative-model.ipynb
-%%\begin{figure}%[b!]
-%%\centering{\includegraphics[width=\linewidth]{2_results_enregistrement}}
-%%\caption{
-%%\emph{Raw behavioral results.} %
-%%The top row represents the sequence of target directions (TD)
-%%that were presented to observers
-%%for one block of $200$ trials
-%%as generated by the binomial switching model (see~\seeFig{intro}-A).
-%%The bottom rows show the raw behavioral results 
-%%for two representative observers.
-%%We have overlaid 
-%%1/ the recorded aSPEM strength as measured by the horizontal eye velocity estimated right before
-%%the onset of the visually-driven SPEM (black line);
-%%these values were here scaled according to their extremal values,
-%%2/ the rating scale as given by the rating scale (red line),
-%%3/ the evolution of the value 
-%%of the probability bias $p$ used to generate the TD sequence (red shaded areas)
-%%and which are hidden to the observers.
-%%Qualitatively, one can observe a trend with the polarity of aSPEM velocity
-%%to be negative for $p$ values below~$.5$ and positive for values above~$.5$.
-%%In addition, the explicit rating scale
-%%for the next trial's motion direction
-%%seems to follow a similar trend.
-%%Both curve seem to lag of few trials 
-%%after the occurrence of a switch
-%%(also hidden to the observers).
-%%Note that we introduced short pauses every $50$ trials (as denoted by vertical black lines), to prevent from fatigue and check for possible drifts of the recorded eye position.
-%%}
-%%\label{fig:results_raw}
-%%\end{figure}
 %%%-------------------------------------------------------------%
-%: design of the binomial switching generative model
+%: 1Cb design of the binomial switching generative model
 Indeed, to assess the dynamics of the adaptive processes
 which compensate for the variability of sensory sequences,
 one may generate random sequences for the value of $p$,
 with a parametric mechanism controlling for the volatility at each trial.
-\AM{By definition, volatility measures the temporal variability
-of the sufficient parameters of a random variable.}
-% \AM{THEN I HAVE A QUESTION: GIVEN THIS DEFINITION, DOES VOLATILITY CHANGE AT EACH TRIAL IN OUR CASE, OR IS VOLATILITY FIXED ONCE THE TAU=40 PARAMETER HAS BEEN CHOSEN?} it is given by tau /on average/
 In the Hierarchical Gaussian Filter model (HGF,~\citet{Mathys11}), for instance,
 volatility is controlled as a non-linear transformation
 of a random walk (modeled itself by a Brownian motion with a given diffusion factor).
@@ -636,7 +590,7 @@ with a given mean frequency,
 and that the bias in target direction is stationary between two switches:
 The value $p$ of the bias only changes at the moment of a switch,
 independently of the previous bias' value.
-Such a sequence is presented in ~\seeFig{intro}-A, %TODO : add A + blue line
+Such a sequence is presented in~\seeFig{intro}-A, %TODO : add A + blue line
 where we show the realization of the target's directions sequence, and
 the trajectory of the underlying (hidden) probability bias.
 
@@ -709,7 +663,12 @@ with this novel protocol. %~(see \seeFig{intro}-A \& B).
 Such results will allow us to fit the inverse model and to compare
 its prediction compared to classical models such as the leaky integrator model.
 %The probability of either motion direction changes randomly in time.
-While in a first session, we recorded anticipatory eye movements, 
+In order to understand the nature of the representation of motion regularities underlying eye movement adaptive behavior, it is crucial to collect verbal explicit judgments about expectations on motion direction, in addition to the recording of eye movements.
+In such an explicit judgment task, we evaluated for each participant their confidence for the next trial direction
+(\emph{prior} to the appearance of the target).
+%on a rating scale
+%between "sure left", to "unsure" and finally "sure right"~(see \seeFig{intro}-C).
+While in a first session, we recorded anticipatory eye movements~(see \seeFig{intro}-B), 
 in a second experimental session, participants were asked to estimate
 ``how much they are confident that
 the target will move to the right or left in the next trial'' and
@@ -728,6 +687,7 @@ across the two different sessions testing predictive adaptive processes
 at the unconscious and conscious levels.
 Finally, we will summarize and conclude this study and
 offer some perspectives for future work in~\seeSec{outro}.
+%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results: Binomial Bayesian Change Point (BBCP) model}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
