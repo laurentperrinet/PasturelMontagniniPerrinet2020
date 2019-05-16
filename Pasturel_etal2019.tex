@@ -22,7 +22,7 @@ Should I stay or should I go? Humans adapt to the volatility of visual motion pr
 }
 \newcommand{\Acknowledgments}{PACE-ITN - code and material @ \url{\Website/Publications/PasturelMontagniniPerrinet2019}. TODO: RIck + Karl + JB + Laurent Madelain }
 \newcommand{\Abstract}{
-Animal behavior has to constantly adapt to changes, for instance when unexpectedly switching the state of an environmental context. For an agent interacting with this kind of volatile environment, it is important to respond to such switches accurately and with the shortest delay. However, this operation has in general to be performed in presence of noisy sensory inputs and solely based on the currently available information. It has already been shown that human observers can accurately anticipate the motion direction of a visual target with their eye movements when this random sequence of rightward/leftward motions is defined by a bias in direction probability. Here, we generalized the capacity of these observers to anticipate different random biases within random-length contextual blocks. Experimental results were compared to those of a probabilistic agent which is optimal with respect to this switching model. We found a better fit between the behaviorally observed anticipatory response with that of the probabilistic agent compared to other models such as a leaky integrator model. Moreover, we could similarly fit the level of confidence reported by human observers with that provided by the model and derive a common marker for participant inter-variability, titrating their level of preference between exploration and exploitation. Such results provide evidence that in such a volatile environment human observers may still efficiently represent an internal belief, along with its precision, and use this representation for sensorimotor control as well as for explicit judgments. This work proposes a novel approach to more generically test human cognitive abilities in uncertain and dynamic environments.
+Animal behavior has to constantly adapt to changes, for instance when unexpectedly switching the state of an environmental context. For an agent interacting with this kind of volatile environment, it is important to respond to such switches accurately and with the shortest delay. However, this operation has in general to be performed in presence of noisy sensory inputs and solely based on the currently available information. It has already been shown that human observers can accurately anticipate the motion direction of a visual target with their eye movements when this random sequence of rightward/leftward motions is defined by a probability bias in target direction. Here, we generalized the capacity of these observers to anticipate different random biases within random-length blocks of probability bias. Experimental results were compared to those of a probabilistic agent which is optimal with respect to this switching model. We found a better match between the behaviorally observed anticipatory response with that given by this agent compared to other models such as the leaky integrator. Moreover, we could similarly fit the level of confidence reported by human observers with that provided by the model and derive a common marker for participant inter-variability, titrating their level of preference between exploration and exploitation. Such results provide evidence that in such a volatile environment human observers may still efficiently represent an internal belief, along with its precision, and use this representation for sensorimotor control as well as for explicit judgments. This work proposes a novel approach to more generically test human cognitive abilities in uncertain and dynamic environments.
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\documentclass[profile,final,english,draft,24pt]{article}%
@@ -195,7 +195,8 @@ pdfauthor={\AuthorA},%< \Email > \Address},%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Volatility of sensory contingencies and
 the adaptation of cognitive systems}
-% SUMMARY : cognition adaptation to volatility
+%: 1A : cognitiove adaptation to volatility; general volatility and perceptual learning
+%-------------------------------------------------------------%
 % ------------------------------------------------------------------
 % * the evolution  of prices on the stock market: Any Socio-economic contextual index may make the price evolve up or down, slowly or more Rapidly
 % * ecological change
@@ -220,61 +221,66 @@ the adaptation of cognitive systems}
 % or if it is necessary to explore different paradigms (limit emissions).
 % '' Hope you like it :-) }
 % \AM{ I like the green example too: it only demands to define the variable that would correspond to the time series to be tracked: carbon dioxide measurements at a given critical location? Also, the fact that a switch detection may inform important decision is nice for the example but we do not really have an analogy to it in our task. Yet I am very happy with both examples, both very much on fashion, are we more ecology, or pro-vax activists?!}
-%: general volatility and perceptual learning
 We live in a fundamentally volatile world for which
 our cognitive system has to constantly adapt.
-Imagine for instance you are a doctor (general practitioner) and
+Imagine for instance you are a general practitioner and
 that you usually report an average number of
-one person infected by measles per month.
-On the past few days however,
-the rate increased to four cases per week.
+three person infected by measles per week.
+However, this rate is volatile and
+over the past week
+the rate increased to ten cases.
 As such, two alternate interpretations are available:
 Either, there is an outbreak of measles and
 one should estimate its incidence
 (as measured as the rate of new cases)
-since the onset of the outbreak.
+since an estimate of the outbreak's onset.
 Alternatively, these cases are
 ``unlucky'' coincidences that originate from the volatility
 of a genuinely stationary and heterogeneous random process
-that underly and generated these observations.
+that generated these observations.
 In that option, it may be possible to readjust
 the estimated baseline rate of infection with this new data.
 This example illustrates one fundamental problem
 with which our cognitive system is faced:
 when observing new sensory evidence,
-\emph{should I stay} and continue to integrate this novel data
-to my current beliefs about the environment's state
-or \emph{should I go} and adopt a new hypothesis
+\emph{should I stay} and continue to exploit this novel data
+with respect to my current beliefs about the environment's state
+or \emph{should I go} and explore a new hypothesis
 about the random process generating the observations
 since the detection of a switch in the environment?
 
-Such \emph{meta-analysis} of the environmental statistical properties is an effective strategy at the large scale level of our example,
+Such \emph{meta-analysis} of the environment's statistical properties 
+is an effective strategy at the large scale level of our example,
 but also at all levels which are behaviorally relevant,
 such as contextual changes in our everyday life.
-Inferring near-future states in a dynamic environment, such that one can prepare to act upon them ahead of their occurrence~\citep{PerrinetAdamasFriston2014} ---
+Inferring near-future states in a dynamic environment, 
+such that one can prepare to act upon them 
+ahead of their occurrence~\citep{PerrinetAdamasFriston2014} ---
 or at least forming beliefs as precise as possible
 about a future environmental context ---
 are ubiquitous challenges for cognitive systems.
-In the long term, how the human brain manages
-the trade-off between exploitation and exploration
+In the long term, how the human brain dynamically manages
+this trade-off between exploitation and exploration
 is essential to the adaptation
 of the behavior through reinforcement learning~\citep{Cohen2007}.
-In controlled experimental settings challenging visual perception or sensorimotor associations,
+In controlled experimental settings which challenge visual perception or sensorimotor associations,
 such adaptive processes have been mostly put in evidence
 by precisely analyzing the participants' behavior in a sequence of experimental trials,
 typically highlighting sequential effects
-at the time scale of one to several minutes.
+at the time scale of several seconds to minutes.
 % TODO: talk about Gallistel / Sugrue / Brody
 
 %: Past history of sensory event integration in vision
-Indeed, stimulus history of visual events influences
-how current stimuli are perceived~\citep{Sotiropoulos2011, Adams12} and acted upon~\citep{Carpenter1995, Maus2015,Damasse18}.
-Two qualitatively opposite effects of the stimulus history have been described, priming and perceptual adaptation. Adaptation reduces
-the sensitivity to recurrently presented stimuli and
+Indeed, stimulus history of sensory events influences
+how the current stimulus is perceived~\citep{Sotiropoulos2011, Adams12} and 
+acted upon~\citep{Carpenter1995, Maus2015,Damasse18}.
+Two qualitatively opposite effects of the stimulus history have been described: 
+priming and perceptual adaptation. 
+Adaptation reduces the sensitivity to recurrently presented stimuli and
 thus to re-calibrate perceptual experience~\citep{Clifford2007, Webster2011, Kohn2007}.
 Examples of negative biases in perceptual discrimination are
 numerous~\citep{REFFS} and show that the visual system tends
-to favor temporal and spatial stability of the stimulus:
+to favor temporal and spatial stability of the stimulus.
 On the other hand, priming is a facilitatory effect that
 enhances the identification of repeated stimuli~\citep{Verstraten1994, Tiest2009}.
 This type of perceptual learning leads to improvements in discrimination
@@ -282,7 +288,7 @@ with long-term training on a perceptual judgment~\citep{Lu2009}.
 In sensorimotor control,
 the same stimulus presented several times could indeed
 lead to faster and more accurate responses and,
-on the other hand, lead to critically suboptimal behavior
+at the same time, lead to critically suboptimal behavior
 when a presented stimulus is not coherent
 with the participant's expectations~\citep{Hyman1953, Yu2009}.
 This process is highly dynamic especially in complex environments
@@ -291,51 +297,57 @@ Overall, the ability to detect
 statistical regularities in the event sequence
 thus appears as a fundamental ability
 for the adaptive behavior of living species.
-Very few studies have addressed the question of whether
+Moreover, few studies have addressed the question of whether
 the estimate of such regularities is explicit,
 and whether verbal reports of the dynamic statistical
-estimates would eventually correlate to the measures of behavioral adaptation. Here we aim at investigating this question in the specific case of motion direction processing.
-In addition, we attempt to palliate to the lack of a solid modeling approach to best understand the computation underlying behavioral adaptation to the environment's statistics,
+estimates would eventually correlate to the measures of behavioral adaptation. 
+Here we aim at investigating this question 
+in the specific case of the  processing of a target's motion direction.
+In addition, we attempt to palliate to the lack of a solid modeling approach 
+to best understand the computation underlying behavioral adaptation to the environment's statistics,
 and in particular how sequential effects are integrated
 within a hierarchical statistical framework.
-At present, Bayesian inference offers an effective methodology
-to deal with this question.
 
 %: Bayesian methods & role of predictive processing for this adaptive response
 % TODO : clarify this paragraph
+As such, Bayesian inference offers an effective methodology
+to deal with this question.
 In all generality, Bayesian methods allow to define and quantitatively assess
 a range of hypotheses about the processing by some formal agents
 of (possibly noisy) information~\citep{Deneve1999, Diaconescu2014, Daunizeau10a}.
 A key principle in the Bayesian inference approach is
-that each stated hypothesis is quantitatively formalized
+to introduce latent variables and hypothesis about how these predict measurements.
+Each stated hypothesis is quantitatively formalized
 using a generative model for the input / output response function
-by defining a graph of dependencies between defined variables.
-It then follows that measurements and outcomes may be linked by
-generic probabilistic computations.
+by defining a graph of dependencies between defined variables
+representing prior knowledge about the structure of the model.
 The generative model is parameterized by structural variables
-(such as weights, non-linear gain functions or prior knowledge)
-and transforms some relevant latent variables
-which may be represented as probabilities.
+(such as weights or non-linear gain functions)
+such that beliefs about latent variables
+may be represented as probabilities.
 Then, using the rules of probability calculus
 one can progressively update beliefs about the latent variables,
-such that one can finally infer the hidden structure of received inputs~\citep{Hoyer2003, Ma2014}.https://www.overleaf.com/project/5c36121f4b0f20641e21e49d
+such that one can finally infer the hidden structure of received inputs~\citep{Hoyer2003, Ma2014}.
 For instance, using Bayes's rule, one can combine
 the likelihood of observations given the generative model and
 the prior of these latent variables~\citep{Janes2014}.
 Of particular interest for us is the possibility to
-quantitatively represent
-the predictive and iterative nature of the probabilistic model.
+quantitatively represent in the probabilistic model
+the predictive and iterative nature of a sequence of events.
 Indeed, once the belief about latent variables
 is formed from the sensory input,
 this belief can be used to update
-the prior over future beliefs on latent variables~\citep{Montagnini2007}.
+the prior over future beliefs~\citep{Montagnini2007}.
 Thus, the comparisons between expectations and actual data produces
-constant updates to the estimates of the model and
-is formalized in all generality within the~\textit{active inference} framework~\citep{Friston2003, Friston2010}.
-In summary, Active Inference allows to predict latent variables
-but also to understand longer time effects such as adaptation and learning.
+constant updates to the estimates of the model.
+%Such a process is formalized in all generality 
+%within the~\textit{active inference} framework~\citep{Friston2003, Friston2010}.
+%In summary, Active Inference allows to predict latent variables
+%but also to understand longer time effects such as adaptation and learning.
 
-In a recent study,~\citet{Meyniel16} simulated a model
+There are numerous examples of such Bayesian approaches
+applied to the the study of the adaptation to volatility
+and for instance,~\citet{Meyniel16} simulated a model
 over five previously published datasets~\citep{Squires1976, Huettel2002, Kolossa2013, Cho2002, Falk1997}.
 Their main conclusion was that
 a learning of local transition probabilities
@@ -347,14 +359,14 @@ which then applies to a variety of sensory modalities and
 experimental situations.
 As such, sequential effects in binary sequences are better explained
 by a learning of transition probabilities
-than of the absolute item frequencies or the frequencies of their alternations.
+compared to the absolute item frequencies or the frequencies of their alternations.
 The critical difference lies in the content
 of what is learned (transition probabilities versus item frequencies)
 in an attempt to capture human behavior.
 %TODO say it is an optimization that is, a measure of the dynamic compromise between exploration and exploitation
 %Chopin and %Mamassian and the use of visual confidence  (see Ann rev of Vision 2016)
-Interestingly, the observation of priming effects
-have also been observed for anticipatory smooth eye movements (aSPEM)
+Interestingly, the observation of priming effects at cognitive levels
+have also been observed for simpler levels such as anticipatory smooth eye movements (aSPEM)
 and therefore allow to further deepen our understanding of such predictive processes. %
 %As a consequence, Bayesian inference allows to compare the explanatory power
 %of different models...
@@ -362,9 +374,9 @@ and therefore allow to further deepen our understanding of such predictive proce
 % ------------------------------------------------------------------
 \subsection{Anticipatory Smooth Pursuit Eye Movements (aSPEM)}
 % ------------------------------------------------------------------
-% SUMMARY : particular case of aSPEM
+%: 1B : particular case of aSPEM
 %-------------------------------------------------------------%
-%: FIGURE 1A fig:intro ~\seeFig{intro}
+%: FIGURE 1 fig:intro ~\seeFig{intro}
 \begin{figure}%[b!]
 \centering{
 %\includegraphics[width=\linewidth]{figure1}
@@ -378,6 +390,7 @@ and therefore allow to further deepen our understanding of such predictive proce
 \draw [anchor=north west] (0.670\linewidth, .62\linewidth) node {$\mathsf{(C)}$};
 \end{tikzpicture}
 }
+
 \caption{
 \emph{Tracking eye movements and confidence rating in a volatile switching environment}
 \textbf{(A)}~
@@ -431,18 +444,17 @@ First, its buildup is relatively fast, such that only a few trials are sufficien
 to pick up some regularity in a binary sequence of alternating Right-Left directions.
 Second, it is in general an unconscious process
 of which participants are not aware of.
-As such, this behavior is a \AM{potentially a useful marker
-to study the internal representation of motion expectancy (or Prior) and in particular to analyze} how sensorimotor expectancy interacts dynamically with contextual contingencies in shaping (oculomotor) behavior.
+As such, this behavior is potentially a useful marker
+to study the internal representation of motion expectancy (or Prior) 
+and in particular to analyze how sensorimotor expectancy 
+interacts dynamically with contextual contingencies in shaping (oculomotor) behavior.
 
 %: linear relationship (talk about santos & kowler and others)
 Typically, aSPEM is observed after a temporal cue and
-ahead of target motion onset~\citep{Kowler1979a,Kowler1979b, Kowler1984}. %~(see \seeFig{intro}-A).
+before target motion onset~\citep{Kowler1979a,Kowler1979b, Kowler1984}. %~(see \seeFig{intro}-A).
 It is generally assumed that the role of anticipatory eye movements is
 to minimize as fast as possible the visual impairment due
 to the amplitude of eye-to-target position and velocity mismatch.
-\AM{I WOULD POSTPONE THIS SENTENCE SOMEWHERE ELSE, AS IT IS DISTRACTING HERE... The compromise between speed and accuracy is shaped
-by the variability introduced by the neural noise
-at the neuro-motor junction~\citep{Harris98}.}
 Overall, this reduces the typical sensorimotor delay
 between target motion onset and foveation~\citep{REFNEEDED}.
 In a previous study~\citep{Montagnini2010},
@@ -469,7 +481,7 @@ In order to generalize such results to more ecological conditions,
 it is necessary to extend the experimental protocol of~\citet{Montagnini2010} in three aspects.
 First, it seems important to investigate the integration of environmental statistical regularities
 in this smooth tracking task with
-a large family of direction-biases for the target motion.
+a large family of probability biases for the direction of target motion.
 As such, instead of a finite set of probability biases, % ($.25$, $.5$, $.75$, $.9$ and $1.$, see \seeFig{intro}-B),
 we decided to use a continuous range of probability biases~$p$.
 %which we were sampling from a fixed prior distribution.
@@ -478,8 +490,10 @@ both perceptual adaptation for speed estimation
 and priming of aSPEM could occur simultaneously.
 They found a robust repulsive adaptation effect
 with perceptual judgements biased in favor of faster percepts
-after seeing stimuli that were slower and~\textit{vice-versa}. \AM{Concurrently, these authors also found
-a positive effect on anticipatory smooth pursuit, with faster anticipation after faster stimuli.}
+after seeing stimuli that were slower and~\textit{vice-versa}. 
+Concurrently, these authors also found
+a positive effect on anticipatory smooth pursuit, 
+with faster anticipation after faster stimuli.
 Indeed, both priming and adaptation can hypothetically share
 a common internal representation of stimulus' speed,
 reasonably built according to the mean velocity of the last observed movements.
@@ -494,13 +508,15 @@ for short stimulus histories (around $2$ trials) and
 adaptation for longer stimulus history, around $15$ trials.
 Their main conclusion was that
 perceptual adaptation and oculomotor priming
-are the result of two distinct readout computational processes using the same internal representation of motion regularities.
+are the result of two distinct readout processes 
+using the same internal representation of motion regularities.
 Both these history lengths can be considered
 short in comparison to the several hundreds
 of trials that are commonly used in psychophysics and sensorimotor adaptation studies.
 % ------------------------------------------------------------------
 \subsection{Contributions}%Outline}
-% SUMMARY : what is novel in our work
+% ------------------------------------------------------------------
+%: 1C : what is novel in our work
 % ------------------------------------------------------------------
 %: how we do it : or rather why we do it this way (and not like Matthys)
 The goal of this study is to generalize the adaptive process
@@ -597,22 +613,22 @@ Indeed, to assess the dynamics of the adaptive processes
 which compensate for the variability of sensory sequences,
 one may generate random sequences for the value of $p$,
 with a parametric mechanism controlling for the volatility at each trial.
-By definition, volatility measures the temporal variability
-of the sufficient parameters of a random variable.
+\AM{By definition, volatility measures the temporal variability
+of the sufficient parameters of a random variable.}
 % \AM{THEN I HAVE A QUESTION: GIVEN THIS DEFINITION, DOES VOLATILITY CHANGE AT EACH TRIAL IN OUR CASE, OR IS VOLATILITY FIXED ONCE THE TAU=40 PARAMETER HAS BEEN CHOSEN?} it is given by tau /on average/
-In the \emph{Hierarchical Gaussian Filter} model (HGF, ~\citet{Mathys11}) for instance,
+In the Hierarchical Gaussian Filter model (HGF,~\citet{Mathys11}), for instance,
 volatility is controlled as a non-linear transformation
 of a random walk (modeled itself by a Brownian motion with a given diffusion factor).
 This hierarchical model allows to ultimately generate a sequence of binary choices
 where the variability fluctuates along a given trajectory.
 Such a forward probabilistic model is invertible
 using some simplifying assumptions and allows
-to extract an inference of the agent's belief about volatility~\citep{Vossel14}.
+to extract an inference of the \AM{time-varying} agent's belief about volatility~\citep{Vossel14}.
 Herein, we will use a simpler model where
 the bias $p$ in target direction varies according to a piecewise-constant function
 %(that is, a step function varying between~$0$ and~$1$),
 similarly to~\citet{Meyniel13}.
-Indeed, within each sub-block, the volatility of the value of $p$
+Indeed, within each sub-block, the volatility \AM{? RATHER: UNCERTAINTY ABOUT?} of the value of $p$
 progressively decreases as we accumulate samples.
 It means that instead of a complex stochastic trajectory,
 we draw random events (that we denote as ``switches'')
@@ -721,45 +737,43 @@ offer some perspectives for future work in~\seeSec{outro}.
 %
 %: short intro
 %
-As we saw above, Bayesian methods provide with
-a powerful framework for studying human behavior.
+As we saw above, Bayesian methods provide a powerful framework for studying adaptive human behavior.
 In the HGF model~\citep{Mathys11}, for instance,
 authors defined a multi-layered generative model for
 sequences of input stimuli.
-By ``inverting'' this stochastic forward process,
+By inverting this stochastic forward process,
 one could extract relevant descriptors at the different levels of the model
 and fit these parameters with the recorded behavior.
-Here, we will use a similar approach but on a different generative model,
+Here, we use a similar approach but on a different generative model,
 as defined in~\seeEq{bsm}.
-First, we will define a first ideal observer as a control
-which assumes that volatility is stationary with a fixed frequency.
-Then, we will extend it by modeling an agent
-which assumes the existence of switches, that is,
+To begin, we define a first ideal observer as a control, the \textit{forgetful agent},
+which assumes that \AM{volatility is stationary OR RATHER that contextual changes are deterministic,} with a fixed frequency.
+Then, we will extend this model to an agent
+which assumes the existence of random switches, that is,
 that the value of the probabilistic bias may change
 at specific (yet randomly drawn) trials,
-as was modeled by the forward probabilistic model defined in~\seeEq{bsm}.
+as defined by the forward probabilistic model in~\seeEq{bsm}.
 %
 % ------------------------------------------------------------------
 \subsection{Forgetful-agent model (Leaky integrator)}%
 % ------------------------------------------------------------------
 %: justification from previous studies
-Following~\citet{Maus2015},
+\AM{I WOULD DELETE: Following~\citet{Maus2015},}
 we modeled a first ideal observer,
 which represents a classical, widespread and
 realistic model of how trial-history shapes
 adaptive processes in human behavior.
-It is adapted to model motion expectation in a direction-biased experiment.
-In this model, the temporal evolution of the expectation $p=x_1^t$ of a given event
-can be modeled by making a simple heuristic:
+It is adapted to model motion expectation in the direction-biased experiment.
+In this model, the temporal evolution of the expectation $p=x_1^t$ of a given trial direction can be modeled by making a simple heuristic:
 the update of the estimated probability for an event is based
 on the discount of the previously estimated probability
-by a factor $1 - h \in [0, 1]$, relative to new information~\citet{Anderson2006}.
+by a factor $(1 - h), h \in [0, 1]$, relative to new information $x_0^t$~\citep{Anderson2006}.
 At trial $t$, this model can be expressed with the following equation:
 \eql{
 \hat{x_1}^{t} = (1 - h) \cdot \hat{x_1}^{t-1} + h \cdot x_0^t
 \label{eq:leaky}}
-where $\hat{x_1}^{t=0}$ is equal to some prior value ($.5$ in the unbiased case),
-thjat is for the best guess before observing any data.
+where $\hat{x_1}^{t=0}$ is equal to some prior value ($0.5$ in the unbiased case),
+corresponding to the best guess before observing any data.
 % NOTE: it's an AR(1) process https://stats.stackexchange.com/questions/358162/writing-ar1-as-a-ma-infty-process
 
 %: from heuristics to ideal observer
@@ -784,78 +798,73 @@ It may thus be equivalently written in the form of a moving average:
 \label{eq:leaky2}}
 % \AM{In principle there should also be a term proportional to $(1-h)^{t}$$\hat{x_1}^{t=0}$, true? Which tends to $0$ for large $t$...}
 % \LP{it's the term for $i=t$ - ok?}
-Inversely, let us assume that at each trial,
-the true probability bias changes randomly with a rate of once
+Inversely, let us now assume that
+the true direction probability bias changes randomly with a mean rate of once
 every $\tau$ trials.
 As a consequence, the probability that the bias does not change is $Pr(x_2^t=0)=1-1/\tau$ at each trial.
 Assuming independence of these occurrences, the estimated probability $p=\hat{x_1}^{t}$ is thus the sum
 of the past observations weighted by the belief that the bias has not changed during $i$ trials in the past, that is, exactly as defined in~\seeEq{leaky2}.
 This shows that
 assuming that changes occur at a constant rate ($\hat{x_2}^t=h$)
-but ignoring the temporal occurrence of the switch,
+but ignoring the \AM{variability of} temporal occurrence of the switch,
 the optimal solution to this inference problem is the
 ideal observer defined in~\seeEq{leaky2},
 which finds an online recursive solution in~\seeEq{leaky}.
 We therefore proved here that the heuristic derived from~\citet{Anderson2006}
 is an ideal inversion of the generative model
-which assumes a fixed average duration for the probability bias.
+which assumes a fixed duration for the probability bias.
 % \AM{It seems to me that the main limit of this ideal observer is that it is lazy: it knows that on average things change every tau trials but it does nothing to actively estimate and account for these changes: maybe we should have a sentence here to introduce this concept of "active"/"adaptive" observer?} - LP : right, ours is indeed a more active agent, but that's quite subjective...
 
 %: using \hat{p} as a regressor
 The correspondence that we proved between the weighted moving average heuristic
-and the ideal observer model as a solution to that generative model leads
+and the \AM{ideal observer OR RATHER forgetful agent model} as a \AM{ideal} solution to that generative model leads
 us to several interim conclusions.
-First, the time series of inferred $\hat{x_1}^{t}$ values can serve as a regressor
+First, the time series of inferred $\hat{x_1}^{t}$ values can serve as a regressor \AM{for behavioral data}
 to test whether human observers follow a similar strategy.
-In particular, one could test the free parameter $\tau$,
-relative to the agents' belief in the weight decay:
-Importantly, $\tau$ may be fitted to the experimental data
-that would be collected.
+In particular, the free parameter $\tau$ may be fitted to variations of the experimental data across the sequence, assumed to depend on the agents' belief in the weight decay.
 %for instance to the data shown in~\seeFig{results_intro}.
-However, one should be careful with such conclusions whenever
-this trajectory is fitted to behavioral data.
+\AM{WHAT FOLLOWS IS VERY NICE AND CLEAR BUT IT FITS MORE TO THE DISCUSSION SECTION THAN TO THE RESULTS:
+However, one should be careful with conclusions based on this kind of data fitting.
 For instance, if the inversion of the forward model is exact in the present case,
 one has to use approximations in more complex models,
 such as with the HGF~\citep{Mathys11}
 or with the models developed by~\citet{Wilson13,Wilson18}.
 As a result, some discrepancy could originate from these approximations
 at the algorithmic level.
-As such, it is essential that these both sources of discrepancy (intrinsic versus extrinsic)
-should be controlled independently~\citep{Beck12}.
+As such, it is essential to carefully control for these sources of discrepancy (intrinsic versus extrinsic) independently~\citep{Beck12}.
 Second, if we assume that the inversion of the model is perfect
-(that is, that no algorithmic approximation has been done in the inferrence),
+(that is, no algorithmic approximation has been done),
 this means that by fitting different ideal observers
 to the data, one evaluates as a matter of fact the adequacy of
-a generative model, not to probabilistic calculus.
+a generative model, not of the probabilistic calculus in its detailed implementation.
 This is a common confusion around the idea of a ``Bayesian brain''.
 We believe here that the challenge is not to validate the hypothesis that the brain uses or not the Bayes' theorem,
 but rather to test different hypotheses
 about the different generative models
 that agents may use.
 This methodological point may be essential in designing the experimental protocol,
-or in evaluating quantitatively the results.
+or in evaluating quantitatively the results.}
 
 %: limits of the leaky integrator
 Now, since we have defined a first generative model
-and the ideal observer which it corresponds to,
-we will define a more complex model
+and the corresponding ideal observer,
+we next define a more complex model,
 in order to overcome some of the limits of the leaky integrator.
 Indeed, a first criticism could be that
-this model may be too rigid and does not sufficiently
-account for the dynamics of volatility~\citep{Behrens07}
-or Bayesian uncertainty~\citep{Vilares2011}.
-It seems plausible that the memory (history length) the brain uses
-for inference is varying and that this variation could be related
-to the volatility inferred from information in the past.
+this model is too rigid and does not sufficiently
+account for the dynamics of contextual changes~\citep{Behrens07}
+or for Bayesian uncertainty~\citep{Vilares2011}.
+It seems plausible that the memory size (or history length) used by the brain to infer any event probability can vary, and that this variation could be related
+to the environmental volatility inferred from the past.
 The model presented in~\seeEq{leaky2} uses a constant weight
 (decaying with the distance to the current trial)
 for all trials, while precision of each trial
 can be potentially evaluated and used
 for precision-weighted estimation of the probability bias.
-To address this hypothesis, our next model will be inspired
-by a Bayesian Change-point detection model~\citep{AdamsMackay2007},
-which models an ideal agent inferring
-both the trajectory of the probability bias ($x_1^t$)
+To address this hypothesis, our next model is inspired
+by the Bayesian Change-point detection model~\citep{AdamsMackay2007}
+of an ideal agent inferring
+both the trajectory in time of the probability bias ($x_1^t$)
 and the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 % ------------------------------------------------------------------
 \subsection{Binomial Bayesian Change Point model}
@@ -916,29 +925,28 @@ as shown above, integration is thus faster than for the leaky integrator.
 %-------------------------------------------------------------%
 %: 2Ba precision in our belief of \hat{p}
 %-------------------------------------------------------------%
-There is a crucial difference between the simple agent presented above
-which believes that changes occur at a constant rate ($\hat{x_2}^t=h$, see~\seeEq{leaky2})
-and one that would invert the binomial switching model (BSM, see~\seeEq{bsm}).
+There is a crucial difference between the forgetful agent presented above
+\AM{WE CAN SKIP THIS:which believes that changes occur at a constant rate ($\hat{x_2}^t=h$, see~\seeEq{leaky2})}
+and an ideal agent which would invert the binomial switching model (BSM, see~\seeEq{bsm}).
 Indeed, at any trial during the experiment,
-the agent may infer beliefs about the trajectory of the volatility $x_2^t$
-which itself is driving the trajectory of the probability bias $x_1^t$.
+the agent may infer beliefs about the \AM{trajectory? rather value?} of the volatility $x_2^t$
+which itself is driving the \AM{trajectory} of the probability bias $x_1^t$.
 Knowing that the latter is piece-wise constant,
-an agent may therefore have a belief over the number of trials since the last switch.
+an agent may have a belief over the number of trials since the last switch.
 This number, that we will call the \emph{run-length}, is useful in two manners.
-First, it allows for the agent to restrict the estimation $\hat{x_1}^{t}$ of $x_1^t$
-to only those samples $x_0^t$ produced since the last switch and until $t$.
+First, it allows the agent to restrict the estimation $\hat{x_1}^{t}$ of $x_1^t$
+only based on those samples $x_0^t$ produced since the last switch and until $t$.
 Indeed, the samples $x_0^t$ occurred before the switch are drawn independently from the present true value $x_1^t$
 and thus cannot help estimating the latter.
 Second, it is known that for this estimate, the precision
-(that is, the inverse of its variance)
+(the inverse of variance) \AM{on the estimate $\hat{x_1}^{t}$}
 grows linearly with the number of samples:
 The longer the run-length, the sharper the corresponding (probabilistic) belief.
 We have designed an agent inverting the BSM by extending
 the Bayesian Change-Point (BCP) detection model~\citep{AdamsMackay2007}.
 The latter model defines the agent as an inversion of a switching generative model
 for which the observed data (input) is Gaussian.
-We will here present an exact solution for the case of the BSM,
-that is, where the input is binomial (see~\seeEq{bsm}).
+We present here an exact solution for the case of the BSM, where the input is binomial (see~\seeEq{bsm}).
 
 %-------------------------------------------------------------%
 %: 2Bb overcoming this difficulty using a latent variable - prediction/update cycle
@@ -956,8 +964,9 @@ Knowing that the data is generated by the BSM (see~\seeEq{bsm}),
 the run-length is either null at the moment of a switch,
 or this length (in number of trials) is incremented by $1$ if no switch occurred:
 \eql{\choice{
-r^t = 0 \quad \text{if} \quad x_2^t=1 \\
-\text{and else} \quad r^t = r^{t-1} +1 }\label{eq:run_length}}%see~\seeEq{run_length}
+\text{if} \quad x_2^t=1 \quad r^t = 0\\
+\text{if} \quad x_2^t=0 \quad r^t = r^{t-1} +1 }\label{eq:run_length}}%see~\seeEq{run_length}
+%\text{and else} \quad r^t = r^{t-1} +1 }\label{eq:run_length}}%see~\seeEq{run_length}
 This may be represented in a graph
 in which information will be represented at the different nodes for each trial $t$ (see \seeFig{bayesianchangepoint}-A).
 Using this latent variable at each trial $t$ to represent our belief,
@@ -1443,93 +1452,124 @@ is a powerful regressor to explain both the strength of aSPEM and the rating sca
 \section{Results: Analyzing inter-individual differences}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:inter}
-%: <----- Laurent is here ----->
 %-------------------------------------------------------------%
 %: 4A separate above analysis
 %-------------------------------------------------------------%
 So far, our quantitative analysis was performed independently
 for the different participants.
 In particular, we have shown a representative example in~\seeFig{results_psycho}
-but results varied across participants (see~\seeApp{results_psycho}).
+showing the match of the behavioral data with the model 
+which we latter confirmed quantitatively on all subjects.
+It is important to note that no fitting procedure was used,
+but only the results of the model as shown in~\seeFig{bayesianchangepoint}-B.
+However, we observed that the quantitative match varied across participants.
 This was best characterized qualitatively in both sessions by differences
 in the variability of the responses but also for instance
 with different characteristic delays after a switch.
 This reflects the spectrum of individual choices
-between the behaviors of exploration versus exploration ~\citep{Behrens07}.
-Here, we were interested in characterizing the preference
+between the behaviors of exploration versus exploration~\citep{Behrens07}.
+As a consequence, we were interested in characterizing this individual preference
 of each individual participant, but also to characterize
-if this preference covaried across the two sessions.
+if this preference co-varied across the two sessions.
 Crucially, we have seen that the BBCP model is controlled by a single parameter,
 the hazard rate, or equivalently by its inverse, the characteristic time $\tau$.
 Also, we have shown that knowing an observed sequence of behavioral responses,
-we could fit the best value of $\tau$ which would explain it~\seeFig{bayesianchangepoint}-C.
+we could fit the best value of $\tau$ which would explain it.
 Thus, by extracting the parameters for every participant
-we can expect to characterise inter individual differences.
+we can expect to characterize inter individual differences.
 
 %-------------------------------------------------------------%
 %: FIGURE 5  fig:results_inter \seeFig{results_inter}
-% TODO présente une meta analyse qui montre une correlation par sujet (scatter plot) entre h_a et h_bet (see 2017-11-16 chloe figures.pdf ) y-a-til un continuum entre explorateurs et conservatezurs?, voir de montrer une causalité entre les 2 expériences - on pourrait superposer aussi les résultats si on avait utilisé un fixed-length ?
 % cf https://github.com/laurentperrinet/bayesianchangepoint/blob/master/notebooks/test_hazardrate.ipynb
 % cf : 4_Meta_analysis.ipynb
 \begin{figure}%[b!]
-\centering{
-\begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
-%\node [anchor=north west]  (img4) at (0.000\linewidth,.588\linewidth){\includegraphics[width=0.25\linewidth]{5_A_h_bet}};
-%\node [anchor=north west]  (img4) at (0.000\linewidth,.28\linewidth){\includegraphics[width=0.25\linewidth]{5_A_h_va}};
-\node [anchor=north west]  (img4) at (0.26\linewidth,.618\linewidth){\includegraphics[width=0.618\linewidth]{5_inter-individual_differences_fit}};
-%
-%\draw [anchor=north west] (0.000\linewidth, .618\linewidth) node {$\mathsf{(A)}$};
-%\draw [anchor=north west] (0.25\linewidth, .618\linewidth) node {$\mathsf{(B)}$};
-%
-\end{tikzpicture}
-}
-%\begin{figure}%[b!]
-%\begin{center}
-%  %\includegraphics[width=1\linewidth]{figure5}
-%
-%  \includegraphics[width = 1 \linewidth]{5_inter-individual_differences}
-%\end{center}
-\caption{\emph{Analyzing inter-individual differences}
-\textbf{(A)}
-\LP{ show fit with different hazard rates for one observer / one block}
-\CP{sujet IP 2eme block,  en haut: MI entre les bet et le bcp pour les differents h, en bas: MI entre les vitesse d'anticipation et le bcp pour different h}
-% TODO compare with the results you would obtain from a fixed window fit.
-\textbf{(B)}
-result of fits for different observers / SEM across blocks
-\CP{il y a aussi la figure pour les h selectiones avec le MI (5 inter individual differences MI)}
+\centering{\includegraphics[width=0.618\linewidth]{5_inter-individual_differences_fit}}
+\caption{\emph{Analyzing inter-individual differences.} %
+We analyzed each subject individually by finding 
+the best value of the model's only parameter, the hazard rate.
+This was performed independently on both experiments, 
+such that we extracted for each block (between two pauses) 
+an estimate of respectively $h_A$ and $h_R$ 
+for the anticipatory speed strength and the rating scale.
+This shows that best fit hazard rates are higher than the ground truth, 
+that these values cluster across individuals 
+and finally that there is a positive correlation between both experiments.
+Such an analysis suggests that participants may have 
+a common mechanism for this tendency of exploration versus exploitation 
+at the conscious or unconscious levels.
 }
 \label{fig:results_inter}
 \end{figure}
 %-------------------------------------------------------------%
+
 %-------------------------------------------------------------%
 %: 4B results
 %-------------------------------------------------------------%
 Hence, we have fitted the sequence of responses generated by each participant and
 for each session, that is for the eye movements and the rating scale experiments.
+To cross-validate our results for each individual participant, 
+we have fitted our $600$ trials data on $11$ blocks of $100$ trials, 
+thus giving $11$ values of the best fitted hazard rate for each session.
 The scatter plot of the best fit values are shown in~\seeFig{results_inter}.
-This figure suggests, in the first place, that there is some variability in the best fit value of $\tau$
-in both sessions.
-If the average is close to the (hidden) value used to generate the sequence
-(with $\tau = XX~\ms \pm XX~\ms$ for the first session and
- $\tau = XX~\ms \pm XX~\ms$ for the second),
- we observe a variability which is characteristic of the spectrum of individual choices.
-More importantly, there is a small but consistent
+This figure suggests, in the first place, that there is some variability 
+in the best fit value of the hazard rate in both sessions.
+Overall, the value of the best fit as given by the cost 
+was higher than that computed in~\seeFig{results_psycho}
+with respectively $MI_A = XX~\ms \pm XX~\ms$ compared to $MI_A = .321$ for the first session and
+$MI_R = XX~\ms \pm XX~\ms$ compared to $MI_A = .553$ for the second.
+A part of this variability comes from the limited length of the data blocks,
+while another part is due to intra-individual and inter-individual variabilities.
+Overall, the average is close to the (hidden) value used to generate the sequence
+(with $h_A = XX~\ms \pm XX~\ms$ for the first session and
+$h_R = XX~\ms \pm XX~\ms$ for the second),
+and we observe that this value is higher than the ground truth, 
+as was previously reported~\citep{Meyniel??}.
+Importantly, there is a part of the variability 
+which seems characteristic of the spectrum of individual choices.
+% TODO: 
+Indeed, each cluster is qualitatively well separated and
+a simple k-means cluster analysis proves that 
+given a couple of hazard rate values chosen at random,
+one could identify the participant with an accuracy of $XX\%$.
+% TODO: 
+As a comparison, the same analysis done on the leaky integrator
+showed that such an accuracy would drop to $XX\%$, 
+close to the chance level of $100/12\%$.
+As a conclusion, this analysis reveals 
+that relaxing the free parameter of the BBCP model
+improves the match of the behavioral data and 
+that we could detect inter-individual tendencies
+between exploration and exploitation.
+
+%-------------------------------------------------------------%
+%: 4C analysis
+%-------------------------------------------------------------%
+More importantly, there is a  consistent
 correlation between the individual best-fit values estimated for the first and the second session.
-% TODO - Granger / transfer entropy
-Also we have found that using measures of causality %\AM{COOL!}, LP: yaka :-)
-the results for eye movements slightly lagged before
-that of the rating scale,
-suggesting that there could be an advance
-It can serve as a biomarker...
-
+Qualitatively,~\seeFig{results_inter} shows that for each individual the higher the hazard rate for one session, then the higher it is for the second.
+Quantitatively, the ratio of both hazard rates computed over participants was $XX \pm XX$,
+showing a slight tendency for hazard rate to be higher in the first session.
+In comparison if, similarly to bootstrap resampling, 
+we would shuffle the the joint fitted values across participants,
+we would obtain a distribution of hazard rate ratios of $XX \pm XX~\ms$.
+Such an analysis suggests that the predictive processes
+at work in both sessions may have a common origin,
+which is then modulated by inter-individual preferences 
+between exploration and exploitation.
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{Discussion}
-
 \label{sec:outro}
+%: <----- Laurent is here ----->
 
 %The oculomotor system has to constantly update its knowledge about the environment. An ordeal is then to adapt to changes with the shortest delays. Early studies have proposed that stimuli provides information to modulate reaction times within sequences~\citep{Hyman1953, Tune1964, Schvaneveldt}. This theoretical approach is coherent with the notion of local transition probabilities that quantifies at which extent an observation deviates from the preceding ones~\citep{Meyniel16}. The way expectations act on cognitive processes has been investigated by a wide range of domains such as predictive coding~\citep{Wolpert2000, Wacongne2012}, active inference~\citep{Friston2010}, motor control~\citep{Sutton1998, Behrens07} and reinforcement learning~\citep{Nassar2012}. Non-stationary observations can also explain why both local and global effects emerge and why local effects persist in the long run even within purely random sequences~\citep{Cho2002, Yu2009}. This constant update of a general belief on the world can be a consequence of the constant attempt to learn the non-stationary structure of the environment that can change at unpredictable times~\citep{Yu2009}. Many studies have actually already pointed the brain's ability to apprehend non-stationary states in environments~\citep{Ossmy2013, Meyniel15}. As explained by~\citet{Meyniel16}, the belief upon an environment can be divided in two different ways:
 %
+
+\AM{I WOULD POSTPONE THIS SENTENCE SOMEWHERE ELSE, AS IT IS DISTRACTING HERE... The compromise between speed and accuracy is shaped
+by the variability introduced by the neural noise
+at the neuro-motor junction~\citep{Harris98}.}
+
+
+
 %\begin{enumerate}[label=\Alph*)]
 %\item Update the~\textit{a priori} likelihood of a sudden change, also known as the volatility and taken into account by the model~\citep{Behrens07}
 %\item A leaky integrator factor imbedded in the model~\citep{Anderson2006, Yu2009, Ossmy2013, Wang2002}
