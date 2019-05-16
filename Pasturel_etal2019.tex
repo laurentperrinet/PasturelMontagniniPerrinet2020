@@ -22,7 +22,7 @@ Should I stay or should I go? Humans adapt to the volatility of visual motion pr
 }
 \newcommand{\Acknowledgments}{PACE-ITN - code and material @ \url{\Website/Publications/PasturelMontagniniPerrinet2019}. TODO: RIck + Karl + JB + Laurent Madelain }
 \newcommand{\Abstract}{
-Animal behavior has to constantly adapt to changes, for instance when unexpectedly switching the state of an environmental context. For an agent interacting with this kind of volatile environment, it is important to respond to such switches accurately and with the shortest delay. However, this operation has in general to be performed in presence of noisy sensory inputs and solely based on the currently available information. It has already been shown that human observers can accurately anticipate the motion direction of a visual target with their eye movements when this random sequence of rightward/leftward motions is defined by a bias in direction probability. Here, we generalized the capacity of these observers to anticipate different random biases within random-length contextual blocks. Experimental results were compared to those of a probabilistic agent which is optimal with respect to this switching model. We found a better fit between the behaviorally observed anticipatory response with that of the probabilistic agent compared to other models such as a leaky integrator model. Moreover, we could similarly fit the level of confidence reported by human observers with that provided by the model and derive a common marker for participant inter-variability, titrating their level of preference between exploration and exploitation. Such results provide evidence that in such a volatile environment human observers may still efficiently represent an internal belief, along with its precision, and use this representation for sensorimotor control as well as for explicit judgments. This work proposes a novel approach to more generically test human cognitive abilities in uncertain and dynamic environments.
+Animal behavior has to constantly adapt to changes, for instance when unexpectedly switching the state of an environmental context. For an agent interacting with this kind of volatile environment, it is important to respond to such switches accurately and with the shortest delay. However, this operation has in general to be performed in presence of noisy sensory inputs and solely based on the currently available information. It has already been shown that human observers can accurately anticipate the motion direction of a visual target with their eye movements when this random sequence of rightward/leftward motions is defined by a probability bias in target direction. Here, we generalized the capacity of these observers to anticipate different random biases within random-length contextual blocks. Experimental results were compared to those of a probabilistic agent which is optimal with respect to this switching model. We found a better match between the behaviorally observed anticipatory response with that given by this agent compared to other models such as a leaky integrator. Moreover, we could similarly fit the level of confidence reported by human observers with that provided by the model and derive a common marker for participant inter-variability, titrating their level of preference between exploration and exploitation. Such results provide evidence that in such a volatile environment human observers may still efficiently represent an internal belief, along with its precision, and use this representation for sensorimotor control as well as for explicit judgments. This work proposes a novel approach to more generically test human cognitive abilities in uncertain and dynamic environments.
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\documentclass[profile,final,english,draft,24pt]{article}%
@@ -195,7 +195,6 @@ pdfauthor={\AuthorA},%< \Email > \Address},%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Volatility of sensory contingencies and
 the adaptation of cognitive systems}
-% SUMMARY : cognition adaptation to volatility
 % ------------------------------------------------------------------
 % * the evolution  of prices on the stock market: Any Socio-economic contextual index may make the price evolve up or down, slowly or more Rapidly
 % * ecological change
@@ -220,14 +219,14 @@ the adaptation of cognitive systems}
 % or if it is necessary to explore different paradigms (limit emissions).
 % '' Hope you like it :-) }
 % \AM{ I like the green example too: it only demands to define the variable that would correspond to the time series to be tracked: carbon dioxide measurements at a given critical location? Also, the fact that a switch detection may inform important decision is nice for the example but we do not really have an analogy to it in our task. Yet I am very happy with both examples, both very much on fashion, are we more ecology, or pro-vax activists?!}
-%: general volatility and perceptual learning
+%: 1A : cognitiove adaptation to volatility; general volatility and perceptual learning
 We live in a fundamentally volatile world for which
 our cognitive system has to constantly adapt.
-Imagine for instance you are a doctor (general practitioner) and
+Imagine for instance you are a general practitioner and
 that you usually report an average number of
-one person infected by measles per month.
-On the past few days however,
-the rate increased to four cases per week.
+three person infected by measles per week.
+Over the past week however,
+the rate increased to ten cases.
 As such, two alternate interpretations are available:
 Either, there is an outbreak of measles and
 one should estimate its incidence
@@ -242,24 +241,27 @@ the estimated baseline rate of infection with this new data.
 This example illustrates one fundamental problem
 with which our cognitive system is faced:
 when observing new sensory evidence,
-\emph{should I stay} and continue to integrate this novel data
+\emph{should I stay} and continue to exploit this novel data
 to my current beliefs about the environment's state
-or \emph{should I go} and adopt a new hypothesis
+or \emph{should I go} and explore a new hypothesis
 about the random process generating the observations
 since the detection of a switch in the environment?
 
-Such \emph{meta-analysis} of the environmental statistical properties is an effective strategy at the large scale level of our example,
+Such \emph{meta-analysis} of the environment's statistical properties 
+is an effective strategy at the large scale level of our example,
 but also at all levels which are behaviorally relevant,
 such as contextual changes in our everyday life.
-Inferring near-future states in a dynamic environment, such that one can prepare to act upon them ahead of their occurrence~\citep{PerrinetAdamasFriston2014} ---
+Inferring near-future states in a dynamic environment, 
+such that one can prepare to act upon them 
+ahead of their occurrence~\citep{PerrinetAdamasFriston2014} ---
 or at least forming beliefs as precise as possible
 about a future environmental context ---
 are ubiquitous challenges for cognitive systems.
-In the long term, how the human brain manages
-the trade-off between exploitation and exploration
+In the long term, how the human brain dynamically manages
+this trade-off between exploitation and exploration
 is essential to the adaptation
 of the behavior through reinforcement learning~\citep{Cohen2007}.
-In controlled experimental settings challenging visual perception or sensorimotor associations,
+In controlled experimental settings which challenge visual perception or sensorimotor associations,
 such adaptive processes have been mostly put in evidence
 by precisely analyzing the participants' behavior in a sequence of experimental trials,
 typically highlighting sequential effects
@@ -268,13 +270,15 @@ at the time scale of one to several minutes. \AM{RATHER seconds?}
 
 %: Past history of sensory event integration in vision
 Indeed, stimulus history of visual events influences
-how current stimuli are perceived~\citep{Sotiropoulos2011, Adams12} and acted upon~\citep{Carpenter1995, Maus2015,Damasse18}.
-Two qualitatively opposite effects of the stimulus history have been described, priming and perceptual adaptation. Adaptation reduces
-the sensitivity to recurrently presented stimuli and
+how current stimuli are perceived~\citep{Sotiropoulos2011, Adams12} and 
+acted upon~\citep{Carpenter1995, Maus2015,Damasse18}.
+Two qualitatively opposite effects of the stimulus history have been described: 
+priming and perceptual adaptation. 
+Adaptation reduces the sensitivity to recurrently presented stimuli and
 thus to re-calibrate perceptual experience~\citep{Clifford2007, Webster2011, Kohn2007}.
 Examples of negative biases in perceptual discrimination are
 numerous~\citep{REFFS} and show that the visual system tends
-to favor temporal and spatial stability of the stimulus:
+to favor temporal and spatial stability of the stimulus.
 On the other hand, priming is a facilitatory effect that
 enhances the identification of repeated stimuli~\citep{Verstraten1994, Tiest2009}.
 This type of perceptual learning leads to improvements in discrimination
@@ -282,7 +286,7 @@ with long-term training on a perceptual judgment~\citep{Lu2009}.
 In sensorimotor control,
 the same stimulus presented several times could indeed
 lead to faster and more accurate responses and,
-on the other hand, lead to critically suboptimal behavior
+at the same time, lead to critically suboptimal behavior
 when a presented stimulus is not coherent
 with the participant's expectations~\citep{Hyman1953, Yu2009}.
 This process is highly dynamic especially in complex environments
@@ -294,15 +298,18 @@ for the adaptive behavior of living species.
 Very few studies have addressed the question of whether
 the estimate of such regularities is explicit,
 and whether verbal reports of the dynamic statistical
-estimates would eventually correlate to the measures of behavioral adaptation. Here we aim at investigating this question in the specific case of motion direction processing.
-In addition, we attempt to palliate to the lack of a solid modeling approach to best understand the computation underlying behavioral adaptation to the environment's statistics,
+estimates would eventually correlate to the measures of behavioral adaptation. 
+Here we aim at investigating this question 
+in the specific case of the  processing of a target's motion direction.
+In addition, we attempt to palliate to the lack of a solid modeling approach 
+to best understand the computation underlying behavioral adaptation to the environment's statistics,
 and in particular how sequential effects are integrated
 within a hierarchical statistical framework.
-At present, Bayesian inference offers an effective methodology
-to deal with this question.
 
 %: Bayesian methods & role of predictive processing for this adaptive response
 % TODO : clarify this paragraph
+At present, Bayesian inference offers an effective methodology
+to deal with this question.
 In all generality, Bayesian methods allow to define and quantitatively assess
 a range of hypotheses about the processing by some formal agents
 of (possibly noisy) information~\citep{Deneve1999, Diaconescu2014, Daunizeau10a}.
@@ -310,15 +317,13 @@ A key principle in the Bayesian inference approach is
 that each stated hypothesis is quantitatively formalized
 using a generative model for the input / output response function
 by defining a graph of dependencies between defined variables.
-It then follows that measurements and outcomes may be linked by
-generic probabilistic computations.
 The generative model is parameterized by structural variables
 (such as weights, non-linear gain functions or prior knowledge)
 and transforms some relevant latent variables
 which may be represented as probabilities.
 Then, using the rules of probability calculus
 one can progressively update beliefs about the latent variables,
-such that one can finally infer the hidden structure of received inputs~\citep{Hoyer2003, Ma2014}.https://www.overleaf.com/project/5c36121f4b0f20641e21e49d
+such that one can finally infer the hidden structure of received inputs~\citep{Hoyer2003, Ma2014}.
 For instance, using Bayes's rule, one can combine
 the likelihood of observations given the generative model and
 the prior of these latent variables~\citep{Janes2014}.
@@ -330,12 +335,15 @@ is formed from the sensory input,
 this belief can be used to update
 the prior over future beliefs on latent variables~\citep{Montagnini2007}.
 Thus, the comparisons between expectations and actual data produces
-constant updates to the estimates of the model and
-is formalized in all generality within the~\textit{active inference} framework~\citep{Friston2003, Friston2010}.
+constant updates to the estimates of the model.
+Such a process is formalized in all generality 
+within the~\textit{active inference} framework~\citep{Friston2003, Friston2010}.
 In summary, Active Inference allows to predict latent variables
 but also to understand longer time effects such as adaptation and learning.
 
-In a recent study,~\citet{Meyniel16} simulated a model
+There are numerous examples of such Bayesian approaches
+applied to the the study of the adaptation to volatility
+and for instance,~\citet{Meyniel16} simulated a model
 over five previously published datasets~\citep{Squires1976, Huettel2002, Kolossa2013, Cho2002, Falk1997}.
 Their main conclusion was that
 a learning of local transition probabilities
@@ -347,7 +355,7 @@ which then applies to a variety of sensory modalities and
 experimental situations.
 As such, sequential effects in binary sequences are better explained
 by a learning of transition probabilities
-than of the absolute item frequencies or the frequencies of their alternations.
+compared to the absolute item frequencies or the frequencies of their alternations.
 The critical difference lies in the content
 of what is learned (transition probabilities versus item frequencies)
 in an attempt to capture human behavior.
