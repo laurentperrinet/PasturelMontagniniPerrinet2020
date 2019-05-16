@@ -763,23 +763,23 @@ the ``forgetful agent'' computed in \seeEq{leaky}
 consists of an exponentially-weighted moving average (see \seeApp{leaky}).
 It may thus be equivalently written in the form of a moving average:
 \eql{
-\hat{x_1}^{t} = h \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i}
+\hat{x_1}^{t} = h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
 \label{eq:leaky2}}
 Inversely, let us now assume that
 the true direction probability bias changes randomly with a mean rate of once
 every $\tau$ trials.
-As a consequence, the probability that the bias does not change is $Pr(x_2^t=0)=1-1/\tau$ at each trial.
+As a consequence, the probability that the bias does not change is $Pr(x_2^t=0)=1-h$ at each trial.
 Assuming independence of these occurrences, the estimated probability $p=\hat{x_1}^{t}$ is thus the sum
 of the past observations weighted by the belief that the bias has not changed during $i$ trials in the past, that is, exactly as defined in~\seeEq{leaky2}.
 This shows that
 assuming that changes occur at a constant rate ($\hat{x_2}^t=h$)
-but ignoring the variability of temporal occurrence of the switch,
+but ignoring the variability in the temporal occurrence of the switch,
 the optimal solution to this inference problem is the
 ideal observer defined in~\seeEq{leaky2},
 which finds an online recursive solution in~\seeEq{leaky}.
 We therefore proved here that the heuristic derived from~\citet{Anderson2006}
 is an ideal inversion of the generative model
-which assumes a fixed duration for the probability bias.
+which assumes a constant hazard rate for the probability bias.
 % \AM{It seems to me that the main limit of this ideal observer is that it is lazy: it knows that on average things change every tau trials but it does nothing to actively estimate and account for these changes: maybe we should have a sentence here to introduce this concept of "active"/"adaptive" observer?} - LP : right, ours is indeed a more active agent, but that's quite subjective...
 
 %: 2Ac  using \hat{p} as a regressor & limits of the leaky integrator
@@ -787,9 +787,9 @@ The correspondence that we proved between the weighted moving average heuristic
 and the forgetful agent model as an ideal solution to that generative model leads
 us to several interim conclusions.
 First, the time series of inferred $\hat{x_1}^{t}$ values 
-can serve as a regressor \AM{for behavioral data}
+can serve as a regressor for behavioral data
 to test whether human observers follow a similar strategy.
-In particular, the free parameter $\tau$ 
+In particular, the free parameter $h$ 
 may be fitted to variations of the experimental data across the sequence, 
 which itself is assumed to depend on the agents' belief in the weight decay.
 %for instance to the data shown in~\seeFig{results_intro}.
@@ -801,7 +801,7 @@ Indeed, a first criticism could be that
 this model is too rigid and does not sufficiently
 account for the dynamics of contextual changes~\citep{Behrens07}
 as the weight decay correspond to assume \emph{a priori} a constant precision 
-in the data sequence, contrary to more elobarate Bayesian models~\citep{Vilares2011}.
+in the data sequence, contrary to more elaborate Bayesian models~\citep{Vilares2011}.
 It seems plausible that the memory size (or history length) used by the brain 
 to infer any event probability can vary, and that this variation could be related
 to the environmental volatility inferred from past data.
