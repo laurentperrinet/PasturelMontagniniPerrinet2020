@@ -222,21 +222,26 @@ pdfauthor={\AuthorA},%< \Email > \Address},%
 % \AM{ I like the green example too: it only demands to define the variable that would correspond to the time series to be tracked: carbon dioxide measurements at a given critical location? Also, the fact that a switch detection may inform important decision is nice for the example but we do not really have an analogy to it in our task. Yet I am very happy with both examples, both very much on fashion, are we more ecology, or pro-vax activists?!}
 We live in a fundamentally volatile world for which
 our cognitive system has to constantly adapt.
+In particular, this volatility may be generated
+by processes with different time scales.
 Imagine for instance you are a general practitioner and
 that you usually report an average number of
 three person infected by measles per week.
-However, this rate is variable and
-over the past week
-the rate increased to ten cases.
+However, this rate is variable and 
+over the past week you observe that the rate increased to ten cases.
 As such, two alternate interpretations are available:
 Either, there is an outbreak of measles and
 one should estimate its incidence
 (as measured as the rate of new cases)
-since an estimate of the outbreak's onset.
+since an estimate of the outbreak's onset
+and which defines a new infection rate of this outbreak
+but also a volatility (as given by the probability of a new outbreak)
+at a longer time scale.
 Alternatively, these cases are
 ``unlucky'' coincidences that originate from the variability
-of an instance of values drawn from a stationary random process
-that generated these observations.
+of the process which drives patients to the doctor
+and which are in a shorter term 
+an instance of values drawn from a stationary random process.
 In that option, it may be possible to readjust
 the estimated baseline rate of infection with this new data.
 This example illustrates one fundamental problem
@@ -1118,17 +1123,7 @@ as the number of observations increase after a switch.
 % see 2018-02-12 journal club bayesian changepoint chloe.pdf p.33/ p.42
 % TODO include these quantitative results in a figure
 %-------------------------------------------------------------%
-
-
-
-
-
-
-
-
-
-Let's now see the performance of our model when applied
-to our behavioral experiments.
+Let's now see the application of our model to 
 To quantitatively evaluate the algorithm,
 we computed the  negative log-likelihood (in bits) of the estimate
 knowing the ground truth 
