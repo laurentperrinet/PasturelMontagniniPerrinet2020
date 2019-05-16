@@ -235,7 +235,7 @@ one should estimate its incidence
 (as measured as the rate of new cases)
 since an estimate of the outbreak's onset
 and which defines a new infection rate of this outbreak
-but also a volatility (as given by the probability of a new outbreak)
+but also an updated value of volatility (as given by the probability of a new outbreak)
 at a longer time scale.
 Alternatively, these cases are
 ``unlucky'' coincidences that originate from the variability
@@ -322,14 +322,14 @@ In all generality, Bayesian methods allow to define and quantitatively assess
 a range of hypotheses about the processing by some formal agents
 of (possibly noisy) information~\citep{Deneve1999, Diaconescu2014, Daunizeau10a}.
 A key principle in the Bayesian inference approach is
-to introduce latent variables and hypothesis about how these predict measurements.
+to introduce latent variables which formalize how different hypothesis predict these measurements.
 Each stated hypothesis is quantitatively formalized
-using a generative model for the input / output response function
 by defining a graph of dependencies between defined variables
-representing prior knowledge about the structure of the model.
-The generative model is parameterized by structural variables
+using a generative model for the input / output response function
+representing prior knowledge about its structure.
+In practice, the generative model is parameterized by structural variables
 (such as weights or non-linear gain functions)
-such that beliefs about latent variables
+such that, knowing incoming measurements, beliefs about latent variables
 may be represented as probabilities.
 Then, using the rules of probability calculus
 one can progressively update beliefs about the latent variables,
@@ -344,8 +344,9 @@ Indeed, once the belief about latent variables
 is formed from the sensory input,
 this belief can be used to update
 the prior over future beliefs~\citep{Montagnini2007}.
-Thus, the comparisons between expectations and actual data produces
-constant updates to the estimates of the model.
+In such models, the comparisons between expectations and actual data produces
+constant updates to the estimates of the latent variables 
+but also on the validity of the model.
 %Such a process is formalized in all generality 
 %within the~\textit{active inference} framework~\citep{Friston2003, Friston2010}.
 %In summary, Active Inference allows to predict latent variables
@@ -364,7 +365,7 @@ a core building block of sequence knowledge in the brain,
 which then applies to a variety of sensory modalities and
 experimental situations.
 As such, sequential effects in binary sequences are better explained
-by a learning of transition probabilities
+by learning transition probabilities
 compared to the absolute item frequencies or the frequencies of their alternations.
 The critical difference lies in the content
 of what is learned (transition probabilities versus item frequencies)
@@ -426,7 +427,7 @@ between ``sure left'', to ``unsure'' and finally ``sure right''.
 \end{figure}
 %-------------------------------------------------------------%
 %: adaptation to volatility in EMs : seen as an anticipation in SPEM - principle and function
-Humans are able to accurately track a moving object
+Indeed, humans are able to accurately track a moving object
 with a combination of saccades and
 Smooth Pursuit Eye Movements (SPEM)~\citep{ref}.
 These movements allow us to align and
@@ -445,7 +446,7 @@ can be modulated by extra-retinal, predictive information even in the absence of
 The anticipatory smooth pursuit behavior is remarkable
 in different aspects.
 First, its buildup is relatively fast, such that only a few trials are sufficient
-to pick up some regularity in a binary sequence of alternating Right-Left directions.
+to pick up some regularity in a binary sequence of alternating Right / Left directions.
 Second, it is in general an unconscious process
 of which participants are not aware of.
 As such, this behavior is potentially a useful marker
@@ -456,7 +457,7 @@ interacts dynamically with contextual contingencies in shaping (oculomotor) beha
 %: linear relationship (talk about santos & kowler and others)
 Typically, aSPEM is observed after a temporal cue and
 before target motion onset~\citep{Kowler1979a,Kowler1979b, Kowler1984}. %~(see \seeFig{intro}-A).
-It is generally assumed that the role of anticipatory eye movements is
+It is generally assumed that the role of aSPEMs is
 to minimize as fast as possible the visual impairment due
 to the amplitude of eye-to-target position and velocity mismatch.
 Overall, this reduces the typical sensorimotor delay
@@ -487,7 +488,7 @@ First, it seems important to investigate the integration of environmental statis
 in this smooth tracking task with
 a large family of probability biases for the direction of target motion.
 As such, instead of a finite set of probability biases, % ($.25$, $.5$, $.75$, $.9$ and $1.$, see \seeFig{intro}-B),
-we decided to use a continuous range of probability biases~$p$.
+we decided to use a continuous range of probability biases.
 %which we were sampling from a fixed prior distribution.
 Second,~\citet{Maus2015} have recently shown that
 both perceptual adaptation for speed estimation
@@ -517,6 +518,8 @@ using the same internal representation of motion regularities.
 Both these history lengths can be considered
 short in comparison to the several hundreds
 of trials that are commonly used in psychophysics and sensorimotor adaptation studies.
+As such, it seems to disentangle these different time scales 
+and their respective role in adaptive processes.
 % ------------------------------------------------------------------
 \subsection{Contributions}%Outline}
 % ------------------------------------------------------------------
@@ -586,7 +589,7 @@ with a given mean frequency and which controls the strength of the volatility.
 Second, the value $p$ of the bias only changes at the moment of a switch,
 independently of the previous bias' value
 and is stationary between two switches.
-Third, target directions are drawn asd a Bernoulli trial using $p$.
+Third, target directions are drawn as a Bernoulli trial using the current value of $p$.
 Such a sequence is presented in~\seeFig{intro}-A, 
 where we show the realization of the target's directions sequence,
 the trajectory of the underlying (hidden) probability bias, and
@@ -631,11 +634,11 @@ In addition, we imposed in our sequence of $600$ trials that a switch
 occurs after trial numbers $200$ and $400$, 
 in order to be able to compare adaptation properties across different chunks of the trials sequence.
 %The model generating the experimental sequence of trial directions, as well as the experimental protocol are illustrated in~\seeFig{intro}-A. 
-With such a three-layers structure, the model generates the randomized occurrence of the switches,
+With such a three-layered structure, the model generates the randomized occurrence of the switches,
 the length of sub-blocks with constant direction probability
 (chosen in the continuous range of possible biases' values), 
 and finally the random sequence of trial direction occurrences.
-In conclusion, the system of three equations~\seeEq{bsm}
+In conclusion, the system of three equations defined in~\seeEq{bsm}
 defines the Binary Switching Model (BSM)
 which we used for the generation of experimental sequences presented to human participants in the experiments,
 but also as the basis of an ideal observer model.
@@ -650,7 +653,7 @@ To our knowledge, such algorithm was not yet available, and
 we will here provide it with an analytical solution,
 by extending previous results from~\citet{AdamsMackay2007}
 to the case of binary data as in the BSM presented above.
-In addition, this solution is \emph{online},
+In addition, the proposed algorithm is \emph{online},
 that is, that all computations on the sequence may be done
 using solely the variables available at the present trial,
 compactly representing all the sequence history seen in previous trials.
@@ -680,12 +683,12 @@ in addition to the recording of eye movements.
 %between "sure left", to "unsure" and finally "sure right"~(see \seeFig{intro}-C).
 These results will be compared to the results for eye movements.
 Similarly, we will show that these results match well
-with the inverse model.
+with the BBCP model.
 In~\seeSec{inter}, we will synthesize these results
-by inferring the volatility parameters extracted
-for each individual participant. 
+by inferring the volatility parameters inherent to the models
+by best-fitting it to each each individual participant. 
 This will allow the analysis of inter-individual behavioral responses for each session
-and in particular if one could predict observers' prior volatility,
+and in particular if one could predict observers' prior (preferred) volatility,
 that is, a measure of the dynamic compromise between exploration (``should I stay?'')
 and exploitation (``should I go?'')
 across the two different sessions testing predictive adaptive processes
@@ -713,9 +716,9 @@ Here, we use a similar approach but on a different generative model,
 as defined in~\seeEq{bsm}.
 To begin with, we define a first ideal observer as a control, the \textit{forgetful agent},
 which assumes that volatility is stationary with a fixed frequency
-and that one can consider it as the average probability of change per trial.
+and that one can consider that volatility as the average probability of change at each trial.
 Then, we will extend this model to an agent
-which assumes the existence of random switches, that is,
+which assumes the existence of (randomly occuring) switches, that is,
 that the value of the probabilistic bias may change
 at specific (yet randomly drawn) trials,
 as defined by the forward probabilistic model in~\seeEq{bsm}.
@@ -733,7 +736,7 @@ It is adapted to model motion expectation in the direction-biased experiment.
 In this model, the temporal evolution of the expectation $p=x_1^t$ of a given trial direction can be modeled by making a simple heuristic:
 the update of the estimated probability for an event is based
 on the discount of the previously estimated probability
-by a factor $(1 - h), h \in [0, 1]$, relative to new information $x_0^t$~\citep{Anderson2006}.
+by a factor $(1 - h)$, with $h \in [0, 1]$, relative to new information $x_0^t$~\citep{Anderson2006}.
 At trial $t$, this model can be expressed with the following equation:
 \eql{
 \hat{x_1}^{t} = (1 - h) \cdot \hat{x_1}^{t-1} + h \cdot x_0^t
