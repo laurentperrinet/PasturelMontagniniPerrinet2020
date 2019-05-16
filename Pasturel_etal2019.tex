@@ -233,9 +233,9 @@ one should estimate its incidence
 (as measured as the rate of new cases)
 since the onset of the outbreak.
 Alternatively, these cases are
-``unlucky'' coincidences that originate from the volatility
-of a genuinely stationary random process
-that underly these observations.
+``unlucky'' coincidences that originate from \AM{I THINK WE HAVE TO DEFINE VOLATILITY TO START WITH, TO EXCLUDE CONFUSION} the volatility
+of a genuinely stationary and heterogeneous random process
+that generated these observations.
 In that option, it may be possible to readjust
 the estimated baseline rate of infection with this new data.
 This example illustrates one fundamental problem
@@ -265,7 +265,7 @@ In controlled experimental settings which challenge visual perception or sensori
 such adaptive processes have been mostly put in evidence
 by precisely analyzing the participants' behavior in a sequence of experimental trials,
 typically highlighting sequential effects
-at the time scale of one to several minutes.
+at the time scale of one to several minutes. \AM{RATHER seconds?}
 % TODO: talk about Gallistel / Sugrue / Brody
 
 %: Past history of sensory event integration in vision
@@ -606,22 +606,22 @@ Indeed, to assess the dynamics of the adaptive processes
 which compensate for the variability of sensory sequences,
 one may generate random sequences for the value of $p$,
 with a parametric mechanism controlling for the volatility at each trial.
-By definition, volatility measures the temporal variability
-of the sufficient parameters of a random variable.
+\AM{By definition, volatility measures the temporal variability
+of the sufficient parameters of a random variable.}
 % \AM{THEN I HAVE A QUESTION: GIVEN THIS DEFINITION, DOES VOLATILITY CHANGE AT EACH TRIAL IN OUR CASE, OR IS VOLATILITY FIXED ONCE THE TAU=40 PARAMETER HAS BEEN CHOSEN?} it is given by tau /on average/
-In the \emph{Hierarchical Gaussian Filter} model (HGF, ~\citet{Mathys11}) for instance,
+In the Hierarchical Gaussian Filter model (HGF,~\citet{Mathys11}), for instance,
 volatility is controlled as a non-linear transformation
 of a random walk (modeled itself by a Brownian motion with a given diffusion factor).
 This hierarchical model allows to ultimately generate a sequence of binary choices
 where the variability fluctuates along a given trajectory.
 Such a forward probabilistic model is invertible
 using some simplifying assumptions and allows
-to extract an inference of the agent's belief about volatility~\citep{Vossel14}.
+to extract an inference of the \AM{time-varying} agent's belief about volatility~\citep{Vossel14}.
 Herein, we will use a simpler model where
 the bias $p$ in target direction varies according to a piecewise-constant function
 %(that is, a step function varying between~$0$ and~$1$),
 similarly to~\citet{Meyniel13}.
-Indeed, within each sub-block, the volatility of the value of $p$
+Indeed, within each sub-block, the volatility \AM{? RATHER: UNCERTAINTY ABOUT?} of the value of $p$
 progressively decreases as we accumulate samples.
 It means that instead of a complex stochastic trajectory,
 we draw random events (that we denote as ``switches'')
@@ -730,45 +730,43 @@ offer some perspectives for future work in~\seeSec{outro}.
 %
 %: short intro
 %
-As we saw above, Bayesian methods provide with
-a powerful framework for studying human behavior.
+As we saw above, Bayesian methods provide a powerful framework for studying adaptive human behavior.
 In the HGF model~\citep{Mathys11}, for instance,
 authors defined a multi-layered generative model for
 sequences of input stimuli.
-By ``inverting'' this stochastic forward process,
+By inverting this stochastic forward process,
 one could extract relevant descriptors at the different levels of the model
 and fit these parameters with the recorded behavior.
-Here, we will use a similar approach but on a different generative model,
+Here, we use a similar approach but on a different generative model,
 as defined in~\seeEq{bsm}.
-First, we will define a first ideal observer as a control
-which assumes that volatility is stationary with a fixed frequency.
-Then, we will extend it by modeling an agent
-which assumes the existence of switches, that is,
+To begin, we define a first ideal observer as a control, the \textit{forgetful agent},
+which assumes that \AM{volatility is stationary OR RATHER that contextual changes are deterministic,} with a fixed frequency.
+Then, we will extend this model to an agent
+which assumes the existence of random switches, that is,
 that the value of the probabilistic bias may change
 at specific (yet randomly drawn) trials,
-as was modeled by the forward probabilistic model defined in~\seeEq{bsm}.
+as defined by the forward probabilistic model in~\seeEq{bsm}.
 %
 % ------------------------------------------------------------------
 \subsection{Forgetful-agent model (Leaky integrator)}%
 % ------------------------------------------------------------------
 %: justification from previous studies
-Following~\citet{Maus2015},
+\AM{I WOULD DELETE: Following~\citet{Maus2015},}
 we modeled a first ideal observer,
 which represents a classical, widespread and
 realistic model of how trial-history shapes
 adaptive processes in human behavior.
-It is adapted to model motion expectation in a direction-biased experiment.
-In this model, the temporal evolution of the expectation $p=x_1^t$ of a given event
-can be modeled by making a simple heuristic:
+It is adapted to model motion expectation in the direction-biased experiment.
+In this model, the temporal evolution of the expectation $p=x_1^t$ of a given trial direction can be modeled by making a simple heuristic:
 the update of the estimated probability for an event is based
 on the discount of the previously estimated probability
-by a factor $1 - h \in [0, 1]$, relative to new information~\citet{Anderson2006}.
+by a factor $(1 - h), h \in [0, 1]$, relative to new information $x_0^t$~\citep{Anderson2006}.
 At trial $t$, this model can be expressed with the following equation:
 \eql{
 \hat{x_1}^{t} = (1 - h) \cdot \hat{x_1}^{t-1} + h \cdot x_0^t
 \label{eq:leaky}}
-where $\hat{x_1}^{t=0}$ is equal to some prior value ($.5$ in the unbiased case),
-thjat is for the best guess before observing any data.
+where $\hat{x_1}^{t=0}$ is equal to some prior value ($0.5$ in the unbiased case),
+corresponding to the best guess before observing any data.
 % NOTE: it's an AR(1) process https://stats.stackexchange.com/questions/358162/writing-ar1-as-a-ma-infty-process
 
 %: from heuristics to ideal observer
@@ -793,78 +791,73 @@ It may thus be equivalently written in the form of a moving average:
 \label{eq:leaky2}}
 % \AM{In principle there should also be a term proportional to $(1-h)^{t}$$\hat{x_1}^{t=0}$, true? Which tends to $0$ for large $t$...}
 % \LP{it's the term for $i=t$ - ok?}
-Inversely, let us assume that at each trial,
-the true probability bias changes randomly with a rate of once
+Inversely, let us now assume that
+the true direction probability bias changes randomly with a mean rate of once
 every $\tau$ trials.
 As a consequence, the probability that the bias does not change is $Pr(x_2^t=0)=1-1/\tau$ at each trial.
 Assuming independence of these occurrences, the estimated probability $p=\hat{x_1}^{t}$ is thus the sum
 of the past observations weighted by the belief that the bias has not changed during $i$ trials in the past, that is, exactly as defined in~\seeEq{leaky2}.
 This shows that
 assuming that changes occur at a constant rate ($\hat{x_2}^t=h$)
-but ignoring the temporal occurrence of the switch,
+but ignoring the \AM{variability of} temporal occurrence of the switch,
 the optimal solution to this inference problem is the
 ideal observer defined in~\seeEq{leaky2},
 which finds an online recursive solution in~\seeEq{leaky}.
 We therefore proved here that the heuristic derived from~\citet{Anderson2006}
 is an ideal inversion of the generative model
-which assumes a fixed average duration for the probability bias.
+which assumes a fixed duration for the probability bias.
 % \AM{It seems to me that the main limit of this ideal observer is that it is lazy: it knows that on average things change every tau trials but it does nothing to actively estimate and account for these changes: maybe we should have a sentence here to introduce this concept of "active"/"adaptive" observer?} - LP : right, ours is indeed a more active agent, but that's quite subjective...
 
 %: using \hat{p} as a regressor
 The correspondence that we proved between the weighted moving average heuristic
-and the ideal observer model as a solution to that generative model leads
+and the \AM{ideal observer OR RATHER forgetful agent model} as a \AM{ideal} solution to that generative model leads
 us to several interim conclusions.
-First, the time series of inferred $\hat{x_1}^{t}$ values can serve as a regressor
+First, the time series of inferred $\hat{x_1}^{t}$ values can serve as a regressor \AM{for behavioral data}
 to test whether human observers follow a similar strategy.
-In particular, one could test the free parameter $\tau$,
-relative to the agents' belief in the weight decay:
-Importantly, $\tau$ may be fitted to the experimental data
-that would be collected.
+In particular, the free parameter $\tau$ may be fitted to variations of the experimental data across the sequence, assumed to depend on the agents' belief in the weight decay.
 %for instance to the data shown in~\seeFig{results_intro}.
-However, one should be careful with such conclusions whenever
-this trajectory is fitted to behavioral data.
+\AM{WHAT FOLLOWS IS VERY NICE AND CLEAR BUT IT FITS MORE TO THE DISCUSSION SECTION THAN TO THE RESULTS:
+However, one should be careful with conclusions based on this kind of data fitting.
 For instance, if the inversion of the forward model is exact in the present case,
 one has to use approximations in more complex models,
 such as with the HGF~\citep{Mathys11}
 or with the models developed by~\citet{Wilson13,Wilson18}.
 As a result, some discrepancy could originate from these approximations
 at the algorithmic level.
-As such, it is essential that these both sources of discrepancy (intrinsic versus extrinsic)
-should be controlled independently~\citep{Beck12}.
+As such, it is essential to carefully control for these sources of discrepancy (intrinsic versus extrinsic) independently~\citep{Beck12}.
 Second, if we assume that the inversion of the model is perfect
-(that is, that no algorithmic approximation has been done in the inferrence),
+(that is, no algorithmic approximation has been done),
 this means that by fitting different ideal observers
 to the data, one evaluates as a matter of fact the adequacy of
-a generative model, not to probabilistic calculus.
+a generative model, not of the probabilistic calculus in its detailed implementation.
 This is a common confusion around the idea of a ``Bayesian brain''.
 We believe here that the challenge is not to validate the hypothesis that the brain uses or not the Bayes' theorem,
 but rather to test different hypotheses
 about the different generative models
 that agents may use.
 This methodological point may be essential in designing the experimental protocol,
-or in evaluating quantitatively the results.
+or in evaluating quantitatively the results.}
 
 %: limits of the leaky integrator
 Now, since we have defined a first generative model
-and the ideal observer which it corresponds to,
-we will define a more complex model
+and the corresponding ideal observer,
+we next define a more complex model,
 in order to overcome some of the limits of the leaky integrator.
 Indeed, a first criticism could be that
-this model may be too rigid and does not sufficiently
-account for the dynamics of volatility~\citep{Behrens07}
-or Bayesian uncertainty~\citep{Vilares2011}.
-It seems plausible that the memory (history length) the brain uses
-for inference is varying and that this variation could be related
-to the volatility inferred from information in the past.
+this model is too rigid and does not sufficiently
+account for the dynamics of contextual changes~\citep{Behrens07}
+or for Bayesian uncertainty~\citep{Vilares2011}.
+It seems plausible that the memory size (or history length) used by the brain to infer any event probability can vary, and that this variation could be related
+to the environmental volatility inferred from the past.
 The model presented in~\seeEq{leaky2} uses a constant weight
 (decaying with the distance to the current trial)
 for all trials, while precision of each trial
 can be potentially evaluated and used
 for precision-weighted estimation of the probability bias.
-To address this hypothesis, our next model will be inspired
-by a Bayesian Change-point detection model~\citep{AdamsMackay2007},
-which models an ideal agent inferring
-both the trajectory of the probability bias ($x_1^t$)
+To address this hypothesis, our next model is inspired
+by the Bayesian Change-point detection model~\citep{AdamsMackay2007}
+of an ideal agent inferring
+both the trajectory in time of the probability bias ($x_1^t$)
 and the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 % ------------------------------------------------------------------
 \subsection{Binomial Bayesian Change Point model}
@@ -925,29 +918,28 @@ as shown above, integration is thus faster than for the leaky integrator.
 %-------------------------------------------------------------%
 %: 2Ba precision in our belief of \hat{p}
 %-------------------------------------------------------------%
-There is a crucial difference between the simple agent presented above
-which believes that changes occur at a constant rate ($\hat{x_2}^t=h$, see~\seeEq{leaky2})
-and one that would invert the binomial switching model (BSM, see~\seeEq{bsm}).
+There is a crucial difference between the forgetful agent presented above
+\AM{WE CAN SKIP THIS:which believes that changes occur at a constant rate ($\hat{x_2}^t=h$, see~\seeEq{leaky2})}
+and an ideal agent which would invert the binomial switching model (BSM, see~\seeEq{bsm}).
 Indeed, at any trial during the experiment,
-the agent may infer beliefs about the trajectory of the volatility $x_2^t$
-which itself is driving the trajectory of the probability bias $x_1^t$.
+the agent may infer beliefs about the \AM{trajectory? rather value?} of the volatility $x_2^t$
+which itself is driving the \AM{trajectory} of the probability bias $x_1^t$.
 Knowing that the latter is piece-wise constant,
-an agent may therefore have a belief over the number of trials since the last switch.
+an agent may have a belief over the number of trials since the last switch.
 This number, that we will call the \emph{run-length}, is useful in two manners.
-First, it allows for the agent to restrict the estimation $\hat{x_1}^{t}$ of $x_1^t$
-to only those samples $x_0^t$ produced since the last switch and until $t$.
+First, it allows the agent to restrict the estimation $\hat{x_1}^{t}$ of $x_1^t$
+only based on those samples $x_0^t$ produced since the last switch and until $t$.
 Indeed, the samples $x_0^t$ occurred before the switch are drawn independently from the present true value $x_1^t$
 and thus cannot help estimating the latter.
 Second, it is known that for this estimate, the precision
-(that is, the inverse of its variance)
+(the inverse of variance) \AM{on the estimate $\hat{x_1}^{t}$}
 grows linearly with the number of samples:
 The longer the run-length, the sharper the corresponding (probabilistic) belief.
 We have designed an agent inverting the BSM by extending
 the Bayesian Change-Point (BCP) detection model~\citep{AdamsMackay2007}.
 The latter model defines the agent as an inversion of a switching generative model
 for which the observed data (input) is Gaussian.
-We will here present an exact solution for the case of the BSM,
-that is, where the input is binomial (see~\seeEq{bsm}).
+We present here an exact solution for the case of the BSM, where the input is binomial (see~\seeEq{bsm}).
 
 %-------------------------------------------------------------%
 %: 2Bb overcoming this difficulty using a latent variable - prediction/update cycle
@@ -965,8 +957,9 @@ Knowing that the data is generated by the BSM (see~\seeEq{bsm}),
 the run-length is either null at the moment of a switch,
 or this length (in number of trials) is incremented by $1$ if no switch occurred:
 \eql{\choice{
-r^t = 0 \quad \text{if} \quad x_2^t=1 \\
-\text{and else} \quad r^t = r^{t-1} +1 }\label{eq:run_length}}%see~\seeEq{run_length}
+\text{if} \quad x_2^t=1 \quad r^t = 0\\
+\text{if} \quad x_2^t=0 \quad r^t = r^{t-1} +1 }\label{eq:run_length}}%see~\seeEq{run_length}
+%\text{and else} \quad r^t = r^{t-1} +1 }\label{eq:run_length}}%see~\seeEq{run_length}
 This may be represented in a graph
 in which information will be represented at the different nodes for each trial $t$ (see \seeFig{bayesianchangepoint}-A).
 Using this latent variable at each trial $t$ to represent our belief,
