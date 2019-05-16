@@ -863,14 +863,14 @@ in estimating the probability bias $\hat{x_1}^t$ (green line),
 along with $95\%$ confidence intervals (CI).
 This shows that for the BBCP model,
 the accuracy of the estimated value of the probability bias
-is closer than that from the leaky integrator.
-We show below the belief for the different possible of run lengths
+is higher than for the leaky integrator.
+Below we show the belief (as grey-scale) for the different possible run lengths
 as a function of the trial number. 
 Darker colors denote higher probability. 
 The green line corresponds to the mean run-length which is inferred:
-Note that, while it takes some trials to detect a switch,
-they are correctly identified (diagonal lines) and
-as shown above, integration is thus faster than for the leaky integrator.
+Note that, while it takes some trials to detect switchs,
+they are overall correctly identified (transitions between diagonal lines) and
+integration is thus faster than for the leaky integrator, as illustrated above.
 }
 \label{fig:bayesianchangepoint}
 \end{figure}
@@ -1074,25 +1074,25 @@ are sufficient to predict all probabilities.
 %at the next trial $t+1$: $Pr(r_t | x_0^{0:t})$, $\mu^{(r)}_{t+1}$ and $\nu^{(r)}_{t+1}$.
 %projecting beliefs backwards and forward  : the algorithm is online et the price of memory
 % ------------------------------------------------------------------
-\subsection{Quantitative analysis of the Bayesian change point algorithm}
+\subsection{Quantitative analysis of the Binomial Bayesian Change Point detection algorithm}
 % ------------------------------------------------------------------
 %-------------------------------------------------------------%
 %: 2Ca python scripts : qualitative analysis
 %-------------------------------------------------------------%
-This algorithm is detailed in~\seeApp{bcp} and 
+The BBCP algorithm is detailed in~\seeApp{bcp} and 
 we have implemented it using a set of python scripts.
 This implementation provides also with some control scripts
 to test the behavior of the algorithm with synthetic data.
-Indeed, this allows to qualitatively and quantitatively asses
-this ideal observer with a known ground truth before applying it
+Indeed, this allows to qualitatively and quantitatively assess 
+this ideal observer model against a ground truth before applying it
 on the trial sequence that was used for the experiments and 
 ultimately comparing it to the human behavior. % (see~\seeFig{results_raw}).
 %TODO : synchronize with FIGURE 3 fig:bayesianchangepoint
 \seeFig{bayesianchangepoint}~\textbf{A} shows for illustration purpose
-one instance of a short sequence of simulated data $x_0^t$
-of leftward and rightward trials with a probability $x_1^t$
-of being rightward with possible variations across time.
-It also shows the predicted probability $\hat{x_1^t}$
+one instance of a short sequence ($10$ trials) of simulated data $x_0^t$
+of leftward and rightward trials with a switcprobability $x_1^t$
+of moving rightward with possible variations across time.
+It also shows the predicted probability $\hat{x_1}^t$
 as computed using the BBCP algorithm.
 It illustrates
 the belief on the predicted probability $\hat{p}$ at a given trial.
