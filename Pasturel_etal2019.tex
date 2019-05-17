@@ -1127,16 +1127,16 @@ as the number of observations increase after a switch.
 % see 2018-02-12 journal club bayesian changepoint chloe.pdf p.33/ p.42
 % TODO include these quantitative results in a figure
 %-------------------------------------------------------------%
-Let's now see the performance of the BBCP model to fit behavioural data.
-To quantitatively evaluate the algorithm,
-we computed the  negative log-likelihood (in bits) of the estimate
-knowing the ground truth 
+
+In order to quantitatively evaluate the algorithm,
+we computed the  negative log-likelihood (in bits) of the estimate probability bias,
+knowing the ground truth, 
 and averaged over all trials:
 \eql{
 \Cc =  \sum_{t} -\log_2 B(x_1^t ; \hat{x_1}^t, r^t )
 \label{eq:MI}
 }
-This measure explictly corresponds to the average score of our model,
+This measure explicitly corresponds to the average score of our model,
 where the score is the likelihood of the inferred belief about the probability bias
 as given by its mean $\hat{x_1}^t$ along with its precision $r^t$ and
 compared to the hidden ground truth $x_1^t$. 
@@ -1161,30 +1161,29 @@ on the basis of the set of responses given to the  sequence of stimuli
 %: 2Cc perspectives
 %-------------------------------------------------------------%
 There are limits to the agent that we have defined.
-First, data is considered to be a sequence of discrete steps.
+\AM{THIS PART COULD ALSO GO IN THE DISCUSSION First, data is considered to be a sequence of discrete steps.
 A similar approach using a Poisson point process 
 allows to extend to the continuous time
 such as in the framework of~\citet{RadilloBrady2017}:
-In this experiments, authors analyzed the licking behavior of rats in a dynamic environment.
+In this experiments, the authors analyzed the licking behavior of rats in a dynamic environment.
 This extension is beyond the scope of our current protocol,
 but could consist in a natural extension of the protocol
-to more complex and ecological settings about the timing of stimuli.
-Then, remember that the only free parameter of this model is the hazard rate $h$
+to more complex and ecological settings about the timing of stimuli.}
+Then, remind that the only free parameter of this model is the hazard rate $h$
 assumed by the agent (as in the fixed-length agent).
-Though there exist more generic solutions~\citep{Wilson13,Wilson18},
-we will keep this parameter fixed for any fitted agent, but evaluate
+Although more generic solutions exist~\citep{Wilson13,Wilson18},
+we decided to keep this parameter fixed for any fitted agent, but evaluate
 how well it fits to the experimental outcomes at the different scales of the protocol:
-within sub-blocks, for each sub-block or for any individual observer.
-As a summary, for any given sequence,
-we get an estimate of the probability bias assumed by the ideal observer.
-We will now see how we can apply that to our experimental protocol.
-In particular, we expect intuitively the results to be more variable
-compared to the previous protocol with fixed-length blocks (see~\seeFig{intro}-C).
+within \AM{YOU MEAN beween?} sub-blocks, for each sub-block or \AM{YOU MEAN across?} individual observers.
+As a summary, for each trial of any given sequence,
+we obtain an estimate of the probability bias assumed by the ideal observer. We will now present the analysis of this model's fit to our experimental measures of anticipatory eye movements and explicit guesses about target movement direction.
+\AM{I WOULD DELETE THIS In particular, we expect intuitively the results to be more variable
+compared to the previous protocol with fixed-length blocks (see~\seeFig{intro}-C).}
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\section{Results: psychophysics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results: Eye movements recordings}
+\section{Results: Eye movements recordings and explicit ratings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:results_psycho}
 %: FIGURE 2 fig:results_psycho ~\seeFig{results_psycho} 
@@ -1226,18 +1225,18 @@ to generate the (pseudo-)random sequence of
 the dot's directions (the alternating output of leftward/rightward trials)
 as the sequence of observations.
 In a first session, we recorded the participants' eye movements and 
-extracted the aSPEM velocity (for details, \seeApp{em}).
+extracted the aSPEM velocity (for details, see \seeApp{em}).
 Among our $12$ participants,
-we show two representative examples in~\seeFig{results_psycho}.
-These representative participants were chosen as that
+we show \AM{the eye velocity traces of} two representative subjects in~\seeFig{results_psycho}.
+These representative participants were chosen as those
 with the median fit in the quantitative analysis
 that will follow (\seeSec{inter}).
 In particular, we show in the top panel the actual sequence of binary choices
 (TD, leftward or rightward) of the Bernoulli trial  and 
-in the bottom panels, we compare the evolution of the recorded aSPEM with
+in the bottom panels, we compare the evolution of the recorded aSPEM (black line) with
 the ground truth value of the (hidden) probability bias $x_1$
-and the value inferred using the BBCP model (see~\seeFig{bayesianchangepoint}-B,
-as a blue line, along with its confidence interval in a shaded area).
+and the value inferred using the BBCP model, as well as the forgetful agent model (see~\seeFig{results_psycho},
+as a green line, along with their respective confidence intervals in the shaded areas).
 Comparing the raw eye movement results with the latter,
 it seems qualitatively that both traces evolve in good agreement.
 First, one can observe in both a trend with the polarity of aSPEM velocity
@@ -1262,7 +1261,14 @@ for predicting the strength of aSPEM.
 %-------------------------------------------------------------%
 %: 3B Results: bias rating scale measurements
 %-------------------------------------------------------------%
-\label{sec:rating_scale}
+%\label{sec:rating_scale}
+
+
+
+
+
+
+
 In addition, the explicit rating scale
 for the next trial's motion direction
 provided by the second experiment
