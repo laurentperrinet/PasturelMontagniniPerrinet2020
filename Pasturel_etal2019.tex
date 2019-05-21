@@ -22,8 +22,7 @@ Should I stay or should I go? Humans adapt to the volatility of visual motion pr
 }
 \newcommand{\Acknowledgments}{PACE-ITN - code and material @ \url{\Website/Publications/PasturelMontagniniPerrinet2019}. TODO: RIck + Karl + JB + Laurent Madelain }
 \newcommand{\Abstract}{
-Animal behavior must constantly adapt to changes, for example when the state of an environmental context changes unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. For example, it has already been shown that when a random sequence of directions of motion to the right or left of a visual target is suddenly biased to one direction, human observers adapt to accurately anticipate it with their eye movements. Here, we prove that this ability extends to a volatile environment where probability biases could change at random switching times. In addition, we also recorded the level of confidence reported by human observers. These results were compared to those of a probabilistic agent that is optimal in relation to the event switching generating model. Compared to other models such as the leaky integrator, we found a better match between the behavioral response observed and that given by this agent. Furthermore, we were also able to fit the experimental data with different levels of switching volatility in the model and derive a common marker for the inter-variability of participants, by titrating their level of preference between exploration and exploitation. Such results prove that in such an unstable environment, human observers can still effectively represent an internal belief, and use this representation in their sensory-motor control system and for explicit judgments. This work offers an innovative approach to more generically test human cognitive abilities in uncertain and dynamic environments.
-}
+Animal behavior must constantly adapt to changes, for example when the state of an environmental context changes unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of directions of motion (to the right or left) of a visual target is biased to one direction, human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where probability biases could change at random switching times. In addition, we also recorded the explicit direction prediction, along with the relative confidence, as reported by human observers. These results were compared to the estimates of a probabilistic agent that is optimal in relation to the event switching generating model. Compared to other models such as the leaky integrator, we found a better match between our probabilistic agent and the behavioral responses, both for the implicit (anticipatory eye movements) and the explicit ones. Furthermore, we were able to fit the individual experimental data with different levels of switching volatility in the model and derive a common marker for the inter-individual variability of participants, by titrating their level of preference between exploration and exploitation. These results prove that in such an unstable environment, human observers can still effectively represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test human cognitive abilities in uncertain and dynamic environments.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\documentclass[profile,final,english,draft,24pt]{article}%
 \documentclass[12pt,english]{article}%
@@ -224,24 +223,25 @@ We live in a fundamentally volatile world for which
 our cognitive system has to constantly adapt.
 In particular, this volatility may be generated
 by processes with different time scales.
+%Imagine for instance you are a general practitioner and that you usually report an average number of three person infected by measles per week. However, this rate is variable and over the past week you observe that the rate increased to ten cases. As such, two alternate interpretations are available: Either, there is an outbreak of measles and one should estimate its incidence (as measured as the rate of new cases) since an estimate of the outbreak’s onset and which defines a new infection rate of this outbreak but also an updated value of volatility (as given by the probability of a new outbreak) at a longer time scale. Alternatively, these cases are “unlucky” coincidences that originate from the variability of the process which drives patients to the doctor and which are in a shorter term an instance of values drawn from a stationary random process. In that option, it may be possible to readjust the estimated baseline rate of infection with this new data.  This example illustrates one fundamental problem with which our cognitive system is faced: when observing new sensory evidence, should I stay and continue to exploit this novel data with respect to my current beliefs about the environment’s state or should I go and explore a new hypothesis about the random process generating the observations since the detection of a switch in the environment?
 Imagine for instance you are a general practitioner and
 that you usually report an average number of
-three person infected by measles per week.
+three persons infected by measles per week.
 However, this rate is variable and 
 over the past week you observe that the rate increased to ten cases.
-As such, two alternate interpretations are available:
-Either, there is an outbreak of measles and
-one should estimate its incidence
-(as measured as the rate of new cases)
-since an estimate of the outbreak's onset
-and which defines a new infection rate of this outbreak
-but also an updated value of volatility (as given by the probability of a new outbreak)
+As such, two alternative interpretations are available:
+the first possibility is that there is an outbreak of measles and
+one should then estimate its incidence
+(i.e. the rate of new cases)
+since the inferred outbreak's onset, in order
+to quantify the infection rate specific to this outbreak,
+but also to update the value of the environmental volatility (as given by the probability of a new outbreak)
 at a longer time scale.
 Alternatively, these cases are
-``unlucky'' coincidences that originate from the variability
-of the process which drives patients to the doctor
-and which are in a shorter term 
-an instance of values drawn from a stationary random process.
+``unlucky'' coincidences that originate from the natural variability
+of the underlying statistical process: these coincidences which drive patients to the doctor, but
+they are simply 
+instances drawn from a stationary random process.
 In that option, it may be possible to readjust
 the estimated baseline rate of infection with this new data.
 This example illustrates one fundamental problem
@@ -264,7 +264,7 @@ such that one can prepare to act upon them
 ahead of their occurrence~\citep{PerrinetAdamasFriston2014} ---
 or at least forming beliefs as precise as possible
 about a future environmental context ---
-are ubiquitous challenges for cognitive systems.
+is an ubiquitous challenge for cognitive systems.
 In the long term, how the human brain dynamically manages
 this trade-off between exploitation and exploration
 is essential to the adaptation
@@ -273,40 +273,38 @@ In controlled experimental settings which challenge visual perception or sensori
 such adaptive processes have been mostly put in evidence
 by precisely analyzing the participants' behavior in a sequence of experimental trials,
 typically highlighting sequential effects
-at the time scale of several seconds to minutes.
+at the time scale of several seconds to minutes \AM{(or hours in the case of sensorimotor persistent adaptation)}.
 % TODO: talk about Gallistel / Sugrue / Brody
 
 %: Past history of sensory event integration in vision
 Indeed, stimulus history of sensory events influences
-how the current stimulus is perceived~\citep{Sotiropoulos2011, Adams12} and 
-acted upon~\citep{Carpenter1995, Maus2015,Damasse18}.
-Two qualitatively opposite effects of the stimulus history have been described: 
-priming and perceptual adaptation. 
-Adaptation reduces the sensitivity to recurrently presented stimuli and
-thus to re-calibrate perceptual experience~\citep{Clifford2007, Webster2011, Kohn2007}.
-Examples of negative biases in perceptual discrimination are
-numerous~\citep{REFFS} and show that the visual system tends
+how the current stimulus is perceived~\citep{Sotiropoulos2011,Adams12,ChopinMamassian2012,FischerWhitney2014,Cicchini_PRSB_2018} and 
+acted upon~\citep{WallmanFuchs1998,Carpenter1995, Maus2015,Damasse18}.
+Two qualitatively opposite effects of the stimulus history have been described: positive (priming-like), and negative (adaptation) effects. 
+Adaptation reduces the sensitivity to recurrently presented stimuli,
+thus yielding to a re-calibrated perceptual experience~\citep{Clifford2007, Webster2011, Kohn2007}. Examples of negative biases in perceptual discrimination are numerous (see for instance~\citet{KanaiVerstraten2005,ChopinMamassian2012}) and show that the visual system tends
 to favor temporal and spatial stability of the stimulus.
 On the other hand, priming is a facilitatory effect that
-enhances the identification of repeated stimuli~\citep{Verstraten1994, Tiest2009}.
-This type of perceptual learning leads to improvements in discrimination
-with long-term training on a perceptual judgment~\citep{Lu2009}.
+enhances the identification of repeated stimuli~\citep{Verstraten1994, Tiest2009}. 
+%\AM{I WOULD SKIP THIS This type of perceptual learning leads to improvements %in discrimination
+%with long-term training on a perceptual judgment~\citep{Lu2009}.}
 In sensorimotor control,
 the same stimulus presented several times could indeed
 lead to faster and more accurate responses and,
 at the same time, lead to critically suboptimal behavior
 when a presented stimulus is not coherent
-with the participant's expectations~\citep{Hyman1953, Yu2009}.
-This process is highly dynamic especially in complex environments
+with the participant's expectations~\citep{Hyman1953, Yu2009}. This process is highly dynamic especially in complex environments
 where new contingencies can arise at every moment.
+\AM{I SUGGEST TO ANTICIPATE THIS HERE INSTEAD OF AT THE END Interestingly, priming effects at cognitive levels
+are sometimes paralleled by anticipatory motor responses which are positively correlated with the the repetition of stimulus properties: anticipatory smooth eye movements (aSPEM) is well-known example of this behavior, as we will illustrate in the next section.}
+
 Overall, the ability to detect
-statistical regularities in the event sequence
-thus appears as a fundamental ability
+statistical regularities in the event sequence appears as a fundamental ability
 for the adaptive behavior of living species.
-Moreover, few studies have addressed the question of whether
+Importantly, few studies have addressed the question of whether
 the estimate of such regularities is explicit,
 and whether verbal reports of the dynamic statistical
-estimates would eventually correlate to the measures of behavioral adaptation. 
+estimates would eventually correlate to the measures of behavioral adaptation or priming. 
 Here we aim at investigating this question 
 in the specific case of the  processing of a target's motion direction.
 In addition, we attempt to palliate to the lack of a solid modeling approach 
@@ -319,14 +317,13 @@ within a hierarchical statistical framework.
 As such, Bayesian inference offers an effective methodology
 to deal with this question.
 In all generality, Bayesian methods allow to define and quantitatively assess
-a range of hypotheses about the processing by some formal agents
-of (possibly noisy) information~\citep{Deneve1999, Diaconescu2014, Daunizeau10a}.
+a range of hypotheses about the processing of (possibly noisy) information by some formal agents~\citep{Deneve1999, Diaconescu2014, Daunizeau10a}.
 A key principle in the Bayesian inference approach is
-to introduce latent variables which formalize how different hypothesis predict these measurements.
+to introduce latent variables which formalize how different hypotheses predict \AM{these? RATHER EXPERIMENTAL?} measurements.
 Each stated hypothesis is quantitatively formalized
-by defining a graph of dependencies between defined variables
-using a generative model for the input / output response function
-representing prior knowledge about its structure.
+by defining a graph of \AM{probabilistic} dependencies between specific variables
+using a generative model for the \AM{CAN WE CUT THIS? input / output response function
+representing} prior knowledge about its structure.
 In practice, the generative model is parameterized by structural variables
 (such as weights or non-linear gain functions)
 such that, knowing incoming measurements, beliefs about latent variables
@@ -338,7 +335,7 @@ For instance, using Bayes's rule, one can combine
 the likelihood of observations given the generative model and
 the prior of these latent variables~\citep{Janes2014}.
 Of particular interest for us is the possibility to
-quantitatively represent in the probabilistic model
+quantitatively represent in this kind of probabilistic model
 the predictive and iterative nature of a sequence of events.
 Indeed, once the belief about latent variables
 is formed from the sensory input,
@@ -352,29 +349,28 @@ but also on the validity of the model.
 %In summary, Active Inference allows to predict latent variables
 %but also to understand longer time effects such as adaptation and learning.
 
-There are numerous examples of such Bayesian approaches
-applied to the the study of the adaptation to volatility
-and for instance,~\citet{Meyniel16} simulated a model
-over five previously published datasets~\citep{Squires1976, Huettel2002, Kolossa2013, Cho2002, Falk1997}.
+There are numerous examples of Bayesian approaches
+applied to the the study of the adaptation to volatility.
+For instance,~\citet{Meyniel16} simulated a hierarchical Bayesian model
+over five previously published datasets~\citep{Squires1976, Huettel2002, Kolossa2013, Cho2002, Falk1997} in the domain of cognitive neuroscience.
 Their main conclusion was that
-a learning of local transition probabilities
+learning the local transition probabilities
 was sufficient to explain the large repertoire
 of experimental effects reported in these studies.
-They concluded that transition probabilities constitute
+\AM{I WOULD PUT ALL THIS IN THE DISCUSSION: They concluded that transition probabilities constitute
 a core building block of sequence knowledge in the brain,
 which then applies to a variety of sensory modalities and
 experimental situations.
-As such, sequential effects in binary sequences are better explained
+As such, sequential effects in binary sequences would be better explained
 by learning transition probabilities
 compared to the absolute item frequencies or the frequencies of their alternations.
 The critical difference lies in the content
 of what is learned (transition probabilities versus item frequencies)
-in an attempt to capture human behavior.
+in an attempt to capture human behavior.}
 %TODO say it is an optimization that is, a measure of the dynamic compromise between exploration and exploitation
-%Chopin and %Mamassian and the use of visual confidence  (see Ann rev of Vision 2016)
-Interestingly, the observation of priming effects at cognitive levels
-have also been observed for simpler levels such as anticipatory smooth eye movements (aSPEM)
-and therefore allow to further deepen our understanding of such predictive processes. %
+%Chopin and %Mamassian and the use of visual confidence  (see Ann rev of Vision 2016)}
+\AM{Rather than on transition probabilities, here we focus on the analysis and modeling of human behavior as a function of the frequency of presentation (and its fluctuations in time) of a given event in a binary sequence of alternating visual motion direction.} 
+ %
 %As a consequence, Bayesian inference allows to compare the explanatory power
 %of different models...
 
@@ -397,7 +393,7 @@ and therefore allow to further deepen our understanding of such predictive proce
 \end{tikzpicture}
 }
 \caption{
-\emph{Tracking eye movements and confidence rating in a volatile switching environment}
+\emph{Smooth pursuit eye movements and explicit direction predictions in a volatile switching environment}
 \textbf{(A)}~
 We tested the capacity of human participants to adapt to a volatile environment 
 by using a simple, 3-layered generative model of fluctuations in target directions (TD).
@@ -427,7 +423,7 @@ between ``sure left'', to ``unsure'' and finally ``sure right''.
 \end{figure}
 %-------------------------------------------------------------%
 %: adaptation to volatility in EMs : seen as an anticipation in SPEM - principle and function
-Indeed, humans are able to accurately track a moving object
+Humans are able to accurately track a moving object
 with a combination of saccades and
 Smooth Pursuit Eye Movements (SPEM)~\citep{ref}.
 These movements allow us to align and
@@ -851,7 +847,7 @@ as a function of trial number.
 In this example the inferred switch is delayed 
 by one trial with respect to the true switch.
 ~\textbf{(B)} On a longer sequence of $200$ trials,
-representative of a sub-part of our experimental sequence (see~\seeFig{intro}-A), % and~\seeFig{results_raw}),
+representative of a sub-block of our experimental sequence (see~\seeFig{intro}-A), % and~\seeFig{results_raw}),
 we show in the top plot
 the actual events which are observed by the agent (TD, fine black lines),
 along with the hidden dynamics of the probability bias $x_1$,
@@ -866,7 +862,7 @@ Below we show the belief (as grey-scale) for the different possible run lengths
 as a function of the trial number. 
 Darker colors denote higher probability. 
 The green line corresponds to the mean run-length which is inferred:
-Note that, while it takes some trials to detect switchs,
+Note that, while it takes some trials to detect switches,
 they are overall correctly identified (transitions between diagonal lines) and
 integration is thus faster than for the leaky integrator, as illustrated above.
 }
@@ -1190,29 +1186,30 @@ compared to the previous protocol with fixed-length blocks (see~\seeFig{intro}-C
 \begin{figure}%[b!]
 \centering{\includegraphics[width=\linewidth]{2_results_enregistrement}}
 \caption{
-\emph{Behavioral results.} %
+\emph{Behavioral results, qualitative overview.} %
 The top row represents the sequence of target directions (TD)
 that were presented to observers
-for a sequence of $200$ trials
+in a sub-block of $200$ trials,
 as generated by the binary switching model (see~\seeFig{intro}-A).
 Bottom rows show the raw behavioral results 
 for two representative observers:
 The recorded aSPEM strength as measured 
 by the horizontal eye velocity estimated right before
 the onset of the visually-driven SPEM (black line);
-and the rating scale (red line).
+and the explicit ratings about the expected target direction (or \textit{bet scores}, red line).
 These values were here scaled according to their extremal values.
 We also show the evolution of the value 
-of the probability bias $p$ (bleu shaded areas)
+of the probability bias $p$ (blue shaded areas)
 which is hidden to observers
 and used to generate the TD sequence.
 We have overlaid the results of the BBCP model 
 (see~\seeFig{bayesianchangepoint}-B, green line).
 This shows qualitatively a good fit between 
 the experimental evidence and the model. 
-Note that we introduced short pauses 
-every $50$ trials (as denoted by vertical black lines), 
-to prevent from fatigue and check for possible drifts of the recorded eye position.
+\AM{Note that, in order to account for some specific changes observed in the behavioral data after the short pauses occurring every $50$ trials (as denoted by vertical black lines, see main tex), we introduced the additional assumption, for the BBCP model, that ... ???. This is reflected by the \textit{reset} of the green curve close to the $0.5$ level and the increase of the uncertainty after each multiple of $50$ trials.}
+% Note that we introduced short pauses 
+% every $50$ trials (as denoted by vertical black lines), 
+% to prevent from fatigue and check for possible drifts of the recorded eye position.
 }
 \label{fig:results_psycho}
 \end{figure}
@@ -1220,37 +1217,32 @@ to prevent from fatigue and check for possible drifts of the recorded eye positi
 %-------------------------------------------------------------%
 %: 3A raw results in aSPEM
 %-------------------------------------------------------------%
-We used the BSM model
-to generate the (pseudo-)random sequence of
+We used the BSM model to generate the (pseudo-)random sequence of
 the dot's directions (the alternating output of leftward/rightward trials)
 as the sequence of observations.
 In a first session, we recorded the participants' eye movements and 
 extracted the aSPEM velocity (for details, see \seeApp{em}).
-Among our $12$ participants,
-we show \AM{the eye velocity traces of} two representative subjects in~\seeFig{results_psycho}.
+Among our $12$ participants, we show \AM{the eye velocity traces of} two representative subjects in~\seeFig{results_psycho}.
 These representative participants were chosen as those
 with the median fit in the quantitative analysis
-that will follow (\seeSec{inter}).
+that will be illustrated in \seeSec{inter}.
 In particular, we show in the top panel the actual sequence of binary choices
-(TD, leftward or rightward) of the Bernoulli trial  and 
-in the bottom panels, we compare the evolution of the recorded aSPEM (black line) with
-the ground truth value of the (hidden) probability bias $x_1$
-and the value inferred using the BBCP model, as well as the forgetful agent model (see~\seeFig{results_psycho},
-as a green line, along with their respective confidence intervals in the shaded areas).
-Comparing the raw eye movement results with the latter,
+(TD, leftward or rightward) of the Bernoulli trial, whereas in the bottom panels, we compare the evolution of the recorded aSPEM (black line) with
+the ground truth value of the hidden probability bias $x_1$ (step-like blue shaded curve),
+and the value inferred using the BBCP model (green line), along with its confidence interval (green shaded area).
+Comparing the raw eye movement results with the BBCP agent predictions,
 it seems qualitatively that both traces evolve in good agreement.
-First, one can observe in both a trend with the polarity of aSPEM velocity
-to be negative for $p$ values below~$.5$ and positive for values above~$.5$.
-Moreover, both curves seem to lag of few trials 
-after the occurrence of a switch
-(also hidden to the observers).
-Both have similar delays in detecting and taking into account a switch,
+First, one can observe in both a common trend with the polarity of aSPEM velocity
+to be negative for $\hat{p}$ values below~$.5$ and positive for values above~$.5$.
+%Moreover, both curves seem to lag by few trials the 
+%occurrence of a switch of the probability bias (also hidden to the observers).
+Moreover, both curves unveil similar delays in detecting and taking into account a switch of the probability bias (also hidden to the observers),
 reflecting the time (in the order of a few trials) taken to integrate enough information
-to switch to a novel probability bias value for the Bernoulli trial.
+to \AM{switch to OR RATHER justify the estimation of} a novel expectation about the probability bias value for the Bernoulli trial.
 In general, results are more variable when the bias is weak ($p\approx .5$)
 than when it is strong (close to zero or one),
-consistent with the dependence of the variance of a Bernoulli trial
-as a function of the probabilistic bias ($\textrm{Var}(p)= p \cdot (1-p)$).
+consistent with the well-known dependence of the variance of a Bernoulli trial
+upon the probabilistic bias ($\textrm{Var}(p)= p \cdot (1-p)$).
 In addition, the precision (i.e. the inverse of the variance)
 of the inferred probability-bias $\hat{x_1}$ seems to increase
 in bigger inter-switch blocks as information is integrated over more trials.
@@ -1262,37 +1254,29 @@ for predicting the strength of aSPEM.
 %: 3B Results: bias rating scale measurements
 %-------------------------------------------------------------%
 %\label{sec:rating_scale}
-
-
-
-
-
-
-
-In addition, the explicit rating scale
-for the next trial's motion direction
+In addition, the explicit ratings
+for the next trial's expected motion direction (or \textit{bet scores}, red curve in~\seeFig{results_psycho})
 provided by the second experiment
-seems to qualitatively follow the same trend.
-Indeed, similarly to the strength of aSPEM, we compared
-qualitatively in~\seeFig{results_psycho},
-the trace of the rating scale 
+seem to qualitatively follow the same trend.
+Indeed, similarly to the strength of aSPEM, in~\seeFig{results_psycho} we can qualitatively compare
+the trace of the bet scores 
 with the inferred probability $\hat{x_1}$.
 As with aSPEM, the series of the participants' bias guesses 
 exhibits a positive correlation with $\hat{p}$:
 The next outcome of $x_{0}^{t}$ will in general be correctly inferred,
-as compared to a random choice: 
-Equipped with this generative BSM model and the ideal observer given by the BBCP model,
-the agent is able to predict the next outcome better than chance level. 
-Moreover, we show that a stronger bias leads to a lower variability in the bias estimate.
-Finally, a (hidden) switch in the value of the bias is
+as compared to a random choice 
+\AM{I WOULD SKIP THIS Equipped with this generative BSM model and the ideal observer given by the BBCP model,
+the agent is able to predict the next outcome better than chance level.} 
+Moreover, we observe again that a stronger bias leads to a lower variability in the bias estimate, compared to bias values close to $0.5$.
+Again, a (hidden) switch in the value of the bias is
 most of the time correctly identified after only a few trials.
-Note also that at every pause (black vertical bar in~\seeFig{results_psycho}),
+Finally, note that at every pause (black vertical bar in~\seeFig{results_psycho}),
 participants tended to favor unbiased guesses, close to $0.5$
 than at the end of a sub-block of trials.
 We can speculate that this phenomenon would correspond 
-to a resetting mechanism of the internal belief on the probability bias.
-As a consequence, the experiment performed in the second session
-shows that the probability-bias values that are consciously estimated by participants
+to a resetting mechanism of the internal belief on the probability bias \AM{and indeed we have introduced an assumption, in the definition of the BBCP agent, formalizing this idea in terms of a reset of the internal belief, along with an increased uncertainty, after each pause}.
+To conclude, the experiment performed in the second session
+shows that the probability-bias values that are explicitly estimated by participants
 are qualitatively similar to the implicit (and unconscious) ones 
 which supposedly underlie the generation of anticipatory aSPEM with variable strength.
 
@@ -1310,23 +1294,22 @@ which supposedly underlie the generation of anticipatory aSPEM with variable str
 \end{tikzpicture}
 }
 \caption{%
-\emph{Psychophysical results over all participants.} %
-For all participants, we collected all trials as an estimate of
-the strength of aSPEM and a rating scale value.
-Relating those values with the corresponding inferred value $\hat{p}$
-of the probability bias inferred by the BBCP model,
-this constitutes a scatter of values.
-We display these relationships using a contour plot over 
-the Kernel Density Estimation (KDE) of the relationship between $p$ in abscissa
-and in ordinates \textbf{(A)} strength of aSPEM and \textbf{(B)} rating scale.
+\emph{Behavioral results, quantitative analysis across participants.} %
+For all participants and for all trials, we collected an estimate of
+the strength of aSPEM and a bet score value.
+We analyse the relation between these experimental data with the corresponding estimates $\hat{p}$
+of the probability bias as inferred by the BBCP model.
+We display these functional relations using a contour plot over 
+the Kernel Density Estimation (KDE) of the relationship between $\hat{p}$ in abscissa
+and, respectively, \textbf{(A)} the strength of aSPEM and \textbf{(B)} the bet score in ordinate.
 The density of strokes represent increasing probability strengths.
-As a comparison we have plotted in XXX color the KDE computed over
+As a comparison we have plotted in \AM{RED? this would be coherent with Fig 2 but at odds with Fig. 3: I propose to change the color of of bet score results in Fig 3 - and change the caption and text accordingly} color the KDE computed over
 the probability bias estimates obtained with a leaky integrator.
-Additionally, we have computed the mutual information which
-shows quantitatively that for both experiments, 
-there is a strong dependency between 
-the behavioral results and the results of the model, 
-but also that this result is stronger than that obtained 
+Additionally, we have computed the mutual information between the model expectation and the two experimental readouts of the probability bias, which
+shows quantitatively that for both experimental measures 
+there is a strong statistical dependency between 
+the behavioral results and the model predictions, 
+but also that this dependency is stronger than that obtained 
 with the leaky integrator.
 }
 \label{fig:results_psycho_all}
@@ -1340,42 +1323,161 @@ with the value of probability bias $\hat{x_1}$
 computed by the BBCP algorithm.
 Compiling results (see~\seeFig{results_psycho}) from all participants,
 we have plotted in~\seeFig{results_psycho_all}
-the aSEPM strength (panel A) and the rating scale (panel B) as a function of the inferred probability
-that was coded at the second layer and which is unknown to the observer.
-All trials from all participants were collected to generate a scatter plot 
+the aSEPM strength (panel A) and the bet scores (panel B) as a function of the BBCP-inferred probability bias
+(we remind here that the true value of the probability bias was coded at the second layer of the BSM generative model and is unknown both to the BBCP agent and to the human observers).
+All trials from all participants were pooled together to generate a scatter plot 
 which was then  converted to a kernel density estimate 
 for a better visualization (kernel size of $XX$).
-We also estimated the mutual information $\Cc$ (\seeEq{MI})
+We also estimated the mutual information \AM{$\Cc$ (\seeEq{MI}) OR RATHER $MI$, as defined by ... NEW EQUATION}
 between the raw data and the model.
 Details of this analysis is presented in~\seeApp{bcp}.
 As a comparison, the same method was applied to the leaky integrator.
 First, as we can see in~\seeFig{results_psycho_all}-A,
-the probability $\hat{p}$ computed by the BBCP algorithm
+the probability bias $\hat{p}$ estimated by the BBCP algorithm
 is positively linearly correlated with the aSPEM velocity.
 The corresponding Pearson correlation coefficient
-is slightly higher than that found in
-the classical experiment with fixed blocks~\seeFig{intro}-B,
-but much better to that computed with the result of the leaky-integrator.
+is slightly higher than that found by
+\citet{Montagnini2010} and \citet{Damasse18} for aSPEM measures gathered across experimental blocks with fixed direction biases \AM{PROVIDE NUMBERS IN THE TEXT?},
+and much better than that estimated for the leaky-integrator model.
 This relatively strong correlation is surprising at a first sight 
-as the probability blocks have random length,
+as the inter-switch sequence blocks have random length,
 and participants have to adapt to such a volatile environment.
-However, when faced with some new observations,
-the observer has to constantly adapt his response
+However, \AM{adaptivity to a volatile environment is one of the most exquisite human skills}: when faced with some new observations,
+the observer has to constantly adapt his/her response
 to either exploit this information by considering that
-this observation belongs to the same sub-block or to explore
+this observation belongs to the same context of the previous observations, or to explore
 a novel hypothesis.
 This compromise is one of the crucial component that we wished to explore
 and which is well captured by the BBCP model.
-In particular, the model predicts the different facets
-from the experimental results,
+In particular, the model predicts different aspects
+of the experimental results,
 from the variability as a function of the inferred probability,
 to the dynamics of the behavior following a (hidden) switch.
-Second, the KDE estimate shown in~\seeFig{results_psycho}-B,
-represents the relationship between
+The KDE correlation estimate shown in~\seeFig{results_psycho}-B,
+illustrates the relationship between
 the model-estimated probability-bias
-and the rating value which was provided at each trial
-by participants for the outcome of the next trial.
-%This analysis exhibits a consistent relationship
+and the rating value, or bet score, about the expected outcome, which was provided at each trial
+by participants .
+
+Similarly to the aSPEM strength, the rating values are nicely correlated
+with the probability bias given by the model, as quantified by the average  mutual information \AM{PROVIDE MI VALUE IN THE TEXT, WITH SOME ESTIMATE OF UNCERTAINTY?}.
+Importantly, this value is again higher for the BBCP model than 
+for the leaky integrator.
+To conclude, we deduce that the dynamic estimate of probability biases produced by the BBCP model
+is a powerful regressor to explain both the strength of anticipatory smooth pursuit eye movements and the explicit ratings of human observers experiencing a volatile context for visual motion.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results: Analyzing inter-individual differences}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:inter}
+%-------------------------------------------------------------%
+%: 4A separate above analysis
+%-------------------------------------------------------------%
+So far, \AM{we have presented the qualitative behavior of individual participants and we have reported the quantitative analysis the the group-pooled data for the correlation between experimental and model-inferred estimates of the hidden probability bias}.
+In particular, we have shown the experimental measures for two representative participants in~\seeFig{results_psycho},
+supporting the qualitative agreement between the behavioral data and the model predictions, 
+which we later confirmed quantitatively on the whole group of subjects.
+It is important to note that no model fitting procedure was used so far,
+but only the results of the \AM{BBCP-model applied to the sequence of binary target directions presented to the human participants, as shown in~\seeFig{bayesianchangepoint}-B.}
+However, we observed that the quantitative match between model and data varied across participants.
+This was best characterized qualitatively in both sessions by differences
+in the variability of the responses, but also, for instance,
+by the different characteristic delays after a switch.
+This reflects the spectrum of individual choices
+between the behaviors of exploration versus exploration~\citep{Behrens07}.
+As a consequence, we were interested in characterizing these individual preferences
+at the level of each individual participant, but also to investigate
+whether this preference co-varied across the two experimental sessions (i.e. across implicit vs explicit response modalities).
+Crucially, we have seen that the BBCP model is controlled by a single parameter,
+the hazard rate, or equivalently by its inverse, the characteristic time $\tau$.
+Also, we have shown that knowing an observed sequence of behavioral responses,
+we could fit the best value of $\tau$ which would explain it.
+Thus, by extracting the best-fit parameters for every participant and experimental session
+we can expect to characterize inter individual differences and the covariation of these across response modalities.
+
+%-------------------------------------------------------------%
+%: FIGURE 5  fig:results_inter \seeFig{results_inter}
+% cf https://github.com/laurentperrinet/bayesianchangepoint/blob/master/notebooks/test_hazardrate.ipynb
+% cf : 4_Meta_analysis.ipynb
+\begin{figure}%[b!]
+\centering{\includegraphics[width=0.618\linewidth]{5_inter-individual_differences_fit}}
+\caption{\emph{Analyzing inter-individual differences.} %
+We analyzed each subject individually by finding 
+the best value of the model's single free parameter, the hazard rate.
+This was performed independently on both experiments, 
+such that we extracted for each block (\AM{CHECK: between two pauses}) 
+an estimate of respectively $h_A$ and $h_R$ 
+for the aSPEM strength and the rating value. \AM{The three (CHECK) points corresponding to 
+the three pairs of estimates of each individual are joined by a thin line} 
+\AM{MOVE TO THE MAIN TEXT? This shows that best fit hazard rates are in general higher than the ground truth, 
+that for each individual these values cluster pretty much together, 
+and finally that there is a positive correlation between both experiments.
+Such an analysis suggests that participants may have 
+a common mechanism for this tendency of exploration versus exploitation 
+at the conscious or unconscious levels.}
+}
+\label{fig:results_inter}
+\end{figure}
+%-------------------------------------------------------------%
+
+%-------------------------------------------------------------%
+%: 4B results
+%-------------------------------------------------------------%
+Hence, we have fitted the sequence of responses generated by each participant and
+for each session, that is for the eye movements and the rating scale experiments.
+To cross-validate our results for each individual participant, 
+\AM{we have also fitted the BBCP model to $11$ sub-blocks of $100$ trials extracted by the whole sequence of $600$ trials. The $11$ sub-blocks have been obtained by shifting a $100$-trials window by steps of $50$ trials, and they have thus provided $11$ values of the best fitted hazard rate for each session. I TRIED TO cLARIFY...NOT SURE IF IT WORKS}
+The scatter plot of the best fit values are shown in~\seeFig{results_inter}.
+This figure suggests, in the first place, that there is some variability 
+in the best fit value of the hazard rate in both sessions.
+Overall, the value of the best fit hazard rate  
+was higher than that computed in~\seeFig{results_psycho}
+with respectively $MI_A = XX~\ms \pm XX~\ms$ compared to $MI_A = .321$ for the first session and
+$MI_R = XX~\ms \pm XX~\ms$ compared to $MI_A = .553$ for the second.
+A part of this variability comes from the limited length of the data blocks,
+while another part is due to intra-individual and inter-individual variabilities.
+Overall, the average is close to the (hidden) value used to generate the sequence
+(with $h_A = XX~\ms \pm XX~\ms$ for the first session and
+$h_R = XX~\ms \pm XX~\ms$ for the second),
+and we observe that this value is higher than the ground truth, 
+as was previously suggested~\citep{Meyniel??}.
+Importantly, there is a part of the variability 
+which seems characteristic of the spectrum of individual choices.
+% TODO: 
+Indeed, each cluster of individual measures is qualitatively well separated and
+a simple k-means cluster analysis proves that 
+given a couple of hazard rate values chosen at random,
+one could identify the participant with an accuracy of $XX\%$.
+% TODO: 
+As a comparison, the same analysis done based on the leaky integrator predictions
+showed that such accuracy would drop to $XX\%$, 
+close to the chance level of $100/12\%$.
+To conclude, this analysis reveals 
+that relaxing the free parameter of the BBCP model
+improves the match of the model to the behavioral data and 
+that we could detect, to some degree, individual differences in the choice behavior
+between exploration and exploitation.
+
+%-------------------------------------------------------------%
+%: 4C analysis
+%-------------------------------------------------------------%
+More importantly, there is a  consistent
+correlation between the individual best-fit values estimated for the first and the second session.
+Qualitatively,~\seeFig{results_inter} shows that for each individual the higher the hazard rate for one session, then the higher it is for the second.
+Quantitatively, the ratio of both hazard rates computed over participants was $XX \pm XX$,
+showing a slight tendency for hazard rate to be higher in the first session.
+In comparison if, similarly to bootstrap resampling, 
+we would shuffle the the joint fitted values across participants,
+we would obtain a distribution of hazard rate ratios of $XX \pm XX~\ms$.
+Such an analysis suggests that the predictive processes
+at work in both sessions may have a common origin,
+which is then modulated by individual preferences 
+between exploration and exploitation.
+%: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
+\label{sec:outro}
+
+%  FOR DISCUSSION?
+%This analysis -the correlation between predicted bias and bet scores- exhibits a consistent relationship
 %but which now follows a non-linear trace.
 %We modeled this behavior as
 %a logistic regression over
@@ -1392,123 +1494,9 @@ by participants for the outcome of the next trial.
 %suggests that this may come from a multiplicative weight
 %on the (log-) odd-ratio which is chosen as a rating scaled
 %compared to the (log-)odd-ratio of the inferred probability. %\AM{Is it worth to discuss more in depth the different functional dependence on p of the two experimental measures? Cite Santos and Kowler discussion about this!} - LP: that would certainly be a great addition...
-Similarly to the aSPEM strength, the rating scale is jointly coupled
-with the probability bias given by the model, as given by the average  mutual information.
-Moreover, this value is higher for the BBCP model than 
-for the leaky integrator.
-We deduce that the trace of inferred probabilities given by the BBCP model
-is a powerful regressor to explain both the strength of aSPEM and the rating scale.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results: Analyzing inter-individual differences}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{sec:inter}
-%-------------------------------------------------------------%
-%: 4A separate above analysis
-%-------------------------------------------------------------%
-So far, our quantitative analysis was performed independently
-for the different participants.
-In particular, we have shown a representative example in~\seeFig{results_psycho}
-showing the match of the behavioral data with the model 
-which we latter confirmed quantitatively on all subjects.
-It is important to note that no fitting procedure was used,
-but only the results of the model as shown in~\seeFig{bayesianchangepoint}-B.
-However, we observed that the quantitative match varied across participants.
-This was best characterized qualitatively in both sessions by differences
-in the variability of the responses but also for instance
-with different characteristic delays after a switch.
-This reflects the spectrum of individual choices
-between the behaviors of exploration versus exploration~\citep{Behrens07}.
-As a consequence, we were interested in characterizing this individual preference
-of each individual participant, but also to characterize
-if this preference co-varied across the two sessions.
-Crucially, we have seen that the BBCP model is controlled by a single parameter,
-the hazard rate, or equivalently by its inverse, the characteristic time $\tau$.
-Also, we have shown that knowing an observed sequence of behavioral responses,
-we could fit the best value of $\tau$ which would explain it.
-Thus, by extracting the parameters for every participant
-we can expect to characterize inter individual differences.
 
-%-------------------------------------------------------------%
-%: FIGURE 5  fig:results_inter \seeFig{results_inter}
-% cf https://github.com/laurentperrinet/bayesianchangepoint/blob/master/notebooks/test_hazardrate.ipynb
-% cf : 4_Meta_analysis.ipynb
-\begin{figure}%[b!]
-\centering{\includegraphics[width=0.618\linewidth]{5_inter-individual_differences_fit}}
-\caption{\emph{Analyzing inter-individual differences.} %
-We analyzed each subject individually by finding 
-the best value of the model's only parameter, the hazard rate.
-This was performed independently on both experiments, 
-such that we extracted for each block (between two pauses) 
-an estimate of respectively $h_A$ and $h_R$ 
-for the anticipatory speed strength and the rating scale.
-This shows that best fit hazard rates are higher than the ground truth, 
-that these values cluster across individuals 
-and finally that there is a positive correlation between both experiments.
-Such an analysis suggests that participants may have 
-a common mechanism for this tendency of exploration versus exploitation 
-at the conscious or unconscious levels.
-}
-\label{fig:results_inter}
-\end{figure}
-%-------------------------------------------------------------%
 
-%-------------------------------------------------------------%
-%: 4B results
-%-------------------------------------------------------------%
-Hence, we have fitted the sequence of responses generated by each participant and
-for each session, that is for the eye movements and the rating scale experiments.
-To cross-validate our results for each individual participant, 
-we have fitted our $600$ trials data on $11$ blocks of $100$ trials, 
-thus giving $11$ values of the best fitted hazard rate for each session.
-The scatter plot of the best fit values are shown in~\seeFig{results_inter}.
-This figure suggests, in the first place, that there is some variability 
-in the best fit value of the hazard rate in both sessions.
-Overall, the value of the best fit as given by the cost 
-was higher than that computed in~\seeFig{results_psycho}
-with respectively $MI_A = XX~\ms \pm XX~\ms$ compared to $MI_A = .321$ for the first session and
-$MI_R = XX~\ms \pm XX~\ms$ compared to $MI_A = .553$ for the second.
-A part of this variability comes from the limited length of the data blocks,
-while another part is due to intra-individual and inter-individual variabilities.
-Overall, the average is close to the (hidden) value used to generate the sequence
-(with $h_A = XX~\ms \pm XX~\ms$ for the first session and
-$h_R = XX~\ms \pm XX~\ms$ for the second),
-and we observe that this value is higher than the ground truth, 
-as was previously reported~\citep{Meyniel??}.
-Importantly, there is a part of the variability 
-which seems characteristic of the spectrum of individual choices.
-% TODO: 
-Indeed, each cluster is qualitatively well separated and
-a simple k-means cluster analysis proves that 
-given a couple of hazard rate values chosen at random,
-one could identify the participant with an accuracy of $XX\%$.
-% TODO: 
-As a comparison, the same analysis done on the leaky integrator
-showed that such an accuracy would drop to $XX\%$, 
-close to the chance level of $100/12\%$.
-As a conclusion, this analysis reveals 
-that relaxing the free parameter of the BBCP model
-improves the match of the behavioral data and 
-that we could detect inter-individual tendencies
-between exploration and exploitation.
 
-%-------------------------------------------------------------%
-%: 4C analysis
-%-------------------------------------------------------------%
-More importantly, there is a  consistent
-correlation between the individual best-fit values estimated for the first and the second session.
-Qualitatively,~\seeFig{results_inter} shows that for each individual the higher the hazard rate for one session, then the higher it is for the second.
-Quantitatively, the ratio of both hazard rates computed over participants was $XX \pm XX$,
-showing a slight tendency for hazard rate to be higher in the first session.
-In comparison if, similarly to bootstrap resampling, 
-we would shuffle the the joint fitted values across participants,
-we would obtain a distribution of hazard rate ratios of $XX \pm XX~\ms$.
-Such an analysis suggests that the predictive processes
-at work in both sessions may have a common origin,
-which is then modulated by inter-individual preferences 
-between exploration and exploitation.
-%: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Discussion}
-\label{sec:outro}
 %: <----- Laurent is here ----->
 
 %The oculomotor system has to constantly update its knowledge about the environment. An ordeal is then to adapt to changes with the shortest delays. Early studies have proposed that stimuli provides information to modulate reaction times within sequences~\citep{Hyman1953, Tune1964, Schvaneveldt}. This theoretical approach is coherent with the notion of local transition probabilities that quantifies at which extent an observation deviates from the preceding ones~\citep{Meyniel16}. The way expectations act on cognitive processes has been investigated by a wide range of domains such as predictive coding~\citep{Wolpert2000, Wacongne2012}, active inference~\citep{Friston2010}, motor control~\citep{Sutton1998, Behrens07} and reinforcement learning~\citep{Nassar2012}. Non-stationary observations can also explain why both local and global effects emerge and why local effects persist in the long run even within purely random sequences~\citep{Cho2002, Yu2009}. This constant update of a general belief on the world can be a consequence of the constant attempt to learn the non-stationary structure of the environment that can change at unpredictable times~\citep{Yu2009}. Many studies have actually already pointed the brain's ability to apprehend non-stationary states in environments~\citep{Ossmy2013, Meyniel15}. As explained by~\citet{Meyniel16}, the belief upon an environment can be divided in two different ways:
