@@ -425,12 +425,12 @@ between ``sure left'', to ``unsure'' and finally ``sure right''.
 %: adaptation to volatility in EMs : seen as an anticipation in SPEM - principle and function
 Humans are able to accurately track a moving object
 with a combination of saccades and
-Smooth Pursuit Eye Movements (SPEM)~\citep{ref}.
+Smooth Pursuit Eye Movements (SPEM, for a review see~\citet{Krauzlis2008}).
 These movements allow us to align and
 stabilize the object on the fovea,
-thus enabling high-resolution visual detection.
-This process is retarded by different factors such as axonal transduction,
-neural processing and the inertia of the oculomotor system~\citep{Krauzlis89}.
+thus enabling high-resolution visual processing.
+This process is delayed by different factors such as axonal transduction,
+neural processing latencies and the inertia of the oculomotor system~\citep{Krauzlis89}.
 When predictive information is available about target motion,
 anticipatory SPEM (aSPEM) are
 efficiently generated before target's appearance~\citep{Westheimer1954, Kowler1979a, Kowler1979b} thereby reducing visuomotor latency.
@@ -456,9 +456,8 @@ before target motion onset~\citep{Kowler1979a,Kowler1979b, Kowler1984}. %~(see \
 It is generally assumed that the role of aSPEMs is
 to minimize as fast as possible the visual impairment due
 to the amplitude of eye-to-target position and velocity mismatch.
-Overall, this reduces the typical sensorimotor delay
-between target motion onset and foveation~\citep{REFNEEDED}.
-In a previous study~\citep{Montagnini2010},
+Overall, anticipation can potentially reduce the typical sensorimotor delay
+between target motion onset and foveation. In a previous study~\citep{Montagnini2010},
 we have analyzed how forthcoming motion properties,
 such as target speed or direction, can be
 predicted and anticipated with coherently oriented eye movements~(see \seeFig{intro}-A).
@@ -474,8 +473,7 @@ by our and also other groups~\citep{SantosKowler2017}.
 These results imply that the probability bias over a target's direction is
 one additional factor beyond other physical and cognitive cues~\citep{Kowler2014, SantosKowler2017,Damasse18}
 that modulate the common predictive framework
-driving anticipatory behavior to optimize a rapid and
-precise foveation of the target on its expected future path.
+driving anticipatory behavior.
 
 %: limits of the previous method
 In order to generalize such results to more ecological conditions,
@@ -702,7 +700,7 @@ offer some perspectives for future work in~\seeSec{outro}.
 %: 2 short intro
 %
 As we saw above, Bayesian methods provide a powerful framework for studying human behavior and adaptive  processes in particular.
-In the HGF model~\citep{Mathys11} for instance,
+In the HGF model~\citep{Mathys11} for instance, the
 authors defined a multi-layered generative model for
 sequences of input stimuli.
 By inverting this stochastic forward process,
@@ -710,9 +708,9 @@ one could extract relevant descriptors at the different levels of the model
 and fit these parameters with the recorded behavior.
 Here, we use a similar approach but on a different generative model,
 as defined in~\seeEq{bsm}.
-To begin with, we define a first ideal observer as a control, the \textit{forgetful agent},
-which assumes that volatility is stationary with a fixed frequency
-and that one can consider that volatility as the average probability of change at each trial.
+To begin with, we define a first ideal observer as a control, the \textit{forgetful agent}, or \textit{leaky integrator}, \AM{which has an exponentially-decaying memory for the events occurred in the past trials}. This agent can equivalently be described as one
+which assumes that volatility is stationary with a fixed characteristic frequency of switches
+\AM{CAN WE SKIP THIS? and that one can consider that volatility as the average probability of change at each trial}.
 Then, we will extend this model to an agent
 which assumes the existence of (randomly occuring) switches, that is,
 that the value of the probabilistic bias may change
@@ -723,8 +721,7 @@ as defined by the forward probabilistic model in~\seeEq{bsm}.
 \subsection{Forgetful-agent model (Leaky integrator)}%
 % ------------------------------------------------------------------
 %: 2Aa justification from previous studies
-\AM{I WOULD DELETE: Following~\citet{Maus2015},}
-we modeled a first ideal observer,
+We modeled a first ideal observer,
 which represents a classical, widespread and
 realistic model of how trial-history shapes
 adaptive processes in human behavior.
@@ -786,7 +783,7 @@ First, the time series of inferred $\hat{x_1}^{t}$ values
 can serve as a regressor for behavioral data
 to test whether human observers follow a similar strategy.
 In particular, the free parameter $h$ 
-may be fitted to variations of the experimental data across the sequence, 
+may be fitted to variations of the behavioral data across the sequence, 
 which itself is assumed to depend on the agents' belief in the weight decay.
 %for instance to the data shown in~\seeFig{results_intro}.
 Now, since we have defined a first generative model
@@ -796,14 +793,13 @@ in order to overcome some of the limits of the leaky integrator.
 Indeed, a first criticism could be that
 this model is too rigid and does not sufficiently
 account for the dynamics of contextual changes~\citep{Behrens07}
-as the weight decay correspond to assume \emph{a priori} a constant precision 
-in the data sequence, contrary to more elaborate Bayesian models~\citep{Vilares2011}.
+as the weight decay corresponds to assume \emph{a priori} a constant precision in the data sequence, contrary to more elaborate Bayesian models~\citep{Vilares2011}.
 It seems plausible that the memory size (or history length) used by the brain 
 to infer any event probability can vary, and that this variation could be related
 to the environmental volatility inferred from past data.
 The model presented in~\seeEq{leaky2} uses a constant weight
 (decaying with the distance to the current trial)
-for all trials, while precision of each trial
+for all trials, while the actual precision of each trial
 can be potentially evaluated and used
 for precision-weighted estimation of the probability bias.
 To address this hypothesis, our next model is inspired
@@ -915,11 +911,11 @@ or this length (in number of trials) is incremented by $1$ if no switch occurred
 \text{if} \quad x_2^t=1 \quad r^t = 0\\
 \text{if} \quad x_2^t=0 \quad r^t = r^{t-1} +1 }\label{eq:run_length}}%see~\seeEq{run_length}
 %\text{and else} \quad r^t = r^{t-1} +1 }\label{eq:run_length}}%see~\seeEq{run_length}
-This may be represented in a graph
+This may be illustrated by a graph
 in which information will be represented at the different nodes for each trial $t$ (see \seeFig{bayesianchangepoint}-A).
 Using the run length $r^t$ as a latent variable at each trial $t$,
-we will define the distribution which represents our belief
-for all different hypotheses.
+we define the distribution which represents our belief
+for all different hypotheses \AM{on $r^t$}.
 This assigns a probability strength at each node
 as $\beta^{(r)}_t=Pr(r^t | x_0^{0:t-1})$
 which allows to compute the marginal predictive distribution:
