@@ -22,7 +22,7 @@ Should I stay or should I go? Humans adapt to the volatility of visual motion pr
 }
 \newcommand{\Acknowledgments}{PACE-ITN - code and material @ \url{\Website/Publications/PasturelMontagniniPerrinet2019}. TODO: RIck + Karl + JB + Laurent Madelain }
 \newcommand{\Abstract}{
-Animal behavior must constantly adapt to changes, for example when the state of an environmental context changes unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of directions of motion of a visual target to the right or left is biased to one direction, human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where probability biases could change at random switching times. In addition, we also recorded the explicit direction prediction, along with the relative confidence, as reported by human observers. These results were compared to the estimates of a probabilistic agent that is optimal in relation to the event switching generating model. Compared to other models such as the leaky integrator, we found a better match between our probabilistic agent and the behavioral responses, both for the implicit (anticipatory eye movements) and the explicit ones. Furthermore, we were able to fit the individual experimental data with different levels of switching volatility in the model and derive a common marker for the inter-individual variability of participants, by titrating their level of preference between exploration and exploitation. These results prove that in such an unstable environment, human observers can still effectively represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test human cognitive abilities in uncertain and dynamic environments.}
+Animal behavior must constantly adapt to changes, for example when the state of an environmental context changes unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of directions of motion of a visual target to the right or left is biased to one direction, human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where probability biases could change at random switching times. In addition, we also recorded the explicit direction prediction reported by observers as given by a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to the event switching generating model. Compared to other models such as the leaky integrator, we found a better match between our probabilistic agent and the behavioral responses, both for the implicit (anticipatory eye movements) and the explicit ones. Furthermore, by titrating the level of preference between exploration and exploitation, we were able to fit each individual experimental data with different levels of switching volatility in the model and derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still effectively represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test human cognitive abilities in uncertain and dynamic environments.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\documentclass[profile,final,english,draft,24pt]{article}%
 \documentclass[12pt,english]{article}%
@@ -240,9 +240,8 @@ but also to update the value of the environmental volatility (as given by the pr
 at a longer time scale.
 Alternatively, these cases are
 ``unlucky'' coincidences that originate from the natural variability
-of the underlying statistical process: these coincidences which drive patients to the doctor, but
-they are simply 
-instances drawn from a stationary random process.
+of the underlying statistical process which drive patients to the doctor, 
+but which are instances drawn from a stationary random process.
 In that option, it may be possible to readjust
 the estimated baseline rate of infection with this new data.
 This example illustrates one fundamental problem
@@ -274,7 +273,8 @@ In controlled experimental settings which challenge visual perception or sensori
 such adaptive processes have been mostly put in evidence
 by precisely analyzing the participants' behavior in a sequence of experimental trials,
 typically highlighting sequential effects
-at the time scale of several seconds to minutes \AM{(or hours in the case of sensorimotor persistent adaptation)}.
+at the time scale of several seconds to minutes 
+or even hours in the case of the adaptation to a persistent sensorimotor relation.
 % TODO: talk about Gallistel / Sugrue / Brody
 
 %: Past history of sensory event integration in vision
@@ -296,9 +296,10 @@ at the same time, lead to critically suboptimal behavior
 when a presented stimulus is not coherent
 with the participant's expectations~\citep{Hyman1953, Yu2009}. This process is highly dynamic especially in complex environments
 where new contingencies can arise at every moment.
-\AM{I SUGGEST TO ANTICIPATE THIS HERE INSTEAD OF AT THE END Interestingly, priming effects at cognitive levels
-are sometimes paralleled by anticipatory motor responses which are positively correlated with the the repetition of stimulus properties: anticipatory smooth eye movements (aSPEM) is well-known example of this behavior, as we will illustrate in the next section.}
+Interestingly, priming effects at cognitive levels
+are sometimes paralleled by anticipatory motor responses which are positively correlated with the the repetition of stimulus properties: anticipatory smooth eye movements (aSPEM) is well-known example of this behavior, as we will illustrate in the next section.
 
+%: Bayesian methods & role of predictive processing for this adaptive response
 Overall, the ability to detect
 statistical regularities in the event sequence appears as a fundamental ability
 for the adaptive behavior of living species.
@@ -312,19 +313,16 @@ In addition, we attempt to palliate to the lack of a solid modeling approach
 to best understand the computation underlying behavioral adaptation to the environment's statistics,
 and in particular how sequential effects are integrated
 within a hierarchical statistical framework.
-
-%: Bayesian methods & role of predictive processing for this adaptive response
 % TODO : clarify this paragraph
 As such, Bayesian inference offers an effective methodology
 to deal with this question.
 In all generality, Bayesian methods allow to define and quantitatively assess
 a range of hypotheses about the processing of (possibly noisy) information by some formal agents~\citep{Deneve1999, Diaconescu2014, Daunizeau10a}.
 A key principle in the Bayesian inference approach is
-to introduce latent variables which formalize how different hypotheses predict \AM{these? RATHER EXPERIMENTAL?} measurements.
+to introduce latent variables which formalize how different hypotheses predict synthetic or experimental measurements.
 Each stated hypothesis is quantitatively formalized
-by defining a graph of \AM{probabilistic} dependencies between specific variables
-using a generative model for the \AM{CAN WE CUT THIS? input / output response function
-representing} prior knowledge about its structure.
+by defining a graph of probabilistic dependencies between specific variables
+using a generative model for the prior knowledge about its structure.
 In practice, the generative model is parameterized by structural variables
 (such as weights or non-linear gain functions)
 such that, knowing incoming measurements, beliefs about latent variables
@@ -349,7 +347,7 @@ but also on the validity of the model.
 %within the~\textit{active inference} framework~\citep{Friston2003, Friston2010}.
 %In summary, Active Inference allows to predict latent variables
 %but also to understand longer time effects such as adaptation and learning.
-
+%
 There are numerous examples of Bayesian approaches
 applied to the the study of the adaptation to volatility.
 For instance,~\citet{Meyniel16} simulated a hierarchical Bayesian model
@@ -358,23 +356,10 @@ Their main conclusion was that
 learning the local transition probabilities
 was sufficient to explain the large repertoire
 of experimental effects reported in these studies.
-\AM{I WOULD PUT ALL THIS IN THE DISCUSSION: They concluded that transition probabilities constitute
-a core building block of sequence knowledge in the brain,
-which then applies to a variety of sensory modalities and
-experimental situations.
-As such, sequential effects in binary sequences would be better explained
-by learning transition probabilities
-compared to the absolute item frequencies or the frequencies of their alternations.
-The critical difference lies in the content
-of what is learned (transition probabilities versus item frequencies)
-in an attempt to capture human behavior.}
-%TODO say it is an optimization that is, a measure of the dynamic compromise between exploration and exploitation
-%Chopin and %Mamassian and the use of visual confidence  (see Ann rev of Vision 2016)}
-\AM{Rather than on transition probabilities, here we focus on the analysis and modeling of human behavior as a function of the frequency of presentation (and its fluctuations in time) of a given event in a binary sequence of alternating visual motion direction.} 
- %
+%
 %As a consequence, Bayesian inference allows to compare the explanatory power
 %of different models...
-
+Is it possible to extend such an approach to the study of eye movements?
 % ------------------------------------------------------------------
 \subsection{Anticipatory Smooth Pursuit Eye Movements (aSPEM)}
 % ------------------------------------------------------------------
@@ -443,7 +428,7 @@ can be modulated by extra-retinal, predictive information even in the absence of
 The anticipatory smooth pursuit behavior is remarkable
 in different aspects.
 First, its buildup is relatively fast, such that only a few trials are sufficient
-to pick up some regularity in a binary sequence of alternating Right / Left directions.
+to pick up some regularity in a binary sequence of alternating left and right directions.
 Second, it is in general an unconscious process
 of which participants are not aware of.
 As such, this behavior is potentially a useful marker
@@ -1499,6 +1484,22 @@ The compromise between speed and accuracy is shaped
 by the variability introduced by the neural noise
 at the neuro-motor junction~\citep{Harris98}.
 
+
+
+
+\AM{I WOULD PUT ALL THIS IN THE DISCUSSION: They concluded that transition probabilities constitute
+a core building block of sequence knowledge in the brain,
+which then applies to a variety of sensory modalities and
+experimental situations.
+As such, sequential effects in binary sequences would be better explained
+by learning transition probabilities
+compared to the absolute item frequencies or the frequencies of their alternations.
+The critical difference lies in the content
+of what is learned (transition probabilities versus item frequencies)
+in an attempt to capture human behavior.}
+%TODO say it is an optimization that is, a measure of the dynamic compromise between exploration and exploitation
+%Chopin and %Mamassian and the use of visual confidence  (see Ann rev of Vision 2016)}
+\AM{Rather than on transition probabilities, here we focus on the analysis and modeling of human behavior as a function of the frequency of presentation (and its fluctuations in time) of a given event in a binary sequence of alternating visual motion direction.} 
 
 
 %\begin{enumerate}[label=\Alph*)]
