@@ -502,7 +502,6 @@ and their respective role in adaptive processes.
 % ------------------------------------------------------------------
 \subsection{Contributions}%Outline}
 % ------------------------------------------------------------------
-%: <----- Laurent is here ----->
 %: 1C : what is novel in our work
 % ------------------------------------------------------------------
 %: 1Ca how we do it : or rather why we do it this way (and not like Matthys)
@@ -616,9 +615,9 @@ occurs after trial numbers $200$ and $400$,
 in order to be able to compare adaptation properties across different chunks of the trials sequence.
 %The model generating the experimental sequence of trial directions, as well as the experimental protocol are illustrated in~\seeFig{intro}-A. 
 With such a three-layered structure, the model generates the randomized occurrence of the switches,
-the length of sub-blocks with constant direction probability
-(chosen in the continuous range of possible biases' values), 
-and finally the random sequence of trial direction occurrences.
+sub-blocks with constant direction probability between two switches separated by a random length
+and chosen in the continuous range of possible biases' values,
+and finally the random sequence of Target Direction (TD) occurrences at each trial.
 In conclusion, the system of three equations defined in~\seeEq{bsm}
 defines the Binary Switching Model (BSM)
 which we used for the generation of experimental sequences presented to human participants in the experiments,
@@ -633,7 +632,7 @@ coined the Binary Bayesian Change Point (BBCP) model.
 To our knowledge, such algorithm was not yet available, and
 we will here provide it with an analytical solution,
 by extending previous results from~\citet{AdamsMackay2007}
-to the case of binary data as in the BSM presented above.
+to the case of binary data as in the BSM presented above (see~\seeEq{bsm}).
 In addition, the proposed algorithm is \emph{online},
 that is, that all computations on the sequence may be done
 using solely the variables available at the present trial,
@@ -668,11 +667,11 @@ with the BBCP model.
 In~\seeSec{inter}, we will synthesize these results
 by inferring the volatility parameters inherent to the models
 by best-fitting it to each each individual participant. 
-This will allow the analysis of inter-individual behavioral responses for each session
-and in particular if one could predict observers' prior (preferred) volatility,
+This will allow the analysis of inter-individual behavioral responses for each session.
+In particular, we will test if one could predict observers' prior (preferred) volatility,
 that is, a measure of the dynamic compromise between exploration (``should I stay?'')
 and exploitation (``should I go?'')
-across the two different sessions testing predictive adaptive processes
+across the two different sessions challenging predictive adaptive processes
 at the unconscious and conscious levels.
 Finally, we will summarize and conclude this study and
 offer some perspectives for future work in~\seeSec{outro}.
@@ -683,6 +682,7 @@ offer some perspectives for future work in~\seeSec{outro}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:bayesian_change_point}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%: <----- Laurent is here ----->
 %
 %: 2 short intro
 %
