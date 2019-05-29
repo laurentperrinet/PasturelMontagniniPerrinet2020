@@ -866,8 +866,9 @@ which itself is driving the trajectory of the probability bias $x_1^t$.
 Knowing that the latter is piece-wise constant,
 an agent may have a belief over the number of trials since the last switch.
 This number, that is called the \emph{run-length} $r^t$, is useful in two manners.
-First, it allows the agent to restrict the estimation $\hat{x_1}^{t+1}$ of $x_1^{t+1}$
-only based on those samples $x_0^t$ produced since the last switch, from $t-r^t$ until $t$.
+First, it allows the agent to restrict the prediction $\hat{x_1}^{t+1}$ of $x_1^{t+1}$
+only based on those samples produced since the last switch, from $t-r^t$ until $t$ 
+and which we denote as $x_0^{(r^t)}=x_0^{r^t:t}$ .
 Indeed, the samples $x_0^t$ which occurred before the last switch 
 were drawn independently from the present true value $x_1^t$
 and thus cannot help estimating the latter.
@@ -881,9 +882,42 @@ The latter model defines the agent as an inversion of a switching generative mod
 for which the observed data (input) is Gaussian.
 We present here an exact solution for the case of the BSM, where the input is binary (see~\seeEq{bsm}).
 
+%-------------------------------------------------------------%
+%: 2Bc online estimation: initialization
+%-------------------------------------------------------------%
+Indeed the only difference between our algorithm and that of~\citep{AdamsMackay2007},
+is that the observed data is a Bernoulli trial and not a Gaussian random variable as in their case.
+The random variable $x_1^t$ is the probability bias used
+to generate the sequence of events $x_0^t$ through a Bernoulli trial.
+Mathematically, a belief on the probability bias $p$ defining the sequence of Bernoulli trial in that sub-block
+(and thus to the process corresponding to the trial sequence),
+is well represented by the conjugate probability distribution of the binomial distribution with $r$ draws,
+that is, by the beta-distribution $B(p; \mu, \nu)$.
+It is parameterized here by its sufficient statistics,
+the mean $\mu$ and sample size $\nu$ which in our acase is the run-length $r$
+(see~\seeApp{likelihood} for our choice of parameterization).
+First, beliefs are set at $t=0$ to prior values before observing the first datum at trial $t=0$.
+In terms of probabilities, this amounts to set :
+\eqa{
+& \beta^{(0)}_0=Pr(r^0=0)=1 \text{,}\quad \beta^{(r)}_0=Pr(r^0=r)=0 \text{ } \forall r>0 \\
+& Pr(x_1^0 | r^0=0) \propto B(x_1^0; \mu_{prior}, \nu_{prior})
+}
+where $\mu_{prior}$ and $\nu_{prior}$ represent the sufficient statistics
+of the prior (Beta-distribution) probability density function (pdf) $\Pp$
+for the probability bias
+at the occurrence of a switch (in particular, at node $r^0=0$).
+By recurrence, one can show that at any trial $t$,
+this pdf will always be a beta-distribution,
+ with sufficient statistics $(\mu^{(r)}_{t}, \nu^{(r)}_{t})$.
+In the following, we will define the probability distribution at each node $r^t$,
+knowing the data observed from the first trial and before $t$ such that
+$
+\pi^{(r)}_t = B( x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t})
+$. %}
+
 %: <----- Laurent is here ----->
 %-------------------------------------------------------------%
-%: 2Bb overcoming this difficulty using a latent variable - prediction/update cycle
+%: 2Bb update / prediction cycle
 %-------------------------------------------------------------%
 At first, in order to define in all generality the switch detection model,
 we will describe the fundamental steps of its computation,
@@ -906,73 +940,42 @@ This may be illustrated by a graph
 in which information will be represented at the different nodes for each trial $t$ (see \seeFig{bayesianchangepoint}-A).
 Using the run length $r^t$ as a latent variable at each trial $t$,
 we define the distribution which represents our belief
-for all different hypotheses \AM{on $r^t$}.
+for all different hypotheses on $r^t$.
 This assigns a probability strength at each node
-as $\beta^{(r)}_t=Pr(r^t | x_0^{0:t-1})$
+as $\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$
 which allows to compute the marginal predictive distribution:
 \eql{
-Pr(x_0^t | x_0^{0:t-1}) = \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  \beta^{(r)}_t
+Pr(x_0^{t+1} | x_0^{0:t}) = \sum_{r^{t}} Pr(x_0^{t+1} | r^{t}, x_0^{0:t}) \cdot \beta^{(r)}_t %= \sum_{r^{t}} Pr(x_0^{t+1} | x_0^{(r^{t})}) \cdot \beta^{(r)}_t
 \label{eq:pred}
 }
-
 With these premises, we define the BBCP
-as a prediction / update cycle.
-First, knowing this probability strength, % an estimate for our belief on the different variables at the previous trial $t-1$,
-we can make a \emph{prediction} for our belief of the state at the current trial $t$,
-prior to the observation of a new datum $x_0^{t+1}$.
-Second, we \emph{update} beliefs on all nodes
+as a update / prediction cycle
+to compute $Pr(x_0^{t+1} | r^{t}, x_0^{0:t})$ using
+a previous value $Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$ 
+and the likelihood associated to the new value $x_0^t$.
+First, we \emph{update} beliefs on all nodes
 by computing the likelihood of the new datum $x_0^t$ 
-knowing the current belief at each node
-as $\pi^{(r)}_t=Pr(x_0^t | r^{t-1}, x_0^{0:t-1})$.
-Using a knowledge of $\beta^{(r)}_{t-1}$ at trial $t-1$ and
+knowing the current prediction at each node
+as $\pi^{(r)}_t=Pr(x_0^t | r^{t}, x_0^{0:t-1})$.
+For the prediction step, we use a knowledge of $\beta^{(r)}_{t-1}$ at trial $t-1$ and
 using the transition probabilities defined by~\seeEq{run_length},
 this allows to predict the beliefs at each node at trial $t$:
 \eqa{
 \beta^{(r)}_t \propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  \beta^{(r)}_{t-1}
 \label{eq:pred_node}
 }
-where $\beta^{(r)}_t$ is scaled such that $\sum_r \beta^{(r)}_t = 1$.
+where $\beta^{(r)}_t$ is scaled such that $\sum_{r \geq 0 } \beta^{(r)}_t = 1$
+as it represents the probability distribution on the run-length $r$ given the data.
 In the graph, this corresponds to a message passing from the nodes at time $t-1$
 to that at time $t$ and formalized by the transition matrix $Pr(r^t | r^{t-1})$.
-Finally, this prediction / update cycle applied to the BSM and using~\seeEq{bsm}
-will constitute the Binary Bayesian Change Point (BBCP) detection model.
-
-%-------------------------------------------------------------%
-%: 2Bc online estimation: initialization
-%-------------------------------------------------------------%
-The main difference between our algorithm and that of~\citep{AdamsMackay2007},
-is that the observed data is a Bernoulli trial and not a Gaussian random variable as in their case.
-The random variable $x_1^t$ is the probability bias used
-to generate the sequence of events $x_0^t$ through a Bernoulli trial.
-Mathematically, a belief on the probability bias $p$ defining the Bernoulli trial (and thus to the process corresponding to the trial sequence),
-is well represented by the conjugate probability distribution of the binomial distribution,
-that is, by the beta-distribution $B(p; \mu, \nu)$.
-It is parameterized here by its sufficient statistics,
-the mean $\mu$ and sample size $\nu$
-(see~\seeApp{likelihood} for our choice of parameterization).
-First, beliefs are set at $t=0$ to prior values before observing the first trial.
-In terms of probabilities, this amounts to set :
-\eqa{
-& \beta^{(0)}_0=Pr(r^0=0)=1 \text{,}\quad \beta^{(r)}_0=Pr(r^0=r)=0 \text{ } \forall r>0 \\
-& Pr(x_1^0 | r^0=0) \propto B(x_1^0; \mu_{prior}, \nu_{prior})
-}
-where $\mu_{prior}$ and $\nu_{prior}$ represent the sufficient statistics
-of the prior (Beta-distribution) probability density function (pdf) $\Pp$
-for the probability bias
-at the occurrence of a switch (in particular, at node $r^0=0$).
-By recurrence, one can show that at any trial $t$,
-this pdf will always be a beta-distribution,
- with sufficient statistics $(\mu^{(r)}_{t}, \nu^{(r)}_{t})$.
-In the following, we will define the probability distribution at each node $r^t$,
-knowing the data observed from the first trial and before $t$ such that
-$
-\pi^{(r)}_t = B( x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t})
-$. %}
+Second, knowing this probability strength, % an estimate for our belief on the different variables at the previous trial $t-1$,
+we can make a \emph{prediction} for our belief of the probability bias at the next trial $t+1$,
+prior to the observation of a new datum $x_0^{t+1}$.
 
 %-------------------------------------------------------------%
 %: 2Bd update = Computing the likelihood
 %-------------------------------------------------------------%
-We can now detail the prediction / update cycle.
+We can now detail the update / prediction cycle.
 In particular, as we sequentially observe new data,
 we will  implement the update step that
 computes the likelihood of this datum $x_0^t$ with respect to
@@ -1002,6 +1005,9 @@ The derivation of this function is detailed in~\seeApp{likelihood}.
 %-------------------------------------------------------------%
 %: 2Be online estimation: prediction
 %-------------------------------------------------------------%
+Finally, this update / prediction cycle applied to the BSM and using~\seeEq{bsm}
+will constitute the Binary Bayesian Change Point (BBCP) detection model.
+
 In the second step, one can perform prediction
 using the graph defined in \seeFig{bayesianchangepoint}-A.
 Now that we have the vector of likelihoods $\pi^{(r)}_t=\Ll(x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$,
