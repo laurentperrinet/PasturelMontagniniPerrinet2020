@@ -682,7 +682,6 @@ offer some perspectives for future work in~\seeSec{outro}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:bayesian_change_point}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%: <----- Laurent is here ----->
 %
 %: 2 short intro
 %
@@ -695,11 +694,12 @@ one could extract relevant descriptors at the different levels of the model
 and fit these parameters with the recorded behavior.
 Here, we use a similar approach but on a different generative model,
 as defined in~\seeEq{bsm}.
-To begin with, we define a first ideal observer as a control, the \textit{forgetful agent}, or \textit{leaky integrator}, \AM{which has an exponentially-decaying memory for the events occurred in the past trials}. This agent can equivalently be described as one
-which assumes that volatility is stationary with a fixed characteristic frequency of switches
-\AM{CAN WE SKIP THIS? and that one can consider that volatility as the average probability of change at each trial}.
+To begin with, we define a first ideal observer as a control, the \textit{forgetful agent} (or \textit{leaky integrator}), 
+which has an exponentially-decaying memory for the events that occurred in the past trials. 
+This agent can equivalently be described as one
+which assumes that volatility is stationary with a fixed characteristic frequency of switches.
 Then, we will extend this model to an agent
-which assumes the existence of (randomly occuring) switches, that is,
+which assumes the existence of (randomly occurring) switches, that is,
 that the value of the probabilistic bias may change
 at specific (yet randomly drawn) trials,
 as defined by the forward probabilistic model in~\seeEq{bsm}.
@@ -713,20 +713,22 @@ which represents a classical, widespread and
 realistic model of how trial-history shapes
 adaptive processes in human behavior.
 It is adapted to model motion expectation in the direction-biased experiment.
-In this model, the temporal evolution of the expectation $p=x_1^t$ of a given trial direction can be modeled by making a simple heuristic:
-the update of the estimated probability for an event is based
-on the discount of the previously estimated probability
-by a factor $(1 - h)$, with $h \in [0, 1]$, relative to new information $x_0^t$~\citep{Anderson2006}.
+In this model, given the observations $x_0^t$ from trial $0$ to $t$,
+the expectation $p=\hat{x_1}^{t+1}$ of the next trial direction can be modeled by making a simple heuristic:
+This probability for an event is the weighted average of
+the previously estimated probability with the new information $x_0^t$,
+where the weight corresponds to a leak term (or discount)
+by a factor $(1 - h)$, with $h \in [0, 1]$~\citep{Anderson2006}.
 At trial $t$, this model can be expressed with the following equation:
 \eql{
-\hat{x_1}^{t} = (1 - h) \cdot \hat{x_1}^{t-1} + h \cdot x_0^t
+\hat{x_1}^{t+1} = (1 - h) \cdot \hat{x_1}^{t} + h \cdot x_0^t
 \label{eq:leaky}}
 where $\hat{x_1}^{t=0}$ is equal to some prior value ($0.5$ in the unbiased case),
-corresponding to the best guess before observing any data.
+corresponding to the best guess at $t=0$ (before observing any data).
 % NOTE: it's an AR(1) process https://stats.stackexchange.com/questions/358162/writing-ar1-as-a-ma-infty-process
 
 %: from heuristics to ideal observer
-The estimated probability $\hat{x_1}^{t}$ is computed
+The estimated probability $\hat{x_1}^{t+1}$ is computed
 from the integration of previous instances
 with a progressive discount of past information.
 The value of the scalar $h$ represents
@@ -734,7 +736,7 @@ a compromise between responding rapidly
 to changes in the environment ($h \approx 1$) and
 not prematurely discarding information still of value
 for slowly changing contexts  ($h \approx 0$).
-As for the BSM, we will call this scalar the hazard rate.
+As such, we will call this scalar the hazard rate.
 Similarly, one can define $\tau = 1 / h$ as
 a characteristic time (in units of number of trials)
 for the integration of information.
@@ -743,13 +745,13 @@ the ``forgetful agent'' computed in \seeEq{leaky}
 consists of an exponentially-weighted moving average (see \seeApp{leaky}).
 It may thus be equivalently written in the form of a moving average:
 \eql{
-\hat{x_1}^{t} = h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
+\hat{x_1}^{t+1} = h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
 \label{eq:leaky2}}
 Inversely, let us now assume that
 the true direction probability bias changes randomly with a mean rate of once
 every $\tau$ trials.
 As a consequence, the probability that the bias does not change is $Pr(x_2^t=0)=1-h$ at each trial.
-Assuming independence of these occurrences, the estimated probability $p=\hat{x_1}^{t}$ is thus the sum
+Assuming independence of these occurrences, the estimated probability $p=\hat{x_1}^{t+1}$ is thus the sum
 of the past observations weighted by the belief that the bias has not changed during $i$ trials in the past, that is, exactly as defined in~\seeEq{leaky2}.
 This shows that
 assuming that changes occur at a constant rate ($\hat{x_2}^t=h$)
@@ -758,15 +760,14 @@ the optimal solution to this inference problem is the
 ideal observer defined in~\seeEq{leaky2},
 which finds an online recursive solution in~\seeEq{leaky}.
 We therefore proved here that the heuristic derived from~\citet{Anderson2006}
-is an ideal inversion of the generative model
+is an ideal inversion of the two-layered generative model
 which assumes a constant hazard rate for the probability bias.
-% \AM{It seems to me that the main limit of this ideal observer is that it is lazy: it knows that on average things change every tau trials but it does nothing to actively estimate and account for these changes: maybe we should have a sentence here to introduce this concept of "active"/"adaptive" observer?} - LP : right, ours is indeed a more active agent, but that's quite subjective...
 
 %: 2Ac  using \hat{p} as a regressor & limits of the leaky integrator
 The correspondence that we proved between the weighted moving average heuristic
 and the forgetful agent model as an ideal solution to that generative model leads
 us to several interim conclusions.
-First, the time series of inferred $\hat{x_1}^{t}$ values 
+First, the time series of inferred $\hat{x_1}^{t+1}$ values 
 can serve as a regressor for behavioral data
 to test whether human observers follow a similar strategy.
 In particular, the free parameter $h$ 
@@ -793,10 +794,11 @@ To address this hypothesis, our next model is inspired
 by the Bayesian Change-point detection model~\citep{AdamsMackay2007}
 of an ideal agent inferring
 both the trajectory in time of the probability bias ($x_1^t$)
-and the probability $Pr(x_2^t=1)$ of the occurrence of switches.
+but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 % ------------------------------------------------------------------
 \subsection{Binary Bayesian Change Point model}
 % ------------------------------------------------------------------
+%: <----- Laurent is here ----->
 %-------------------------------------------------------------%
 %: FIGURE 3 fig:bayesianchangepoint \seeFig{bayesianchangepoint}
 \begin{figure}%[b!]   
