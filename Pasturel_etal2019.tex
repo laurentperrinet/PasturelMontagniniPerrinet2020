@@ -798,7 +798,6 @@ but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 % ------------------------------------------------------------------
 \subsection{Binary Bayesian Change Point model}
 % ------------------------------------------------------------------
-%: <----- Laurent is here ----->
 %-------------------------------------------------------------%
 %: FIGURE 3 fig:bayesianchangepoint \seeFig{bayesianchangepoint}
 \begin{figure}%[b!]   
@@ -867,12 +866,13 @@ which itself is driving the trajectory of the probability bias $x_1^t$.
 Knowing that the latter is piece-wise constant,
 an agent may have a belief over the number of trials since the last switch.
 This number, that is called the \emph{run-length} $r^t$, is useful in two manners.
-First, it allows the agent to restrict the estimation $\hat{x_1}^{t}$ of $x_1^t$
+First, it allows the agent to restrict the estimation $\hat{x_1}^{t+1}$ of $x_1^{t+1}$
 only based on those samples $x_0^t$ produced since the last switch, from $t-r^t$ until $t$.
-Indeed, the samples $x_0^t$ occurred before the switch are drawn independently from the present true value $x_1^t$
+Indeed, the samples $x_0^t$ which occurred before the last switch 
+were drawn independently from the present true value $x_1^t$
 and thus cannot help estimating the latter.
 Second, it is known that for this estimate, the precision
-(the inverse of variance) on the estimate $\hat{x_1}^{t}$
+(the inverse of variance) on the estimate $\hat{x_1}^{t+1}$
 grows linearly with the number of samples:
 The longer the run-length, the sharper the corresponding (probabilistic) belief.
 We have designed an agent inverting the BSM by extending
@@ -881,6 +881,7 @@ The latter model defines the agent as an inversion of a switching generative mod
 for which the observed data (input) is Gaussian.
 We present here an exact solution for the case of the BSM, where the input is binary (see~\seeEq{bsm}).
 
+%: <----- Laurent is here ----->
 %-------------------------------------------------------------%
 %: 2Bb overcoming this difficulty using a latent variable - prediction/update cycle
 %-------------------------------------------------------------%
@@ -888,8 +889,8 @@ At first, in order to define in all generality the switch detection model,
 we will describe the fundamental steps of its computation,
 while giving the full algorithmic details in~\seeApp{bcp}.
 In general, the goal of predictive processing
-is to infer the probability $Pr(x_0^t | x_0^{0:t-1})$ of the next datum
-knowing what has been observed before trial $t$ and
+is to infer the probability $Pr(x_0^{t+1} | x_0^{0:t})$ of the next datum
+knowing what has been observed until trial $t$ and
 the prior of the agent on the generation of the data.
 To derive a Bayesian predictive model, we first introduce
 the run-length as a latent variable which helps the agent to represent
