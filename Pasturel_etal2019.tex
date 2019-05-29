@@ -816,13 +816,13 @@ but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 ~\textbf{(A)} This plot shows a synthesized sequence of $10$ events,
 each of them corresponding to a binary choice, either $0$ or $1$,
 and representing in turn a leftward or rightward movement of the target (TD).
-Here, the probability switched from a value of $.1$ to $.9$ at trial $5$.
+Here, the probability switched from a value of $.1$ to $.9$ at trial $7$.
 The BBCP model tries to capture the occurrences of a switch by inferring run lengths,
 that is, the number of trials since a switch.
 At any new datum (trial), this defines a Hidden Markov Model
 as a graph (treillis) of possible run lengths.
-Edges \AM{Arrows?} of this graph indicate that a message is being passed
-to update each node's probability.
+Edges of this graph indicate that a message is being passed
+to update each node's probability (as represented by arrows).
 Black lines denote a progression of the run length at the next step (no switch),
 while red lines stand for the possibility that a switch happened:
 The run length falls back to zero.
@@ -835,8 +835,8 @@ by one trial with respect to the true switch.
 representative of a sub-block of our experimental sequence (see~\seeFig{intro}-A), % and~\seeFig{results_raw}),
 we show in the top plot
 the actual events which are observed by the agent (TD, fine black lines),
-along with the hidden dynamics of the probability bias $x_1$,
-the value inferred by a leaky integrator ($\bar{x_1}^t$, red line)
+along with the (hidden) dynamics of the probability bias $x_1$ (blue line),
+the value inferred by a leaky integrator ($\bar{x_1}^t$, orange line)
 and the results of the BBCP model 
 in estimating the probability bias $\hat{x_1}^t$ (green line),
 along with $95\%$ confidence intervals (CI).
@@ -845,11 +845,12 @@ the accuracy of the estimated value of the probability bias
 is higher than for the leaky integrator.
 Below we show the belief (as grey-scale) for the different possible run lengths
 as a function of the trial number. 
-Darker colors denote higher probability. 
-The green line corresponds to the mean run-length which is inferred:
-Note that, while it takes some trials to detect switches,
+A darker color denotes a higher probability. 
+The green and orange line corresponds to the mean run-length which is inferred,
+respectively in the BBCP and leaky models:
+Note that in the BBCP, while it takes some trials to detect switches,
 they are overall correctly identified (transitions between diagonal lines) and
-integration is thus faster than for the leaky integrator, as illustrated above.
+that integration is thus faster than for the leaky integrator, as illustrated above.
 }
 \label{fig:bayesianchangepoint}
 \end{figure}
