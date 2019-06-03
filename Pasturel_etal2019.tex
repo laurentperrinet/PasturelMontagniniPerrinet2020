@@ -608,7 +608,8 @@ to validate the generalization of previous results %.
 %with constant speed from the center
 %either to the right or left across trials
 with this novel protocol. %~(see \seeFig{intro}-A \& B).
-Such results will allow us to match experimental results with the BBCP
+Another novelty of our approach is to use that model as a regressor
+which will allow us to match experimental results with the BBCP
 and to compare its predictive power compared to classical models such as the leaky integrator model.
 %The probability of either motion direction changes randomly in time.
 While in a first session, we recorded anticipatory eye movements~(see \seeFig{intro}-B), 
@@ -776,8 +777,8 @@ but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 } 
 \caption{\emph{Binary Bayesian Change Point (BBCP) detection model}
 ~\textbf{(A)} This plot shows a synthesized sequence of $10$ events,
-each of them corresponding to a binary choice, either $0$ or $1$,
-and representing in turn a leftward or rightward movement of the target (TD).
+each of them corresponding to a binary choice, 
+either a leftward or rightward movement of the target (TD).
 Here, the probability switched from a value of $.1$ to $.9$ at trial $7$.
 The BBCP model tries to capture the occurrences of a switch 
 by inferring the probability of different possible run lengths,
@@ -831,8 +832,8 @@ Knowing that the latter is piece-wise constant,
 an agent may have a belief over the number of trials since the last switch.
 This number, that is called the \emph{run-length} $r^t$, is useful in two manners.
 First, it allows the agent to restrict the prediction $\hat{x_1}^{t+1}$ of $x_1^{t+1}$
-only based on those samples produced since the last switch, from $t-r^t$ until $t$ 
-and which we denote as $x_0^{(r^t)}=x_0^{r^t:t}$ .
+only based on those samples produced since the last switch, from $t-r^t$ until $t$. 
+% and which we denote as $x_0^{(r^t)}=x_0^{r^t:t}$ .
 Indeed, the samples $x_0^t$ which occurred before the last switch 
 were drawn independently from the present true value $x_1^t$
 and thus cannot help estimating the latter.
@@ -847,7 +848,7 @@ for which the observed data (input) is Gaussian.
 We present here an exact solution for the case of the BSM, where the input is binary (see~\seeEq{bsm}).
 
 %-------------------------------------------------------------%
-%: 2Bc online estimation: initialization
+%: 2Bc online estimation: run-lengths
 %-------------------------------------------------------------%
 Indeed the only difference between our algorithm and that of~\citep{AdamsMackay2007},
 is that the observed data is a Bernoulli trial and not a Gaussian random variable as in their case.
@@ -857,9 +858,9 @@ We will infer it for all different hypotheses on $r^t$,
 that is, knowing there was a sequence of $r^t$ Bernoulli trials in that sub-block.
 Mathematically, a belief on this random variable
 is well represented by the conjugate probability distribution of the binomial distribution with $r^t$ draws,
-that is, by the beta-distribution $B(p; \mu, \nu)$.
+that is, by the beta-distribution $B(p; \mu^{(r)}_{t}, \nu^{(r)}_{t})$.
 It is parameterized here by its sufficient statistics,
-the mean $\mu$ and sample size $\nu$ which in our a case is the run-length $r^t$
+the mean $\mu^{(r)}_{t}$ and sample size $\nu^{(r)}_{t}$ which in our a case is the run-length $r^t$
 (see~\seeApp{likelihood} for our choice of parameterization).
 First, at the occurrence of a switch (for the node $r^t=0$)
 beliefs are set to prior values (before observing any datum).
@@ -872,19 +873,13 @@ By recurrence, one can show that at any trial $t$,
 the sufficient statistics $(\mu^{(r)}_{t}, \nu^{(r)}_{t})$
 can be updated at the next trial following:
 \eqa{
-& \mu^{(0)}_{t+1} = \mu_{prior} \text{,} \quad \nu^{(0)}_{t+1} = \nu_{prior} \\
-& \mu^{(r+1)}_{t+1} = r/(r+1) \cdot \mu^{(r)}_{t} + 1/(r+1) \cdot x_0^t \text{,} \quad \nu^{(r+1)}_{t+1} = \nu^{(r)}_{t} + 1
+& \mu^{(0)}_{t} = \mu_{prior} \text{,} \quad \nu^{(0)}_{t} = \nu_{prior} \\
+& \mu^{(r+1)}_{t} = r/(r+1) \cdot \mu^{(r)}_{t-1} + 1/(r+1) \cdot x_0^{t-1} \text{,} \quad \nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1
 }
-Note that $\mu^{(r+1)}_{t+1}$ is a moving average at trial $t$ on the $r$ last samples,
+Note that $\mu^{(r+1)}_{t}$ is a moving average at trial $t$ on the $r$ last samples,
 and $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the initial condition:
 $\nu^{(r)}_{t} = r + \nu_{prior}$.
 This updates for each node the sufficient statistics of the pdf at the current trial.
-In the following, we will define the probability distribution at each node $r^t$,
-knowing the data observed from the first trial and before $t$ such that
-one can computate the likelihood :
-$
-\pi^{(r)}_t = B( x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t})
-$. %}
 
 %-------------------------------------------------------------%
 %: 2Bb update / prediction cycle
@@ -958,6 +953,12 @@ In particular, as we sequentially observe new data,
 we will  implement the update step that
 computes the likelihood of this datum $x_0^t$ with respect to
 the current beliefs at trial $t$ at each node $r$.
+In the following, we will define the probability distribution at each node $r^t$,
+knowing the data observed from the first trial and before $t$ such that
+one can compute the likelihood :
+$
+\pi^{(r)}_t = B( x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t})
+$. %}
 In all generality, to perform this computation for some data $o$,
 we have computed the probability of each model
 parameterized by the mean $p$ and the sample size $r$
