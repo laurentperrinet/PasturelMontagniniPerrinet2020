@@ -389,7 +389,7 @@ of which participants are not aware of.
 As such, this behavior is potentially a useful marker
 to study the internal representation of motion expectancy (or Prior) 
 and in particular to analyze how sensorimotor expectancy 
-interacts dynamically with contextual contingencies in shaping (oculomotor) behavior.
+interacts dynamically with contextual contingencies in shaping oculomotor behavior.
 
 %: linear relationship (talk about santos & kowler and others)
 Typically, aSPEM is observed after a temporal cue and
@@ -462,8 +462,8 @@ between ``sure left'', to ``unsure'' and finally ``sure right''.
 %-------------------------------------------------------------%
 %: limits of the previous method
 In order to generalize such results to more ecological conditions,
-it is necessary to extend the experimental protocol of~\citet{Montagnini2010} in three aspects.
-First, it seems important to investigate the integration of environmental statistical regularities
+it is necessary to extend the experimental protocol of~\citet{Montagnini2010} in three aspects that will be illustrated in the next section.
+\AM{I PROPOSE to skip this, we detail this stuff in the next section and the part on perception is not appropriate here... First, it seems important to investigate the integration of environmental statistical regularities
 in this smooth tracking task with
 a large family of probability biases for the direction of target motion.
 As such, instead of a finite set of probability biases, % ($.25$, $.5$, $.75$, $.9$ and $1.$, see \seeFig{intro}-B),
@@ -496,8 +496,8 @@ are the result of two distinct readout processes
 using the same internal representation of motion regularities.
 Both these history lengths can be considered
 short in comparison to the several hundreds
-of trials that are commonly used in psychophysics and sensorimotor adaptation studies.
-As such, it seems to disentangle these different time scales 
+of trials that are commonly used in psychophysics and sensorimotor adaptation studies.} 
+In general, it seems \AM{important to disentangle the different cognitive processes and time scales} 
 and their respective role in adaptive processes.
 % ------------------------------------------------------------------
 \subsection{Contributions}%Outline}
@@ -510,7 +510,7 @@ observed in the aSPEM response to more ecological settings but
 also to broaden its scope by showing that such adaptive process
 also occurs at the conscious level.
 %The equations for this protocol will be detailed below~(\seeSec{bayesian_change_point}).
-Indeed, we saw above that by manipulating the probability bias for target motion direction,
+We already mentioned that by manipulating the probability bias for target motion direction,
 it is possible to bias the direction and mean velocity of aSPEM~\citep{Montagnini2010}.
 This suggests that probabilistic information may be used
 to inform the internal representation of motion prediction
@@ -518,21 +518,21 @@ for the initiation of anticipatory movements.
 However, it is yet unclear what generative model to use
 to dynamically manipulate the probability bias
 and generate an ecologically relevant input sequence of target directions.
-A possible caveat comes from the fact that 
-this study used blocks of fixed lengths 
-stacked in a sequence of conditions on the probability bias.
+A possible confound comes from the fact that 
+previous studies have used trial sequences (\textit{blocks}) of fixed lengths,
+stacked in a sequence of conditions defined by the different probability bias.
 Indeed, observers may potentially pick up
-the information on this fixed length
+the information on the fixed block's length 
 to predict the occurrence of a switch (a change in probability bias) during the experiment.
-Moreover, we observed qualitatively that following a switch,
+Second, we observed qualitatively that following a switch,
 the strength of aSPEM changed gradually,
 consistently with other adaptation paradigms~\citep{Fukushima1996,Kahlon1996,Souto13}.
-The estimate of the characteristic parameters for this  adaptation mechanism 
+The estimate of the characteristic temporal parameters for this  adaptation mechanism 
 may become particularly challenging in a dynamic context,
 where the probabilistic contingencies vary in time in an unpredictable way.
-In addition, whether and how the information processing underlying
+Finally, whether and how the information processing underlying
 the buildup of aSPEM and its dynamics is linked to
-an explicit estimate of probabilities is unknown.
+an explicit estimate of probabilities is still largely unknown.
 
 %%%-------------------------------------------------------------%
 %: 1Cb design of the binary switching generative model
@@ -554,23 +554,23 @@ the bias $p$ in target direction varies according to a piecewise-constant functi
 similarly to~\citet{Meyniel13}.
 To analyze the effect of history length in all generality,
 we therefore extended the protocol of~\citep{Montagnini2010} such that the probability bias
-is fixed within blocks but that these block had variable lengths,
+is still fixed within blocks but that these blocks have variable lengths,
 that is, by introducing switches occurring at random times.
 %We expect that within each sub-block, the uncertainty about of the value of $p$
 %will progressively decrease as we accumulate samples.
-A possible confound in that study
-was that the range of possible biases is finite and 
-may be picked up by the visual system.
-To alleviate this problem, we extended the paradigm
-by drawing $p$ as a random variable on continuous values 
-within the possible range (that is, the segment $[ 0, 1 ]$)
+In our previous study
+the range of possible biases was finite \AM{ I WOULD SKIP THIS and 
+may be picked up by the visual system.}
+In the present work, we extended the paradigm
+by drawing $p$ as a random continuous variable 
+within the whole possible range (that is, the segment $[ 0, 1 ]$)
 As a summary, we first draw random events (that we denote as ``switches'')
 with a given mean frequency and which controls the strength of the volatility.
 Second, the value $p$ of the bias only changes at the moment of a switch,
 independently of the previous bias' value
 and is stationary between two switches.
-Third, target directions are drawn as a Bernoulli trial using the current value of $p$.
-Such a sequence is presented in~\seeFig{intro}-A, 
+Third, target direction is drawn as a Bernoulli trial using the current value of $p$.
+Such a hierarchical structure is presented in~\seeFig{intro}-A, 
 where we show the realization of the target's directions sequence,
 the trajectory of the underlying (hidden) probability bias, and
 the occurrences of switches.
