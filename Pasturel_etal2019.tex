@@ -888,7 +888,6 @@ $\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability of each possible run-leng
 %a previous value $Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$ 
 %and the likelihood associated to the new value $x_0^t$.
 
-%: <----- Laurent is here ----->
 With these premises, we define the BBCP
 as a prediction / update cycle. 
 First, we will \emph{predict} the probability 
@@ -976,29 +975,31 @@ This updates for each node the sufficient statistics of the pdf at the current t
 %-------------------------------------------------------------%
 %: 2Bd update = Computing the likelihood
 % cf p.52 de 2017-10-05 chloe inverting the process rem jb
+% https://en.wikipedia.org/wiki/Beta_distribution#Effect_of_different_prior_probability_choices_on_the_posterior_beta_distribution
 %-------------------------------------------------------------%
 We can now detail the computation of the likelihood of a future datum $x_0^{t+1}$ with respect to
 the current beliefs : $\pi^{(r)}_t = Pr( x_0^{t+1} |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$. %}
-This binary function evaluates at each node the likelihood of each alternative outcome of $x_0^{t+1}$
-(two hypothesis $o=1$ or $o=0$)
-knowing the mean bias $\mu^{(r)}_{t}$ 
-and conditioned on the run-length $r$. 
+This scalar is returned by the binary function $\pi^{(r)}_t = \Ll(x_0^{t+1}| \mu^{(r)}_{t}, \nu^{(r)}_{t})$.
+whenever we observe the new datum
+and where this binary function $\Ll(o| p, r)$ evaluates at each node the likelihood of each alternative outcome $o=1$ or $o=0$
+knowing a mean bias $p=\mu^{(r)}_{t}$ 
+and a sample size $r=\nu^{(r)}_{t}$. 
 For each outcome, the likelihood of observing an occurrence of $o$ at the next trial,
 is the probability of a binomial random variable knowing 
-an updated probability bias of $\frac{\mu^{(r)}_{t} \cdot r + o}{r+1}$, 
-a number $\mu^{(r)}_{t} \cdot r + o$ of trials going to the right and
-a number $(1-\mu^{(r)}_{t}) \cdot r + 1 - o$ of trials to the left.
+an updated probability bias of $\frac{p \cdot r + o}{r+1}$, 
+a number $p \cdot r + o$ of trials going to the right and
+a number $(1-p) \cdot r + 1 - o$ of trials to the left.
 After some algebra, this defines the likelihood as :
 \eql{
-\Ll(o| \mu^{(r)}_{t}, r) = \frac{1}{Z} \cdot {(\mu^{(r)}_{t}\cdot r + o)}^{\mu^{(r)}_{t}\cdot r + o} \cdot {((1- \mu^{(r)}_{t})\cdot r + 1- o)}^{(1- \mu^{(r)}_{t})\cdot r + 1- o}
+\Ll(o| p, r) = \frac{1}{Z} \cdot {(p \cdot r + o)}^{p \cdot r + o} \cdot {((1- \mu^{(r)}_{t})\cdot r + 1- o)}^{(1- p)\cdot r + 1- o}
 \label{eq:likelihood}
 }
-with $Z$ such that $\Ll(o=1| \mu^{(r)}_{t}, r) + \Ll(o=1 | \mu^{(r)}_{t}, r)=1$. % where
+with $Z$ such that $\Ll(o=1 p, r) + \Ll(o=1 | p, r)=1$. % where
 %\eq{
 %Z = {(\mu \cdot \nu + 1)}^{\mu \cdot \nu + 1}  \cdot {((1- \mu)\cdot \nu )}^{(1- \mu)\cdot \nu }  +
 %    {(\mu \cdot \nu )}^{\mu \cdot \nu }  \cdot {((1- \mu)\cdot \nu + 1)}^{(1- \mu)\cdot \nu + 1}
 %}
-The derivation of this function is detailed in~\seeApp{likelihood}. Finally, we use that function whenever we observe the new datum as the scalar returned by the binary function $\pi^{(r)}_t = \Ll(x_0^{t+1}| \mu^{(r)}_{t}, r)$.
+The derivation of this function is detailed in~\seeApp{likelihood}. 
 
 %-------------------------------------------------------------%
 %: 2Be online estimation: prediction
@@ -1037,6 +1038,7 @@ constitutes the Binary Bayesian Change Point (BBCP) detection model.
 % ------------------------------------------------------------------
 \subsection{Quantitative analysis of the Binary Bayesian Change Point detection algorithm}
 % ------------------------------------------------------------------
+%: <----- Laurent is here ----->
 %-------------------------------------------------------------%
 %: 2Ca python scripts : qualitative analysis
 %-------------------------------------------------------------%
