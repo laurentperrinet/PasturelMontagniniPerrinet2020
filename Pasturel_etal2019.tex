@@ -979,9 +979,9 @@ This updates for each node the sufficient statistics of the pdf at the current t
 %-------------------------------------------------------------%
 We can now detail the computation of the likelihood of a future datum $x_0^{t+1}$ with respect to
 the current beliefs : $\pi^{(r)}_t = Pr( x_0^{t+1} |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$. %}
-This scalar is returned by the binary function $\pi^{(r)}_t = \Ll(x_0^{t+1}| \mu^{(r)}_{t}, \nu^{(r)}_{t})$.
+This scalar is returned by the binary function $\pi^{(r)}_t = \Ll( \mu^{(r)}_{t}, \nu^{(r)}_{t} | x_0^{t+1})$.
 whenever we observe the new datum
-and where this binary function $\Ll(o| p, r)$ evaluates at each node the likelihood of each alternative outcome $o=1$ or $o=0$
+and where this binary function $\Ll(p, r | o)$ evaluates at each node the likelihood of each alternative outcome $o=1$ or $o=0$
 knowing a mean bias $p=\mu^{(r)}_{t}$ 
 and a sample size $r=\nu^{(r)}_{t}$. 
 For each outcome, the likelihood of observing an occurrence of $o$ at the next trial,
@@ -991,10 +991,10 @@ a number $p \cdot r + o$ of trials going to the right and
 a number $(1-p) \cdot r + 1 - o$ of trials to the left.
 After some algebra, this defines the likelihood as :
 \eql{
-\Ll(o| p, r) = \frac{1}{Z} \cdot {(p \cdot r + o)}^{p \cdot r + o} \cdot {((1- \mu^{(r)}_{t})\cdot r + 1- o)}^{(1- p)\cdot r + 1- o}
+\Ll(p, r| o) = \frac{1}{Z} \cdot {(p \cdot r + o)}^{p \cdot r + o} \cdot {((1- \mu^{(r)}_{t})\cdot r + 1- o)}^{(1- p)\cdot r + 1- o}
 \label{eq:likelihood}
 }
-with $Z$ such that $\Ll(o=1 p, r) + \Ll(o=1 | p, r)=1$. % where
+with $Z$ such that $\Ll(p, r|o=1) + \Ll(p, r|o=0)=1$. % where
 %\eq{
 %Z = {(\mu \cdot \nu + 1)}^{\mu \cdot \nu + 1}  \cdot {((1- \mu)\cdot \nu )}^{(1- \mu)\cdot \nu }  +
 %    {(\mu \cdot \nu )}^{\mu \cdot \nu }  \cdot {((1- \mu)\cdot \nu + 1)}^{(1- \mu)\cdot \nu + 1}
