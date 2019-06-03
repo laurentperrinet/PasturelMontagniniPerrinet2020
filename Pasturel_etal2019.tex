@@ -850,37 +850,35 @@ We present here an exact solution for the case of the BSM, where the input is bi
 %-------------------------------------------------------------%
 %: 2Bc online estimation: run-lengths
 %-------------------------------------------------------------%
-Indeed the only difference between our algorithm and that of~\citep{AdamsMackay2007},
-is that the observed data is a Bernoulli trial and not a Gaussian random variable as in their case.
+Indeed, the only algorithmic difference with the BCP model~\citep{AdamsMackay2007},
+is that the observed data is a Bernoulli trial and not a Gaussian random variable.
 The random variable $x_1^t$ is the probability bias used
 to generate the sequence of events $x_0^t$.
 We will infer it for all different hypotheses on $r^t$,
 that is, knowing there was a sequence of $r^t$ Bernoulli trials in that sub-block.
-Mathematically, a belief on this random variable
-is well represented by the conjugate probability distribution of the binomial distribution with $r^t$ draws,
-that is, by the beta-distribution $B(p; \mu^{(r)}_{t}, \nu^{(r)}_{t})$.
+Mathematically, a belief on this random variable is represented 
+by the conjugate probability distribution of the binomial distribution,
+that is, by the beta-distribution $B(x_1^t; \mu^{(r)}_{t}, \nu^{(r)}_{t})$.
 It is parameterized here by its sufficient statistics,
-the mean $\mu^{(r)}_{t}$ and sample size $\nu^{(r)}_{t}$ which in our a case is the run-length $r^t$
+the mean $\mu^{(r)}_{t}$ and sample size $\nu^{(r)}_{t}$ % which in our a case is the run-length $r^t$
 (see~\seeApp{likelihood} for our choice of parameterization).
 First, at the occurrence of a switch (for the node $r^t=0$)
-beliefs are set to prior values (before observing any datum).
-%: <----- Laurent is here ----->
-In terms of probabilities, this amounts to set :
-\eql{
-Pr(x_1^t | r^t=0) \propto B(x_1^t; \mu_{prior}, \nu_{prior})
-}
-By recurrence, one can show that at any trial $t$,
+beliefs are set to prior values (before observing any datum)
+$\mu^{(0)}_{t} = \mu_{prior}$ and $\nu^{(0)}_{t} = \nu_{prior}$.
+By recurrence (see \seeFig{bayesianchangepoint}-A), one can show that at any trial $t>0$,
 the sufficient statistics $(\mu^{(r)}_{t}, \nu^{(r)}_{t})$
 can be updated at the next trial following:
 \eqa{
-& \mu^{(0)}_{t} = \mu_{prior} \text{,} \quad \nu^{(0)}_{t} = \nu_{prior} \\
-& \mu^{(r+1)}_{t} = r/(r+1) \cdot \mu^{(r)}_{t-1} + 1/(r+1) \cdot x_0^{t-1} \text{,} \quad \nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1
+& \mu^{(r+1)}_{t} = \frac{r}{r+1} \cdot \mu^{(r)}_{t-1} + \frac{1}{r+1} \cdot x_0^{t-1} \\
+& \nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1
 }
-Note that $\mu^{(r+1)}_{t}$ is a moving average at trial $t$ on the $r$ last samples,
+Note that $\mu^{(r+1)}_{t}$ is a moving average at trial $t$ on the $r$ last samples
+before observing the new datum,
 and $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the initial condition:
 $\nu^{(r)}_{t} = r + \nu_{prior}$.
 This updates for each node the sufficient statistics of the pdf at the current trial.
 
+%: <----- Laurent is here ----->
 %-------------------------------------------------------------%
 %: 2Bb update / prediction cycle
 %-------------------------------------------------------------%
