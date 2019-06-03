@@ -984,24 +984,26 @@ This binary function evaluates at each node the likelihood of each alternative o
 knowing the mean bias $\mu^{(r)}_{t}$ 
 and conditioned on the run-length $r$. 
 For each outcome, the likelihood of observing an occurrence of $o$ at the next trial,
-is that of a binomial process knowing an updated sample size of $r+1$
-and an updated probability bias of $\frac{\mu^{(r)}_{t} \cdot r + o}{r+1}$.
+is the probability of a binomial random variable knowing 
+an updated probability bias of $\frac{\mu^{(r)}_{t} \cdot r + o}{r+1}$, 
+a number $\mu^{(r)}_{t} \cdot r + o$ of trials going to the right and
+a number $(1-\mu^{(r)}_{t}) \cdot r + 1 - o$ of trials to the left.
 After some algebra, this defines the likelihood as :
 \eql{
 \Ll(o| \mu^{(r)}_{t}, r) = \frac{1}{Z} \cdot {(\mu^{(r)}_{t}\cdot r + o)}^{\mu^{(r)}_{t}\cdot r + o} \cdot {((1- \mu^{(r)}_{t})\cdot r + 1- o)}^{(1- \mu^{(r)}_{t})\cdot r + 1- o}
 \label{eq:likelihood}
 }
-with $Z$ such that $\Ll(o=1| \mu\mu^{(r)}_{t}, r) + \Ll(o=1 | \mu\mu^{(r)}_{t}, r)=1$. % where
+with $Z$ such that $\Ll(o=1| \mu^{(r)}_{t}, r) + \Ll(o=1 | \mu^{(r)}_{t}, r)=1$. % where
 %\eq{
 %Z = {(\mu \cdot \nu + 1)}^{\mu \cdot \nu + 1}  \cdot {((1- \mu)\cdot \nu )}^{(1- \mu)\cdot \nu }  +
 %    {(\mu \cdot \nu )}^{\mu \cdot \nu }  \cdot {((1- \mu)\cdot \nu + 1)}^{(1- \mu)\cdot \nu + 1}
 %}
-The derivation of this function is detailed in~\seeApp{likelihood}. Finally, we use that function whenever we observe the new datum : $\pi^{(r)}_t = \Ll(x_0^{t+1}| \mu^{(r)}_{t}, r)$
+The derivation of this function is detailed in~\seeApp{likelihood}. Finally, we use that function whenever we observe the new datum as the scalar returned by the binary function $\pi^{(r)}_t = \Ll(x_0^{t+1}| \mu^{(r)}_{t}, r)$.
 
 %-------------------------------------------------------------%
 %: 2Be online estimation: prediction
 %-------------------------------------------------------------%
-The agent may infer at each trial the belief
+Finally, the agent may infer at each trial the belief
 and use for instance the maximum a posteriori or the expected value as readouts.
 More precisely, we define these two strategies as following.
 For the maximum a posteriori readout
@@ -1021,9 +1023,12 @@ the BBCP model uses a dynamical model, but still with only one parameter.
 As for the latter, this parameter~$h=\frac 1 \tau$ informs the BBCP model
 that the probability bias  changes \emph{on average} every~$\tau$ trials.
 As in \seeEq{leaky}, this defines the \emph{hazard rate}.
-Note that the resulting operations can be implemented \textit{online}, that is,
-only the belief at trial $t$ and the new datum $x_0^t$
-are sufficient to predict all probabilities.
+Moreover, note that the resulting operations 
+(see Equations~\ref{eq:pred},~\ref{eq:beta_noswitch},~\ref{eq:beta_switch} and~\ref{eq:likelihood})
+which constitute the BBCP algorithm
+can be implemented \textit{online}, that is,
+only the state at trial $t$ and the new datum $x_0^t$
+are sufficient to predict all probabilities for the next trial.
 %at the next trial $t+1$: $Pr(r_t | x_0^{0:t})$, $\mu^{(r)}_{t+1}$ and $\nu^{(r)}_{t+1}$.
 %projecting beliefs backwards and forward  : the algorithm is online et the price of memory
 Finally, this prediction / update cycle applied to the BSM and using~\seeEq{bsm}
