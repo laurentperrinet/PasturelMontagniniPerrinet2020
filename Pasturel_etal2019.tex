@@ -415,7 +415,7 @@ These results imply that the probability bias over a target's direction is
 one additional factor beyond other physical and cognitive cues~\citep{Kowler2014, SantosKowler2017,Damasse18}
 that modulate the common predictive framework
 driving anticipatory behavior.
-
+%
 %-------------------------------------------------------------%
 %: FIGURE 1 fig:intro ~\seeFig{intro}
 \begin{figure}%[b!]
@@ -462,43 +462,7 @@ between ``sure left'', to ``unsure'' and finally ``sure right''.
 %-------------------------------------------------------------%
 %: limits of the previous method
 In order to generalize such results to more ecological conditions,
-it is necessary to extend the experimental protocol of~\citet{Montagnini2010} in three aspects that will be illustrated in the next section.
-\AM{I PROPOSE to skip this, we detail this stuff in the next section and the part on perception is not appropriate here... First, it seems important to investigate the integration of environmental statistical regularities
-in this smooth tracking task with
-a large family of probability biases for the direction of target motion.
-As such, instead of a finite set of probability biases, % ($.25$, $.5$, $.75$, $.9$ and $1.$, see \seeFig{intro}-B),
-we decided to use a continuous range of probability biases.
-%which we were sampling from a fixed prior distribution.
-Second,~\citet{Maus2015} have recently shown that
-both perceptual adaptation for speed estimation
-and priming of aSPEM could occur simultaneously.
-They found a robust repulsive adaptation effect
-with perceptual judgements biased in favor of faster percepts
-after seeing stimuli that were slower and~\textit{vice-versa}. 
-Concurrently, these authors also found
-a positive effect on anticipatory smooth pursuit, 
-with faster anticipation after faster stimuli.
-Indeed, both priming and adaptation can hypothetically share
-a common internal representation of stimulus' speed,
-reasonably built according to the mean velocity of the last observed movements.
-The comparison of the internal representation of speed
-with the current stimulus velocity could explain repulsive aftereffects and,
-at the same time, be used to elicit
-an aSPEM component at the appropriate velocity
-for next stimulus occurrences.
-\citet{Maus2015} estimated the past history effects over different times scales,
-with the priming effects being maximized
-for short stimulus histories (around $2$ trials) and
-adaptation for longer stimulus history, around $15$ trials.
-Their main conclusion was that
-perceptual adaptation and oculomotor priming
-are the result of two distinct readout processes 
-using the same internal representation of motion regularities.
-Both these history lengths can be considered
-short in comparison to the several hundreds
-of trials that are commonly used in psychophysics and sensorimotor adaptation studies.} 
-In general, it seems \AM{important to disentangle the different cognitive processes and time scales} 
-and their respective role in adaptive processes.
+it is thus necessary to extend the experimental protocol of~\citet{Montagnini2010} in three aspects that will be illustrated in the next section.
 % ------------------------------------------------------------------
 \subsection{Contributions}%Outline}
 % ------------------------------------------------------------------
@@ -559,11 +523,10 @@ that is, by introducing switches occurring at random times.
 %We expect that within each sub-block, the uncertainty about of the value of $p$
 %will progressively decrease as we accumulate samples.
 In our previous study
-the range of possible biases was finite \AM{ I WOULD SKIP THIS and 
-may be picked up by the visual system.}
-In the present work, we extended the paradigm
+the range of possible biases was finite 
+and in the present work, we extended the paradigm
 by drawing $p$ as a random continuous variable 
-within the whole possible range (that is, the segment $[ 0, 1 ]$)
+within the whole possible range (that is, the segment $[ 0, 1 ]$). 
 As a summary, we first draw random events (that we denote as ``switches'')
 with a given mean frequency and which controls the strength of the volatility.
 Second, the value $p$ of the bias only changes at the moment of a switch,
@@ -600,7 +563,7 @@ Mathematically, this is  described according to the following equations:
  \eql{\choice{
 \text{Occurrence of a switch: } x_2^t \propto \Bb(1/\tau) \\
  % TODO: nest the choice
-\text{Dynamics of probabilistic bias: } 
+\text{Dynamics of probabilistic bias $p=x_1^t$: } 
  \choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
  \text{else} \quad x_1^t \propto \Pp  \\
  } \\
@@ -1500,6 +1463,43 @@ by the variability introduced by the neural noise
 at the neuro-motor junction~\citep{Harris98}.
 
 
+PERCEPTION:
+\AM{I PROPOSE to skip this, we detail this stuff in the next section and the part on perception is not appropriate here... First, it seems important to investigate the integration of environmental statistical regularities
+in this smooth tracking task with
+a large family of probability biases for the direction of target motion.
+As such, instead of a finite set of probability biases, % ($.25$, $.5$, $.75$, $.9$ and $1.$, see \seeFig{intro}-B),
+we decided to use a continuous range of probability biases.
+%which we were sampling from a fixed prior distribution.
+Second,~\citet{Maus2015} have recently shown that
+both perceptual adaptation for speed estimation
+and priming of aSPEM could occur simultaneously.
+They found a robust repulsive adaptation effect
+with perceptual judgements biased in favor of faster percepts
+after seeing stimuli that were slower and~\textit{vice-versa}. 
+Concurrently, these authors also found
+a positive effect on anticipatory smooth pursuit, 
+with faster anticipation after faster stimuli.
+Indeed, both priming and adaptation can hypothetically share
+a common internal representation of stimulus' speed,
+reasonably built according to the mean velocity of the last observed movements.
+The comparison of the internal representation of speed
+with the current stimulus velocity could explain repulsive aftereffects and,
+at the same time, be used to elicit
+an aSPEM component at the appropriate velocity
+for next stimulus occurrences.
+\citet{Maus2015} estimated the past history effects over different times scales,
+with the priming effects being maximized
+for short stimulus histories (around $2$ trials) and
+adaptation for longer stimulus history, around $15$ trials.
+Their main conclusion was that
+perceptual adaptation and oculomotor priming
+are the result of two distinct readout processes 
+using the same internal representation of motion regularities.
+Both these history lengths can be considered
+short in comparison to the several hundreds
+of trials that are commonly used in psychophysics and sensorimotor adaptation studies.} 
+In general, it seems \AM{important to disentangle the different cognitive processes and time scales} 
+and their respective role in adaptive processes.
 
 
 \AM{I WOULD PUT ALL THIS IN THE DISCUSSION: They concluded that transition probabilities constitute
