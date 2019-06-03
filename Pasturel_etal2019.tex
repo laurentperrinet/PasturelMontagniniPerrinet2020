@@ -973,32 +973,30 @@ Note that the series defined by $\mu^{(r+1)}_{r+t}$ is the moving average at tri
 Moreover, $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the initial condition:
 $\nu^{(r)}_{t} = r + \nu_{prior}$.
 This updates for each node the sufficient statistics of the pdf at the current trial.
-
 %-------------------------------------------------------------%
 %: 2Bd update = Computing the likelihood
 % cf p.52 de 2017-10-05 chloe inverting the process rem jb
 %-------------------------------------------------------------%
 We can now detail the computation of the likelihood of a future datum $x_0^{t+1}$ with respect to
 the current beliefs : $\pi^{(r)}_t = Pr( x_0^{t+1} |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$. %}
-In all generality, to perform this computation for some binary data $o$,
-we have computed the likelihood at each node of each alternative outcome
-(the two hypothesis $o=1$ or $o=0$)
-knowing the mean bias $\mu$ 
+This binary function evaluates at each node the likelihood of each alternative outcome of $x_0^{t+1}$
+(two hypothesis $o=1$ or $o=0$)
+knowing the mean bias $\mu^{(r)}_{t}$ 
 and conditioned on the run-length $r$. 
 For each outcome, the likelihood of observing an occurrence of $o$ at the next trial,
-is that of a binomial process knowing an updated sample size of $\nu+1$
-and an updated estimation of the probability bias of $\mu' = \frac{\mu \cdot \nu + o}{\nu+1}$.
-This defines the likelihood as :
+is that of a binomial process knowing an updated sample size of $r+1$
+and an updated probability bias of $\frac{\mu^{(r)}_{t} \cdot r + o}{r+1}$.
+After some algebra, this defines the likelihood as :
 \eql{
-\Ll(o | \mu, \nu) = \frac{1}{Z} \cdot {(\mu\cdot \nu + o)}^{\mu\cdot \nu + o} \cdot {((1- \mu)\cdot \nu + 1- o)}^{(1- \mu)\cdot \nu + 1- o}
+\Ll(o| \mu^{(r)}_{t}, r) = \frac{1}{Z} \cdot {(\mu^{(r)}_{t}\cdot r + o)}^{\mu^{(r)}_{t}\cdot r + o} \cdot {((1- \mu^{(r)}_{t})\cdot r + 1- o)}^{(1- \mu^{(r)}_{t})\cdot r + 1- o}
 \label{eq:likelihood}
 }
-with $Z$ such that $\Ll(o=1| \mu, \nu) + \Ll(o=1 | \mu, \nu)=1$ where
-\eq{
-Z = {(\mu \cdot \nu + 1)}^{\mu \cdot \nu + 1}  \cdot {((1- \mu)\cdot \nu )}^{(1- \mu)\cdot \nu }  +
-    {(\mu \cdot \nu )}^{\mu \cdot \nu }  \cdot {((1- \mu)\cdot \nu + 1)}^{(1- \mu)\cdot \nu + 1}
-}
-The derivation of this function is detailed in~\seeApp{likelihood}.
+with $Z$ such that $\Ll(o=1| \mu\mu^{(r)}_{t}, r) + \Ll(o=1 | \mu\mu^{(r)}_{t}, r)=1$. % where
+%\eq{
+%Z = {(\mu \cdot \nu + 1)}^{\mu \cdot \nu + 1}  \cdot {((1- \mu)\cdot \nu )}^{(1- \mu)\cdot \nu }  +
+%    {(\mu \cdot \nu )}^{\mu \cdot \nu }  \cdot {((1- \mu)\cdot \nu + 1)}^{(1- \mu)\cdot \nu + 1}
+%}
+The derivation of this function is detailed in~\seeApp{likelihood}. Finally, we use that function whenever we observe the new datum : $\pi^{(r)}_t = \Ll(x_0^{t+1}| \mu^{(r)}_{t}, r)$
 
 %-------------------------------------------------------------%
 %: 2Be online estimation: prediction
