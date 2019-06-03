@@ -133,6 +133,7 @@ backend=bibtex,
 %\usepackage{tikz,tkz-euclide} \usetkzobj{all} % loading all objects
 %\usetikzlibrary{positioning} \usetikzlibrary{calc}
 %\usepackage{sfmath}
+%\usepackage[noabbrev]{cleveref}
 \newcommand{\seeFig}[1]{Figure~\ref{fig:#1}}
 \newcommand{\seeEq}[1]{Equation~\ref{eq:#1}}
 \newcommand{\seeApp}[1]{Appendix~\ref{app:#1}}
@@ -470,9 +471,9 @@ it is thus necessary to extend the experimental protocol of~\citet{Montagnini201
 % ------------------------------------------------------------------
 %: 1Ca how we do it : or rather why we do it this way (and not like Matthys)
 The goal of this study is to generalize the adaptive process
-observed in the aSPEM response to more ecological settings but
-also to broaden its scope by showing that such adaptive process
-also occurs at the conscious level.
+observed in the aSPEM response in previous studies~\citep{Montagnini2010,SantosKowler2017} to more ecological settings but
+also to broaden its scope by showing that such adaptive processes
+occur at the conscious level as well.
 %The equations for this protocol will be detailed below~(\seeSec{bayesian_change_point}).
 We already mentioned that by manipulating the probability bias for target motion direction,
 it is possible to bias the direction and mean velocity of aSPEM~\citep{Montagnini2010}.
@@ -810,8 +811,8 @@ is higher than for the leaky integrator.
 Below we show the belief (as grey-scale) for the different possible run lengths
 as a function of the trial number. 
 A darker color denotes a higher probability. 
-The green and orange line corresponds to the mean run-length which is inferred,
-respectively in the BBCP and leaky models:
+The green and orange line correspond to the mean run-length which is inferred,
+respectively, by the BBCP and leaky models:
 Note that in the BBCP, while it takes some trials to detect switches,
 they are overall correctly identified (transitions between diagonal lines) and
 that integration is thus faster than for the leaky integrator, as illustrated above.
@@ -847,9 +848,8 @@ The latter model defines the agent as an inversion of a switching generative mod
 for which the observed data (input) is Gaussian.
 We present here an exact solution for the case of the BSM, where the input is binary (see~\seeEq{bsm}).
 
-%: <----- Laurent is here ----->
 %-------------------------------------------------------------%
-%: 2Bb update / prediction cycle
+%: 2Bb prediction / update cycle
 %-------------------------------------------------------------%
 At first, in order to define in all generality the switch detection model,
 we will describe the fundamental steps leading to its construction,
@@ -857,7 +857,8 @@ while giving the full algorithmic details in~\seeApp{bcp}.
 In general, the goal of predictive processing
 is to infer the probability $Pr(x_0^{t+1} | x_0^{0:t})$ of the next datum
 knowing what has been observed until trial $t$ and
-the prior of the agent on the generation of the data.
+the prior knowledge by the agent 
+that data is the output of a given (stochastic) generative model.
 To derive a Bayesian predictive model, we introduce
 the run-length as a latent variable which helps the agent to represent
 different hypothesis about the input.
@@ -871,45 +872,46 @@ different hypothesis about the input.
 %we define the distribution which represents our belief
 %for all different hypotheses on $r^t$.
 %which 
-Using that latent variable, one computes the marginal predictive distribution:
+This assumes knowing the predictive probability knowing (conditioned on) the run-length
+such that one computes the marginal predictive distribution:
 \eql{
 Pr(x_0^{t+1} | x_0^{0:t}) = 
 %\sum_{r^{t}} \beta^{(r)}_t \cdot Pr(x_0^t | r^{t}, x_0^{0:t-1}) 
-\sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot Pr(r^t | x_0^{0:t})
+%\sum_{r^{t}} Pr(x_0^{t+1} | r^{t}, x_0^{0:t}) \cdot Pr(r^t | x_0^{0:t})
 %\sum_{r^{t}} Pr(x_0^{t+1} | x_0^{(r^{t})}) \cdot \beta^{(r)}_t
+\sum_{r^{t}} \pi^{(r)}_t \cdot \beta^{(r)}_t
 \label{eq:pred}
 }
+where $\pi^{(r)}_t=Pr(x_0^{t+1} | r^{t}, x_0^{0:t})$ is the likelihood of a future datum $x_0^{t+1}$ 
+conditioned on the run-length and 
+$\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability of each possible run-length.
 %a previous value $Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$ 
 %and the likelihood associated to the new value $x_0^t$.
+
+%: <----- Laurent is here ----->
 With these premises, we define the BBCP
-as an update / prediction cycle. 
-First, we \emph{update} beliefs on all nodes
-by computing the likelihood of the new datum $x_0^t$ 
-knowing the current belief at each node
-as $\pi^{(r)}_t=Pr(x_0^t | r^{t}, x_0^{0:t-1})$,
-as will be detailed below.
-Second, for the prediction step, 
-we assigns a probability strength at each node
-as $\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$.
-Then, we use a knowledge of $\beta^{(r)}_{t-1}$ at trial $t-1$ and
+as a prediction / update cycle. 
+First, we will \emph{predict} the probability 
+$\beta^{(r)}_t$ at each node.
+In particular, at the occurrence of the first trial (for the node $r^0=0$)
+there is a switch and beliefs are set to initial values $\beta^{(0)}_0=Pr(r^t=0)=1$ and 
+$\forall r>0$, $\beta^{(r)}_0=Pr(r^0=r)=0$.
+Then, we use a knowledge of $\beta^{(r)}_{t-1}$ and  $\pi^{(r)}_{t-1}$ at trial $t-1$ and
 using the transition probabilities defined by~\seeEq{run_length},
 this allows to predict the beliefs at each node at trial $t$:
 \eqa{
-\beta^{(r)}_t \propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  \pi^{(r)}_t \cdot  \beta^{(r)}_{t-1}
+\beta^{(r)}_t \propto \sum_{r^{t-1} \geq 0}  Pr(r^t | r^{t-1}) \cdot  \pi^{(r)}_{t-1} \cdot  \beta^{(r)}_{t-1}
 \label{eq:pred_node}
 }
 where $\beta^{(r)}_t$ is scaled such that $\sum_{r \geq 0 } \beta^{(r)}_t = 1$
 as it represents the probability distribution on the run-length $r$ given the data.
-In particular, at the occurrence of the first trial (for the node $r^0=0$)
-there is a switch and beliefs are set to initial values $\beta^{(0)}_0=Pr(r^t=0)=1$ and 
-$\forall r>0$, $\beta^{(r)}_0=Pr(r^0=r)=0$.
 In the graph, \seeEq{pred_node} corresponds to a message passing from the nodes at time $t-1$
 to that at time $t$ and formalized by the transition matrix $Pr(r^t | r^{t-1})$.
 %In the second step, one can perform prediction
 %using the graph defined in \seeFig{bayesianchangepoint}-A.
 %Now that we have the vector of likelihoods $\pi^{(r)}_t=\Ll(x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$,
 %one can update probabilities and perform the next prediction for trial $t+1$.
-Knowing that the data is generated by the BSM (see~\seeEq{bsm}),
+Formally, knowing that the data is generated by the BSM (see~\seeEq{bsm}),
 the run-length is either null at the moment of a switch,
 or this length (in number of trials) is incremented by $1$ if no switch occurred:
 \eql{\choice{
@@ -922,18 +924,24 @@ in which information will be represented at the different nodes for each trial $
 This allows to compute growth probabilities for each run-length $r \geq 0$, 
 that is, the belief at the next trial before observing a new datum:
 \eqa{
-\beta^{(r+1)}_t = \frac{1}{B} \cdot \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot (1-h)
+\beta^{(r+1)}_t = \frac{1}{B} \cdot \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t-1} \cdot (1-h)
+\label{eq:beta_noswitch}
 }
 (where $h$ is the scalar defining the hazard rate)
 but also the change-point probabilities:
 \eqa{
-\beta^{(0)}_t  = \frac{1}{B} \cdot \sum_{r} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot h
+\beta^{(0)}_t  = \frac{1}{B} \cdot \sum_{r \geq 0} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t-1} \cdot h
+\label{eq:beta_switch}
 }
 with $B$ such that $\sum_{r \geq 0} \beta^{(r)}_{t} = 1$.
 %This finalizes the prediction step.
+Second, we \emph{update} beliefs on all nodes
+by computing the likelihood $\pi^{(r)}_t$ of a future datum 
+knowing the current belief at each node,
+as will be detailed below.
 Knowing this probability strength and the previous value of the prediction, % an estimate for our belief on the different variables at the previous trial $t-1$,
-we can therefore make a \emph{prediction} for our belief of the probability bias at the next trial $t+1$,
-prior to the observation of a new datum $x_0^{t+1}$ and resume the update / prediction cycle.
+we can therefore make a prediction for our belief of the probability bias at the next trial $t+1$,
+prior to the observation of a new datum $x_0^{t+1}$ and resume the prediction / update cycle (see Equations~\ref{eq:pred},~\ref{eq:beta_noswitch} and~\ref{eq:beta_switch}).
 
 %-------------------------------------------------------------%
 %: 2Bc online estimation: run-lengths
@@ -953,41 +961,39 @@ the mean $\mu^{(r)}_{t}$ and sample size $\nu^{(r)}_{t}$ % which in our a case i
 First, at the occurrence of a switch (for the node $r^t=0$)
 beliefs are set to prior values (before observing any datum)
 $\mu^{(0)}_{t} = \mu_{prior}$ and $\nu^{(0)}_{t} = \nu_{prior}$.
-By recurrence (see \seeFig{bayesianchangepoint}-A), one can show that at any trial $t>0$,
+By recurrence %(see \seeFig{bayesianchangepoint}-A), 
+one can show that at any trial $t>0$,
 the sufficient statistics $(\mu^{(r)}_{t}, \nu^{(r)}_{t})$
 can be updated at the next trial following:
 \eqa{
 & \mu^{(r+1)}_{t} = \frac{r}{r+1} \cdot \mu^{(r)}_{t-1} + \frac{1}{r+1} \cdot x_0^{t-1} \\
 & \nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1
 }
-Note that $\mu^{(r+1)}_{t}$ is a moving average at trial $t$ on the $r$ last samples
-before observing the new datum,
-and $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the initial condition:
+Note that the series defined by $\mu^{(r+1)}_{r+t}$ is the moving average at trial $r+t$ on the $r$ last samples. 
+Moreover, $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the initial condition:
 $\nu^{(r)}_{t} = r + \nu_{prior}$.
 This updates for each node the sufficient statistics of the pdf at the current trial.
 
 %-------------------------------------------------------------%
 %: 2Bd update = Computing the likelihood
+% cf p.52 de 2017-10-05 chloe inverting the process rem jb
 %-------------------------------------------------------------%
-We can now detail the computation of the likelihood of this datum $x_0^t$ with respect to
-the current beliefs : $\pi^{(r)}_t = \Ll( x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$. %}
+We can now detail the computation of the likelihood of a future datum $x_0^{t+1}$ with respect to
+the current beliefs : $\pi^{(r)}_t = Pr( x_0^{t+1} |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$. %}
 In all generality, to perform this computation for some binary data $o$,
-we have computed the likelihood of each alternative outcome
+we have computed the likelihood at each node of each alternative outcome
 (the two hypothesis $o=1$ or $o=0$)
-knowing a Beta distribution pdf at each node
-which is parameterized by its mean $\mu$ and the sample size $\nu$.
-This defines the likelihood
-$\Ll(o | \mu, \nu) = \frac{1}{Z} Pr(o |\mu, \nu)$
-with $Z$ such that $\Ll(o=1| \mu, \nu) + \Ll(o=1 | \mu, \nu)=1$.
-It measures the relative frequency of observing an occurrence of $o$ at trial $t$,
-as the updated estimation of the probability bias of $\frac{\mu \cdot \nu + o}{\nu+1}$
-knowing a sample size of $\nu+1$.
-Following the formulation of the Beta probability distribution, it follows:
+knowing the mean bias $\mu$ 
+and conditioned on the run-length $r$. 
+For each outcome, the likelihood of observing an occurrence of $o$ at the next trial,
+is that of a binomial process knowing an updated sample size of $\nu+1$
+and an updated estimation of the probability bias of $\mu' = \frac{\mu \cdot \nu + o}{\nu+1}$.
+This defines the likelihood as :
 \eql{
 \Ll(o | \mu, \nu) = \frac{1}{Z} \cdot {(\mu\cdot \nu + o)}^{\mu\cdot \nu + o} \cdot {((1- \mu)\cdot \nu + 1- o)}^{(1- \mu)\cdot \nu + 1- o}
 \label{eq:likelihood}
 }
-where
+with $Z$ such that $\Ll(o=1| \mu, \nu) + \Ll(o=1 | \mu, \nu)=1$ where
 \eq{
 Z = {(\mu \cdot \nu + 1)}^{\mu \cdot \nu + 1}  \cdot {((1- \mu)\cdot \nu )}^{(1- \mu)\cdot \nu }  +
     {(\mu \cdot \nu )}^{\mu \cdot \nu }  \cdot {((1- \mu)\cdot \nu + 1)}^{(1- \mu)\cdot \nu + 1}
@@ -1022,7 +1028,7 @@ only the belief at trial $t$ and the new datum $x_0^t$
 are sufficient to predict all probabilities.
 %at the next trial $t+1$: $Pr(r_t | x_0^{0:t})$, $\mu^{(r)}_{t+1}$ and $\nu^{(r)}_{t+1}$.
 %projecting beliefs backwards and forward  : the algorithm is online et the price of memory
-Finally, this update / prediction cycle applied to the BSM and using~\seeEq{bsm}
+Finally, this prediction / update cycle applied to the BSM and using~\seeEq{bsm}
 constitutes the Binary Bayesian Change Point (BBCP) detection model.
 
 % ------------------------------------------------------------------
@@ -1181,14 +1187,14 @@ In a first session, we recorded the participants' eye movements and
 extracted the aSPEM velocity (for details, see \seeApp{em}).
 Among our $12$ participants, we show \AM{the eye velocity traces of} two representative subjects in~\seeFig{results_psycho}.
 These representative participants were chosen as those
-whose fitting score was clasoest to the median fit in the quantitative analysis
+whose fitting score was closest to the median fit in the quantitative analysis
 that will be illustrated in \seeSec{inter}.
 In particular, we show in the top panel the actual sequence of binary choices
 (TD, leftward or rightward) of the Bernoulli trial, whereas in the bottom panels, we compare the evolution of the recorded aSPEM (black line) with
 the ground truth value of the hidden probability bias $x_1$ (step-like blue shaded curve),
 and the value inferred using the BBCP model (green line), along with its confidence interval (green shaded area).
 Comparing the raw eye movement results with the BBCP agent predictions,
-it seems qualitatively that both traces evolve in good agreement.
+it appears qualitatively that both traces evolve in good agreement.
 First, one can observe in both a common trend with the polarity of aSPEM velocity
 to be negative for $\hat{p}$ values below~$.5$ and positive for values above~$.5$.
 %Moreover, both curves seem to lag by few trials the 
@@ -1423,7 +1429,7 @@ Qualitatively,~\seeFig{results_inter} shows that for each individual the higher 
 Quantitatively, the ratio of both hazard rates computed over participants was $XX \pm XX$,
 showing a slight tendency for hazard rate to be higher in the first session.
 In comparison if, similarly to bootstrap resampling, 
-we would shuffle the the joint fitted values across participants,
+we would shuffle the joint fitted values across participants,
 we would obtain a distribution of hazard rate ratios of $XX \pm XX~\ms$.
 Such an analysis suggests that the predictive processes
 at work in both sessions may have a common origin,
@@ -1576,10 +1582,10 @@ in some pathological disorders such as schizophrenia~\citep{Adams12}.
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
 \begin{itemize}\setlength{\itemsep}{0ex}
-\item We have developed a Bayesian model of an agent estimating the probability bias of a volatile environment with changing points (switches), such that the agent may decide to stay on a current hypothesis or go to a novel one. This allows to dynamically infer the probability bias and directly compare model and experimental data such as human behavior.
-\item We applied such a framework to a probability bias in a visual task where we manipulated the direction of the target. We observed a good match between the largely unconscious anticipatory smooth eye movements and the results of the model, replicating and extending previous results.
-\item We also found a good match explicit rating of confidence on expected stimulus motion direction, a novel result suggesting that this model captures some of the brain computations underlying expectancy based motion prediction, both at the unconscious and conscious levels.
-\item Finally, we found that the experimental data of each different participant matched different intrinsic levels of beliefs on the volatility of the experiment, some being more or less conservative, but that this level matched relatively in both experiments (unconsciously or consciously). 
+\item We have developed a Bayesian model of an agent estimating the probability bias of a volatile environment with changing points (switches), such that the agent may decide \textit{to stay} on the current hypothesis about the environment, or \textit{to go} for a novel one. This allows to dynamically infer the probability bias across time and directly compare model predictions and experimental data, such as human behavior.
+\item We applied such a framework to the case of a probability bias in a visual motion task where we manipulated the target direction probability. We observed a good match between the largely unconscious anticipatory smooth eye movements and the results of the model, replicating and \AM{providing a novel solid theoretical framework for} previous findings ~\citep{Montagnini2010, SantosKowler2017, Damasse18}.
+\item We also found a good match between model predictions and the explicit rating of confidence on the expected target motion direction, a novel result suggesting that this model captures some of the brain computations underlying expectancy based motion prediction, both at the unconscious and conscious level
+\item Finally, we found that the experimental data of each different participant matched to different levels of belief's precision on the volatile environment, some being more or less conservative. Interestingly, the individual level was relatively across the two experiments (namely for the unconscious anticipatory eye movements and the conscious rating). 
 \end{itemize}
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Material and Methods}
