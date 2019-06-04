@@ -388,7 +388,7 @@ to pick up some regularity in a binary sequence of alternating left and right di
 Second, it is in general an unconscious process
 of which participants are not aware of.
 As such, this behavior is potentially a useful marker
-to study the internal representation of motion expectancy (or Prior) 
+to study the internal representation of motion expectancy %(or Prior) 
 and in particular to analyze how sensorimotor expectancy 
 interacts dynamically with contextual contingencies in shaping oculomotor behavior.
 
@@ -548,7 +548,9 @@ is  drawn from a Bernoulli trial $\Bb$ parameterized by its frequency $h$, or \e
 The value of $\tau=\frac 1 h$ thus gives the average length (in number of trials)
 between the occurrence of two switches.
 The probability bias $p$ in target direction is a random variable that we define as $x_1^t \in [0, 1]$.
-It is chosen at random from a prior distribution $\Pp$ at the moment of a switch,
+It is chosen at random from a prior distribution $\Pp$ 
+(that will be described in more detail in the following sections)
+at the moment of a switch,
 and else it is constant until the next occurrence of a switch.
 Finally, a target moves either to the left or to the right,
 and we denote this variable (target direction) as $x_0^t \in \{ 0, 1 \}$.
@@ -856,7 +858,8 @@ we will describe the fundamental steps leading to its construction,
 while giving the full algorithmic details in~\seeApp{bcp}.
 In general, the goal of predictive processing
 is to infer the probability $Pr(x_0^{t+1} | x_0^{0:t})$ of the next datum
-knowing what has been observed until trial $t$ and
+knowing what has been observed until trial $t$ 
+(that we denote by $x^{0:t} = \{ x_0^0, \ldots, x_0^t \}$) and
 the prior knowledge by the agent 
 that data is the output of a given (stochastic) generative model.
 To derive a Bayesian predictive model, we introduce
