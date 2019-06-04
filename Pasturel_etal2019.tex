@@ -388,7 +388,7 @@ to pick up some regularity in a binary sequence of alternating left and right di
 Second, it is in general an unconscious process
 of which participants are not aware of.
 As such, this behavior is potentially a useful marker
-to study the internal representation of motion expectancy (or Prior) 
+to study the internal representation of motion expectancy %(or Prior) 
 and in particular to analyze how sensorimotor expectancy 
 interacts dynamically with contextual contingencies in shaping oculomotor behavior.
 
@@ -548,7 +548,9 @@ is  drawn from a Bernoulli trial $\Bb$ parameterized by its frequency $h$, or \e
 The value of $\tau=\frac 1 h$ thus gives the average length (in number of trials)
 between the occurrence of two switches.
 The probability bias $p$ in target direction is a random variable that we define as $x_1^t \in [0, 1]$.
-It is chosen at random from a prior distribution $\Pp$ at the moment of a switch,
+It is chosen at random from a prior distribution $\Pp$ 
+(that will be described in more detail in the following sections)
+at the moment of a switch,
 and else it is constant until the next occurrence of a switch.
 Finally, a target moves either to the left or to the right,
 and we denote this variable (target direction) as $x_0^t \in \{ 0, 1 \}$.
@@ -856,7 +858,8 @@ we will describe the fundamental steps leading to its construction,
 while giving the full algorithmic details in~\seeApp{bcp}.
 In general, the goal of predictive processing
 is to infer the probability $Pr(x_0^{t+1} | x_0^{0:t})$ of the next datum
-knowing what has been observed until trial $t$ and
+knowing what has been observed until trial $t$ 
+(that we denote by $x^{0:t} = \{ x_0^0, \ldots, x_0^t \}$) and
 the prior knowledge by the agent 
 that data is the output of a given (stochastic) generative model.
 To derive a Bayesian predictive model, we introduce
@@ -1096,6 +1099,7 @@ In order to quantitatively evaluate the algorithm,
 we computed the  negative log-likelihood (in bits) of the estimate probability bias,
 knowing the ground truth, 
 and averaged over all trials:
+% justify with Norton18
 \eql{
 \Cc =  \sum_{t} -\log_2 B(x_1^t ; \hat{x_1}^t, r^t )
 \label{eq:MI}
@@ -1444,73 +1448,52 @@ between exploration and exploitation.
 \section{Discussion}
 \label{sec:outro}
 
-%  FOR DISCUSSION?
-%This analysis -the correlation between predicted bias and bet scores- exhibits a consistent relationship
-%but which now follows a non-linear trace.
-%We modeled this behavior as
-%a logistic regression over
-%the log-odd ratio estimated by the agent.
-%TODO model this relationship by a logistic regression
-%This analysis provides with regression factors for each participant.
-%It shows that the bias (intercept)
-%was negligible, while the slope (logistic factor)
-%was always positive.
-%This indicates a generic aversion to risk~\citep{Kahneman13}
-%such that the value of a possible outcome
-%is down-weighted by the precision of the inference.
-%Our logistic regression analyses
-%suggests that this may come from a multiplicative weight
-%on the (log-) odd-ratio which is chosen as a rating scaled
-%compared to the (log-)odd-ratio of the inferred probability. %\AM{Is it worth to discuss more in depth the different functional dependence on p of the two experimental measures? Cite Santos and Kowler discussion about this!} - LP: that would certainly be a great addition...
-
-%The oculomotor system has to constantly update its knowledge about the environment. An ordeal is then to adapt to changes with the shortest delays. Early studies have proposed that stimuli provides information to modulate reaction times within sequences~\citep{Hyman1953, Tune1964, Schvaneveldt}. This theoretical approach is coherent with the notion of local transition probabilities that quantifies at which extent an observation deviates from the preceding ones~\citep{Meyniel16}. The way expectations act on cognitive processes has been investigated by a wide range of domains such as predictive coding~\citep{Wolpert2000, Wacongne2012}, active inference~\citep{Friston2010}, motor control~\citep{Sutton1998, Behrens07} and reinforcement learning~\citep{Nassar2012}. Non-stationary observations can also explain why both local and global effects emerge and why local effects persist in the long run even within purely random sequences~\citep{Cho2002, Yu2009}. This constant update of a general belief on the world can be a consequence of the constant attempt to learn the non-stationary structure of the environment that can change at unpredictable times~\citep{Yu2009}. Many studies have actually already pointed the brain's ability to apprehend non-stationary states in environments~\citep{Ossmy2013, Meyniel15}. As explained by~\citet{Meyniel16}, the belief upon an environment can be divided in two different ways:
-%
-
-The compromise between speed and accuracy is shaped
-by the variability introduced by the neural noise
-at the neuro-motor junction~\citep{Harris98}.
+\section{Discussion}
+\label{sec:outro}
 
 
-PERCEPTION:
-\AM{I PROPOSE to skip this, we detail this stuff in the next section and the part on perception is not appropriate here... First, it seems important to investigate the integration of environmental statistical regularities
-in this smooth tracking task with
-a large family of probability biases for the direction of target motion.
-As such, instead of a finite set of probability biases, % ($.25$, $.5$, $.75$, $.9$ and $1.$, see \seeFig{intro}-B),
-we decided to use a continuous range of probability biases.
-%which we were sampling from a fixed prior distribution.
-Second,~\citet{Maus2015} have recently shown that
-both perceptual adaptation for speed estimation
-and priming of aSPEM could occur simultaneously.
-They found a robust repulsive adaptation effect
+OVERVIEW OF MAIN FINDINGS
+
+
+OPEN QUESTIONS
+Generality of present results? What about multiple choice tasks? or higher order statistics?
+
+Comment on linearity of aSPEM vs p contrasted to the apparent non-linearity on direction probability rating : MAYBE DANGEROUS?
+Neuroeconomists have pointed out a generic aversion to risk~\citep{Kahneman13}
+such that the value of a possible outcome
+is weighted by the precision of the inference.
+\citet{SantosKowler2017} found a non-linearity in the dependence of visual perception upon the probability of cue validity....???
+In general, 
+
+
+ENVIRONMENTAL REGULARITIES, COGNITIVE PROCESSES AND VISUAL PERCEPTION
+In this study, we have not addressed the question of whether and how statistical learning affects visual motion perception throughout our model-generated volatile sequences. We have made the choice to focus on a largely unconscious motor behaviour (aSPEM) as well as on the explicit confidence rating for the forthcoming motion direction.
+In an empirical context similar to ours, \citet{Maus2015} have recently shown that
+perceptual adaptation for speed estimation occurs concurrently to
+priming-based aSPEM throughout a sequence of motion tracking trials with randomly varying speed. They actually found a robust repulsive adaptation effect
 with perceptual judgements biased in favor of faster percepts
 after seeing stimuli that were slower and~\textit{vice-versa}. 
 Concurrently, these authors also found
 a positive effect on anticipatory smooth pursuit, 
 with faster anticipation after faster stimuli.
-Indeed, both priming and adaptation can hypothetically share
-a common internal representation of stimulus' speed,
-reasonably built according to the mean velocity of the last observed movements.
-The comparison of the internal representation of speed
-with the current stimulus velocity could explain repulsive aftereffects and,
-at the same time, be used to elicit
-an aSPEM component at the appropriate velocity
-for next stimulus occurrences.
-\citet{Maus2015} estimated the past history effects over different times scales,
+\citet{Maus2015} estimated the past history effects according to a fixed-size memory. They found that aSPEM and speed perception change over different times scales,
 with the priming effects being maximized
-for short stimulus histories (around $2$ trials) and
+for short-term stimulus history (around $2$ trials) and
 adaptation for longer stimulus history, around $15$ trials.
 Their main conclusion was that
 perceptual adaptation and oculomotor priming
 are the result of two distinct readout processes 
 using the same internal representation of motion regularities.
-Both these history lengths can be considered
+Note that both these history lengths can be considered
 short in comparison to the several hundreds
-of trials that are commonly used in psychophysics and sensorimotor adaptation studies.} 
-In general, it seems \AM{important to disentangle the different cognitive processes and time scales} 
-and their respective role in adaptive processes.
+of trials that are commonly used in psychophysics and sensorimotor adaptation studies and that in that study the role of environmental volatility was not addressed at all. 
 
+Indeed, only few studies have previously investigated the dynamics of sequential effects on visual perception in a volatile environment~\citep{Fiser ? ChopinMamassian Meyniel} and they have mostly focused on ...  
+The way expectations act on cognitive processes  in general has been investigated by a wide range of domains such as predictive coding~\citep{Wolpert2000, Wacongne2012}, active inference~\citep{Friston2010}, motor control~\citep{Sutton1998, Behrens07} and reinforcement learning~\citep{Nassar2012}. Non-stationary observations can also explain why both local and global effects emerge and why local effects persist in the long run even within purely random sequences~\citep{Cho2002, Yu2009}. This constant update of a general belief on the world can be a consequence of the constant attempt to learn the non-stationary structure of the environment that can change at unpredictable times~\citep{Yu2009}. Many studies have actually already pointed out the brain's ability to apprehend non-stationary states in environments~\citep{Ossmy2013, Meyniel15}. 
+Future work will be needed to address the amplitude and dynamics of modulations of visual perception and other cognitive functions in a well-controlled volatile environment like the one we formally defined in this study, and to compare it to anticipatory eye movements and explicit confidence ratings.
 
-\AM{I WOULD PUT ALL THIS IN THE DISCUSSION: They concluded that transition probabilities constitute
+WHAT STATISTICS IS LEARNED IN STATISTICAL LEARNING?
+\citet{Meyniel} analysed ... They concluded that transition probabilities constitute
 a core building block of sequence knowledge in the brain,
 which then applies to a variety of sensory modalities and
 experimental situations.
@@ -1519,70 +1502,168 @@ by learning transition probabilities
 compared to the absolute item frequencies or the frequencies of their alternations.
 The critical difference lies in the content
 of what is learned (transition probabilities versus item frequencies)
-in an attempt to capture human behavior.}
-%TODO say it is an optimization that is, a measure of the dynamic compromise between exploration and exploitation
-%Chopin and %Mamassian and the use of visual confidence  (see Ann rev of Vision 2016)}
-\AM{Rather than on transition probabilities, here we focus on the analysis and modeling of human behavior as a function of the frequency of presentation (and its fluctuations in time) of a given event in a binary sequence of alternating visual motion direction.} 
+in an attempt to capture human behavior.
+Rather than on transition probabilities, here we focused on the analysis and modeling of human behavior as a function of the frequency of presentation (and its fluctuations in time) of a given event in a binary sequence of alternating visual motion direction. We can speculate that different statistics can play a major role in different conditions...
+ In general, it seems important to disentangle the different cognitive processes and time scales at play under different conditions in adaptive processes.
 
-
-%\begin{enumerate}[label=\Alph*)]
-%\item Update the~\textit{a priori} likelihood of a sudden change, also known as the volatility and taken into account by the model~\citep{Behrens07}
-%\item A leaky integrator factor imbedded in the model~\citep{Anderson2006, Yu2009, Ossmy2013, Wang2002}
-%\end{enumerate}
-%
-
-
-However, one should be careful with conclusions based on this kind of data fitting.
-For instance, if the inversion of the forward model is exact in the present case,
-one has to use approximations in more complex models,
-such as with the HGF~\citep{Mathys11}
-or with the models developed by~\citet{Wilson13,Wilson18}.
-As a result, some discrepancy could originate from these approximations
-at the algorithmic level.
-As such, it is essential to carefully control for these sources of discrepancy (intrinsic versus extrinsic) independently~\citep{Beck12}.
-Second, if we assume that the inversion of the model is perfect
+HIERARCHICAL BAYESIAN INFERENCE IN THE BRAIN.
+Short review on: Friston hypothesis on predictive coding ... Evidence from Electrophysiology, Imaging, Animal behaviour...
+However, one should be careful when interpreting the quality of fit of bayesian inference models for behavioural data  
+Note that, if we assume that the inversion of the generative model is perfect
 (that is, no algorithmic approximation has been done),
 this means that by fitting different ideal observers
 to the data, one evaluates as a matter of fact the adequacy of
-a generative model, not of the probabilistic calculus in its detailed implementation.
-This is a common confusion around the idea of a ``Bayesian brain''.
-We believe here that the challenge is not to validate the hypothesis that the brain uses or not the Bayes' theorem,
-but rather to test different hypotheses
-about the different generative models
-that agents may use.
-This methodological point may be essential in designing the experimental protocol,
-or in evaluating quantitatively the results.
-
-%: theory / computationnally-driven experiments
-% it's a main novelty
-generative models for changing environments allows to know the ground truth compared to natural stimulation (see Rust eand Movshon)%
-Let's remember our hierarchical generative model.
-
-At any given trial, we wish to construct an algorithm which
-
-We will introduce a fundamental component of Bayesian models : a latent variable
-
-this new variable will be used to test different hypothesis which will be evaluated to predict future states. it is called latent because it aims at representing a variable that is latent (or hidden) to the observer
-
-in our case, we will assume that the Bayesian model knows about the structure of the generative model and we will set it to the current run-length $r$, that is, at any given trial, the hypothesis that the past r observations belong to the same block. of course a wrong choice of a latent variables (let's say the temperture in the experimental room) may give unexpected results, even is the Bayesian model is ``optimal'' - an essential point to understand in Bayesian inference
-
-extension to multi-nomioal( daniele + fred danion)
-
-
-
-% Still, only Bayesian models recover an explicit probabilistic representation of change in likelihood. Recent experimental studies suggest, indeed, that the brain is able of estimating a hierarchical model of the environment and that humans can explicitly report sudden changes in sequences~\citep{Meyniel15, Gallistel2014}. Ultimately, we passed over one of leaky integrator models' main default, having a too fixed and rigid memory parameter. In our work the memory parameter is constantly inferred by the BBCP algorithm over the observation of the number of trials where this inference stayed reliable and then globally represented probabilistic representation of changes in likelihood and actualization of~\textit{a priori} knowledge.
-
-
-perspectives:
-- RL : use hindsight example of localization for saccades: get the changepoints then improve estimate of reward allows to optimize the association between the set of measures and their utility (compared to Q-learning where it is a fixed length)
-- interindividual differences : markers for the berhaviour traces - traces of the network implementation / testing different h
-- the brain is weakly Bayesian (it does not care about equations but more about sugar)
-
-
-One remaining question though, is to understand why in cognitive systems
-this adaptation occurs and
+a specific generative model, not of the probabilistic calculus in its detailed implementation.
+There is a common confusion around the idea of a ``Bayesian brain''.
+We believe here that the challenge is not to validate the hypothesis that the brain uses or not the Bayes' theorem, but rather to test different hypotheses about the different generative models
+that agents may use. This methodological point may be essential in designing future experimental protocols, and in evaluating quantitatively the results.The brain is probably only "weakly Bayesian" (it does not care about equations but more about sugar). One remaining question though, is to understand why in cognitive systems
+the adaptation to hierarchical probabilistic fluctuations occurs and
 in particular why it may deviate
-in some pathological disorders such as schizophrenia~\citep{Adams12}.
+in some pathological disorders such as schizophrenia~\citep{Adams12, JardriDeneve REF}.
+
+COMPUTATIONAL PHENOTYPING OF HUMAN PARTICIPANTS
+Discussion about the model-based analysis inter-individual differences...
+
+%%%
+%%%%  FOR DISCUSSION?
+%%%%This analysis -the correlation between predicted bias and bet scores- exhibits a consistent relationship
+%%%%but which now follows a non-linear trace.
+%%%%We modeled this behavior as
+%%%%a logistic regression over
+%%%%the log-odd ratio estimated by the agent.
+%%%%TODO model this relationship by a logistic regression
+%%%%This analysis provides with regression factors for each participant.
+%%%%It shows that the bias (intercept)
+%%%%was negligible, while the slope (logistic factor)
+%%%%was always positive.
+%%%%This indicates a generic aversion to risk~\citep{Kahneman13}
+%%%%such that the value of a possible outcome
+%%%%is down-weighted by the precision of the inference.
+%%%%Our logistic regression analyses
+%%%%suggests that this may come from a multiplicative weight
+%%%%on the (log-) odd-ratio which is chosen as a rating scaled
+%%%%compared to the (log-)odd-ratio of the inferred probability. %\AM{Is it worth to discuss more in depth the different functional dependence on p of the two experimental measures? Cite Santos and Kowler discussion about this!} - LP: that would certainly be a great addition...
+%%%
+%%%%The oculomotor system has to constantly update its knowledge about the environment. An ordeal is then to adapt to changes with the shortest delays. Early studies have proposed that stimuli provides information to modulate reaction times within sequences~\citep{Hyman1953, Tune1964, Schvaneveldt}. This theoretical approach is coherent with the notion of local transition probabilities that quantifies at which extent an observation deviates from the preceding ones~\citep{Meyniel16}. The way expectations act on cognitive processes has been investigated by a wide range of domains such as predictive coding~\citep{Wolpert2000, Wacongne2012}, active inference~\citep{Friston2010}, motor control~\citep{Sutton1998, Behrens07} and reinforcement learning~\citep{Nassar2012}. Non-stationary observations can also explain why both local and global effects emerge and why local effects persist in the long run even within purely random sequences~\citep{Cho2002, Yu2009}. This constant update of a general belief on the world can be a consequence of the constant attempt to learn the non-stationary structure of the environment that can change at unpredictable times~\citep{Yu2009}. Many studies have actually already pointed the brain's ability to apprehend non-stationary states in environments~\citep{Ossmy2013, Meyniel15}. As explained by~\citet{Meyniel16}, the belief upon an environment can be divided in two different ways:
+%%%%
+%%%
+%%%The compromise between speed and accuracy is shaped
+%%%by the variability introduced by the neural noise
+%%%at the neuro-motor junction~\citep{Harris98}.
+%%%
+%%%
+%%%PERCEPTION:
+%%%\AM{I PROPOSE to skip this, we detail this stuff in the next section and the part on perception is not appropriate here... First, it seems important to investigate the integration of environmental statistical regularities
+%%%in this smooth tracking task with
+%%%a large family of probability biases for the direction of target motion.
+%%%As such, instead of a finite set of probability biases, % ($.25$, $.5$, $.75$, $.9$ and $1.$, see \seeFig{intro}-B),
+%%%we decided to use a continuous range of probability biases.
+%%%%which we were sampling from a fixed prior distribution.
+%%%Second,~\citet{Maus2015} have recently shown that
+%%%both perceptual adaptation for speed estimation
+%%%and priming of aSPEM could occur simultaneously.
+%%%They found a robust repulsive adaptation effect
+%%%with perceptual judgements biased in favor of faster percepts
+%%%after seeing stimuli that were slower and~\textit{vice-versa}. 
+%%%Concurrently, these authors also found
+%%%a positive effect on anticipatory smooth pursuit, 
+%%%with faster anticipation after faster stimuli.
+%%%Indeed, both priming and adaptation can hypothetically share
+%%%a common internal representation of stimulus' speed,
+%%%reasonably built according to the mean velocity of the last observed movements.
+%%%The comparison of the internal representation of speed
+%%%with the current stimulus velocity could explain repulsive aftereffects and,
+%%%at the same time, be used to elicit
+%%%an aSPEM component at the appropriate velocity
+%%%for next stimulus occurrences.
+%%%\citet{Maus2015} estimated the past history effects over different times scales,
+%%%with the priming effects being maximized
+%%%for short stimulus histories (around $2$ trials) and
+%%%adaptation for longer stimulus history, around $15$ trials.
+%%%Their main conclusion was that
+%%%perceptual adaptation and oculomotor priming
+%%%are the result of two distinct readout processes 
+%%%using the same internal representation of motion regularities.
+%%%Both these history lengths can be considered
+%%%short in comparison to the several hundreds
+%%%of trials that are commonly used in psychophysics and sensorimotor adaptation studies.} 
+%%%In general, it seems \AM{important to disentangle the different cognitive processes and time scales} 
+%%%and their respective role in adaptive processes.
+%%%
+%%%
+%%%\AM{I WOULD PUT ALL THIS IN THE DISCUSSION: They concluded that transition probabilities constitute
+%%%a core building block of sequence knowledge in the brain,
+%%%which then applies to a variety of sensory modalities and
+%%%experimental situations.
+%%%As such, sequential effects in binary sequences would be better explained
+%%%by learning transition probabilities
+%%%compared to the absolute item frequencies or the frequencies of their alternations.
+%%%The critical difference lies in the content
+%%%of what is learned (transition probabilities versus item frequencies)
+%%%in an attempt to capture human behavior.}
+%%%%TODO say it is an optimization that is, a measure of the dynamic compromise between exploration and exploitation
+%%%%Chopin and %Mamassian and the use of visual confidence  (see Ann rev of Vision 2016)}
+%%%\AM{Rather than on transition probabilities, here we focus on the analysis and modeling of human behavior as a function of the frequency of presentation (and its fluctuations in time) of a given event in a binary sequence of alternating visual motion direction.} 
+%%%
+%%%
+%%%%\begin{enumerate}[label=\Alph*)]
+%%%%\item Update the~\textit{a priori} likelihood of a sudden change, also known as the volatility and taken into account by the model~\citep{Behrens07}
+%%%%\item A leaky integrator factor imbedded in the model~\citep{Anderson2006, Yu2009, Ossmy2013, Wang2002}
+%%%%\end{enumerate}
+%%%%
+%%%
+%%%
+%%%However, one should be careful with conclusions based on this kind of data fitting.
+%%%For instance, if the inversion of the forward model is exact in the present case,
+%%%one has to use approximations in more complex models,
+%%%such as with the HGF~\citep{Mathys11}
+%%%or with the models developed by~\citet{Wilson13,Wilson18}.
+%%%As a result, some discrepancy could originate from these approximations
+%%%at the algorithmic level.
+%%%As such, it is essential to carefully control for these sources of discrepancy (intrinsic versus extrinsic) independently~\citep{Beck12}.
+%%%Second, if we assume that the inversion of the model is perfect
+%%%(that is, no algorithmic approximation has been done),
+%%%this means that by fitting different ideal observers
+%%%to the data, one evaluates as a matter of fact the adequacy of
+%%%a generative model, not of the probabilistic calculus in its detailed implementation.
+%%%This is a common confusion around the idea of a ``Bayesian brain''.
+%%%We believe here that the challenge is not to validate the hypothesis that the brain uses or not the Bayes' theorem,
+%%%but rather to test different hypotheses
+%%%about the different generative models
+%%%that agents may use.
+%%%This methodological point may be essential in designing the experimental protocol,
+%%%or in evaluating quantitatively the results.
+%%%
+%%%%: theory / computationnally-driven experiments
+%%%% it's a main novelty
+%%%generative models for changing environments allows to know the ground truth compared to natural stimulation (see Rust eand Movshon)%
+%%%Let's remember our hierarchical generative model.
+%%%
+%%%At any given trial, we wish to construct an algorithm which
+%%%
+%%%We will introduce a fundamental component of Bayesian models : a latent variable
+%%%
+%%%this new variable will be used to test different hypothesis which will be evaluated to predict future states. it is called latent because it aims at representing a variable that is latent (or hidden) to the observer
+%%%
+%%%in our case, we will assume that the Bayesian model knows about the structure of the generative model and we will set it to the current run-length $r$, that is, at any given trial, the hypothesis that the past r observations belong to the same block. of course a wrong choice of a latent variables (let's say the temperture in the experimental room) may give unexpected results, even is the Bayesian model is ``optimal'' - an essential point to understand in Bayesian inference
+%%%
+%%%extension to multi-nomioal( daniele + fred danion)
+%%%
+%%%
+%%%
+%%%% Still, only Bayesian models recover an explicit probabilistic representation of change in likelihood. Recent experimental studies suggest, indeed, that the brain is able of estimating a hierarchical model of the environment and that humans can explicitly report sudden changes in sequences~\citep{Meyniel15, Gallistel2014}. Ultimately, we passed over one of leaky integrator models' main default, having a too fixed and rigid memory parameter. In our work the memory parameter is constantly inferred by the BBCP algorithm over the observation of the number of trials where this inference stayed reliable and then globally represented probabilistic representation of changes in likelihood and actualization of~\textit{a priori} knowledge.
+%%%
+%%%
+%%%perspectives:
+%%%- RL : use hindsight example of localization for saccades: get the changepoints then improve estimate of reward allows to optimize the association between the set of measures and their utility (compared to Q-learning where it is a fixed length)
+%%%- interindividual differences : markers for the berhaviour traces - traces of the network implementation / testing different h
+%%%- the brain is weakly Bayesian (it does not care about equations but more about sugar)
+%%%
+%%%
+%%%One remaining question though, is to understand why in cognitive systems
+%%%this adaptation occurs and
+%%%in particular why it may deviate
+%%%in some pathological disorders such as schizophrenia~\citep{Adams12}.
 
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
