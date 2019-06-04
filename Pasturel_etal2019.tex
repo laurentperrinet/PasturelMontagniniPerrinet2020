@@ -882,21 +882,22 @@ Pr(x_0^{t+1} | x_0^{0:t}) =
 %\sum_{r^{t}} \beta^{(r)}_t \cdot Pr(x_0^t | r^{t}, x_0^{0:t-1}) 
 %\sum_{r^{t}} Pr(x_0^{t+1} | r^{t}, x_0^{0:t}) \cdot Pr(r^t | x_0^{0:t})
 %\sum_{r^{t}} Pr(x_0^{t+1} | x_0^{(r^{t})}) \cdot \beta^{(r)}_t
-\sum_{r^{t}} \pi^{(r)}_t \cdot \beta^{(r)}_t
+\sum_{r^{t}} Pr(x_0^{t+1} | r^{t}, x_0^{0:t}) \cdot \beta^{(r)}_t
 \label{eq:pred}
 }
-where $\pi^{(r)}_t=Pr(x_0^{t+1} | r^{t}, x_0^{0:t})$ is the likelihood of a future datum $x_0^{t+1}$ 
+where $Pr(x_0^{t+1} | r^{t}, x_0^{0:t})$ is 
+the Bernouilli process corresponding to a future datum $x_0^{t+1}$ 
 conditioned on the run-length and 
-$\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability of each possible run-length.
+$\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability distribution of each possible run-length.
 %a previous value $Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$ 
 %and the likelihood associated to the new value $x_0^t$.
 
 With these premises, we define the BBCP
 as a prediction / update cycle. 
 First, we will \emph{predict} the probability 
-$\beta^{(r)}_t$ at each node.
-In particular, at the occurrence of the first trial (for the node $r^0=0$)
-there is a switch and beliefs are set to initial values $\beta^{(0)}_0=Pr(r^t=0)=1$ and 
+$\beta^{(r)}_t$ at each node knowing either an initial prior or a previous trial.
+In particular, at the occurrence of the first trial there is a switch and 
+beliefs are set to initial values $\beta^{(0)}_0=Pr(r^t=0)=1$ and 
 $\forall r>0$, $\beta^{(r)}_0=Pr(r^0=r)=0$.
 Then, we use a knowledge of $\beta^{(r)}_{t-1}$ and  $\pi^{(r)}_{t-1}$ at trial $t-1$ and
 using the transition probabilities defined by~\seeEq{run_length},
@@ -935,7 +936,7 @@ but also the change-point probabilities:
 \beta^{(0)}_t  = \frac{1}{B} \cdot \sum_{r \geq 0} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t-1} \cdot h
 \label{eq:beta_switch}
 }
-with $B$ such that $\sum_{r \geq 0} \beta^{(r)}_{t} = 1$.
+with $B$ such that $\sum_{r \geq 0} \beta^{(r)}_{t} = 1$. Note that $\beta^{(0)}_t=h$ and thus $B=\sum_{r \geq 0} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t-1}$.
 %This finalizes the prediction step.
 Second, we \emph{update} beliefs on all nodes
 by computing the likelihood $\pi^{(r)}_t$ of a future datum 
