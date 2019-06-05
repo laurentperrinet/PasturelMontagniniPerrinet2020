@@ -903,10 +903,11 @@ Then, we use a knowledge of $\beta^{(r)}_{t-1}$ and  $\pi^{(r)}_{t-1}$ at trial 
 using the transition probabilities defined by~\seeEq{run_length},
 this allows to predict the beliefs at each node at trial $t$:
 \eqa{
-\beta^{(r)}_t \propto \sum_{r^{t-1} \geq 0}  Pr(r^t | r^{t-1}) \cdot  \pi^{(r)}_{t-1} \cdot  \beta^{(r)}_{t-1}
+\beta^{(r)}_t \propto \sum_{r^{t-1} \geq 0}  Pr(r^t | r^{t-1}) \cdot  \pi^{(r)}_{t} \cdot  \beta^{(r)}_{t-1}
 \label{eq:pred_node}
 }
-where $\beta^{(r)}_t$ is scaled such that $\sum_{r \geq 0 } \beta^{(r)}_t = 1$
+where the likelihood $\pi^{(r)}_{t}=Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$ will be detailed below 
+and $\beta^{(r)}_t$ is scaled such that $\sum_{r \geq 0 } \beta^{(r)}_t = 1$
 as it represents the probability distribution on the run-length $r$ given the data.
 In the graph, \seeEq{pred_node} corresponds to a message passing from the nodes at time $t-1$
 to that at time $t$ and formalized by the transition matrix $Pr(r^t | r^{t-1})$.
@@ -927,16 +928,16 @@ in which information will be represented at the different nodes for each trial $
 This allows to compute growth probabilities for each run-length $r \geq 0$, 
 that is, the belief at the next trial before observing a new datum:
 \eqa{
-\beta^{(r+1)}_t = \frac{1}{B} \cdot \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t-1} \cdot (1-h)
+\beta^{(r+1)}_t = \frac{1}{B} \cdot \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot (1-h)
 \label{eq:beta_noswitch}
 }
 (where $h$ is the scalar defining the hazard rate)
 but also the change-point probabilities:
 \eqa{
-\beta^{(0)}_t  = \frac{1}{B} \cdot \sum_{r \geq 0} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t-1} \cdot h
+\beta^{(0)}_t  = \frac{1}{B} \cdot \sum_{r \geq 0} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot h
 \label{eq:beta_switch}
 }
-with $B$ such that $\sum_{r \geq 0} \beta^{(r)}_{t} = 1$. Note that $\beta^{(0)}_t=h$ and thus $B=\sum_{r \geq 0} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t-1}$.
+with $B$ such that $\sum_{r \geq 0} \beta^{(r)}_{t} = 1$. Note that $\beta^{(0)}_t=h$ and thus $B=\sum_{r \geq 0} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t}$.
 %This finalizes the prediction step.
 Second, we \emph{update} beliefs on all nodes
 by computing the likelihood $\pi^{(r)}_t$ of a future datum 
@@ -982,10 +983,11 @@ This updates for each node the sufficient statistics of the pdf at the current t
 % https://en.wikipedia.org/wiki/Beta_distribution#Effect_of_different_prior_probability_choices_on_the_posterior_beta_distribution
 %-------------------------------------------------------------%
 We can now detail the computation of the likelihood of a future datum $x_0^{t+1}$ with respect to
-the current beliefs : $\pi^{(r)}_t = Pr( x_0^{t+1} |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$. %}
+the current beliefs : $\pi^{(r)}_t = Pr( x_0^{t} |  \mu^{(r)}_{t-1}, \nu^{(r)}_{t-1})$. %}
 This scalar is returned by the binary function $\pi^{(r)}_t = \Ll( \mu^{(r)}_{t}, \nu^{(r)}_{t} | x_0^{t+1})$.
 whenever we observe the new datum
-and where this binary function $\Ll(p, r | o)$ evaluates at each node the likelihood of each alternative outcome $o=1$ or $o=0$
+and where this binary function $\Ll(p, r | o)$ evaluates at each node the likelihood 
+of each counterfactual alternative outcome $o=1$ or $o=0$
 knowing a mean bias $p=\mu^{(r)}_{t}$ 
 and a sample size $r=\nu^{(r)}_{t}$. 
 For each outcome, the likelihood of observing an occurrence of $o$ at the next trial,
