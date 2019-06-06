@@ -992,11 +992,12 @@ This updates for each node the sufficient statistics of the pdf at the current t
 %-------------------------------------------------------------%
 We can now detail the computation of the likelihood of the current datum $x_0^{t}$ with respect to
 the current beliefs : $\pi^{(r)}_t = Pr( x_0^{t} |  \mu^{(r)}_{t-1}, \nu^{(r)}_{t-1})$. %}
-This scalar is returned by the binary function $\pi^{(r)}_t = \Ll( \mu^{(r)}_{t}, \nu^{(r)}_{t} | x_0^{t+1})$.
-Whenever we observe a counterfactual alternative outcome $o=1$ or $o=0$
-this binary function $\Ll(p, r | o)$ evaluates at each node its likelihood
-knowing a mean bias $p=\mu^{(r)}_{t}$
-and a sample size $r=\nu^{(r)}_{t}$.
+This scalar is returned by the binary function 
+$\Ll(p, r | o)$ which evaluates at each node the likelihood of the parameters of each node
+whenever we observe a counterfactual alternative outcome $o=1$ or $o=0$
+knowing a mean bias $p=\mu^{(r)}_{t-1}$
+and a sample size $r=\nu^{(r)}_{t-1}$,
+that is, $\pi^{(r)}_t = \Ll( \mu^{(r)}_{t-1}, \nu^{(r)}_{t-1} | x_0^{t})$.
 For each outcome, the likelihood of observing an occurrence of $o$,
 is the probability of a binomial random variable knowing
 an updated probability bias of $\frac{p \cdot r + o}{r+1}$,
@@ -1012,33 +1013,38 @@ with $Z$ such that $\Ll(p, r|o=1) + \Ll(p, r|o=0)=1$. % where
 %Z = {(\mu \cdot \nu + 1)}^{\mu \cdot \nu + 1}  \cdot {((1- \mu)\cdot \nu )}^{(1- \mu)\cdot \nu }  +
 %    {(\mu \cdot \nu )}^{\mu \cdot \nu }  \cdot {((1- \mu)\cdot \nu + 1)}^{(1- \mu)\cdot \nu + 1}
 %}
-The derivation of this function is detailed in~\seeApp{likelihood}.
+The full derivation of this function is detailed in~\seeApp{likelihood}.
 
 %-------------------------------------------------------------%
 %: 2Be online estimation: prediction
 %-------------------------------------------------------------%
-Finally, the agent may infer at each trial the belief
-and use for instance the maximum a posteriori or the expected value as readouts.
-More precisely, we define these two strategies as following.
-For the maximum a posteriori readout
-at each trial the run-length with maximal probability is selected
-and then the predicted probability bias is estimated
-as the probability bias for that run-length:
-\eql{
-\hat{x_1}^t = \mu^{(r^\ast)}_{t} \quad \text{with} \quad r^\ast = \argmax_r \beta^{(r)}_{t}
-}
-For the conditional mean readout strategy, the probability bias is estimated
-at each trial as the expected value over all run-lengths:
+Finally, the agent infers at each trial the belief and parameters at each node
+%and use for instance the maximum a posteriori or the expected value as readouts.
+and use the marginal predictive probability (see~\seeEq{pred_node}) as a readout.
+%More precisely, we define these two strategies as following.
+%For the maximum a posteriori readout
+%at each trial the run-length with maximal probability is selected
+%and then the predicted probability bias is estimated
+%as the probability bias for that run-length:
+%\eql{
+%\hat{x_1}^t = \mu^{(r^\ast)}_{t} \quad \text{with} \quad r^\ast = \argmax_r \beta^{(r)}_{t}
+%}
+This probability is computed as the expected value over all run-lengths:
 \eql{
 \hat{x_1}^t = \sum_{r} \beta^{(r)}_{t} \cdot \mu^{(r)}_{t}
+\label{eq:readout}
 }
-Contrary to the leaky integrator for which the inference $\hat{x_2}=h$ was fixed,
-the BBCP model uses a dynamical model, but still with only one parameter.
-As for the latter, this parameter~$h=\frac 1 \tau$ informs the BBCP model
-that the probability bias  changes \emph{on average} every~$\tau$ trials.
-As in \seeEq{leaky}, this defines the \emph{hazard rate}.
+Interestingly, it can be proven that if,
+instead of updating beliefs with Equations~\ref{eq:beta_noswitch} and~\ref{eq:beta_switch},
+we set $\beta^{(r+1)}_t = h \cdot r \cdot (1 -h) ^r$, then the marginal probability
+is equal to that obtained with the leaky integrator (see~\seeEq{leaky}).
+This highlights that contrary to the leaky integrator, % for which the inference $\hat{x_2}=h$ was fixed,
+the BBCP model uses a dynamical model for the estimation of the volatility.
+Still, as for the latter, there is only one parameter~$h=\frac 1 \tau$ informs the BBCP model
+that the probability bias switches \emph{on average} every~$\tau$ trials.
+%As in \seeEq{leaky}, this defines the \emph{hazard rate}.
 Moreover, note that the resulting operations
-(see Equations~\ref{eq:pred},~\ref{eq:beta_noswitch},~\ref{eq:beta_switch} and~\ref{eq:likelihood})
+(see Equations~\ref{eq:pred},~\ref{eq:beta_noswitch},~\ref{eq:beta_switch}, ~\ref{eq:likelihood} and~\ref{eq:readout})
 which constitute the BBCP algorithm
 can be implemented \textit{online}, that is,
 only the state at trial $t$ and the new datum $x_0^t$
@@ -1055,8 +1061,9 @@ constitutes the Binary Bayesian Change Point (BBCP) detection model.
 %-------------------------------------------------------------%
 %: 2Ca python scripts : qualitative analysis
 %-------------------------------------------------------------%
-The BBCP algorithm is detailed in~\seeApp{bcp} and
-we have implemented it using a set of python scripts.
+We have implemented 
+the BBCP algorithm% is detailed in~\seeApp{bcp} and
+using a set of python scripts.
 This implementation provides also with some control scripts
 to test the behavior of the algorithm with synthetic data.
 Indeed, this allows to qualitatively and quantitatively assess
@@ -1064,17 +1071,17 @@ this ideal observer model against a ground truth before applying it
 on the trial sequence that was used for the experiments and
 ultimately comparing it to the human behavior. % (see~\seeFig{results_raw}).
 %TODO : synchronize with FIGURE 3 fig:bayesianchangepoint
-\seeFig{bayesianchangepoint}~\textbf{A} \AM{shows a graph-based representation of the BBCP estimate of the run-length for one instance of a short sequence ($10$ trials) of simulated data $x_0^t$
+\seeFig{bayesianchangepoint}-A shows a graph-based representation of the BBCP estimate of the run-length for one instance of a short sequence ($10$ trials) of simulated data $x_0^t$
 of leftward and rightward trials, with a switch from a low to a high probability
 of moving rightward occurring at trial $5$ (see figure caption for a detailed explanation).
 It also shows the predicted probability $\hat{x_1}^t$
 as computed using the BBCP algorithm.
 The bottom panel illustrates
 the belief on the predicted probability $\hat{p}$ at a given trial.
-\seeFig{bayesianchangepoint}~\textbf{B} illustrates the predicted probability $\hat{x_1}^t$, as well as the corresponding uncertainty (the shaded areas correspond to confidence intervals) when
+\seeFig{bayesianchangepoint}-B illustrates the predicted probability $\hat{x_1}^t$, as well as the corresponding uncertainty (the shaded areas correspond to confidence intervals) when
 we applied respectively the BBCP (green curve) and the forgetful-agent (red curve) model to
 a longer sequence of $200$ trials,
-characteristic of our behavioral experiments.}
+characteristic of our behavioral experiments.
 In the bottom panel,
 we show the dynamical evolution of the belief on the latent variable (run length),
 corresponding to the same sequence of $200$ trials.
@@ -1082,17 +1089,19 @@ As for the synthetic example above,
 the BBCP model achieves a correct detection of all switches after a short delay of a few trials.
 Two main observations are noteworthy. First, after each detected switch, beliefs align along a linear ridge,
 as our model integrates belief about a current phase during two switches (it 'stays').
-Then, we observe that after a switch (hidden to the model),
-the belief is diffused strongly until the relative probability \AM{of a continuously increasing run-length}
+Then, we observe that shortly after a switch (hidden to the model),
+the belief is diffused strongly until the relative probability of a continuously increasing run-length
 is lower that that assigned to a smaller run-length:
 There is a transition to a new state (it 'goes').
 Second, we may use this information to read-out the most likely probability-bias and its confidence interval,
-as represented by the green dashed lines (respectively $.05$ and $.95$) in \seeFig{bayesianchangepoint}~\textbf{B}.
+as represented by the green dashed lines (respectively $.05$ and $.95$) in \seeFig{bayesianchangepoint}-B.
 Note, the leaky integrator model is simply implemented
-by an agent assuming a fixed run-length $r_t=\tau$ (see red solid and dashed lines in \seeFig{bayesianchangepoint}~\textbf{B}),
+by an agent assuming a fixed run-length $r_t=\tau$ (see orange lines in \seeFig{bayesianchangepoint}-B),
 allowing for a simple comparison of the BBCP model with the leaky integrator.
-Again, we see that a fixed length model gives a similar output
-but with the two disadvantages compared to the BBCP model, namely that \AM{there is a stronger inertia in the dynamics of the model estimates and that there is no improvement in the precision of the estimates after a switch.}
+Again, we see that a fixed length model gives qualitatively a similar output
+but with the two disadvantages compared to the BBCP model, namely that 
+there is a stronger inertia in the dynamics of the model estimates and 
+that there is no improvement in the precision of the estimates after a switch.
 %1/ the delay after the occurrence of a switch will always be similar,
 %2/ there is no dynamic update of the inferred probability while in the BBCP model, the precision of each new datum is higher after a switch.
 In contrast, for the BBCP model, after a correct switch detection
