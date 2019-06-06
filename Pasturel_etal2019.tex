@@ -281,7 +281,8 @@ or even hours in the case of the adaptation to a persistent sensorimotor relatio
 Indeed, stimulus history of sensory events influences
 how the current stimulus is perceived~\citep{Sotiropoulos2011,Adams12,ChopinMamassian2012,FischerWhitney2014,Cicchini_PRSB_2018} and
 acted upon~\citep{WallmanFuchs1998,Carpenter1995, Maus2015,Damasse18}.
-Two qualitatively opposite effects of the stimulus history have been described: positive (priming-like), and negative (adaptation) effects.
+Two qualitatively opposite effects of the stimulus history have been described: 
+negative (adaptation) effects, and positive (priming-like).
 Adaptation reduces the sensitivity to recurrently presented stimuli,
 thus yielding to a re-calibrated perceptual experience~\citep{Clifford2007, Webster2011, Kohn2007}. Examples of negative biases in perceptual discrimination are numerous (see for instance~\citet{KanaiVerstraten2005,ChopinMamassian2012}) and show that the visual system tends
 to favor temporal and spatial stability of the stimulus.
@@ -319,7 +320,8 @@ to deal with this question.
 In all generality, Bayesian methods allow to define and quantitatively assess
 a range of hypotheses about the processing of (possibly noisy) information by some formal agents~\citep{Deneve1999, Diaconescu2014, Daunizeau10a}.
 A key principle in the Bayesian inference approach is
-to introduce latent variables which formalize how different hypotheses predict synthetic or experimental measurements.
+to introduce so-called latent variables 
+which formalize how different hypotheses predict synthetic or experimental measurements.
 Each stated hypothesis is quantitatively formalized
 by defining a graph of probabilistic dependencies between specific variables
 using a generative model for the prior knowledge about its structure.
@@ -485,7 +487,7 @@ to dynamically manipulate the probability bias
 and generate an ecologically relevant input sequence of target directions.
 A possible confound comes from the fact that
 previous studies have used trial sequences (\textit{blocks}) of fixed lengths,
-stacked in a sequence of conditions defined by the different probability bias.
+stacked in a sequence of conditions defined by the different probability biases.
 Indeed, observers may potentially pick up
 the information on the fixed block's length
 to predict the occurrence of a switch (a change in probability bias) during the experiment.
@@ -514,20 +516,19 @@ where the variability fluctuates along a given trajectory.
 Such a forward probabilistic model is invertible
 using some simplifying assumptions and allows
 to extract a time-varying inference of the agent's belief about volatility~\citep{Vossel14}.
-Herein, we will use a simpler model where
-the bias $p$ in target direction varies according to a piecewise-constant function
-similarly to~\citet{Meyniel13}.
-To analyze the effect of history length in all generality,
-we therefore extended the protocol of~\citep{Montagnini2010} such that the probability bias
+Herein, to analyze the effect of history length in all generality,
+we  extended the protocol of~\citep{Montagnini2010} such that the probability bias
 is still fixed within blocks but that these blocks have variable lengths,
 that is, by introducing switches occurring at random times.
+Therefore, similarly to~\citet{Meyniel13}, we will use a model where
+the bias $p$ in target direction varies according to a piecewise-constant function.
 %We expect that within each sub-block, the uncertainty about of the value of $p$
 %will progressively decrease as we accumulate samples.
 In our previous study
 the range of possible biases was finite
 and in the present work, we extended the paradigm
-by drawing $p$ as a random continuous variable
-within the whole possible range (that is, the segment $[ 0, 1 ]$).
+by drawing $p$ as a continuous random variable
+within the whole range of possible probability biases (that is, the segment $[ 0, 1 ]$).
 As a summary, we first draw random events (that we denote as ``switches'')
 with a given mean frequency and which controls the strength of the volatility.
 Second, the value $p$ of the bias only changes at the moment of a switch,
@@ -536,11 +537,11 @@ and is stationary between two switches.
 Third, target direction is drawn as a Bernoulli trial using the current value of $p$.
 Such a hierarchical structure is presented in~\seeFig{intro}-A,
 where we show the realization of the target's directions sequence,
-the trajectory of the underlying (hidden) probability bias, and
+the trajectory of the underlying (hidden to the observer) probability bias, and
 the occurrences of switches.
 
 %: 1Cc  equations
-Mathematically, this can also be considered as a three-layered hierarchical model
+Mathematically, this can be considered as a three-layered hierarchical model
 defining the evolution of the model at each trial $t$ as the vector  $(x_2^t, x_1^t, x_0^t)$.
 At the topmost layer,
 the occurrence $x_2^t \in \{ 0, 1 \}$ of a switch ($1$ for true, $0$ for false)
@@ -549,11 +550,14 @@ The value of $\tau=\frac 1 h$ thus gives the average length (in number of trials
 between the occurrence of two switches.
 The probability bias $p$ in target direction is a random variable that we define as $x_1^t \in [0, 1]$.
 It is chosen at random from a prior distribution $\Pp$
-(that will be described in more detail in the following sections)
+%(that will be described in more detail in the following sections)
 at the moment of a switch,
 and else it is constant until the next occurrence of a switch.
+The prior distribution $\Pp$ can be for instance
+the uniform distribution $\Uu$ on $ [ 0, 1 ] $ or
+Jeffrey's prior $\Jj$~(see \seeApp{bcp}).
 Finally, a target moves either to the left or to the right,
-and we denote this variable (target direction) as $x_0^t \in \{ 0, 1 \}$.
+and we denote this variable (target direction, TD) as $x_0^t \in \{ 0, 1 \}$.
 This direction is drawn from a Bernoulli trial
 parameterized by the direction bias $p=x_1^t$.
 Mathematically, this is  described according to the following equations:
@@ -572,22 +576,23 @@ Mathematically, this is  described according to the following equations:
  } \\
 \text{Sequence of directions: } x_0^t \propto \Bb(x_1^t)
  }\label{eq:bsm}}
-Note that the prior distribution $\Pp$ can be for instance
-the uniform distribution $\Uu$ on $ [ 0, 1 ] $ or
-Jeffrey's prior $\Jj$~(see \seeApp{bcp}).
-There is always a switch at $t=0$ (that is, $x_2^0=1$).
-In addition, we imposed in our sequence of $600$ trials that a switch
+In practice, we generated a sequence of $600$ trials,
+and there is by construction a switch at $t=0$ (that is, $x_2^0=1$).
+In addition, we imposed in our sequence that a switch
 occurs after trial numbers $200$ and $400$,
-in order to be able to compare adaptation properties across different chunks of the trials sequence.
+in order to be able to compare adaptation properties 
+across different chunks of the trials sequence.
 %The model generating the experimental sequence of trial directions, as well as the experimental protocol are illustrated in~\seeFig{intro}-A.
-With such a three-layered structure, the model generates the randomized occurrence of the switches,
-sub-blocks with constant direction probability between two switches separated by a random length
-and chosen in the continuous range of possible biases' values,
+With such a three-layered structure, the model generates the randomized occurrence of switches,
+itself generating sub-blocks with constant direction probability %between two switches separated by a random length
+%and chosen in the continuous range of possible biases' values,
 and finally the random sequence of Target Direction (TD) occurrences at each trial.
-In conclusion, the system of three equations defined in~\seeEq{bsm}
+To summarize, the system of three equations defined in~\seeEq{bsm}
 defines the Binary Switching Model (BSM)
-which we used for the generation of experimental sequences presented to human participants in the experiments,
-but also as the basis of an ideal observer model.
+which we used for the generation of experimental sequences presented to human participants in the experiments.
+We will use that generative model as the basis of an ideal observer model 
+inverting that model from the observations (TDs) and 
+which we will test as a model for the adaptation of human behavior.
 
 %: 1Cd outline
 This paper is organized in five parts.
@@ -599,9 +604,10 @@ To our knowledge, such algorithm was not yet available, and
 we will here provide it with an analytical solution,
 by extending previous results from~\citet{AdamsMackay2007}
 to the case of binary data as in the BSM presented above (see~\seeEq{bsm}).
-In addition, the proposed algorithm is \emph{online},
+In addition, the proposed algorithm is biological realistic 
+as it uses simple computations and is \emph{online},
 that is, that all computations on the sequence may be done
-using solely the variables available at the present trial,
+using solely a set of variables available at the present trial,
 compactly representing all the sequence history seen in previous trials.
 We will also provide a computational implementation
 and a quantitative evaluation of this algorithm.
@@ -611,9 +617,6 @@ to validate the generalization of previous results %.
 %with constant speed from the center
 %either to the right or left across trials
 with this novel protocol. %~(see \seeFig{intro}-A \& B).
-Another novelty of our approach is to use that model as a regressor
-which will allow us to match experimental results with the BBCP
-and to compare its predictive power compared to classical models such as the leaky integrator model.
 %The probability of either motion direction changes randomly in time.
 While in a first session, we recorded anticipatory eye movements~(see \seeFig{intro}-B),
 in a second experimental session, participants were asked to estimate
@@ -629,7 +632,10 @@ in addition to the recording of eye movements.
 %on a rating scale
 %between "sure left", to "unsure" and finally "sure right"~(see \seeFig{intro}-C).
 These results will be compared to the results for eye movements.
-Similarly, we will show that these results match well
+Another novelty of our approach is to use that model as a regressor
+which will allow us to match experimental results with the BBCP
+and to compare its predictive power compared to classical models such as the leaky integrator model.
+Hence, we will show that behavioral results match well
 with the BBCP model.
 In~\seeSec{inter}, we will synthesize these results
 by inferring the volatility parameters inherent to the models
