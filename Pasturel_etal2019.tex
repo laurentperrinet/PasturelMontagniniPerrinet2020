@@ -715,7 +715,7 @@ It may thus be equivalently written in the form of a moving average:
 \hat{x_1}^{t+1} = h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
 \label{eq:leaky2}}
 Inversely, let us now assume that
-the true direction probability bias changes randomly with a mean rate of once
+the real direction probability bias changes randomly with a mean rate of once
 every $\tau$ trials.
 As a consequence, the probability that the bias does not change is $Pr(x_2^t=0)=1-h$ at each trial.
 Assuming independence of these occurrences, the estimated probability $p=\hat{x_1}^{t+1}$ is thus the sum
@@ -838,7 +838,7 @@ First, it allows the agent to restrict the prediction $\hat{x_1}^{t+1}$ of $x_1^
 only based on those samples produced since the last switch, from $t-r^t$ until $t$.
 % and which we denote as $x_0^{(r^t)}=x_0^{r^t:t}$ .
 Indeed, the samples $x_0^t$ which occurred before the last switch
-were drawn independently from the present true value $x_1^t$
+were drawn independently from the present real value $x_1^t$
 and thus cannot help estimating the latter.
 Second, it is known that for this estimate, the precision
 (the inverse of variance) on the estimate $\hat{x_1}^{t+1}$
@@ -1187,12 +1187,18 @@ These values were here scaled according to their extremal values.
 We also show the evolution of the value
 of the probability bias $p$ (blue shaded areas)
 which is hidden to observers
-and used to generate the TD sequence.
+and used to generate the TD sequence above.
 We have overlaid the results of the BBCP model
 (see~\seeFig{bayesianchangepoint}-B, green line).
 This shows qualitatively a good fit between
 the experimental evidence and the model.
-\AM{Note that, in order to account for some specific changes observed in the behavioral data after the short pauses occurring every $50$ trials (as denoted by vertical black lines, see main tex), we introduced the additional assumption, for the BBCP model, that ... ???. This is reflected by the \textit{reset} of the green curve close to the $0.5$ level and the increase of the uncertainty after each multiple of $50$ trials.}
+Note that, in order to account for some specific changes 
+observed in the behavioral data after the short pauses 
+occurring every $50$ trials (as denoted by vertical black lines, see main tex), 
+we added the assumption %for both models, 
+that there was a switch at each pause. 
+This is reflected by the \textit{reset} of the green curve close to the $0.5$ level and 
+the increase of the uncertainty after each multiple of $50$ trials.
 % Note that we introduced short pauses
 % every $50$ trials (as denoted by vertical black lines),
 % to prevent from fatigue and check for possible drifts of the recorded eye position.
@@ -1227,7 +1233,7 @@ reflecting the time (in the order of a few trials) taken to integrate enough inf
 to justify the estimation of a novel expectation about the probability bias value for the Bernoulli trial.
 In general, results are more variable when the bias is weak ($p\approx .5$)
 than when it is strong (close to zero or one),
-consistent with the well-known dependence of the variance of a Bernoulli trial
+consistent with the well-known dependence with the variance of a Bernoulli trial
 upon the probabilistic bias ($\textrm{Var}(p)= p \cdot (1-p)$).
 In addition, the precision (i.e. the inverse of the variance)
 of the inferred probability-bias $\hat{x_1}$ seems to increase
@@ -1244,13 +1250,14 @@ In addition, the explicit ratings
 for the next trial's expected motion direction (or \textit{bet scores}, red curve in~\seeFig{results_psycho})
 provided by the second experiment
 seem to qualitatively follow the same trend.
-Indeed, similarly to the strength of aSPEM, in~\seeFig{results_psycho} we can qualitatively compare
+Indeed, similarly to the strength of aSPEM,
+we qualitatively compare in~\seeFig{results_psycho}
 the trace of the bet scores
 with the inferred probability $\hat{x_1}$.
 As with aSPEM, the series of the participants' bias guesses
 exhibits a positive correlation with $\hat{p}$:
 The next outcome of $x_{0}^{t}$ will in general be correctly inferred,
-as compared to a random choice
+as compared to a random choice.
 %\AM{I WOULD SKIP THIS Equipped with this generative BSM model and the ideal observer given by the BBCP model,
 %the agent is able to predict the next outcome better than chance level.}
 Moreover, we observe again that a stronger bias leads to a lower variability in the bias estimate, compared to bias values close to $0.5$.
@@ -1286,20 +1293,29 @@ which supposedly underlie the generation of anticipatory aSPEM with variable str
 \emph{Behavioral results, quantitative analysis across participants.} %
 For all participants and for all trials, we collected an estimate of
 the strength of aSPEM and a bet score value.
-We analyse the relation between these experimental data with the corresponding estimates $\hat{p}$
+We analyze the relation between these experimental data with the corresponding prediction $P_{\text{BBCP}}$
 of the probability bias as inferred by the BBCP model.
-We display these functional relations using a contour plot over
-the Kernel Density Estimation (KDE) of the relationship between $\hat{p}$ in abscissa
-and, respectively, \textbf{(A)} the strength of aSPEM and \textbf{(B)} the bet score in ordinate.
-The density of strokes represent increasing probability strengths.
-As a comparison we have plotted in orange color the KDE computed over
-the probability bias estimates obtained with a leaky integrator.
-Additionally, we have computed the mutual information between the model expectation and the two experimental readouts of the probability bias, which
-shows quantitatively that for both experimental measures
+We display these functional relations 
+using an error plot showing the median with $.05$ and $.95$ quantiles
+over 5 equal partitions of the $[0, 1]$ probability segment.
+%contour plot over the Kernel Density Estimation (KDE) 
+It shows in green the relationship between the BBCP regressor in abscissa
+and in ordinate \textbf{(A)} the strength of aSPEM and \textbf{(B)} the bet score, respectively.
+%The density of strokes represent increasing probability strengths.
+As a comparison, we have plotted in blue and orange colors the match
+with respectively 
+the real probability ($P_{\text{real}}=x_1^t$) and
+the probability bias estimates $P_{\text{leaky}}$ obtained with a leaky integrator.
+Insets summarize the quantitative measure of this match 
+by computing the Pearson correlation coefficient $r$ 
+and the mutual information (MI) over the whole data.
+Dots correspond to these measures for each individual observer.
+This shows quantitatively that for both experimental measures
 there is a strong statistical dependency between
-the behavioral results and the model predictions,
-but also that this dependency is stronger than that obtained
-with the leaky integrator.
+the behavioral results and the prediction of the BBCP model,
+but also that this dependency is significantly stronger than that obtained
+with the real probability and with the estimate obtained with the leaky integrator
+(respectively $p=XXX$ and $p=XXX$ for $r$ and  $p=XXX$ and $p=XXX$ for MI).
 }
 \label{fig:results_psycho_all}
 \end{figure}
@@ -1312,22 +1328,53 @@ with the value of probability bias $\hat{x_1}$
 computed by the BBCP algorithm.
 Compiling results (see~\seeFig{results_psycho}) from all participants,
 we have plotted in~\seeFig{results_psycho_all}
-the aSEPM strength (panel A) and the bet scores (panel B) as a function of the BBCP-inferred probability bias
-(we remind here that the true value of the probability bias was coded at the second layer of the BSM generative model and is unknown both to the BBCP agent and to the human observers).
-All trials from all participants were pooled together to generate a scatter plot
-which was then  converted to a kernel density estimate
-for a better visualization (kernel size of $XX$).
-We also estimated the mutual information %$\Cc$ (\seeEq{MI}) OR RATHER $MI$, as defined by ... NEW EQUATION}
-between the raw data and the model.
+the aSPEM strength (panel A) and the bet scores (panel B) as a function of the BBCP-inferred probability bias
+(we remind here that the real value of the probability bias was coded at the second layer of the BSM generative model and is hidden both to the BBCP agent and to the human observers).
+All trials from all participants were pooled together 
+and we show this joint data as an error bar plot 
+showing the median with $.05$ and $.95$ quantiles
+for 5 equal partitions of the $[0, 1]$ probability segment. % to generate a scatter plot
+As a comparison, the same method was applied to the real value and 
+to the estimate obtained by the leaky integrator.
+%which was then  converted to a kernel density estimate
+%for a better visualization (kernel size of $XX$).
+
+We quantitatively estimated the Pearson correlation coefficient
+and the mutual information %$\Cc$ (\seeEq{MI}) OR RATHER $MI$, as defined by ... NEW EQUATION}
+between the raw data and the different models.
 Details of this analysis is presented in~\seeApp{bcp}.
-As a comparison, the same method was applied to the leaky integrator.
 First, as we can see in~\seeFig{results_psycho_all}-A,
 the probability bias $\hat{p}$ estimated by the BBCP algorithm
 is positively linearly correlated with the aSPEM velocity.
 The corresponding Pearson correlation coefficient
 is slightly higher than that found by
 \citet{Montagnini2010} and \citet{Damasse18} for aSPEM measures gathered across experimental blocks with fixed direction biases ($r = XXX \pm $),
-and much better than that estimated for the leaky-integrator model ($r = XXX \pm $).
+and significantly better than that estimated 
+for the real probability ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$)
+and for that estimated by the leaky-integrator model ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$, see inset).
+A similar analysis
+illustrates the relationship between
+the model-estimated probability-bias
+and the rating value, or bet score, about the expected outcome, which was provided at each trial
+by participants 
+and is shown in~\seeFig{results_psycho}-B.
+Similarly to the aSPEM strength, the rating values are nicely correlated
+with the probability bias given by the model, 
+as quantified by the average correlation and mutual information 
+($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$).
+Importantly, this value is again higher for the BBCP model than
+for the leaky integrator ($r = XXX \pm XXX$, $MI = XXX \pm XXX$).
+Further note that, in order to account for some specific changes 
+observed in the behavioral data after the short pauses 
+occurring every $50$ trials, 
+we added the assumption %for both models, 
+that there was a switch at each pause. 
+However, removing this assumptions did not significantly change the match of the model
+compared to $P_{\text{real}}$ or $P_{\text{leaky}}$ 
+($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$).
+To conclude, we deduce that the dynamic estimate of probability biases produced by the BBCP model
+is a powerful regressor to explain both the strength of anticipatory smooth pursuit eye movements and the explicit ratings of human observers experiencing a volatile context for visual motion.
+
 This relatively strong correlation is surprising at a first sight
 as the inter-switch sequence blocks have random length,
 and participants have to adapt to such a volatile environment.
@@ -1343,18 +1390,6 @@ In particular, the model predicts different aspects
 of the experimental results,
 from the variability as a function of the inferred probability,
 to the dynamics of the behavior following a (hidden) switch.
-The KDE correlation estimate shown in~\seeFig{results_psycho}-B,
-illustrates the relationship between
-the model-estimated probability-bias
-and the rating value, or bet score, about the expected outcome, which was provided at each trial
-by participants .
-
-Similarly to the aSPEM strength, the rating values are nicely correlated
-with the probability bias given by the model, as quantified by the average  mutual information ($r = XXX \pm $).
-Importantly, this value is again higher for the BBCP model than
-for the leaky integrator ($r = XXX \pm $).
-To conclude, we deduce that the dynamic estimate of probability biases produced by the BBCP model
-is a powerful regressor to explain both the strength of anticipatory smooth pursuit eye movements and the explicit ratings of human observers experiencing a volatile context for visual motion.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results: Analyzing inter-individual differences}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1404,6 +1439,7 @@ and finally that there is a positive correlation between both experiments.
 Such an analysis suggests that participants may have
 a common mechanism for this tendency of exploration versus exploitation
 at the conscious or unconscious levels.}
+\LP{Stars correspond to the observers displayed in ~\seeFig{results_psycho}}
 }
 \label{fig:results_inter}
 \end{figure}
