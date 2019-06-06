@@ -1113,9 +1113,8 @@ as the number of observations increase after a switch.
 % see 2018-02-12 journal club bayesian changepoint chloe.pdf p.33/ p.42
 % TODO include these quantitative results in a figure
 %-------------------------------------------------------------%
-
 In order to quantitatively evaluate the algorithm,
-we computed the  negative log-likelihood (in bits) of the estimate probability bias,
+we computed the negative log-likelihood (in bits) of the estimate probability bias,
 knowing the ground truth,
 and averaged over all trials:
 % justify with Norton18
@@ -1123,20 +1122,20 @@ and averaged over all trials:
 \Cc =  \sum_{t} -\log_2 B(x_1^t ; \hat{x_1}^t, r^t )
 \label{eq:MI}
 }
-This measure explicitly corresponds to the average score of our model,
-where the score is the likelihood of the inferred belief about the probability bias
-as given by its mean $\hat{x_1}^t$ along with its precision $r^t$ and
-compared to the hidden ground truth $x_1^t$.
 %\eql{
 %B(x_1^t ; \hat{x_1}^t, r^t ) =  \hat{x_1}^t \log_2( x_1^t) + (1-\hat{x_1}^t) \log_2( 1- x_1^t)
 %}
+This measure explicitly corresponds to the average score of our model,
+where this score is the log likelihood (in bits) of the inferred belief about the probability bias
+as given by its mean $\hat{x_1}^t$ along with its precision $r^t$ and
+compared to the hidden ground truth $x_1^t$.
 Similar measures based on the predicted readout $\hat{x_0}^t$
 gave similar results but would need more data to converge.
 We have tested $100$ blocks of $2000$ trials for each read-out.
-In general, we found that the inference is better for the 'mean' read-out
-than for the 'max' read-out and lowest for the 'fixed' read-out.
+In general, we found that the inference is better for the BBCP algorithm ($\Cc = XXXX \pm XXX$)
+than for the leaky integrator ($\Cc = XXXX \pm XXX$), showing it provides with a better prediction.
 Moreover, by testing different values of $h$ assumed by the agent
-but for a fixed $h=1/40$ in the BSM,
+but for a fixed hazard rate $h=1/40$ in the BSM,
 we found that this is true for a range of values of $h$.
 Importantly, this analysis shows that inference is best for a hazard rate
 equal to that implemented in the generative model and which is hidden to the BBCP agent.
