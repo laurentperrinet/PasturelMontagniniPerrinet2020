@@ -1236,11 +1236,12 @@ the real value of the hidden probability bias $x_1$ (step-like blue shaded curve
 and the value inferred using the BBCP model (green line), along with the  (green shaded area).
 Comparing the raw eye movement results with the BBCP agent predictions,
 it appears qualitatively that both traces evolve in good agreement.
-First, one can observe in both a common trend with the polarity of aSPEM velocity
+First, one can observe a trend in the polarity of aSPEM velocity
 to be negative for $\hat{p}$ values below~$.5$ and positive for values above~$.5$.
 %Moreover, both curves seem to lag by few trials the
 %occurrence of a switch of the probability bias (also hidden to the observers).
-Moreover, both curves unveil similar delays in detecting and taking into account a switch of the probability bias (also hidden to the observers),
+Moreover, both curves (aSPEM and model) unveil similar delays in detecting and 
+taking into account a switch of the probability bias (while being hidden to the observers),
 reflecting the time (in the order of a few trials) taken to integrate enough information
 to justify the estimation of a novel expectation about the probability bias value for the Bernoulli trial.
 In general, results are more variable when the bias is weak ($p\approx .5$)
@@ -1272,7 +1273,8 @@ The next outcome of $x_{0}^{t}$ will in general be correctly inferred,
 as compared to a random choice.
 %\AM{I WOULD SKIP THIS Equipped with this generative BSM model and the ideal observer given by the BBCP model,
 %the agent is able to predict the next outcome better than chance level.}
-Moreover, we observe again that a stronger bias leads to a lower variability in the bias estimate, compared to bias values close to $0.5$.
+Moreover, we observe that a stronger bias leads 
+to a lower variability in the bias estimate, compared to bias values close to $0.5$.
 Again, a (hidden) switch in the value of the bias is
 most of the time correctly identified after only a few trials.
 Finally, note that at every pause (black vertical bar in~\seeFig{results_psycho}),
@@ -1338,7 +1340,8 @@ with the real probability and with the estimate obtained with the leaky integrat
 Quantitatively, we now compare the experimental results
 with the value of probability bias $\hat{x_1}$
 computed by the BBCP algorithm.
-Compiling results (see~\seeFig{results_psycho}) from all participants,
+Compiling results %(see~\seeFig{results_psycho}) 
+from all participants,
 we have plotted in~\seeFig{results_psycho_all}
 the aSPEM strength (panel A) and the bet scores (panel B) as a function of the BBCP-inferred probability bias
 (we remind here that the real value of the probability bias was coded at the second layer of the BSM generative model and is hidden both to the BBCP agent and to the human observers).
@@ -1363,7 +1366,7 @@ The corresponding Pearson correlation coefficient ($r = XXX \pm $)
 is slightly higher than that found by
 \citet{Montagnini2010} and \citet{Damasse18} for aSPEM measures gathered across experimental blocks with fixed direction biases ($r = XXX \pm $),
 and significantly better than that estimated 
-for the real probability ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$\footnote{All following $p$-values are Wilcoxon signed-rank test.}) % https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html
+for the real probability ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$\footnote{All following $p$-values are obtained from the Wilcoxon signed-rank test.}) % https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html
 and for that estimated by the leaky-integrator model ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$, see inset).
 A similar analysis
 illustrates the relationship between
@@ -1382,7 +1385,7 @@ observed in the behavioral data after the short pauses
 occurring every $50$ trials, 
 we added the assumption %for both models, 
 that there was a switch at each pause. 
-However, removing this assumptions did not significantly change the match of the model
+However, removing this assumption did not significantly change the match of the model
 compared to $P_{\text{real}}$ or $P_{\text{leaky}}$ 
 ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$).
 To conclude, we deduce that the dynamic estimate of probability biases produced by the BBCP model
