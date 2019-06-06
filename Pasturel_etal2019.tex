@@ -297,7 +297,7 @@ when a presented stimulus is not coherent
 with the participant's expectations~\citep{Hyman1953, Yu2009}. This process is highly dynamic especially in complex environments
 where new contingencies can arise at every moment.
 Interestingly, priming effects at cognitive levels
-are sometimes paralleled by anticipatory motor responses which are positively correlated with the the repetition of stimulus properties: anticipatory smooth eye movements (aSPEM) is well-known example of this behavior, as we will illustrate in the next section.
+are sometimes paralleled by anticipatory motor responses which are positively correlated with the repetition of stimulus properties: anticipatory smooth eye movements (aSPEM) is well-known example of this behavior, as we will illustrate in the next section.
 
 %: Bayesian methods & role of predictive processing for this adaptive response
 Overall, the ability to detect
@@ -349,7 +349,7 @@ but also on the validity of the model.
 %but also to understand longer time effects such as adaptation and learning.
 %
 There are numerous examples of Bayesian approaches
-applied to the the study of the adaptation to volatility.
+applied to the study of the adaptation to volatility.
 For instance,~\citet{Meyniel16} simulated a hierarchical Bayesian model
 over five previously published datasets~\citep{Squires1976, Huettel2002, Kolossa2013, Cho2002, Falk1997} in the domain of cognitive neuroscience.
 Their main conclusion was that
@@ -1393,7 +1393,6 @@ to the dynamics of the behavior following a (hidden) switch.
 \section{Results: Analyzing inter-individual differences}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:inter}
-%: <----- Laurent is here ----->
 %-------------------------------------------------------------%
 %: 4A separate above analysis
 %-------------------------------------------------------------%
@@ -1402,7 +1401,7 @@ we have reported the quantitative analysis of the group-pooled data
 for the correlation between experimental and model-inferred estimates of the hidden probability bias.
 First, by looking at the experimental measures for two representative participants in~\seeFig{results_psycho},
 supporting the qualitative match between the behavioral data and the model predictions,
-which we later confirmed quantitatively on the whole group of subjects.
+which we then confirmed quantitatively on the whole group of subjects.
 It is important to note that no model fitting procedure was used so far,
 but only the match of the results of the BBCP-model 
 applied to the sequence of binary target directions 
@@ -1458,7 +1457,9 @@ for each session, that is for the eye movements and the rating scale experiments
 We computed the mutual information 
 %for $20$ equally spaced values of $h$ between $0.01$ and $0.1$
 %for $20$ geometrically spaced values of $h$ between $0.01$ and $0.1$
-for $21$ geometrically spaced values of $h$ between $0.0025$ and $0.25$.
+for the BBCP-model responses of $21$ geometrically spaced values of $h$ between $0.0025=1/400$ and $0.25=1/4$.
+We then extracted different estimates of $h_A$ and $h_R$
+by choosing the hazard rate values corresponding to a maximal mutual information.
 To cross-validate our results for each individual participant,
 we have fitted the BBCP model to $11$ sub-blocks of $100$ trials 
 extracted from the whole sequence of $600$ trials 
@@ -1469,14 +1470,14 @@ This figure suggests, in the first place, that there is some variability
 in the best fit value of the hazard rate in both sessions.
 Overall, the value of mutual information of the best fit hazard rate
 was higher than that computed in~\seeFig{results_psycho}
-with respectively $MI = XX~ \pm XX~$ for the first session and
-$MI_R = XX \pm XX$ for the second.
-A part of the variability in the the estimated hazard rates comes 
+with respectively $\text{MI} = XX~ \pm XX~$ for the first session and
+$\text{MI} = XX \pm XX$ for the second.
+A part of the variability in the estimated hazard rates comes 
 from the limited length of the data blocks,
 while another part is due to intra-individual and inter-individual variabilities.
 Overall, the average is close to the (hidden) value used to generate the sequence
-(with $h_A = XX \pm XX~\Hz$ for the first session and
-$h_R = XX~\ms \pm XX~\ms$ for the second),
+(with $h_A = XX \pm XX$ for the first session and
+$h_R = XX~\ms \pm XX$ for the second),
 and we observe that this value is higher than the ground truth,
 as was previously suggested~\citep{Meyniel??}.
 Importantly, there is a part of the variability
@@ -1488,34 +1489,37 @@ given a couple of hazard rate values chosen at random,
 one could identify the participant with an accuracy of $XX\%$.
 As a comparison, the same analysis done based on the leaky integrator predictions
 showed that such accuracy would drop to $XX\%$,
-close to the chance level of $100/12\%$.
+close to the chance level of $8.33\%$.
 }
 As a consequence, this analysis reveals
 that relaxing the free parameter of the BBCP model
 improves the match of the model to the behavioral data and
 that we could detect, to some degree, individual differences in the choice behavior
 between exploration and exploitation.
-
 %-------------------------------------------------------------%
 %: 4C analysis
 %-------------------------------------------------------------%
-More importantly, there is a  consistent
+Finally, there is a  consistent
 correlation between the individual best-fit values estimated for the first and the second session
 with a pearson coefficient of $r = XXX$.
 Qualitatively,~\seeFig{results_inter} shows that for each individual the higher the hazard rate for one session, then the higher it is for the second.
 Quantitatively, the ratio of both hazard rates computed over participants was $XX \pm XX$,
 showing a slight tendency for hazard rate to be higher in the first session.
-In comparison if, similarly to bootstrap resampling,
-we would shuffle the joint fitted values across participants,
-we would obtain a distribution of hazard rate ratios of $XX \pm XX~\ms$.
+%In comparison if, similarly to bootstrap resampling,
+%we would shuffle the joint fitted values across participants,
+%we would obtain a distribution of hazard rate ratios of $XX \pm XX~\ms$.
 Such an analysis suggests that the predictive processes
 at work in both sessions may have a common origin,
 which is then modulated by individual preferences
 between exploration and exploitation.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:outro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%: <----- Laurent is here ----->
 
 %OVERVIEW OF MAIN FINDINGS
 
