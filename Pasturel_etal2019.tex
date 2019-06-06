@@ -1789,12 +1789,13 @@ Eye movements were recorded continuously with an eye tracking system (Eyelink 10
 To minimize measurement errors, the participant's head movements were restrained using a chin and forehead rest, so that the eyes in primary gaze position were directed towards the center of the screen. In order to enforce accuracy in gaze position and tracking, we implemented an automatic procedure of fixation control. If the distance between the gaze position and the central fixation point during the fixation epoch exceeded $2\degree$ of visual angles, the fixation point started flickering and the counter for the fixation duration was reset to $0$.
 
 The recorded horizontal and vertical raw gaze position data were numerically differentiated to obtain velocity measures. We adopted an automatic conjoint acceleration and velocity threshold method (the default saccade detection implemented by SR Research) to detect ocular saccades. Saccades and eye-blinks were excluded from eye velocity traces (and replaced by NaN values in the numerical arrays) before trial averaging and data fitting for the extraction of the oculomotor parameters of interest.
-In order to extract the relevant parameters of the oculomotor responses, we developed new tools based on a best-fitting procedure of predefined oculomotor patterns and in particular the typical smooth pursuit velocity profile that was recorded in our experiment. This analysis was applied to each trial individually and it allowed in particular to estimate the anticipatory smooth pursuit velocity. More details abut the oculomotor data processing and parameter extraction are provided in Appendix \ref{app:em}
+In order to extract the relevant parameters of the oculomotor responses, we developed new tools based on a best-fitting procedure of predefined oculomotor patterns and in particular the typical smooth pursuit velocity profile that was recorded in our experiment. \AM{A piecewise-defined function was fitted to the different epochs of the eye velocity traces: a constant function during fixation, a ramp-like linear function during anticipation, an exponential during the initiation of viually-guided smooth pursuit, reaching its saturating value during the pursuit steady-state.} This analysis was applied to each trial individually and it allowed in particular to estimate the anticipatory smooth pursuit velocity. \AM{A manuscript describing all details abut the oculomotor data processing and parameter extraction is in preparation }
+%are provided in Appendix \ref{app:em}
 
 The python scripts used to analyse eye movements are available at \url{https://github.com/invibe/ANEMO}.
 
 \subsection{The Bet experiment}
-The aim of the second experiment (occurring the following day after the Eye Movement experiment) was to collect data related to the individual conscious estimate of the probability of target motion direction. At the beginning of each trial, before the presentation of the moving target, participants had simply to answer to the question \textit{ ``How sure are you that the target will go left or right''}. This was performed by adjusting a cursor on the screen using the mouse (see Figure~\seeFig{intro}-C). The cursor could be placed at any point along a horizontal segment representing a linear rating scale with three ticks labeled as \textit{ ``Left''}, \textit{``Right''} (at the extreme left and right end of the segment respectively), and \textit{``Unsure''} in the middle. Participants had to validate their choice by clicking on the mouse left-button and the actual target motion was shown thereafter. The rationale to collect rating responses on a continuous scale instead of a simple binary prediction (Right/Left) was to be able to infer the individual estimate of the direction bias at the single trial scale (in analogy to the continuous interval for the strength of aSPEM velocity).
+The aim of the second experiment (administered the following day, after the Eye Movement experiment) was to collect data related to the individual conscious estimate of the probability of target motion direction. At the beginning of each trial, before the presentation of the moving target, participants had to answer to the question \textit{ ``How sure are you that the target will go left or right''}. This was performed by adjusting a cursor on the screen using the mouse (see Figure~\seeFig{intro}-C). The cursor could be placed at any point along a horizontal segment representing a linear rating scale with three ticks labeled as \textit{ ``Left''}, \textit{``Right''} (at the extreme left and right end of the segment respectively), and \textit{``Unsure''} in the middle. Participants had to validate their choice by clicking on the mouse left-button and the actual target motion was shown thereafter. The rationale to collect rating responses on a continuous scale instead of a simple binary prediction (Right/Left) was to be able to infer the individual estimate of the direction bias at the single trial scale (in analogy to the continuous interval for the strength of aSPEM velocity).
 
 We called this experiment the \textit{ ``Bet''} experiment, as participants were explicitly encouraged to make reasonable rating estimates, as though they had to bet money on the next trial outcome. Every $50$ trials, a \textit{``score''} was displayed on the screen, corresponding to the proportion of correct direction predictions (Right or Left of the \textit{``Unsure''} tick) weighted by the confidence attributed to each answer (the distance of the cursor from the center).
 
@@ -1810,6 +1811,7 @@ We called this experiment the \textit{ ``Bet''} experiment, as participants were
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Appendix 1: Analysis of eye movements}
 \label{app:em}
+\AM{I would eliminate this appendix}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -1826,7 +1828,7 @@ We called this experiment the \textit{ ``Bet''} experiment, as participants were
 \caption{
 %\emph{Anticipatory SPEM (aSPEM): experimental design and results.}
 %\textbf{(A)}~TODO: MOVE THIS PART IN THE MAIN TEXT:
-\emph{Behavioral experiments: anticipatory Smooth Pursuit Eye Movements}
+\emph{\AM{I GUESS THIS FIGURE WILL BE ELIMINATED...?} Behavioral experiments: anticipatory Smooth Pursuit Eye Movements}
 % TODO : dans notre plot on a des range de valeurs pour p :-/ -> C'EST PARCE QUE LE PLOT REPRESENTE DEJA LA VITESSE MOYENNE OBTENUE DANS LA TACHE AVEC SWITCHES!
 %\textbf{(B)}~
 We first replicated the results of~\citet{Montagnini2010},
@@ -1855,7 +1857,6 @@ to avoid potential confounds related to the previously used blocked-design.
 }
 \label{fig:introB}
 \end{figure}
-
 
 I show here a typical velocity traces for one participant / 2 trials
 
