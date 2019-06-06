@@ -1251,8 +1251,8 @@ As with aSPEM, the series of the participants' bias guesses
 exhibits a positive correlation with $\hat{p}$:
 The next outcome of $x_{0}^{t}$ will in general be correctly inferred,
 as compared to a random choice
-\AM{I WOULD SKIP THIS Equipped with this generative BSM model and the ideal observer given by the BBCP model,
-the agent is able to predict the next outcome better than chance level.}
+%\AM{I WOULD SKIP THIS Equipped with this generative BSM model and the ideal observer given by the BBCP model,
+%the agent is able to predict the next outcome better than chance level.}
 Moreover, we observe again that a stronger bias leads to a lower variability in the bias estimate, compared to bias values close to $0.5$.
 Again, a (hidden) switch in the value of the bias is
 most of the time correctly identified after only a few trials.
@@ -1260,7 +1260,10 @@ Finally, note that at every pause (black vertical bar in~\seeFig{results_psycho}
 participants tended to favor unbiased guesses, close to $0.5$
 than at the end of a sub-block of trials.
 We can speculate that this phenomenon would correspond
-to a resetting mechanism of the internal belief on the probability bias \AM{and indeed we have introduced an assumption, in the definition of the BBCP agent, formalizing this idea in terms of a reset of the internal belief, along with an increased uncertainty, after each pause}.
+to a resetting mechanism of the internal belief on the probability bias 
+and indeed we have introduced an assumption, in the definition of the BBCP agent, 
+formalizing this idea in terms of a reset of the internal belief, 
+along with an increased uncertainty, after each pause.
 To conclude, the experiment performed in the second session
 shows that the probability-bias values that are explicitly estimated by participants
 are qualitatively similar to the implicit (and unconscious) ones
@@ -1289,7 +1292,7 @@ We display these functional relations using a contour plot over
 the Kernel Density Estimation (KDE) of the relationship between $\hat{p}$ in abscissa
 and, respectively, \textbf{(A)} the strength of aSPEM and \textbf{(B)} the bet score in ordinate.
 The density of strokes represent increasing probability strengths.
-As a comparison we have plotted in \AM{RED? this would be coherent with Fig 2 but at odds with Fig. 3: I propose to change the color of of bet score results in Fig 3 - and change the caption and text accordingly} color the KDE computed over
+As a comparison we have plotted in orange color the KDE computed over
 the probability bias estimates obtained with a leaky integrator.
 Additionally, we have computed the mutual information between the model expectation and the two experimental readouts of the probability bias, which
 shows quantitatively that for both experimental measures
@@ -1314,7 +1317,7 @@ the aSEPM strength (panel A) and the bet scores (panel B) as a function of the B
 All trials from all participants were pooled together to generate a scatter plot
 which was then  converted to a kernel density estimate
 for a better visualization (kernel size of $XX$).
-We also estimated the mutual information \AM{$\Cc$ (\seeEq{MI}) OR RATHER $MI$, as defined by ... NEW EQUATION}
+We also estimated the mutual information %$\Cc$ (\seeEq{MI}) OR RATHER $MI$, as defined by ... NEW EQUATION}
 between the raw data and the model.
 Details of this analysis is presented in~\seeApp{bcp}.
 As a comparison, the same method was applied to the leaky integrator.
@@ -1323,12 +1326,13 @@ the probability bias $\hat{p}$ estimated by the BBCP algorithm
 is positively linearly correlated with the aSPEM velocity.
 The corresponding Pearson correlation coefficient
 is slightly higher than that found by
-\citet{Montagnini2010} and \citet{Damasse18} for aSPEM measures gathered across experimental blocks with fixed direction biases \AM{PROVIDE NUMBERS IN THE TEXT?},
-and much better than that estimated for the leaky-integrator model.
+\citet{Montagnini2010} and \citet{Damasse18} for aSPEM measures gathered across experimental blocks with fixed direction biases ($r = XXX \pm $),
+and much better than that estimated for the leaky-integrator model ($r = XXX \pm $).
 This relatively strong correlation is surprising at a first sight
 as the inter-switch sequence blocks have random length,
 and participants have to adapt to such a volatile environment.
-However, \AM{adaptivity to a volatile environment is one of the most exquisite human skills}: when faced with some new observations,
+However, adaptivity to a volatile environment is one of the most exquisite human skills: 
+when faced with some new observations,
 the observer has to constantly adapt his/her response
 to either exploit this information by considering that
 this observation belongs to the same context of the previous observations, or to explore
@@ -1346,9 +1350,9 @@ and the rating value, or bet score, about the expected outcome, which was provid
 by participants .
 
 Similarly to the aSPEM strength, the rating values are nicely correlated
-with the probability bias given by the model, as quantified by the average  mutual information \AM{PROVIDE MI VALUE IN THE TEXT, WITH SOME ESTIMATE OF UNCERTAINTY?}.
+with the probability bias given by the model, as quantified by the average  mutual information ($r = XXX \pm $).
 Importantly, this value is again higher for the BBCP model than
-for the leaky integrator.
+for the leaky integrator ($r = XXX \pm $).
 To conclude, we deduce that the dynamic estimate of probability biases produced by the BBCP model
 is a powerful regressor to explain both the strength of anticipatory smooth pursuit eye movements and the explicit ratings of human observers experiencing a volatile context for visual motion.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
