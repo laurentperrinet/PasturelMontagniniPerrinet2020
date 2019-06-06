@@ -437,8 +437,9 @@ driving anticipatory behavior.
 \emph{Smooth pursuit eye movements and explicit direction predictions in a volatile switching environment}
 \textbf{(A)}~
 We tested the capacity of human participants to adapt to a volatile environment
-by using a simple, 3-layered generative model of fluctuations in target directions (TD).
-This binary variable is chosen using a Bernoulli trial of a given probability bias.
+by using a simple, 3-layered generative model of fluctuations in target directions (TD)
+that we call the Binary Switching Model (BSM).
+This TD binary variable is chosen using a Bernoulli trial of a given probability bias.
 This probability is itself chosen at random from a given prior
 and is constant for as many trials until a switch is generated.
 Switches are generated in the third layer as a Bernoulli trial
@@ -665,9 +666,9 @@ sequences of input stimuli.
 By inverting this stochastic forward process,
 one could extract relevant descriptors at the different levels of the model
 and fit these parameters with the recorded behavior.
-Here, we use a similar approach but on a different generative model,
+Here, we use a similar approach but on the BSM generative model,
 as defined in~\seeEq{bsm}.
-To begin with, we define a first ideal observer as a control, the \textit{forgetful agent} (or \textit{leaky integrator}),
+To begin with, we define a first ideal observer as a control, the \textit{leaky integrator} (or \textit{forgetful agent}),
 which has an exponentially-decaying memory for the events that occurred in the past trials.
 This agent can equivalently be described as one
 which assumes that volatility is stationary with a fixed characteristic frequency of switches.
@@ -685,7 +686,7 @@ We modeled a first ideal observer,
 which represents a classical, widespread and
 realistic model of how trial-history shapes
 adaptive processes in human behavior.
-It is adapted to model motion expectation in the direction-biased experiment.
+It is well adapted to model motion expectation in the direction-biased experiment which leads to anticipatory SPEMs.
 In this model, given the observations $x_0^t$ from trial $0$ to $t$,
 the expectation $p=\hat{x_1}^{t+1}$ of the next trial direction can be modeled by making a simple heuristic:
 This probability for an event is the weighted average of
@@ -823,7 +824,8 @@ The green and orange line correspond to the mean run-length which is inferred,
 respectively, by the BBCP and leaky models:
 Note that in the BBCP, while it takes some trials to detect switches,
 they are overall correctly identified (transitions between diagonal lines) and
-that integration is thus faster than for the leaky integrator, as illustrated above.
+that integration is thus faster than for the leaky integrator, 
+as illustrated in the inferred value of the probability bias.
 }
 \label{fig:bayesianchangepoint}
 \end{figure}
@@ -854,7 +856,7 @@ We have designed an agent inverting the BSM by extending
 the Bayesian Change-Point (BCP) detection model~\citep{AdamsMackay2007}.
 The latter model defines the agent as an inversion of a switching generative model
 for which the observed data (input) is Gaussian.
-We present here an exact solution for the case of the BSM, where the input is binary (see~\seeEq{bsm}).
+We present here an exact solution for the case of the BSM, where the input is binary. % as in the BSM (see~\seeEq{bsm}).
 
 %-------------------------------------------------------------%
 %: 2Bb prediction / update cycle
@@ -862,12 +864,12 @@ We present here an exact solution for the case of the BSM, where the input is bi
 At first, in order to define in all generality the switch detection model,
 we will describe the fundamental steps leading to its construction,
 while giving the full algorithmic details in~\seeApp{bcp}.
-In general, the goal of predictive processing
+In all generality, the goal of predictive processing
 is to infer the probability $Pr(x_0^{t+1} | x_0^{0:t})$ of the next datum
 knowing what has been observed until trial $t$
 (that we denote by $x^{0:t} = \{ x_0^0, \ldots, x_0^t \}$) and
 the prior knowledge by the agent
-that data is the output of a given (stochastic) generative model.
+that data is the output of a given (stochastic) generative model (here, the BSM).
 To derive a Bayesian predictive model, we introduce
 the run-length as a latent variable which helps the agent to represent
 different hypothesis about the input.
@@ -888,11 +890,11 @@ Pr(x_0^{t+1} | x_0^{0:t}) =
 %\sum_{r^{t}} \beta^{(r)}_t \cdot Pr(x_0^t | r^{t}, x_0^{0:t-1})
 %\sum_{r^{t}} Pr(x_0^{t+1} | r^{t}, x_0^{0:t}) \cdot Pr(r^t | x_0^{0:t})
 %\sum_{r^{t}} Pr(x_0^{t+1} | x_0^{(r^{t})}) \cdot \beta^{(r)}_t
-\sum_{r^{t}} Pr(x_0^{t+1} | r^{t}, x_0^{0:t}) \cdot \beta^{(r)}_t
+\sum_{r^{t}\geq 0} Pr(x_0^{t+1} | r^{t}, x_0^{0:t}) \cdot \beta^{(r)}_t
 \label{eq:pred}
 }
 where $Pr(x_0^{t+1} | r^{t}, x_0^{0:t})$ is
-the Bernouilli process corresponding to a future datum $x_0^{t+1}$
+the Bernouilli process modelling the probability of a future datum $x_0^{t+1}$
 conditioned on the run-length and
 $\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability distribution of each possible run-length.
 %a previous value $Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$
@@ -1002,8 +1004,7 @@ This scalar is returned by the binary function
 $\Ll(p, r | o)$ which evaluates at each node the likelihood of the parameters of each node
 whenever we observe a counterfactual alternative outcome $o=1$ or $o=0$
 knowing a mean bias $p=\mu^{(r)}_{t-1}$
-and a sample size $r=\nu^{(r)}_{t-1}$,
-that is, $\pi^{(r)}_t = \Ll( \mu^{(r)}_{t-1}, \nu^{(r)}_{t-1} | x_0^{t})$.
+and a sample size $r=\nu^{(r)}_{t-1}$.
 For each outcome, the likelihood of observing an occurrence of $o$,
 is the probability of a binomial random variable knowing
 an updated probability bias of $\frac{p \cdot r + o}{r+1}$,
@@ -1020,13 +1021,14 @@ with $Z$ such that $\Ll(p, r|o=1) + \Ll(p, r|o=0)=1$. % where
 %    {(\mu \cdot \nu )}^{\mu \cdot \nu }  \cdot {((1- \mu)\cdot \nu + 1)}^{(1- \mu)\cdot \nu + 1}
 %}
 The full derivation of this function is detailed in~\seeApp{likelihood}.
+This provides with that the likelihood as $\pi^{(r)}_t = \Ll( \mu^{(r)}_{t-1}, \nu^{(r)}_{t-1} | x_0^{t})$.
 
 %-------------------------------------------------------------%
 %: 2Be online estimation: prediction
 %-------------------------------------------------------------%
 Finally, the agent infers at each trial the belief and parameters at each node
 %and use for instance the maximum a posteriori or the expected value as readouts.
-and use the marginal predictive probability (see~\seeEq{pred_node}) as a readout.
+and use the marginal predictive probability (see~\seeEq{pred}) as a readout.
 %More precisely, we define these two strategies as following.
 %For the maximum a posteriori readout
 %at each trial the run-length with maximal probability is selected
@@ -1035,18 +1037,18 @@ and use the marginal predictive probability (see~\seeEq{pred_node}) as a readout
 %\eql{
 %\hat{x_1}^t = \mu^{(r^\ast)}_{t} \quad \text{with} \quad r^\ast = \argmax_r \beta^{(r)}_{t}
 %}
-This probability is computed as the expected value over all run-lengths:
+This probability $\hat{x_1}^t=Pr(x_0^{t+1} | x_0^{0:t})$ is computed as the expected value over all run-lengths:
 \eql{
-\hat{x_1}^t = \sum_{r} \beta^{(r)}_{t} \cdot \mu^{(r)}_{t}
+\hat{x_1}^t = \sum_{r} \mu^{(r)}_{t} \cdot \beta^{(r)}_{t}
 \label{eq:readout}
 }
 Interestingly, it can be proven that if,
 instead of updating beliefs with Equations~\ref{eq:beta_noswitch} and~\ref{eq:beta_switch},
-we set $\beta^{(r+1)}_t = h \cdot r \cdot (1 -h) ^r$, then the marginal probability
-is equal to that obtained with the leaky integrator (see~\seeEq{leaky}).
+we set nodes' beliefs to the constant vector $\beta^{(r+1)}_t = h \cdot r \cdot (1 -h) ^r$, 
+then the marginal probability is equal to that obtained with the leaky integrator (see~\seeEq{leaky}).
 This highlights that contrary to the leaky integrator, % for which the inference $\hat{x_2}=h$ was fixed,
 the BBCP model uses a dynamical model for the estimation of the volatility.
-Still, as for the latter, there is only one parameter~$h=\frac 1 \tau$ informs the BBCP model
+Still, as for the latter, there is only one parameter~$h=\frac 1 \tau$ which informs the BBCP model
 that the probability bias switches \emph{on average} every~$\tau$ trials.
 %As in \seeEq{leaky}, this defines the \emph{hazard rate}.
 Moreover, note that the resulting operations
@@ -1067,7 +1069,7 @@ constitutes the Binary Bayesian Change Point (BBCP) detection model.
 %: 2Ca python scripts : qualitative analysis
 %-------------------------------------------------------------%
 We have implemented 
-the BBCP algorithm% is detailed in~\seeApp{bcp} and
+the BBCP algorithm % is detailed in~\seeApp{bcp} and
 using a set of python scripts.
 This implementation provides also with some control scripts
 to test the behavior of the algorithm with synthetic data.
@@ -1092,13 +1094,14 @@ we show the dynamical evolution of the belief on the latent variable (run length
 corresponding to the same sequence of $200$ trials.
 As for the synthetic example above,
 the BBCP model achieves a correct detection of the switches after a short delay of a few trials.
+
 Two main observations are noteworthy. First, after each detected switch, beliefs align along a linear ridge,
 as our model integrates belief about a current phase during two switches (it 'stays').
-Then, we observe that shortly after a switch (hidden to the model),
-the belief is diffused strongly until the relative probability of a continuously increasing run-length
+Then, we observe that shortly after a switch (hidden to the agent),
+the belief diffuses until the relative probability of a continuously increasing run-length
 is lower that that assigned to a smaller run-length:
 There is a transition to a new state (it 'goes').
-Second, we may use this information to read-out the most likely probability-bias and 
+Second, we may use this information to readout the most likely probability-bias and 
 use it as a regressor with the behavioral data.
 Note, the leaky integrator model is simply implemented
 by an agent assuming a fixed run-length profile (see orange line in \seeFig{bayesianchangepoint}-B),
@@ -1109,7 +1112,7 @@ there is a stronger inertia in the dynamics of the model estimates and
 that there is no improvement in the precision of the estimates after a switch.
 %1/ the delay after the occurrence of a switch will always be similar,
 %2/ there is no dynamic update of the inferred probability while in the BBCP model, the precision of each new datum is higher after a switch.
-In contrast, for the BBCP model, after a correct switch detection
+In contrast, after a correct switch detection in the BBCP model, 
 the value of the inferred probability converges rapidly to the real probability
 as the number of observations increase after a switch.
 
@@ -1122,12 +1125,14 @@ In order to quantitatively evaluate the algorithm and following a similar strate
 we computed the negative log-likelihood (in bits) of the estimate probability bias,
 knowing the real probability,
 and averaged over all $T$ trials:
-\eqa{
+\eql{
 %\Cc =  \sum_{t} -\log_2 B(x_1^t ; \hat{x_1}^t, r^t )
 %}
 %\eql{
-H(x_1^t, \hat{x_1}^t ) &= - {x_1}^t \log_2( \hat{x_1}^t ) - (1-{x_1}^t) \log_2( 1- \hat{x_1}^t) \\
-\Cc(x_1^t, \hat{x_1}^t ) &= H(x_1^t, \hat{x_1}^t ) - H(x_1^t, x_1^t ) \text{ and } \Cc = \frac 1 T  \sum_t \Cc^t 
+\choice{
+H(x_1^t, \hat{x_1}^t ) = - {x_1}^t \log_2( \hat{x_1}^t ) - (1-{x_1}^t) \log_2( 1- \hat{x_1}^t) \\
+\Cc(x_1^t, \hat{x_1}^t) = H(x_1^t, \hat{x_1}^t ) - H(x_1^t, x_1^t ) \text{ and } \Cc = \frac 1 T  \sum_t \Cc(x_1^t, \hat{x_1}^t)
+}
 \label{eq:KL}
 }
 This measure explicitly corresponds to the average score of our model,
@@ -1148,7 +1153,8 @@ averaged over all observers, for each individual observer or independently in al
 In a second step, by testing different values of $h$ assumed by the agent
 but for a fixed hazard rate $h=1/40$ in the BSM,
 we found that this cost can be computed for a range of hypothesized values of $h$ 
-and that the distance given by~\seeEq{KL} is minimal for the true hazard rate.
+and that the distance given by~\seeEq{KL} is minimal 
+for the true hazard rate used to generate the data.
 Importantly, this analysis shows that inference is best for a hazard rate
 equal to that implemented in the generative model and which is hidden to the BBCP agent.
 This property will be important in a following section 
