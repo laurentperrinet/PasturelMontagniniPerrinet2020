@@ -1072,7 +1072,7 @@ ultimately comparing it to the human behavior. % (see~\seeFig{results_raw}).
 %TODO : synchronize with FIGURE 3 fig:bayesianchangepoint
 \seeFig{bayesianchangepoint}-A shows a graph-based representation of the BBCP estimate of the run-length for one instance of a short sequence ($10$ trials) of simulated data $x_0^t$
 of leftward and rightward trials, with a switch from a low to a high probability
-of moving rightward occurring at trial $5$ (see figure caption for a detailed explanation).
+of moving rightward occurring at trial $7$ (see figure caption for a detailed explanation).
 It also shows the predicted probability $\hat{x_1}^t$
 as computed using the BBCP algorithm.
 %The bottom panel illustrates
@@ -1085,17 +1085,18 @@ In the bottom panel,
 we show the dynamical evolution of the belief on the latent variable (run length),
 corresponding to the same sequence of $200$ trials.
 As for the synthetic example above,
-the BBCP model achieves a correct detection of all switches after a short delay of a few trials.
+the BBCP model achieves a correct detection of the switches after a short delay of a few trials.
 Two main observations are noteworthy. First, after each detected switch, beliefs align along a linear ridge,
 as our model integrates belief about a current phase during two switches (it 'stays').
 Then, we observe that shortly after a switch (hidden to the model),
 the belief is diffused strongly until the relative probability of a continuously increasing run-length
 is lower that that assigned to a smaller run-length:
 There is a transition to a new state (it 'goes').
-Second, we may use this information to read-out the most likely probability-bias and its confidence interval,
-as represented by the green dashed lines (respectively $.05$ and $.95$) in \seeFig{bayesianchangepoint}-B.
+Second, we may use this information to read-out the most likely probability-bias and 
+its confidence interval (respectively $.05$ and $.95$),
+as represented by the shaded area surrounded by dashed lines in \seeFig{bayesianchangepoint}-B.
 Note, the leaky integrator model is simply implemented
-by an agent assuming a fixed run-length $r_t=\tau$ (see orange lines in \seeFig{bayesianchangepoint}-B),
+by an agent assuming a fixed run-length profile (see orange line in \seeFig{bayesianchangepoint}-B),
 allowing for a simple comparison of the BBCP model with the leaky integrator.
 Again, we see that a fixed length model gives qualitatively a similar output
 but with the two disadvantages compared to the BBCP model, namely that 
@@ -1133,6 +1134,12 @@ gave similar results but would need more data to converge.
 We have tested $100$ blocks of $2000$ trials for each read-out.
 In general, we found that the inference is better for the BBCP algorithm ($\Cc = XXXX \pm XXX$)
 than for the leaky integrator ($\Cc = XXXX \pm XXX$), showing it provides with a better prediction.
+Note that the only free parameter of this model is the hazard rate $h$
+assumed by the agent (as in the fixed-length agent).
+Although more generic solutions exist~\citep{Wilson13,Wilson18},
+we decided to keep this parameter fixed for any agent, but evaluate
+how well it matches to the experimental outcomes at the different scales of the protocol:
+in sub-blocks, for each individual observer or averages over all observers.
 Moreover, by testing different values of $h$ assumed by the agent
 but for a fixed hazard rate $h=1/40$ in the BSM,
 we found that this is true for a range of values of $h$.
@@ -1141,30 +1148,16 @@ equal to that implemented in the generative model and which is hidden to the BBC
 This property will be important to estimate the hazard rate implicitly assumed by an individual participant
 on the basis of the set of responses given to the  sequence of stimuli
 (see~\seeSec{inter}).
-
+%
 %-------------------------------------------------------------%
 %: 2Cc perspectives
 %-------------------------------------------------------------%
-There are limits to the agent that we have defined.
-First, data is considered to be a sequence of discrete steps.
-A similar approach using a Poisson point process
-allows to extend to the continuous time
-such as in the framework of~\citet{RadilloBrady2017}:
-In this experiments, the authors analyzed the licking behavior of rats in a dynamic environment.
-This extension is beyond the scope of our current protocol,
-but could consist in a natural extension of the protocol
-to more complex and ecological settings about the timing of stimuli.
-Then, remind that the only free parameter of this model is the hazard rate $h$
-assumed by the agent (as in the fixed-length agent).
-Although more generic solutions exist~\citep{Wilson13,Wilson18},
-we decided to keep this parameter fixed for any agent, but evaluate
-how well it matches to the experimental outcomes at the different scales of the protocol:
-in sub-blocks, for each individual observer or averages over all observers.
 As a summary, for each trial of any given sequence,
-we obtain an estimate of the probability bias assumed by the ideal observer.
- We will now present the analysis of this model's match 
- to our experimental measures of anticipatory eye movements and 
- explicit guesses about target movement direction.
+we obtain an estimate of the probability bias assumed by the ideal observer
+and which we may use as a regressor.
+We will now present the analysis of this model's match 
+to our experimental measures of anticipatory eye movements and 
+explicit guesses about target movement direction.
 %\AM{I WOULD DELETE THIS In particular, we expect intuitively the results to be more variable
 %compared to the previous protocol with fixed-length blocks (see~\seeFig{intro}-C).}
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1215,7 +1208,7 @@ the dot's directions (the alternating output of leftward/rightward trials)
 as the sequence of observations.
 In a first session, we recorded the participants' eye movements and
 extracted the aSPEM velocity (for details, see \seeApp{em}).
-Among our $12$ participants, we show \AM{the eye velocity traces of} two representative subjects in~\seeFig{results_psycho}.
+Among our $12$ participants, we show the eye velocity traces of two representative subjects in~\seeFig{results_psycho}.
 These representative participants were chosen as those
 whose fitting score was closest to the median fit in the quantitative analysis
 that will be illustrated in \seeSec{inter}.
@@ -1231,7 +1224,7 @@ to be negative for $\hat{p}$ values below~$.5$ and positive for values above~$.5
 %occurrence of a switch of the probability bias (also hidden to the observers).
 Moreover, both curves unveil similar delays in detecting and taking into account a switch of the probability bias (also hidden to the observers),
 reflecting the time (in the order of a few trials) taken to integrate enough information
-to \AM{switch to OR RATHER justify the estimation of} a novel expectation about the probability bias value for the Bernoulli trial.
+to justify the estimation of a novel expectation about the probability bias value for the Bernoulli trial.
 In general, results are more variable when the bias is weak ($p\approx .5$)
 than when it is strong (close to zero or one),
 consistent with the well-known dependence of the variance of a Bernoulli trial
@@ -1469,9 +1462,6 @@ between exploration and exploitation.
 \section{Discussion}
 \label{sec:outro}
 
-\section{Discussion}
-\label{sec:outro}
-
 
 %OVERVIEW OF MAIN FINDINGS
 
@@ -1486,6 +1476,15 @@ is weighted by the precision of the inference.
 \citet{SantosKowler2017} found a non-linearity in the dependence of visual perception upon the probability of cue validity....???
 In general,
 
+There are limits to the agent that we have defined.
+First, data is considered to be a sequence of discrete steps.
+A similar approach using a Poisson point process
+allows to extend to the continuous time
+such as in the framework of~\citet{RadilloBrady2017}:
+In this experiments, the authors analyzed the licking behavior of rats in a dynamic environment.
+This extension is beyond the scope of our current protocol,
+but could consist in a natural extension of the protocol
+to more complex and ecological settings about the timing of stimuli.
 
 \section{Environmental regularities, cognitive properties and visual perception}
 In this study, we have not addressed the question of whether and how statistical learning affects visual motion perception throughout our model-generated volatile sequences. We have made the choice to focus on a largely unconscious motor behaviour (aSPEM) as well as on the explicit confidence rating for the forthcoming motion direction.
