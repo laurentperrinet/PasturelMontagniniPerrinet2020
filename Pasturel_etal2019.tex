@@ -892,22 +892,30 @@ $\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability distribution of each poss
 %a previous value $Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$ 
 %and the likelihood associated to the new value $x_0^t$.
 
+%-------------------------------------------------------------%
+%: 2Bc prediction cycle
+%-------------------------------------------------------------%
+%-------------------------------------------------------------%
+% Computing sufficient stitistics
+%-------------------------------------------------------------%
 With these premises, we define the BBCP
 as a prediction / update cycle. 
 First, we will \emph{predict} the probability 
 $\beta^{(r)}_t$ at each node knowing either an initial prior or a previous trial.
-In particular, at the occurrence of the first trial there is a switch and 
-beliefs are set to initial values $\beta^{(0)}_0=Pr(r^t=0)=1$ and 
+In particular, at the occurrence of the first trial, we know for certain that there is a switch and 
+initial beliefs are thus set to the values $\beta^{(0)}_0=Pr(r^t=0)=1$ and 
 $\forall r>0$, $\beta^{(r)}_0=Pr(r^0=r)=0$.
 Then, we use a knowledge of $\beta^{(r)}_{t-1}$ and  $\pi^{(r)}_{t-1}$ at trial $t-1$ and
 using the transition probabilities defined by~\seeEq{run_length},
 this allows to predict the beliefs at each node at trial $t$:
 \eqa{
-\beta^{(r)}_t \propto \sum_{r^{t-1} \geq 0}  Pr(r^t | r^{t-1}) \cdot  \pi^{(r)}_{t-1} \cdot  \beta^{(r)}_{t-1}
+\beta^{(r)}_t \propto \sum_{r^{t-1} \geq 0}  Pr(r^t | r^{t-1}) \cdot  \pi^{(r)}_{t} \cdot  \beta^{(r)}_{t-1}
 \label{eq:pred_node}
 }
-where $\beta^{(r)}_t$ is scaled such that $\sum_{r \geq 0 } \beta^{(r)}_t = 1$
-as it represents the probability distribution on the run-length $r$ given the data.
+where the likelihood $\pi^{(r)}_{t}=Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$ will be detailed below 
+and $\beta^{(r)}_t$ is scaled such that $\sum_{r \geq 0 } \beta^{(r)}_t = 1$
+as it represents the probability distribution on the run-length $r$ given the data
+(more details on this derivation in~\seeApp{bcp}).
 In the graph, \seeEq{pred_node} corresponds to a message passing from the nodes at time $t-1$
 to that at time $t$ and formalized by the transition matrix $Pr(r^t | r^{t-1})$.
 %In the second step, one can perform prediction
@@ -927,28 +935,29 @@ in which information will be represented at the different nodes for each trial $
 This allows to compute growth probabilities for each run-length $r \geq 0$, 
 that is, the belief at the next trial before observing a new datum:
 \eqa{
-\beta^{(r+1)}_t = \frac{1}{B} \cdot \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t-1} \cdot (1-h)
+\beta^{(r+1)}_t = \frac{1}{B} \cdot \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot (1-h)
 \label{eq:beta_noswitch}
 }
 (where $h$ is the scalar defining the hazard rate)
 but also the change-point probabilities:
 \eqa{
-\beta^{(0)}_t  = \frac{1}{B} \cdot \sum_{r \geq 0} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t-1} \cdot h
+\beta^{(0)}_t  = \frac{1}{B} \cdot \sum_{r \geq 0} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot h
 \label{eq:beta_switch}
 }
-with $B$ such that $\sum_{r \geq 0} \beta^{(r)}_{t} = 1$. Note that $\beta^{(0)}_t=h$ and thus $B=\sum_{r \geq 0} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t-1}$.
+with $B$ such that $\sum_{r \geq 0} \beta^{(r)}_{t} = 1$. 
+Note that $\beta^{(0)}_t=h$ and thus $B=\sum_{r \geq 0} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t}$.
 %This finalizes the prediction step.
-Second, we \emph{update} beliefs on all nodes
-by computing the likelihood $\pi^{(r)}_t$ of a future datum 
-knowing the current belief at each node,
-as will be detailed below.
 Knowing this probability strength and the previous value of the prediction, % an estimate for our belief on the different variables at the previous trial $t-1$,
 we can therefore make a prediction for our belief of the probability bias at the next trial $t+1$,
 prior to the observation of a new datum $x_0^{t+1}$ and resume the prediction / update cycle (see Equations~\ref{eq:pred},~\ref{eq:beta_noswitch} and~\ref{eq:beta_switch}).
 
 %-------------------------------------------------------------%
-%: 2Bc online estimation: run-lengths
+%: 2Bd update cycle
 %-------------------------------------------------------------%
+Integrated in our cycle, we \emph{update} beliefs on all nodes
+by computing the likelihood $\pi^{(r)}_t$ of the current datum $x_0^{t}$
+knowing the current belief at each node,
+that is, based on observations from trials $0$ to $t-1$. % ~\seeEq{pred}
 A major algorithmic difference with the BCP model~\citep{AdamsMackay2007},
 is that the observed data is a Bernoulli trial and not a Gaussian random variable.
 The random variable $x_1^t$ is the probability bias used
@@ -967,9 +976,9 @@ $\mu^{(0)}_{t} = \mu_{prior}$ and $\nu^{(0)}_{t} = \nu_{prior}$.
 By recurrence %(see \seeFig{bayesianchangepoint}-A), 
 one can show that at any trial $t>0$,
 the sufficient statistics $(\mu^{(r)}_{t}, \nu^{(r)}_{t})$
-can be updated at the next trial following:
+can be updated from the previous trial following:
 \eqa{
-& \mu^{(r+1)}_{t} = \frac{r}{r+1} \cdot \mu^{(r)}_{t-1} + \frac{1}{r+1} \cdot x_0^{t-1} \\
+& \mu^{(r+1)}_{t} = \frac{r}{r+1} \cdot \mu^{(r)}_{t-1} + \frac{1}{r+1} \cdot x_0^{t} \\
 & \nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1
 }
 Note that the series defined by $\mu^{(r+1)}_{r+t}$ is the moving average at trial $r+t$ on the $r$ last samples. 
@@ -977,18 +986,18 @@ Moreover, $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the init
 $\nu^{(r)}_{t} = r + \nu_{prior}$.
 This updates for each node the sufficient statistics of the pdf at the current trial.
 %-------------------------------------------------------------%
-%: 2Bd update = Computing the likelihood
+% Computing the likelihood
 % cf p.52 de 2017-10-05 chloe inverting the process rem jb
 % https://en.wikipedia.org/wiki/Beta_distribution#Effect_of_different_prior_probability_choices_on_the_posterior_beta_distribution
 %-------------------------------------------------------------%
-We can now detail the computation of the likelihood of a future datum $x_0^{t+1}$ with respect to
-the current beliefs : $\pi^{(r)}_t = Pr( x_0^{t+1} |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$. %}
+We can now detail the computation of the likelihood of the current datum $x_0^{t}$ with respect to
+the current beliefs : $\pi^{(r)}_t = Pr( x_0^{t} |  \mu^{(r)}_{t-1}, \nu^{(r)}_{t-1})$. %}
 This scalar is returned by the binary function $\pi^{(r)}_t = \Ll( \mu^{(r)}_{t}, \nu^{(r)}_{t} | x_0^{t+1})$.
-whenever we observe the new datum
-and where this binary function $\Ll(p, r | o)$ evaluates at each node the likelihood of each alternative outcome $o=1$ or $o=0$
+Whenever we observe a counterfactual alternative outcome $o=1$ or $o=0$
+this binary function $\Ll(p, r | o)$ evaluates at each node its likelihood 
 knowing a mean bias $p=\mu^{(r)}_{t}$ 
 and a sample size $r=\nu^{(r)}_{t}$. 
-For each outcome, the likelihood of observing an occurrence of $o$ at the next trial,
+For each outcome, the likelihood of observing an occurrence of $o$,
 is the probability of a binomial random variable knowing 
 an updated probability bias of $\frac{p \cdot r + o}{r+1}$, 
 a number $p \cdot r + o$ of trials going to the right and
@@ -1453,10 +1462,10 @@ between exploration and exploitation.
 \label{sec:outro}
 
 
-OVERVIEW OF MAIN FINDINGS
+%OVERVIEW OF MAIN FINDINGS
 
 
-OPEN QUESTIONS
+\section{Open questions}
 Generality of present results? What about multiple choice tasks? or higher order statistics?
 
 Comment on linearity of aSPEM vs p contrasted to the apparent non-linearity on direction probability rating : MAYBE DANGEROUS?
@@ -1467,7 +1476,7 @@ is weighted by the precision of the inference.
 In general, 
 
 
-ENVIRONMENTAL REGULARITIES, COGNITIVE PROCESSES AND VISUAL PERCEPTION
+\section{Environmental regularities, cognitive properties and visual perception}
 In this study, we have not addressed the question of whether and how statistical learning affects visual motion perception throughout our model-generated volatile sequences. We have made the choice to focus on a largely unconscious motor behaviour (aSPEM) as well as on the explicit confidence rating for the forthcoming motion direction.
 In an empirical context similar to ours, \citet{Maus2015} have recently shown that
 perceptual adaptation for speed estimation occurs concurrently to
@@ -1493,7 +1502,7 @@ Indeed, only few studies have previously investigated the dynamics of sequential
 The way expectations act on cognitive processes  in general has been investigated by a wide range of domains such as predictive coding~\citep{Wolpert2000, Wacongne2012}, active inference~\citep{Friston2010}, motor control~\citep{Sutton1998, Behrens07} and reinforcement learning~\citep{Nassar2012}. Non-stationary observations can also explain why both local and global effects emerge and why local effects persist in the long run even within purely random sequences~\citep{Cho2002, Yu2009}. This constant update of a general belief on the world can be a consequence of the constant attempt to learn the non-stationary structure of the environment that can change at unpredictable times~\citep{Yu2009}. Many studies have actually already pointed out the brain's ability to apprehend non-stationary states in environments~\citep{Ossmy2013, Meyniel15}. 
 Future work will be needed to address the amplitude and dynamics of modulations of visual perception and other cognitive functions in a well-controlled volatile environment like the one we formally defined in this study, and to compare it to anticipatory eye movements and explicit confidence ratings.
 
-WHAT STATISTICS IS LEARNED IN STATISTICAL LEARNING?
+\section{What statistics is learned in statistical learning?}
 \citet{Meyniel} analysed ... They concluded that transition probabilities constitute
 a core building block of sequence knowledge in the brain,
 which then applies to a variety of sensory modalities and
@@ -1507,7 +1516,7 @@ in an attempt to capture human behavior.
 Rather than on transition probabilities, here we focused on the analysis and modeling of human behavior as a function of the frequency of presentation (and its fluctuations in time) of a given event in a binary sequence of alternating visual motion direction. We can speculate that different statistics can play a major role in different conditions...
  In general, it seems important to disentangle the different cognitive processes and time scales at play under different conditions in adaptive processes.
 
-HIERARCHICAL BAYESIAN INFERENCE IN THE BRAIN.
+\section{Hierarchical Bayesian inference in the brain}
 Short review on: Friston hypothesis on predictive coding ... Evidence from Electrophysiology, Imaging, Animal behaviour...
 However, one should be careful when interpreting the quality of fit of bayesian inference models for behavioural data  
 Note that, if we assume that the inversion of the generative model is perfect
@@ -1520,9 +1529,9 @@ We believe here that the challenge is not to validate the hypothesis that the br
 that agents may use. This methodological point may be essential in designing future experimental protocols, and in evaluating quantitatively the results.The brain is probably only "weakly Bayesian" (it does not care about equations but more about sugar). One remaining question though, is to understand why in cognitive systems
 the adaptation to hierarchical probabilistic fluctuations occurs and
 in particular why it may deviate
-in some pathological disorders such as schizophrenia~\citep{Adams12, JardriDeneve REF}.
+in some pathological disorders such as schizophrenia~\citep{Adams12, Jardri2017} or autism (REFFS).
 
-COMPUTATIONAL PHENOTYPING OF HUMAN PARTICIPANTS
+\section{Computational phenotyping of human participants}
 Discussion about the model-based analysis inter-individual differences...
 
 %%%
