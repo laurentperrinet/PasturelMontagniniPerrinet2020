@@ -1313,7 +1313,7 @@ there is a strong statistical dependency between
 the behavioral results and the prediction of the BBCP model,
 but also that this dependency is significantly stronger than that obtained
 with the real probability and with the estimate obtained with the leaky integrator
-(respectively $p=XXX$ and $p=XXX$ for $r$ and  $p=XXX$ and $p=XXX$ for MI).
+(see text). %(respectively $p=XXX$ and $p=XXX$ for $r$ and  $p=XXX$ and $p=XXX$ for MI).
 }
 \label{fig:results_psycho_all}
 \end{figure}
@@ -1349,7 +1349,7 @@ The corresponding Pearson correlation coefficient ($r = XXX \pm $)
 is slightly higher than that found by
 \citet{Montagnini2010} and \citet{Damasse18} for aSPEM measures gathered across experimental blocks with fixed direction biases ($r = XXX \pm $),
 and significantly better than that estimated 
-for the real probability ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$)
+for the real probability ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$\footnote{All following $p$-values are Wilcoxon signed-rank test.}) % https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html
 and for that estimated by the leaky-integrator model ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$, see inset).
 A similar analysis
 illustrates the relationship between
@@ -1747,7 +1747,7 @@ Discussion about the model-based analysis inter-individual differences...
 \section{Conclusions}
 \begin{itemize}\setlength{\itemsep}{0ex}
 \item We have developed a Bayesian model of an agent estimating the probability bias of a volatile environment with changing points (switches), such that the agent may decide \textit{to stay} on the current hypothesis about the environment, or \textit{to go} for a novel one. This allows to dynamically infer the probability bias across time and directly compare model predictions and experimental data, such as human behavior.
-\item We applied such a framework to the case of a probability bias in a visual motion task where we manipulated the target direction probability. We observed a good match between the largely unconscious anticipatory smooth eye movements and the results of the model, replicating and \AM{providing a novel solid theoretical framework for} previous findings ~\citep{Montagnini2010, SantosKowler2017, Damasse18}.
+\item We applied such a framework to the case of a probability bias in a visual motion task where we manipulated the target direction probability. We observed a good match between the largely unconscious anticipatory smooth eye movements and the results of the model, replicating and providing a novel solid theoretical framework for previous findings ~\citep{Montagnini2010, SantosKowler2017, Damasse18}.
 \item We also found a good match between model predictions and the explicit rating of confidence on the expected target motion direction, a novel result suggesting that this model captures some of the brain computations underlying expectancy based motion prediction, both at the unconscious and conscious level
 \item Finally, we found that the experimental data of each different participant matched to different levels of belief's precision on the volatile environment, some being more or less conservative. Interestingly, the individual level was relatively across the two experiments (namely for the unconscious anticipatory eye movements and the conscious rating).
 \end{itemize}
