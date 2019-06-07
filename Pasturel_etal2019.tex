@@ -534,7 +534,7 @@ As a summary, we first draw random events (that we denote as ``switches'')
 with a given mean frequency and which controls the strength of the volatility.
 Second, the value $p$ of the bias only changes at the moment of a switch,
 independently of the previous bias' value
-and is stationary between two switches.
+and is stationary between two switches, forming what we call an ``epoch''.
 Third, target direction is drawn as a Bernoulli trial using the current value of $p$.
 Such a hierarchical structure is presented in~\seeFig{intro}-A,
 where we show the realization of the target's directions sequence,
@@ -585,7 +585,7 @@ in order to be able to compare adaptation properties
 across different chunks of the trials sequence.
 %The model generating the experimental sequence of trial directions, as well as the experimental protocol are illustrated in~\seeFig{intro}-A.
 With such a three-layered structure, the model generates the randomized occurrence of switches,
-itself generating sub-blocks with constant direction probability %between two switches separated by a random length
+itself generating epochs with constant direction probability %between two switches separated by a random length
 %and chosen in the continuous range of possible biases' values,
 and finally the random sequence of Target Direction (TD) occurrences at each trial.
 To summarize, the system of three equations defined in~\seeEq{bsm}
@@ -971,7 +971,7 @@ is that the observed data is a Bernoulli trial and not a Gaussian random variabl
 The random variable $x_1^t$ is the probability bias used
 to generate the sequence of events $x_0^t$.
 We will infer it for all different hypotheses on $r^t$,
-that is, knowing there was a sequence of $r^t$ Bernoulli trials in that sub-block.
+that is, knowing there was a sequence of $r^t$ Bernoulli trials in that epoch.
 Mathematically, a belief on this random variable is represented
 by the conjugate probability distribution of the binomial distribution,
 that is, by the beta-distribution $B(x_1^t; \mu^{(r)}_{t}, \nu^{(r)}_{t})$.
@@ -1783,7 +1783,7 @@ Twelve observers (29 years old +/- 5.15 \AM{, XX females}) with normal or correc
 
 Visual stimuli were generated using PsychoPy 1.85.2 on a Mac running OS 10.6.8 and displayed on a 22" Samsung SyncMaster 2233 monitor with $1680\times 1050$ pixels resolution at 100~\si{\Hz} refresh rate. Experimental routines written using PsychoPy 1.85.2 controlled the stimulus display. Observers sat 57~\si{\cm} from the screen in a dark room.
 
-The moving target used in our experiments was a white ring ($0.35\degree$ outer diameter and $0.27\degree$ inner diameter) with a luminance of 102 cd/m2 that moved horizontally on a grey background (luminance $42cd/m^2$). Each trial started with a central fixation point displayed for a random duration drawn from a uniform distribution ranging between 400 and 800ms. Then a fixed-duration 300ms gap occurred between the offset of the fixation point and the onset of the moving target, which was presented slightly offset from the fixation location (\citet{Rashbass1961}) and immediately started moving horizontally at a constant speed of $15\degree/s$, either to the right or to the left for 1000 ms. The probability P of rightward trials was a time-varying random variable which was constant within a sub-block of the sequence of a given random size (see main text for the description of the generative model).
+The moving target used in our experiments was a white ring ($0.35\degree$ outer diameter and $0.27\degree$ inner diameter) with a luminance of 102 cd/m2 that moved horizontally on a grey background (luminance $42cd/m^2$). Each trial started with a central fixation point displayed for a random duration drawn from a uniform distribution ranging between 400 and 800ms. Then a fixed-duration 300ms gap occurred between the offset of the fixation point and the onset of the moving target, which was presented slightly offset from the fixation location (\citet{Rashbass1961}) and immediately started moving horizontally at a constant speed of $15\degree/s$, either to the right or to the left for 1000 ms. The probability P of rightward trials was a time-varying random variable which was constant within an epoch of the sequence of a given random size (see main text for the description of the generative model).
 
 The paradigm included two experiments performed on two consecutive days by each participants and involving the presentation of the same sequence of trials, while collecting a different behavioral response, the \textit{Eye movements} and the \textit{Explicit prediction} (or \textit{Bet}) experiments. Asked after the experiment, no observer noticed that the same (pseudo-)random sequence of target directions was used in both experiments.
 
