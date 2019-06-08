@@ -1001,7 +1001,7 @@ This updates for each node the sufficient statistics of the pdf at the current t
 We can now detail the computation of the likelihood of the current datum $x_0^{t}$ with respect to
 the current beliefs : $\pi^{(r)}_t = Pr( x_0^{t} |  \mu^{(r)}_{t-1}, \nu^{(r)}_{t-1})$. %}
 This scalar is returned by the binary function 
-$\Ll(p, r | o)$ which evaluates at each node the likelihood of the parameters of each node
+$\Ll(r | p, o)$ which evaluates at each node $r$ the likelihood of the parameters of each node
 whenever we observe a counterfactual alternative outcome $o=1$ or $o=0$
 knowing a mean bias $p=\mu^{(r)}_{t-1}$
 and a sample size $r=\nu^{(r)}_{t-1}$.
@@ -1012,16 +1012,16 @@ a number $p \cdot r + o$ of trials going to the right and
 a number $(1-p) \cdot r + 1 - o$ of trials to the left.
 After some algebra, this defines the likelihood as :
 \eql{
-\Ll(p, r| o) = \frac{1}{Z} \cdot {(p \cdot r + o)}^{p \cdot r + o} \cdot {((1- \mu^{(r)}_{t})\cdot r + 1- o)}^{(1- p)\cdot r + 1- o}
+\Ll(r|p, o) = \frac{1}{Z} \cdot {(p \cdot r + o)}^{p \cdot r + o} \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o}
 \label{eq:likelihood}
 }
-with $Z$ such that $\Ll(p, r|o=1) + \Ll(p, r|o=0)=1$. % where
+with $Z$ such that $\Ll(r|p, o=1) + \Ll(r|p, o=0)=1$. % where
 %\eq{
 %Z = {(\mu \cdot \nu + 1)}^{\mu \cdot \nu + 1}  \cdot {((1- \mu)\cdot \nu )}^{(1- \mu)\cdot \nu }  +
 %    {(\mu \cdot \nu )}^{\mu \cdot \nu }  \cdot {((1- \mu)\cdot \nu + 1)}^{(1- \mu)\cdot \nu + 1}
 %}
 The full derivation of this function is detailed in~\seeApp{likelihood}.
-This provides with that the likelihood as $\pi^{(r)}_t = \Ll( \mu^{(r)}_{t-1}, \nu^{(r)}_{t-1} | x_0^{t})$.
+This provides with that the likelihood as $\pi^{(r)}_t = \Ll(\nu^{(r)}_{t-1} | \mu^{(r)}_{t-1}, x_0^{t})$.
 
 %-------------------------------------------------------------%
 %: 2Be online estimation: prediction
