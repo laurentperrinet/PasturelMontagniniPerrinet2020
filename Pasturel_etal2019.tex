@@ -986,8 +986,8 @@ one can show that at any trial $t>0$,
 the sufficient statistics $(\mu^{(r)}_{t}, \nu^{(r)}_{t})$
 can be updated from the previous trial following:
 \eqa{
-& \mu^{(r+1)}_{t} = \frac{r}{r+1} \cdot \mu^{(r)}_{t-1} + \frac{1}{r+1} \cdot x_0^{t} \\
-& \nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1
+& \nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1 \\
+& \mu^{(r+1)}_{t} = \frac{\nu^{(r+1)}_{t-1}}{\nu^{(r+1)}_{t}} \cdot \mu^{(r)}_{t-1} + \frac{1}{\nu^{(r+1)}_{t}} \cdot x_0^{t}
 }
 Note that the series defined by $\mu^{(r+1)}_{r+t}$ is the moving average at trial $r+t$ on the $r$ last samples.
 Moreover, $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the initial condition:
@@ -1001,7 +1001,7 @@ This updates for each node the sufficient statistics of the pdf at the current t
 We can now detail the computation of the likelihood of the current datum $x_0^{t}$ with respect to
 the current beliefs : $\pi^{(r)}_t = Pr( x_0^{t} |  \mu^{(r)}_{t-1}, \nu^{(r)}_{t-1})$. %}
 This scalar is returned by the binary function 
-$\Ll(p, r | o)$ which evaluates at each node the likelihood of the parameters of each node
+$\Ll(r | p, o)$ which evaluates at each node $r$ the likelihood of the parameters of each node
 whenever we observe a counterfactual alternative outcome $o=1$ or $o=0$
 knowing a mean bias $p=\mu^{(r)}_{t-1}$
 and a sample size $r=\nu^{(r)}_{t-1}$.
@@ -1012,16 +1012,16 @@ a number $p \cdot r + o$ of trials going to the right and
 a number $(1-p) \cdot r + 1 - o$ of trials to the left.
 After some algebra, this defines the likelihood as :
 \eql{
-\Ll(p, r| o) = \frac{1}{Z} \cdot {(p \cdot r + o)}^{p \cdot r + o} \cdot {((1- \mu^{(r)}_{t})\cdot r + 1- o)}^{(1- p)\cdot r + 1- o}
+\Ll(r|p, o) = \frac{1}{Z} \cdot {(p \cdot r + o)}^{p \cdot r + o} \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o}
 \label{eq:likelihood}
 }
-with $Z$ such that $\Ll(p, r|o=1) + \Ll(p, r|o=0)=1$. % where
+with $Z$ such that $\Ll(r|p, o=1) + \Ll(r|p, o=0)=1$. % where
 %\eq{
 %Z = {(\mu \cdot \nu + 1)}^{\mu \cdot \nu + 1}  \cdot {((1- \mu)\cdot \nu )}^{(1- \mu)\cdot \nu }  +
 %    {(\mu \cdot \nu )}^{\mu \cdot \nu }  \cdot {((1- \mu)\cdot \nu + 1)}^{(1- \mu)\cdot \nu + 1}
 %}
 The full derivation of this function is detailed in~\seeApp{likelihood}.
-This provides with that the likelihood as $\pi^{(r)}_t = \Ll( \mu^{(r)}_{t-1}, \nu^{(r)}_{t-1} | x_0^{t})$.
+This provides with that the likelihood as $\pi^{(r)}_t = \Ll(\nu^{(r)}_{t-1} | \mu^{(r)}_{t-1}, x_0^{t})$.
 
 %-------------------------------------------------------------%
 %: 2Be online estimation: prediction
@@ -1037,14 +1037,14 @@ and use the marginal predictive probability (see~\seeEq{pred}) as a readout.
 %\eql{
 %\hat{x_1}^t = \mu^{(r^\ast)}_{t} \quad \text{with} \quad r^\ast = \argmax_r \beta^{(r)}_{t}
 %}
-This probability $\hat{x_1}^t=Pr(x_0^{t+1} | x_0^{0:t})$ is computed as the expected value over all run-lengths:
+This probability $\hat{x_1}^{t+1}=Pr(x_0^{t+1} | x_0^{0:t})$ is computed as the expected value over all run-lengths:
 \eql{
-\hat{x_1}^t = \sum_{r} \mu^{(r)}_{t} \cdot \beta^{(r)}_{t}
+\hat{x_1}^{t+1} = \sum_{r} \mu^{(r)}_{t} \cdot \beta^{(r)}_{t}
 \label{eq:readout}
 }
 Interestingly, it can be proven that if,
 instead of updating beliefs with Equations~\ref{eq:beta_noswitch} and~\ref{eq:beta_switch},
-we set nodes' beliefs to the constant vector $\beta^{(r+1)}_t = h \cdot r \cdot (1 -h) ^r$, 
+we set nodes' beliefs to the constant vector $\beta^{(r)}_t = h \cdot (1 -h) ^r$, 
 then the marginal probability is equal to that obtained with the leaky integrator (see~\seeEq{leaky}).
 This highlights that contrary to the leaky integrator, % for which the inference $\hat{x_2}=h$ was fixed,
 the BBCP model uses a dynamical model for the estimation of the volatility.
@@ -1772,7 +1772,7 @@ to more complex and ecological settings about the timing of stimuli.
 \item We have developed a Bayesian model of an agent estimating the probability bias of a volatile environment with changing points (switches), such that the agent may decide \textit{to stay} on the current hypothesis about the environment, or \textit{to go} for a novel one. This allows to dynamically infer the probability bias across time and directly compare model predictions and experimental data, such as human behavior.
 \item We applied such a framework to the case of a probability bias in a visual motion task where we manipulated the target direction probability. We observed a good match between the largely unconscious anticipatory smooth eye movements and the results of the model, replicating and providing a novel solid theoretical framework for previous findings ~\citep{Montagnini2010, SantosKowler2017, Damasse18}.
 \item We also found a good match between model predictions and the explicit rating of confidence on the expected target motion direction, a novel result suggesting that this model captures some of the brain computations underlying expectancy based motion prediction, both at the unconscious and conscious level
-\item Finally, we found that the experimental data of each different participant matched to different levels of belief's precision on the volatile environment, some being more or less conservative. Interestingly, the individual level was relatively across the two experiments (namely for the unconscious anticipatory eye movements and the conscious rating).
+\item Finally, we found that the experimental data of each different participant matched to different levels of belief's precision on the volatile environment, some being more or less conservative. Interestingly, the individual level was relatively coherent across the two experiments (namely for the unconscious anticipatory eye movements and the conscious rating).
 \end{itemize}
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Material and Methods}
