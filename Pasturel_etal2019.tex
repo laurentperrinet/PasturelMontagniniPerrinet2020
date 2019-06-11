@@ -986,8 +986,8 @@ one can show that at any trial $t>0$,
 the sufficient statistics $(\mu^{(r)}_{t}, \nu^{(r)}_{t})$
 can be updated from the previous trial following:
 \eqa{
-& \mu^{(r+1)}_{t} = \frac{r}{r+1} \cdot \mu^{(r)}_{t-1} + \frac{1}{r+1} \cdot x_0^{t} \\
-& \nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1
+& \nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1 \\
+& \mu^{(r+1)}_{t} = \frac{\nu^{(r+1)}_{t-1}}{\nu^{(r+1)}_{t}} \cdot \mu^{(r)}_{t-1} + \frac{1}{\nu^{(r+1)}_{t}} \cdot x_0^{t}
 }
 Note that the series defined by $\mu^{(r+1)}_{r+t}$ is the moving average at trial $r+t$ on the $r$ last samples.
 Moreover, $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the initial condition:
@@ -1037,14 +1037,14 @@ and use the marginal predictive probability (see~\seeEq{pred}) as a readout.
 %\eql{
 %\hat{x_1}^t = \mu^{(r^\ast)}_{t} \quad \text{with} \quad r^\ast = \argmax_r \beta^{(r)}_{t}
 %}
-This probability $\hat{x_1}^t=Pr(x_0^{t+1} | x_0^{0:t})$ is computed as the expected value over all run-lengths:
+This probability $\hat{x_1}^{t+1}=Pr(x_0^{t+1} | x_0^{0:t})$ is computed as the expected value over all run-lengths:
 \eql{
-\hat{x_1}^t = \sum_{r} \mu^{(r)}_{t} \cdot \beta^{(r)}_{t}
+\hat{x_1}^{t+1} = \sum_{r} \mu^{(r)}_{t} \cdot \beta^{(r)}_{t}
 \label{eq:readout}
 }
 Interestingly, it can be proven that if,
 instead of updating beliefs with Equations~\ref{eq:beta_noswitch} and~\ref{eq:beta_switch},
-we set nodes' beliefs to the constant vector $\beta^{(r+1)}_t = h \cdot r \cdot (1 -h) ^r$, 
+we set nodes' beliefs to the constant vector $\beta^{(r)}_t = h \cdot (1 -h) ^r$, 
 then the marginal probability is equal to that obtained with the leaky integrator (see~\seeEq{leaky}).
 This highlights that contrary to the leaky integrator, % for which the inference $\hat{x_2}=h$ was fixed,
 the BBCP model uses a dynamical model for the estimation of the volatility.
