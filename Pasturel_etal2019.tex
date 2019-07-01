@@ -440,9 +440,9 @@ We tested the capacity of human participants to adapt to a volatile environment
 by using a simple, 3-layered generative model of fluctuations in target directions (TD)
 that we call the Binary Switching Model (BSM).
 This TD binary variable is chosen using a Bernoulli trial of a given probability bias.
-This probability is itself chosen at random from a given prior
-and is constant for as many trials until a switch is generated.
-Switches are generated in the third layer as a Bernoulli trial
+This probability is constant for as many trials until a switch is generated. 
+At a switch, it is  chosen at random from a given prior.
+Switches are generated in the third layer as binary events drawn from a Bernoulli trial
 with a given hazard rate (defined here as $1/40$ per trial).
 \textbf{(B)}~
 The eye-movements task was an adapted version of a task developed by~\citet{Montagnini2010}.
