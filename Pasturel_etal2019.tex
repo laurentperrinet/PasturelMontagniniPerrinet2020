@@ -1085,6 +1085,7 @@ on the trial sequence that was used for the experiments and
 ultimately comparing it to the human behavior. % (see~\seeFig{results_raw}).
 %TODO : synchronize with FIGURE 3 fig:bayesianchangepoint
 \seeFig{bayesianchangepoint}-A shows a graph-based representation of the BBCP estimate of the run-length for one instance of a short sequence ($10$ trials) of simulated data $x_0^t$
+\CP{($15$ trials ou $14$)}
 of leftward and rightward trials, with a switch from a low to a high probability
 of moving rightward occurring at trial $7$ (see figure caption for a detailed explanation).
 It also shows the predicted probability $\hat{x_1}^t$
@@ -1201,7 +1202,6 @@ The recorded aSPEM strength as measured
 by the horizontal eye velocity estimated right before
 the onset of the visually-driven SPEM (black line);
 and the explicit ratings about the expected target direction (or \textit{bet scores}, red line).
-\CP{These values were here scaled according to their extremal values.}
 We also show the evolution of the value
 of the probability bias $p$ (blue line)
 which is hidden to observers
@@ -1231,6 +1231,7 @@ We used the BSM model to generate the (pseudo-)random sequence of
 the dot's directions (the alternating output of leftward/rightward trials)
 as the sequence of observations.
 In a first session, we recorded the participants' eye movements and
+\CP{session 2}
 extracted the aSPEM velocity (for details, see \seeApp{em}).
 Among our $12$ participants, we show the eye velocity traces of two representative subjects in~\seeFig{results_psycho}.
 These representative participants were chosen as those
@@ -1239,6 +1240,7 @@ that will be illustrated in \seeSec{inter}.
 In particular, we show in the top panel the actual sequence of binary choices
 (TD, leftward or rightward) of the Bernoulli trials, whereas in the two bottom panels, we compare the evolution of the recorded aSPEM (black line) with
 the real value of the hidden probability bias $x_1$ (step-like blue shaded curve),
+\CP{il n'y a plus d'ombrage pour $x_1$}
 and the value inferred using the BBCP model (green line), along with the  (green shaded area).
 Comparing the raw eye movement results with the BBCP agent predictions,
 it appears qualitatively that both traces evolve in good agreement.
@@ -1267,7 +1269,7 @@ for predicting the strength of aSPEM.
 %\label{sec:rating_scale}
 In addition, the explicit ratings
 for the next trial's expected motion direction (or \textit{bet scores}, red curve in~\seeFig{results_psycho})
-provided by the second experiment
+provided by the second experiment \CP{session 1}
 seem to qualitatively follow the same trend.
 Indeed, similarly to the strength of aSPEM,
 we qualitatively compare in~\seeFig{results_psycho}
@@ -1369,11 +1371,14 @@ the probability bias $P_{\text{BBCP}}$ estimated by the BBCP algorithm
 is linearly correlated with the aSPEM velocity, both as computed on the whole data or 
 for each observer individually.
 The corresponding Pearson correlation coefficient ($r = XXX \pm $)
+\CP{($r = 0.657$ $MI = 0.687$) pour les sujet : ($r = 0.6734 \pm 0.0797 $ $MI =  0.7079 \pm 0.1341$) notebook 4}
 is slightly higher than that found by
 \citet{Montagnini2010} and \citet{Damasse18} for aSPEM measures gathered across experimental blocks with fixed direction biases ($r = XXX \pm $),
 and significantly better than that estimated 
 for the real probability ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$\footnote{All following $p$-values are obtained from the Wilcoxon signed-rank test.}) % https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html
+\CP{($r = 0.597$ $MI = 0.529$) pour les sujet : ($r = 0.6138 \pm 0.0698 $ $MI = 0.5622 \pm 0.1079$, $p=0.0022$ pour r et $p=0.0022$ pour MI) notebook 4}
 and for that estimated by the leaky-integrator model ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$, see inset).
+\CP{($r = 0.582$ $MI = 0.609$) pour les sujet : ($r = 0.6005 \pm 0.0790 $ $MI =  0.6221 \pm 0.1025$, $p=0.0037$ pour r et $p=0.0047$ pour MI) notebook 4}
 A similar analysis
 illustrates the relationship between
 the model-estimated probability-bias
@@ -1384,8 +1389,11 @@ Similarly to the aSPEM strength, the rating values are nicely correlated
 with the probability bias given by the model, 
 as quantified by the average correlation and mutual information 
 ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$).
+\CP{($r = 0.795$ $MI = 1.134$) pour les sujet : ($r = 0.8134 \pm 0.0916 $ $MI = 1.3126 \pm 0.3644$) notebook 4}
 Importantly, this value is again higher for the BBCP model than
 for the leaky integrator ($r = XXX \pm XXX$, $MI = XXX \pm XXX$).
+\CP{($r = 0.712$ $MI = 0.968$) pour les sujet : ($r = 0.7311 \pm 0.1298 $ $MI =  1.1178 \pm 0.4092$, $p=0.0076$ pour r et $p=0.0280$ pour MI) notebook 4/
+real probability : ($r = 0.679$ $MI = 0.795$) pour les sujet : ($r = 0.6949 \pm 0.0861 $ $MI =  0.9400 \pm 0.2550$, $p=0.0022$ pour r et $p=0.0022$ pour MI) }
 Further notice that, in order to account for some specific changes 
 observed in the behavioral data after the short pauses 
 occurring every $50$ trials, 
@@ -1394,6 +1402,7 @@ that there was a switch at each pause.
 However, removing this assumption did not significantly change the match of the model
 compared to $P_{\text{real}}$ or $P_{\text{leaky}}$ 
 ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$).
+\CP{TODO Chloe : Calcule !}
 To conclude, we deduce that the dynamic estimate of probability biases produced by the BBCP model
 is a powerful regressor to explain both the strength of anticipatory smooth pursuit eye movements and the explicit ratings of human observers experiencing a volatile context for visual motion.
 
@@ -1457,12 +1466,15 @@ We analyzed each subject individually by finding
 the best value of the model's single free parameter, the hazard rate.
 The dots correspond to independent estimates of the hazard rate in each sub-block and
 each individual is represented by a different color.
+\CP{les 3 valeurs de h de chaque sujets sont relier pas des ligne pointillé et les couleurs des point correspond au 3 blocs}
 Estimates were performed independently on both experiments,
 such that we extracted different estimates of $h_A$ and $h_R$
 respectively for the aSPEM strength and the rating value. 
 \LP{Stars correspond to the observers displayed in ~\seeFig{results_psycho}.}
 This plot shows that best fit hazard rates are in general higher than the ground truth (black line),
+\CP{ligne bleu}
 that there is a positive correlation between both experiments around the identity (dashed line),
+\CP{pas de bonne correlation :/}
 and finally that for each individual these values cluster pretty much together.
 Such an analysis suggests that participants may have
 a common mechanism for their tendency of exploration versus exploitation
@@ -1481,15 +1493,16 @@ We computed the mutual information
 \CP{coefficient de correlation}
 %for $20$ equally spaced values of $h$ between $0.01$ and $0.1$
 %for $20$ geometrically spaced values of $h$ between $0.01$ and $0.1$
-for the BBCP-model responses of $21$ geometrically spaced values of $h$ between $0.0025=1/400$ and $0.25=1/4$. \CP{10000 valeurs de $\tau$ entre 1 et 10001}
+for the BBCP-model responses of $21$ geometrically spaced values of $h$ between $0.0025=1/400$ and $0.25=1/4$. \CP{1600 valeurs de $\tau$ entre 1 et 1601}
 We then extracted different estimates of $h_A$ and $h_R$,
 respectively for aSPEM and the rating scale,
 by choosing the hazard rate values corresponding to a maximal mutual information.
+\CP{coefficient de correlation maximal}
 To cross-validate our results for each individual participant,
 we have fitted the BBCP model to $11$ sub-blocks of $100$ trials 
 extracted from the whole sequence of $600$ trials 
 by shifting a $100$-trials window by steps of $50$ trials. \CP{un h par block de 200 essais (3 h par sujet)}
-These provide with $11$ values of the best fitted hazard rate for each session and observer.
+These provide with $11$ \CP{$3$} values of the best fitted hazard rate for each session and observer.
 The scatter plot of the best fit values are shown in~\seeFig{results_inter}.
 This figure suggests, in the first place, that there is some variability
 in the best fit value of the hazard rate in both sessions.
@@ -1791,20 +1804,20 @@ Visual stimuli were generated using PsychoPy 1.85.2 on a Mac running OS 10.6.8 a
 
 The moving target used in our experiments was a white ring ($0.35\degree$ outer diameter and $0.27\degree$ inner diameter) with a luminance of 102 cd/m2 that moved horizontally on a grey background (luminance $42cd/m^2$). Each trial started with a central fixation point displayed for a random duration drawn from a uniform distribution ranging between 400 and 800ms. Then a fixed-duration 300ms gap occurred between the offset of the fixation point and the onset of the moving target, which was presented slightly offset from the fixation location (\citet{Rashbass1961}) and immediately started moving horizontally at a constant speed of $15\degree/s$, either to the right or to the left for 1000 ms. The probability P of rightward trials was a time-varying random variable which was constant within an epoch of the sequence of a given random size (see main text for the description of the generative model).
 
-The paradigm included two experiments performed on two consecutive days by each participants and involving the presentation of the same sequence of trials, while collecting a different behavioral response, the \textit{Eye movements} and the \textit{Explicit prediction} (or \textit{Bet}) experiments. Asked after the experiment, no observer noticed that the same (pseudo-)random sequence of target directions was used in both experiments.
+The paradigm included two experiments performed on two consecutive days by each participants and involving the presentation of the same sequence of trials, while collecting a different behavioral response, the \textit{Eye movements} and the \textit{Explicit prediction} (or \textit{Bet}) experiments \CP{\textit{Explicit prediction} avant\textit{Eye movements} }. Asked after the experiment, no observer noticed that the same (pseudo-)random sequence of target directions was used in both experiments.
 
 \subsection{Eye movements experiment}
 Eye movements were recorded continuously with an eye tracking system (Eyelink 1000, SR Research Ltd., sampled at 1000 Hz), using the Python module Pylink 0.1.0. Horizontal and vertical eye position data were transferred, stored, and analyzed offline using programs written in Ipython notebooks.
 To minimize measurement errors, the participant's head movements were restrained using a chin and forehead rest, so that the eyes in primary gaze position were directed towards the center of the screen. In order to enforce accuracy in gaze position and tracking, we implemented an automatic procedure of fixation control. If the distance between the gaze position and the central fixation point during the fixation epoch exceeded $2\degree$ of visual angles, the fixation point started flickering and the counter for the fixation duration was reset to $0$.
 
 The recorded horizontal and vertical raw gaze position data were numerically differentiated to obtain velocity measures. We adopted an automatic conjoint acceleration and velocity threshold method (the default saccade detection implemented by SR Research) to detect ocular saccades. Saccades and eye-blinks were excluded from eye velocity traces (and replaced by NaN values in the numerical arrays) before trial averaging and data fitting for the extraction of the oculomotor parameters of interest.
-In order to extract the relevant parameters of the oculomotor responses, we developed new tools based on a best-fitting procedure of predefined oculomotor patterns and in particular the typical smooth pursuit velocity profile that was recorded in our experiment. \AM{A piecewise-defined function was fitted to the different epochs of the eye velocity traces: a constant function during fixation, a ramp-like linear function during anticipation, an exponential during the initiation of viually-guided smooth pursuit, reaching its saturating value during the pursuit steady-state.} This analysis was applied to each trial individually and it allowed in particular to estimate the anticipatory smooth pursuit velocity. \AM{A manuscript describing all details abut the oculomotor data processing and parameter extraction is in preparation }
+In order to extract the relevant parameters of the oculomotor responses, we developed new tools based on a best-fitting procedure of predefined oculomotor patterns and in particular the typical smooth pursuit velocity profile that was recorded in our experiment. \AM{A piecewise-defined function was fitted to the different epochs of the eye velocity traces: a constant function during fixation, a ramp-like linear function during anticipation, an exponential during the initiation of viually-guided smooth pursuit, reaching its saturating value during the pursuit steady-state.} \CP{au final on a utilise la fonction sigmoide et plus l'exponentiel : an sigmoide during the initiation of viually-guided smooth pursuit} This analysis was applied to each trial individually and it allowed in particular to estimate the anticipatory smooth pursuit velocity. \AM{A manuscript describing all details abut the oculomotor data processing and parameter extraction is in preparation }
 %are provided in Appendix \ref{app:em}
 
 The python scripts used to analyse eye movements are available at \url{https://github.com/invibe/ANEMO}.
 
 \subsection{The Bet experiment}
-The aim of the second experiment (administered the following day, after the Eye Movement experiment) was to collect data related to the individual conscious estimate of the probability of target motion direction. At the beginning of each trial, before the presentation of the moving target, participants had to answer to the question \textit{ ``How sure are you that the target will go left or right''}. This was performed by adjusting a cursor on the screen using the mouse (see Figure~\seeFig{intro}-C). The cursor could be placed at any point along a horizontal segment representing a linear rating scale with three ticks labeled as \textit{ ``Left''}, \textit{``Right''} (at the extreme left and right end of the segment respectively), and \textit{``Unsure''} in the middle. Participants had to validate their choice by clicking on the mouse left-button and the actual target motion was shown thereafter. The rationale to collect rating responses on a continuous scale instead of a simple binary prediction (Right/Left) was to be able to infer the individual estimate of the direction bias at the single trial scale (in analogy to the continuous interval for the strength of aSPEM velocity).
+The aim of the second experiment \CP{premiere} (administered the following day, after the Eye Movement experiment) was to collect data related to the individual conscious estimate of the probability of target motion direction. At the beginning of each trial, before the presentation of the moving target, participants had to answer to the question \textit{ ``How sure are you that the target will go left or right''}. This was performed by adjusting a cursor on the screen using the mouse (see Figure~\seeFig{intro}-C). The cursor could be placed at any point along a horizontal segment representing a linear rating scale with three ticks labeled as \textit{ ``Left''}, \textit{``Right''} (at the extreme left and right end of the segment respectively), and \textit{``Unsure''} in the middle. Participants had to validate their choice by clicking on the mouse left-button and the actual target motion was shown thereafter. The rationale to collect rating responses on a continuous scale instead of a simple binary prediction (Right/Left) was to be able to infer the individual estimate of the direction bias at the single trial scale (in analogy to the continuous interval for the strength of aSPEM velocity).
 
 We called this experiment the \textit{ ``Bet''} experiment, as participants were explicitly encouraged to make reasonable rating estimates, as though they had to bet money on the next trial outcome. Every $50$ trials, a \textit{``score''} was displayed on the screen, corresponding to the proportion of correct direction predictions (Right or Left of the \textit{``Unsure''} tick) weighted by the confidence attributed to each answer (the distance of the cursor from the center).
 
