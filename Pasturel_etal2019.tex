@@ -1371,14 +1371,14 @@ the probability bias $P_{\text{BBCP}}$ estimated by the BBCP algorithm
 is linearly correlated with the aSPEM velocity, both as computed on the whole data or 
 for each observer individually.
 The corresponding Pearson correlation coefficient ($r = XXX \pm $)
-\CP{($r = 0.657$ $MI = 0.687$) pour les sujet : ($r = 0.6734 \pm 0.0797 $ $MI =  0.7079 \pm 0.1341$) notebook 4}
+\CP{aSPEM / BCP : ($r = 0.657$ $MI = 0.687$) pour les sujet - ($r = 0.6734 \pm 0.0797 $ $MI =  0.7079 \pm 0.1341$) notebook 4}
 is slightly higher than that found by
 \citet{Montagnini2010} and \citet{Damasse18} for aSPEM measures gathered across experimental blocks with fixed direction biases ($r = XXX \pm $),
 and significantly better than that estimated 
 for the real probability ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$\footnote{All following $p$-values are obtained from the Wilcoxon signed-rank test.}) % https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html
-\CP{($r = 0.597$ $MI = 0.529$) pour les sujet : ($r = 0.6138 \pm 0.0698 $ $MI = 0.5622 \pm 0.1079$, $p=0.0022$ pour r et $p=0.0022$ pour MI) notebook 4}
+\CP{aSPEM / Real : ($r = 0.597$ $MI = 0.529$) pour les sujet - ($r = 0.6138 \pm 0.0698 $  $p=0.0022$ - $MI = 0.5622 \pm 0.1079$ $p=0.0022$)}
 and for that estimated by the leaky-integrator model ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$, see inset).
-\CP{($r = 0.582$ $MI = 0.609$) pour les sujet : ($r = 0.6005 \pm 0.0790 $ $MI =  0.6221 \pm 0.1025$, $p=0.0037$ pour r et $p=0.0047$ pour MI) notebook 4}
+\CP{aSPEM / Leaky - ($r = 0.582$ $MI = 0.609$) pour les sujet - ($r = 0.6005 \pm 0.0790$ $p=0.0037$ - $MI =  0.6221 \pm 0.1025$  $p=0.0047$)}
 A similar analysis
 illustrates the relationship between
 the model-estimated probability-bias
@@ -1389,11 +1389,11 @@ Similarly to the aSPEM strength, the rating values are nicely correlated
 with the probability bias given by the model, 
 as quantified by the average correlation and mutual information 
 ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$).
-\CP{($r = 0.795$ $MI = 1.134$) pour les sujet : ($r = 0.8134 \pm 0.0916 $ $MI = 1.3126 \pm 0.3644$) notebook 4}
+\CP{BET / BCP : ($r = 0.795$ $MI = 1.134$) pour les sujet - ($r = 0.8134 \pm 0.0916 $ $MI = 1.3126 \pm 0.3644$)}
 Importantly, this value is again higher for the BBCP model than
 for the leaky integrator ($r = XXX \pm XXX$, $MI = XXX \pm XXX$).
-\CP{($r = 0.712$ $MI = 0.968$) pour les sujet : ($r = 0.7311 \pm 0.1298 $ $MI =  1.1178 \pm 0.4092$, $p=0.0076$ pour r et $p=0.0280$ pour MI) notebook 4/
-real probability : ($r = 0.679$ $MI = 0.795$) pour les sujet : ($r = 0.6949 \pm 0.0861 $ $MI =  0.9400 \pm 0.2550$, $p=0.0022$ pour r et $p=0.0022$ pour MI) }
+\CP{BET / Leaky : ($r = 0.712$ $MI = 0.968$) pour les sujet - ($r = 0.7311 \pm 0.1298 $ $p=0.0076$ - $MI =  1.1178 \pm 0.4092$ $p=0.0280$)
+-- real probability : ($r = 0.679$ $MI = 0.795$) pour les sujet - ($r = 0.6949 \pm 0.0861 $ $p=0.0022$ - $MI =  0.9400 \pm 0.2550$ $p=0.0022$) }
 Further notice that, in order to account for some specific changes 
 observed in the behavioral data after the short pauses 
 occurring every $50$ trials, 
@@ -1402,7 +1402,12 @@ that there was a switch at each pause.
 However, removing this assumption did not significantly change the match of the model
 compared to $P_{\text{real}}$ or $P_{\text{leaky}}$ 
 ($r = XXX \pm XXX$, $MI = XXX \pm XXX$, $p=XXX$).
-\CP{TODO Chloe : Calcule !}
+\CP{SANS PAUSE -- aSPEM / BCP :($r = 0.651$ $MI = 0.686$) pour les sujet - ($r = 0.6678 \pm 0.0782 $ $MI =  0.7123 \pm 0.1250$
+/ Leaky :($r = 0.525$ $MI = 0.561$) pour les sujet - ($r = 0.5480 \pm 0.0749 $ $p=0.0037$ - $MI =  0.5777 \pm 0.0961$ $p=0.0037$ )
+/ real probability : ($r = 0.597$ $MI = 0.529$) pour les sujet - ($r = 0.6138 \pm 0.0698 $ $p=0.0028$ -  $MI =  0.5622 \pm 0.1079$ $p=0.0022$) }
+\CP{SANS PAUSE -- BET  / BCP :($r = 0.785$ $MI = 1.100$) pour les sujet - ($r = 0.8027 \pm 0.0905 $ $MI =  1.2557 \pm 0.3498$)
+/ Leaky :($r = 0.625$ $MI = 0.879$) pour les sujet - ($r = 0.6413 \pm 0.1209$ $p=0.0028$ - $MI =  0.9666 \pm 0.3008$ $p=0.0022$)
+/ real probability : ($r = 0.679$ $MI = 0.795$) pour les sujet - ($r = 0.6949 \pm 0.0861 $ $p=0.0022$ - $MI =  0.9400 \pm 0.2550$ $p=0.0022$) }
 To conclude, we deduce that the dynamic estimate of probability biases produced by the BBCP model
 is a powerful regressor to explain both the strength of anticipatory smooth pursuit eye movements and the explicit ratings of human observers experiencing a volatile context for visual motion.
 
