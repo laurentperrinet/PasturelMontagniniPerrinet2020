@@ -22,7 +22,8 @@ Should I stay or should I go? Humans adapt to the volatility of visual motion pr
 }
 \newcommand{\Acknowledgments}{PACE-ITN - code and material @ \url{\Website/Publications/PasturelMontagniniPerrinet2019}. TODO: RIck + Karl + JB + Laurent Madelain }
 \newcommand{\Abstract}{
-Animal behavior must constantly adapt to changes, for example when the state of an environmental context changes unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of directions of motion of a visual target to the right or left is biased to one direction, human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where probability biases could change at random switching times. In addition, we also recorded the explicit direction prediction reported by observers as given by a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to the event switching generating model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploration and exploitation in the model, we were able to fit each individual experimental data with different levels of switching volatility and derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still effectively represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test the diversity of human cognitive abilities in uncertain and dynamic environments.}
+Animal behavior must constantly adapt to changes, for example when the state of an environmental context changes unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of directions of motion of a visual target to the right or left is biased to one direction, human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where probability biases could change at random switching times. In addition, we also recorded the explicit direction prediction reported by observers as given by a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to the event switching generating model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploration and exploitation in the model, we were able to fit each individual experimental data with different levels of switching volatility and \textbf{derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still effectively represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments.} \CP{ATTENTION : $h_{va}$ et $h_{bet}$ sont diff\`erent}
+This work offers an innovative approach to more generically test the diversity of human cognitive abilities in uncertain and dynamic environments.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\documentclass[profile,final,english,draft,24pt]{article}%
 \documentclass[12pt,english]{article}%
@@ -454,8 +455,8 @@ The direction of the target (right or left) was drawn pseudo-randomly
 according to the generative model defined above.
 \textbf{(C)}~In order to titrate the adaptation
 to the environmental volatility of target direction at the conscious level,
-we invited each observer to perform a new variant of the direction-biased experiment on a subsequent day,
-\CP{ATTENTION le parie etait fait avant enregistrment occulaire}
+we invited each observer to perform a new variant of the direction-biased experiment on a \textbf{subsequent day},
+\CP{ATTENTION parie etait fait AVANT l'enregistrement occulaire}
 where we asked participants to rate, before each trial, the level of confidence
 for their estimate of the forthcoming direction of the target.
 As shown in this sample screenshot,
@@ -620,12 +621,12 @@ to validate the generalization of previous results %.
 %either to the right or left across trials
 with this novel protocol. %~(see \seeFig{intro}-A \& B).
 %The probability of either motion direction changes randomly in time.
-While in a first session, we recorded anticipatory eye movements~(see \seeFig{intro}-B),
 \CP{seance 1 : paris, seance 2 : enregistrement}
+\textbf{While in a first session, we recorded anticipatory eye movements~(see \seeFig{intro}-B),
 in a second experimental session, participants were asked to estimate
 ``how much they are confident that
 the target will move to the right or left in the next trial'' and
-to adjust the cursor's position on the screen accordingly~(see \seeFig{intro}-C).
+to adjust the cursor's position on the screen accordingly~(see \seeFig{intro}-C).}
 Indeed, in order to understand the nature of the representation of motion regularities underlying this adaptive behavior,
 it is crucial to collect verbal explicit judgments
 about expectations on motion direction,
@@ -789,7 +790,7 @@ but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 }
 \caption{\emph{Binary Bayesian Change Point (BBCP) detection model}
 \LP{WORK IN PROGRESS ~\textbf{(A)} This plot shows a synthesized sequence of $10$ events,
-\CP{15 events}
+\CP{15 ou 14 events}
 each of them corresponding to a binary choice,
 either a leftward or rightward movement of the target (TD).
 Here, the probability switched from a value of $.1$ to $.9$ at trial $7$.
@@ -801,16 +802,15 @@ At any new datum (trial), this defines a Hidden Markov Model
 as a graph (treillis) of possible run lengths.
 Edges of this graph indicate that a message is being passed
 to update each node's probability (as represented by arrows).
-\CP{attention il n'y a plus de ligne rouge ou noir}
 Black lines denote a progression of the run length at the next step (no switch),
-while red lines stand for the possibility that a switch happened:
+while red lines \CP{Lignes grises} stand for the possibility that a switch happened:
 The run length falls back to zero.
-The black and green curve respectively represent
-\CP{BLUE}
-the actual and inferred run length of the simulated data
+The black \CP{Bleu} [and green] \CP{plus de courbe verte} curve respectively represent
+the actual [and inferred] run length of the simulated data
 as a function of trial number.
-In this example the inferred switch is delayed
-by one trial with respect to the true switch.}
+[In this example the inferred switch is delayed
+by one trial with respect to the true switch.]}
+\CP{representation des valeurs du run length en haut a gauche pour les essais 5 (en gris) et 8 (en bleu), on peut voir que pour l'essais 5 et 8 la probabilit\'e qu'il n'y est pas eu de switch depuis le d\'ebut est la plus importante (peut \^etre prendre un autre essais plus parlant - trial 10: proba switch à l'essais 5 est plus importante (notebook3) ?)}
 ~\textbf{(B)} On a longer sequence of $200$ trials,
 representative of a sub-block of our experimental sequence (see~\seeFig{intro}-A), % and~\seeFig{results_raw}),
 we show in the top plot
@@ -1084,12 +1084,11 @@ this ideal observer model against a ground truth before applying it
 on the trial sequence that was used for the experiments and
 ultimately comparing it to the human behavior. % (see~\seeFig{results_raw}).
 %TODO : synchronize with FIGURE 3 fig:bayesianchangepoint
-\seeFig{bayesianchangepoint}-A shows a graph-based representation of the BBCP estimate of the run-length for one instance of a short sequence ($10$ trials) of simulated data $x_0^t$
-\CP{($15$ trials ou $14$)}
-of leftward and rightward trials, with a switch from a low to a high probability
+\seeFig{bayesianchangepoint}-A shows a graph-based representation of the BBCP estimate of the run-length for one instance of a short sequence \textbf{($10$ trials)} \CP{($15$ ou $14$ trials)} of simulated data $x_0^t$
+of leftward and rightward trials, with a switch from a \textbf{low} \CP{0.5} to a \textbf{high} \CP{0.9} probability
 of moving rightward occurring at trial $7$ (see figure caption for a detailed explanation).
-It also shows the predicted probability $\hat{x_1}^t$
-as computed using the BBCP algorithm.
+\textbf{It also shows the predicted probability $\hat{x_1}^t$
+as computed using the BBCP algorithm.} \CP{pas dans \seeFig{bayesianchangepoint}-A}
 %The bottom panel illustrates
 %the belief on the predicted probability $\hat{p}$ at a given trial.
 \seeFig{bayesianchangepoint}-B illustrates the predicted probability $\hat{x_1}^t$, as well as the corresponding uncertainty (the shaded areas correspond to $.05$ and $.95$ quantiles) when
@@ -1099,7 +1098,7 @@ characteristic of our behavioral experiments.
 In the bottom panel,
 we show the dynamical evolution of the belief on the latent variable (run length),
 corresponding to the same sequence of $200$ trials.
-As for the synthetic example above,
+\textbf{As for the synthetic example above}  \CP{pas dans \seeFig{bayesianchangepoint}-A},
 the BBCP model achieves a correct detection of the switches after a short delay of a few trials.
 
 Two main observations are noteworthy. First, after each detected switch, beliefs align along a linear ridge,
@@ -1128,7 +1127,7 @@ as the number of observations increase after a switch.
 % see 2018-02-12 journal club bayesian changepoint chloe.pdf p.33/ p.42
 % TODO include these quantitative results in a figure
 %-------------------------------------------------------------%
-In order to quantitatively evaluate the algorithm and following a similar strategy as~\citep{Norton18},
+In order to quantitatively evaluate the algorithm and following a similar strategy as~\citet{Norton18},
 we computed the negative log-likelihood (in bits) of the estimate probability bias,
 knowing the real probability,
 and averaged over all $T$ trials:
@@ -1149,14 +1148,14 @@ compared to the hidden real probability $x_1^t$.
 %Similar measures based on the predicted readout $\hat{x_0}^t$
 %gave similar results but would need more data to converge.
 We have tested $100$ blocks of $2000$ trials for each read-out.
-In general, we found that the inference is better for the BBCP algorithm ($\Cc = XXXX \pm XXX$)
-than for the leaky integrator ($\Cc = XXXX \pm XXX$), showing it provides overall with a better prediction.
+In general, we found that the inference is better for the BBCP algorithm \CP{($\Cc = XXXX \pm XXX$)}
+than for the leaky integrator \CP{($\Cc = XXXX \pm XXX$)}, showing it provides overall with a better prediction.
 Note that the only free parameter of this model is the hazard rate $h$
 assumed by the agent (as in the fixed-length agent).
 Although more generic solutions exist~\citep{Wilson13,Wilson18},
 we decided as a first step to keep this parameter fixed for our agent, 
 and  evaluate how well it matches to the experimental outcomes at the different scales of the protocol:
-averaged over all observers, for each individual observer or independently in all individual sub-blocks.
+\textbf{averaged over all observers, for each individual observer or independently in all individual sub-blocks.}\CP{}
 In a second step, by testing different values of $h$ assumed by the agent
 but for a fixed hazard rate $h=1/40$ in the BSM,
 we found that this cost can be computed for a range of hypothesized values of $h$ 
@@ -1203,7 +1202,7 @@ by the horizontal eye velocity estimated right before
 the onset of the visually-driven SPEM (black line);
 and the explicit ratings about the expected target direction (or \textit{bet scores}, red line).
 We also show the evolution of the value
-of the probability bias $p$ (blue line)
+of the probability bias $p$ (blue line) \CP{ligne bleu plus \'epaisse pour la rendre plus visible ?}
 which is hidden to observers
 and used to generate the TD sequence above.
 We have overlaid the results of the BBCP model
@@ -1230,8 +1229,7 @@ the increase of the uncertainty after each pause . %multiple of $50$ trials.
 We used the BSM model to generate the (pseudo-)random sequence of
 the dot's directions (the alternating output of leftward/rightward trials)
 as the sequence of observations.
-In a first session, we recorded the participants' eye movements and
-\CP{session 2}
+In a \textbf{first session} \CP{session 2}, we recorded the participants' eye movements and
 extracted the aSPEM velocity (for details, see \seeApp{em}).
 Among our $12$ participants, we show the eye velocity traces of two representative subjects in~\seeFig{results_psycho}.
 These representative participants were chosen as those
@@ -1239,9 +1237,8 @@ whose fitting score was closest to the median fit in the quantitative analysis
 that will be illustrated in \seeSec{inter}.
 In particular, we show in the top panel the actual sequence of binary choices
 (TD, leftward or rightward) of the Bernoulli trials, whereas in the two bottom panels, we compare the evolution of the recorded aSPEM (black line) with
-the real value of the hidden probability bias $x_1$ (step-like blue shaded curve),
-\CP{il n'y a plus d'ombrage pour $x_1$}
-and the value inferred using the BBCP model (green line), along with the  (green shaded area).
+the real value of the hidden probability bias $x_1$ (step-like blue \textbf{shaded} \CP{il n'y a plus d'ombrage pour $x_1$} curve),
+and the value inferred using the BBCP model (green line), along with the \CP{il manque un mot !} (green shaded area).
 Comparing the raw eye movement results with the BBCP agent predictions,
 it appears qualitatively that both traces evolve in good agreement.
 First, one can observe a trend in the polarity of aSPEM velocity
@@ -1269,7 +1266,7 @@ for predicting the strength of aSPEM.
 %\label{sec:rating_scale}
 In addition, the explicit ratings
 for the next trial's expected motion direction (or \textit{bet scores}, red curve in~\seeFig{results_psycho})
-provided by the second experiment \CP{session 1}
+provided by the \textbf{second} \CP{premi\`ere} experiment
 seem to qualitatively follow the same trend.
 Indeed, similarly to the strength of aSPEM,
 we qualitatively compare in~\seeFig{results_psycho}
@@ -1455,11 +1452,11 @@ at the level of each individual participant, but also to investigate
 whether this preference co-varied across the two experimental sessions (i.e. across implicit vs explicit response modalities).
 Crucially, we have seen that the BBCP model is controlled by a single parameter,
 the hazard rate, or equivalently by its inverse, the characteristic time $\tau$.
-Also, we have shown that knowing an observed sequence of behavioral responses,
+\textbf{Also, we have shown that knowing an observed sequence of behavioral responses,
 we could fit the best value of $\tau$ which would explain it
-with respect to the computed value of the mutual information.
+with respect to the computed value of the mutual information.} \CP{coefficient de correlation ?} \CP{traduction tr\`es bizzar }
 Thus, by extracting the best-fit parameters for every participant and experimental session
-we can expect to characterize inter individual differences and the covariation of these across response modalities.
+we can expect to \textbf{characterize inter individual differences} \CP{pas r\'eusit \`a caract\`eriser les sujets} and the covariation of these across response modalities.
 %-------------------------------------------------------------%
 %: FIGURE 5  fig:results_inter \seeFig{results_inter}
 % cf https://github.com/laurentperrinet/bayesianchangepoint/blob/master/notebooks/test_hazardrate.ipynb
@@ -1470,20 +1467,19 @@ we can expect to characterize inter individual differences and the covariation o
 We analyzed each subject individually by finding
 the best value of the model's single free parameter, the hazard rate.
 The dots correspond to independent estimates of the hazard rate in each sub-block and
-each individual is represented by a different color.
-\CP{les 3 valeurs de h de chaque sujets sont relier pas des ligne pointillé et les couleurs des point correspond au 3 blocs}
+each individual is represented by a \textbf{different color} \CP{les 3 valeurs de h de chaque sujets sont relier pas des ligne pointill\'e et les couleurs des point correspond au 3 blocs}.
 Estimates were performed independently on both experiments,
 such that we extracted different estimates of $h_A$ and $h_R$
 respectively for the aSPEM strength and the rating value. 
 \LP{Stars correspond to the observers displayed in ~\seeFig{results_psycho}.}
-This plot shows that best fit hazard rates are in general higher than the ground truth (black line),
-\CP{ligne bleu}
-that there is a positive correlation between both experiments around the identity (dashed line),
+This plot shows that best fit hazard rates are in general higher than the ground truth (\textbf{black line}), \CP{ligne bleu}
+\textbf{that there is a positive correlation between both experiments around the identity (dashed line),}
 \CP{pas de bonne correlation :/}
-and finally that for each individual these values cluster pretty much together.
+\textbf{and finally that for each individual these values cluster pretty much together.}\CP{Pas de regroupement}
 Such an analysis suggests that participants may have
 a common mechanism for their tendency of exploration versus exploitation
 both at the conscious or unconscious levels.
+\CP{Histogramme pour tous les sujets, et pour chaque block + ligne verticale et horizontal pointill\'e pour m\'ediane pour chaque block et pour tous}
 }
 \label{fig:results_inter}
 \end{figure}
@@ -1494,15 +1490,13 @@ both at the conscious or unconscious levels.
 %-------------------------------------------------------------%
 Hence, we have fitted the sequence of responses generated by each participant and
 for each session, that is for the eye movements and the rating scale experiments.
-We computed the mutual information
-\CP{coefficient de correlation}
+We computed the\textbf{ mutual information} \CP{coefficient de correlation}
 %for $20$ equally spaced values of $h$ between $0.01$ and $0.1$
 %for $20$ geometrically spaced values of $h$ between $0.01$ and $0.1$
-for the BBCP-model responses of $21$ geometrically spaced values of $h$ between $0.0025=1/400$ and $0.25=1/4$. \CP{1600 valeurs de $\tau$ entre 1 et 1601}
+for the BBCP-model responses of \textbf{$21$ geometrically spaced values of $h$ between $0.0025=1/400$ and $0.25=1/4$} \CP{1600 valeurs de $\tau$ entre 1 et 1601}.
 We then extracted different estimates of $h_A$ and $h_R$,
 respectively for aSPEM and the rating scale,
-by choosing the hazard rate values corresponding to a maximal mutual information.
-\CP{coefficient de correlation maximal}
+by choosing the hazard rate values corresponding to a \textbf{maximal mutual information} \CP{coefficient de correlation maximal}.
 To cross-validate our results for each individual participant,
 we have fitted the BBCP model to $11$ sub-blocks of $100$ trials 
 extracted from the whole sequence of $600$ trials 
@@ -1511,16 +1505,16 @@ These provide with $11$ \CP{$3$} values of the best fitted hazard rate for each 
 The scatter plot of the best fit values are shown in~\seeFig{results_inter}.
 This figure suggests, in the first place, that there is some variability
 in the best fit value of the hazard rate in both sessions.
-Overall, the value of mutual information of the best fit hazard rate
+Overall, the value of \textbf{mutual information} \CP{Coefficient de correlation} of the best fit hazard rate
 was higher than that computed in~\seeFig{results_psycho}
-with respectively $\text{MI} = XX~ \pm XX~$ for the first session and
-$\text{MI} = XX \pm XX$ for the second.
+with respectively $\text{MI} = XX~ \pm XX~$ \CP{$\text{R} = XX~ \pm XX~$ a calculer !}  for the first session and
+$\text{MI} = XX \pm XX$ \CP{$\text{R} = XX~ \pm XX~$ a calculer !}  for the second.
 A part of the variability in the estimated hazard rates comes 
 from the limited length of the data blocks,
 while another part is due to intra-individual and inter-individual variabilities.
 Overall, the average is close to the (hidden) value used to generate the sequence
-(with $h_A = XX \pm XX$ for the first session and
-$h_R = XX~\ms \pm XX$ for the second),
+(with $h_A = XX \pm XX$ \CP{a calculer !} for the first session and
+$h_R = XX~\ms \pm XX$ \CP{a calculer !} for the second),
 and we observe that this value is higher than the ground truth,
 as was previously suggested~\citep{Meyniel??}.
 Importantly, there is a part of the variability
@@ -1533,19 +1527,19 @@ one could identify the participant with an accuracy of $XX\%$.
 As a comparison, the same analysis done based on the leaky integrator predictions
 showed that such accuracy would drop to $XX\%$,
 close to the chance level of $8.33\%$.
-}
+}  \CP{n'a pas fonctionn\'e !}
 As a consequence, this analysis reveals
 that relaxing the free parameter of the BBCP model
 improves the match of the model to the behavioral data and
-that we could detect, to some degree, individual differences in the choice behavior
+that we could detect, to some degree, \textbf{individual differences in the choice behavior} \CP{pas de difference individuel}
 between exploration and exploitation.
 %-------------------------------------------------------------%
 %: 4C analysis
 %-------------------------------------------------------------%
-Finally, there is a  consistent
+\textbf{Finally, there is a  consistent
 correlation between the individual best-fit values estimated for the first and the second session
 with a Pearson coefficient of $r = XXX$.
-Qualitatively,~\seeFig{results_inter} shows that for each individual the higher the hazard rate for one session, then the higher it is for the second.
+Qualitatively,~\seeFig{results_inter} shows that for each individual the higher the hazard rate for one session, then the higher it is for the second. 
 Quantitatively, the ratio of both hazard rates computed over participants was $XX \pm XX$,
 showing a slight tendency for hazard rate to be higher in the first session.
 %In comparison if, similarly to bootstrap resampling,
@@ -1554,7 +1548,16 @@ showing a slight tendency for hazard rate to be higher in the first session.
 Such an analysis suggests that the predictive processes
 at work in both sessions may have a common origin,
 which is then modulated by individual preferences
-between exploration and exploitation.
+between exploration and exploitation. } \CP{pas de correlation entre les deux sesion}
+
+\CP{
+\begin{itemize}
+\item  diff\`erence signification entre le block 3 et les deux autres blocs
+\item  $h_{bet}$ plus bas et plus disperc\'e que $h_{va}$ (pour la m\'ediane) notebook 5
+\item  sujet qui se trouve a dans les limite de h
+\end{itemize} }
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
