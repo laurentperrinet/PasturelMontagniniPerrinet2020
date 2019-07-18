@@ -1275,7 +1275,7 @@ with the inferred probability bias $\hat{x_1}$.
 As with aSPEM, the series of the participants' bias guesses
 exhibits a positive correlation with $\hat{p}$:
 The next outcome of $x_{0}^{t}$ will in general be correctly inferred,
-as compared to a random choice. %\AM{statistics to cite for this?}
+as compared to a random choice, as reported previousky ~\citep{Meyniel15}. %\AM{statistics to cite for this?}
 %\AM{I WOULD SKIP THIS Equipped with this generative BSM model and the ideal observer given by the BBCP model,
 %the agent is able to predict the next outcome better than chance level.}
 Moreover, we observe again that a stronger probability bias leads 
@@ -1440,8 +1440,8 @@ to the dynamics of the behavior following a (hidden) switch.
 %-------------------------------------------------------------%
 So far, we have presented the qualitative behavior of individual participants and 
 we have reported the quantitative analysis of the group-pooled data 
-for the correlation between experimental and model-inferred estimates of the hidden probability bias.
-For instence, the experimental measures for two representative participants in~\seeFig{results_psycho},
+for the fit between experimental and model-inferred estimates of the hidden probability bias.
+For instance, the experimental measures for two representative participants in~\seeFig{results_psycho},
 support the qualitative match between behavioral data and model predictions,
 which we then confirmed quantitatively on the whole group of participants.
 It is important to note that no model fitting procedure was used so far,
@@ -1456,15 +1456,16 @@ by the different characteristic delays after a switch.
 This reflects the spectrum of individual behavioral choices
 between exploration versus exploration~\citep{Behrens07}.
 As a consequence, we were interested in characterizing these individual preferences
-at the level of each individual participant, but also to investigate
-whether this preference co-varied across the two experimental sessions (i.e. across implicit vs explicit response modalities).
+for each individual participant, 
+but also to investigate whether this preference co-varied 
+across the two experimental sessions (i.e.~across implicit vs explicit response modalities).
 Crucially, we have seen that the BBCP model is controlled by a single parameter,
 the hazard rate, or equivalently by its inverse, the characteristic time $\tau$.
-\textbf{Also, we have shown that knowing an observed sequence of behavioral responses,
-we could fit the best value of $\tau$ which would explain it
-with respect to the computed value of the mutual information.} \CP{coefficient de correlation ?} \CP{traduction tr\`es bizzar }
-Thus, by extracting the best-fit parameters for every participant and experimental session
-we can expect to \textbf{characterize inter individual differences} \CP{pas r\'eusit \`a caract\`eriser les sujets} and the covariation of these across response modalities.
+Also, we have shown that knowing an observed sequence of behavioral responses,
+we could fit the best value of $h$ which would explain the observations
+with respect to the pearson coefficient ot the mutual information.
+Thus, by extracting the best-fit parameters for each participant and experimental session
+we can expect to better understand the variety of inter individual differences. % and the covariation of these across response modalities.
 %-------------------------------------------------------------%
 %: FIGURE 5  fig:results_inter \seeFig{results_inter}
 % cf https://github.com/laurentperrinet/bayesianchangepoint/blob/master/notebooks/test_hazardrate.ipynb
@@ -1473,21 +1474,22 @@ we can expect to \textbf{characterize inter individual differences} \CP{pas r\'e
 \centering{\includegraphics[width=0.618\linewidth]{5_inter-individual_differences_fit}}
 \caption{\emph{Analyzing inter-individual differences.} %
 We analyzed each participant individually by finding
-the best value of the model's single free parameter, the hazard rate.
-The dots correspond to independent estimates of the hazard rate in each sub-block and
-each individual is represented by a \textbf{different color} \CP{les 3 valeurs de h de chaque sujets sont relier pas des ligne pointill\'e et les couleurs des point correspond au 3 blocs}.
+the best value of the model's single free parameter, the hazard rate $h$.
+The dots correspond to independent estimates of the hazard rate in each $200$ trial sub-block and
+each individual subject are joined by dashed lines.
+Dashed lines correspond to the median for the full dataset (gray line) 
+or for each individual sub-block (colored line). 
+These should be compared to the values obtained for the BBCP model.
 Estimates were performed independently on both experiments,
 such that we extracted different estimates of $h_A$ and $h_R$
 respectively for the aSPEM strength and the rating value. 
-\LP{Stars correspond to the observers displayed in ~\seeFig{results_psycho}.}
-This plot shows that best fit hazard rates are in general higher than the ground truth (\textbf{black line}), \CP{ligne bleu}
-\textbf{that there is a positive correlation between both experiments around the identity (dashed line),}
-\CP{pas de bonne correlation :/}
-\textbf{and finally that for each individual these values cluster pretty much together.}\CP{Pas de regroupement}
+Stars correspond to the observers displayed in ~\seeFig{results_psycho}.
+This plot shows that best fit hazard rates are in general higher than the ground truth (blue line), 
+and in general higher for eye movements.
+Note that the distribution is much more narrower for the eye movement session than for the bet experiment.
 Such an analysis suggests that participants may have
-a common mechanism for their tendency of exploration versus exploitation
+different mechanisms for their tendency of exploration versus exploitation
 both at the conscious or unconscious levels.
-\CP{Histogramme pour tous les sujets, et pour chaque block + ligne verticale et horizontal pointill\'e pour m\'ediane pour chaque block et pour tous + ligne pleine -> score max pour BBCP, m\^eme profile que $h_{va}$ mais diff\`erent de $h_{bet}$}
  }
 \label{fig:results_inter}
 \end{figure}
@@ -1498,22 +1500,19 @@ both at the conscious or unconscious levels.
 %-------------------------------------------------------------%
 Hence, we have fitted the sequence of responses generated by each participant and
 for each session, that is for the eye movements and the rating scale experiments.
-We computed the\textbf{ mutual information} \CP{coefficient de correlation}
-%for $20$ equally spaced values of $h$ between $0.01$ and $0.1$
-%for $20$ geometrically spaced values of $h$ between $0.01$ and $0.1$
-for the BBCP-model responses of \textbf{$21$ geometrically spaced values of $h$ between $0.0025=1/400$ and $0.25=1/4$} \CP{1600 valeurs de $\tau$ entre 1 et 1601}.
+For $1600$ linearly spaced values of $\tau$ from $1$ to $1600$ trials,
+we computed the correlation coefficient with the BBCP-model responses parameterized 
+by the modified value fo the hazard rate $h = \frac 1 \tau$.
 We then extracted different estimates of $h_A$ and $h_R$,
 respectively for aSPEM and the rating scale,
-by choosing the hazard rate values corresponding to a \textbf{maximal mutual information} \CP{coefficient de correlation maximal}.
+by choosing the hazard rate values corresponding to that with maximal correlation coefficient.
 To cross-validate our results for each individual participant,
-we have fitted the BBCP model to $11$ sub-blocks of $100$ trials 
-extracted from the whole sequence of $600$ trials 
-by shifting a $100$-trials window by steps of $50$ trials. \CP{un h par block de 200 essais (3 h par sujet)}
-These provide with $11$ \CP{$3$} values of the best fitted hazard rate for each session and observer.
+we have fitted the BBCP model to each of the $3$ sub-blocks of $200$ trials.
+This provides with $3$ values of the best fitted hazard rate for each session and observer.
 The scatter plot of the best fit values are shown in~\seeFig{results_inter}.
 This figure suggests, in the first place, that there is some variability
-in the best fit value of the hazard rate in both sessions.
-Overall, the value of \textbf{mutual information} \CP{Coefficient de correlation} of the best fit hazard rate
+in the best fitted value of the hazard rate in both sessions.
+Overall, the value of correlation coefficient of the best fit hazard rate
 was higher than that computed in~\seeFig{results_psycho}
 with respectively $\text{MI} = XX~ \pm XX~$ \CP{$\text{R} = XX~ \pm XX~$ a calculer !}  for the first session and
 $\text{MI} = XX \pm XX$ \CP{$\text{R} = XX~ \pm XX~$ a calculer !}  for the second.
@@ -1523,24 +1522,26 @@ while another part is due to intra-individual and inter-individual variabilities
 Overall, the average is close to the (hidden) value used to generate the sequence
 (with $h_A = XX \pm XX$ \CP{a calculer !} for the first session and
 $h_R = XX~\ms \pm XX$ \CP{a calculer !} for the second),
-and we observe that this value is higher than the ground truth,
-as was previously suggested~\citep{Meyniel??}.
-Importantly, there is a part of the variability
-which seems characteristic of the spectrum of individual choices.
-\LP{
-Indeed, each cluster of individual measures is qualitatively well separated and
-a simple k-means cluster analysis proves that
-given a couple of hazard rate values chosen at random,
-one could identify the participant with an accuracy of $XX\%$.
-As a comparison, the same analysis done based on the leaky integrator predictions
-showed that such accuracy would drop to $XX\%$,
-close to the chance level of $8.33\%$.
-}  \CP{n'a pas fonctionn\'e !}
+and we observe that this value is higher than the ground truth.
+%as was previously suggested~\citep{Meyniel??}.
+%Importantly, there is a part of the variability
+%which seems characteristic of the spectrum of individual choices.
+%\LP{
+%Indeed, each cluster of individual measures is qualitatively well separated and
+%a simple k-means cluster analysis proves that
+%given a couple of hazard rate values chosen at random,
+%one could identify the participant with an accuracy of $XX\%$.
+%As a comparison, the same analysis done based on the leaky integrator predictions
+%showed that such accuracy would drop to $XX\%$,
+%close to the chance level of $8.33\%$.
+%}  \CP{n'a pas fonctionn\'e !}
 As a consequence, this analysis reveals
 that relaxing the free parameter of the BBCP model
 improves the match of the model to the behavioral data and
-that we could detect, to some degree, \textbf{individual differences in the choice behavior} \CP{pas de difference individuel}
-between exploration and exploitation.
+that we could represent the distribution of individual differences in the choice behavior
+between exploration and exploitation
+in both sessions for each subject.
+
 %-------------------------------------------------------------%
 %: 4C analysis
 %-------------------------------------------------------------%
