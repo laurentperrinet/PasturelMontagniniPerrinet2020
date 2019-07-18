@@ -22,7 +22,7 @@ Should I stay or should I go? Humans adapt to the volatility of visual motion pr
 }
 \newcommand{\Acknowledgments}{PACE-ITN - code and material @ \url{\Website/Publications/PasturelMontagniniPerrinet2019}. TODO: RIck + Karl + JB + Laurent Madelain }
 \newcommand{\Abstract}{
-Animal behavior must constantly adapt to changes, for example when the state of an environmental context changes unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of directions of motion of a visual target to the right or left is biased to one direction, human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where probability biases could change at random switching times. In addition, we also recorded the explicit direction prediction reported by observers as given by a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to the event switching generating model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploration and exploitation in the model, we were able to fit each individual experimental data with different levels of switching volatility and \textbf{derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still effectively represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments.} \CP{ATTENTION : $h_{va}$ et $h_{bet}$ sont diff\`erent}
+Animal behavior must constantly adapt to changes, for example when the statistical properties of the environment change unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of motion ramps of a visual target is biased to one direction (e.g. right or left), human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where the probability bias could change at random switching times. In addition, we also recorded the explicit direction prediction reported by observers as given by a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to the event switching generating model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploration and exploitation in the model, we were able to fit each individual experimental data-set with different levels of estimated volatility and \textbf{derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still  represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments.} \CP{ATTENTION : $h_{va}$ et $h_{bet}$ sont diff\`erent}
 This work offers an innovative approach to more generically test the diversity of human cognitive abilities in uncertain and dynamic environments.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\documentclass[profile,final,english,draft,24pt]{article}%
@@ -283,7 +283,7 @@ Indeed, stimulus history of sensory events influences
 how the current stimulus is perceived~\citep{Sotiropoulos2011,Adams12,ChopinMamassian2012,FischerWhitney2014,Cicchini_PRSB_2018} and
 acted upon~\citep{WallmanFuchs1998,Carpenter1995, Maus2015,Damasse18}.
 Two qualitatively opposite effects of the stimulus history have been described: 
-negative (adaptation) effects, and positive (priming-like).
+negative (adaptation), and positive (priming-like) effects.
 Adaptation reduces the sensitivity to recurrently presented stimuli,
 thus yielding to a re-calibrated perceptual experience~\citep{Clifford2007, Webster2011, Kohn2007}. Examples of negative biases in perceptual discrimination are numerous (see for instance~\citet{KanaiVerstraten2005,ChopinMamassian2012}) and show that the visual system tends
 to favor temporal and spatial stability of the stimulus.
@@ -299,7 +299,7 @@ when a presented stimulus is not coherent
 with the participant's expectations~\citep{Hyman1953, Yu2009}. This process is highly dynamic especially in complex environments
 where new contingencies can arise at every moment.
 Interestingly, priming effects at cognitive levels
-are sometimes paralleled by anticipatory motor responses which are positively correlated with the repetition of stimulus properties: anticipatory smooth eye movements (aSPEM) is well-known example of this behavior, as we will illustrate in the next section.
+are sometimes paralleled by anticipatory motor responses which are positively correlated with the repetition of stimulus properties: anticipatory smooth eye movements (aSPEM) is a well-known example of this behavior, as we will illustrate in the next section.
 
 %: Bayesian methods & role of predictive processing for this adaptive response
 Overall, the ability to detect
@@ -362,7 +362,7 @@ of experimental effects reported in these studies.
 %
 %As a consequence, Bayesian inference allows to compare the explanatory power
 %of different models...
-Is it possible to extend such an approach to the study of eye movements?
+Here we focus on an extension of this approach to the study of motion processing and eye movements.
 % ------------------------------------------------------------------
 \subsection{Anticipatory Smooth Pursuit Eye Movements (aSPEM)}
 % ------------------------------------------------------------------
@@ -378,16 +378,16 @@ This process is delayed by different factors such as axonal transduction,
 neural processing latencies and the inertia of the oculomotor system~\citep{Krauzlis89}.
 When predictive information is available about target motion,
 anticipatory SPEM (aSPEM) are
-efficiently generated before target's appearance~\citep{Westheimer1954, Kowler1979a, Kowler1979b} thereby reducing visuomotor latency.
+efficiently generated before the target's appearance~\citep{Westheimer1954, Kowler1979a, Kowler1979b} thereby reducing visuomotor latency.
 Moreover, some experiments have demonstrated the existence
 of prediction-based smooth pursuit during
-the transient disappearance of a moving target~\citep{Badler2006,BeckerFuchs1985}.
+the transient disappearance of a moving target~\citep{Badler2006,BeckerFuchs1985} \AM{REF OrbandeXivry}.
 Overall, although the initiation of SPEM is almost always driven by a visual motion signal, it is now clear that smooth pursuit behavior
 can be modulated by extra-retinal, predictive information even in the absence of a direct visual stimulation.
 The anticipatory smooth pursuit behavior is remarkable
 in different aspects.
 First, its buildup is relatively fast, such that only a few trials are sufficient
-to pick up some regularity in a binary sequence of alternating left and right directions.
+to pick up some regularity in the properties of visual motion, such as speed \AM{REF OrbandeXivry} or direction \AM{REF Yang, Darlington}.
 Second, it is in general an unconscious process
 of which participants are not aware of.
 As such, this behavior is potentially a useful marker
@@ -397,7 +397,7 @@ interacts dynamically with contextual contingencies in shaping oculomotor behavi
 
 %: linear relationship (talk about santos & kowler and others)
 Typically, aSPEM is observed after a temporal cue and
-before target motion onset~\citep{Kowler1979a,Kowler1979b, Kowler1984}. %~(see \seeFig{intro}-A).
+before target motion onset~\citep{Kowler1979a,Kowler1979b, Kowler1984}. \AM{Merge citations?}. %~(see \seeFig{intro}-A).
 It is generally assumed that the role of aSPEMs is
 to minimize as fast as possible the visual impairment due
 to the amplitude of eye-to-target position and velocity mismatch.
@@ -481,7 +481,7 @@ also to broaden its scope by showing that such adaptive processes
 occur at the conscious level as well.
 %The equations for this protocol will be detailed below~(\seeSec{bayesian_change_point}).
 We already mentioned that by manipulating the probability bias for target motion direction,
-it is possible to bias the direction and mean velocity of aSPEM~\citep{Montagnini2010}.
+it is possible to bias the direction and mean velocity of aSPEM.
 This suggests that probabilistic information may be used
 to inform the internal representation of motion prediction
 for the initiation of anticipatory movements.
@@ -520,7 +520,7 @@ Such a forward probabilistic model is invertible
 using some simplifying assumptions and allows
 to extract a time-varying inference of the agent's belief about volatility~\citep{Vossel14}.
 Herein, to analyze the effect of history length in all generality,
-we  extended the protocol of~\citep{Montagnini2010} such that the probability bias
+we  extended the protocol of~\citet{Montagnini2010} such that the probability bias
 is still fixed within blocks but that these blocks have variable lengths,
 that is, by introducing switches occurring at random times.
 Therefore, similarly to~\citet{Meyniel13}, we will use a model where
@@ -540,7 +540,7 @@ and is stationary between two switches, forming what we call an ``epoch''.
 Third, target direction is drawn as a Bernoulli trial using the current value of $p$.
 Such a hierarchical structure is presented in~\seeFig{intro}-A,
 where we show the realization of the target's directions sequence,
-the trajectory of the underlying (hidden to the observer) probability bias, and
+the trajectory of the underlying probability bias (hidden to the observer), and
 the occurrences of switches.
 
 %: 1Cc  equations
@@ -549,9 +549,9 @@ defining the evolution of the model at each trial $t$ as the vector  $(x_2^t, x_
 At the topmost layer,
 the occurrence $x_2^t \in \{ 0, 1 \}$ of a switch ($1$ for true, $0$ for false)
 is  drawn from a Bernoulli trial $\Bb$ parameterized by its frequency $h$, or \emph{hazard rate}.
-The value of $\tau=\frac 1 h$ thus gives the average length (in number of trials)
+The value of $\tau=\frac 1 h$ thus gives the average duration (in number of trials)
 between the occurrence of two switches.
-The probability bias $p$ in target direction is a random variable that we define as $x_1^t \in [0, 1]$.
+The probability bias $p$ of target direction is a random variable that we define as $x_1^t \in [0, 1]$.
 It is chosen at random from a prior distribution $\Pp$
 %(that will be described in more detail in the following sections)
 at the moment of a switch,
@@ -607,7 +607,7 @@ To our knowledge, such algorithm was not yet available, and
 we will here provide it with an analytical solution,
 by extending previous results from~\citet{AdamsMackay2007}
 to the case of binary data as in the BSM presented above (see~\seeEq{bsm}).
-In addition, the proposed algorithm is biological realistic 
+In addition, the proposed algorithm is biologically realistic 
 as it uses simple computations and is \emph{online},
 that is, that all computations on the sequence may be done
 using solely a set of variables available at the present trial,
@@ -669,9 +669,9 @@ sequences of input stimuli.
 By inverting this stochastic forward process,
 one could extract relevant descriptors at the different levels of the model
 and fit these parameters with the recorded behavior.
-Here, we use a similar approach but on the BSM generative model,
+Here, we use a similar approach, focusing specifically on the BSM generative model,
 as defined in~\seeEq{bsm}.
-To begin with, we define a first ideal observer as a control, the \textit{leaky integrator} (or \textit{forgetful agent}),
+To begin, we define a first ideal observer as a control, the \textit{leaky integrator} (or \textit{forgetful agent}),
 which has an exponentially-decaying memory for the events that occurred in the past trials.
 This agent can equivalently be described as one
 which assumes that volatility is stationary with a fixed characteristic frequency of switches.
@@ -685,15 +685,14 @@ as defined by the forward probabilistic model in~\seeEq{bsm}.
 \subsection{Forgetful-agent model (Leaky integrator)}%
 % ------------------------------------------------------------------
 %: 2Aa justification from previous studies
-We modeled a first ideal observer,
-which represents a classical, widespread and
+The leaky integrator ideal observer represents a classical, widespread and
 realistic model of how trial-history shapes
 adaptive processes in human behavior.
-It is well adapted to model motion expectation in the direction-biased experiment which leads to anticipatory SPEMs.
-In this model, given the observations $x_0^t$ from trial $0$ to $t$,
-the expectation $p=\hat{x_1}^{t+1}$ of the next trial direction can be modeled by making a simple heuristic:
+It is also well adapted to model motion expectation in the direction-biased experiment which leads to anticipatory SPEMs.
+In this model, given the sequence of observations $x_0^t$ from trial $0$ to $t$,
+the expectation $p=\hat{x_1}^{t+1}$ of the probability for the next trial direction can be modeled by making a simple heuristic:
 This probability for an event is the weighted average of
-the previously estimated probability with the new information $x_0^t$,
+the previously estimated probability, $\hat{x_1}^{t}$, with the new information $x_0^t$,
 where the weight corresponds to a leak term (or discount)
 by a factor $(1 - h)$, with $h \in [0, 1]$~\citep{Anderson2006}.
 At trial $t$, this model can be expressed with the following equation:
@@ -705,7 +704,7 @@ corresponding to the best guess at $t=0$ (before observing any data).
 % NOTE: it's an AR(1) process https://stats.stackexchange.com/questions/358162/writing-ar1-as-a-ma-infty-process
 
 %: from heuristics to ideal observer
-The estimated probability $\hat{x_1}^{t+1}$ is computed
+In other words, the estimated probability $\hat{x_1}^{t+1}$ is computed
 from the integration of previous instances
 with a progressive discount of past information.
 The value of the scalar $h$ represents
@@ -867,14 +866,13 @@ We present here an exact solution for the case of the BSM, where the input is bi
 %-------------------------------------------------------------%
 %: 2Bb prediction / update cycle
 %-------------------------------------------------------------%
-At first, in order to define in all generality the switch detection model,
-we will describe the fundamental steps leading to its construction,
-while giving the full algorithmic details in~\seeApp{bcp}.
-In all generality, the goal of predictive processing
+In order to define in all generality the switch detection model,
+we will initially describe the fundamental steps leading to its construction,
+while providing the full algorithmic details in~\seeApp{bcp}.
+The goal of predictive processing
 is to infer the probability $Pr(x_0^{t+1} | x_0^{0:t})$ of the next datum
 knowing what has been observed until trial $t$
-(that we denote by $x^{0:t} = \{ x_0^0, \ldots, x_0^t \}$) and
-the prior knowledge by the agent
+(that we denote by $x_0^{0:t} = \{ x_0^0, \ldots, x_0^t \}$), as well the agent's prior knowledge
 that data is the output of a given (stochastic) generative model (here, the BSM).
 To derive a Bayesian predictive model, we introduce
 the run-length as a latent variable which helps the agent to represent
@@ -889,8 +887,8 @@ different hypothesis about the input.
 %we define the distribution which represents our belief
 %for all different hypotheses on $r^t$.
 %which
-This assumes knowing the predictive probability knowing (conditioned on) the run-length
-such that one computes the marginal predictive distribution:
+We then assume the knowledge of the predictive probability conditioned on the run-length,
+such that one can compute the marginal predictive distribution:
 \eql{
 Pr(x_0^{t+1} | x_0^{0:t}) =
 %\sum_{r^{t}} \beta^{(r)}_t \cdot Pr(x_0^t | r^{t}, x_0^{0:t-1})
@@ -902,7 +900,7 @@ Pr(x_0^{t+1} | x_0^{0:t}) =
 where $Pr(x_0^{t+1} | r^{t}, x_0^{0:t})$ is
 the Bernouilli process modelling the probability of a future datum $x_0^{t+1}$
 conditioned on the run-length and
-$\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability distribution of each possible run-length.
+$\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability distribution of each possible run-length given the observed data.
 %a previous value $Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$
 %and the likelihood associated to the new value $x_0^t$.
 
@@ -915,7 +913,7 @@ $\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability distribution of each poss
 With these premises, we define the BBCP
 as a prediction / update cycle.
 First, we will \emph{predict} the probability
-$\beta^{(r)}_t$ at each node knowing either an initial prior or a previous trial.
+$\beta^{(r)}_t$ at each node, knowing either an initial prior or a previous trial.
 In particular, at the occurrence of the first trial, we know for certain that there is a switch and
 initial beliefs are thus set to the values $\beta^{(0)}_0=Pr(r^t=0)=1$ and
 $\forall r>0$, $\beta^{(r)}_0=Pr(r^0=r)=0$.
@@ -930,8 +928,8 @@ where the likelihood $\pi^{(r)}_{t}=Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$ will be 
 and $\beta^{(r)}_t$ is scaled such that $\sum_{r \geq 0 } \beta^{(r)}_t = 1$
 as it represents the probability distribution on the run-length $r$ given the data
 (more details on this derivation in~\seeApp{bcp}).
-In the graph, \seeEq{pred_node} corresponds to a message passing from the nodes at time $t-1$
-to that at time $t$ and formalized by the transition matrix $Pr(r^t | r^{t-1})$.
+In the graph, \AM{Not clear yet... \seeEq{pred_node} corresponds to a message passing from the nodes at time $t-1$
+to that at time $t$ and formalized by the transition matrix $Pr(r^t | r^{t-1})$.}
 %In the second step, one can perform prediction
 %using the graph defined in \seeFig{bayesianchangepoint}-A.
 %Now that we have the vector of likelihoods $\pi^{(r)}_t=\Ll(x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$,
@@ -946,14 +944,13 @@ or this length (in number of trials) is incremented by $1$ if no switch occurred
 This may be illustrated by a graph
 in which information will be represented at the different nodes for each trial $t$ (see \seeFig{bayesianchangepoint}-A).
 %In a switching model like the BSM, the transition matrix % defined by the graph,
-This allows to compute growth probabilities for each run-length $r \geq 0$,
-that is, the belief at the next trial before observing a new datum:
+This allows us to compute the \emph{growth probability} for each run-length $r \geq 0$,
+that is, the belief on an incremented run-length at the next trial, before observing a new datum:
 \eqa{
 \beta^{(r+1)}_t = \frac{1}{B} \cdot \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot (1-h)
 \label{eq:beta_noswitch}
 }
-(where $h$ is the scalar defining the hazard rate)
-but also the change-point probabilities:
+where $h$ is the scalar defining the hazard rate. It also allows to express the change-point probability as:
 \eqa{
 \beta^{(0)}_t  = \frac{1}{B} \cdot \sum_{r \geq 0} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot h
 \label{eq:beta_switch}
@@ -973,11 +970,11 @@ by computing the likelihood $\pi^{(r)}_t$ of the current datum $x_0^{t}$
 knowing the current belief at each node,
 that is, based on observations from trials $0$ to $t-1$. % ~\seeEq{pred}
 A major algorithmic difference with the BCP model~\citep{AdamsMackay2007},
-is that the observed data is a Bernoulli trial and not a Gaussian random variable.
+is that here the observed data is a Bernoulli trial and not a Gaussian random variable.
 The random variable $x_1^t$ is the probability bias used
 to generate the sequence of events $x_0^t$.
 We will infer it for all different hypotheses on $r^t$,
-that is, knowing there was a sequence of $r^t$ Bernoulli trials in that epoch.
+that is, knowing there was a sequence of $r^t$ Bernoulli trials with a fixed bias in that epoch.
 Mathematically, a belief on this random variable is represented
 by the conjugate probability distribution of the binomial distribution,
 that is, by the beta-distribution $B(x_1^t; \mu^{(r)}_{t}, \nu^{(r)}_{t})$.
@@ -998,7 +995,7 @@ can be updated from the previous trial following:
 Note that the series defined by $\mu^{(r+1)}_{r+t}$ is the moving average at trial $r+t$ on the $r$ last samples.
 Moreover, $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the initial condition:
 $\nu^{(r)}_{t} = r + \nu_{prior}$.
-This updates for each node the sufficient statistics of the pdf at the current trial.
+This updates for each node the sufficient statistics of the probability density function at the current trial.
 %-------------------------------------------------------------%
 % Computing the likelihood
 % cf p.52 de 2017-10-05 chloe inverting the process rem jb
@@ -1027,7 +1024,7 @@ with $Z$ such that $\Ll(r|p, o=1) + \Ll(r|p, o=0)=1$. % where
 %    {(\mu \cdot \nu )}^{\mu \cdot \nu }  \cdot {((1- \mu)\cdot \nu + 1)}^{(1- \mu)\cdot \nu + 1}
 %}
 The full derivation of this function is detailed in~\seeApp{likelihood}.
-This provides with that the likelihood as $\pi^{(r)}_t = \Ll(\nu^{(r)}_{t-1} | \mu^{(r)}_{t-1}, x_0^{t})$.
+This provides us with that the likelihood as $\pi^{(r)}_t = \Ll(\nu^{(r)}_{t-1} | \mu^{(r)}_{t-1}, x_0^{t})$.
 
 %-------------------------------------------------------------%
 %: 2Be online estimation: prediction
@@ -1065,7 +1062,7 @@ only the state at trial $t$ and the new datum $x_0^t$
 are sufficient to predict all probabilities for the next trial.
 %at the next trial $t+1$: $Pr(r_t | x_0^{0:t})$, $\mu^{(r)}_{t+1}$ and $\nu^{(r)}_{t+1}$.
 %projecting beliefs backwards and forward  : the algorithm is online et the price of memory
-Finally, this prediction / update cycle applied to the BSM and using~\seeEq{bsm}
+Finally, this prediction/update cycle applied to the BSM and using~\seeEq{bsm}
 constitutes the Binary Bayesian Change Point (BBCP) detection model.
 
 % ------------------------------------------------------------------
@@ -1077,7 +1074,7 @@ constitutes the Binary Bayesian Change Point (BBCP) detection model.
 We have implemented 
 the BBCP algorithm % is detailed in~\seeApp{bcp} and
 using a set of python scripts.
-This implementation provides also with some control scripts
+This implementation provides also some control scripts
 to test the behavior of the algorithm with synthetic data.
 Indeed, this allows to qualitatively and quantitatively assess
 this ideal observer model against a ground truth before applying it
@@ -1091,7 +1088,7 @@ of moving rightward occurring at trial $7$ (see figure caption for a detailed ex
 as computed using the BBCP algorithm.} \CP{pas dans \seeFig{bayesianchangepoint}-A}
 %The bottom panel illustrates
 %the belief on the predicted probability $\hat{p}$ at a given trial.
-\seeFig{bayesianchangepoint}-B illustrates the predicted probability $\hat{x_1}^t$, as well as the corresponding uncertainty (the shaded areas correspond to $.05$ and $.95$ quantiles) when
+\seeFig{bayesianchangepoint}-B, upper panel, illustrates the predicted probability $\hat{x_1}^t$, as well as the corresponding uncertainty (the shaded areas correspond to $.05$ and $.95$ quantiles) when
 we applied respectively the BBCP (green curve) and the forgetful-agent (orange curve) model to
 a longer sequence of $200$ trials,
 characteristic of our behavioral experiments.
@@ -1102,18 +1099,18 @@ corresponding to the same sequence of $200$ trials.
 the BBCP model achieves a correct detection of the switches after a short delay of a few trials.
 
 Two main observations are noteworthy. First, after each detected switch, beliefs align along a linear ridge,
-as our model integrates belief about a current phase during two switches (it 'stays').
+as our model \AM{I WOULD CHANGE THIS: integrates belief about a current phase during two switches INTO THIS: best estimate of the current length is steadily incremented by $1$ between two switches, and the probability $\hat{x_1}^t$ is estimated  by integrating sensory evidence in this epoch (it 'stays')}.
 Then, we observe that shortly after a switch (hidden to the agent),
 the belief diffuses until the relative probability of a continuously increasing run-length
 is lower that that assigned to a smaller run-length:
-There is a transition to a new state (it 'goes').
-Second, we may use this information to readout the most likely probability-bias and 
-use it as a regressor with the behavioral data.
-Note, the leaky integrator model is simply implemented
+There is a transition to a new state (the model 'goes').
+Second, we can use this information to readout the most likely probability-bias and 
+use it as a regressor for the behavioral data.
+Note that the leaky integrator model is simply implemented
 by an agent assuming a fixed run-length profile (see orange line in \seeFig{bayesianchangepoint}-B),
 allowing for a simple comparison of the BBCP model with the leaky integrator.
 Again, we see that a fixed length model gives qualitatively a similar output
-but with the two disadvantages compared to the BBCP model, namely that 
+but with two disadvantages compared to the BBCP model, namely that 
 there is a stronger inertia in the dynamics of the model estimates and 
 that there is no improvement in the precision of the estimates after a switch.
 %1/ the delay after the occurrence of a switch will always be similar,
@@ -1128,8 +1125,8 @@ as the number of observations increase after a switch.
 % TODO include these quantitative results in a figure
 %-------------------------------------------------------------%
 In order to quantitatively evaluate the algorithm and following a similar strategy as~\citet{Norton18},
-we computed the negative log-likelihood (in bits) of the estimate probability bias,
-knowing the real probability,
+we computed \AM{the negative log-likelihood (in bits) of the estimated probability bias,
+knowing the real probability - isn't H the joint entropy and C something related to the mutual information? H and C should both be defines},
 and averaged over all $T$ trials:
 \eql{
 %\Cc =  \sum_{t} -\log_2 B(x_1^t ; \hat{x_1}^t, r^t )
@@ -1158,7 +1155,7 @@ and  evaluate how well it matches to the experimental outcomes at the different 
 \textbf{averaged over all observers, for each individual observer or independently in all individual sub-blocks.}\CP{}
 In a second step, by testing different values of $h$ assumed by the agent
 but for a fixed hazard rate $h=1/40$ in the BSM,
-we found that this cost can be computed for a range of hypothesized values of $h$ 
+we found that \AM{this cost - the cost has not been defined: the KL distance?} can be computed for a range of hypothesized values of $h$ 
 and that the distance given by~\seeEq{KL} is minimal 
 for the true hazard rate used to generate the data.
 Importantly, this analysis shows that inference is best for a hazard rate
@@ -1176,7 +1173,7 @@ we obtain an estimate of the probability bias assumed by the ideal observer
 and which we may use as a regressor.
 We will now present the analysis of this model's match 
 to our experimental measures of anticipatory eye movements and 
-explicit guesses about target movement direction.
+explicit guesses about target motion direction.
 %\AM{I WOULD DELETE THIS In particular, we expect intuitively the results to be more variable
 %compared to the previous protocol with fixed-length blocks (see~\seeFig{intro}-C).}
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1231,12 +1228,12 @@ the dot's directions (the alternating output of leftward/rightward trials)
 as the sequence of observations.
 In a \textbf{first session} \CP{session 2}, we recorded the participants' eye movements and
 extracted the aSPEM velocity (for details, see \seeApp{em}).
-Among our $12$ participants, we show the eye velocity traces of two representative subjects in~\seeFig{results_psycho}.
+Among our $12$ participants, in~\seeFig{results_psycho} we show the aSPEM velocity of two representative subjects throughout a sub-block of $200$ trials of the experimental sequence.
 These representative participants were chosen as those
 whose fitting score was closest to the median fit in the quantitative analysis
 that will be illustrated in \seeSec{inter}.
 In particular, we show in the top panel the actual sequence of binary choices
-(TD, leftward or rightward) of the Bernoulli trials, whereas in the two bottom panels, we compare the evolution of the recorded aSPEM (black line) with
+(TD, leftward or rightward) of the Bernoulli trials, whereas in the two bottom panels, we compare the evolution of the recorded aSPEM (grey line) with
 the real value of the hidden probability bias $x_1$ (step-like blue \textbf{shaded} \CP{il n'y a plus d'ombrage pour $x_1$} curve),
 and the value inferred using the BBCP model (green line), along with the \CP{il manque un mot !} (green shaded area).
 Comparing the raw eye movement results with the BBCP agent predictions,
@@ -1278,8 +1275,8 @@ The next outcome of $x_{0}^{t}$ will in general be correctly inferred,
 as compared to a random choice. \AM{statistics to cite for this?}
 %\AM{I WOULD SKIP THIS Equipped with this generative BSM model and the ideal observer given by the BBCP model,
 %the agent is able to predict the next outcome better than chance level.}
-Moreover, we observe that a stronger bias leads 
-to a lower variability in the bias estimate, compared to bias values close to $0.5$.
+Moreover, we observe again that a stronger bias leads 
+to a lower variability in the bet scores, compared to bias values close to $0.5$.
 Again, a (hidden) switch in the value of the bias is
 most of the time correctly identified after only a few trials.
 Finally, note that at every pause (black vertical bar in~\seeFig{results_psycho}),
