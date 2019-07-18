@@ -1487,9 +1487,11 @@ showing a slight variability over sub-blocks.
 Stars correspond to the observers displayed in ~\seeFig{results_psycho}.
 This plot shows that best fit hazard rates are in general higher than the ground truth (blue line), 
 and in general higher for eye movements (below the diagonal).
-Note that the distribution is much more narrower for the eye movement session than for the bet experiment.
-Such an analysis suggests that participants may have
-different mechanisms  at the conscious or unconscious levels
+Note that the histograms (gray shaded areas) is much more narrower 
+for the eye movement session than for the bet experiment,
+as shown by the evolution of the cumulative distributions (plain lines in black or colors).
+Such an analysis suggests that participants ultimately have
+different mechanisms at the unconscious and conscious levels
 for guiding their tendency of exploration versus exploitation.
  }
 \label{fig:results_inter}
@@ -1510,7 +1512,7 @@ by choosing the hazard rate values corresponding to that with maximal correlatio
 To cross-validate our results for each individual participant,
 we have fitted the BBCP model to each of the $3$ sub-blocks of $200$ trials.
 This provides with $3$ values of the best fitted hazard rate for each session and observer.
-The scatter plot of the best fit values are shown in~\seeFig{results_inter}.
+The scatter plot of the best fit values is shown in~\seeFig{results_inter}.
 This figure suggests, in the first place, that there is some variability
 in the best fitted value of the hazard rate in both sessions.
 Overall, the value of correlation coefficient of the best fit hazard rate
@@ -1520,10 +1522,12 @@ $\text{MI} = XX \pm XX$ \CP{$\text{R} = XX~ \pm XX~$ a calculer !}  for the seco
 A part of the variability in the estimated hazard rates comes 
 from the limited length of the data blocks,
 while another part is due to intra-individual and inter-individual variabilities.
-Overall, the average is close to the (hidden) value used to generate the sequence
-(with $h_A = XX \pm XX$ \CP{a calculer !} for the first session and
-$h_R = XX~\ms \pm XX$ \CP{a calculer !} for the second),
-and we observe that this value is higher than the ground truth.
+Overall, the average is close yet higher to the (hidden) ground truth value used to generate the sequence
+(with $h_A = XX \pm XX$ \CP{a calculer !} for the aSPEM session and
+$h_R = XX~\ms \pm XX$ \CP{a calculer !} for the rating scale),
+and we observe that this value is higher for aSPEM compared to rating scale.
+Quantitatively, the ratio of both hazard rates computed over participants was \CP{with a ratio $XX~ \pm XX~$ a calculer !},
+showing a slight tendency for hazard rate to be higher in the first session.
 %as was previously suggested~\citep{Meyniel??}.
 %Importantly, there is a part of the variability
 %which seems characteristic of the spectrum of individual choices.
@@ -1546,27 +1550,22 @@ in both sessions for each subject.
 %-------------------------------------------------------------%
 %: 4C analysis
 %-------------------------------------------------------------%
-\textbf{Finally, there is a  consistent
-correlation between the individual best-fit values estimated for the first and the second session
-with a Pearson coefficient of $r = XXX$.
-Qualitatively,~\seeFig{results_inter} shows that for each individual the higher the hazard rate for one session, then the higher it is for the second. 
-Quantitatively, the ratio of both hazard rates computed over participants was $XX \pm XX$,
-showing a slight tendency for hazard rate to be higher in the first session.
+The distribution of best-fitted values for each individual subject seemed to qualitatively cluster,
+but the dataset is still insufficiently large to shows the significativity of such observation
+at a quantitative level.
+Moreover, there is a difference in the distribution of observed hazard rates in both sessions.
+Indeed, we observed that the marginal distribution for each session is different,
+with the distribution in the aSPEM session being narrower than
+that observed for the rating scale session. 
+In particular, we also observed the same behavior for each sub-block individually,
+showing that the origin of this variability mainly comes form inter-subject variability.
 %In comparison if, similarly to bootstrap resampling,
 %we would shuffle the joint fitted values across participants,
 %we would obtain a distribution of hazard rate ratios of $XX \pm XX~\ms$.
-Such an analysis suggests that the predictive processes
-at work in both sessions may have a common origin,
-which is then modulated by individual preferences
-between exploration and exploitation. } \CP{pas de correlation entre les deux session}
-
-\CP{
-\begin{itemize}
-\item  diff\`erence signification entre le block 3 et les deux autres blocs
-\item  $h_{bet}$ plus bas et plus disperc\'e que $h_{va}$ (pour la m\'ediane) notebook 5
-\item  sujet qui se trouve a dans les limite de h
-\end{itemize} }
-
+Such an analysis suggests that even if the predictive processes
+at work in both sessions may explain a common origin for the evaluation of volatility,
+this value is then modulated by individual preferences
+when a more conscious cognitive process is at stake.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
