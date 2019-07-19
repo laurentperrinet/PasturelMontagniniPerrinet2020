@@ -113,7 +113,6 @@ style=authoryear-comp,
 %maxnames = 2,
 giveninits=true,
 uniquename=init,
-sorting=none,
 url=false,
 isbn=false,
 eprint=false,
@@ -121,7 +120,9 @@ texencoding=utf8,
 bibencoding=utf8,
 autocite=superscript,
 backend=bibtex,
+%sorting=none,
 sorting=nty,
+sortcites=false,
 %articletitle=false
 ]{biblatex}%
 %\addbibresource{Pasturel_etal2018.bib}%
@@ -421,7 +422,7 @@ that modulate the common predictive framework
 driving anticipatory behavior.
 %
 %-------------------------------------------------------------%
-%: FIGURE 1 fig:intro ~\seeFig{intro}
+%: FIGURE 1 fig:intro~\seeFig{intro}
 \begin{figure}%[b!]
 \centering{
 \begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
@@ -721,10 +722,12 @@ the ``forgetful agent'' computed in \seeEq{leaky}
 consists of an exponentially-weighted moving average (see \seeApp{leaky}).
 It may thus be equivalently written in the form of a moving average:
 \eql{
-\hat{x_1}^{t+1} = h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
+\hat{x_1}^{t+1} = (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
 \label{eq:leaky2}}
+The first term corresponds to the discounted effect of the prior value, 
+while the second corresponds to the integration of novel observations.
 Inversely, let us now assume that
-the real direction probability bias changes randomly with a mean rate of once
+the true probability bias for direction changes randomly with a mean rate of once
 every $\tau$ trials.
 As a consequence, the probability that the bias does not change is $Pr(x_2^t=0)=1-h$ at each trial.
 Assuming independence of these occurrences, the estimated probability $p=\hat{x_1}^{t+1}$ is thus the sum
@@ -782,39 +785,43 @@ but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 \begin{tikzpicture}[thick,scale=.95]
 \node [anchor=north west]  (imgA) at (0.\linewidth,.55\linewidth){\includegraphics[width=0.33
 \linewidth]{3_BCP_model}};
-\node [anchor=north west]  (imgB) at (0.36\linewidth,.585\linewidth){\includegraphics[width=0.64\linewidth]{3_BCP_readouts}};
+\node [anchor=north west]  (imgB) at (0.36\linewidth,.580\linewidth){\includegraphics[width=0.64\linewidth]{3_BCP_readouts}};
 \draw [anchor=north west] (0.000\linewidth, .62\linewidth) node {$\mathsf{(A)}$};
 \draw [anchor=north west] (0.382\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
 \end{tikzpicture}
 }
 \caption{\emph{Binary Bayesian Change Point (BBCP) detection model}
-\LP{WORK IN PROGRESS ~\textbf{(A)} This plot shows a synthesized sequence of $10$ events,
-\CP{15 ou 14 events}
-each of them corresponding to a binary choice,
-either a leftward or rightward movement of the target (TD).
-Here, the probability switched from a value of $.1$ to $.9$ at trial $7$.
-\CP{de $0.5$ a $0.9$ a l'essais $7$}
-The BBCP model tries to capture the occurrences of a switch
-by inferring the probability of different possible run lengths,
+~\textbf{(A)} This plot shows a synthesized sequence of $13$ events,
+%each of them corresponding to a binary choice,
+either a leftward or rightward movement of the target (TD, fine black lines).
+A run-length is the hypothesis on the length of a sub-block over which the probability bias was constant,
 that is, the number of trials since a switch.
+Here, the true probability bias switched from a value of $.5$ to $.9$ at trial $7$,
+as can be seen by the blue line showing the trajectory of the true run-length.
+The BBCP model tries to capture the occurrences of a switch
+by inferring the probability of different possible run lengths.
 At any new datum (trial), this defines a Hidden Markov Model
 as a graph (treillis) of possible run lengths.
 Edges of this graph indicate that a message is being passed
-to update each node's probability (as represented by arrows).
+to update each node's probability (as represented by arrows from trial $13$ to $14$).
 Black lines denote a progression of the run length at the next step (no switch),
-while red lines \CP{Lignes grises} stand for the possibility that a switch happened:
+while gray lines stand for the possibility that a switch happened:
 The run length falls back to zero.
-The black \CP{Bleu} [and green] \CP{plus de courbe verte} curve respectively represent
-the actual [and inferred] run length of the simulated data
-as a function of trial number.
-[In this example the inferred switch is delayed
-by one trial with respect to the true switch.]}
-\CP{representation des valeurs du run length en haut a gauche pour les essais 5 (en gris) et 8 (en bleu), on peut voir que pour l'essais 5 et 8 la probabilit\'e qu'il n'y est pas eu de switch depuis le d\'ebut est la plus importante (peut \^etre prendre un autre essais plus parlant - trial 10: proba switch à l'essais 5 est plus importante (notebook3) ?)}
+The probability for each node is represented by gray colors (black denoting sure)
+and is shown in the inset for two representative trials: $5$ and $11$.
+This shows how the model correctly integrated information to correctly identify a switch
+and produce a prediction for the next trial $t=14$.
+%The black \CP{Bleu} [and green] \CP{plus de courbe verte} curve respectively represent
+%the actual [and inferred] run length of the simulated data
+%as a function of trial number.
+%In this instance, the inferred switch is delayed
+%by one trial with respect to the true switch.
+%\CP{representation des valeurs du run length en haut a gauche pour les essais 5 (en gris) et 8 (en bleu), on peut voir que pour l'essais 5 et 8 la probabilit\'e qu'il n'y est pas eu de switch depuis le d\'ebut est la plus importante (peut \^etre prendre un autre essais plus parlant - trial 10: proba switch à l'essais 5 est plus importante (notebook3) ?)}
 ~\textbf{(B)} On a longer sequence of $200$ trials,
 representative of a sub-block of our experimental sequence (see~\seeFig{intro}-A), % and~\seeFig{results_raw}),
-we show in the top plot
-the actual events which are observed by the agent (TD, fine black lines),
-along with the (hidden) dynamics of the probability bias $x_1$ (blue line),
+we show %in the top plot
+the actual events which are observed by the agent (TD),
+along with the (hidden) dynamics of the true probability bias $x_1$ (blue line),
 the value inferred by a leaky integrator ($\bar{x_1}^t$, orange line)
 and the results of the BBCP model
 in estimating the probability bias $\hat{x_1}^t$ (green line),
@@ -822,13 +829,13 @@ along with $.05$ and $.95$ quantiles (shaded area).
 This shows that for the BBCP model,
 the accuracy of the estimated value of the probability bias
 is higher than for the leaky integrator.
-Below we show the belief (as grey-scale) for the different possible run lengths
-as a function of the trial number.
-A darker color denotes a higher probability.
+Below we show the belief (as grayscales) for the different possible run lengths.
+%as a function of the trial number.
+%A darker color denotes a higher probability.
 The green and orange line correspond to the mean run-length which is inferred,
 respectively, by the BBCP and leaky models:
 Note that in the BBCP, while it takes some trials to detect switches,
-they are overall correctly identified (transitions between diagonal lines) and
+they are in general correctly identified (transitions between diagonal lines) and
 that integration is thus faster than for the leaky integrator, 
 as illustrated in the inferred value of the probability bias.
 }
@@ -851,7 +858,7 @@ First, it allows the agent to restrict the prediction $\hat{x_1}^{t+1}$ of $x_1^
 only based on those samples produced since the last switch, from $t-r^t$ until $t$.
 % and which we denote as $x_0^{(r^t)}=x_0^{r^t:t}$ .
 Indeed, the samples $x_0^t$ which occurred before the last switch
-were drawn independently from the present real value $x_1^t$
+were drawn independently from the present true value $x_1^t$
 and thus cannot help estimating the latter.
 Second, it is known that for this estimate, the precision
 (the inverse of variance) on the estimate $\hat{x_1}^{t+1}$
@@ -869,6 +876,7 @@ We present here an exact solution for the case of the BSM, where the input is bi
 In order to define in all generality the switch detection model,
 we will initially describe the fundamental steps leading to its construction,
 while providing the full algorithmic details in~\seeApp{bcp}.
+%  by~\seeEq{run_length} (more details on this derivation in~\seeApp{bcp})
 The goal of predictive processing
 is to infer the probability $Pr(x_0^{t+1} | x_0^{0:t})$ of the next datum
 knowing what has been observed until trial $t$
@@ -876,7 +884,9 @@ knowing what has been observed until trial $t$
 that data is the output of a given (stochastic) generative model (here, the BSM).
 To derive a Bayesian predictive model, we introduce
 the run-length as a latent variable which helps the agent to represent
-different hypothesis about the input.
+different hypothesis about the input. 
+We therefore draw a computational graph where for at any trial
+an hypothesis is formed on as many ``nodes'' than there are run-lengths.
 %
 %This is for instance the task that we defined
 %for the bet experiment, where each participant
@@ -887,7 +897,7 @@ different hypothesis about the input.
 %we define the distribution which represents our belief
 %for all different hypotheses on $r^t$.
 %which
-We then assume the knowledge of the predictive probability conditioned on the run-length,
+As a readout, we can use this knowledge of the predictive probability conditioned on the run-length,
 such that one can compute the marginal predictive distribution:
 \eql{
 Pr(x_0^{t+1} | x_0^{0:t}) =
@@ -898,9 +908,12 @@ Pr(x_0^{t+1} | x_0^{0:t}) =
 \label{eq:pred}
 }
 where $Pr(x_0^{t+1} | r^{t}, x_0^{0:t})$ is
-the Bernouilli process modelling the probability of a future datum $x_0^{t+1}$
+the Bernouilli process modeling the probability of a future datum $x_0^{t+1}$
 conditioned on the run-length and
-$\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability distribution of each possible run-length given the observed data.
+$\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability for each possible run-length given the observed data.
+Note that $\beta^{(r)}_t$ is scaled such that $\sum_{r \geq 0 } \beta^{(r)}_t = 1$.
+Indeed, we know there is at any trial, there is a single true value for this variable
+and that it thus represents a probability distribution over the run-length $r$. % (given the data).
 %a previous value $Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$
 %and the likelihood associated to the new value $x_0^t$.
 
@@ -911,30 +924,31 @@ $\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability distribution of each poss
 % Computing sufficient stitistics
 %-------------------------------------------------------------%
 With these premises, we define the BBCP
-as a prediction / update cycle.
-First, we will \emph{predict} the probability
+as a prediction / update cycle
+which connects nodes from the previous trial to that at the current trial.
+Indeed, we will \emph{predict} the probability
 $\beta^{(r)}_t$ at each node, knowing either an initial prior, or its value on a previous trial.
 In particular, at the occurrence of the first trial, we know for certain that there is a switch and
 initial beliefs are thus set to the values $\beta^{(0)}_0=Pr(r^t=0)=1$ and
 $\forall r>0$, $\beta^{(r)}_0=Pr(r^0=r)=0$.
-Then, we use a knowledge of $\beta^{(r)}_{t-1}$ at trial $t-1$ and
-using the transition probabilities defined below by~\seeEq{run_length},
-this allows to predict the beliefs at each node at trial $t$:
+Then, at any trial $t>0$, we use a knowledge of $\beta^{(r)}_{t-1}$ at trial $t-1$,
+the likelihood $\pi^{(r)}_{t}=Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$  and
+the transition probabilities defined by the generative model
+to predict the beliefs over all nodes: % 
 \eqa{
-\beta^{(r)}_t \propto \sum_{r^{t-1} \geq 0}  Pr(r^t | r^{t-1}) \cdot  \pi^{(r)}_{t} \cdot  \beta^{(r)}_{t-1}
+\beta^{(r)}_t \propto \sum_{r^{t-1} \geq 0} \beta^{(r)}_{t-1} \cdot Pr(r^t | r^{t-1}) \cdot  \pi^{(r)}_{t}  
 \label{eq:pred_node}
 }
-where the likelihood $\pi^{(r)}_{t}=Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$ will be detailed below
-and $\beta^{(r)}_t$ is scaled such that $\sum_{r \geq 0 } \beta^{(r)}_t = 1$
-as it represents the probability distribution on the run-length $r$ given the data
-(more details on this derivation in~\seeApp{bcp}).
-In the graph, \seeEq{pred_node} corresponds to a message passing from the nodes at time $t-1$
-to that at time $t$ and formalized by the transition matrix $Pr(r^t | r^{t-1})$.
+In the computational graph (\seeFig{Bayesianchangepoint}-A), 
+\seeEq{pred_node} corresponds to a message passing from the nodes at time $t-1$
+to that at time $t$. % and formalized by the transition matrix $Pr(r^t | r^{t-1})$.
+We will now detail how to compute the transition probabilities and the likelihood.
+
 %In the second step, one can perform prediction
 %using the graph defined in \seeFig{Bayesianchangepoint}-A.
 %Now that we have the vector of likelihoods $\pi^{(r)}_t=\Ll(x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$,
 %one can update probabilities and perform the next prediction for trial $t+1$.
-Formally, knowing that the data is generated by the BSM (see~\seeEq{bsm}),
+First, knowing that the data is generated by a switching model such as the BSM (see~\seeEq{bsm}),
 the run-length is either null at the moment of a switch,
 or this length (in number of trials) is incremented by $1$ if no switch occurred:
 \eql{\choice{
@@ -944,13 +958,17 @@ or this length (in number of trials) is incremented by $1$ if no switch occurred
 This may be illustrated by a graph
 in which information will be represented at the different nodes for each trial $t$ (see \seeFig{Bayesianchangepoint}-A).
 %In a switching model like the BSM, the transition matrix % defined by the graph,
-This allows us to compute the \emph{growth probability} for each run-length $r \geq 0$,
-that is, the belief on an incremented run-length at the next trial, before observing a new datum:
+This defines the transition matrix $Pr(r^t | r^{t-1})$ 
+as a partition in two exclusive possibilities: 
+Either there was a switch or not.
+It allows us to compute the \emph{growth probability} for each run-length. % $r \geq 0$.
+On the one hand, the belief of an increment of the run-length at the next trial is: %, before observing a new datum:
 \eqa{
 \beta^{(r+1)}_t = \frac{1}{B} \cdot \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot (1-h)
 \label{eq:beta_noswitch}
 }
-where $h$ is the scalar defining the hazard rate. It also allows to express the change-point probability as:
+where $h$ is the scalar defining the hazard rate. 
+On the other hand, it also allows to express the change-point probability as:
 \eqa{
 \beta^{(0)}_t  = \frac{1}{B} \cdot \sum_{r \geq 0} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot h
 \label{eq:beta_switch}
@@ -968,14 +986,18 @@ prior to the observation of a new datum $x_0^{t+1}$ and resume the prediction / 
 Integrated in our cycle, we \emph{update} beliefs on all nodes
 by computing the likelihood $\pi^{(r)}_t$ of the current datum $x_0^{t}$
 knowing the current belief at each node,
-that is, based on observations from trials $0$ to $t-1$. % ~\seeEq{pred}
+that is, based on observations from trials $0$ to $t-1$. %~\seeEq{pred}
 A major algorithmic difference with the BCP model~\citep{AdamsMackay2007},
 is that here the observed data is a Bernoulli trial and not a Gaussian random variable.
 The random variable $x_1^t$ is the probability bias used
 to generate the sequence of events $x_0^t$.
 We will infer it for all different hypotheses on $r^t$,
-that is, knowing there was a sequence of $r^t$ Bernoulli trials with a fixed bias in that epoch.
-Mathematically, a belief on this random variable is represented
+that is, knowing there was a sequence of $r^t$ Bernoulli trials 
+with a fixed probability bias in that sub-block.
+Such an hypothesis will allow us to compute the distribution
+$Pr(x_0^{t+1} | r^{t}, x_0^{0:t})$
+by a simple parameterization.
+Mathematically, a belief on the random variable $x_1^t$ is represented
 by the conjugate probability distribution of the binomial distribution,
 that is, by the beta-distribution $B(x_1^t; \mu^{(r)}_{t}, \nu^{(r)}_{t})$.
 It is parameterized here by its sufficient statistics,
@@ -1024,7 +1046,8 @@ with $Z$ such that $\Ll(r | o=1) + \Ll(r | o=0)=1$. % where
 %    {(\mu \cdot \nu )}^{\mu \cdot \nu }  \cdot {((1- \mu)\cdot \nu + 1)}^{(1- \mu)\cdot \nu + 1}
 %}
 The full derivation of this function is detailed in~\seeApp{likelihood}.
-This provides us with that the likelihood as $\pi^{(r)}_t = \Ll(\nu^{(r)}_{t-1} | x_0^{t})$.
+This provides us with the likelihood function
+and finally the scalar value $\pi^{(r)}_t = \Ll(r | x_0^{t})$.
 
 %-------------------------------------------------------------%
 %: 2Be online estimation: prediction
@@ -1040,9 +1063,10 @@ and use the marginal predictive probability (see~\seeEq{pred}) as a readout.
 %\eql{
 %\hat{x_1}^t = \mu^{(r^\ast)}_{t} \quad \text{with} \quad r^\ast = \argmax_r \beta^{(r)}_{t}
 %}
-This probability $\hat{x_1}^{t+1}=Pr(x_0^{t+1} | x_0^{0:t})$ is computed as the expected value over all run-lengths:
+This probability bias is best estimated by its expected value $\hat{x_1}^{t+1}=Pr(x_0^{t+1} | x_0^{0:t})$
+as it is computed over all run-lengths:
 \eql{
-\hat{x_1}^{t+1} = \sum_{r} \mu^{(r)}_{t} \cdot \beta^{(r)}_{t}
+\hat{x_1}^{t+1} = \sum_{r \geq 0} \mu^{(r)}_{t} \cdot \beta^{(r)}_{t}
 \label{eq:readout}
 }
 Interestingly, it can be proven that if,
@@ -1055,7 +1079,7 @@ Still, as for the latter, there is only one parameter~$h=\frac 1 \tau$ which inf
 that the probability bias switches \emph{on average} every~$\tau$ trials.
 %As in \seeEq{leaky}, this defines the \emph{hazard rate}.
 Moreover, note that the resulting operations
-(see Equations~\ref{eq:pred},~\ref{eq:beta_noswitch},~\ref{eq:beta_switch}, ~\ref{eq:likelihood} and~\ref{eq:readout})
+(see Equations~\ref{eq:pred},~\ref{eq:beta_noswitch},~\ref{eq:beta_switch},~\ref{eq:likelihood} and~\ref{eq:readout})
 which constitute the BBCP algorithm
 can be implemented \textit{online}, that is,
 only the state at trial $t$ and the new datum $x_0^t$
@@ -1116,7 +1140,7 @@ that there is no improvement in the precision of the estimates after a switch.
 %1/ the delay after the occurrence of a switch will always be similar,
 %2/ there is no dynamic update of the inferred probability while in the BBCP model, the precision of each new datum is higher after a switch.
 In contrast, after a correct switch detection in the BBCP model, 
-the value of the inferred probability converges rapidly to the real probability
+the value of the inferred probability converges rapidly to the true probability
 as the number of observations increase after a switch.
 
 %-------------------------------------------------------------%
@@ -1126,7 +1150,7 @@ as the number of observations increase after a switch.
 %-------------------------------------------------------------%
 In order to quantitatively evaluate the algorithm and following a similar strategy as~\citet{Norton18},
 we computed \AM{the negative log-likelihood (in bits) of the estimated probability bias,
-knowing the real probability - isn't H the joint entropy and C something related to the mutual information? H and C should both be defines},
+knowing the true probability - isn't H the joint entropy and C something related to the mutual information? H and C should both be defines},
 and averaged over all $T$ trials:
 \eql{
 %\Cc =  \sum_{t} -\log_2 B(x_1^t ; \hat{x_1}^t, r^t )
@@ -1141,7 +1165,7 @@ H(x_1^t, \hat{x_1}^t ) = - {x_1}^t \log_2( \hat{x_1}^t ) - (1-{x_1}^t) \log_2( 1
 This measure explicitly corresponds to the average score of our model,
 %where this score is the log likelihood (in bits) of the inferred belief about the probability bias
 as the Kullback-Leibler distance of $\hat{x_1}^t$ %along with its precision $r^t$ and
-compared to the hidden real probability $x_1^t$.
+compared to the hidden true probability $x_1^t$.
 %Similar measures based on the predicted readout $\hat{x_0}^t$
 %gave similar results but would need more data to converge.
 We have tested $100$ blocks of $2000$ trials for each read-out.
@@ -1183,7 +1207,7 @@ explicit guesses about target motion direction.
 \section{Results: Eye movements recordings and explicit ratings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:results_psycho}
-%: FIGURE 2 fig:results_psycho ~\seeFig{results_psycho}
+%: FIGURE 2 fig:results_psycho~\seeFig{results_psycho}
 \begin{figure}%[b!]
 \centering{\includegraphics[width=\linewidth]{2_results_enregistrement}}
 \caption{
@@ -1199,7 +1223,7 @@ by the horizontal eye velocity estimated right before
 the onset of the visually-driven SPEM (dark gray line);
 and the explicit ratings about the expected target direction (or \textit{bet scores}, red line).
 We also show the evolution of the value
-of the probability bias $P_{\mathrm{real}}$ (blue line)
+of the probability bias $P_{\mathrm{true}}$ (blue line)
 which is hidden to observers
 and used to generate the TD sequence above.
 We have overlaid the results of the BBCP model
@@ -1234,7 +1258,7 @@ In particular, we show in the top panel the actual sequence of binary choices
 whereas in the bottom panels, 
 we compare for each two participants
 the evolution of the recorded aSPEM (grey line) with
-the real value of the hidden probability bias $x_1$ 
+the true value of the hidden probability bias $x_1$ 
 (step-like blue curve),
 and the value inferred using the BBCP model (green line), 
 along with the $.05$ to $.95$ quantile range (green shaded area).
@@ -1275,7 +1299,7 @@ with the inferred probability bias $\hat{x_1}$.
 As with aSPEM, the series of the participants' bias guesses
 exhibits a positive correlation with $\hat{p}$:
 The next outcome of $x_{0}^{t}$ will in general be correctly inferred,
-as compared to a random choice, as reported previousky ~\citep{Meyniel15}. %\AM{statistics to cite for this?}
+as compared to a random choice, as reported previously~\citep{Meyniel15}. %\AM{statistics to cite for this?}
 %\AM{I WOULD SKIP THIS Equipped with this generative BSM model and the ideal observer given by the BBCP model,
 %the agent is able to predict the next outcome better than chance level.}
 Moreover, we observe again that a stronger probability bias leads 
@@ -1323,7 +1347,7 @@ and in ordinate \textbf{(A)} the strength of aSPEM and \textbf{(B)} the bet scor
 %The density of strokes represent increasing probability strengths.
 As a comparison, we have plotted in blue and orange colors the match
 with respectively 
-the real probability ($P_{\text{real}}=x_1^t$) and
+the true probability ($P_{\text{true}}=x_1^t$) and
 the probability bias estimates $P_{\text{leaky}}$ obtained with a leaky integrator.
 Insets summarize the quantitative measure of this match 
 by computing the Pearson correlation coefficient $r$ 
@@ -1333,7 +1357,7 @@ This shows quantitatively that for both experimental measures
 there is a strong statistical dependency between
 the behavioral results and the prediction of the BBCP model,
 but also that this dependency is significantly stronger than that obtained
-with the real probability and with the estimate obtained with the leaky integrator
+with the true probability and with the estimate obtained with the leaky integrator
 (see text). %(respectively $p=XXX$ and $p=XXX$ for $r$ and  $p=XXX$ and $p=XXX$ for MI).
 }
 \label{fig:results_psycho_all}
@@ -1349,12 +1373,12 @@ Compiling results %(see~\seeFig{results_psycho})
 from all participants,
 we have plotted in~\seeFig{results_psycho_all}
 the aSPEM strength (panel A) and the bet scores (panel B) as a function of the BBCP-inferred probability bias
-(we remind here that the real value of the probability bias was coded at the second layer of the BSM generative model and is hidden both to the BBCP agent and to the human observers).
+(we remind here that the true value of the probability bias was coded at the second layer of the BSM generative model and is hidden both to the BBCP agent and to the human observers).
 All trials from all participants were pooled together 
 and we show this joint data as an error bar plot 
 showing the median with $.25$ and $.75$ quantiles
 for 5 equal partitions of the $[0, 1]$ probability segment. % to generate a scatter plot
-As a comparison, the same method was applied to the true value $P_{\mathrm{real}}$ and 
+As a comparison, the same method was applied to the true value $P_{\mathrm{true}}$ and 
 to the estimate obtained by the leaky integrator.
 %which was then  converted to a kernel density estimate
 %for a better visualization (kernel size of $XX$).
@@ -1376,9 +1400,9 @@ and across subjects
 are slightly higher than that found by \citet{Montagnini2010} and \citet{Damasse18} 
 for aSPEM measures gathered across experimental blocks with fixed direction biases %($r = XXX \pm $),
 and significantly\footnote{All following $p$-values are obtained from the \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html}{Wilcoxon signed-rank test}.} better than that estimated 
-with the real probability 
+with the true probability 
 ($r = 0.6138 \pm 0.0698 $ with $p=0.0022$ and $MI = 0.5622 \pm 0.1079$ with $p=0.0022$) % 
-%\CP{aSPEM / Real : ($r = 0.597$ $MI = 0.529$) pour les sujet - ($r = 0.6138 \pm 0.0698 $  $p=0.0022$ - $MI = 0.5622 \pm 0.1079$ $p=0.0022$)}
+%\CP{aSPEM / true : ($r = 0.597$ $MI = 0.529$) pour les sujet - ($r = 0.6138 \pm 0.0698 $  $p=0.0022$ - $MI = 0.5622 \pm 0.1079$ $p=0.0022$)}
 and for that estimated by the leaky-integrator model 
 ($r = 0.6005 \pm 0.0790$ with $p=0.0037$ and $MI =  0.6221 \pm 0.1025$ with $p=0.0047$), see inset).
 %\CP{aSPEM / Leaky - ($r = 0.582$ $MI = 0.609$) pour les sujet - ($r = 0.6005 \pm 0.0790$ $p=0.0037$ - $MI =  0.6221 \pm 0.1025$  $p=0.0047$)}
@@ -1396,21 +1420,21 @@ across subjects ($r = 0.8134 \pm 0.0916 $ $MI = 1.3126 \pm 0.3644$).
 Importantly, this value is again higher for the BBCP model than
 for the leaky integrator ($r = 0.7311 \pm 0.1298 $ with $p=0.0076$ and $MI =  1.1178 \pm 0.4092$ with $p=0.0280$).
 %\CP{BET / Leaky : ($r = 0.712$ $MI = 0.968$) pour les sujet - ($r = 0.7311 \pm 0.1298 $ $p=0.0076$ - $MI =  1.1178 \pm 0.4092$ $p=0.0280$)
-or with the real (true) probability ($r = 0.6949 \pm 0.0861 $ with $p=0.0022$ and $MI =  0.9400 \pm 0.2550$ with $p=0.0022$). % : ($r = 0.679$ $MI = 0.795$) pour les sujet -  }
+or with the true probability ($r = 0.6949 \pm 0.0861 $ with $p=0.0022$ and $MI =  0.9400 \pm 0.2550$ with $p=0.0022$). % : ($r = 0.679$ $MI = 0.795$) pour les sujet -  }
 Further notice that, in order to account for some specific changes 
 observed in the behavioral data after the short pauses 
 occurring every $50$ trials, 
 we added the assumption %for both models, 
 that there was a switch at each pause. 
 However, removing this assumption did not significantly change the match of the model
-compared to $P_{\text{real}}$ or $P_{\text{leaky}}$ 
+compared to $P_{\text{true}}$ or $P_{\text{leaky}}$ 
 both for eye movements
-($P_{\text{BBCP}}$: $r = 0.6678 \pm 0.0782 $ $MI =  0.7123 \pm 0.1250$, $P_{\text{leaky}}$: $r = 0.5480 \pm 0.0749 $ with $p=0.0037$ and $MI =  0.5777 \pm 0.0961$ with $p=0.0037$ ; $P_{\text{real}}$ : $r = 0.6138 \pm 0.0698 $ $p=0.0028$ and  $MI =  0.5622 \pm 0.1079$ with $p=0.0022$) 
+($P_{\text{BBCP}}$: $r = 0.6678 \pm 0.0782 $ $MI =  0.7123 \pm 0.1250$, $P_{\text{leaky}}$: $r = 0.5480 \pm 0.0749 $ with $p=0.0037$ and $MI =  0.5777 \pm 0.0961$ with $p=0.0037$ ; $P_{\text{true}}$ : $r = 0.6138 \pm 0.0698 $ $p=0.0028$ and  $MI =  0.5622 \pm 0.1079$ with $p=0.0022$) 
 and the bet experiment 
-($P_{\text{BBCP}}$: $r = 0.8027 \pm 0.0905 $ $MI =  1.2557 \pm 0.3498$, $P_{\text{leaky}}$: $r = 0.6413 \pm 0.1209$ $p=0.0028$ and $MI =  0.9666 \pm 0.3008$ with $p=0.0022$ ; $P_{\text{real}}$ : $r = 0.6949 \pm 0.0861 $ with $p=0.0022$ and $MI =  0.9400 \pm 0.2550$ with $p=0.0022$).
+($P_{\text{BBCP}}$: $r = 0.8027 \pm 0.0905 $ $MI =  1.2557 \pm 0.3498$, $P_{\text{leaky}}$: $r = 0.6413 \pm 0.1209$ $p=0.0028$ and $MI =  0.9666 \pm 0.3008$ with $p=0.0022$ ; $P_{\text{true}}$ : $r = 0.6949 \pm 0.0861 $ with $p=0.0022$ and $MI =  0.9400 \pm 0.2550$ with $p=0.0022$).
 %\CP{SANS PAUSE -- BET  / BCP :($r = 0.785$ $MI = 1.100$) pour les sujet - ($r = 0.8027 \pm 0.0905 $ $MI =  1.2557 \pm 0.3498$)
 %/ Leaky :($r = 0.625$ $MI = 0.879$) pour les sujet - ($r = 0.6413 \pm 0.1209$ $p=0.0028$ - $MI =  0.9666 \pm 0.3008$ $p=0.0022$)
-%/ real probability : ($r = 0.679$ $MI = 0.795$) pour les sujet - ($r = 0.6949 \pm 0.0861 $ $p=0.0022$ - $MI =  0.9400 \pm 0.2550$ $p=0.0022$) }
+%/ true probability : ($r = 0.679$ $MI = 0.795$) pour les sujet - ($r = 0.6949 \pm 0.0861 $ $p=0.0022$ - $MI =  0.9400 \pm 0.2550$ $p=0.0022$) }
 To conclude, we deduce that the dynamic estimate of probability biases produced by the BBCP model
 is a powerful regressor to explain 
 both the strength of anticipatory smooth pursuit eye movements 
@@ -1484,7 +1508,7 @@ Dashed lines correspond to the median for the full dataset (black line)
 or for each individual sub-block (colored line). 
 These should be compared to the values obtained for the BBCP model,
 showing a slight variability over sub-blocks.
-Stars correspond to the observers displayed in ~\seeFig{results_psycho}.
+Stars correspond to the observers displayed in~\seeFig{results_psycho}.
 This plot shows that best fit hazard rates are in general higher than the ground truth (blue line), 
 and in general higher for eye movements (below the diagonal).
 Note that the histograms (gray shaded areas) is much more narrower 
@@ -1804,7 +1828,7 @@ is weighted by the precision of the inference, leading in general to an under-we
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{itemize}\setlength{\itemsep}{0ex}
 \item We have developed a Bayesian model of an agent estimating the probability bias of a volatile environment with changing points (switches), such that the agent may decide \textit{to stay} on the current hypothesis about the environment, or \textit{to go} for a novel one. This allows to dynamically infer the probability bias across time and directly compare model predictions and experimental data, such as human behavior.
-\item We applied such a framework to the case of a probability bias in a visual motion task where we manipulated the target direction probability. We observed a good match between the largely unconscious anticipatory smooth eye movements and the results of the model, replicating and providing a novel solid theoretical framework for previous findings ~\citep{Montagnini2010, SantosKowler2017, Damasse18}.
+\item We applied such a framework to the case of a probability bias in a visual motion task where we manipulated the target direction probability. We observed a good match between the largely unconscious anticipatory smooth eye movements and the results of the model, replicating and providing a novel solid theoretical framework for previous findings~\citep{Montagnini2010, SantosKowler2017, Damasse18}.
 \item We also found a good match between model predictions and the explicit rating of confidence on the expected target motion direction, a novel result suggesting that this model captures some of the brain computations underlying expectancy based motion prediction, both at the unconscious and conscious level
 \item Finally, we found that the experimental data of each different participant matched to different levels of belief's precision on the volatile environment, some being more or less conservative. Interestingly, each of the two experiments (namely for the unconscious anticipatory eye movements and the conscious rating) provided different distributions, opening the perspective for future \emph{computational phenotyping} using such a volatile setting.
 \end{itemize}
@@ -1854,7 +1878,7 @@ We called this experiment the \textit{ ``Bet''} experiment, as participants were
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-%%: FIGURE 1B fig:introB ~\seeFig{introB}
+%%: FIGURE 1B fig:introB~\seeFig{introB}
 %\begin{figure}%[b!]
 %\centering{
 %%\includegraphics[width=\linewidth]{figure1}
@@ -1924,8 +1948,8 @@ We called this experiment the \textit{ ``Bet''} experiment, as participants were
 Given a series of observations $\{x_0^i\}_{0\leq i \leq t}$
 with $\forall i, x_0^i \in \{0, 1 \}$, we defined
 \eqs{
-\hat{x_1}^{t} &= 1/\tau \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i}\\
-			  &= h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
+\hat{x_1}^{t} &= (1-1/\tau)^{t+1} \cdot \hat{x_1}^{t=0} +  1/\tau \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i}\\
+			  &= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
 }
 %is true for $t=1$: by definition $\hat{x_1}^{0}=x_0^0$ and
 %\eq{
@@ -1933,21 +1957,21 @@ with $\forall i, x_0^i \in \{0, 1 \}$, we defined
 %}
 If we write it for trial $t-1$, we have
 \eqs{
-\hat{x_1}^{t-1}	&= h \cdot \sum_{0\leq i \leq t-1} (1 - h)^{i} \cdot x_0^{t-1-i} \\
-                &= h \cdot \sum_{1\leq j \leq t} (1 - h)^{j-1} \cdot x_0^{t-j} \\ % j = i+1
-(1 - h) \cdot \hat{x_1}^{t-1} &= h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
+\hat{x_1}^{t-1}	&= (1-h)^{t} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t-1} (1 - h)^{i} \cdot x_0^{t-1-i} \\
+                &= (1-h)^{t} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{1\leq j \leq t} (1 - h)^{j-1} \cdot x_0^{t-j} \\ % j = i+1
+(1 - h) \cdot \hat{x_1}^{t-1} &= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} +  h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
                 }
-As such, the relation
+As such, the integrative formula above becomes an iterative relation:
 \eqs{
-\hat{x_1}^{t}	&= h \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i} \\
-				&= h \cdot x_0^{t} + h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i} \\
+\hat{x_1}^{t}	&= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i} \\
+				&= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot x_0^{t} + h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i} \\
 				&= h \cdot x_0^{t} + (1 - h) \cdot \hat{x_1}^{t-1} \\
 }
 such that finally
 \eq{
 \hat{x_1}^{t} = (1 - h) \cdot \hat{x_1}^{t-1} + h \cdot x_0^t
 }
-As such, the definitions in~\seeEq{leaky} and ~\seeEq{leaky2} are equivalent.
+As such, the definitions in~\seeEq{leaky} and~\seeEq{leaky2} are equivalent.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Appendix 2: BBCP algorithm}
 \label{app:bcp}
@@ -2171,9 +2195,9 @@ Note also that as $r$ grows, it gets sharper.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Appendix 4: Supplementary psychophysical results}
-\label{app:results_psycho}
-%\seeApp{results_psycho}
+%\subsection{Appendix 4: Supplementary psychophysical results}
+%\label{app:results_psycho}
+%%\seeApp{results_psycho}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
