@@ -785,21 +785,21 @@ but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 \begin{tikzpicture}[thick,scale=.95]
 \node [anchor=north west]  (imgA) at (0.\linewidth,.55\linewidth){\includegraphics[width=0.33
 \linewidth]{3_BCP_model}};
-\node [anchor=north west]  (imgB) at (0.36\linewidth,.585\linewidth){\includegraphics[width=0.64\linewidth]{3_BCP_readouts}};
+\node [anchor=north west]  (imgB) at (0.36\linewidth,.580\linewidth){\includegraphics[width=0.64\linewidth]{3_BCP_readouts}};
 \draw [anchor=north west] (0.000\linewidth, .62\linewidth) node {$\mathsf{(A)}$};
 \draw [anchor=north west] (0.382\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
 \end{tikzpicture}
 }
 \caption{\emph{Binary Bayesian Change Point (BBCP) detection model}
 ~\textbf{(A)} This plot shows a synthesized sequence of $13$ events,
-each of them corresponding to a binary choice,
-either a leftward or rightward movement of the target (TD).
-The run-length represents the length of a sub-block over which the probability bias was constant.
+%each of them corresponding to a binary choice,
+either a leftward or rightward movement of the target (TD, fine black lines).
+A run-length is the hypothesis on the length of a sub-block over which the probability bias was constant,
+that is, the number of trials since a switch.
 Here, the true probability bias switched from a value of $.5$ to $.9$ at trial $7$,
 as can be seen by the blue line showing the trajectory of the true run-length.
 The BBCP model tries to capture the occurrences of a switch
-by inferring the probability of different possible run lengths,
-that is, the number of trials since a switch.
+by inferring the probability of different possible run lengths.
 At any new datum (trial), this defines a Hidden Markov Model
 as a graph (treillis) of possible run lengths.
 Edges of this graph indicate that a message is being passed
@@ -807,16 +807,20 @@ to update each node's probability (as represented by arrows from trial $13$ to $
 Black lines denote a progression of the run length at the next step (no switch),
 while gray lines stand for the possibility that a switch happened:
 The run length falls back to zero.
+The probability for each node is represented by gray colors (black denoting sure)
+and is shown in the inset for two representative trials: $5$ and $11$.
+This shows how the model correctly integrated information to correctly identify a switch
+and produce a prediction for the next trial $t=14$.
 %The black \CP{Bleu} [and green] \CP{plus de courbe verte} curve respectively represent
 %the actual [and inferred] run length of the simulated data
 %as a function of trial number.
-In this instance, the inferred switch is delayed
-by one trial with respect to the true switch.
+%In this instance, the inferred switch is delayed
+%by one trial with respect to the true switch.
 %\CP{representation des valeurs du run length en haut a gauche pour les essais 5 (en gris) et 8 (en bleu), on peut voir que pour l'essais 5 et 8 la probabilit\'e qu'il n'y est pas eu de switch depuis le d\'ebut est la plus importante (peut \^etre prendre un autre essais plus parlant - trial 10: proba switch à l'essais 5 est plus importante (notebook3) ?)}
 ~\textbf{(B)} On a longer sequence of $200$ trials,
 representative of a sub-block of our experimental sequence (see~\seeFig{intro}-A), % and~\seeFig{results_raw}),
 we show in the top plot
-the actual events which are observed by the agent (TD, fine black lines),
+the actual events which are observed by the agent (TD),
 along with the (hidden) dynamics of the probability bias $x_1$ (blue line),
 the value inferred by a leaky integrator ($\bar{x_1}^t$, orange line)
 and the results of the BBCP model
