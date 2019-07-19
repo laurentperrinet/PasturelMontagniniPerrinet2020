@@ -819,9 +819,9 @@ and produce a prediction for the next trial $t=14$.
 %\CP{representation des valeurs du run length en haut a gauche pour les essais 5 (en gris) et 8 (en bleu), on peut voir que pour l'essais 5 et 8 la probabilit\'e qu'il n'y est pas eu de switch depuis le d\'ebut est la plus importante (peut \^etre prendre un autre essais plus parlant - trial 10: proba switch à l'essais 5 est plus importante (notebook3) ?)}
 ~\textbf{(B)} On a longer sequence of $200$ trials,
 representative of a sub-block of our experimental sequence (see~\seeFig{intro}-A), % and~\seeFig{results_raw}),
-we show in the top plot
+we show %in the top plot
 the actual events which are observed by the agent (TD),
-along with the (hidden) dynamics of the probability bias $x_1$ (blue line),
+along with the (hidden) dynamics of the true probability bias $x_1$ (blue line),
 the value inferred by a leaky integrator ($\bar{x_1}^t$, orange line)
 and the results of the BBCP model
 in estimating the probability bias $\hat{x_1}^t$ (green line),
@@ -829,13 +829,13 @@ along with $.05$ and $.95$ quantiles (shaded area).
 This shows that for the BBCP model,
 the accuracy of the estimated value of the probability bias
 is higher than for the leaky integrator.
-Below we show the belief (as grey-scale) for the different possible run lengths
-as a function of the trial number.
-A darker color denotes a higher probability.
+Below we show the belief (as grayscales) for the different possible run lengths.
+%as a function of the trial number.
+%A darker color denotes a higher probability.
 The green and orange line correspond to the mean run-length which is inferred,
 respectively, by the BBCP and leaky models:
 Note that in the BBCP, while it takes some trials to detect switches,
-they are overall correctly identified (transitions between diagonal lines) and
+they are in general correctly identified (transitions between diagonal lines) and
 that integration is thus faster than for the leaky integrator, 
 as illustrated in the inferred value of the probability bias.
 }
