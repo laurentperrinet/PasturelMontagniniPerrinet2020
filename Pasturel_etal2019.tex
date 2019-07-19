@@ -381,13 +381,13 @@ anticipatory SPEM (aSPEM) are
 efficiently generated before the target's appearance~\citep{Westheimer1954, Kowler1979a, Kowler1979b} thereby reducing visuomotor latency.
 Moreover, some experiments have demonstrated the existence
 of prediction-based smooth pursuit during
-the transient disappearance of a moving target~\citep{Badler2006,BeckerFuchs1985} \AM{REF OrbandeXivry}.
+the transient disappearance of a moving target~\citep{Badler2006,BeckerFuchs1985,OrbandeXivryMissalLefevre_JOV2012}.
 Overall, although the initiation of SPEM is almost always driven by a visual motion signal, it is now clear that smooth pursuit behavior
 can be modulated by extra-retinal, predictive information even in the absence of a direct visual stimulation.
 The anticipatory smooth pursuit behavior is remarkable
 in different aspects.
 First, its buildup is relatively fast, such that only a few trials are sufficient
-to pick up some regularity in the properties of visual motion, such as speed \AM{REF OrbandeXivry} or direction \AM{REF Yang, Darlington}.
+to pick up some regularity in the properties of visual motion, such as speed or direction \citep{Kowler1984,Maus2015,Deravet_JOV2018}.
 Second, it is in general an unconscious process
 of which participants are not aware of.
 As such, this behavior is potentially a useful marker
@@ -397,7 +397,7 @@ interacts dynamically with contextual contingencies in shaping oculomotor behavi
 
 %: linear relationship (talk about santos & kowler and others)
 Typically, aSPEM is observed after a temporal cue and
-before target motion onset~\citep{Kowler1979a,Kowler1979b, Kowler1984}. \AM{Merge citations?}. %~(see \seeFig{intro}-A).
+before target motion onset~\citep{Kowler1979a,Kowler1979b, Kowler1984}. %~(see \seeFig{intro}-A).
 It is generally assumed that the role of aSPEMs is
 to minimize as fast as possible the visual impairment due
 to the amplitude of eye-to-target position and velocity mismatch.
@@ -913,7 +913,7 @@ $\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability distribution of each poss
 With these premises, we define the BBCP
 as a prediction / update cycle.
 First, we will \emph{predict} the probability
-$\beta^{(r)}_t$ at each node, knowing either an initial prior or a previous trial.
+$\beta^{(r)}_t$ at each node, knowing either an initial prior, or its value on a previous trial.
 In particular, at the occurrence of the first trial, we know for certain that there is a switch and
 initial beliefs are thus set to the values $\beta^{(0)}_0=Pr(r^t=0)=1$ and
 $\forall r>0$, $\beta^{(r)}_0=Pr(r^0=r)=0$.
@@ -928,8 +928,8 @@ where the likelihood $\pi^{(r)}_{t}=Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$ will be 
 and $\beta^{(r)}_t$ is scaled such that $\sum_{r \geq 0 } \beta^{(r)}_t = 1$
 as it represents the probability distribution on the run-length $r$ given the data
 (more details on this derivation in~\seeApp{bcp}).
-In the graph, \AM{Not clear yet... \seeEq{pred_node} corresponds to a message passing from the nodes at time $t-1$
-to that at time $t$ and formalized by the transition matrix $Pr(r^t | r^{t-1})$.}
+In the graph, \seeEq{pred_node} corresponds to a message passing from the nodes at time $t-1$
+to that at time $t$ and formalized by the transition matrix $Pr(r^t | r^{t-1})$.
 %In the second step, one can perform prediction
 %using the graph defined in \seeFig{bayesianchangepoint}-A.
 %Now that we have the vector of likelihoods $\pi^{(r)}_t=\Ll(x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$,
