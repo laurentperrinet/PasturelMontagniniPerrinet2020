@@ -724,14 +724,14 @@ It may thus be equivalently written in the form of a moving average:
 \eql{
 \hat{x_1}^{t+1} = (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
 \label{eq:leaky2}}
-The first term corresponds to the discounted effect of the prior value, 
-while the second corresponds to the integration of novel observations.
+The first term corresponds to the discounted effect of the prior value before any observation and it tends to $0$ when $t$ increases. 
+More importantly, the second term corresponds to the \emph{leaky} integration of novel observations.
 Inversely, let us now assume that
 the true probability bias for direction changes randomly with a mean rate of once
 every $\tau$ trials.
 As a consequence, the probability that the bias does not change is $Pr(x_2^t=0)=1-h$ at each trial.
-Assuming independence of these occurrences, the estimated probability $p=\hat{x_1}^{t+1}$ is thus the sum
-of the past observations weighted by the belief that the bias has not changed during $i$ trials in the past, that is, exactly as defined in~\seeEq{leaky2}.
+Assuming independence of these occurrences, the estimated probability $p=\hat{x_1}^{t+1}$ is thus proportional to the sum
+of the past observations weighted by the belief that the bias has not changed during $i$ trials in the past, that is, exactly as defined by the second term of the right-hand side in~\seeEq{leaky2}.
 This shows that
 assuming that changes occur at a constant rate ($\hat{x_2}^t=h$)
 but ignoring the variability in the temporal occurrence of the switch,
@@ -790,19 +790,19 @@ but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 \draw [anchor=north west] (0.382\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
 \end{tikzpicture}
 }
-\caption{\emph{Binary Bayesian Change Point (BBCP) detection model}
+\caption{\emph{Binary Bayesian Change Point (BBCP) detection model.} %
 ~\textbf{(A)} This plot shows a synthesized sequence of $13$ events,
 %each of them corresponding to a binary choice,
-either a leftward or rightward movement of the target (TD, fine black lines).
-A run-length is the hypothesis on the length of a sub-block over which the probability bias was constant,
+either a leftward or rightward movement of the target (TD).
+Run-length are hypothesis on the length of a sub-block over which the probability bias was constant,
 that is, the number of trials since a switch.
 Here, the true probability bias switched from a value of $.5$ to $.9$ at trial $7$,
-as can be seen by the blue line showing the trajectory of the true run-length.
+as can be seen by the trajectory of the true run-length (blue line).
 The BBCP model tries to capture the occurrences of a switch
 by inferring the probability of different possible run lengths.
 At any new datum (trial), this defines a Hidden Markov Model
-as a graph (treillis) of possible run lengths.
-Edges of this graph indicate that a message is being passed
+as a graph (treillis), where % of possible run lengths.
+edges indicate that a message is being passed
 to update each node's probability (as represented by arrows from trial $13$ to $14$).
 Black lines denote a progression of the run length at the next step (no switch),
 while gray lines stand for the possibility that a switch happened:
@@ -821,10 +821,10 @@ and produce a prediction for the next trial $t=14$.
 representative of a sub-block of our experimental sequence (see~\seeFig{intro}-A), % and~\seeFig{results_raw}),
 we show %in the top plot
 the actual events which are observed by the agent (TD),
-along with the (hidden) dynamics of the true probability bias $x_1$ (blue line),
-the value inferred by a leaky integrator ($\bar{x_1}^t$, orange line)
+along with the (hidden) dynamics of the true probability bias $P_{\text{true}}$ (blue line),
+the value inferred by a leaky integrator ($P_{\text{leaky}}$, orange line)
 and the results of the BBCP model
-in estimating the probability bias $\hat{x_1}^t$ (green line),
+in estimating the probability bias $P_{\text{BBCP}}$ (green line),
 along with $.05$ and $.95$ quantiles (shaded area).
 This shows that for the BBCP model,
 the accuracy of the estimated value of the probability bias
@@ -1223,7 +1223,7 @@ by the horizontal eye velocity estimated right before
 the onset of the visually-driven SPEM (dark gray line);
 and the explicit ratings about the expected target direction (or \textit{bet scores}, red line).
 We also show the evolution of the value
-of the probability bias $P_{\mathrm{true}}$ (blue line)
+of the probability bias $P_{\text{true}}$ (blue line)
 which is hidden to observers
 and used to generate the TD sequence above.
 We have overlaid the results of the BBCP model
@@ -1378,7 +1378,7 @@ All trials from all participants were pooled together
 and we show this joint data as an error bar plot 
 showing the median with $.25$ and $.75$ quantiles
 for 5 equal partitions of the $[0, 1]$ probability segment. % to generate a scatter plot
-As a comparison, the same method was applied to the true value $P_{\mathrm{true}}$ and 
+As a comparison, the same method was applied to the true value $P_{\text{true}}$ and 
 to the estimate obtained by the leaky integrator.
 %which was then  converted to a kernel density estimate
 %for a better visualization (kernel size of $XX$).
