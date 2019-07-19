@@ -113,7 +113,6 @@ style=authoryear-comp,
 %maxnames = 2,
 giveninits=true,
 uniquename=init,
-sorting=none,
 url=false,
 isbn=false,
 eprint=false,
@@ -121,7 +120,9 @@ texencoding=utf8,
 bibencoding=utf8,
 autocite=superscript,
 backend=bibtex,
+%sorting=none,
 sorting=nty,
+sortcites=false,
 %articletitle=false
 ]{biblatex}%
 %\addbibresource{Pasturel_etal2018.bib}%
@@ -721,10 +722,12 @@ the ``forgetful agent'' computed in \seeEq{leaky}
 consists of an exponentially-weighted moving average (see \seeApp{leaky}).
 It may thus be equivalently written in the form of a moving average:
 \eql{
-\hat{x_1}^{t+1} = h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
+\hat{x_1}^{t+1} = (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
 \label{eq:leaky2}}
+The first term corresponds to the discounted effect of the prior value, 
+while the second corresponds to the integration of novel observations.
 Inversely, let us now assume that
-the real direction probability bias changes randomly with a mean rate of once
+the true probability bias for direction changes randomly with a mean rate of once
 every $\tau$ trials.
 As a consequence, the probability that the bias does not change is $Pr(x_2^t=0)=1-h$ at each trial.
 Assuming independence of these occurrences, the estimated probability $p=\hat{x_1}^{t+1}$ is thus the sum
@@ -1924,8 +1927,8 @@ We called this experiment the \textit{ ``Bet''} experiment, as participants were
 Given a series of observations $\{x_0^i\}_{0\leq i \leq t}$
 with $\forall i, x_0^i \in \{0, 1 \}$, we defined
 \eqs{
-\hat{x_1}^{t} &= 1/\tau \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i}\\
-			  &= h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
+\hat{x_1}^{t} &= (1-1/\tau)^{t+1} \cdot \hat{x_1}^{t=0} +  1/\tau \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i}\\
+			  &= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
 }
 %is true for $t=1$: by definition $\hat{x_1}^{0}=x_0^0$ and
 %\eq{
@@ -1933,14 +1936,14 @@ with $\forall i, x_0^i \in \{0, 1 \}$, we defined
 %}
 If we write it for trial $t-1$, we have
 \eqs{
-\hat{x_1}^{t-1}	&= h \cdot \sum_{0\leq i \leq t-1} (1 - h)^{i} \cdot x_0^{t-1-i} \\
-                &= h \cdot \sum_{1\leq j \leq t} (1 - h)^{j-1} \cdot x_0^{t-j} \\ % j = i+1
-(1 - h) \cdot \hat{x_1}^{t-1} &= h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
+\hat{x_1}^{t-1}	&= (1-h)^{t} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t-1} (1 - h)^{i} \cdot x_0^{t-1-i} \\
+                &= (1-h)^{t} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{1\leq j \leq t} (1 - h)^{j-1} \cdot x_0^{t-j} \\ % j = i+1
+(1 - h) \cdot \hat{x_1}^{t-1} &= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} +  h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
                 }
-As such, the relation
+As such, the integrative formula above becomes an iterative relation:
 \eqs{
-\hat{x_1}^{t}	&= h \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i} \\
-				&= h \cdot x_0^{t} + h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i} \\
+\hat{x_1}^{t}	&= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i} \\
+				&= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot x_0^{t} + h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i} \\
 				&= h \cdot x_0^{t} + (1 - h) \cdot \hat{x_1}^{t-1} \\
 }
 such that finally
