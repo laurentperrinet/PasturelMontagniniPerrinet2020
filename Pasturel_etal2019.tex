@@ -442,8 +442,8 @@ We tested the capacity of human participants to adapt to a volatile environment
 by using a simple, 3-layered generative model of fluctuations in target directions (TD)
 that we call the Binary Switching Model (BSM).
 This TD binary variable is chosen using a Bernoulli trial of a given probability bias.
-This probability is constant for as many trials until a switch is generated. 
-At a switch, it is  chosen at random from a given prior.
+This probability bias is constant for as many trials until a switch is generated. 
+At a switch, the bias is chosen at random from a given prior.
 Switches are generated in the third layer as binary events drawn from a Bernoulli trial
 with a given hazard rate (defined here as $1/40$ per trial).
 \textbf{(B)}~
@@ -527,9 +527,9 @@ Therefore, similarly to~\citet{Meyniel13}, we will use a model where
 the bias $p$ in target direction varies according to a piecewise-constant function.
 %We expect that within each sub-block, the uncertainty about of the value of $p$
 %will progressively decrease as we accumulate samples.
-In our previous study
-the range of possible biases was finite
-and in the present work, we extended the paradigm
+In addition, in our previous study
+the range of possible biases was finite.
+In the present work, we extended the paradigm
 by drawing $p$ as a continuous random variable
 within the whole range of possible probability biases (that is, the segment $[ 0, 1 ]$).
 As a summary, we first draw random events (that we denote as ``switches'')
@@ -647,8 +647,8 @@ by inferring the volatility parameters inherent to the models
 by best-fitting it to each each individual participant.
 This will allow the analysis of inter-individual behavioral responses for each session.
 In particular, we will test if one could predict observers' prior (preferred) volatility,
-that is, a measure of the dynamic compromise between exploration (``should I stay?'')
-and exploitation (``should I go?'')
+that is, a measure of the dynamic compromise between exploration (``should I go?'')
+and exploitation (``should I stay?'')
 across the two different sessions challenging predictive adaptive processes
 at the unconscious and conscious levels.
 Finally, we will summarize and conclude this study and
@@ -1432,8 +1432,8 @@ both for eye movements
 and the bet experiment 
 ($P_{\text{BBCP}}$: $r = 0.8027 \pm 0.0905 $ $MI =  1.2557 \pm 0.3498$, $P_{\text{leaky}}$: $r = 0.6413 \pm 0.1209$ $p=0.0028$ and $MI =  0.9666 \pm 0.3008$ with $p=0.0022$ ; $P_{\text{true}}$ : $r = 0.6949 \pm 0.0861 $ with $p=0.0022$ and $MI =  0.9400 \pm 0.2550$ with $p=0.0022$).
 %\CP{SANS PAUSE -- BET  / BCP :($r = 0.785$ $MI = 1.100$) pour les sujet - ($r = 0.8027 \pm 0.0905 $ $MI =  1.2557 \pm 0.3498$)
-%/ Leaky :($r = 0.625$ $MI = 0.879$) pour les sujet - ($r = 0.6413 \pm 0.1209$ $p=0.0028$ - $MI =  0.9666 \pm 0.3008$ $p=0.0022$)
-%/ true probability : ($r = 0.679$ $MI = 0.795$) pour les sujet - ($r = 0.6949 \pm 0.0861 $ $p=0.0022$ - $MI =  0.9400 \pm 0.2550$ $p=0.0022$) }
+%/ Leaky :($r = 0.625$ $MI = 0.879$) pour les sujet - ($r = 0.6413 \pm 0.1209$ $p=0.0028$ - $MI = 0.9666 \pm 0.3008$ $p=0.0022$)
+%/ true probability : ($r = 0.679$ $MI = 0.795$) pour les sujet - ($r = 0.6949 \pm 0.0861 $ $p=0.0022$ - $MI = 0.9400 \pm 0.2550$ $p=0.0022$) }
 To conclude, we deduce that the dynamic estimate of probability biases produced by the BBCP model
 is a powerful regressor to explain 
 both the strength of anticipatory smooth pursuit eye movements 
@@ -1490,7 +1490,7 @@ with respect to the pearson coefficient ot the mutual information.
 Thus, by extracting the best-fit parameters for each participant and experimental session
 we can expect to better understand the variety of inter individual differences. % and the covariation of these across response modalities.
 %-------------------------------------------------------------%
-%: FIGURE 5  fig:results_inter \seeFig{results_inter}
+%: FIGURE 5 fig:results_inter \seeFig{results_inter}
 % cf https://github.com/laurentperrinet/Bayesianchangepoint/blob/master/notebooks/test_hazardrate.ipynb
 % cf : 4_Meta_analysis.ipynb
 \begin{figure}%[b!]
@@ -1540,24 +1540,27 @@ This figure suggests, in the first place, that there is some variability
 in the best fitted value of the hazard rate in both sessions.
 Overall, the value of correlation coefficient of the best fit hazard rate
 was higher than that computed in~\seeFig{results_psycho}
-with respectively $\text{MI} = XX~ \pm XX~$
-\CP{$h_{va}$: un r par sujet : $0.6826033619391142 \pm 0.08006027539364491$ //
-un MI par sujet : $ 0.479930369669249 \pm 0.12328555167152054$ //
-moyenne de tous les r trouv\'e : $0.639744367840892  \pm 0.11445851404708901$ 
-quand on prend un r par sujet il semble que ce soit un peut plus grand que quand on garde un h fixe, pas pour le MI ni pour quand on calcule la moyenne des 3 r par sujet (notebook 5)}  for the first session and
-$\text{MI} = XX \pm XX$
-\CP{$h_{bet}$ un r par sujet :  $0.8117056662563028 \pm 0.08911550300859927$ //
-un MI par sujet :$0.8341219853735895 \pm 0.25926861033243437$ //
-moyenne de tous les r trouv\'e : $0.7975617439810163 \pm 0.14310508337570083$
-il semble que se soit moin bon que quand on garde un h fixe}  for the second.
+with $r = 0.682 \pm 0.080 $ for the eye movement session 
+%$\text{MI} = XX~ \pm XX~$
+%\CP{$h_{va}$: un r par sujet : $0.6826033619391142 \pm 0.08006027539364491$ //
+%un MI par sujet : $ 0.479930369669249 \pm 0.12328555167152054$ //
+%moyenne de tous les r trouv\'e : $0.639744367840892 \pm 0.11445851404708901$ 
+%quand on prend un r par sujet il semble que ce soit un peut plus grand que quand on garde un h fixe, pas pour le MI ni pour quand on calcule la moyenne des 3 r par sujet (notebook 5)} 
+ and $r = 0.811 \pm 0.089 $ for the rating scale session.
+%$\text{MI} = XX \pm XX$
+%\CP{$h_{bet}$ un r par sujet : $0.8117056662563028 \pm 0.08911550300859927$ //
+%un MI par sujet :$0.8341219853735895 \pm 0.25926861033243437$ //
+%moyenne de tous les r trouv\'e : $0.7975617439810163 \pm 0.14310508337570083$
+%il semble que se soit moin bon que quand on garde un h fixe} for the second.
 A part of the variability in the estimated hazard rates comes 
 from the limited length of the data blocks,
 while another part is due to intra-individual and inter-individual variabilities.
-Overall, the average is close yet higher to the (hidden) ground truth value used to generate the sequence
-(with $h_A = XX \pm XX$ \CP{moyenne : $0.06692999125125686 \pm 0.03628253053391533$, mediane : 0.06904761904761905 	25\% 0.038461538461538464 	75\% 0.09318181818181817} for the aSPEM session and
-$h_R = XX~\ms \pm XX$ \CP{moyenne : $0.06631464647744617 \pm 0.09970025861060718$, mediane : 0.02564102564102564 	25\% 0.011951909476661951 	75\% 0.09318181818181817
-} for the rating scale),
-and we observe that this value is higher for aSPEM compared to rating scale.
+Overall, the median (with $25\%$ and $75\%$ quantiles) are $h_A = 0.069 (0.038, 0.093)$ %\CP{moyenne : $0.06692999125125686 \pm 0.03628253053391533$, mediane : 0.06904761904761905 	25\% 0.038461538461538464 	75\% 0.09318181818181817} 
+for the aSPEM session and
+$h_R = 0.025 (0.011, 0.093)$ %\CP{moyenne : $0.06631464647744617 \pm 0.09970025861060718$, mediane : 0.02564102564102564 	25\% 0.011951909476661951 	75\% 0.09318181818181817
+%} 
+for the rating scale.
+We observe that it is close yet higher to the (hidden) ground truth value ($h=1/40=0.025$) used to generate the sequence this value is higher for aSPEM compared to rating scale.
 Quantitatively, the ratio of both hazard rates computed over participants was \CP{with a ratio $XX~ \pm XX~$ a calculer !},
 showing a slight tendency for hazard rate to be higher in the first session.
 %as was previously suggested~\citep{Meyniel??}.
@@ -1571,7 +1574,7 @@ showing a slight tendency for hazard rate to be higher in the first session.
 %As a comparison, the same analysis done based on the leaky integrator predictions
 %showed that such accuracy would drop to $XX\%$,
 %close to the chance level of $8.33\%$.
-%}  \CP{n'a pas fonctionn\'e !}
+%} \CP{n'a pas fonctionn\'e !}
 As a consequence, this analysis reveals
 that relaxing the free parameter of the BBCP model
 improves the match of the model to the behavioral data and
@@ -1613,7 +1616,7 @@ when a more conscious cognitive process is at stake.
 % From psychophysics at equilibrium to study the whole dynamics
 
 %%%
-%%%%  FOR DISCUSSION?
+%%%% FOR DISCUSSION?
 %%%%This analysis -the correlation between predicted bias and bet scores- exhibits a consistent relationship
 %%%%but which now follows a non-linear trace.
 %%%%We modeled this behavior as
@@ -1705,7 +1708,7 @@ the role of environmental volatility was not addressed at all.
 
 
 %%%%The oculomotor system has to constantly update its knowledge about the environment. An ordeal is then to adapt to changes with the shortest delays. Early studies have proposed that stimuli provides information to modulate reaction times within sequences~\citep{Hyman1953, Tune1964, Schvaneveldt}. This theoretical approach is coherent with the notion of local transition probabilities that quantifies at which extent an observation deviates from the preceding ones~\citep{Meyniel16}. The way expectations act on cognitive processes has been investigated by a wide range of domains such as predictive coding~\citep{Wolpert2000, Wacongne2012}, active inference~\citep{Friston2010}, motor control~\citep{Sutton1998, Behrens07} and reinforcement learning~\citep{Nassar2012}. Non-stationary observations can also explain why both local and global effects emerge and why local effects persist in the long run even within purely random sequences~\citep{Cho2002, Yu2009}. This constant update of a general belief on the world can be a consequence of the constant attempt to learn the non-stationary structure of the environment that can change at unpredictable times~\citep{Yu2009}. Many studies have actually already pointed the brain's ability to apprehend non-stationary states in environments~\citep{Ossmy2013, Meyniel15}. As explained by~\citet{Meyniel16}, the belief upon an environment can be divided in two different ways:
-Indeed, in spite of a multitude of existing studies investigating the dynamics of sequential effects on visual perception (see for example~\citet{Cicchini_PRSB_2018,ChopinMamassian2012}), only few of them have directly addressed the role of the environmental volatility on the different behavioral outcomes.~\citet{Meyniel16} have compared the predictions of different models, featuring a dynamic adaptation to the environment's volatility (equivalent to our \textit{forgetful agent model}) versus a fixed belief model, on five sets of previously acquired data, including reaction time, explicit reports and neurophysiological measures.  Interestingly,~\citet{Meyniel16} concluded that the estimation of a time-varying transition probability matrix constitutes
+Indeed, in spite of a multitude of existing studies investigating the dynamics of sequential effects on visual perception (see for example~\citet{Cicchini_PRSB_2018,ChopinMamassian2012}), only few of them have directly addressed the role of the environmental volatility on the different behavioral outcomes.~\citet{Meyniel16} have compared the predictions of different models, featuring a dynamic adaptation to the environment's volatility (equivalent to our \textit{forgetful agent model}) versus a fixed belief model, on five sets of previously acquired data, including reaction time, explicit reports and neurophysiological measures. Interestingly,~\citet{Meyniel16} concluded that the estimation of a time-varying transition probability matrix constitutes
 a core building block of sequence knowledge in the brain,
 which then applies to a variety of sensory modalities and
 experimental situations.
@@ -1737,7 +1740,7 @@ Future work will be needed to address the amplitude and dynamics of modulations 
 %%%of what is learned (transition probabilities versus item frequencies)
 %%%in an attempt to capture human behavior.}
 %%%%TODO say it is an optimization that is, a measure of the dynamic compromise between exploration and exploitation
-%%%%Chopin and %Mamassian and the use of visual confidence  (see Ann rev of Vision 2016)}
+%%%%Chopin and %Mamassian and the use of visual confidence (see Ann rev of Vision 2016)}
 %%%\AM{Rather than on transition probabilities, here we focus on the analysis and modeling of human behavior as a function of the frequency of presentation (and its fluctuations in time) of a given event in a binary sequence of alternating visual motion direction.}
 %%%
 %%%
@@ -1891,7 +1894,7 @@ We called this experiment the \textit{ ``Bet''} experiment, as participants were
 %\centering{
 %%\includegraphics[width=\linewidth]{figure1}
 %\begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
-%\node [anchor=north west]  (img2) at (0.51\linewidth,.33\linewidth){\includegraphics[width=0.33\linewidth]{1_B_Trace_moyenne}};
+%\node [anchor=north west] (img2) at (0.51\linewidth,.33\linewidth){\includegraphics[width=0.33\linewidth]{1_B_Trace_moyenne}};
 %%\draw [anchor=north west] (0.000\linewidth, .62\linewidth) node {$\mathsf{(A)}$};
 %%\draw [anchor=north west] (0.505\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
 %\end{tikzpicture}
@@ -1945,7 +1948,7 @@ We called this experiment the \textit{ ``Bet''} experiment, as participants were
 %the velocity traces: maximum speed, latency, temporal inertia ($\tau$)
 % and most interestingly acceleration before motion onset.
 % We cross-validated that this method was giving similar results
-%  to other classical methods but in a more robust fashion/
+% to other classical methods but in a more robust fashion/
 %
 %While being sensible to recording errors, this allows us to extract the
 % anticipatory component of SPEMs and..
@@ -1956,7 +1959,7 @@ We called this experiment the \textit{ ``Bet''} experiment, as participants were
 Given a series of observations $\{x_0^i\}_{0\leq i \leq t}$
 with $\forall i, x_0^i \in \{0, 1 \}$, we defined
 \eqs{
-\hat{x_1}^{t} &= (1-1/\tau)^{t+1} \cdot \hat{x_1}^{t=0} +  1/\tau \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i}\\
+\hat{x_1}^{t} &= (1-1/\tau)^{t+1} \cdot \hat{x_1}^{t=0} + 1/\tau \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i}\\
 			  &= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
 }
 %is true for $t=1$: by definition $\hat{x_1}^{0}=x_0^0$ and
@@ -1987,7 +1990,7 @@ As such, the definitions in~\seeEq{leaky} and~\seeEq{leaky2} are equivalent.
 %to represent our belief at trial $t$
 %or to determine the pdf for $x_1^t$ as a mixture of Beta distributions:
 %\eqa{
-%\hat{x_1}^{t} =  \sum_{r^{t}} Pr(x_1^t | r^{t}, x_0^{0:t}) \cdot Pr(r^{t} | x_0^{0:t})
+%\hat{x_1}^{t} = \sum_{r^{t}} Pr(x_1^t | r^{t}, x_0^{0:t}) \cdot Pr(r^{t} | x_0^{0:t})
 %}
 
 
@@ -2000,7 +2003,7 @@ To summarize, the algorithm that we presented
 %
 %* adapted from https://github.com/JackKelly/Bayesianchangepoint by Jack Kelly (2013) for a binary input.
 %
-%* This code is based on the  [MATLAB implementation](http://www.inference.phy.cam.ac.uk/rpa23/changepoint.php) provided by Ryan Adam. Was available at http://hips.seas.harvard.edu/content/Bayesian-online-changepoint-detection
+%* This code is based on the [MATLAB implementation](http://www.inference.phy.cam.ac.uk/rpa23/changepoint.php) provided by Ryan Adam. Was available at http://hips.seas.harvard.edu/content/Bayesian-online-changepoint-detection
 %
 % * full code @ https://github.com/laurentperrinet/Bayesianchangepoint are available at \url{https://github.com/laurentperrinet/Bayesianchangepoint}.
 
