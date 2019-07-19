@@ -7,7 +7,7 @@
 % inspiration = https://elifesciences.org/articles/34115
 % on neural data : https://www.physiology.org/doi/abs/10.1152/jn.00684.2017
 %: METADATA
-%: hello %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\AuthorA}{Chlo\'e Pasturel}
 \newcommand{\AuthorB}{Anna Montagnini}%
 \newcommand{\AuthorC}{Laurent Perrinet}%
@@ -421,7 +421,7 @@ that modulate the common predictive framework
 driving anticipatory behavior.
 %
 %-------------------------------------------------------------%
-%: FIGURE 1 fig:intro ~\seeFig{intro}
+%: FIGURE 1 fig:intro~\seeFig{intro}
 \begin{figure}%[b!]
 \centering{
 \begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
@@ -788,7 +788,7 @@ but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 \end{tikzpicture}
 }
 \caption{\emph{Binary Bayesian Change Point (BBCP) detection model}
-\LP{WORK IN PROGRESS ~\textbf{(A)} This plot shows a synthesized sequence of $10$ events,
+\LP{WORK IN PROGRESS~\textbf{(A)} This plot shows a synthesized sequence of $10$ events,
 \CP{15 ou 14 events}
 each of them corresponding to a binary choice,
 either a leftward or rightward movement of the target (TD).
@@ -968,7 +968,7 @@ prior to the observation of a new datum $x_0^{t+1}$ and resume the prediction / 
 Integrated in our cycle, we \emph{update} beliefs on all nodes
 by computing the likelihood $\pi^{(r)}_t$ of the current datum $x_0^{t}$
 knowing the current belief at each node,
-that is, based on observations from trials $0$ to $t-1$. % ~\seeEq{pred}
+that is, based on observations from trials $0$ to $t-1$. %~\seeEq{pred}
 A major algorithmic difference with the BCP model~\citep{AdamsMackay2007},
 is that here the observed data is a Bernoulli trial and not a Gaussian random variable.
 The random variable $x_1^t$ is the probability bias used
@@ -1055,7 +1055,7 @@ Still, as for the latter, there is only one parameter~$h=\frac 1 \tau$ which inf
 that the probability bias switches \emph{on average} every~$\tau$ trials.
 %As in \seeEq{leaky}, this defines the \emph{hazard rate}.
 Moreover, note that the resulting operations
-(see Equations~\ref{eq:pred},~\ref{eq:beta_noswitch},~\ref{eq:beta_switch}, ~\ref{eq:likelihood} and~\ref{eq:readout})
+(see Equations~\ref{eq:pred},~\ref{eq:beta_noswitch},~\ref{eq:beta_switch},~\ref{eq:likelihood} and~\ref{eq:readout})
 which constitute the BBCP algorithm
 can be implemented \textit{online}, that is,
 only the state at trial $t$ and the new datum $x_0^t$
@@ -1183,7 +1183,7 @@ explicit guesses about target motion direction.
 \section{Results: Eye movements recordings and explicit ratings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:results_psycho}
-%: FIGURE 2 fig:results_psycho ~\seeFig{results_psycho}
+%: FIGURE 2 fig:results_psycho~\seeFig{results_psycho}
 \begin{figure}%[b!]
 \centering{\includegraphics[width=\linewidth]{2_results_enregistrement}}
 \caption{
@@ -1275,7 +1275,7 @@ with the inferred probability bias $\hat{x_1}$.
 As with aSPEM, the series of the participants' bias guesses
 exhibits a positive correlation with $\hat{p}$:
 The next outcome of $x_{0}^{t}$ will in general be correctly inferred,
-as compared to a random choice, as reported previousky ~\citep{Meyniel15}. %\AM{statistics to cite for this?}
+as compared to a random choice, as reported previously~\citep{Meyniel15}. %\AM{statistics to cite for this?}
 %\AM{I WOULD SKIP THIS Equipped with this generative BSM model and the ideal observer given by the BBCP model,
 %the agent is able to predict the next outcome better than chance level.}
 Moreover, we observe again that a stronger probability bias leads 
@@ -1484,7 +1484,7 @@ Dashed lines correspond to the median for the full dataset (black line)
 or for each individual sub-block (colored line). 
 These should be compared to the values obtained for the BBCP model,
 showing a slight variability over sub-blocks.
-Stars correspond to the observers displayed in ~\seeFig{results_psycho}.
+Stars correspond to the observers displayed in~\seeFig{results_psycho}.
 This plot shows that best fit hazard rates are in general higher than the ground truth (blue line), 
 and in general higher for eye movements (below the diagonal).
 Note that the histograms (gray shaded areas) is much more narrower 
@@ -1804,7 +1804,7 @@ is weighted by the precision of the inference, leading in general to an under-we
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{itemize}\setlength{\itemsep}{0ex}
 \item We have developed a Bayesian model of an agent estimating the probability bias of a volatile environment with changing points (switches), such that the agent may decide \textit{to stay} on the current hypothesis about the environment, or \textit{to go} for a novel one. This allows to dynamically infer the probability bias across time and directly compare model predictions and experimental data, such as human behavior.
-\item We applied such a framework to the case of a probability bias in a visual motion task where we manipulated the target direction probability. We observed a good match between the largely unconscious anticipatory smooth eye movements and the results of the model, replicating and providing a novel solid theoretical framework for previous findings ~\citep{Montagnini2010, SantosKowler2017, Damasse18}.
+\item We applied such a framework to the case of a probability bias in a visual motion task where we manipulated the target direction probability. We observed a good match between the largely unconscious anticipatory smooth eye movements and the results of the model, replicating and providing a novel solid theoretical framework for previous findings~\citep{Montagnini2010, SantosKowler2017, Damasse18}.
 \item We also found a good match between model predictions and the explicit rating of confidence on the expected target motion direction, a novel result suggesting that this model captures some of the brain computations underlying expectancy based motion prediction, both at the unconscious and conscious level
 \item Finally, we found that the experimental data of each different participant matched to different levels of belief's precision on the volatile environment, some being more or less conservative. Interestingly, each of the two experiments (namely for the unconscious anticipatory eye movements and the conscious rating) provided different distributions, opening the perspective for future \emph{computational phenotyping} using such a volatile setting.
 \end{itemize}
@@ -1854,7 +1854,7 @@ We called this experiment the \textit{ ``Bet''} experiment, as participants were
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-%%: FIGURE 1B fig:introB ~\seeFig{introB}
+%%: FIGURE 1B fig:introB~\seeFig{introB}
 %\begin{figure}%[b!]
 %\centering{
 %%\includegraphics[width=\linewidth]{figure1}
@@ -1947,7 +1947,7 @@ such that finally
 \eq{
 \hat{x_1}^{t} = (1 - h) \cdot \hat{x_1}^{t-1} + h \cdot x_0^t
 }
-As such, the definitions in~\seeEq{leaky} and ~\seeEq{leaky2} are equivalent.
+As such, the definitions in~\seeEq{leaky} and~\seeEq{leaky2} are equivalent.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Appendix 2: BBCP algorithm}
 \label{app:bcp}
@@ -2171,9 +2171,9 @@ Note also that as $r$ grows, it gets sharper.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Appendix 4: Supplementary psychophysical results}
-\label{app:results_psycho}
-%\seeApp{results_psycho}
+%\subsection{Appendix 4: Supplementary psychophysical results}
+%\label{app:results_psycho}
+%%\seeApp{results_psycho}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
