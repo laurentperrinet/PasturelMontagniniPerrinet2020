@@ -872,6 +872,7 @@ We present here an exact solution for the case of the BSM, where the input is bi
 In order to define in all generality the switch detection model,
 we will initially describe the fundamental steps leading to its construction,
 while providing the full algorithmic details in~\seeApp{bcp}.
+%  by~\seeEq{run_length} (more details on this derivation in~\seeApp{bcp})
 The goal of predictive processing
 is to infer the probability $Pr(x_0^{t+1} | x_0^{0:t})$ of the next datum
 knowing what has been observed until trial $t$
@@ -879,7 +880,9 @@ knowing what has been observed until trial $t$
 that data is the output of a given (stochastic) generative model (here, the BSM).
 To derive a Bayesian predictive model, we introduce
 the run-length as a latent variable which helps the agent to represent
-different hypothesis about the input.
+different hypothesis about the input. 
+We therefore draw a computational graph where for at any trial
+an hypothesis is formed on as many ``nodes'' than there are run-lengths.
 %
 %This is for instance the task that we defined
 %for the bet experiment, where each participant
@@ -890,7 +893,7 @@ different hypothesis about the input.
 %we define the distribution which represents our belief
 %for all different hypotheses on $r^t$.
 %which
-We then assume the knowledge of the predictive probability conditioned on the run-length,
+As a readout, we can use this knowledge of the predictive probability conditioned on the run-length,
 such that one can compute the marginal predictive distribution:
 \eql{
 Pr(x_0^{t+1} | x_0^{0:t}) =
@@ -901,9 +904,12 @@ Pr(x_0^{t+1} | x_0^{0:t}) =
 \label{eq:pred}
 }
 where $Pr(x_0^{t+1} | r^{t}, x_0^{0:t})$ is
-the Bernouilli process modelling the probability of a future datum $x_0^{t+1}$
+the Bernouilli process modeling the probability of a future datum $x_0^{t+1}$
 conditioned on the run-length and
-$\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability distribution of each possible run-length given the observed data.
+$\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability for each possible run-length given the observed data.
+Note that $\beta^{(r)}_t$ is scaled such that $\sum_{r \geq 0 } \beta^{(r)}_t = 1$.
+Indeed, we know there is at any trial, there is a single true value for this variable
+and that it thus represents a probability distribution over the run-length $r$. % (given the data).
 %a previous value $Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$
 %and the likelihood associated to the new value $x_0^t$.
 
@@ -914,30 +920,31 @@ $\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability distribution of each poss
 % Computing sufficient stitistics
 %-------------------------------------------------------------%
 With these premises, we define the BBCP
-as a prediction / update cycle.
-First, we will \emph{predict} the probability
+as a prediction / update cycle
+which connects nodes from the previous trial to that at the current trial.
+Indeed, we will \emph{predict} the probability
 $\beta^{(r)}_t$ at each node, knowing either an initial prior, or its value on a previous trial.
 In particular, at the occurrence of the first trial, we know for certain that there is a switch and
 initial beliefs are thus set to the values $\beta^{(0)}_0=Pr(r^t=0)=1$ and
 $\forall r>0$, $\beta^{(r)}_0=Pr(r^0=r)=0$.
-Then, we use a knowledge of $\beta^{(r)}_{t-1}$ at trial $t-1$ and
-using the transition probabilities defined below by~\seeEq{run_length},
-this allows to predict the beliefs at each node at trial $t$:
+Then, at any trial $t>0$, we use a knowledge of $\beta^{(r)}_{t-1}$ at trial $t-1$,
+the likelihood $\pi^{(r)}_{t}=Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$  and
+the transition probabilities defined by the generative model
+to predict the beliefs over all nodes: % 
 \eqa{
-\beta^{(r)}_t \propto \sum_{r^{t-1} \geq 0}  Pr(r^t | r^{t-1}) \cdot  \pi^{(r)}_{t} \cdot  \beta^{(r)}_{t-1}
+\beta^{(r)}_t \propto \sum_{r^{t-1} \geq 0} \beta^{(r)}_{t-1} \cdot Pr(r^t | r^{t-1}) \cdot  \pi^{(r)}_{t}  
 \label{eq:pred_node}
 }
-where the likelihood $\pi^{(r)}_{t}=Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$ will be detailed below
-and $\beta^{(r)}_t$ is scaled such that $\sum_{r \geq 0 } \beta^{(r)}_t = 1$
-as it represents the probability distribution on the run-length $r$ given the data
-(more details on this derivation in~\seeApp{bcp}).
-In the graph, \seeEq{pred_node} corresponds to a message passing from the nodes at time $t-1$
-to that at time $t$ and formalized by the transition matrix $Pr(r^t | r^{t-1})$.
+In the computational graph (\seeFig{Bayesianchangepoint}-A), 
+\seeEq{pred_node} corresponds to a message passing from the nodes at time $t-1$
+to that at time $t$. % and formalized by the transition matrix $Pr(r^t | r^{t-1})$.
+We will now detail how to compute the transition probabilities and the likelihood.
+
 %In the second step, one can perform prediction
 %using the graph defined in \seeFig{Bayesianchangepoint}-A.
 %Now that we have the vector of likelihoods $\pi^{(r)}_t=\Ll(x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$,
 %one can update probabilities and perform the next prediction for trial $t+1$.
-Formally, knowing that the data is generated by the BSM (see~\seeEq{bsm}),
+First, knowing that the data is generated by a switching model such as the BSM (see~\seeEq{bsm}),
 the run-length is either null at the moment of a switch,
 or this length (in number of trials) is incremented by $1$ if no switch occurred:
 \eql{\choice{
@@ -947,13 +954,17 @@ or this length (in number of trials) is incremented by $1$ if no switch occurred
 This may be illustrated by a graph
 in which information will be represented at the different nodes for each trial $t$ (see \seeFig{Bayesianchangepoint}-A).
 %In a switching model like the BSM, the transition matrix % defined by the graph,
-This allows us to compute the \emph{growth probability} for each run-length $r \geq 0$,
-that is, the belief on an incremented run-length at the next trial, before observing a new datum:
+This defines the transition matrix $Pr(r^t | r^{t-1})$ 
+as a partition in two exclusive possibilities: 
+Either there was a switch or not.
+It allows us to compute the \emph{growth probability} for each run-length. % $r \geq 0$.
+On the one hand, the belief of an increment of the run-length at the next trial is: %, before observing a new datum:
 \eqa{
 \beta^{(r+1)}_t = \frac{1}{B} \cdot \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot (1-h)
 \label{eq:beta_noswitch}
 }
-where $h$ is the scalar defining the hazard rate. It also allows to express the change-point probability as:
+where $h$ is the scalar defining the hazard rate. 
+On the other hand, it also allows to express the change-point probability as:
 \eqa{
 \beta^{(0)}_t  = \frac{1}{B} \cdot \sum_{r \geq 0} \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot h
 \label{eq:beta_switch}
@@ -977,8 +988,12 @@ is that here the observed data is a Bernoulli trial and not a Gaussian random va
 The random variable $x_1^t$ is the probability bias used
 to generate the sequence of events $x_0^t$.
 We will infer it for all different hypotheses on $r^t$,
-that is, knowing there was a sequence of $r^t$ Bernoulli trials with a fixed bias in that epoch.
-Mathematically, a belief on this random variable is represented
+that is, knowing there was a sequence of $r^t$ Bernoulli trials 
+with a fixed probability bias in that sub-block.
+Such an hypothesis will allow us to compute the distribution
+$Pr(x_0^{t+1} | r^{t}, x_0^{0:t})$
+by a simple parameterization.
+Mathematically, a belief on the random variable $x_1^t$ is represented
 by the conjugate probability distribution of the binomial distribution,
 that is, by the beta-distribution $B(x_1^t; \mu^{(r)}_{t}, \nu^{(r)}_{t})$.
 It is parameterized here by its sufficient statistics,
@@ -1027,7 +1042,8 @@ with $Z$ such that $\Ll(r | o=1) + \Ll(r | o=0)=1$. % where
 %    {(\mu \cdot \nu )}^{\mu \cdot \nu }  \cdot {((1- \mu)\cdot \nu + 1)}^{(1- \mu)\cdot \nu + 1}
 %}
 The full derivation of this function is detailed in~\seeApp{likelihood}.
-This provides us with that the likelihood as $\pi^{(r)}_t = \Ll(\nu^{(r)}_{t-1} | x_0^{t})$.
+This provides us with the likelihood function
+and finally the scalar value $\pi^{(r)}_t = \Ll(r | x_0^{t})$.
 
 %-------------------------------------------------------------%
 %: 2Be online estimation: prediction
@@ -1043,9 +1059,10 @@ and use the marginal predictive probability (see~\seeEq{pred}) as a readout.
 %\eql{
 %\hat{x_1}^t = \mu^{(r^\ast)}_{t} \quad \text{with} \quad r^\ast = \argmax_r \beta^{(r)}_{t}
 %}
-This probability $\hat{x_1}^{t+1}=Pr(x_0^{t+1} | x_0^{0:t})$ is computed as the expected value over all run-lengths:
+This probability bias is best estimated by its expected value $\hat{x_1}^{t+1}=Pr(x_0^{t+1} | x_0^{0:t})$
+as it is computed over all run-lengths:
 \eql{
-\hat{x_1}^{t+1} = \sum_{r} \mu^{(r)}_{t} \cdot \beta^{(r)}_{t}
+\hat{x_1}^{t+1} = \sum_{r \geq 0} \mu^{(r)}_{t} \cdot \beta^{(r)}_{t}
 \label{eq:readout}
 }
 Interestingly, it can be proven that if,
