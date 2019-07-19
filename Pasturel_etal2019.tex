@@ -785,21 +785,21 @@ but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 \begin{tikzpicture}[thick,scale=.95]
 \node [anchor=north west]  (imgA) at (0.\linewidth,.55\linewidth){\includegraphics[width=0.33
 \linewidth]{3_BCP_model}};
-\node [anchor=north west]  (imgB) at (0.36\linewidth,.585\linewidth){\includegraphics[width=0.64\linewidth]{3_BCP_readouts}};
+\node [anchor=north west]  (imgB) at (0.36\linewidth,.580\linewidth){\includegraphics[width=0.64\linewidth]{3_BCP_readouts}};
 \draw [anchor=north west] (0.000\linewidth, .62\linewidth) node {$\mathsf{(A)}$};
 \draw [anchor=north west] (0.382\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
 \end{tikzpicture}
 }
 \caption{\emph{Binary Bayesian Change Point (BBCP) detection model}
 ~\textbf{(A)} This plot shows a synthesized sequence of $13$ events,
-each of them corresponding to a binary choice,
-either a leftward or rightward movement of the target (TD).
-The run-length represents the length of a sub-block over which the probability bias was constant.
+%each of them corresponding to a binary choice,
+either a leftward or rightward movement of the target (TD, fine black lines).
+A run-length is the hypothesis on the length of a sub-block over which the probability bias was constant,
+that is, the number of trials since a switch.
 Here, the true probability bias switched from a value of $.5$ to $.9$ at trial $7$,
 as can be seen by the blue line showing the trajectory of the true run-length.
 The BBCP model tries to capture the occurrences of a switch
-by inferring the probability of different possible run lengths,
-that is, the number of trials since a switch.
+by inferring the probability of different possible run lengths.
 At any new datum (trial), this defines a Hidden Markov Model
 as a graph (treillis) of possible run lengths.
 Edges of this graph indicate that a message is being passed
@@ -807,17 +807,21 @@ to update each node's probability (as represented by arrows from trial $13$ to $
 Black lines denote a progression of the run length at the next step (no switch),
 while gray lines stand for the possibility that a switch happened:
 The run length falls back to zero.
+The probability for each node is represented by gray colors (black denoting sure)
+and is shown in the inset for two representative trials: $5$ and $11$.
+This shows how the model correctly integrated information to correctly identify a switch
+and produce a prediction for the next trial $t=14$.
 %The black \CP{Bleu} [and green] \CP{plus de courbe verte} curve respectively represent
 %the actual [and inferred] run length of the simulated data
 %as a function of trial number.
-In this instance, the inferred switch is delayed
-by one trial with respect to the true switch.
+%In this instance, the inferred switch is delayed
+%by one trial with respect to the true switch.
 %\CP{representation des valeurs du run length en haut a gauche pour les essais 5 (en gris) et 8 (en bleu), on peut voir que pour l'essais 5 et 8 la probabilit\'e qu'il n'y est pas eu de switch depuis le d\'ebut est la plus importante (peut \^etre prendre un autre essais plus parlant - trial 10: proba switch à l'essais 5 est plus importante (notebook3) ?)}
 ~\textbf{(B)} On a longer sequence of $200$ trials,
 representative of a sub-block of our experimental sequence (see~\seeFig{intro}-A), % and~\seeFig{results_raw}),
-we show in the top plot
-the actual events which are observed by the agent (TD, fine black lines),
-along with the (hidden) dynamics of the probability bias $x_1$ (blue line),
+we show %in the top plot
+the actual events which are observed by the agent (TD),
+along with the (hidden) dynamics of the true probability bias $x_1$ (blue line),
 the value inferred by a leaky integrator ($\bar{x_1}^t$, orange line)
 and the results of the BBCP model
 in estimating the probability bias $\hat{x_1}^t$ (green line),
@@ -825,13 +829,13 @@ along with $.05$ and $.95$ quantiles (shaded area).
 This shows that for the BBCP model,
 the accuracy of the estimated value of the probability bias
 is higher than for the leaky integrator.
-Below we show the belief (as grey-scale) for the different possible run lengths
-as a function of the trial number.
-A darker color denotes a higher probability.
+Below we show the belief (as grayscales) for the different possible run lengths.
+%as a function of the trial number.
+%A darker color denotes a higher probability.
 The green and orange line correspond to the mean run-length which is inferred,
 respectively, by the BBCP and leaky models:
 Note that in the BBCP, while it takes some trials to detect switches,
-they are overall correctly identified (transitions between diagonal lines) and
+they are in general correctly identified (transitions between diagonal lines) and
 that integration is thus faster than for the leaky integrator, 
 as illustrated in the inferred value of the probability bias.
 }
@@ -854,7 +858,7 @@ First, it allows the agent to restrict the prediction $\hat{x_1}^{t+1}$ of $x_1^
 only based on those samples produced since the last switch, from $t-r^t$ until $t$.
 % and which we denote as $x_0^{(r^t)}=x_0^{r^t:t}$ .
 Indeed, the samples $x_0^t$ which occurred before the last switch
-were drawn independently from the present real value $x_1^t$
+were drawn independently from the present true value $x_1^t$
 and thus cannot help estimating the latter.
 Second, it is known that for this estimate, the precision
 (the inverse of variance) on the estimate $\hat{x_1}^{t+1}$
@@ -1136,7 +1140,7 @@ that there is no improvement in the precision of the estimates after a switch.
 %1/ the delay after the occurrence of a switch will always be similar,
 %2/ there is no dynamic update of the inferred probability while in the BBCP model, the precision of each new datum is higher after a switch.
 In contrast, after a correct switch detection in the BBCP model, 
-the value of the inferred probability converges rapidly to the real probability
+the value of the inferred probability converges rapidly to the true probability
 as the number of observations increase after a switch.
 
 %-------------------------------------------------------------%
@@ -1146,7 +1150,7 @@ as the number of observations increase after a switch.
 %-------------------------------------------------------------%
 In order to quantitatively evaluate the algorithm and following a similar strategy as~\citet{Norton18},
 we computed \AM{the negative log-likelihood (in bits) of the estimated probability bias,
-knowing the real probability - isn't H the joint entropy and C something related to the mutual information? H and C should both be defines},
+knowing the true probability - isn't H the joint entropy and C something related to the mutual information? H and C should both be defines},
 and averaged over all $T$ trials:
 \eql{
 %\Cc =  \sum_{t} -\log_2 B(x_1^t ; \hat{x_1}^t, r^t )
@@ -1161,7 +1165,7 @@ H(x_1^t, \hat{x_1}^t ) = - {x_1}^t \log_2( \hat{x_1}^t ) - (1-{x_1}^t) \log_2( 1
 This measure explicitly corresponds to the average score of our model,
 %where this score is the log likelihood (in bits) of the inferred belief about the probability bias
 as the Kullback-Leibler distance of $\hat{x_1}^t$ %along with its precision $r^t$ and
-compared to the hidden real probability $x_1^t$.
+compared to the hidden true probability $x_1^t$.
 %Similar measures based on the predicted readout $\hat{x_0}^t$
 %gave similar results but would need more data to converge.
 We have tested $100$ blocks of $2000$ trials for each read-out.
@@ -1219,7 +1223,7 @@ by the horizontal eye velocity estimated right before
 the onset of the visually-driven SPEM (dark gray line);
 and the explicit ratings about the expected target direction (or \textit{bet scores}, red line).
 We also show the evolution of the value
-of the probability bias $P_{\mathrm{real}}$ (blue line)
+of the probability bias $P_{\mathrm{true}}$ (blue line)
 which is hidden to observers
 and used to generate the TD sequence above.
 We have overlaid the results of the BBCP model
@@ -1254,7 +1258,7 @@ In particular, we show in the top panel the actual sequence of binary choices
 whereas in the bottom panels, 
 we compare for each two participants
 the evolution of the recorded aSPEM (grey line) with
-the real value of the hidden probability bias $x_1$ 
+the true value of the hidden probability bias $x_1$ 
 (step-like blue curve),
 and the value inferred using the BBCP model (green line), 
 along with the $.05$ to $.95$ quantile range (green shaded area).
@@ -1343,7 +1347,7 @@ and in ordinate \textbf{(A)} the strength of aSPEM and \textbf{(B)} the bet scor
 %The density of strokes represent increasing probability strengths.
 As a comparison, we have plotted in blue and orange colors the match
 with respectively 
-the real probability ($P_{\text{real}}=x_1^t$) and
+the true probability ($P_{\text{true}}=x_1^t$) and
 the probability bias estimates $P_{\text{leaky}}$ obtained with a leaky integrator.
 Insets summarize the quantitative measure of this match 
 by computing the Pearson correlation coefficient $r$ 
@@ -1353,7 +1357,7 @@ This shows quantitatively that for both experimental measures
 there is a strong statistical dependency between
 the behavioral results and the prediction of the BBCP model,
 but also that this dependency is significantly stronger than that obtained
-with the real probability and with the estimate obtained with the leaky integrator
+with the true probability and with the estimate obtained with the leaky integrator
 (see text). %(respectively $p=XXX$ and $p=XXX$ for $r$ and  $p=XXX$ and $p=XXX$ for MI).
 }
 \label{fig:results_psycho_all}
@@ -1369,12 +1373,12 @@ Compiling results %(see~\seeFig{results_psycho})
 from all participants,
 we have plotted in~\seeFig{results_psycho_all}
 the aSPEM strength (panel A) and the bet scores (panel B) as a function of the BBCP-inferred probability bias
-(we remind here that the real value of the probability bias was coded at the second layer of the BSM generative model and is hidden both to the BBCP agent and to the human observers).
+(we remind here that the true value of the probability bias was coded at the second layer of the BSM generative model and is hidden both to the BBCP agent and to the human observers).
 All trials from all participants were pooled together 
 and we show this joint data as an error bar plot 
 showing the median with $.25$ and $.75$ quantiles
 for 5 equal partitions of the $[0, 1]$ probability segment. % to generate a scatter plot
-As a comparison, the same method was applied to the true value $P_{\mathrm{real}}$ and 
+As a comparison, the same method was applied to the true value $P_{\mathrm{true}}$ and 
 to the estimate obtained by the leaky integrator.
 %which was then  converted to a kernel density estimate
 %for a better visualization (kernel size of $XX$).
@@ -1396,9 +1400,9 @@ and across subjects
 are slightly higher than that found by \citet{Montagnini2010} and \citet{Damasse18} 
 for aSPEM measures gathered across experimental blocks with fixed direction biases %($r = XXX \pm $),
 and significantly\footnote{All following $p$-values are obtained from the \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html}{Wilcoxon signed-rank test}.} better than that estimated 
-with the real probability 
+with the true probability 
 ($r = 0.6138 \pm 0.0698 $ with $p=0.0022$ and $MI = 0.5622 \pm 0.1079$ with $p=0.0022$) % 
-%\CP{aSPEM / Real : ($r = 0.597$ $MI = 0.529$) pour les sujet - ($r = 0.6138 \pm 0.0698 $  $p=0.0022$ - $MI = 0.5622 \pm 0.1079$ $p=0.0022$)}
+%\CP{aSPEM / true : ($r = 0.597$ $MI = 0.529$) pour les sujet - ($r = 0.6138 \pm 0.0698 $  $p=0.0022$ - $MI = 0.5622 \pm 0.1079$ $p=0.0022$)}
 and for that estimated by the leaky-integrator model 
 ($r = 0.6005 \pm 0.0790$ with $p=0.0037$ and $MI =  0.6221 \pm 0.1025$ with $p=0.0047$), see inset).
 %\CP{aSPEM / Leaky - ($r = 0.582$ $MI = 0.609$) pour les sujet - ($r = 0.6005 \pm 0.0790$ $p=0.0037$ - $MI =  0.6221 \pm 0.1025$  $p=0.0047$)}
@@ -1416,21 +1420,21 @@ across subjects ($r = 0.8134 \pm 0.0916 $ $MI = 1.3126 \pm 0.3644$).
 Importantly, this value is again higher for the BBCP model than
 for the leaky integrator ($r = 0.7311 \pm 0.1298 $ with $p=0.0076$ and $MI =  1.1178 \pm 0.4092$ with $p=0.0280$).
 %\CP{BET / Leaky : ($r = 0.712$ $MI = 0.968$) pour les sujet - ($r = 0.7311 \pm 0.1298 $ $p=0.0076$ - $MI =  1.1178 \pm 0.4092$ $p=0.0280$)
-or with the real (true) probability ($r = 0.6949 \pm 0.0861 $ with $p=0.0022$ and $MI =  0.9400 \pm 0.2550$ with $p=0.0022$). % : ($r = 0.679$ $MI = 0.795$) pour les sujet -  }
+or with the true probability ($r = 0.6949 \pm 0.0861 $ with $p=0.0022$ and $MI =  0.9400 \pm 0.2550$ with $p=0.0022$). % : ($r = 0.679$ $MI = 0.795$) pour les sujet -  }
 Further notice that, in order to account for some specific changes 
 observed in the behavioral data after the short pauses 
 occurring every $50$ trials, 
 we added the assumption %for both models, 
 that there was a switch at each pause. 
 However, removing this assumption did not significantly change the match of the model
-compared to $P_{\text{real}}$ or $P_{\text{leaky}}$ 
+compared to $P_{\text{true}}$ or $P_{\text{leaky}}$ 
 both for eye movements
-($P_{\text{BBCP}}$: $r = 0.6678 \pm 0.0782 $ $MI =  0.7123 \pm 0.1250$, $P_{\text{leaky}}$: $r = 0.5480 \pm 0.0749 $ with $p=0.0037$ and $MI =  0.5777 \pm 0.0961$ with $p=0.0037$ ; $P_{\text{real}}$ : $r = 0.6138 \pm 0.0698 $ $p=0.0028$ and  $MI =  0.5622 \pm 0.1079$ with $p=0.0022$) 
+($P_{\text{BBCP}}$: $r = 0.6678 \pm 0.0782 $ $MI =  0.7123 \pm 0.1250$, $P_{\text{leaky}}$: $r = 0.5480 \pm 0.0749 $ with $p=0.0037$ and $MI =  0.5777 \pm 0.0961$ with $p=0.0037$ ; $P_{\text{true}}$ : $r = 0.6138 \pm 0.0698 $ $p=0.0028$ and  $MI =  0.5622 \pm 0.1079$ with $p=0.0022$) 
 and the bet experiment 
-($P_{\text{BBCP}}$: $r = 0.8027 \pm 0.0905 $ $MI =  1.2557 \pm 0.3498$, $P_{\text{leaky}}$: $r = 0.6413 \pm 0.1209$ $p=0.0028$ and $MI =  0.9666 \pm 0.3008$ with $p=0.0022$ ; $P_{\text{real}}$ : $r = 0.6949 \pm 0.0861 $ with $p=0.0022$ and $MI =  0.9400 \pm 0.2550$ with $p=0.0022$).
+($P_{\text{BBCP}}$: $r = 0.8027 \pm 0.0905 $ $MI =  1.2557 \pm 0.3498$, $P_{\text{leaky}}$: $r = 0.6413 \pm 0.1209$ $p=0.0028$ and $MI =  0.9666 \pm 0.3008$ with $p=0.0022$ ; $P_{\text{true}}$ : $r = 0.6949 \pm 0.0861 $ with $p=0.0022$ and $MI =  0.9400 \pm 0.2550$ with $p=0.0022$).
 %\CP{SANS PAUSE -- BET  / BCP :($r = 0.785$ $MI = 1.100$) pour les sujet - ($r = 0.8027 \pm 0.0905 $ $MI =  1.2557 \pm 0.3498$)
 %/ Leaky :($r = 0.625$ $MI = 0.879$) pour les sujet - ($r = 0.6413 \pm 0.1209$ $p=0.0028$ - $MI =  0.9666 \pm 0.3008$ $p=0.0022$)
-%/ real probability : ($r = 0.679$ $MI = 0.795$) pour les sujet - ($r = 0.6949 \pm 0.0861 $ $p=0.0022$ - $MI =  0.9400 \pm 0.2550$ $p=0.0022$) }
+%/ true probability : ($r = 0.679$ $MI = 0.795$) pour les sujet - ($r = 0.6949 \pm 0.0861 $ $p=0.0022$ - $MI =  0.9400 \pm 0.2550$ $p=0.0022$) }
 To conclude, we deduce that the dynamic estimate of probability biases produced by the BBCP model
 is a powerful regressor to explain 
 both the strength of anticipatory smooth pursuit eye movements 
