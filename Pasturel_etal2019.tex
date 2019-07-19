@@ -1104,26 +1104,25 @@ Indeed, this allows to qualitatively and quantitatively assess
 this ideal observer model against a ground truth before applying it
 on the trial sequence that was used for the experiments and
 ultimately comparing it to the human behavior. % (see~\seeFig{results_raw}).
-%TODO : synchronize with FIGURE 3 fig:Bayesianchangepoint
-\seeFig{Bayesianchangepoint}-A shows a graph-based representation of the BBCP estimate of the run-length for one instance of a short sequence \textbf{($10$ trials)} \CP{($15$ ou $14$ trials)} of simulated data $x_0^t$
-of leftward and rightward trials, with a switch from a \textbf{low} \CP{0.5} to a \textbf{high} \CP{0.9} probability
+\seeFig{Bayesianchangepoint}-A shows a graph-based representation of the BBCP estimate of the run-length for one instance of a short sequence ($14$ trials) of simulated data $x_0^t$
+of leftward and rightward trials, with a switch in the probability bias
 of moving rightward occurring at trial $7$ (see figure caption for a detailed explanation).
-\textbf{It also shows the predicted probability $\hat{x_1}^t$
-as computed using the BBCP algorithm.} \CP{pas dans \seeFig{Bayesianchangepoint}-A}
+%\textbf{It also shows the predicted probability $\hat{x_1}^t$
+%as computed using the BBCP algorithm.} \CP{pas dans \seeFig{Bayesianchangepoint}-A}
 %The bottom panel illustrates
 %the belief on the predicted probability $\hat{p}$ at a given trial.
-\seeFig{Bayesianchangepoint}-B, upper panel, illustrates the predicted probability $\hat{x_1}^t$, as well as the corresponding uncertainty (the shaded areas correspond to $.05$ and $.95$ quantiles) when
+\seeFig{Bayesianchangepoint}-B, illustrates the predicted probability $\hat{x_1}^t$, as well as the corresponding uncertainty (the shaded areas correspond to $.05$ and $.95$ quantiles) when
 we applied respectively the BBCP (green curve) and the forgetful-agent (orange curve) model to
 a longer sequence of $200$ trials,
 characteristic of our behavioral experiments.
 In the bottom panel,
 we show the dynamical evolution of the belief on the latent variable (run length),
 corresponding to the same sequence of $200$ trials.
-\textbf{As for the synthetic example above}  \CP{pas dans \seeFig{Bayesianchangepoint}-A},
-the BBCP model achieves a correct detection of the switches after a short delay of a few trials.
+The BBCP model achieves a correct detection of the switches after a short delay of a few trials.
 
 Two main observations are noteworthy. First, after each detected switch, beliefs align along a linear ridge,
-as our model \AM{I WOULD CHANGE THIS: integrates belief about a current phase during two switches INTO THIS: best estimate of the current length is steadily incremented by $1$ between two switches, and the probability $\hat{x_1}^t$ is estimated  by integrating sensory evidence in this epoch (it 'stays')}.
+as our model best estimate of the current run-length is steadily incremented by $1$ at each trial until a new switch, 
+and the probability $\hat{x_1}^t$ is estimated  by integrating sensory evidence in this epoch (it 'stays').
 Then, we observe that shortly after a switch (hidden to the agent),
 the belief diffuses until the relative probability of a continuously increasing run-length
 is lower that that assigned to a smaller run-length:
@@ -1141,7 +1140,7 @@ that there is no improvement in the precision of the estimates after a switch.
 %2/ there is no dynamic update of the inferred probability while in the BBCP model, the precision of each new datum is higher after a switch.
 In contrast, after a correct switch detection in the BBCP model, 
 the value of the inferred probability converges rapidly to the true probability
-as the number of observations increase after a switch.
+as the number of observations steadily increases after a switch.
 
 %-------------------------------------------------------------%
 %: 2Cb quantitative analysis / different read-outs
@@ -1149,8 +1148,8 @@ as the number of observations increase after a switch.
 % TODO include these quantitative results in a figure
 %-------------------------------------------------------------%
 In order to quantitatively evaluate the algorithm and following a similar strategy as~\citet{Norton18},
-we computed \AM{the negative log-likelihood (in bits) of the estimated probability bias,
-knowing the true probability - isn't H the joint entropy and C something related to the mutual information? H and C should both be defines},
+we computed the negative log-likelihood (in bits) of the estimated probability bias, knowing the true probability
+% - isn't H the joint entropy and C something related to the mutual information? H and C should both be defines},
 and averaged over all $T$ trials:
 \eql{
 %\Cc =  \sum_{t} -\log_2 B(x_1^t ; \hat{x_1}^t, r^t )
@@ -1162,7 +1161,7 @@ H(x_1^t, \hat{x_1}^t ) = - {x_1}^t \log_2( \hat{x_1}^t ) - (1-{x_1}^t) \log_2( 1
 }
 \label{eq:KL}
 }
-This measure explicitly corresponds to the average score of our model,
+The measure $\Cc(x_1^t, \hat{x_1}^t)$ explicitly corresponds to the average score of our model,
 %where this score is the log likelihood (in bits) of the inferred belief about the probability bias
 as the Kullback-Leibler distance of $\hat{x_1}^t$ %along with its precision $r^t$ and
 compared to the hidden true probability $x_1^t$.
@@ -1176,11 +1175,10 @@ assumed by the agent (as in the fixed-length agent).
 Although more generic solutions exist~\citep{Wilson13,Wilson18},
 we decided as a first step to keep this parameter fixed for our agent, 
 and  evaluate how well it matches to the experimental outcomes at the different scales of the protocol:
-\textbf{averaged over all observers, for each individual observer or independently in all individual sub-blocks.}\CP{}
+averaged over all observers, for each individual observer or independently in all individual sub-blocks.
 In a second step, by testing different values of $h$ assumed by the agent
 but for a fixed hazard rate $h=1/40$ in the BSM,
-we found that \AM{this cost - the cost has not been defined: the KL distance?} can be computed for a range of hypothesized values of $h$ 
-and that the distance given by~\seeEq{KL} is minimal 
+we found that the distance given by~\seeEq{KL} is minimal 
 for the true hazard rate used to generate the data.
 Importantly, this analysis shows that inference is best for a hazard rate
 equal to that implemented in the generative model and which is hidden to the BBCP agent.
