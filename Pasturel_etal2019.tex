@@ -781,6 +781,7 @@ but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 % ------------------------------------------------------------------
 \subsection{Binary Bayesian Change Point (BBCP) detection model}
 % ------------------------------------------------------------------
+\label{sec:Binary_Bayesian_change_point}
 %-------------------------------------------------------------%
 %: FIGURE 3 fig:Bayesianchangepoint \seeFig{Bayesianchangepoint}
 \begin{figure}%[b!]
@@ -1014,7 +1015,9 @@ one can show that at any trial $t>0$,
 the sufficient statistics $(\mu^{(r)}_{t}, \nu^{(r)}_{t})$
 can be updated from the previous trial following:
 \eql{
-\nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1 }
+\nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1 
+\label{eq:update_nu}
+}
 As a consequence, $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the initial condition.
 $\nu^{(r)}_{t} = r + \nu_{prior}$. For the mean, the series defined by $\mu^{(r+1)}_{t}$ is the average at trial $t$ over the $r+1$ last samples, which can also be written in a recursive fashion:
 \eql{
@@ -1022,6 +1025,7 @@ $\nu^{(r)}_{t} = r + \nu_{prior}$. For the mean, the series defined by $\mu^{(r+
 %\nu^{(r+1)}_{t} \cdot \mu^{(r+1)}_{t} = \nu^{(r)}_{t-1} \cdot \mu^{(r)}_{t-1} +  x_0^{t}
 \mu^{(r+1)}_{t} = \frac{1}{\nu^{(r+1)}_{t}} \cdot (\nu^{(r)}_{t-1} \cdot \mu^{(r)}_{t-1} +  x_0^{t})
 %\mu^{(r+1)}_{t} = (1 - \frac{1}{r + 1 + \nu_{prior}}) \cdot \mu^{(r)}_{t-1} + \frac{1}{r + 1 + \nu_{prior}} \cdot x_0^{t}
+\label{eq:update_mu}
 }
 This updates for each node the sufficient statistics of the probability density function at the current trial.
 %-------------------------------------------------------------%
@@ -1989,39 +1993,69 @@ such that finally
 \hat{x_1}^{t} = (1 - h) \cdot \hat{x_1}^{t-1} + h \cdot x_0^t
 }
 As such, the definitions in~\seeEq{leaky} and~\seeEq{leaky2} are equivalent.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Bernoulli, binomial and Beta distributions}
+
+Let us define some basic concepts. A Bernoulli trial is the outcome of a binary random variable $x$ knowing a probability bias $\mu$ and can be formalized as:
+\eq{
+Pr(x | \mu) = \mu^x \cdot (1-\mu)^{1-x}
+}
+
+The binomial distribution is defined as the probability that the sum of $\nu$ independent Bernoulli trials is $k$:
+\eq{
+\Pr(k;\nu,\mu) = \Pr(X = k) = {\nu\choose k}p^k(1-\mu)^{\nu-k}
+}
+
+Knowing such a model for $X$ it can be of interest to find an estimate of the parameter of the Bernoulli trial, that is of the probability bias $\mu$. This distribution function is called the conjugate of the binomial distribution which is the Beta-distribution. For example, the beta distribution can be used in Bayesian analysis to describe initial knowledge concerning probability of success such as the probability that a product will successfully complete a stress test. The beta distribution is a suitable model for the random behavior of percentages and proportions.
+
+It is usually defined using shape parameters $\alpha$ and $\beta$:
+\eq{
+Pr(p | \alpha, \beta ) = \frac{1}{B(\alpha, \beta)} \cdot p^{\alpha -1} \cdot (1-p)^{\beta - 1} 
+}
+Where $B$ is the beta function and with by definition:
+\eqs{
+        \alpha &= \mu \cdot \nu \\
+        \beta  &= (1-\mu) \cdot \nu
+    }
+Inversely, $\alpha + \beta = \nu$ and $\mu = \frac{\alpha}{\alpha +\beta} = 1- \frac{\beta}{\alpha + \beta}$
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Appendix 2: BBCP algorithm}
 \label{app:bcp}
 
-To summarize, the algorithm that we presented is an implementation of the  ``Bayesian Online Changepoint Detection''~\citet{AdamsMackay2007}
-extended for the class of binary inputs.
-In this appendix, we start by some basic concepts, detail some intermediate steps and highlight some key differences with their implementation. We also provide with a python implementation which is openly available at \url{https://github.com/laurentperrinet/Bayesianchangepoint}.
+To summarize, the algorithm that we presented is an implementation of the  ``Bayesian Online Changepoint Detection'' by~\citet{AdamsMackay2007}
+extended for the class of binary inputs. Using the definition of the run-length~\seeSec{Binary_Bayesian_change_point}, the flow-chart of the algorithm is:
+
+\begin{enumerate}
+	\item Initialize
+	\begin{itemize}
+		\item    $P(r_0)= S(r)$ or $P(r_0=0)=1$ and
+		\item    $\mu^{(0)}1 = \mu_{prior}$ and $\nu^{(0)}1 = \nu_{prior}$
+	\end{itemize}
+
+	\item     Observe New Datum $x_t$,
+
+	\begin{enumerate}
+
+		\item    Evaluate Predictive Probability $\pi_{0:t} = P(x_t |\mu^{(r)}_t,\nu^{(r)}_t)$.
+	    \item    Calculate Growth Probabilities $P(r_t=r_{t-1}+1, x_{0:t}) = P(r_{t-1}, x_{0:t-1}) \pi^{(r)}_t (1-h)$,
+	    \item    Calculate Changepoint Probabilities $P(r_t=0, x_{0:t})= \sum_{r_{t-1}} P(r_{t-1}, x_{0:t-1}) \pi^{(r)}_t \cdot h$,
+	    \item    Calculate Evidence $P(x_{0:t}) = \sum_{r_{t-1}} P (r_t, x_{0:t})$,
+	    \item    Determine Run Length Distribution $P (r_t | x_{0:t}) = P (r_t, x_{0:t})/P (x_{0:t}) $.
+	\end{enumerate}
+
+	\item     Update sufficient statistics
+		\begin{itemize}
+			\item    $\mu^{(0)}_{t+1} = \mu_{prior}$, $\nu^{(0)}_{t+1} = \nu_{prior}$,
+			\item    $\mu^{(r+1)}_{t+1} = \mu^{(r)}_{t} + x_t/r$ (???), $\nu^{(r+1)}_{t+1} = \nu^{(r)}_{t} + u(x_t)$ TODO define u.
+		\end{itemize}
+\end{enumerate}
 
 
-\subsubsection{The binomial and Beta distributions}
-Let us as a start define some basic concepts. A Bernoulli trial is the outcome of a binary random variable $x$ knowing a probability bias $p$ and can be formalized as:
-\eq{
-p(x | p) = p^x \cdot (1-p)^{1-x}
-}
-
-
-Then, the binomial distribution is defined as the probability that the sum of $n$ independent Bernoulli trials is $k$:
-\eq{
-\Pr(k;n,p) = \Pr(X = k) = {n\choose k}p^k(1-p)^{n-k}
-}
-
-Knowing such a model for $X$ it can be of interest to find an estimate of the parameter of the Bernoulli trial, that is of the probability bias $p$. This distribution function is called the conjugate of the binomial distribution which is the Beta-distribution. For example, the beta distribution can be used in Bayesian analysis to describe initial knowledge concerning probability of success such as the probability that a product will successfully complete a stress test. The beta distribution is a suitable model for the random behavior of percentages and proportions.
-
-It is usually defined using shape parameters $\alpha$ and $\beta$:
-\eq{
-P(p | \alpha, \beta ) = \frac{1}{B(\alpha, \beta)} \cdot p^{\alpha -1} \cdot (1-p)^{\beta - 1} 
-}
-With by definition
-\eqs{
-        \alpha &= p \cdot n \\
-        \beta  &= (1-p) \cdot n
-    }
-and inversely, $\alpha + \beta = r$ and $p = \frac{\alpha}{\alpha +\beta} = 1- \frac{\beta}{\alpha + \beta}$
+In this appendix, we start by some basic concepts, detail some intermediate steps and highlight some key differences with their implementation. We also provide with a python implementation which is openly available on \href{https://github.com/laurentperrinet/Bayesianchangepoint}{GitHub}.
 
 \subsubsection{Initialization}
 %to represent our belief at trial $t$
@@ -2040,12 +2074,9 @@ and inversely, $\alpha + \beta = r$ and $p = \frac{\alpha}{\alpha +\beta} = 1- \
 %
 % * full code @ https://github.com/laurentperrinet/bayesianchangepoint are available .
 
-	\begin{itemize}
-		\item    $P(r_0)= S(r)$ or $P(r_0=0)=1$ and
-		\item    $\mu^{(0)}1 = \mu_{prior}$ and $\nu^{(0)}1 = \nu_{prior}$
-	\end{itemize}
 
-Note that the prior distribution is a Beta distribution:
+
+Note that the prior distribution is itself a Beta distribution:
 $\Pp\propto B(p; \mu_{prior}, \nu_{prior})$.
 It will by symmetry be unbiased: $\mu_{prior}=.5$.
 Concerning the shape, it can be for instance
@@ -2054,39 +2085,22 @@ Jeffrey's prior $\Jj$, that is $\nu_{prior}=1$.
 
 %Wikipedia: Beta(1/2, 1/2): The arcsine distribution probability density was proposed by Harold Jeffreys to represent uncertainty for a Bernoulli or a binomial distribution in Bayesian inference, and is now commonly referred to as Jeffreys prior: p−1/2(1 − p)−1/2. This distribution also appears in several random walk fundamental theorems
 
-\subsubsection{Update}
-
-    Observe New Datum $x_t$,
 
 \subsubsection{Prediction: run-length distribution}
 
+The steps to achieve 
 \eqs{
 %\hat{x_1}^{t} =
 Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  \beta^{(r)}_t \\
 Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  Pr(r^{t} | x_0^{0:t-1})\\
-\text{with} \quad Pr(r^{t} | x_0^{0:t-1}) &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  Pr(r^{t-1} | x_0^{0:t-2})
+\text{with} \quad Pr(r^{t} | x_0^{0:t-1}) &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  Pr(r^{t-1} | x_0^{0:t-2}) \\
 \text{with} \quad \beta^{(r)}_t &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  \beta^{(r)}_{t-1}
 }
 
 
-\begin{enumerate}
-
-\item    Evaluate Predictive Probability $\pi_{0:t} = P(x_t |\mu^{(r)}_t,\nu^{(r)}_t)$.
-    \item    Calculate Growth Probabilities $P(r_t=r_{t-1}+1, x_{0:t}) = P(r_{t-1}, x_{0:t-1}) \pi^{(r)}_t (1-H(r^{(r)}_{t-1}))$,
-    \item    Calculate Changepoint Probabilities $P(r_t=0, x_{0:t})= \sum_{r_{t-1}} P(r_{t-1}, x_{0:t-1}) \pi^{(r)}_t \cdot H(r^{(r)}_{t-1})$,
-    \item    Calculate Evidence $P(x_{0:t}) = \sum_{r_{t-1}} P (r_t, x_{0:t})$,
-    \item    Determine Run Length Distribution $P (r_t | x_{0:t}) = P (r_t, x_{0:t})/P (x_{0:t}) $.
-\end{enumerate}
 \subsubsection{Prediction: sufficient statistics}
-We need to update the sufficient statistics at every node for the next trial $t+1$:
-:
-	\begin{itemize}
-		\item    $\mu^{(0)}_{t+1} = \mu_{prior}$, $\nu^{(0)}_{t+1} = \nu_{prior}$,
-		\item    $\mu^{(r+1)}_{t+1} = \mu^{(r)}_{t} + x_t/r$ (???), $\nu^{(r+1)}_{t+1} = \nu^{(r)}_{t} + u(x_t)$ TODO define u.
-	\end{itemize}
 
-
-The recursive formulation comes from the expression
+The recursive formulation in \seeEq{update_nu} and \seeEq{update_mu} comes from the expression
 \eq{
 \mu^{(r)}_{t} = \frac 1 r \sum_{i=t-r-1}^{t-1} x_0^i
 }
@@ -2097,25 +2111,23 @@ and therefore
 					&= \frac{r}{r+1} \mu^{(r)}_{t} + \frac{1}{r+1} x_0^t
 }
 
-\subsubsection{Readout}
-\label{app:readout}
-
-Perform Prediction $P (x_0^{t+1} | x_{0:t}) = P (x_0^{t+1}|x_{0:t} , r_t) P (r_t|x_{0:t})$,
-
-Can we get  $P (x_2^{t+1} | x_{0:t}) $ ? would be nice to see the inferrence of surprise / would fit with pupil size...
+%\subsubsection{Readout}
+%\label{app:readout}
+%
+%Perform Prediction $P (x_0^{t+1} | x_{0:t}) = P (x_0^{t+1}|x_{0:t} , r_t) P (r_t|x_{0:t})$,
+%
+%Can we get  $P (x_2^{t+1} | x_{0:t}) $ ? would be nice to see the inferrence of surprise / would fit with pupil size...
 
 \subsubsection{Quantitative evaluation}
 
-% use that distance to compute optimal hazard rates
-%  use p log p + (1-p) log (1-p ) as in logistic regression?
-where $\KL{\hat p}{p}$ is the Kullback-Leibler divergence between samples $\hat p$ and model $p$ under a Bernoulli distribution
+To quantitatively evaluate our results with respect to another probability bias, we computed in~\seeEq{KL} the cost as the Kullback-Leibler divergence  $\KL{\hat p}{p}$ between samples $\hat p$ and model $p$ under a Bernoulli distribution:
 \begin{equation}
 \KL{\hat p}{p} = \hat{p} \log\pa{\frac{\hat p}{p}} + (1-\hat p) \log\pa{\frac{1-\hat p}{1-p}}.
 \end{equation}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Appendix 3: Mathematical derivation of the likelihood}
+\subsection{Appendix: likelihood function}
 \label{app:likelihood}
 %\seeApp{likelihood}
 % TODO : check http://www.princeton.edu/~rcw2/papers/WilsonEtAl_PLOSCompBiol2013.pdf and Bernoulli case + evaluation
@@ -2123,24 +2135,17 @@ where $\KL{\hat p}{p}$ is the Kullback-Leibler divergence between samples $\hat 
 %cf p52 de 2017-10-05 chloe inverting the process rem jb.pdf
 
 
-
-the likelihood of observing $o=1$ is that of a binomial of
+We want to compute $\Ll(o| p, r) = P(o | p, r)$ where $o \in \{ 0, 1 \}$ such that we can evaluate Predictive Probability $\pi_{0:t} = P(x_t |\mu^{(r)}_t,\nu^{(r)}_t)$ in the algorithm above with $p=\mu^{(r)}_t$ and $\nu^{(r)}_t$.
+The likelihood of observing $o=1$ is that of a binomial (conjugate of a Beta distribution) of
 	\begin{itemize}
-		\item  mean rate of chosing hypothesis "o=1" = (p*r + o)/(r+1),
-		\item number of choices where  "o=1" equals to p*r+1.
+		\item  mean rate of choosing hypothesis $o=1$ equal to $\frac{p*r + o}{r+1}$,
+		\item number of choices where  $o=1$ equals to $p*r+1$.
 	\end{itemize}
+More generally, by observing $o$, the new rate is $p^{'} = \frac{p\cdot r + o}{r+1}$.
 
+\subsubsection{Mathematical derivation}
 
-
-
-% differentiate likelihood from proba
-$\Ll(o=0)+\Ll(o=1)=1$
-We want to compute $\Ll(o| p, r) = P(o | p, r)$ where $o \in \{ 0, 1 \}$ such that we can evaluate Predictive Probability $\pi_{0:t} = P(x_t |\mu^{(r)}_t,\nu^{(r)}_t)$ in the algorithm above with $p=\mu^{(r)}_t$ and $\nu^{(r)}_t$ .
-
-by observing $o$, the new rate is $p^{'} = \frac{p\cdot r + o}{r+1}$.
 The likelihood will give the probability of this novel rate given the know parameters and their update (in particular $r^{'}=r+1$:
-
-
 \eqs{
 L(o | p, r)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r + o}{r+1})^{r + o - (p\cdot r + o)} \\
 &= \frac{1}{({r+1})^{r+1}} \cdot {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} \\
@@ -2151,12 +2156,9 @@ L(o | p, r)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r
   {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
 }  \\
 }
-
-    since both likelihood sum to 1, the likelihood of drawing o in the set {0, 1}
-    is equal to
-
+since both likelihood sum to 1, the likelihood of drawing $o$ in the set $\{ 0, 1 \}$   is equal to
 \eqs{
-\Ll(o | p, r)&=\frac{L(o | p, r)}{L(o=1 | p, r) + L(o=1 | p, r)}  \\
+\Ll(r | o)&=\frac{L(r | o)}{L(r | o=1) + L(r | o=0)}  \\
 &= \frac{ {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} }{
  {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r )}^{(1- p)\cdot r }  +
   {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
@@ -2166,10 +2168,9 @@ L(o | p, r)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r
  }{
  {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r )}^{(1- p)\cdot r }  +
   {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
-}  \\
-&=  \frac{L(o | p, r)}{L(o=1 | p, r) + L(o=1 | p, r)}
+}  
 }
-that is, for a given run-length and knowing sufficient statistics describing
+that is \seeEq{likelihood}, for a given run-length and knowing sufficient statistics describing the sufficient statistics at each node $r$.
 
 \subsubsection{Python code}
 
@@ -2183,17 +2184,22 @@ def likelihood(o, p, r):
     $$
     the likelihood of observing o=1 is that of a binomial of
 
-        - mean rate of chosing hypothesis "o=1" = (p*r + o)/(r+1)
+        - mean rate of choosing hypothesis "o=1" = (p*r + o)/(r+1)
         - number of choices where  "o=1" equals to p*r+1
 
     since both likelihood sum to 1, the likelihood of drawing o in the set {0, 1}
     is equal to
 
     """
-    L =  (1-o) * ( 1 - 1 / (p * r + 1) )**(p*r) * ((1-p) * r + 1) + o * ( 1 - 1 / ((1-p) * r + 1) )**((1-p)*r) * (p * r + 1)
-    L /=         ( 1 - 1 / (p * r + 1) )**(p*r) * ((1-p) * r + 1) +     ( 1 - 1 / ((1-p) * r + 1) )**((1-p)*r) * (p * r + 1)
+    def L(o, p, r):
+        P =  (1-o) * ( 1. - 1 / (p * r + 1) )**(p*r) * ((1-p) * r + 1)
+        P +=  o * ( 1. - 1 / ((1-p) * r + 1) )**((1-p)*r) * (p * r + 1)
+        return  P
 
-    return L
+    L_yes = L(o, p, r)
+    L_no = L(1-o, p, r)
+    return L_yes / (L_yes + L_no)
+
 \end{lstlisting}
 
 \subsubsection{Properties}
@@ -2204,7 +2210,7 @@ This function has some properties, notably symmetries:
 		\item $P(o | p, r)=P(1-o | 1-p, r)$.
 	\end{itemize}
 
-Note also that as $r$ grows, it gets sharper.
+Note also that as $r$ grows, the likelihood gets sharper.
 
 % TODO : put figure from https://github.com/laurentperrinet/Bayesianchangepoint/blob/master/notebooks/test_tracebase.ipynb
 
