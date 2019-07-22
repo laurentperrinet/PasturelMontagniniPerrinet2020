@@ -16,13 +16,14 @@
 \newcommand{\Email}{Laurent.Perrinet@univ-amu.fr}%
 \newcommand{\Title}{
 %Principles and psychophysics of Active Inference in anticipating a dynamic probabilistic bias
-Should I stay or should I go? Humans adapt to the volatility of visual motion properties, and know about it
+% Should I stay or should I go? 
+Humans adapt to the volatility of visual motion properties, and know about it
 %Anticipating a volatile probabilistic bias in visual motion direction
 %Humans adapt to the volatility of visual motion properties :  eye movements and explicit guesses
 }
 \newcommand{\Acknowledgments}{PACE-ITN - code and material @ \url{\Website/Publications/PasturelMontagniniPerrinet2019}. TODO: RIck + Karl + JB + Laurent Madelain }
 \newcommand{\Abstract}{
-Animal behavior must constantly adapt to changes, for example when the statistical properties of the environment change unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of motion ramps of a visual target is biased to one direction (e.g. right or left), human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where the probability bias could change at random switching times. In addition, we also recorded the explicit direction prediction reported by observers as given by a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to the event switching generating model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploration and exploitation in the model, we were able to fit each individual experimental data-set with different levels of estimated volatility and derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still  represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test the diversity of human cognitive abilities in uncertain and dynamic environments.}
+Animal behavior must constantly adapt to changes, for example when the statistical properties of the environment change unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of motion ramps of a visual target is biased to one direction (e.g. right or left), human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where the probability bias could change at random switching times. In addition, we also recorded the explicit direction prediction reported by observers as given by a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to the event switching generating model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploration and exploitation in the model, we were able to fit each individual experimental data-set with different levels of estimated volatility and derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test the diversity of human cognitive abilities in uncertain and dynamic environments.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\documentclass[profile,final,english,draft,24pt]{article}%
 \documentclass[12pt,english]{article}%
@@ -1009,13 +1010,16 @@ By recurrence %(see \seeFig{Bayesianchangepoint}-A),
 one can show that at any trial $t>0$,
 the sufficient statistics $(\mu^{(r)}_{t}, \nu^{(r)}_{t})$
 can be updated from the previous trial following:
-\eqa{
-& \nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1 \\
-& \mu^{(r+1)}_{t} = \frac{\nu^{(r+1)}_{t-1}}{\nu^{(r+1)}_{t}} \cdot \mu^{(r)}_{t-1} + \frac{1}{\nu^{(r+1)}_{t}} \cdot x_0^{t}
+\eql{
+\nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1 }
+As a consequence, $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the initial condition.
+$\nu^{(r)}_{t} = r + \nu_{prior}$. For the mean, the series defined by $\mu^{(r+1)}_{t}$ is the average at trial $t$ over the $r+1$ last samples, which can also be written in a recursive fashion:
+\eql{
+%\mu^{(r+1)}_{t} = \frac{\nu^{(r)}_{t-1}}{\nu^{(r+1)}_{t}} \cdot \mu^{(r)}_{t-1} + \frac{1}{\nu^{(r+1)}_{t}} \cdot x_0^{t}
+%\nu^{(r+1)}_{t} \cdot \mu^{(r+1)}_{t} = \nu^{(r)}_{t-1} \cdot \mu^{(r)}_{t-1} +  x_0^{t}
+\mu^{(r+1)}_{t} = \frac{1}{\nu^{(r+1)}_{t}} \cdot (\nu^{(r)}_{t-1} \cdot \mu^{(r)}_{t-1} +  x_0^{t})
+%\mu^{(r+1)}_{t} = (1 - \frac{1}{r + 1 + \nu_{prior}}) \cdot \mu^{(r)}_{t-1} + \frac{1}{r + 1 + \nu_{prior}} \cdot x_0^{t}
 }
-\AM{Note that the series defined by $\mu^{(r+1)}_{t}$ is the average at trial $r+t$ over the $r$ last samples.}
-Moreover, $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the initial condition:
-$\nu^{(r)}_{t} = r + \nu_{prior}$.
 This updates for each node the sufficient statistics of the probability density function at the current trial.
 %-------------------------------------------------------------%
 % Computing the likelihood
