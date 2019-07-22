@@ -625,17 +625,17 @@ to validate the generalization of previous results %.
 %either to the right or left across trials
 with this novel protocol. %~(see \seeFig{intro}-A \& B).
 %The probability of either motion direction changes randomly in time.
-In a first session, participants were asked to estimate
+In one session, participants were asked to estimate
 ``how much they are confident that
 the target will move to the right or left in the next trial'' and
 to adjust the cursor's position on the screen accordingly~(see \seeFig{intro}-C).
-In a second experimental session on the subsequent day, 
+In the other experimental session on a different day, 
 we showed the same sequence of target directions and 
-we recorded participants' eye movements~(see \seeFig{intro}-B).
+recorded participants' eye movements~(see \seeFig{intro}-B).
 Indeed, in order to understand the nature of the representation of motion regularities underlying this adaptive behavior,
-it is crucial to collect verbal explicit judgments
-about expectations on motion direction,
-in addition to the recording of eye movements.
+it is crucial to collect both 
+the recording of eye movements
+and the verbal explicit judgments about expectations on motion direction.
 %In such an explicit judgment task, we evaluated for each participant their confidence for the next trial direction
 %(\emph{prior} to the appearance of the target).
 %on a rating scale
@@ -1154,7 +1154,7 @@ as the number of observations steadily increases after a switch.
 % TODO include these quantitative results in a figure
 %-------------------------------------------------------------%
 In order to quantitatively evaluate the algorithm and following a similar strategy as~\citet{Norton18},
-we computed the negative log-likelihood (in bits) of the estimated probability bias, knowing the true probability
+we computed an overall cost $\Cc$ as the negative log-likelihood (in bits) of the estimated probability bias, knowing the true probability
 % - isn't H the joint entropy and C something related to the mutual information? H and C should both be defines},
 and averaged over all $T$ trials:
 \eql{
@@ -1162,7 +1162,9 @@ and averaged over all $T$ trials:
 %}
 %\eql{
 \choice{
-\Cc(x_1^t, \hat{x_1}^t) = H(x_1^t, \hat{x_1}^t ) - H(x_1^t, x_1^t ) \text{ and } \Cc = \frac 1 T  \sum_t \Cc(x_1^t, \hat{x_1}^t) \\
+ \Cc = \frac 1 T  \sum_t \Cc(x_1^t, \hat{x_1}^t)
+ \text{ with } 
+ \Cc(x_1^t, \hat{x_1}^t) = H(x_1^t, \hat{x_1}^t ) - H(x_1^t, x_1^t ) \\
  \text{where } H(x_1^t, \hat{x_1}^t ) = - {x_1}^t \log_2( \hat{x_1}^t ) - (1-{x_1}^t) \log_2( 1- \hat{x_1}^t) 
 }
 \label{eq:KL}
