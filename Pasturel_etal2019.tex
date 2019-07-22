@@ -1993,54 +1993,53 @@ As such, the definitions in~\seeEq{leaky} and~\seeEq{leaky2} are equivalent.
 \subsection{Appendix 2: BBCP algorithm}
 \label{app:bcp}
 
+To summarize, the algorithm that we presented is an implementation of the  ``Bayesian Online Changepoint Detection''~\citet{AdamsMackay2007}
+extended for the class of binary inputs.
+In this appendix, we start by some basic concepts, detail some intermediate steps and highlight some key differences with their implementation. We also provide with a python implementation which is openly available at \url{https://github.com/laurentperrinet/Bayesianchangepoint}.
+
+
+\subsubsection{The binomial and Beta distributions}
+Let us as a start define some basic concepts. A Bernoulli trial is the outcome of a binary random variable $x$ knowing a probability bias $p$ and can be formalized as:
+\eq{
+p(x | p) = p^x \cdot (1-p)^{1-x}
+}
+
+
+Then, the binomial distribution is defined as the probability that the sum of $n$ independent Bernoulli trials is $k$:
+\eq{
+\Pr(k;n,p) = \Pr(X = k) = {n\choose k}p^k(1-p)^{n-k}
+}
+
+Knowing such a model for $X$ it can be of interest to find an estimate of the parameter of the Bernoulli trial, that is of the probability bias $p$. This distribution function is called the conjugate of the binomial distribution which is the Beta-distribution. For example, the beta distribution can be used in Bayesian analysis to describe initial knowledge concerning probability of success such as the probability that a product will successfully complete a stress test. The beta distribution is a suitable model for the random behavior of percentages and proportions.
+
+It is usually defined using shape parameters $\alpha$ and $\beta$:
+\eq{
+P(p | \alpha, \beta ) = \frac{1}{B(\alpha, \beta)} \cdot p^{\alpha -1} \cdot (1-p)^{\beta - 1} 
+}
+With by definition
+\eqs{
+        \alpha &= p \cdot n \\
+        \beta  &= (1-p) \cdot n
+    }
+and inversely, $\alpha + \beta = r$ and $p = \frac{\alpha}{\alpha +\beta} = 1- \frac{\beta}{\alpha + \beta}$
+
+\subsubsection{Initialization}
+
 %to represent our belief at trial $t$
 %or to determine the pdf for $x_1^t$ as a mixture of Beta distributions:
 %\eqa{
 %\hat{x_1}^{t} = \sum_{r^{t}} Pr(x_1^t | r^{t}, x_0^{0:t}) \cdot Pr(r^{t} | x_0^{0:t})
 %}
 
+% in Python.
+%
+%
+%* adapted from https://github.com/JackKelly/Bayesianchangepoint by Jack Kelly (2013) 
 
-To summarize, the algorithm that we presented
-% TODO: show as python code
-%* an implementation of
-%%[Adams &amp; MacKay 2007 "Bayesian Online Changepoint Detection"](http://arxiv.org/abs/0710.3742)
-%in Python.
-%
-%
-%* adapted from https://github.com/JackKelly/Bayesianchangepoint by Jack Kelly (2013) for a binary input.
 %
 %* This code is based on the [MATLAB implementation](http://www.inference.phy.cam.ac.uk/rpa23/changepoint.php) provided by Ryan Adam. Was available at http://hips.seas.harvard.edu/content/Bayesian-online-changepoint-detection
 %
-% * full code @ https://github.com/laurentperrinet/Bayesianchangepoint are available at \url{https://github.com/laurentperrinet/Bayesianchangepoint}.
-
-Knowing $p$ and $r$, the sufficient statistics of the beta distribution $B(\alpha, \beta)$ :
-
-
-\subsubsection{The binomial and Beta distributions}
-
-binomial
-\eq{
-\Pr(k;n,p) = \Pr(X = k) = {n\choose k}p^k(1-p)^{n-k}
-}
-
-
-Bernoulli $p(x | p) = p^x \cdot (1-p)^{1-x}$
-%TODO say Bernoulli instead of binomial when just one draw
-Wikipedia: For example, the beta distribution can be used in Bayesian analysis to describe initial knowledge concerning probability of success such as the probability that a space vehicle will successfully complete a specified mission. The beta distribution is a suitable model for the random behavior of percentages and proportions.
-
-conjugate is the Beta-distribution of shape parameters $\alpha = p\cdot r$ and $\beta = (1- p)\cdot r$:
-$ P(p | \alpha, \beta ) = \frac{1}{B(\alpha, \beta)} \cdot p^{\alpha -1} \cdot (1-p)^{\beta - 1} $
-
-\eqs{
-        \alpha &= p*r \\
-        \beta  &= (1-p)*r
-    }
-inversely, $\alpha + \beta = r$ and $p = \frac{\alpha}{\alpha +\beta} = 1- \frac{\beta}{\alpha + \beta}$
-%var = \frac {\alpha-1}{(\alpha +\beta+2)\cdot(\alpha +\beta+3)}$
-
-
-
-\subsubsection{Initialization}
+% * full code @ https://github.com/laurentperrinet/bayesianchangepoint are available .
 
 	\begin{itemize}
 		\item    $P(r_0)= S(r)$ or $P(r_0=0)=1$ and
