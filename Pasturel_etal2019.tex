@@ -1014,7 +1014,8 @@ can be updated from the previous trial following:
 & \nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1 \\
 & \mu^{(r+1)}_{t} = \frac{\nu^{(r+1)}_{t-1}}{\nu^{(r+1)}_{t}} \cdot \mu^{(r)}_{t-1} + \frac{1}{\nu^{(r+1)}_{t}} \cdot x_0^{t}
 }
-\AM{Note that the series defined by $\mu^{(r+1)}_{t}$ is si the average of the observations over the $r$ last samples.}
+\AM{Note that the series defined by $\mu^{(r+1)}_{t}$ is the average at trial $r+t$ over the $r$ last samples.}
+
 Moreover, $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the initial condition:
 $\nu^{(r)}_{t} = r + \nu_{prior}$.
 This updates for each node the sufficient statistics of the probability density function at the current trial.
