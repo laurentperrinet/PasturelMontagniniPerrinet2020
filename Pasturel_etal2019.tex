@@ -4,6 +4,7 @@
 %!BIB TS-program = bibtex
 % -*- coding: UTF-8; -*-
 % vim: set fenc=utf-8
+% GUIDELINES : https://submit.elifesciences.org/html/elife_author_instructions.html#initial
 % inspiration = https://elifesciences.org/articles/34115
 % on neural data : https://www.physiology.org/doi/abs/10.1152/jn.00684.2017
 %: METADATA
@@ -16,13 +17,14 @@
 \newcommand{\Email}{Laurent.Perrinet@univ-amu.fr}%
 \newcommand{\Title}{
 %Principles and psychophysics of Active Inference in anticipating a dynamic probabilistic bias
-Should I stay or should I go? Humans adapt to the volatility of visual motion properties, and know about it
+% Should I stay or should I go? 
+Humans adapt to the volatility of visual motion properties, and know about it
 %Anticipating a volatile probabilistic bias in visual motion direction
 %Humans adapt to the volatility of visual motion properties :  eye movements and explicit guesses
 }
 \newcommand{\Acknowledgments}{PACE-ITN - code and material @ \url{\Website/Publications/PasturelMontagniniPerrinet2019}. TODO: RIck + Karl + JB + Laurent Madelain }
 \newcommand{\Abstract}{
-Animal behavior must constantly adapt to changes, for example when the statistical properties of the environment change unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of motion ramps of a visual target is biased to one direction (e.g. right or left), human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where the probability bias could change at random switching times. In addition, we also recorded the explicit direction prediction reported by observers as given by a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to the event switching generating model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploration and exploitation in the model, we were able to fit each individual experimental data-set with different levels of estimated volatility and derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still  represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test the diversity of human cognitive abilities in uncertain and dynamic environments.}
+Animal behavior must constantly adapt to changes, for example when the statistical properties of the environment change unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of motion ramps of a visual target is biased to one direction (e.g. right or left), human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where the probability bias could change at random switching times. In addition, we also recorded the explicit direction prediction reported by observers as given by a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to the event switching generating model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploration and exploitation in the model, we were able to fit each individual experimental data-set with different levels of estimated volatility and derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test the diversity of human cognitive abilities in uncertain and dynamic environments.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\documentclass[profile,final,english,draft,24pt]{article}%
 \documentclass[12pt,english]{article}%
@@ -109,8 +111,10 @@ Animal behavior must constantly adapt to changes, for example when the statistic
 %style=alphabetic-verb,
 style=authoryear-comp,
 %style=apa,
-%maxcitenames=2,
-%maxnames = 2,
+maxcitenames=2,
+maxnames=2,
+%minnames=3,
+maxbibnames=99,
 giveninits=true,
 uniquename=init,
 url=false,
@@ -456,9 +460,9 @@ The direction of the target (right or left) was drawn pseudo-randomly
 according to the generative model defined above.
 \textbf{(C)}~In order to titrate the adaptation
 to the environmental volatility of target direction at the conscious level,
-we invited each observer to perform a new variant of the direction-biased experiment on a different day,
-where we asked participants to rate, before each trial, the level of confidence
-for their estimate of the forthcoming direction of the target.
+we invited each observer to perform on a different day a new variant of the direction-biased experiment,
+where we asked participants to predict, before each trial, %the level of confidence for
+their estimate of the forthcoming direction of the target.
 As shown in this sample screenshot,
 this was performed by moving a mouse cursor (black triangle) on a continuous rating scale
 between ``sure left'', to ``unsure'' and finally ``sure right''.
@@ -621,17 +625,17 @@ to validate the generalization of previous results %.
 %either to the right or left across trials
 with this novel protocol. %~(see \seeFig{intro}-A \& B).
 %The probability of either motion direction changes randomly in time.
-In a first session, participants were asked to estimate
+In one session, participants were asked to estimate
 ``how much they are confident that
 the target will move to the right or left in the next trial'' and
 to adjust the cursor's position on the screen accordingly~(see \seeFig{intro}-C).
-In a second experimental session on the subsequent day, 
+In the other experimental session on a different day, 
 we showed the same sequence of target directions and 
-we recorded participants' eye movements~(see \seeFig{intro}-B).
+recorded participants' eye movements~(see \seeFig{intro}-B).
 Indeed, in order to understand the nature of the representation of motion regularities underlying this adaptive behavior,
-it is crucial to collect verbal explicit judgments
-about expectations on motion direction,
-in addition to the recording of eye movements.
+it is crucial to collect both 
+the recording of eye movements
+and the verbal explicit judgments about expectations on motion direction.
 %In such an explicit judgment task, we evaluated for each participant their confidence for the next trial direction
 %(\emph{prior} to the appearance of the target).
 %on a rating scale
@@ -777,6 +781,7 @@ but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 % ------------------------------------------------------------------
 \subsection{Binary Bayesian Change Point (BBCP) detection model}
 % ------------------------------------------------------------------
+\label{sec:Binary_Bayesian_change_point}
 %-------------------------------------------------------------%
 %: FIGURE 3 fig:Bayesianchangepoint \seeFig{Bayesianchangepoint}
 \begin{figure}%[b!]
@@ -808,7 +813,7 @@ while gray lines stand for the possibility that a switch happened:
 In this case the run length would fall back to zero.
 The probability for each node is represented by the grey scale (darker grey colors denote higher probability)
 and the distribution is shown in the inset for two representative trials: $5$ and $11$.
-Overall this graph shows how the model integrates information to accurately identify a switch
+Overall, this graph shows how the model integrates information to accurately identify a switch
 and produce a prediction for the next trial (e.g. for $t=14$).
 %The black \CP{Bleu} [and green] \CP{plus de courbe verte} curve respectively represent
 %the actual [and inferred] run length of the simulated data
@@ -1009,13 +1014,19 @@ By recurrence %(see \seeFig{Bayesianchangepoint}-A),
 one can show that at any trial $t>0$,
 the sufficient statistics $(\mu^{(r)}_{t}, \nu^{(r)}_{t})$
 can be updated from the previous trial following:
-\eqa{
-& \nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1 \\
-& \mu^{(r+1)}_{t} = \frac{\nu^{(r+1)}_{t-1}}{\nu^{(r+1)}_{t}} \cdot \mu^{(r)}_{t-1} + \frac{1}{\nu^{(r+1)}_{t}} \cdot x_0^{t}
+\eql{
+\nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1 
+\label{eq:update_nu}
 }
-\AM{Note that the series defined by $\mu^{(r+1)}_{t}$ is the average at trial $r+t$ over the $r$ last samples.}
-Moreover, $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the initial condition:
-$\nu^{(r)}_{t} = r + \nu_{prior}$.
+As a consequence, $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the initial condition.
+$\nu^{(r)}_{t} = r + \nu_{prior}$. For the mean, the series defined by $\mu^{(r+1)}_{t}$ is the average at trial $t$ over the $r+1$ last samples, which can also be written in a recursive fashion:
+\eql{
+%\mu^{(r+1)}_{t} = \frac{\nu^{(r)}_{t-1}}{\nu^{(r+1)}_{t}} \cdot \mu^{(r)}_{t-1} + \frac{1}{\nu^{(r+1)}_{t}} \cdot x_0^{t}
+%\nu^{(r+1)}_{t} \cdot \mu^{(r+1)}_{t} = \nu^{(r)}_{t-1} \cdot \mu^{(r)}_{t-1} +  x_0^{t}
+\mu^{(r+1)}_{t} = \frac{1}{\nu^{(r+1)}_{t}} \cdot (\nu^{(r)}_{t-1} \cdot \mu^{(r)}_{t-1} +  x_0^{t})
+%\mu^{(r+1)}_{t} = (1 - \frac{1}{r + 1 + \nu_{prior}}) \cdot \mu^{(r)}_{t-1} + \frac{1}{r + 1 + \nu_{prior}} \cdot x_0^{t}
+\label{eq:update_mu}
+}
 This updates for each node the sufficient statistics of the probability density function at the current trial.
 %-------------------------------------------------------------%
 % Computing the likelihood
@@ -1147,7 +1158,7 @@ as the number of observations steadily increases after a switch.
 % TODO include these quantitative results in a figure
 %-------------------------------------------------------------%
 In order to quantitatively evaluate the algorithm and following a similar strategy as~\citet{Norton18},
-we computed the negative log-likelihood (in bits) of the estimated probability bias, knowing the true probability
+we computed an overall cost $\Cc$ as the negative log-likelihood (in bits) of the estimated probability bias, knowing the true probability
 % - isn't H the joint entropy and C something related to the mutual information? H and C should both be defines},
 and averaged over all $T$ trials:
 \eql{
@@ -1155,7 +1166,9 @@ and averaged over all $T$ trials:
 %}
 %\eql{
 \choice{
-\Cc(x_1^t, \hat{x_1}^t) = H(x_1^t, \hat{x_1}^t ) - H(x_1^t, x_1^t ) \text{ and } \Cc = \frac 1 T  \sum_t \Cc(x_1^t, \hat{x_1}^t) \\
+ \Cc = \frac 1 T  \sum_t \Cc(x_1^t, \hat{x_1}^t)
+ \text{ with } 
+ \Cc(x_1^t, \hat{x_1}^t) = H(x_1^t, \hat{x_1}^t ) - H(x_1^t, x_1^t ) \\
  \text{where } H(x_1^t, \hat{x_1}^t ) = - {x_1}^t \log_2( \hat{x_1}^t ) - (1-{x_1}^t) \log_2( 1- \hat{x_1}^t) 
 }
 \label{eq:KL}
@@ -1412,7 +1425,8 @@ and is shown in~\seeFig{results_psycho}.
 Similarly to the aSPEM strength, the rating values are nicely correlated
 with the probability bias given by the model, 
 as quantified by the Pearson correlation coefficient and mutual information 
-across subjects ($r = 0.8134 \pm 0.0916 $ $MI = 1.3126 \pm 0.3644$).
+across subjects ($r = 0.8134 \pm 0.0916 $ and $MI = 1.3126 \pm 0.3644$).
+\CP{synchroiniser ces valeurs entre figure et texte...}
 %\CP{BET / BCP : ($r = 0.795$ $MI = 1.134$) pour les sujet - ($r = 0.8134 \pm 0.0916 $ $MI = 1.3126 \pm 0.3644$)}
 Importantly, this value is again higher for the BBCP model than
 for the leaky integrator ($r = 0.7311 \pm 0.1298 $ with $p=0.0076$ and $MI =  1.1178 \pm 0.4092$ with $p=0.0280$),
@@ -1425,10 +1439,10 @@ we added the assumption %for both models,
 that there was a switch at each pause. 
 However, removing this assumption did not significantly change the conclusions about the match of the model
 compared to $P_{\text{true}}$ or $P_{\text{leaky}}$ 
-both for eye movements \AM{I would skip all these tests, too long here, if they do not add anything significant!!
-($P_{\text{BBCP}}$: $r = 0.6678 \pm 0.0782 $ $MI =  0.7123 \pm 0.1250$, $P_{\text{leaky}}$: $r = 0.5480 \pm 0.0749 $ with $p=0.0037$ and $MI =  0.5777 \pm 0.0961$ with $p=0.0037$ ; $P_{\text{true}}$ : $r = 0.6138 \pm 0.0698 $ $p=0.0028$ and  $MI =  0.5622 \pm 0.1079$ with $p=0.0022$) }
+both for eye movements %\AM{I would skip all these tests, too long here, if they do not add anything significant!!
+($P_{\text{BBCP}}$: $r = 0.6678 \pm 0.0782 $ and $MI =  0.7123 \pm 0.1250$, $P_{\text{leaky}}$: $r = 0.5480 \pm 0.0749 $ with $p=0.0037$ and $MI =  0.5777 \pm 0.0961$ with $p=0.0037$ ; $P_{\text{true}}$ : $r = 0.6138 \pm 0.0698 $ $p=0.0028$ and  $MI =  0.5622 \pm 0.1079$ with $p=0.0022$) % }
 and the bet experiment 
-\AM{($P_{\text{BBCP}}$: $r = 0.8027 \pm 0.0905 $ $MI =  1.2557 \pm 0.3498$, $P_{\text{leaky}}$: $r = 0.6413 \pm 0.1209$ $p=0.0028$ and $MI =  0.9666 \pm 0.3008$ with $p=0.0022$ ; $P_{\text{true}}$ : $r = 0.6949 \pm 0.0861 $ with $p=0.0022$ and $MI =  0.9400 \pm 0.2550$ with $p=0.0022$).}
+($P_{\text{BBCP}}$: $r = 0.8027 \pm 0.0905 $ and $MI =  1.2557 \pm 0.3498$, $P_{\text{leaky}}$: $r = 0.6413 \pm 0.1209$ $p=0.0028$ and $MI =  0.9666 \pm 0.3008$ with $p=0.0022$ ; $P_{\text{true}}$ : $r = 0.6949 \pm 0.0861 $ with $p=0.0022$ and $MI =  0.9400 \pm 0.2550$ with $p=0.0022$).
 %\CP{SANS PAUSE -- BET  / BCP :($r = 0.785$ $MI = 1.100$) pour les sujet - ($r = 0.8027 \pm 0.0905 $ $MI =  1.2557 \pm 0.3498$)
 %/ Leaky :($r = 0.625$ $MI = 0.879$) pour les sujet - ($r = 0.6413 \pm 0.1209$ $p=0.0028$ - $MI = 0.9666 \pm 0.3008$ $p=0.0022$)
 %/ true probability : ($r = 0.679$ $MI = 0.795$) pour les sujet - ($r = 0.6949 \pm 0.0861 $ $p=0.0022$ - $MI = 0.9400 \pm 0.2550$ $p=0.0022$) }
@@ -1497,7 +1511,7 @@ we expect to better understand the variety of inter individual differences. % an
 We analyzed each participant's behavior individually, by searching
 the individual best value of the model's single free parameter, the hazard rate $h$.
 Estimates were performed independently on both experiments,
-such that we extracted different estimates of $h_A$ and $h_R$
+such that we extracted different estimates of $h_{\text{aSPEM}}$ and $h_{\text{bet}}$
 respectively for the aSPEM strength and the rating value. 
 The dots correspond to independent estimates of the hazard rate in each $200$ trial sub-block and data belonging to
 each individual participant are joined by dotted lines.
@@ -1524,10 +1538,11 @@ for guiding their tendency of exploration versus exploitation.
 %-------------------------------------------------------------%
 Hence, we have fitted the sequence of responses generated by each participant and
 for each experimental session, that is for the eye movements and the rating scale experiments.
-For \AM{$1600$ I THINK IT HAS TO BE $600$?} linearly spaced values of $\tau$ from $1$ to \AM{$1600$} trials,
-we computed the correlation coefficient with the BBCP-model responses parameterized 
+To avoid any possible bias from the fitting procedure, 
+we tested $1600$ linearly spaced values of $\tau$ from $1$ to $1600$ trials.
+For each, we computed the correlation coefficient with the BBCP-model responses parameterized 
 by the value of the hazard rate $h = \frac 1 \tau$.
-We then extracted different estimates of $h_A$ and $h_R$,
+We then extracted different estimates of $h_{\text{aSPEM}}$ and $h_{\text{bet}}$,
 respectively for aSPEM and the rating scale,
 by choosing the hazard rate value corresponding to that with maximal correlation coefficient.
 To cross-validate our results for each individual participant,
@@ -1553,12 +1568,13 @@ with $r = 0.682 \pm 0.080 $ for the eye movement session
 A part of the variability in the estimated hazard rates comes 
 from the limited length of the data blocks,
 while another part is due to intra-individual and inter-individual variabilities.
-Overall, the median (with $25\%$ and $75\%$ quantiles) are $h_A = 0.069 (0.038, 0.093)$ %\CP{moyenne : $0.06692999125125686 \pm 0.03628253053391533$, mediane : 0.06904761904761905 	25\% 0.038461538461538464 	75\% 0.09318181818181817} 
+Overall, the median (with $25\%$ and $75\%$ quantiles) are $h_{\text{aSPEM}} = 0.069 ~ (0.038, 0.093)$ %\CP{moyenne : $0.06692999125125686 \pm 0.03628253053391533$, mediane : 0.06904761904761905 	25\% 0.038461538461538464 	75\% 0.09318181818181817} 
 for the aSPEM session and
-$h_R = 0.025 (0.011, 0.093)$ %\CP{moyenne : $0.06631464647744617 \pm 0.09970025861060718$, mediane : 0.02564102564102564 	25\% 0.011951909476661951 	75\% 0.09318181818181817
+$h_{\text{bet}} = 0.025 ~ (0.011, 0.093)$ %\CP{moyenne : $0.06631464647744617 \pm 0.09970025861060718$, mediane : 0.02564102564102564 	25\% 0.011951909476661951 	75\% 0.09318181818181817
 %} 
 for the rating scale.
-We observe that these values are close to the (hidden) ground truth value ($h=1/40=0.025$) used to generate the sequence. In addition, the best-fit hazard rate value is higher for aSPEM compared to the rating scale measures.
+We observe that these values are close to the (hidden) ground truth value ($h=1/40=0.025$) used to generate the sequence. 
+In addition, the best-fit hazard rate value is higher for aSPEM compared to the true value and the rating scale measures.
 Quantitatively, the ratio of both hazard rates computed across participants was \CP{with a ratio $XX~ \pm XX~$ a calculer !},
 showing a slight tendency for hazard rate to be higher in the eye movement recording session.
 %as was previously suggested~\citep{Meyniel??}.
@@ -1598,8 +1614,7 @@ suggesting that the origin of this variability mainly comes form inter-subject v
 Such an analysis suggests that even though the predictive processes
 at work in both sessions may reflect a common origin for the evaluation of volatility,
 this estimation is then more strongly modulated by individual preferences
-when a more conscious cognitive process is at stake. \AM{HERE WE DO NOT COMMENT ON THE FACT THAT H-VA IS QUITE SYSTEMATICALLY OVERESTIMATED, WHEREAS H-BET IS LESS BIASED. WOULD THIS BE WORTH MENTIONING?}
-
+when a more conscious cognitive process is at stake. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
@@ -1699,10 +1714,9 @@ Their main conclusion was that
 perceptual adaptation and oculomotor priming
 are the result of two distinct readout processes
 using the same internal representation of motion regularities.
-\AM{Note that both these history lengths can be considered
+Note that both these history lengths can be considered
 short in comparison to the several hundreds
-of trials that are commonly used in psychophysics and sensorimotor adaptation studies and  that, similar to the present study, the inferred characteristic times are even shorter for the buildup of anticipatory eye movements. However, it is also important to note that in the study by \citet{Maus2015}, the generative model underlying the random sequence of motion trials was different and much simpler than in the present study: In particular the role of environmental volatility was not directly addressed there. This makes a direct comparison between their results and ours difficult beyond a very qualitative level.}
-
+of trials that are commonly used in psychophysics and sensorimotor adaptation studies and  that, similar to the present study, the inferred characteristic times are even shorter for the buildup of anticipatory eye movements. However, it is also important to note that in the study by \citet{Maus2015}, the generative model underlying the random sequence of motion trials was different and much simpler than in the present study: In particular the role of environmental volatility was not directly addressed there. This makes a direct comparison between their results and ours difficult beyond a very qualitative level.
 
 %%%%The oculomotor system has to constantly update its knowledge about the environment. An ordeal is then to adapt to changes with the shortest delays. Early studies have proposed that stimuli provides information to modulate reaction times within sequences~\citep{Hyman1953, Tune1964, Schvaneveldt}. This theoretical approach is coherent with the notion of local transition probabilities that quantifies at which extent an observation deviates from the preceding ones~\citep{Meyniel16}. The way expectations act on cognitive processes has been investigated by a wide range of domains such as predictive coding~\citep{Wolpert2000, Wacongne2012}, active inference~\citep{Friston2010}, motor control~\citep{Sutton1998, Behrens07} and reinforcement learning~\citep{Nassar2012}. Non-stationary observations can also explain why both local and global effects emerge and why local effects persist in the long run even within purely random sequences~\citep{Cho2002, Yu2009}. This constant update of a general belief on the world can be a consequence of the constant attempt to learn the non-stationary structure of the environment that can change at unpredictable times~\citep{Yu2009}. Many studies have actually already pointed the brain's ability to apprehend non-stationary states in environments~\citep{Ossmy2013, Meyniel15}. As explained by~\citet{Meyniel16}, the belief upon an environment can be divided in two different ways:
 In spite of a multitude of existing studies investigating the dynamics of sequential effects on visual perception (see for example~\citet{Cicchini_PRSB_2018,ChopinMamassian2012}), only few of them have indeed directly addressed the role of the environmental volatility on the different behavioral outcomes.~\citet{Meyniel16} have compared the predictions of different models, featuring a dynamic adaptation to the environment's volatility (equivalent to our \textit{forgetful agent model}) versus a fixed belief model, on five sets of previously acquired data, including reaction time, explicit reports and neurophysiological measures. Interestingly,~\citet{Meyniel16} concluded that the estimation of a time-varying transition probability matrix constitutes
@@ -1979,65 +1993,90 @@ such that finally
 \hat{x_1}^{t} = (1 - h) \cdot \hat{x_1}^{t-1} + h \cdot x_0^t
 }
 As such, the definitions in~\seeEq{leaky} and~\seeEq{leaky2} are equivalent.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Bernoulli, binomial and Beta distributions}
+
+Let us define some basic concepts. A Bernoulli trial is the outcome of a binary random variable $x$ knowing a probability bias $\mu$ and can be formalized as:
+\eq{
+Pr(x | \mu) = \mu^x \cdot (1-\mu)^{1-x}
+}
+
+The binomial distribution is defined as the probability that the sum of $\nu$ independent Bernoulli trials is $k$:
+\eq{
+\Pr(k;\nu,\mu) = \Pr(X = k) = {\nu\choose k}p^k(1-\mu)^{\nu-k}
+}
+
+Knowing such a model for $X$ it can be of interest to find an estimate of the parameter of the Bernoulli trial, that is of the probability bias $\mu$. This distribution function is called the conjugate of the binomial distribution which is the Beta-distribution. For example, the beta distribution can be used in Bayesian analysis to describe initial knowledge concerning probability of success such as the probability that a product will successfully complete a stress test. The beta distribution is a suitable model for the random behavior of percentages and proportions.
+
+It is usually defined using shape parameters $\alpha$ and $\beta$:
+\eq{
+Pr(p | \alpha, \beta ) = \frac{1}{B(\alpha, \beta)} \cdot p^{\alpha -1} \cdot (1-p)^{\beta - 1} 
+}
+Where $B$ is the beta function and with by definition:
+\eqs{
+        \alpha &= \mu \cdot \nu \\
+        \beta  &= (1-\mu) \cdot \nu
+    }
+Inversely, $\alpha + \beta = \nu$ and $\mu = \frac{\alpha}{\alpha +\beta} = 1- \frac{\beta}{\alpha + \beta}$
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Appendix 2: BBCP algorithm}
 \label{app:bcp}
 
+To summarize, the algorithm that we presented is an implementation of the  ``Bayesian Online Changepoint Detection'' by~\citet{AdamsMackay2007}
+extended for the class of binary inputs. Using the definition of the run-length~\seeSec{Binary_Bayesian_change_point}, the flow-chart of the algorithm is:
+
+\begin{enumerate}
+	\item Initialize
+	\begin{itemize}
+		\item    $P(r_0)= S(r)$ or $P(r_0=0)=1$ and
+		\item    $\mu^{(0)}1 = \mu_{prior}$ and $\nu^{(0)}1 = \nu_{prior}$
+	\end{itemize}
+
+	\item     Observe New Datum $x_t$,
+
+	\begin{enumerate}
+
+		\item    Evaluate Predictive Probability $\pi_{0:t} = P(x_t |\mu^{(r)}_t,\nu^{(r)}_t)$.
+	    \item    Calculate Growth Probabilities $P(r_t=r_{t-1}+1, x_{0:t}) = P(r_{t-1}, x_{0:t-1}) \pi^{(r)}_t (1-h)$,
+	    \item    Calculate Changepoint Probabilities $P(r_t=0, x_{0:t})= \sum_{r_{t-1}} P(r_{t-1}, x_{0:t-1}) \pi^{(r)}_t \cdot h$,
+	    \item    Calculate Evidence $P(x_{0:t}) = \sum_{r_{t-1}} P (r_t, x_{0:t})$,
+	    \item    Determine Run Length Distribution $P (r_t | x_{0:t}) = P (r_t, x_{0:t})/P (x_{0:t}) $.
+	\end{enumerate}
+
+	\item     Update sufficient statistics
+		\begin{itemize}
+			\item    $\mu^{(0)}_{t+1} = \mu_{prior}$, $\nu^{(0)}_{t+1} = \nu_{prior}$,
+			\item    $\mu^{(r+1)}_{t+1} = \mu^{(r)}_{t} + x_t/r$ (???), $\nu^{(r+1)}_{t+1} = \nu^{(r)}_{t} + u(x_t)$ TODO define u.
+		\end{itemize}
+\end{enumerate}
+
+
+In this appendix, we start by some basic concepts, detail some intermediate steps and highlight some key differences with their implementation. We also provide with a python implementation which is openly available on \href{https://github.com/laurentperrinet/Bayesianchangepoint}{GitHub}.
+
+\subsubsection{Initialization}
 %to represent our belief at trial $t$
 %or to determine the pdf for $x_1^t$ as a mixture of Beta distributions:
 %\eqa{
 %\hat{x_1}^{t} = \sum_{r^{t}} Pr(x_1^t | r^{t}, x_0^{0:t}) \cdot Pr(r^{t} | x_0^{0:t})
 %}
 
+% in Python.
+%
+%
+%* adapted from https://github.com/JackKelly/Bayesianchangepoint by Jack Kelly (2013) 
 
-To summarize, the algorithm that we presented
-% TODO: show as python code
-%* an implementation of
-%%[Adams &amp; MacKay 2007 "Bayesian Online Changepoint Detection"](http://arxiv.org/abs/0710.3742)
-%in Python.
-%
-%
-%* adapted from https://github.com/JackKelly/Bayesianchangepoint by Jack Kelly (2013) for a binary input.
 %
 %* This code is based on the [MATLAB implementation](http://www.inference.phy.cam.ac.uk/rpa23/changepoint.php) provided by Ryan Adam. Was available at http://hips.seas.harvard.edu/content/Bayesian-online-changepoint-detection
 %
-% * full code @ https://github.com/laurentperrinet/Bayesianchangepoint are available at \url{https://github.com/laurentperrinet/Bayesianchangepoint}.
-
-Knowing $p$ and $r$, the sufficient statistics of the beta distribution $B(\alpha, \beta)$ :
-
-
-\subsubsection{The binomial and Beta distributions}
-
-binomial
-\eq{
-\Pr(k;n,p) = \Pr(X = k) = {n\choose k}p^k(1-p)^{n-k}
-}
-
-
-Bernoulli $p(x | p) = p^x \cdot (1-p)^{1-x}$
-%TODO say Bernoulli instead of binomial when just one draw
-Wikipedia: For example, the beta distribution can be used in Bayesian analysis to describe initial knowledge concerning probability of success such as the probability that a space vehicle will successfully complete a specified mission. The beta distribution is a suitable model for the random behavior of percentages and proportions.
-
-conjugate is the Beta-distribution of shape parameters $\alpha = p\cdot r$ and $\beta = (1- p)\cdot r$:
-$ P(p | \alpha, \beta ) = \frac{1}{B(\alpha, \beta)} \cdot p^{\alpha -1} \cdot (1-p)^{\beta - 1} $
-
-\eqs{
-        \alpha &= p*r \\
-        \beta  &= (1-p)*r
-    }
-inversely, $\alpha + \beta = r$ and $p = \frac{\alpha}{\alpha +\beta} = 1- \frac{\beta}{\alpha + \beta}$
-%var = \frac {\alpha-1}{(\alpha +\beta+2)\cdot(\alpha +\beta+3)}$
+% * full code @ https://github.com/laurentperrinet/bayesianchangepoint are available .
 
 
 
-\subsubsection{Initialization}
-
-	\begin{itemize}
-		\item    $P(r_0)= S(r)$ or $P(r_0=0)=1$ and
-		\item    $\mu^{(0)}1 = \mu_{prior}$ and $\nu^{(0)}1 = \nu_{prior}$
-	\end{itemize}
-
-Note that the prior distribution is a Beta distribution:
+Note that the prior distribution is itself a Beta distribution:
 $\Pp\propto B(p; \mu_{prior}, \nu_{prior})$.
 It will by symmetry be unbiased: $\mu_{prior}=.5$.
 Concerning the shape, it can be for instance
@@ -2046,39 +2085,22 @@ Jeffrey's prior $\Jj$, that is $\nu_{prior}=1$.
 
 %Wikipedia: Beta(1/2, 1/2): The arcsine distribution probability density was proposed by Harold Jeffreys to represent uncertainty for a Bernoulli or a binomial distribution in Bayesian inference, and is now commonly referred to as Jeffreys prior: p−1/2(1 − p)−1/2. This distribution also appears in several random walk fundamental theorems
 
-\subsubsection{Update}
-
-    Observe New Datum $x_t$,
 
 \subsubsection{Prediction: run-length distribution}
 
+The steps to achieve 
 \eqs{
 %\hat{x_1}^{t} =
 Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  \beta^{(r)}_t \\
 Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  Pr(r^{t} | x_0^{0:t-1})\\
-\text{with} \quad Pr(r^{t} | x_0^{0:t-1}) &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  Pr(r^{t-1} | x_0^{0:t-2})
+\text{with} \quad Pr(r^{t} | x_0^{0:t-1}) &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  Pr(r^{t-1} | x_0^{0:t-2}) \\
 \text{with} \quad \beta^{(r)}_t &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  \beta^{(r)}_{t-1}
 }
 
 
-\begin{enumerate}
-
-\item    Evaluate Predictive Probability $\pi_{0:t} = P(x_t |\mu^{(r)}_t,\nu^{(r)}_t)$.
-    \item    Calculate Growth Probabilities $P(r_t=r_{t-1}+1, x_{0:t}) = P(r_{t-1}, x_{0:t-1}) \pi^{(r)}_t (1-H(r^{(r)}_{t-1}))$,
-    \item    Calculate Changepoint Probabilities $P(r_t=0, x_{0:t})= \sum_{r_{t-1}} P(r_{t-1}, x_{0:t-1}) \pi^{(r)}_t \cdot H(r^{(r)}_{t-1})$,
-    \item    Calculate Evidence $P(x_{0:t}) = \sum_{r_{t-1}} P (r_t, x_{0:t})$,
-    \item    Determine Run Length Distribution $P (r_t | x_{0:t}) = P (r_t, x_{0:t})/P (x_{0:t}) $.
-\end{enumerate}
 \subsubsection{Prediction: sufficient statistics}
-We need to update the sufficient statistics at every node for the next trial $t+1$:
-:
-	\begin{itemize}
-		\item    $\mu^{(0)}_{t+1} = \mu_{prior}$, $\nu^{(0)}_{t+1} = \nu_{prior}$,
-		\item    $\mu^{(r+1)}_{t+1} = \mu^{(r)}_{t} + x_t/r$ (???), $\nu^{(r+1)}_{t+1} = \nu^{(r)}_{t} + u(x_t)$ TODO define u.
-	\end{itemize}
 
-
-The recursive formulation comes from the expression
+The recursive formulation in \seeEq{update_nu} and \seeEq{update_mu} comes from the expression
 \eq{
 \mu^{(r)}_{t} = \frac 1 r \sum_{i=t-r-1}^{t-1} x_0^i
 }
@@ -2089,25 +2111,23 @@ and therefore
 					&= \frac{r}{r+1} \mu^{(r)}_{t} + \frac{1}{r+1} x_0^t
 }
 
-\subsubsection{Readout}
-\label{app:readout}
-
-Perform Prediction $P (x_0^{t+1} | x_{0:t}) = P (x_0^{t+1}|x_{0:t} , r_t) P (r_t|x_{0:t})$,
-
-Can we get  $P (x_2^{t+1} | x_{0:t}) $ ? would be nice to see the inferrence of surprise / would fit with pupil size...
+%\subsubsection{Readout}
+%\label{app:readout}
+%
+%Perform Prediction $P (x_0^{t+1} | x_{0:t}) = P (x_0^{t+1}|x_{0:t} , r_t) P (r_t|x_{0:t})$,
+%
+%Can we get  $P (x_2^{t+1} | x_{0:t}) $ ? would be nice to see the inferrence of surprise / would fit with pupil size...
 
 \subsubsection{Quantitative evaluation}
 
-% use that distance to compute optimal hazard rates
-%  use p log p + (1-p) log (1-p ) as in logistic regression?
-where $\KL{\hat p}{p}$ is the Kullback-Leibler divergence between samples $\hat p$ and model $p$ under a Bernoulli distribution
+To quantitatively evaluate our results with respect to another probability bias, we computed in~\seeEq{KL} the cost as the Kullback-Leibler divergence  $\KL{\hat p}{p}$ between samples $\hat p$ and model $p$ under a Bernoulli distribution:
 \begin{equation}
 \KL{\hat p}{p} = \hat{p} \log\pa{\frac{\hat p}{p}} + (1-\hat p) \log\pa{\frac{1-\hat p}{1-p}}.
 \end{equation}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Appendix 3: Mathematical derivation of the likelihood}
+\subsection{Appendix: likelihood function}
 \label{app:likelihood}
 %\seeApp{likelihood}
 % TODO : check http://www.princeton.edu/~rcw2/papers/WilsonEtAl_PLOSCompBiol2013.pdf and Bernoulli case + evaluation
@@ -2115,24 +2135,17 @@ where $\KL{\hat p}{p}$ is the Kullback-Leibler divergence between samples $\hat 
 %cf p52 de 2017-10-05 chloe inverting the process rem jb.pdf
 
 
-
-the likelihood of observing $o=1$ is that of a binomial of
+We want to compute $\Ll(o| p, r) = P(o | p, r)$ where $o \in \{ 0, 1 \}$ such that we can evaluate Predictive Probability $\pi_{0:t} = P(x_t |\mu^{(r)}_t,\nu^{(r)}_t)$ in the algorithm above with $p=\mu^{(r)}_t$ and $\nu^{(r)}_t$.
+The likelihood of observing $o=1$ is that of a binomial (conjugate of a Beta distribution) of
 	\begin{itemize}
-		\item  mean rate of chosing hypothesis "o=1" = (p*r + o)/(r+1),
-		\item number of choices where  "o=1" equals to p*r+1.
+		\item  mean rate of choosing hypothesis $o=1$ equal to $\frac{p*r + o}{r+1}$,
+		\item number of choices where  $o=1$ equals to $p*r+1$.
 	\end{itemize}
+More generally, by observing $o$, the new rate is $p^{'} = \frac{p\cdot r + o}{r+1}$.
 
+\subsubsection{Mathematical derivation}
 
-
-
-% differentiate likelihood from proba
-$\Ll(o=0)+\Ll(o=1)=1$
-We want to compute $\Ll(o| p, r) = P(o | p, r)$ where $o \in \{ 0, 1 \}$ such that we can evaluate Predictive Probability $\pi_{0:t} = P(x_t |\mu^{(r)}_t,\nu^{(r)}_t)$ in the algorithm above with $p=\mu^{(r)}_t$ and $\nu^{(r)}_t$ .
-
-by observing $o$, the new rate is $p^{'} = \frac{p\cdot r + o}{r+1}$.
 The likelihood will give the probability of this novel rate given the know parameters and their update (in particular $r^{'}=r+1$:
-
-
 \eqs{
 L(o | p, r)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r + o}{r+1})^{r + o - (p\cdot r + o)} \\
 &= \frac{1}{({r+1})^{r+1}} \cdot {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} \\
@@ -2143,12 +2156,9 @@ L(o | p, r)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r
   {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
 }  \\
 }
-
-    since both likelihood sum to 1, the likelihood of drawing o in the set {0, 1}
-    is equal to
-
+since both likelihood sum to 1, the likelihood of drawing $o$ in the set $\{ 0, 1 \}$   is equal to
 \eqs{
-\Ll(o | p, r)&=\frac{L(o | p, r)}{L(o=1 | p, r) + L(o=1 | p, r)}  \\
+\Ll(r | o)&=\frac{L(r | o)}{L(r | o=1) + L(r | o=0)}  \\
 &= \frac{ {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} }{
  {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r )}^{(1- p)\cdot r }  +
   {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
@@ -2158,10 +2168,9 @@ L(o | p, r)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r
  }{
  {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r )}^{(1- p)\cdot r }  +
   {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
-}  \\
-&=  \frac{L(o | p, r)}{L(o=1 | p, r) + L(o=1 | p, r)}
+}  
 }
-that is, for a given run-length and knowing sufficient statistics describing
+that is \seeEq{likelihood}, for a given run-length and knowing sufficient statistics describing the sufficient statistics at each node $r$.
 
 \subsubsection{Python code}
 
@@ -2175,17 +2184,22 @@ def likelihood(o, p, r):
     $$
     the likelihood of observing o=1 is that of a binomial of
 
-        - mean rate of chosing hypothesis "o=1" = (p*r + o)/(r+1)
+        - mean rate of choosing hypothesis "o=1" = (p*r + o)/(r+1)
         - number of choices where  "o=1" equals to p*r+1
 
     since both likelihood sum to 1, the likelihood of drawing o in the set {0, 1}
     is equal to
 
     """
-    L =  (1-o) * ( 1 - 1 / (p * r + 1) )**(p*r) * ((1-p) * r + 1) + o * ( 1 - 1 / ((1-p) * r + 1) )**((1-p)*r) * (p * r + 1)
-    L /=         ( 1 - 1 / (p * r + 1) )**(p*r) * ((1-p) * r + 1) +     ( 1 - 1 / ((1-p) * r + 1) )**((1-p)*r) * (p * r + 1)
+    def L(o, p, r):
+        P =  (1-o) * ( 1. - 1 / (p * r + 1) )**(p*r) * ((1-p) * r + 1)
+        P +=  o * ( 1. - 1 / ((1-p) * r + 1) )**((1-p)*r) * (p * r + 1)
+        return  P
 
-    return L
+    L_yes = L(o, p, r)
+    L_no = L(1-o, p, r)
+    return L_yes / (L_yes + L_no)
+
 \end{lstlisting}
 
 \subsubsection{Properties}
@@ -2196,7 +2210,7 @@ This function has some properties, notably symmetries:
 		\item $P(o | p, r)=P(1-o | 1-p, r)$.
 	\end{itemize}
 
-Note also that as $r$ grows, it gets sharper.
+Note also that as $r$ grows, the likelihood gets sharper.
 
 % TODO : put figure from https://github.com/laurentperrinet/Bayesianchangepoint/blob/master/notebooks/test_tracebase.ipynb
 
