@@ -1431,7 +1431,7 @@ Similarly to the aSPEM strength, the rating values are nicely correlated
 with the probability bias given by the model, 
 as quantified by the Pearson correlation coefficient and mutual information 
 across subjects ($r = 0.8134 \pm 0.0916 $ and $MI = 1.3126 \pm 0.3644$).
-\CP{synchroniser ces valeurs entre figure et texte... --> valeurs correctes -- sur la figure : un r et un MI pour tous les sujets en m\^eme temps, dans le texte : moyenne de r et MI trouv\'e pour chaque sujets individuellement}
+%\CP{synchroniser ces valeurs entre figure et texte... --> valeurs correctes -- sur la figure : un r et un MI pour tous les sujets en m\^eme temps, dans le texte : moyenne de r et MI trouv\'e pour chaque sujets individuellement}
 %\CP{BET / BCP : ($r = 0.795$ $MI = 1.134$) pour les sujet - ($r = 0.8134 \pm 0.0916 $ $MI = 1.3126 \pm 0.3644$)}
 Importantly, this value is again higher for the BBCP model than
 for the leaky integrator ($r = 0.7311 \pm 0.1298 $ with $p=0.0076$ and $MI =  1.1178 \pm 0.4092$ with $p=0.0280$),
@@ -1580,8 +1580,8 @@ $h_{\text{bet}} = 0.025 ~ (0.011, 0.093)$ %\CP{moyenne : $0.06631464647744617 \p
 for the rating scale.
 We observe that these values are close to the (hidden) ground truth value ($h=1/40=0.025$) used to generate the sequence. 
 In addition, the best-fit hazard rate value is higher for aSPEM compared to the true value and the rating scale measures.
-Quantitatively, the ratio of both hazard rates computed across participants was \CP{with a ratio $1.6460031261743702~ \pm 2.779003512890947~$ ($h_{bet} / h_{va}$),  $16.12429536779007~ \pm 40.37883398426319~$ ($h_{va} / h_{bet}$)},
-showing a slight tendency for hazard rate to be higher in the eye movement recording session.
+%Quantitatively, the ratio of both hazard rates computed across participants was \CP{with a ratio $1.6460031261743702~ \pm 2.779003512890947~$ ($h_{bet} / h_{va}$),  $16.12429536779007~ \pm 40.37883398426319~$ ($h_{va} / h_{bet}$)},
+In addition, we observed a tendency for hazard rate to be higher in the eye movement recording session.
 %as was previously suggested~\citep{Meyniel??}.
 %Importantly, there is a part of the variability
 %which seems characteristic of the spectrum of individual choices.
@@ -2013,14 +2013,14 @@ As such, the definitions in~\seeEq{leaky} and~\seeEq{leaky2} are equivalent.
 \subsection{The Bernoulli, binomial and Beta distributions}
 \label{app:beta}
 
-Let us define some basic concepts. A Bernoulli trial is the outcome of a binary random variable $x$ knowing a probability bias $\mu$ and can be formalized as:
+Let us define some basic concepts. A Bernoulli trial is the outcome of a binary random variable $x$ knowing a probability bias $\mu$ (with $0 \geq \mu \geq 1$) and can be formalized as:
 \eq{
 Pr(x | \mu) = \mu^x \cdot (1-\mu)^{1-x}
 }
 
-The binomial distribution is defined as the probability that the sum of $\nu$ independent Bernoulli trials is $k$:
+The binomial distribution is defined as the probability that the sum $X$ of $\nu$ independent Bernoulli trials is $k$:
 \eq{
-\Pr(k;\nu,\mu) = \Pr(X = k) = {\nu\choose k}p^k(1-\mu)^{\nu-k}
+\Pr(k;\nu,\mu) = \Pr(X = k) = {\nu\choose k} \cdot \mu^k \cdot (1-\mu)^{\nu-k} 
 }
 
 Knowing such a model for $X$ it can be of interest to find an estimate of the parameter of the Bernoulli trial, that is of the probability bias $\mu$. This distribution function is called the conjugate of the binomial distribution which is the Beta-distribution. For example, the beta distribution can be used in Bayesian analysis to describe initial knowledge concerning probability of success such as the probability that a product will successfully complete a stress test. The beta distribution is a suitable model for the random behavior of percentages and proportions.
@@ -2029,7 +2029,7 @@ It is usually defined using shape parameters $\alpha$ and $\beta$:
 \eq{
 Pr(p | \alpha, \beta ) = \frac{1}{B(\alpha, \beta)} \cdot p^{\alpha -1} \cdot (1-p)^{\beta - 1} 
 }
-Where $B$ is the beta function and with by definition:
+Note that here, the variable is the probability bias $p$. The normalization constant $B(\alpha, \beta)$ is given by the beta function. By definition: 
 \eqs{
         \alpha &= \mu \cdot \nu \\
         \beta  &= (1-\mu) \cdot \nu
@@ -2107,8 +2107,8 @@ Jeffrey's prior was more adapted to that task.
 
 \subsubsection{Prediction: run-length distribution}
 
-The steps to achieve 
-\eqs{
+ The steps to achieve the update rule are: 
+ \eqs{
 %\hat{x_1}^{t} =
 Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  \beta^{(r)}_t \\
 Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  Pr(r^{t} | x_0^{0:t-1})\\
@@ -2122,8 +2122,8 @@ Finally we obtain~\seeEq{pred_node}:
 
 \subsubsection{Prediction: sufficient statistics}
 
-The recursive formulation in \seeEq{update_nu} and \seeEq{update_mu} comes from the expression
-\eq{
+ The recursive formulation in~\seeEq{update_nu} and~\seeEq{update_mu} comes from the expression 
+ \eq{
 \nu^{(r)}_{t} \cdot \mu^{(r)}_{t} = \sum_{i=t-r-1}^{t-1} x_0^i % + 2 - \nu_{prior}
 }
 and therefore
@@ -2169,17 +2169,17 @@ More generally, by observing $o$, the new rate is $p^{'} = \frac{p\cdot r + o}{r
 
 The likelihood will give the probability of this novel rate given the known parameters and their update (in particular $r^{'}=r+1$):
 \eqs{
-L(o | p, r)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r + o}{r+1})^{r + o - (p\cdot r + o)} \\
+L(r | o)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r + o}{r+1})^{r + o - (p\cdot r + o)} \\
 &= \frac{1}{({r+1})^{r+1}} \cdot {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} \\
-&= \frac{ (1-o) \cdot {(p\cdot r)}^{p\cdot r}  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
-+ o \cdot {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r)}^{(1- p)\cdot r}
- }{
- {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r )}^{(1- p)\cdot r }  +
-  {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
-}  \\
+%&= \frac{ (1-o) \cdot {(p\cdot r)}^{p\cdot r}  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
+%+ o \cdot {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r)}^{(1- p)\cdot r}
+% }{
+% {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r )}^{(1- p)\cdot r }  +
+%  {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
+%}  \\
 }
 since both likelihood sum to 1, the likelihood of drawing $o$ in the set $\{ 0, 1 \}$   is equal to
-\AM{the change in the argument of $\Ll$}
+%\AM{the change in the argument of $\Ll$}
 \eqs{
 \Ll(r | o)&=\frac{L(r | o)}{L(r | o=1) + L(r | o=0)}  \\
 &= \frac{ {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} }{
@@ -2234,7 +2234,7 @@ This function has some properties, notably symmetries:
 	\begin{itemize}
 		\item for certain outcomes, $\forall r >0$, $\Ll(o|p=0, r)=1-o$ and $\Ll(o|p=1, r)=o$,
 		\item if $r=0$, the likelihood is uniform $\Ll(o)=1/2$,
-		\item $P(o | p, r)=P(1-o | 1-p, r)$.
+		\item $Pr(o | p, r)=Pr(1-o | 1-p, r)$.
 	\end{itemize}
 
 Note also that as $r$ grows, the likelihood gets sharper.
