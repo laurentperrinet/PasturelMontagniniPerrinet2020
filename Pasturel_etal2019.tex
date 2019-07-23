@@ -402,7 +402,7 @@ interacts dynamically with contextual contingencies in shaping oculomotor behavi
 
 %: linear relationship (talk about santos & kowler and others)
 Typically, aSPEM is observed after a temporal cue and
-before target motion onset~\citep{Kowler1979a,Kowler1979b, Kowler1984}. %~(see \seeFig{intro}-A).
+before target motion onset~\citep{Kowler1979a,Kowler1979b, Kowler1984}. %~(see~\seeFig{intro}-A).
 It is generally assumed that the role of aSPEMs is
 to minimize as fast as possible the visual impairment due
 to the amplitude of eye-to-target position and velocity mismatch.
@@ -410,14 +410,14 @@ Overall, anticipation can potentially reduce the typical sensorimotor delay
 between target motion onset and foveation. In a previous study~\citep{Montagnini2010},
 we have analyzed how forthcoming motion properties,
 such as target speed or direction, can be
-predicted and anticipated with coherently oriented eye movements~(see \seeFig{intro}-A).
+predicted and anticipated with coherently oriented eye movements~(see~\seeFig{intro}-A).
 It has been observed that the strength of anticipation,
 as measured by the mean anticipatory eye velocity,
 increases when the target repeatedly moves in the same direction~\citep{Kowler1984, Kowler1989, Heinen2005}.
 We similarly found a graded effect of both the speed and the direction-bias
-on the strength of aSPEM (see \seeFig{intro}-B).
+on the strength of aSPEM (see~\seeFig{intro}-B).
 In particular, this effect is linearly related
-to the probability of motion's speed or direction~(see \seeFig{intro}-B).
+to the probability of motion's speed or direction~(see~\seeFig{intro}-B).
 These results are coherent within previous oculomotor findings
 by our and also other groups~\citep{SantosKowler2017}.
 These results imply that the probability bias over a target's direction is
@@ -562,7 +562,7 @@ at the moment of a switch,
 and else it is constant until the next occurrence of a switch.
 The prior distribution $\Pp$ can be for instance
 the uniform distribution $\Uu$ on $ [ 0, 1 ] $ or
-Jeffrey's prior $\Jj$~(see \seeApp{bcp}).
+Jeffrey's prior $\Jj$~(see~\seeApp{bcp}).
 Finally, a target moves either to the left or to the right,
 and we denote this variable (target direction, TD) as $x_0^t \in \{ 0, 1 \}$.
 This direction is drawn from a Bernoulli trial
@@ -623,15 +623,15 @@ to validate the generalization of previous results %.
 %In a first session, participants observe a target moving horizontally
 %with constant speed from the center
 %either to the right or left across trials
-with this novel protocol. %~(see \seeFig{intro}-A \& B).
+with this novel protocol. %~(see~\seeFig{intro}-A \& B).
 %The probability of either motion direction changes randomly in time.
 In one session, participants were asked to estimate
 ``how much they are confident that
 the target will move to the right or left in the next trial'' and
-to adjust the cursor's position on the screen accordingly~(see \seeFig{intro}-C).
+to adjust the cursor's position on the screen accordingly~(see~\seeFig{intro}-C).
 In the other experimental session on a different day, 
 we showed the same sequence of target directions and 
-recorded participants' eye movements~(see \seeFig{intro}-B).
+recorded participants' eye movements~(see~\seeFig{intro}-B).
 Indeed, in order to understand the nature of the representation of motion regularities underlying this adaptive behavior,
 it is crucial to collect both 
 the recording of eye movements
@@ -639,7 +639,7 @@ and the verbal explicit judgments about expectations on motion direction.
 %In such an explicit judgment task, we evaluated for each participant their confidence for the next trial direction
 %(\emph{prior} to the appearance of the target).
 %on a rating scale
-%between "sure left", to "unsure" and finally "sure right"~(see \seeFig{intro}-C).
+%between "sure left", to "unsure" and finally "sure right"~(see~\seeFig{intro}-C).
 These results will be compared to the results for eye movements.
 Another novelty of our approach is to use that model as a regressor
 which will allow us to match experimental results with the BBCP
@@ -722,8 +722,8 @@ Similarly, one can define $\tau = 1 / h$ as
 a characteristic time (in units of number of trials)
 for the integration of information.
 Looking more closely at this expression,
-the ``forgetful agent'' computed in \seeEq{leaky}
-consists of an exponentially-weighted moving average (see \seeApp{leaky}).
+the ``forgetful agent'' computed in~\seeEq{leaky}
+consists of an exponentially-weighted moving average (see~\seeApp{leaky}).
 It may thus be equivalently written in the form of a moving average:
 \eql{
 \hat{x_1}^{t+1} = (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
@@ -783,7 +783,7 @@ but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 % ------------------------------------------------------------------
 \label{sec:Binary_Bayesian_change_point}
 %-------------------------------------------------------------%
-%: FIGURE 3 fig:Bayesianchangepoint \seeFig{Bayesianchangepoint}
+%: FIGURE 3 fig:Bayesianchangepoint~\seeFig{Bayesianchangepoint}
 \begin{figure}%[b!]
 % cf 3_Results_2.ipynb
 \centering{
@@ -949,7 +949,7 @@ to that at time $t$. % and formalized by the transition matrix $Pr(r^t | r^{t-1}
 We will now detail how to compute the transition probabilities and the likelihood.
 
 %In the second step, one can perform prediction
-%using the graph defined in \seeFig{Bayesianchangepoint}-A.
+%using the graph defined in~\seeFig{Bayesianchangepoint}-A.
 %Now that we have the vector of likelihoods $\pi^{(r)}_t=\Ll(x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$,
 %one can update probabilities and perform the next prediction for trial $t+1$.
 First, knowing that the data is generated by a switching model such as the BSM (see~\seeEq{bsm}),
@@ -960,7 +960,7 @@ or its length (in number of trials) is incremented by $1$ if no switch occurred:
 \text{if} \quad x_2^t=0 \text{,} \quad r^t = r^{t-1} +1 }\label{eq:run_length}}%see~\seeEq{run_length}
 %\text{and else} \quad r^t = r^{t-1} +1 }\label{eq:run_length}}%see~\seeEq{run_length}
 This may be illustrated by a graph
-in which information will be represented at the different nodes for each trial $t$ (see \seeFig{Bayesianchangepoint}-A).
+in which information will be represented at the different nodes for each trial $t$ (see~\seeFig{Bayesianchangepoint}-A).
 %In a switching model like the BSM, the transition matrix % defined by the graph,
 This defines the transition matrix $Pr(r^t | r^{t-1})$ 
 as a partition in two exclusive possibilities: 
@@ -1010,7 +1010,7 @@ the mean $\mu^{(r)}_{t}$ and sample size $\nu^{(r)}_{t}$ % which in our a case i
 First, at the occurrence of a switch (for the node $r^t=0$)
 beliefs are set to prior values (before observing any datum)
 $\mu^{(0)}_{t} = \mu_{prior}$ and $\nu^{(0)}_{t} = \nu_{prior}$.
-By recurrence %(see \seeFig{Bayesianchangepoint}-A),
+By recurrence %(see~\seeFig{Bayesianchangepoint}-A),
 one can show that at any trial $t>0$,
 the sufficient statistics $(\mu^{(r)}_{t}, \nu^{(r)}_{t})$
 can be updated from the previous trial following:
@@ -1087,7 +1087,7 @@ This highlights again that, contrary to the leaky integrator, % for which the in
 the BBCP model uses a dynamical model for the estimation of the volatility.
 Still, as for the latter, there is only one parameter~$h=\frac 1 \tau$ which informs the BBCP model
 that the probability bias switches \emph{on average} every~$\tau$ trials.
-%As in \seeEq{leaky}, this defines the \emph{hazard rate}.
+%As in~\seeEq{leaky}, this defines the \emph{hazard rate}.
 Moreover, note that the resulting operations
 (see Equations~\ref{eq:pred},~\ref{eq:beta_noswitch},~\ref{eq:beta_switch},~\ref{eq:likelihood} and~\ref{eq:readout})
 which constitute the BBCP algorithm
@@ -1118,7 +1118,7 @@ ultimately comparing it to the human behavior. % (see~\seeFig{results_raw}).
 of leftward and rightward trials, with a switch in the probability bias
 of moving rightward occurring at trial $7$ (see figure caption for a detailed explanation).
 %\textbf{It also shows the predicted probability $\hat{x_1}^t$
-%as computed using the BBCP algorithm.} \CP{pas dans \seeFig{Bayesianchangepoint}-A}
+%as computed using the BBCP algorithm.} \CP{pas dans~\seeFig{Bayesianchangepoint}-A}
 %The bottom panel illustrates
 %the belief on the predicted probability $\hat{p}$ at a given trial.
 \seeFig{Bayesianchangepoint}-B, illustrates the predicted probability $\hat{x_1}^t$, as well as the corresponding uncertainty (the shaded areas correspond to $.05$ and $.95$ quantiles) when
@@ -1140,7 +1140,7 @@ There is a transition to a new state (the model 'goes').
 Second, we can use this information to readout the most likely probability bias and 
 use it as a regressor for the behavioral data.
 Note that the leaky integrator model is simply implemented
-by an agent assuming a fixed run-length profile (see orange line in \seeFig{Bayesianchangepoint}-B),
+by an agent assuming a fixed run-length profile (see orange line in~\seeFig{Bayesianchangepoint}-B),
 allowing for a simple comparison of the BBCP model with the leaky integrator.
 Again, we see that a fixed length model gives qualitatively a similar output
 but with two disadvantages compared to the BBCP model, namely that 
@@ -1330,7 +1330,7 @@ are qualitatively similar to the implicit (and largely unconscious) ones
 which supposedly underlie the generation of anticipatory aSPEM with variable strength.
 
 %-------------------------------------------------------------%
-%: FIGURE 4  fig:results_psycho_all \seeFig{results_psycho_all}
+%: FIGURE 4  fig:results_psycho_all~\seeFig{results_psycho_all}
 \begin{figure}%[b!]
 \centering{
 \begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
@@ -1502,7 +1502,7 @@ as quantified by the Pearson's correlation coefficient or by the mutual informat
 Thus, by extracting the best-fit parameters for each participant and experimental session
 we expect to better understand the variety of inter individual differences. % and the covariation of these across response modalities.
 %-------------------------------------------------------------%
-%: FIGURE 5 fig:results_inter \seeFig{results_inter}
+%: FIGURE 5 fig:results_inter~\seeFig{results_inter}
 % cf https://github.com/laurentperrinet/Bayesianchangepoint/blob/master/notebooks/test_hazardrate.ipynb
 % cf : 4_Meta_analysis.ipynb
 \begin{figure}%[b!]
@@ -1661,7 +1661,7 @@ when a more conscious cognitive process is at stake.
 %%%\AM{I PROPOSE to skip this, we detail this stuff in the next section and the part on perception is not appropriate here... First, it seems important to investigate the integration of environmental statistical regularities
 %%%in this smooth tracking task with
 %%%a large family of probability biases for the direction of target motion.
-%%%As such, instead of a finite set of probability biases, % ($.25$, $.5$, $.75$, $.9$ and $1.$, see \seeFig{intro}-B),
+%%%As such, instead of a finite set of probability biases, % ($.25$, $.5$, $.75$, $.9$ and $1.$, see~\seeFig{intro}-B),
 %%%we decided to use a continuous range of probability biases.
 %%%%which we were sampling from a fixed prior distribution.
 %%%Second,~\citet{Maus2015} have recently shown that
@@ -1936,7 +1936,7 @@ We called this experiment the \textit{ ``Bet''} experiment, as participants were
 %First, we used probability biases in a continuous space,
 %as drawn from a prior distribution for the values of $p$.
 %Second, we generated the random sequence of trials
-%by concatenating random-length blocks (see \seeFig{results_psycho}),
+%by concatenating random-length blocks (see~\seeFig{results_psycho}),
 %to avoid potential confounds related to the previously used blocked-design.
 %}
 %\label{fig:introB}
@@ -1998,23 +1998,23 @@ As such, the definitions in~\seeEq{leaky} and~\seeEq{leaky2} are equivalent.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The Bernoulli, binomial and Beta distributions}
 
-Let us define some basic concepts. A Bernoulli trial is the outcome of a binary random variable $x$ knowing a probability bias $\mu$ and can be formalized as:
+Let us define some basic concepts. A Bernoulli trial is the outcome of a binary random variable $x$ knowing a probability bias $\mu$ (with $0 \geq \mu \geq 1$) and can be formalized as:
 \eq{
 Pr(x | \mu) = \mu^x \cdot (1-\mu)^{1-x}
 }
 
-The binomial distribution is defined as the probability that the sum of $\nu$ independent Bernoulli trials is $k$:
+The binomial distribution is defined as the probability that the sum $X$ of $\nu$ independent Bernoulli trials is $k$:
 \eq{
-\Pr(k;\nu,\mu) = \Pr(X = k) = {\nu\choose k}p^k(1-\mu)^{\nu-k}
+\Pr(k;\nu,\mu) = \Pr(X = k) = {\nu\choose k} \cdot \mu^k \cdot (1-\mu)^{\nu-k}
 }
 
-Knowing such a model for $X$ it can be of interest to find an estimate of the parameter of the Bernoulli trial, that is of the probability bias $\mu$. This distribution function is called the conjugate of the binomial distribution which is the Beta-distribution. For example, the beta distribution can be used in Bayesian analysis to describe initial knowledge concerning probability of success such as the probability that a product will successfully complete a stress test. The beta distribution is a suitable model for the random behavior of percentages and proportions.
+Knowing such a model for $X$ it can be of interest to find an estimate of the parameter of the Bernoulli trial, that is of the probability bias $\mu$. This distribution function is called the conjugate of the binomial distribution which is the Beta-distribution. For example, the Beta-distribution can be used in Bayesian analysis to describe initial knowledge concerning probability of success such as the probability that an industrial product will successfully complete a benchmark of stress tests. The beta distribution is a suitable model for the random behavior of percentages and proportions.
 
 It is usually defined using shape parameters $\alpha$ and $\beta$:
 \eq{
-Pr(p | \alpha, \beta ) = \frac{1}{B(\alpha, \beta)} \cdot p^{\alpha -1} \cdot (1-p)^{\beta - 1} 
+Pr(p ; \alpha, \beta ) = \frac{1}{B(\alpha, \beta)} \cdot p^{\alpha -1} \cdot (1-p)^{\beta - 1} 
 }
-Where $B$ is the beta function and with by definition:
+Note that here, the variable is the probability bias $p$. The normalization constant $B(\alpha, \beta)$ is given by the beta function. By definition:
 \eqs{
         \alpha &= \mu \cdot \nu \\
         \beta  &= (1-\mu) \cdot \nu
@@ -2104,7 +2104,7 @@ Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  Pr
 
 \subsubsection{Prediction: sufficient statistics}
 
-The recursive formulation in \seeEq{update_nu} and \seeEq{update_mu} comes from the expression
+The recursive formulation in~\seeEq{update_nu} and~\seeEq{update_mu} comes from the expression
 \eq{
 \mu^{(r)}_{t} = \frac 1 r \sum_{i=t-r-1}^{t-1} x_0^i
 }
@@ -2175,7 +2175,7 @@ since both likelihood sum to 1, the likelihood of drawing $o$ in the set $\{ 0, 
   {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
 }  
 }
-that is \seeEq{likelihood}, for a given run-length and knowing sufficient statistics describing the sufficient statistics at each node $r$.
+that is~\seeEq{likelihood}, for a given run-length and knowing sufficient statistics describing the sufficient statistics at each node $r$.
 
 \subsubsection{Python code}
 
