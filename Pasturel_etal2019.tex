@@ -2092,13 +2092,13 @@ Jeffrey's prior $\Jj$, that is $\nu_{prior}=1$.
 
 \subsubsection{Prediction: run-length distribution}
 
-The steps to achieve 
+The steps to achieve the update rule are:
 \eqs{
 %\hat{x_1}^{t} =
 Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  \beta^{(r)}_t \\
 Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  Pr(r^{t} | x_0^{0:t-1})\\
 \text{with} \quad Pr(r^{t} | x_0^{0:t-1}) &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  Pr(r^{t-1} | x_0^{0:t-2}) \\
-\text{with} \quad \beta^{(r)}_t &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  \beta^{(r)}_{t-1}
+\text{and finally} \quad \beta^{(r)}_t &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  \beta^{(r)}_{t-1}
 }
 
 
@@ -2151,17 +2151,16 @@ More generally, by observing $o$, the new rate is $p^{'} = \frac{p\cdot r + o}{r
 
 The likelihood will give the probability of this novel rate given the known parameters and their update (in particular $r^{'}=r+1$:
 \eqs{
-L(o | p, r)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r + o}{r+1})^{r + o - (p\cdot r + o)} \\
+L(r | o)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r + o}{r+1})^{r + o - (p\cdot r + o)} \\
 &= \frac{1}{({r+1})^{r+1}} \cdot {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} \\
-&= \frac{ (1-o) \cdot {(p\cdot r)}^{p\cdot r}  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
-+ o \cdot {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r)}^{(1- p)\cdot r}
- }{
- {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r )}^{(1- p)\cdot r }  +
-  {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
-}  \\
+%&= \frac{ (1-o) \cdot {(p\cdot r)}^{p\cdot r}  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
+%+ o \cdot {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r)}^{(1- p)\cdot r}
+% }{
+% {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r )}^{(1- p)\cdot r }  +
+%  {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
+%}  \\
 }
-since both likelihood sum to 1, the likelihood of drawing $o$ in the set $\{ 0, 1 \}$   is equal to
-\AM{the change in the argument of $\Ll$}
+since both likelihood sum to 1, the likelihood of drawing $o$ in the set $\{ 0, 1 \}$   is equal to :
 \eqs{
 \Ll(r | o)&=\frac{L(r | o)}{L(r | o=1) + L(r | o=0)}  \\
 &= \frac{ {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} }{
@@ -2175,7 +2174,12 @@ since both likelihood sum to 1, the likelihood of drawing $o$ in the set $\{ 0, 
   {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
 }  
 }
-that is~\seeEq{likelihood}, for a given run-length and knowing sufficient statistics describing the sufficient statistics at each node $r$.
+This can also be written by isolating the part wich depends on $o$ and for a given run-length and knowing sufficient statistics describing the sufficient statistics at each node $r$:
+\eql{
+\Ll(r | o) = \frac{1}{Z} \cdot {(p \cdot r + o)}^{p \cdot r + o} \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o}
+\label{eq:likelihood}
+}
+with $Z$ such that $\Ll(r | o=1) + \Ll(r | o=0)=1$, that is~\seeEq{likelihood}.
 
 \subsubsection{Python code}
 
@@ -2210,10 +2214,9 @@ def likelihood(o, p, r):
 \subsubsection{Properties}
 This function has some properties, notably symmetries:
 	\begin{itemize}
-		\item  $\forall r >0$, $\Ll(o|p=0, r)=1-o$ and $\Ll(o|p=1, r)=o$,
-		\AM{??}
+		\item the likelihood for certain outcomes is $\forall r >0$, $\Ll(o|p=0, r)=1-o$ and $\Ll(o|p=1, r)=o$,
 		\item if $r=0$, the likelihood is uniform $\Ll(o)=1/2$,
-		\item $P(o | p, r)=P(1-o | 1-p, r)$.
+		\item $Pr(o | p, r)=Pr(1-o | 1-p, r)$.
 	\end{itemize}
 
 Note also that as $r$ grows, the likelihood gets sharper.
