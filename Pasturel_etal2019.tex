@@ -2034,13 +2034,16 @@ extended for the class of binary inputs. Using the definition of the run-length~
 	\begin{itemize}
 		\item    $P(r_0)= S(r)$ or $P(r_0=0)=1$ and
 		\item    $\mu^{(0)}1 = \mu_{prior}$ and $\nu^{(0)}1 = \nu_{prior}$
+		\AM{What do the $1$ stand for?}
 	\end{itemize}
 
 	\item     Observe New Datum $x_t$,
+	\AM{I would keep the indexes as in the main text: e.g. here, $x^{0}_t$ instead of $x_t$}
 
 	\begin{enumerate}
 
 		\item    Evaluate Predictive Probability $\pi_{0:t} = P(x_t |\mu^{(r)}_t,\nu^{(r)}_t)$.
+		\AM{I think that the index for $\pi$ is usually only $t$ not $0:t$}
 	    \item    Calculate Growth Probabilities $P(r_t=r_{t-1}+1, x_{0:t}) = P(r_{t-1}, x_{0:t-1}) \pi^{(r)}_t (1-h)$,
 	    \item    Calculate Changepoint Probabilities $P(r_t=0, x_{0:t})= \sum_{r_{t-1}} P(r_{t-1}, x_{0:t-1}) \pi^{(r)}_t \cdot h$,
 	    \item    Calculate Evidence $P(x_{0:t}) = \sum_{r_{t-1}} P (r_t, x_{0:t})$,
@@ -2055,7 +2058,7 @@ extended for the class of binary inputs. Using the definition of the run-length~
 \end{enumerate}
 
 
-In this appendix, we start by some basic concepts, detail some intermediate steps and highlight some key differences with their implementation. We also provide with a python implementation which is openly available on \href{https://github.com/laurentperrinet/Bayesianchangepoint}{GitHub}.
+In the following, we illustrate some basic concepts of the different parts of the algorithm, detail some intermediate steps and highlight some key differences with their implementation \AM{this last sentence ???}. We also provide a python implementation of the algorithm, which is openly available on \href{https://github.com/laurentperrinet/Bayesianchangepoint}{GitHub}.
 
 \subsubsection{Initialization}
 %to represent our belief at trial $t$
@@ -2082,6 +2085,7 @@ It will by symmetry be unbiased: $\mu_{prior}=.5$.
 Concerning the shape, it can be for instance
 the uniform distribution $\Uu$ on $ [ 0, 1 ] $, that is $\nu_{prior}=2$ or
 Jeffrey's prior $\Jj$, that is $\nu_{prior}=1$.
+\AM{any reference to support this claim?}
 
 %Wikipedia: Beta(1/2, 1/2): The arcsine distribution probability density was proposed by Harold Jeffreys to represent uncertainty for a Bernoulli or a binomial distribution in Bayesian inference, and is now commonly referred to as Jeffreys prior: p−1/2(1 − p)−1/2. This distribution also appears in several random walk fundamental theorems
 
@@ -2120,7 +2124,7 @@ and therefore
 
 \subsubsection{Quantitative evaluation}
 
-To quantitatively evaluate our results with respect to another probability bias, we computed in~\seeEq{KL} the cost as the Kullback-Leibler divergence  $\KL{\hat p}{p}$ between samples $\hat p$ and model $p$ under a Bernoulli distribution:
+To quantitatively evaluate our results with respect to another probability bias, we computed in~\seeEq{KL} the cost as the Kullback-Leibler divergence  $\KL{\hat p}{p}$ between samples $\hat p$ and model $p$ under the hypothesis of a Bernoulli trial:
 \begin{equation}
 \KL{\hat p}{p} = \hat{p} \log\pa{\frac{\hat p}{p}} + (1-\hat p) \log\pa{\frac{1-\hat p}{1-p}}.
 \end{equation}
@@ -2135,7 +2139,7 @@ To quantitatively evaluate our results with respect to another probability bias,
 %cf p52 de 2017-10-05 chloe inverting the process rem jb.pdf
 
 
-We want to compute $\Ll(o| p, r) = P(o | p, r)$ where $o \in \{ 0, 1 \}$ such that we can evaluate Predictive Probability $\pi_{0:t} = P(x_t |\mu^{(r)}_t,\nu^{(r)}_t)$ in the algorithm above with $p=\mu^{(r)}_t$ and $\nu^{(r)}_t$.
+We want to compute $\Ll(o| p, r) = P(o | p, r)$ where $o \in \{ 0, 1 \}$ such that we can evaluate Predictive Probability $\pi_{0:t} = P(x_t |\mu^{(r)}_t,\nu^{(r)}_t)$ in the algorithm above with $p=\mu^{(r)}_t$ and $\nu^{(r)}_t$ \AM{?}.
 The likelihood of observing $o=1$ is that of a binomial (conjugate of a Beta distribution) of
 	\begin{itemize}
 		\item  mean rate of choosing hypothesis $o=1$ equal to $\frac{p*r + o}{r+1}$,
@@ -2145,7 +2149,7 @@ More generally, by observing $o$, the new rate is $p^{'} = \frac{p\cdot r + o}{r
 
 \subsubsection{Mathematical derivation}
 
-The likelihood will give the probability of this novel rate given the know parameters and their update (in particular $r^{'}=r+1$:
+The likelihood will give the probability of this novel rate given the known parameters and their update (in particular $r^{'}=r+1$:
 \eqs{
 L(o | p, r)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r + o}{r+1})^{r + o - (p\cdot r + o)} \\
 &= \frac{1}{({r+1})^{r+1}} \cdot {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} \\
@@ -2157,6 +2161,7 @@ L(o | p, r)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r
 }  \\
 }
 since both likelihood sum to 1, the likelihood of drawing $o$ in the set $\{ 0, 1 \}$   is equal to
+\AM{the change in the argument of $\Ll$}
 \eqs{
 \Ll(r | o)&=\frac{L(r | o)}{L(r | o=1) + L(r | o=0)}  \\
 &= \frac{ {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} }{
@@ -2206,6 +2211,7 @@ def likelihood(o, p, r):
 This function has some properties, notably symmetries:
 	\begin{itemize}
 		\item  $\forall r >0$, $\Ll(o|p=0, r)=1-o$ and $\Ll(o|p=1, r)=o$,
+		\AM{??}
 		\item if $r=0$, the likelihood is uniform $\Ll(o)=1/2$,
 		\item $P(o | p, r)=P(1-o | 1-p, r)$.
 	\end{itemize}
