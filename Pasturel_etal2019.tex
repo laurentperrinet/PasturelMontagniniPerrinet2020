@@ -1006,7 +1006,7 @@ by the conjugate probability distribution of the binomial distribution,
 that is, by the beta-distribution $B(x_1^t; \mu^{(r)}_{t}, \nu^{(r)}_{t})$.
 It is parameterized here by its sufficient statistics,
 the mean $\mu^{(r)}_{t}$ and sample size $\nu^{(r)}_{t}$ % which in our a case is the run-length $r^t$
-(see~\seeApp{likelihood} for our choice of parameterization).
+(see~\seeApp{beta} for our choice of parameterization).
 First, at the occurrence of a switch (for the node $r^t=0$)
 beliefs are set to prior values (before observing any datum)
 $\mu^{(0)}_{t} = \mu_{prior}$ and $\nu^{(0)}_{t} = \nu_{prior}$.
@@ -1064,7 +1064,7 @@ and finally the scalar value $\pi^{(r)}_t = \Ll(r | x_0^{t})$.
 %-------------------------------------------------------------%
 Finally, the agent infers at each trial the belief and parameters at each node
 %and use for instance the maximum a posteriori or the expected value as readouts.
-and use the marginal predictive probability (see~\seeEq{pred}) as a readout.
+and uses the marginal predictive probability (see~\seeEq{pred}) as a readout.
 %More precisely, we define these two strategies as following.
 %For the maximum a posteriori readout
 %at each trial the run-length with maximal probability is selected
@@ -1999,6 +1999,7 @@ As such, the definitions in~\seeEq{leaky} and~\seeEq{leaky2} are equivalent.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The Bernoulli, binomial and Beta distributions}
+\label{app:beta}
 
 Let us define some basic concepts. A Bernoulli trial is the outcome of a binary random variable $x$ knowing a probability bias $\mu$ and can be formalized as:
 \eq{
@@ -2034,18 +2035,15 @@ extended for the class of binary inputs. Using the definition of the run-length~
 \begin{enumerate}
 	\item Initialize
 	\begin{itemize}
-		\item    $P(r_0)= S(r)$ or $P(r_0=0)=1$ and
-		\item    $\mu^{(0)}1 = \mu_{prior}$ and $\nu^{(0)}1 = \nu_{prior}$
-		\AM{What do the $1$ stand for?}
+		\item    $P(r_0>0)= 0$ or $P(r_0=0)=1$ and
+		\item    $\mu^{(0)}_0 = \mu_{prior}$ and $\nu^{(0)}_0 = \nu_{prior}$
 	\end{itemize}
 
-	\item     Observe New Datum $x_t$,
-	\AM{I would keep the indexes as in the main text: e.g. here, $x^{0}_t$ instead of $x_t$}
+	\item     Observe New Datum $x_0^t \in \{ 0, 1 \}$,
 
 	\begin{enumerate}
 
-		\item    Evaluate Predictive Probability $\pi_{0:t} = P(x_t |\mu^{(r)}_t,\nu^{(r)}_t)$.
-		\AM{I think that the index for $\pi$ is usually only $t$ not $0:t$}
+		\item    Evaluate Predictive Probability $\pi^{(r)}_{t} = P(x_0^t |\mu^{(r)}_t,\nu^{(r)}_t)$.
 	    \item    Calculate Growth Probabilities $P(r_t=r_{t-1}+1, x_{0:t}) = P(r_{t-1}, x_{0:t-1}) \pi^{(r)}_t (1-h)$,
 	    \item    Calculate Changepoint Probabilities $P(r_t=0, x_{0:t})= \sum_{r_{t-1}} P(r_{t-1}, x_{0:t-1}) \pi^{(r)}_t \cdot h$,
 	    \item    Calculate Evidence $P(x_{0:t}) = \sum_{r_{t-1}} P (r_t, x_{0:t})$,
@@ -2054,13 +2052,14 @@ extended for the class of binary inputs. Using the definition of the run-length~
 
 	\item     Update sufficient statistics
 		\begin{itemize}
-			\item    $\mu^{(0)}_{t+1} = \mu_{prior}$, $\nu^{(0)}_{t+1} = \nu_{prior}$,
-			\item    $\mu^{(r+1)}_{t+1} = \mu^{(r)}_{t} + x_t/r$ (???), $\nu^{(r+1)}_{t+1} = \nu^{(r)}_{t} + u(x_t)$ TODO define u.
+			\item  at a switch  $\mu^{(0)}_{t+1} = \mu_{prior}$, $\nu^{(0)}_{t+1} = \nu_{prior}$,
+			\item  else, $\nu^{(r+1)}_{t+1} = \nu^{(r)}_{t} + 1$ and $\nu^{(r+1)}_{t+1} \cdot \mu^{(r+1)}_{t+1} = \nu^{(r)}_{t} \cdot \mu^{(r)}_{t} + x_0^t$.
 		\end{itemize}
+	\item     Return to step $2$.
 \end{enumerate}
 
 
-In the following, we illustrate some basic concepts of the different parts of the algorithm, detail some intermediate steps and highlight some key differences with their implementation \AM{this last sentence ???}. We also provide a python implementation of the algorithm, which is openly available on \href{https://github.com/laurentperrinet/Bayesianchangepoint}{GitHub}.
+In the following, we  detail some intermediate steps and highlight some key differences with their implementation. We also provide a python implementation of the algorithm, which is openly available on \href{https://github.com/laurentperrinet/Bayesianchangepoint}{GitHub}.
 
 \subsubsection{Initialization}
 %to represent our belief at trial $t$
@@ -2087,8 +2086,10 @@ It will by symmetry be unbiased: $\mu_{prior}=.5$.
 Concerning the shape, it can be for instance
 the uniform distribution $\Uu$ on $ [ 0, 1 ] $, that is $\nu_{prior}=2$ or
 Jeffrey's prior $\Jj$, that is $\nu_{prior}=1$.
-\AM{any reference to support this claim?}
-
+We chose the latter for the generation of trials
+as the uniform distribution would yield more sample around $.5$.
+Qualitatively, this would result in more difficult task in discriminating a probability bias from another.
+Jeffrey's prior was more adapted to that task.
 %Wikipedia: Beta(1/2, 1/2): The arcsine distribution probability density was proposed by Harold Jeffreys to represent uncertainty for a Bernoulli or a binomial distribution in Bayesian inference, and is now commonly referred to as Jeffreys prior: p−1/2(1 − p)−1/2. This distribution also appears in several random walk fundamental theorems
 
 
@@ -2099,8 +2100,11 @@ The steps to achieve
 %\hat{x_1}^{t} =
 Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  \beta^{(r)}_t \\
 Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  Pr(r^{t} | x_0^{0:t-1})\\
-\text{with} \quad Pr(r^{t} | x_0^{0:t-1}) &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  Pr(r^{t-1} | x_0^{0:t-2}) \\
-\text{with} \quad \beta^{(r)}_t &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  \beta^{(r)}_{t-1}
+\text{with} \quad Pr(r^{t} | x_0^{0:t-1}) &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  Pr(r^{t-1} | x_0^{0:t-2})
+}
+Finally we obtain~\seeEq{pred_node}:
+\eq{
+\beta^{(r)}_t \propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  \beta^{(r)}_{t-1}
 }
 
 
@@ -2108,13 +2112,13 @@ Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  Pr
 
 The recursive formulation in \seeEq{update_nu} and \seeEq{update_mu} comes from the expression
 \eq{
-\mu^{(r)}_{t} = \frac 1 r \sum_{i=t-r-1}^{t-1} x_0^i
+\nu^{(r)}_{t} \cdot \mu^{(r)}_{t} = \sum_{i=t-r-1}^{t-1} x_0^i % + 2 - \nu_{prior}
 }
 and therefore
 \eqs{
-\mu^{(r+1)}_{t+1} 	&= \frac{1}{r+1} \sum_{i=t+1-r-1-1}^{t+1-1} x_0^i \\
-					&= \frac{1}{r+1} \sum_{i=t-r-1}^{t} x_0^i \\
-					&= \frac{r}{r+1} \mu^{(r)}_{t} + \frac{1}{r+1} x_0^t
+\nu^{(r+1)}_{t+1} \cdot \mu^{(r+1)}_{t+1} 	&= \sum_{i=t+1-r-1-1}^{t+1-1} x_0^i  \\% + 2 - \nu_{prior} \\
+											&=  \sum_{i=t-r-1}^{t} x_0^i  \\% + 2 - \nu_{prior}\\
+											&= \nu^{(r)}_{t} \cdot  \mu^{(r)}_{t} +  x_0^t
 }
 
 %\subsubsection{Readout}
@@ -2128,7 +2132,7 @@ and therefore
 
 To quantitatively evaluate our results with respect to another probability bias, we computed in~\seeEq{KL} the cost as the Kullback-Leibler divergence  $\KL{\hat p}{p}$ between samples $\hat p$ and model $p$ under the hypothesis of a Bernoulli trial:
 \begin{equation}
-\KL{\hat p}{p} = \hat{p} \log\pa{\frac{\hat p}{p}} + (1-\hat p) \log\pa{\frac{1-\hat p}{1-p}}.
+\KL{\hat p}{p} = \hat{p} \cdot\log\pa{\frac{\hat p}{p}} + (1-\hat p)\cdot \log\pa{\frac{1-\hat p}{1-p}}.
 \end{equation}
 
 
@@ -2141,17 +2145,17 @@ To quantitatively evaluate our results with respect to another probability bias,
 %cf p52 de 2017-10-05 chloe inverting the process rem jb.pdf
 
 
-We want to compute $\Ll(o| p, r) = P(o | p, r)$ where $o \in \{ 0, 1 \}$ such that we can evaluate Predictive Probability $\pi_{0:t} = P(x_t |\mu^{(r)}_t,\nu^{(r)}_t)$ in the algorithm above with $p=\mu^{(r)}_t$ and $\nu^{(r)}_t$ \AM{?}.
+We want to compute $\Ll(r | o) = Pr(o | p, r)$ where $o \in \{ 0, 1 \}$ such that we can evaluate Predictive Probability $\pi_{0:t} = P(x_0^t  |\mu^{(r)}_t,\nu^{(r)}_t)$ in the algorithm above with $\mu^{(r)}_t$ and $\nu^{(r)}_t$ the sufficient statistics at trial $t$ for node $(r)$.
 The likelihood of observing $o=1$ is that of a binomial (conjugate of a Beta distribution) of
 	\begin{itemize}
-		\item  mean rate of choosing hypothesis $o=1$ equal to $\frac{p*r + o}{r+1}$,
-		\item number of choices where  $o=1$ equals to $p*r+1$.
+		\item  mean rate of choosing hypothesis $o=1$ equal to $\frac{p\cdot r + o}{r+1}$,
+		\item number of choices where  $o=1$ equals to $p\cdot r+1$.
 	\end{itemize}
 More generally, by observing $o$, the new rate is $p^{'} = \frac{p\cdot r + o}{r+1}$.
 
 \subsubsection{Mathematical derivation}
 
-The likelihood will give the probability of this novel rate given the known parameters and their update (in particular $r^{'}=r+1$:
+The likelihood will give the probability of this novel rate given the known parameters and their update (in particular $r^{'}=r+1$):
 \eqs{
 L(o | p, r)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r + o}{r+1})^{r + o - (p\cdot r + o)} \\
 &= \frac{1}{({r+1})^{r+1}} \cdot {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} \\
@@ -2177,7 +2181,11 @@ since both likelihood sum to 1, the likelihood of drawing $o$ in the set $\{ 0, 
   {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
 }  
 }
-that is \seeEq{likelihood}, for a given run-length and knowing sufficient statistics describing the sufficient statistics at each node $r$.
+This can also be written by isolating the part wich depends on $o$ and for a given run-length and knowing sufficient statistics describing the sufficient statistics at each node $r$:
+\eql{
+\Ll(r | o) = \frac{1}{Z} \cdot {(p \cdot r + o)}^{p \cdot r + o} \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o}
+}
+with $Z$ such that $\Ll(r | o=1) + \Ll(r | o=0)=1$, that is~\seeEq{likelihood}.
 
 \subsubsection{Python code}
 
@@ -2212,8 +2220,7 @@ def likelihood(o, p, r):
 \subsubsection{Properties}
 This function has some properties, notably symmetries:
 	\begin{itemize}
-		\item  $\forall r >0$, $\Ll(o|p=0, r)=1-o$ and $\Ll(o|p=1, r)=o$,
-		\AM{??}
+		\item for certain outcomes, $\forall r >0$, $\Ll(o|p=0, r)=1-o$ and $\Ll(o|p=1, r)=o$,
 		\item if $r=0$, the likelihood is uniform $\Ll(o)=1/2$,
 		\item $P(o | p, r)=P(1-o | 1-p, r)$.
 	\end{itemize}
