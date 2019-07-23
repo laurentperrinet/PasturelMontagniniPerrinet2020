@@ -20,16 +20,10 @@
 \newcommand{\AuthorB}{Anna Montagnini}%
 \newcommand{\AuthorC}{Laurent U.~Perrinet}%
 \newcommand{\Address}{Institut de Neurosciences de la Timone, CNRS / Aix-Marseille Universit\'e - Marseille, France}%
-\newcommand{\Website}{http://invibe.net/LaurentPerrinet}%
+\newcommand{\Website}{https://laurentperrinet.github.io}%
 \newcommand{\Email}{Laurent.Perrinet@univ-amu.fr}%
-\newcommand{\Title}{
-%Principles and psychophysics of Active Inference in anticipating a dynamic probabilistic bias
-Humans adapt to the volatility of visual motion properties, and know about it
-%Anticipating a volatile probabilistic bias in visual motion direction
-%Humans adapt to the volatility of visual motion properties :  eye movements and explicit guesses
-}
-\newcommand{\Acknowledgments}{PACE-ITN - code and material @ \url{\Website/Publications/Pasturel_etal2018}. TODO: RIck + Karl + JB + Laurent Madelain }
-\newcommand{\Abstract}{
+\newcommand{\Title}{Humans adapt their eye movements to the volatility of visual motion properties, and know about it}
+\newcommand{\Acknowledgments}{This work was supported by EU Marie-Sklodowska-Curie Grant No 642961 (PACE-ITN). Code and material on the \href{\Website/publication/pasturel-montagnini-perrinet-19}{author's website}. We thank Doctor Jean-Bernard Damasse and Professor Laurent Madelain for insightful discussions. }\newcommand{\Abstract}{
 The brain has to constantly adapt to changes in the environment,
 for instance when a contextual probabilistic variable switched its state.
 For an agent interacting with such an environment,
@@ -62,33 +56,27 @@ human cognitive abilities in uncertain and dynamic environments.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\newcommand{\Journal}{Journal of Vision}%
 %\newcommand{\Journal}{PLoS Computational Biology}%
-\newcommand{\Journal}{Neural Computation}%
+\newcommand{\Journal}{eLife}%
 \widowpenalty=1000
 \clubpenalty=1000
 
-%\newsavebox{\Lpalmb} \sbox{\Lpalmb}%{\parbox[t]{1.75in}{\includegraphics[width=.25\textwidth]{ens.jpg}\includegraphics[width=.2\textwidth]{int.png}%\includegraphics[width=.12\textwidth]{unic.png}}
-%}%
+\newsavebox{\Lpalmb} \sbox{\Lpalmb}{\parbox[t]{1.75in}{\includegraphics[width=1.\textwidth]{/Users/laurentperrinet/nextcloud/libs/slides.py/figures/troislogos.png}}}
 %\makelth{Homea}{\Lheader{\usebox{\Lpalms}}}%
 %
-\Lheader{%\usebox{\Lpalmb}
-tata}
+\Lheader{\usebox{\Lpalmb}}
 
 \newlfmP{headermarginskip=2pt}
 \newlfmP{sigsize=2pt}
 \newlfmP{dateskipafter=2pt}
 %\newlfmP{addrfromphone}
 \newlfmP{addrfromemail}
-\PhrPhone{Phone}
+%\PhrPhone{Phone}
 \PhrEmail{Email}
 
-\namefrom{
-%\AuthorA\ , \FirstNameA , 
-%\AuthorB\ , \FirstNameB  and 
-\FirstNameA\ \AuthorA\ 
-}
+\namefrom{\AuthorA , \AuthorB\ and \AuthorC\ }
 \addrfrom{%
-\FirstNameA\ \AuthorA\ \\
-\Institute \\
+\AuthorC\ \\
+%\Address \\
 %\AuthorB\\[6pt]
     \Address\\[6pt]
 %\AuthorA\\[6pt]
@@ -96,74 +84,54 @@ tata}
 %    \LongAddressA
 }
 %        \phonefrom{\PhoneA}
-\emailfrom{\EmailA\\[6pt]
-    \today
+\emailfrom{\Email\\[6pt]
     }
 
 \addrto{%
+    \today
 }
 
 \greetto{
-To the editorial board member of \emph{\Journal},%
+To the editorial board of \emph{\Journal},%
 %To Whom It May Concern,
 %Dear XXX
 }
 \closeline{Sincerely,}
 
 \begin{document}
-%\begin{newlfm}
+\begin{newlfm}
 %5. Cover Letter
 %Submissions should be accompanied by a brief covering letter from the corresponding author including full postal address, telephone number and e-mail address. This letter should contain two (100-word or shorter) summaries: a concise paragraph to the editor indicating the scientific grounds why the paper should be considered for a topical, interdisciplinary journal rather than for a single-discipline or archival journal; and a separate, 100-word summary of the paper's appeal to a popular (non-scientific) audience.
 
-Please consider our original manuscript ``{\it \Title }'' that we submit for publication in \Journal . All the authors have been involved with the work, have approved the manuscript and agreed to its submission.
+Please consider this submission for publication in \Journal . This inter-displinary work studies how ``\emph{\Title}'' by defining a theoretically-driven experimental protocol which is then validated in psychophysical experiments.
 
-Hereby, we submit our revised manuscript, entitled ``{\it \Title }'' ,  along  with  our  response  to  the  reviewers  and  corresponding  supplementary  information.  
+Indeed, understanding how humans make judgments from sensory information 
+and adapt to changing environments
+is crucial for psychology, neuroscience
+and artificial intelligence.  
+Current theories for how we deal with volatility most rely on the equilibrium behavioral response in experiments where some stationary randomness is introduced.  
+Here we show that in the case where the context switches at random times during the experiment, an adaptation to the volatility can be performed online.
+In particular, we show in psychophysical experiments that humans can follow such volatility both at the early sensory levels through their eye movements, but also at the conscious level. 
+Our results suggest that humans (and future artificial
+systems) can use much richer processing strategies than previously
+assumed.
 
-
-% TO UPDATE = short description
-The present study details the complete formulation of a generative
-model of artificial textures intended to probe visual perception. It is first derived in a set of
-axiomatic steps constrained by biological plausibility. We then extend previous contributions
-by detailing three equivalent formulations of the Gaussian dynamic texture
-model. Our model enables real-time on-the-fly texture synthesis using time-discretized autoregressive
-processes. We use the model to probe speed perception in humans psychophysically using zoom-like changes
-in stimulus spatial frequency content. The data replicates previous findings that relative perceived speed is positively biased by spatial
-frequency increments. The effect cannot be fully accounted for by previous models,
-but a parametric Bayesian model successfully accounts for the perceptual bias.
-%
-Our  response  to  the  reviewers  includes  the  point-by-point  responses  to  each  issue  raised  by  
-both reviewers. The reviewers’ comments were helpful, and we feel that the manuscript is substantially improved.  
-We have ensured that our manuscript complies with all formatting and editorial requirements.  
+Importantly, we provide in this work with a full theoretical Bayesian model for the study which allow for the rigorous analysis of the behavioral data and we present some perspective in using such a method for studying inter-individual differences. 
+As such, we believe that this work presents a highly novel and significant finding of broad interest 
+which will have a influential impact on the readership of \Journal .
 
 
-% AM: I think this section should go after the description of the science
-% 'We ensure that n' - i think this is unnecessary, also 'a long version should be elaborated on below... '
-None of the material has been published or is under consideration for
-publication in other journals. This work constitutes a comprehensive extension to the conference paper referenced as \textit{Biologically Inspired Dynamic Textures for Probing Motion Perception.
-J. Vacher, A.I. Meso, L.U. Perrinet, G. Peyr\'e -- Advances in Neural Information Processing Systems, 2015.}
+%The cover letter should state clearly what is included as the submission, including number of words in the text and number of display items (figures, tables, boxes) in the print version of the paper; number of additional words in the text (full Methods and Extended Data legends) and number of Extended Data figures and tables for the online-only version; any Supplementary Information (specifying number of items and format); number of supporting manuscripts.
+Our submission has a 262-word summary and a body of 19178 words
+(including methods, figure legends and appendix), along with five figures.
+% pdftotext Pasturel_etal2019.pdf - | wc -w
 
-% AM: I have also suggested some wording changes below... just minor ones, remove 'As such, ...' I also removed 'experimental' before neuroscience
-We believe that this work presents a novel contribution of broad interest in neuroscience and psychophysics. We must stress that it combines the expertise in different fields for understanding neural computations: theoretical, computational and experimental. In addition, we demonstrate that a Bayesian model for vision is able to account for the effect of scene zooming, manipulated through spatial frequency on speed perception. We believe that these two contributions will be of significant interest to the readership of \Journal.
+The authors declare no competing interests.
+We did not have any prior discussions with
+a \Journal\ Editorial Board Member
+about the work described in the manuscript.
 
+Thank you for your consideration, and we look forward to your response.
 
-We  suggest  the  following  five  potential  review
-ers.  All  of  them  are  the  experts  in  the  
-relevant areas of our manuscript. 
-
-
-Following the change to the competing interests policy, we have revised the our ‘Conflict of interest’ statement to the following: 
-‘
-Competing interests: The authors declare no competing interests’
-Thank you for your consideration, and we look forward to your response. 
-
-We did not have any prior discussions with 
-a \Journal Editorial Board Member 
-about the work described in the manuscript. 
-
-Thank you for your consideration.%, and I look forward to hearing whether this article can be sent out for review.
-
-
-Sincerely, on behalf of all co-authors, 
-
-%\end{newlfm}
+\end{newlfm}
 \end{document}
