@@ -1412,15 +1412,15 @@ for the whole dataset
 %\CP{aSPEM / BCP : 
 ($r = 0.657$ and $MI = 0.687$) %pour les sujet - 
 and across subjects
-($r = 0.6734 \pm 0.0797 $ and $MI =  0.7079 \pm 0.1341$) %notebook 4}
+($r = 0.673 \pm 0.079$ and $MI =  0.707 \pm 0.134$) %notebook 4}
 are slightly higher than that found by~\citet{Montagnini2010} and~\citet{Damasse18} 
 for aSPEM measures gathered across experimental blocks with fixed direction biases %($r = XXX \pm $),
 and significantly\footnote{All following $p$-values are obtained from the \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html}{Wilcoxon signed-rank test}.} better than that estimated 
 with the true probability 
-($r = 0.6138 \pm 0.0698 $ with $p=0.0022$ and $MI = 0.5622 \pm 0.1079$ with $p=0.0022$) % 
+($r = 0.613 \pm 0.069$ with $p=0.002$ and $MI = 0.562 \pm 0.107$ with $p=0.002$) % 
 %\CP{aSPEM / true : ($r = 0.597$ $MI = 0.529$) pour les sujet - ($r = 0.6138 \pm 0.0698 $  $p=0.0022$ - $MI = 0.5622 \pm 0.1079$ $p=0.0022$)}
 and for that estimated by the leaky-integrator model 
-($r = 0.6005 \pm 0.0790$ with $p=0.0037$ and $MI =  0.6221 \pm 0.1025$ with $p=0.0047$), see inset).
+($r = 0.600 \pm 0.079$ with $p=0.003$ and $MI =  0.622 \pm 0.102$ with $p=0.004$), see inset).
 %\CP{aSPEM / Leaky - ($r = 0.582$ $MI = 0.609$) pour les sujet - ($r = 0.6005 \pm 0.0790$ $p=0.0037$ - $MI =  0.6221 \pm 0.1025$  $p=0.0047$)}
 A similar analysis
 illustrates the relationship between
@@ -1431,13 +1431,13 @@ and is shown in~\seeFig{results_psycho}.
 Similarly to the aSPEM strength, the rating values are nicely correlated
 with the probability bias given by the model, 
 as quantified by the Pearson correlation coefficient and mutual information 
-across subjects ($r = 0.8134 \pm 0.0916 $ and $MI = 1.3126 \pm 0.3644$).
+across subjects ($r = 0.813 \pm 0.091$ and $MI = 1.312 \pm 0.364$).
 %\CP{synchroniser ces valeurs entre figure et texte... --> valeurs correctes -- sur la figure : un r et un MI pour tous les sujets en m\^eme temps, dans le texte : moyenne de r et MI trouv\'e pour chaque sujets individuellement}
 %\CP{BET / BCP : ($r = 0.795$ $MI = 1.134$) pour les sujet - ($r = 0.8134 \pm 0.0916 $ $MI = 1.3126 \pm 0.3644$)}
 Importantly, this value is again higher for the BBCP model than
-for the leaky integrator ($r = 0.7311 \pm 0.1298 $ with $p=0.0076$ and $MI =  1.1178 \pm 0.4092$ with $p=0.0280$),
+for the leaky integrator ($r = 0.731 \pm 0.129$ with $p=0.007$ and $MI =  1.117 \pm 0.409$ with $p=0.028$),
 %\CP{BET / Leaky : ($r = 0.712$ $MI = 0.968$) pour les sujet - ($r = 0.7311 \pm 0.1298 $ $p=0.0076$ - $MI =  1.1178 \pm 0.4092$ $p=0.0280$)
-or with the true probability ($r = 0.6949 \pm 0.0861 $ with $p=0.0022$ and $MI =  0.9400 \pm 0.2550$ with $p=0.0022$). % : ($r = 0.679$ $MI = 0.795$) pour les sujet -  }
+or with the true probability ($r = 0.694 \pm 0.086$ with $p=0.002$ and $MI =  0.940 \pm 0.255$ with $p=0.002$). % : ($r = 0.679$ $MI = 0.795$) pour les sujet -  }
 Further notice that, in order to account for some specific changes 
 observed in the behavioral data after the short pauses 
 occurring every $50$ trials, 
@@ -1446,9 +1446,9 @@ that there was a switch at each pause.
 However, removing this assumption did not significantly change the conclusions about the match of the model
 compared to $P_{\text{true}}$ or $P_{\text{leaky}}$ 
 both for eye movements %\AM{I would skip all these tests, too long here, if they do not add anything significant!!
-($P_{\text{BBCP}}$: $r = 0.6678 \pm 0.0782 $ and $MI =  0.7123 \pm 0.1250$, $P_{\text{leaky}}$: $r = 0.5480 \pm 0.0749 $ with $p=0.0037$ and $MI =  0.5777 \pm 0.0961$ with $p=0.0037$ ; $P_{\text{true}}$ : $r = 0.6138 \pm 0.0698 $ $p=0.0028$ and  $MI =  0.5622 \pm 0.1079$ with $p=0.0022$) % }
+($P_{\text{BBCP}}$: $r = 0.667 \pm 0.078$ and $MI =  0.712 \pm 0.125$, $P_{\text{leaky}}$: $r = 0.548 \pm 0.074$ with $p=0.003$ and $MI =  0.577 \pm 0.096$ with $p=0.003$ ; $P_{\text{true}}$ : $r = 0.613 \pm 0.069$ with $p=0.002$ and  $MI =  0.562 \pm 0.107$ with $p=0.002$) % }
 and the bet experiment 
-($P_{\text{BBCP}}$: $r = 0.8027 \pm 0.0905 $ and $MI =  1.2557 \pm 0.3498$, $P_{\text{leaky}}$: $r = 0.6413 \pm 0.1209$ $p=0.0028$ and $MI =  0.9666 \pm 0.3008$ with $p=0.0022$ ; $P_{\text{true}}$ : $r = 0.6949 \pm 0.0861 $ with $p=0.0022$ and $MI =  0.9400 \pm 0.2550$ with $p=0.0022$).
+($P_{\text{BBCP}}$: $r = 0.802 \pm 0.090$ and $MI =  1.255 \pm 0.349$, $P_{\text{leaky}}$: $r = 0.641 \pm 0.120$ with $p=0.002$ and $MI =  0.966 \pm 0.300$ with $p=0.002$ ; $P_{\text{true}}$ : $r = 0.694 \pm 0.086$ with $p=0.002$ and $MI =  0.940 \pm 0.255$ with $p=0.002$).
 %\CP{SANS PAUSE -- BET  / BCP :($r = 0.785$ $MI = 1.100$) pour les sujet - ($r = 0.8027 \pm 0.0905 $ $MI =  1.2557 \pm 0.3498$)
 %/ Leaky :($r = 0.625$ $MI = 0.879$) pour les sujet - ($r = 0.6413 \pm 0.1209$ $p=0.0028$ - $MI = 0.9666 \pm 0.3008$ $p=0.0022$)
 %/ true probability : ($r = 0.679$ $MI = 0.795$) pour les sujet - ($r = 0.6949 \pm 0.0861 $ $p=0.0022$ - $MI = 0.9400 \pm 0.2550$ $p=0.0022$) }
