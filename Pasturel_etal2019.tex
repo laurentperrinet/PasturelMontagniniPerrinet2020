@@ -1088,7 +1088,7 @@ and uses the marginal predictive probability (see~\seeEq{pred}) as a readout.
 %\hat{x_1}^t = \mu^{(r^\ast)}_{t} \quad \text{with} \quad r^\ast = \argmax_r \beta^{(r)}_{t}
 %}
 This probability bias is best estimated by its expected value $\hat{x_1}^{t+1}=Pr(x_0^{t+1} | x_0^{0:t})$
-as it is computed over all run-lengths:
+as it is marginalized over all run-lengths:
 \eql{
 \hat{x_1}^{t+1} = \sum_{r \geq 0} \mu^{(r)}_{t} \cdot \beta^{(r)}_{t}
 \label{eq:readout}
@@ -1151,6 +1151,7 @@ Then, we observe that shortly after a switch (hidden to the agent),
 the belief diffuses until the relative probability of a continuously increasing run-length
 is lower that that assigned to a smaller run-length:
 There is a transition to a new state (the model 'goes').
+Such adaptation is similar to the slow / fast heuristic model proposed in other studies~\citep{Schutz14}.
 Second, we can use this information to readout the most likely probability bias and 
 use it as a regressor for the behavioral data.
 Note that the leaky integrator model is simply implemented
@@ -1298,7 +1299,6 @@ taking into account a switch of the probability bias (while being hidden to the 
 reflecting the time (in the order of a few trials) taken to integrate enough information
 to build up the estimation of a novel expectation about the probability bias value 
 parameterizing the Bernoulli trial.
-Such adaptation is similar to the heuristic proposed in other studies~\citep{Schutz14}.
 In general, results are more variable when the bias is weak ($p\approx .5$)
 than when it is strong (close to zero or one),
 consistent with the well-known dependence of the variance of a Bernoulli trial
