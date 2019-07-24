@@ -1306,7 +1306,7 @@ consistent with the well-known dependence of the variance of a Bernoulli trial
 upon the probabilistic bias ($\textrm{Var}(p)= p \cdot (1-p)$).
 In addition, the precision (i.e. the inverse of the variance)
 of the inferred probability bias $\hat{x_1}$ seems to increase
-in bigger inter-switch blocks as information is integrated over more trials.
+in longer epochs (inter-switch blocks) as information is integrated over more trials.
 As a result, the inferred probability as a function of time
 seems qualitatively to constitute a reliable regressor
 for predicting the strength of aSPEM.
@@ -1324,7 +1324,7 @@ we qualitatively compare in~\seeFig{results_psycho}
 the trace of the bet scores
 with the inferred probability bias $\hat{x_1}$.
 As with aSPEM, the series of the participants' bias guesses
-exhibits a positive correlation with $\hat{p}$:
+exhibits a positive correlation with the true probability bias:
 The next outcome of $x_{0}^{t}$ will in general be correctly inferred,
 as compared to a random choice, as reported previously~\citep{Meyniel15}. %\AM{statistics to cite for this?}
 %\AM{I WOULD SKIP THIS Equipped with this generative BSM model and the ideal observer given by the BBCP model,
@@ -1394,17 +1394,17 @@ with the true probability and with the estimates obtained with the leaky integra
 %: 3C quantitative analysis
 %-------------------------------------------------------------%
 Quantitatively, we now compare the experimental results
-with the value of probability bias $\hat{x_1}$
+with the value of the probability bias $\hat{x_1}$
 computed by the BBCP algorithm.
 Compiling results %(see~\seeFig{results_psycho}) 
 from all participants,
 we have plotted in~\seeFig{results_psycho_all}
 the aSPEM strength (panel A) and the bet scores (panel B) as a function of the BBCP-inferred probability bias
-(we remind here that the true value of the probability bias was coded at the second layer of the BSM generative model and is hidden both to the BBCP agent and to the human observers).
+(we remind here that the true value of the probability bias was coded at the second layer of the BSM generative model and is hidden both to the agents and to the human observers).
 All trials from all participants were pooled together 
 and we show this joint data as an error bar plot 
 showing the median along with the $.25$ and $.75$ quantiles
-for 5 equal partitions of the $[0, 1]$ probability segment. % to generate a scatter plot
+as computed for 5 equal partitions of the $[0, 1]$ probability segment. % to generate a scatter plot
 As a comparison, the same method was applied to the true value $P_{\text{true}}$ and 
 to the estimate obtained by the leaky integrator.
 %which was then  converted to a kernel density estimate
@@ -1469,10 +1469,10 @@ both the strength of anticipatory smooth pursuit eye movements
 and the explicit ratings of human observers experiencing a volatile context for visual motion.
 
 This relatively strong correlation is surprising at a first sight
-as the blocks with constant probability bias (between two switches) have random lengths,
+as the epochs with constant probability bias (between two switches) have random lengths,
 and participants have to adapt to such a volatile environment.
 However, adaptivity to a volatile environment is one of the most exquisite human skills: 
-when faced with some new observations,
+When faced with some new observations,
 the observer has to constantly adapt his/her response
 to either exploit this information by considering that
 this observation belongs to the same context of the previous observations, or to explore
