@@ -1154,8 +1154,8 @@ There is a transition to a new state (the model 'goes').
 Such adaptation is similar to the slow / fast heuristic model proposed in other studies~\citep{Schutz14}.
 Second, we can use this information to readout the most likely probability bias and 
 use it as a regressor for the behavioral data.
-Note that the leaky integrator model is simply implemented
-by an agent assuming a fixed run-length profile (see orange line in \seeFig{Bayesianchangepoint}-B),
+Note that the leaky integrator model is implemented
+by the agent assuming a fixed run-length profile (see orange line in \seeFig{Bayesianchangepoint}-B),
 allowing for a simple comparison of the BBCP model with the leaky integrator.
 Again, we see that a fixed length model gives qualitatively a similar output
 but with two disadvantages compared to the BBCP model, namely that 
@@ -1271,10 +1271,11 @@ the increase of the uncertainty after each pause. %multiple of $50$ trials.
 %-------------------------------------------------------------%
 We used the BSM model to generate the (pseudo-)random sequence of
 the dot's directions (the alternation of leftward/rightward trials)
-as the sequence of observations that were used in both sessions.
+as the sequence of observations that were used in both sessions
+(see~\seeFig{results_psycho}).
 In one session, we recorded the participants' eye movements and
 %extracted the aSPEM velocity. (for details, see~\seeApp{em}).
-in~\seeFig{results_psycho} we show the anticipatory smooth pursuit velocity 
+we show the anticipatory smooth pursuit velocity 
 for two representative participants (out of $12$ participants), throughout a sub-block of $200$ trials of the experimental sequence.
 Note that these participants were chosen as those
 whose fitting score was nearest to the median score in the quantitative analysis
