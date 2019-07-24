@@ -1624,7 +1624,7 @@ Indeed, we observed that the marginal distribution for each session is different
 with the distribution in the aSPEM session being narrower than
 that observed for the rating scale session. 
 In particular, we also observed the same behavior for each sub-block independently,
-suggesting that the origin of this variability mainly comes form inter-subject variability.
+suggesting that the origin of this variability mainly comes from inter-subject variability.
 %In comparison if, similarly to bootstrap resampling,
 %we would shuffle the joint fitted values across participants,
 %we would obtain a distribution of hazard rate ratios of $XX \pm XX~\ms$.
@@ -1992,6 +1992,7 @@ We called this experiment the \textit{ ``Bet''} experiment, as participants were
 \label{app:leaky}
 Given a series of observations $\{x_0^i\}_{0\leq i \leq t}$
 with $\forall i, x_0^i \in \{0, 1 \}$, we defined
+
 \eqs{
 \hat{x_1}^{t} &= (1-1/\tau)^{t+1} \cdot \hat{x_1}^{t=0} + 1/\tau \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i}\\
 			  &= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
@@ -2001,18 +2002,21 @@ with $\forall i, x_0^i \in \{0, 1 \}$, we defined
 %\hat{x_1}^{1} = (1 - \rho) \cdot \hat{x_1}^{0} + \rho \cdot x_0^1
 %}
 If we write it for trial $t-1$, we have
+
 \eqs{
 \hat{x_1}^{t-1}	&= (1-h)^{t} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t-1} (1 - h)^{i} \cdot x_0^{t-1-i} \\
                 &= (1-h)^{t} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{1\leq j \leq t} (1 - h)^{j-1} \cdot x_0^{t-j} \\ % j = i+1
 (1 - h) \cdot \hat{x_1}^{t-1} &= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} +  h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
                 }
 As such, the integrative formula above becomes an iterative relation:
+
 \eqs{
 \hat{x_1}^{t}	&= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i} \\
 				&= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot x_0^{t} + h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i} \\
 				&= h \cdot x_0^{t} + (1 - h) \cdot \hat{x_1}^{t-1} \\
 }
 such that finally
+
 \eq{
 \hat{x_1}^{t} = (1 - h) \cdot \hat{x_1}^{t-1} + h \cdot x_0^t
 }
@@ -2024,11 +2028,13 @@ As such, the definitions in~\seeEq{leaky} and~\seeEq{leaky2} are equivalent.
 \label{app:beta}
 
 Let us define some basic concepts. A Bernoulli trial is the outcome of a binary random variable $x$ knowing a probability bias $\mu$ (with $0 \geq \mu \geq 1$) and can be formalized as:
+
 \eq{
 Pr(x | \mu) = \mu^x \cdot (1-\mu)^{1-x}
 }
 
 The binomial distribution is defined as the probability that the sum $X$ of $\nu$ independent Bernoulli trials is $k$:
+
 \eq{
 \Pr(k;\nu,\mu) = \Pr(X = k) = {\nu\choose k} \cdot \mu^k \cdot (1-\mu)^{\nu-k} 
 }
@@ -2036,10 +2042,12 @@ The binomial distribution is defined as the probability that the sum $X$ of $\nu
 Knowing such a model for $X$ it can be of interest to find an estimate of the parameter of the Bernoulli trial, that is of the probability bias $\mu$. This distribution function is called the conjugate of the binomial distribution which is the Beta-distribution. For example, the beta distribution can be used in Bayesian analysis to describe initial knowledge concerning probability of success such as the probability that a product will successfully complete a stress test. The beta distribution is a suitable model for the random behavior of percentages and proportions.
 
 It is usually defined using shape parameters $\alpha$ and $\beta$:
+
 \eq{
 Pr(p | \alpha, \beta ) = \frac{1}{B(\alpha, \beta)} \cdot p^{\alpha -1} \cdot (1-p)^{\beta - 1} 
 }
 Note that here, the variable is the probability bias $p$. The normalization constant $B(\alpha, \beta)$ is given by the beta function. By definition: 
+
 \eqs{
         \alpha &= \mu \cdot \nu \\
         \beta  &= (1-\mu) \cdot \nu
@@ -2117,7 +2125,8 @@ Jeffrey's prior was more adapted to that task.
 
 \subsubsection{Prediction: run-length distribution}
 
- The steps to achieve the update rule are: 
+The steps to achieve the update rule are: 
+ 
  \eqs{
 %\hat{x_1}^{t} =
 Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  \beta^{(r)}_t \\
@@ -2132,11 +2141,13 @@ Finally we obtain~\seeEq{pred_node}:
 
 \subsubsection{Prediction: sufficient statistics}
 
- The recursive formulation in~\seeEq{update_nu} and~\seeEq{update_mu} comes from the expression 
+The recursive formulation in~\seeEq{update_nu} and~\seeEq{update_mu} comes from the expression 
+
  \eq{
 \nu^{(r)}_{t} \cdot \mu^{(r)}_{t} = \sum_{i=t-r-1}^{t-1} x_0^i % + 2 - \nu_{prior}
 }
 and therefore
+
 \eqs{
 \nu^{(r+1)}_{t+1} \cdot \mu^{(r+1)}_{t+1} 	&= \sum_{i=t+1-r-1-1}^{t+1-1} x_0^i  \\% + 2 - \nu_{prior} \\
 											&=  \sum_{i=t-r-1}^{t} x_0^i  \\% + 2 - \nu_{prior}\\
@@ -2153,6 +2164,7 @@ and therefore
 \subsubsection{Quantitative evaluation}
 
 To quantitatively evaluate our results with respect to another probability bias, we computed in~\seeEq{KL} the cost as the Kullback-Leibler divergence  $\KL{\hat p}{p}$ between samples $\hat p$ and model $p$ under the hypothesis of a Bernoulli trial:
+
 \begin{equation}
 \KL{\hat p}{p} = \hat{p} \cdot\log\pa{\frac{\hat p}{p}} + (1-\hat p)\cdot \log\pa{\frac{1-\hat p}{1-p}}.
 \end{equation}
@@ -2178,6 +2190,7 @@ More generally, by observing $o$, the new rate is $p^{'} = \frac{p\cdot r + o}{r
 \subsubsection{Mathematical derivation}
 
 The likelihood will give the probability of this novel rate given the known parameters and their update (in particular $r^{'}=r+1$):
+
 \eqs{
 L(r | o)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r + o}{r+1})^{r + o - (p\cdot r + o)} \\
 &= \frac{1}{({r+1})^{r+1}} \cdot {(p\cdot r + o)}^{p\cdot r + o}  \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o} \\
@@ -2189,6 +2202,7 @@ L(r | o)&={(\frac{p\cdot r + o}{r+1})}^{p\cdot r + o} \cdot (1-\frac{p\cdot r + 
 %}  \\
 }
 since both likelihood sum to 1, the likelihood of drawing $o$ in the set $\{ 0, 1 \}$   is equal to
+
 %\AM{the change in the argument of $\Ll$}
 \eqs{
 \Ll(r | o)&=\frac{L(r | o)}{L(r | o=1) + L(r | o=0)}  \\
@@ -2203,7 +2217,8 @@ since both likelihood sum to 1, the likelihood of drawing $o$ in the set $\{ 0, 
   {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
 }  
 }
-This can also be written by isolating the part wich depends on $o$ and for a given run-length and knowing sufficient statistics describing the sufficient statistics at each node $r$:
+This can also be written by isolating the part which depends on $o$ and for a given run-length and knowing sufficient statistics describing the sufficient statistics at each node $r$:
+
 \eql{
 \Ll(r | o) = \frac{1}{Z} \cdot {(p \cdot r + o)}^{p \cdot r + o} \cdot {((1- p)\cdot r + 1- o)}^{(1- p)\cdot r + 1- o}
 }
