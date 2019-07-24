@@ -522,10 +522,10 @@ which compensate for the variability within sensory sequences,
 one may generate random sequences of Target Directions (TDs)
 using a dynamic value for the probability bias $p = \text{Pr}(\text{TD is 'right'})$,
 with a parametric mechanism controlling for the volatility at each trial.
-In the Hierarchical Gaussian Filter model (HGF,~\citet{Mathys11}), for instance,
+In the Hierarchical Gaussian Filter model~\citep{Mathys11}, for instance,
 volatility is controlled as a non-linear transformation
-of a random walk (modeled itself by a Brownian motion with a given diffusion factor).
-This hierarchical model allows to ultimately generate a sequence of binary choices
+of a random walk (modeled itself by a Brownian motion with a given diffusion coefficient).
+Ultimately, this hierarchical model allows to generate a sequence of binary choices
 where the variability fluctuates along a given trajectory.
 Such a forward probabilistic model is invertible
 using some simplifying assumptions and allows
@@ -562,7 +562,8 @@ the occurrence $x_2^t \in \{ 0, 1 \}$ of a switch ($1$ for true, $0$ for false)
 is  drawn from a Bernoulli trial $\Bb$ parameterized by its frequency $h$, or \emph{hazard rate}.
 The value of $\tau=\frac 1 h$ thus gives the average duration (in number of trials)
 between the occurrence of two switches.
-The probability bias $p$ of target direction is a random variable that we define as $x_1^t \in [0, 1]$.
+In the middle layer, the probability bias $p$ of target direction 
+is a random variable that we define as $x_1^t \in [0, 1]$.
 It is chosen at random from a prior distribution $\Pp$
 %(that will be described in more detail in the following sections)
 at the moment of a switch,
@@ -574,7 +575,7 @@ Finally, a target moves either to the left or to the right,
 and we denote this variable (target direction, TD) as $x_0^t \in \{ 0, 1 \}$.
 This direction is drawn from a Bernoulli trial
 parameterized by the direction bias $p=x_1^t$.
-Mathematically, this is  described according to the following equations:
+In summary, this is  described according to the following equations:
 %\begin{itemize}
 %    \item Occurrence of a switch: $x_2^t \propto \Bb(h)$
 %    \item Dynamics of probabilistic bias: \eql{\choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
@@ -601,11 +602,11 @@ With such a three-layered structure, the model generates the randomized occurren
 itself generating epochs with constant direction probability %between two switches separated by a random length
 %and chosen in the continuous range of possible biases' values,
 and finally the random sequence of Target Direction (TD) occurrences at each trial.
-To summarize, the system of three equations defined in~\seeEq{bsm}
+To sum up, the system of three equations defined in~\seeEq{bsm}
 defines the Binary Switching Model (BSM)
 which we used for the generation of experimental sequences presented to human participants in the experiments.
 We will use that generative model as the basis of an ideal observer model 
-inverting that model from the observations (TDs) and 
+inverting that model to predict probability biases from the observations (TDs) and 
 which we will test as a model for the adaptation of human behavior.
 
 %: 1Cd outline
@@ -615,7 +616,7 @@ the next section~(\seeSec{Bayesian_change_point}) will present
 an inversion of the BSM forward probabilistic model,
 coined the Binary Bayesian Change Point (BBCP) model.
 To our knowledge, such algorithm was not yet available, and
-we will here provide it with an analytical solution,
+we will here provide with an exact analytical solution
 by extending previous results from~\citet{AdamsMackay2007}
 to the case of binary data as in the BSM presented above (see~\seeEq{bsm}).
 In addition, the proposed algorithm is biologically realistic 
@@ -639,7 +640,8 @@ to adjust the cursor's position on the screen accordingly~(see \seeFig{intro}-C)
 In the other experimental session on a different day, 
 we showed the same sequence of target directions and 
 recorded participants' eye movements~(see \seeFig{intro}-B).
-Indeed, in order to understand the nature of the representation of motion regularities underlying this adaptive behavior,
+Indeed, in order to understand the nature of 
+the representation of motion regularities underlying this adaptive behavior,
 it is crucial to collect both 
 the recording of eye movements
 and the verbal explicit judgments about expectations on motion direction.
@@ -647,8 +649,8 @@ and the verbal explicit judgments about expectations on motion direction.
 %(\emph{prior} to the appearance of the target).
 %on a rating scale
 %between "sure left", to "unsure" and finally "sure right"~(see \seeFig{intro}-C).
-These results will be compared to the results for eye movements.
-Another novelty of our approach is to use that model as a regressor
+%These results will be compared to the results for eye movements.
+Another novelty of our approach is to use that agent as a regressor
 which will allow us to match experimental results with the BBCP
 and to compare its predictive power compared to classical models such as the leaky integrator model.
 Hence, we will show that behavioral results match well
@@ -675,11 +677,10 @@ offer some perspectives for future work in~\seeSec{outro}.
 %: 2 short intro
 %
 As we saw above, Bayesian methods provide a powerful framework for studying human behavior and adaptive  processes in particular.
-In the HGF model~\citep{Mathys11} for instance, the
-authors defined a multi-layered generative model for
+For instance,~\citet{Mathys11} first defined a multi-layered generative model for
 sequences of input stimuli.
 By inverting this stochastic forward process,
-one could extract relevant descriptors at the different levels of the model
+they could extract relevant descriptors at the different levels of the model
 and fit these parameters with the recorded behavior.
 Here, we use a similar approach, focusing specifically on the BSM generative model,
 as defined in~\seeEq{bsm}.
@@ -712,7 +713,7 @@ At trial $t$, this model can be expressed with the following equation:
 \hat{x_1}^{t+1} = (1 - h) \cdot \hat{x_1}^{t} + h \cdot x_0^t
 \label{eq:leaky}}
 where $\hat{x_1}^{t=0}$ is equal to some prior value ($0.5$ in the unbiased case),
-corresponding to the best guess at $t=0$ (before observing any data).
+corresponding to the best guess at $t=0$ (prior to the observation of any data).
 % NOTE: it's an AR(1) process https://stats.stackexchange.com/questions/358162/writing-ar1-as-a-ma-infty-process
 
 %: from heuristics to ideal observer
@@ -731,12 +732,12 @@ for the integration of information.
 Looking more closely at this expression,
 the ``forgetful agent'' computed in \seeEq{leaky}
 consists of an exponentially-weighted moving average (see \seeApp{leaky}).
-It may thus be equivalently written in the form of a moving average:
+It may thus be equivalently written in the form of a time-weighted average:
 \eql{
 \hat{x_1}^{t+1} = (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
 \label{eq:leaky2}}
 The first term corresponds to the discounted effect of the prior value before any observation and it tends to $0$ when $t$ increases. 
-More importantly, the second term corresponds to the \emph{leaky} integration of novel observations.
+More importantly, as $1-h < 1$, the second term corresponds to the \emph{leaky} integration of novel observations.
 Inversely, let us now assume that
 the true probability bias for direction changes randomly with a mean rate of once
 every $\tau$ trials.
@@ -1291,6 +1292,7 @@ taking into account a switch of the probability bias (while being hidden to the 
 reflecting the time (in the order of a few trials) taken to integrate enough information
 to build up the estimation of a novel expectation about the probability bias value 
 parameterizing the Bernoulli trial.
+Such adaptation is similar to the heuristic proposed in other studies~\citep{Schutz14}.
 In general, results are more variable when the bias is weak ($p\approx .5$)
 than when it is strong (close to zero or one),
 consistent with the well-known dependence of the variance of a Bernoulli trial
