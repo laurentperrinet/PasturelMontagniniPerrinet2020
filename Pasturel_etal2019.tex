@@ -11,7 +11,7 @@
 \newcommand{\AuthorC}{Laurent Perrinet}%
 \newcommand{\Address}{Institut de Neurosciences de la Timone, CNRS / Aix-Marseille Universit\'e - Marseille, France}%
 \newcommand{\Website}{https://laurentperrinet.github.io}%
-\newcommand{\Email}{Laurent.Perrinet@univ-amu.fr}%
+\newcommand{\EmailC}{Laurent.Perrinet@univ-amu.fr}%
 \newcommand{\Title}{
 %Principles and psychophysics of Active Inference in anticipating a dynamic probabilistic bias
 % Should I stay or should I go? 
@@ -20,23 +20,124 @@ Humans adapt their anticipatory eye movements to the volatility of visual motion
 %Anticipating a volatile probabilistic bias in visual motion direction
 %Humans adapt to the volatility of visual motion properties :  eye movements and explicit guesses
 }
-\newcommand{\Acknowledgments}{This work was supported by EU Marie-Sklodowska-Curie Grant No 642961 (PACE-ITN) and by the Fondation pour le Recherche M\'edicale, under the programme \textit{Equipe FRM} (DEQ20180339203/PredictEye/G Masson). Code and material on the \href{\Website/publication/pasturel-montagnini-perrinet-19}{corresponding author's website}. We thank Doctor Jean-Bernard Damasse, Dr Guillaume S. Masson and Professor Laurent Madelain for insightful discussions. }
+\newcommand{\Acknowledgments}{This work was supported by EU Marie-Sklodowska-Curie Grant No 642961 (PACE-ITN) and by the Fondation pour le Recherche M\'edicale, under the programme \textit{Equipe FRM} (DEQ20180339203/PredictEye/G Masson). Code and material on the \href{\Website/publication/pasturel-montagnini-perrinet-19}{corresponding author's website}. We thank Doctor Jean-Bernard Damasse, Guillaume S Masson and Professor Laurent Madelain for insightful discussions. }
 \newcommand{\Abstract}{
 Animal behavior must constantly adapt to changes, for example when the statistical properties of the environment change unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of motion ramps of a visual target is biased to one direction (e.g. right or left), human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where the probability bias could change at random switching times. In addition, we also recorded the explicit direction prediction reported by observers as given by a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to the event switching generating model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploration and exploitation in the model, we were able to fit each individual experimental data-set with different levels of estimated volatility and derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test the diversity of human cognitive abilities in uncertain and dynamic environments.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\documentclass[profile,final,english,draft,24pt]{article}%
-\documentclass[12pt,english]{article}%
-\usepackage{fullpage}
-% https://www.overleaf.com/learn/latex/Page_size_and_margins
-\usepackage[pass]{geometry}
-\usepackage{babel}
-\usepackage{csquotes}
-\usepackage{gensymb}
-% MATHS (AMS)
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{amsthm}
+\documentclass[10pt,letterpaper]{article}
+\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
+
+
+% amsmath and amssymb packages, useful for mathematical formulas and symbols
+\usepackage{amsmath,amssymb}
+
+% Use adjustwidth environment to exceed column width (see example table in text)
+\usepackage{changepage}
+
+% Use Unicode characters when possible
+\usepackage[utf8x]{inputenc}
+
+% textcomp package and marvosym package for additional characters
+\usepackage{textcomp,marvosym}
+
+% cite package, to clean up citations in the main text. Do not remove.
+\usepackage{cite}
+
+% Use nameref to cite supporting information files (see Supporting Information section for more info)
+\usepackage{nameref}
+
+% line numbers
+\usepackage[right]{lineno}
+
+% ligatures disabled
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = * }
+
+% color can be used to apply background shading to table cells only
+\usepackage[table]{xcolor}
+
+% array package and thick rules for tables
+\usepackage{array}
+
+% create "+" rule type for thick vertical lines
+\newcolumntype{+}{!{\vrule width 2pt}}
+
+% create \thickcline for thick horizontal lines of variable length
+\newlength\savedwidth
+\newcommand\thickcline[1]{%
+  \noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+  \cline{#1}%
+  \noalign{\vskip\arrayrulewidth}%
+  \noalign{\global\arrayrulewidth\savedwidth}%
+}
+
+% \thickhline command for thick horizontal lines that span the table
+\newcommand\thickhline{\noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+\hline
+\noalign{\global\arrayrulewidth\savedwidth}}
+
+
+% Remove comment for double spacing
+%\usepackage{setspace} 
+%\doublespacing
+
+% Text layout
+\raggedright
+\setlength{\parindent}{0.5cm}
+\textwidth 5.25in 
+\textheight 8.75in
+
+% Bold the 'Figure #' in the caption and separate it from the title/caption with a period
+% Captions will be left justified
+\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
+\renewcommand{\figurename}{Fig}
+
+% Use the PLoS provided BiBTeX style
+\bibliographystyle{plos2015}
+
+% Remove brackets from numbering in List of References
+\makeatletter
+\renewcommand{\@biblabel}[1]{\quad#1.}
+\makeatother
+
+
+
+% Header and Footer with logo
+\usepackage{lastpage,fancyhdr,graphicx}
+\usepackage{epstopdf}
+%\pagestyle{myheadings}
+\pagestyle{fancy}
+\fancyhf{}
+%\setlength{\headheight}{27.023pt}
+%\lhead{\includegraphics[width=2.0in]{PLOS-submission.eps}}
+\rfoot{\thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrule}{\hrule height 2pt \vspace{2mm}}
+\fancyheadoffset[L]{2.25in}
+\fancyfootoffset[L]{2.25in}
+\lfoot{\today}
+
+%% Include all macros below
+
+\newcommand{\lorem}{{\bf LOREM}}
+\newcommand{\ipsum}{{\bf IPSUM}}
+
+%% END MACROS SECTION
+
+%
+%%\documentclass[12pt,english]{article}%
+%\usepackage{fullpage}
+%% https://www.overleaf.com/learn/latex/Page_size_and_margins
+%%\usepackage[pass]{geometry}
+%\usepackage{babel}
+%\usepackage{csquotes}
+%\usepackage{gensymb}
+%% MATHS (AMS)
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{amssymb}
+%\usepackage{amsthm}
 \newcommand{\KL}[2]{\text{KL}( #1 | #2 )}
 %% parenthesis
 \newcommand{\pa}[1]{\left( #1 \right)}
@@ -94,43 +195,46 @@ Animal behavior must constantly adapt to changes, for example when the statistic
 \newcommand{\Xx}{\mathcal{X}}
 \newcommand{\Yy}{\mathcal{Y}}
 \newcommand{\Zz}{\mathcal{Z}}
+\usepackage{gensymb} % \degree
 %% ========  polices de caracteres =============
 \usepackage[T1]{fontenc}%
 \usepackage{lmodern}%
 \usepackage{t1enc}
 \usepackage{ragged2e}
 %============ graphics ===================
-\usepackage[pdftex]{graphicx}%
+\usepackage{graphicx}%
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}%
 \graphicspath{{./figures/}}% TODO remove {./figures/},  at the end
 %============ bibliography ===================
 %\usepackage[numbers,comma,sort&compress,round]{natbib} %
-\usepackage[
-%style=alphabetic-verb,
-style=authoryear-comp,
-%style=apa,
-maxcitenames=2,
-maxnames=2,
-%minnames=3,
-maxbibnames=99,
-giveninits=true,
-uniquename=init,
-url=false,
-isbn=false,
-eprint=false,
-texencoding=utf8,
-bibencoding=utf8,
-autocite=superscript,
-backend=bibtex,
-%sorting=none,
-sorting=nty,
-sortcites=false,
-%articletitle=false
-]{biblatex}%
-%\addbibresource{Pasturel_etal2018.bib}%
-\bibliography{Pasturel_etal2019.bib} % the ref.bib file
-\newcommand{\citep}[1]{\parencite{#1}}
-\newcommand{\citet}[1]{\textcite{#1}}
+%\usepackage[
+%%style=alphabetic-verb,
+%style=plos2015, %authoryear-comp,
+%%style=apa,
+%maxcitenames=2,
+%maxnames=2,
+%%minnames=3,
+%maxbibnames=99,
+%giveninits=true,
+%uniquename=init,
+%url=false,
+%isbn=false,
+%eprint=false,
+%texencoding=utf8,
+%bibencoding=utf8,
+%autocite=superscript,
+%backend=bibtex,
+%%sorting=none,
+%sorting=nty,
+%sortcites=false,
+%%articletitle=false
+%]{biblatex}%
+%%\addbibresource{Pasturel_etal2018.bib}%
+%\bibliography{Pasturel_etal2019.bib} % the ref.bib file
+%\newcommand{\citep}[1]{\parencite{#1}}
+%\newcommand{\citet}[1]{\textcite{#1}}
+\newcommand{\citep}[1]{\cite{#1}}
+\newcommand{\citet}[1]{\cite{#1}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% OPTIONAL MACRO FILES
 \usepackage{tikz}
@@ -144,14 +248,14 @@ sortcites=false,
 \newcommand{\seeSec}[1]{Section~\ref{sec:#1}}
 %============ hyperref ===================
 \usepackage[unicode,linkcolor=red,citecolor=red,filecolor=red,urlcolor=red,pdfborder={0 0 0}]{hyperref}%
-\hypersetup{%
-pdftitle={\Title},%
-pdfauthor={\AuthorA},%< \Email > \Address},%
-}%
-\usepackage{color}%
-\newcommand{\LP}[1]{\textbf{\textcolor{red}{[LP: #1]}}}
-\newcommand{\AM}[1]{\textbf{\textcolor{blue}{[AM: #1]}}}
-\newcommand{\CP}[1]{\textbf{\textcolor{green}{[CP: #1]}}}
+%\hypersetup{%
+%pdftitle={\Title},%
+%pdfauthor={\AuthorA }%\ < \Email > \Address},%
+%}%
+%\usepackage{color}%
+%\newcommand{\LP}[1]{\textbf{\textcolor{red}{[LP: #1]}}}
+%\newcommand{\AM}[1]{\textbf{\textcolor{blue}{[AM: #1]}}}
+%\newcommand{\CP}[1]{\textbf{\textcolor{green}{[CP: #1]}}}
 
 \usepackage{listings}
 \usepackage{color}
@@ -193,16 +297,23 @@ pdfauthor={\AuthorA},%< \Email > \Address},%
 \maketitle%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: Abstract
-\begin{abstract}
+\section*{Abstract}
 \Abstract
-\end{abstract}
+
+% Please keep the Author Summary between 150 and 200 words
+% Use first person. PLOS ONE authors please skip this step. 
+% Author Summary not valid for PLOS ONE submissions.   
+\section*{Author summary}
+Understanding how humans adapt to changing environments to make judgments or plan motor responses based on time-varying sensory information is crucial for psychology, neuroscience and artificial intelligence. Current theories for how we deal with the environment's uncertainty most rely on the equilibrium behavior in response to the introduction of some randomness change. Here we show that in the more ecological case where the context switches at random times all along the experiment, an adaptation to this volatility can be performed online. In particular, we show in two behavioral experiments that humans can adapt to such volatility at the early sensorimotor level, through their anticipatory eye movements, but also at a higher cognitive level, through explicit ratings. Our results suggest that humans (and future artificial systems) can use much richer adaptive strategies than previously assumed.
+\linenumbers
+
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Motivation}
+\section*{Motivation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Volatility of sensory contingencies and the adaptation of cognitive systems}
+\subsection*{Volatility of sensory contingencies and the adaptation of cognitive systems}
 %: 1A : cognitive adaptation to volatility; general volatility and perceptual learning
 %-------------------------------------------------------------%
 % ------------------------------------------------------------------
@@ -273,7 +384,7 @@ such that one can prepare to act upon them
 ahead of their occurrence~\citep{PerrinetAdamasFriston2014} ---
 or at least forming beliefs as precise as possible
 about a future environmental context ---
-is an ubiquitous challenge for cognitive systems.
+is an ubiquitous challenge for cognitive systems~\citep{Barack16}. 
 In the long term, how the human brain dynamically manages
 this trade-off between exploitation and exploration
 is essential to the adaptation
@@ -375,7 +486,7 @@ of experimental effects reported in all these studies.
 %of different models...
 Here we focus on an extension of this approach to the study of motion processing and eye movements.
 % ------------------------------------------------------------------
-\subsection{Anticipatory Smooth Pursuit Eye Movements (aSPEM)}
+\subsection*{Anticipatory Smooth Pursuit Eye Movements (aSPEM)}
 % ------------------------------------------------------------------
 %: 1B : particular case of aSPEM
 %: adaptation to volatility in EMs : seen as an anticipation in SPEM - principle and function
@@ -446,8 +557,8 @@ driving anticipatory behavior.
 \end{tikzpicture}
 }
 \caption{
-\emph{Smooth pursuit eye movements and explicit direction predictions in a volatile switching environment}
-\textbf{(A)}~
+\textbf{Smooth pursuit eye movements and explicit direction predictions in a volatile switching environment}
+\textit{(A)}~
 We tested the capacity of human participants to adapt to a volatile environment
 by using a simple, 3-layered generative model of fluctuations in target directions (TD)
 that we call the Binary Switching Model (BSM).
@@ -456,15 +567,15 @@ This probability bias is constant for as many trials until a switch is generated
 At a switch, the bias is chosen at random from a given prior.
 Switches are generated in the third layer as binary events drawn from a Bernoulli trial
 with a given hazard rate (defined here as $1/40$ per trial).
-\textbf{(B)}~
+\textit{(B)}~
 The eye-movements task was an adapted version of a task developed by~\citet{Montagnini2010}.
 Each one of $600$ trials consisted of sequentially:
 a fixation dot (of random duration between $400$ and $800$~\ms),
 a blank screen (of fixed duration of  $300$~\ms) and
-a moving ring-shaped target (with $15~\degree/s$ velocity) which the observers were instructed to follow.
+a moving ring-shaped target (with $15~\degree /s$ velocity) which the observers were instructed to follow.
 The direction of the target (right or left) was drawn pseudo-randomly
 according to the generative model defined above.
-\textbf{(C)}~In order to titrate the adaptation
+\textit{(C)}~In order to titrate the adaptation
 to the environmental volatility of target direction at the conscious level,
 we invited each observer to perform on a different day a new variant of the direction-biased experiment,
 where we asked participants to predict, before each trial, %the level of confidence for
@@ -480,7 +591,7 @@ between ``sure left'', to ``unsure'' and finally ``sure right''.
 %In order to generalize such results to more ecological conditions,
 %it is thus necessary to extend the experimental protocol of~\citet{Montagnini2010} in three aspects that will be illustrated in the next section.
 % ------------------------------------------------------------------
-\subsection{Contributions}%Outline}
+\subsection*{Contributions}%Outline}
 % ------------------------------------------------------------------
 %: 1C : what is novel in our work
 % ------------------------------------------------------------------
@@ -667,7 +778,7 @@ Finally, we will summarize and conclude this study and
 offer some perspectives for future work in~\seeSec{outro}.
 %
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results: Binary Bayesian Change Point (BBCP) detection model}
+\section*{Results: Binary Bayesian Change Point (BBCP) detection model}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Bayesian_change_point}
@@ -694,7 +805,7 @@ at specific (yet randomly drawn) trials,
 as defined by the forward probabilistic model in~\seeEq{bsm}.
 %
 % ------------------------------------------------------------------
-\subsection{Forgetful agent model (Leaky integrator)}%
+\subsection*{Forgetful agent model (Leaky integrator)}%
 % ------------------------------------------------------------------
 %: 2Aa justification from previous studies
 The leaky integrator ideal observer represents a classical, widespread and
@@ -786,7 +897,7 @@ of an ideal agent inferring
 both the trajectory in time of the probability bias ($x_1^t$)
 but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 % ------------------------------------------------------------------
-\subsection{Binary Bayesian Change Point (BBCP) detection model}
+\subsection*{Binary Bayesian Change Point (BBCP) detection model}
 % ------------------------------------------------------------------
 \label{sec:Binary_Bayesian_change_point}
 %-------------------------------------------------------------%
@@ -802,7 +913,7 @@ but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 \draw [anchor=north west] (0.382\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
 \end{tikzpicture}
 }
-\caption{\emph{Binary Bayesian Change Point (BBCP) detection model.} ~\textbf{(A)} This plot shows a synthesized sequence of $13$ events,
+\caption{\textbf{Binary Bayesian Change Point (BBCP) detection model.} ~\textit{(A)} This plot shows a synthesized sequence of $13$ events,
 %each of them corresponding to a binary choice,
 either a leftward or rightward movement of the target (TD).
 Run-length estimates are expressed as hypotheses about the length of a sub-block over which the probability bias was constant,
@@ -828,7 +939,7 @@ and produce a prediction for the next trial (e.g. for $t=14$).
 %In this instance, the inferred switch is delayed
 %by one trial with respect to the true switch.
 %\CP{representation des valeurs du run length en haut a gauche pour les essais 5 (en gris) et 8 (en bleu), on peut voir que pour l'essais 5 et 8 la probabilit\'e qu'il n'y est pas eu de switch depuis le d\'ebut est la plus importante (peut \^etre prendre un autre essais plus parlant - trial 10: proba switch à l'essais 5 est plus importante (notebook3) ?)}
-~\textbf{(B)} On a longer sequence of $200$ trials,
+~\textit{(B)} On a longer sequence of $200$ trials,
 representative of a sub-block of our experimental sequence (see~\seeFig{intro}-A), % and~\seeFig{results_raw}),
 we show %in the top plot
 the actual events which are observed by the agent (TD),
@@ -1113,7 +1224,7 @@ Finally, this prediction/update cycle applied to the BSM and using~\seeEq{bsm}
 constitutes the Binary Bayesian Change Point (BBCP) detection model.
 
 % ------------------------------------------------------------------
-\subsection{Quantitative analysis of the Binary Bayesian Change Point detection algorithm}
+\subsection*{Quantitative analysis of the Binary Bayesian Change Point detection algorithm}
 % ------------------------------------------------------------------
 %-------------------------------------------------------------%
 %: 2Ca python scripts : qualitative analysis
@@ -1199,7 +1310,7 @@ than for the leaky integrator ($\Cc = 0.522 \pm 0.128$), % cf  notebook 3},
 confirming that it provides overall a better description of the data.
 Note that the only free parameter of this model is the hazard rate $h$
 assumed by the agent (as in the fixed-length agent).
-Although more generic solutions exist~\citep{Wilson13,Wilson18},
+Although more generic solutions exist~\citep{Nassar10,Wilson13,Glaze15}, % ,Wilson18% ~\citep{Glaze15}
 we decided as a first step to keep this parameter fixed for our agent, 
 and  evaluate how well it matches to the experimental outcomes at the different scales of the protocol:
 averaged over all observers, for each individual observer or independently in all individual sub-blocks.
@@ -1226,17 +1337,17 @@ explicit guesses about target motion direction.
 %\AM{I WOULD DELETE THIS In particular, we expect intuitively the results to be more variable
 %compared to the previous protocol with fixed-length blocks (see~\seeFig{intro}-C).}
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Results: psychophysics}
+%\section*{Results: psychophysics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results: Anticipatory eye movements and explicit ratings}
+\section*{Results: Anticipatory eye movements and explicit ratings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:results_psycho}
 %: FIGURE 2 fig:results_psycho~\seeFig{results_psycho}
 \begin{figure}%[b!]
 \centering{\includegraphics[width=\linewidth]{2_results_enregistrement}}
 \caption{
-\emph{Raw behavioral results, qualitative overview.} %
+\textbf{Raw behavioral results, qualitative overview.} %
 The top row represents the sequence of target directions (TD)
 that were presented to observers
 in one sub-block of $200$ trials,
@@ -1359,7 +1470,7 @@ which supposedly underlie the generation of anticipatory aSPEM with variable str
 \end{tikzpicture}
 }
 \caption{%
-\emph{Behavioral results, quantitative analysis across participants.} %
+\textbf{Behavioral results, quantitative analysis across participants.} %
 For all participants and for all trials, we collected an estimate of
 the strength of aSPEM and a bet score value.
 We analyze the relation between these experimental data with the corresponding prediction $P_{\text{BBCP}}$
@@ -1369,7 +1480,7 @@ using an error-bar plot showing the median with $.25$ and $.75$ quantiles
 over 5 equal partitions of the $[0, 1]$ probability segment.
 %contour plot over the Kernel Density Estimation (KDE) 
 The green regression line illustrates the relationship between the BBCP regressor in abscissa
-and in ordinate \textbf{(A)} the strength of aSPEM and \textbf{(B)} the bet score, respectively.
+and in ordinate \textit{(A)} the strength of aSPEM and \textit{(B)} the bet score, respectively.
 %The density of strokes represent increasing probability strengths.
 As a comparison, we have plotted in blue and orange colors the regression lines
 with respectively 
@@ -1483,7 +1594,7 @@ of the experimental results,
 from the variability as a function of the inferred probability,
 to the dynamics of the behavior following a (hidden) switch.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results: Analyzing inter-individual differences}
+\section*{Results: Analyzing inter-individual differences}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:inter}
 %-------------------------------------------------------------%
@@ -1523,7 +1634,7 @@ we expect to better understand the variety of inter individual differences. % an
 % cf : 4_Meta_analysis.ipynb
 \begin{figure}%[b!]
 \centering{\includegraphics[width=0.618\linewidth]{5_inter-individual_differences_fit}}
-\caption{\emph{Analysis of inter-individual differences.} %
+\caption{\textbf{Analysis of inter-individual differences.} %
 We analyzed each participant's behavior individually, by searching
 the individual best value of the model's single free parameter, the hazard rate $h$.
 Estimates were performed independently on both experiments,
@@ -1633,7 +1744,7 @@ this estimation is then more strongly modulated by individual preferences
 when a more conscious cognitive process is at stake. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Discussion}
+\section*{Discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:outro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1670,7 +1781,7 @@ The capacity to adapt our behavior to the environmental regularities has been in
 %%%at the neuro-motor junction~\citep{Harris98}.
 %%%
 
-\subsection{Environmental regularities, cognitive properties and visual perception}
+\subsection*{Environmental regularities, cognitive properties and visual perception}
 
 %%%
 %%%PERCEPTION:
@@ -1771,7 +1882,7 @@ Future work will be needed to address the amplitude and dynamics of modulations 
 %%%
 %%%
 
-\subsection{Hierarchical Bayesian inference in the brain}
+\subsection*{Hierarchical Bayesian inference in the brain}
 When we perceive the physical world, make a decision or take an action to interact with it,
 our brain must deal with an ubiquitous property of it, uncertainty. Uncertainty can arise at different levels and be structured around different characteristic time scales. During the past decades, modern science seems to have completed an epistemological transition, from struggling to reduce or neglect uncertainly to engaging in understanding it as a crucial constituent of the world. In the cognitive neurosciences
 this transition has been formalized in the theoretical framework of Bayesian probabilistic inference, which has become very popular as a
@@ -1787,10 +1898,10 @@ There is a common confusion around the idea of a ``Bayesian brain''.
 We actually believe that the challenge here is not to validate the hypothesis that the brain uses or not the Bayes' theorem, or a more complex hierarchical combinations of inferential computations, but rather to test different hypotheses about the different generative models
 that agents may use. This methodological point will be essential in designing future experimental protocols, and in evaluating quantitatively the results. The brain is probably only ``weakly Bayesian'' (it does not care about equations but more about sugar, after all!). One remaining question though, is to understand why in cognitive systems the adaptation to hierarchical probabilistic fluctuations occurs and in particular why it may deviate in some pathological disorders such as schizophrenia~\citep{Adams12, Jardri2017} or across the natural variability of autistic traits~\citep{Karvelis2018}.
 
-%\subsection{Computational phenotyping of human participants}
+%\subsection*{Computational phenotyping of human participants}
 While it was not our original objective, we have analyzed in this study the individual best-fit parameters (hazard rates) of the BCCP model: despite a consistent variability of such parameters across sub-blocks of the trial sequence, we highlighted some noteworthy tendencies for participants to cluster around specific properties of the dynamic adaptation to a volatile probabilistic environment. Most important, this analysis corroborates and strengthens some recent attempts to realize a \textit{computational phenotyping} of human participants. However, more extensive studied should be conducted to be able to quantitatively titrate inter-individual tendencies.
 
-\subsection{Non-linearities in the adaptation to probabilistic environments}
+\subsection*{Non-linearities in the adaptation to probabilistic environments}
 Finally, neuroeconomists have pointed out a generic aversion to risk~\citep{Kahneman13}
 such that the value of a possible outcome
 is weighted by the precision of the inference, leading in general to an under-weighting of high gains and losses. Importantly,~\citet{WuDelgadoMaloney2012} compared a classical economic decision task with a motor decision task: they found that participants were more risk seeking in the motor task compared to the first one. More recently, in a task similar to ours, where the behavioral choice was not specifically associated to a reward schedule,
@@ -1859,7 +1970,7 @@ is weighted by the precision of the inference, leading in general to an under-we
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions}
+\section*{Conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{itemize}\setlength{\itemsep}{0ex}
@@ -1869,20 +1980,20 @@ is weighted by the precision of the inference, leading in general to an under-we
 \item Finally, we found that the experimental data of each different participant matched to different types of belief about the volatile environment, some being more or less conservative than others. Interestingly, each of the two experiments (namely for the unconscious anticipatory eye movements and the conscious rating) provided different distributions, opening the perspective for future \emph{computational phenotyping} using such a volatile setting.
 \end{itemize}
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Material and Methods}
+\section*{Material and Methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Participants, visual stimuli and experimental design}
+\subsection*{Participants, visual stimuli and experimental design}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Twelve observers ($29$ years old $\pm 5.15$, $7$ female) with normal or corrected-to-normal vision took part in these experiments. They gave their informed consent and the experiments had received ethical approval from the Aix-Marseille Ethics Committee (approval 2014-12-3-05), in accordance with the declaration of Helsinki.
 
 Visual stimuli were generated using PsychoPy 1.85.2~\citep{Peirce19} on a Mac running OS 10.6.8 and displayed on a 22" Samsung SyncMaster 2233 monitor with $1680\times 1050$ pixels resolution at 100~\si{\Hz} refresh rate. Experimental routines also written using PsychoPy controlled the stimulus display. Observers sat 57~\si{\cm} from the screen in a dark room.
 
-The moving target used in our experiments was a white ring ($0.35\degree$ outer diameter and $0.27\degree$ inner diameter) with a luminance of $102~cd/m2$ that moved horizontally on a grey background (luminance $42~cd/m^2$). Each trial started with a central fixation point displayed for a random duration drawn from a uniform distribution ranging between $400$ and $800~\ms$. Then a fixed-duration $300~\ms$ gap occurred between the offset of the fixation point and the onset of the moving target, which was presented slightly offset from the fixation location (\citet{Rashbass1961}) and immediately started moving horizontally at a constant speed of $15\degree/s$, either to the right or to the left for $1000~\ms$. The probability $p$ of rightward trials was a time-varying random variable which was constant within an epoch of the sequence of a given random size (see main text for the description of the generative model).
+The moving target used in our experiments was a white ring ($0.35\degree$ outer diameter and $0.27\degree$ inner diameter) with a luminance of $102~cd/m2$ that moved horizontally on a grey background (luminance $42~cd/m^2$). Each trial started with a central fixation point displayed for a random duration drawn from a uniform distribution ranging between $400$ and $800~\ms$. Then a fixed-duration $300~\ms$ gap occurred between the offset of the fixation point and the onset of the moving target, which was presented slightly offset from the fixation location~\citep{Rashbass1961} and immediately started moving horizontally at a constant speed of $15\degree/s$, either to the right or to the left for $1000~\ms$. The probability $p$ of rightward trials was a time-varying random variable which was constant within an epoch of the sequence of a given random size (see main text for the description of the generative model).
 
 The paradigm included two experimental sessions performed on two distinct (in general consecutive) days by each participant. The two sessions involved the presentation of the same sequence of trials, while collecting a different behavioral response: explicit rating judgments in the first session (the \textit{bet} experiment), and eye movement recordings in the second session. Asked after the experiment, no observer noticed that the same (pseudo-)random sequence of target directions was used in both experiments.
 
-\subsection{Eye movements experiment}
+\subsection*{Eye movements experiment}
 Eye movements were recorded continuously with an eye tracking system (Eyelink 1000, SR Research Ltd., sampled at 1000 Hz), using the Python module Pylink 0.1.0 provided by PsychoPy. Horizontal and vertical eye position data were transferred, stored, and analyzed offline using programs written using Jupyter notebooks.
 To minimize measurement errors, the participant's head movements were restrained using a chin and forehead rest, so that the eyes in primary gaze position were directed towards the center of the screen. In order to enforce accuracy in gaze position and tracking, we implemented an automatic procedure of fixation control. If the distance between the gaze position and the central fixation point during the fixation epoch exceeded $2\degree$ of visual angles, the fixation point started flickering and the counter for the fixation duration was reset to $0$.
 
@@ -1891,29 +2002,30 @@ In order to extract the relevant parameters of the oculomotor responses, we deve
 %are provided in Appendix \ref{app:em}
 Some trials were excluded from the analysis as the proportion of missing data-points, due to eye blinks or saccades was considered too large, namely when the missing data exceeded $45~\ms$ during the gap or one third of the total target motion epoch ($4.36\%$ of all trials). In addition, trials were also excluded when the eye-movement fitting procedure did not converge, after visual inspection, to a satisfactory match with the data ($3.25\%$ of all trials). The python scripts used to analyze eye movements are available at \url{https://github.com/invibe/ANEMO}.
 
-\subsection{The Bet experiment}
+\subsection*{The Bet experiment}
 The aim of the Bet experiment was to collect data related to the individual conscious estimates of the probability of target motion direction. At the beginning of each trial, before the presentation of the moving target, participants had to answer to the question \textit{ ``How sure are you that the target will go left or right''}. This was performed by adjusting a cursor on the screen using the mouse (see Figure~\seeFig{intro}-C). The cursor could be placed at any point along a horizontal segment representing a linear rating scale with three ticks labeled as \textit{ ``Left''}, \textit{``Right''} (at the extreme left and right end of the segment respectively), and \textit{``Unsure''} in the middle. Participants had to validate their choice by clicking on the mouse left-button and the actual target motion was shown thereafter. The rationale to collect rating responses on a continuous scale instead of a simple binary prediction (Right/Left) was to be able to infer the individual estimate of the direction bias at the single trial scale (in analogy to the continuous interval for the strength of aSPEM velocity).
 %
 We called this experiment the \textit{ ``Bet''} experiment, as participants were explicitly encouraged to make reasonable rating estimates, as though they had to bet money on the next trial outcome. Every $50$ trials, a \textit{``score''} was displayed on the screen, corresponding to the proportion of correct direction predictions (Right or Left of the \textit{``Unsure''} tick) weighted by the confidence attributed to each answer (the distance of the cursor from the center).
 
 
-%\subsection{Eye movements analysis}
+%\subsection*{Eye movements analysis}
 %The data analyses were implemented using the Python libraries numpy, pandas and pylab. All the scripts for data analysis, as well as for stimulus presentation, data collection, and preparation of figures are available on github at \url{https://github.com/chloepasturel/AnticipatorySPEM}.
 
 \section*{Acknowledgments}
 \Acknowledgments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{\tiny
-\printbibliography
-}
+%{\tiny
+%\printbibliography
+%}
+\bibliography{Pasturel_etal2019}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Appendices}
+\section*{Supporting information}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Appendix 1: Analysis of eye movements}
+%\subsection*{Appendix 1: Analysis of eye movements}
 %\label{app:em}
 %\AM{I would eliminate this appendix}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1984,7 +2096,7 @@ We called this experiment the \textit{ ``Bet''} experiment, as participants were
 % anticipatory component of SPEMs and..
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Appendix : leaky integrator}
+\subsection*{Appendix : leaky integrator}
 \label{app:leaky}
 Given a series of observations $\{x_0^i\}_{0\leq i \leq t}$
 with $\forall i, x_0^i \in \{0, 1 \}$, we defined
@@ -2020,7 +2132,7 @@ As such, the definitions in~\seeEq{leaky} and~\seeEq{leaky2} are equivalent.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{The Bernoulli, binomial and Beta distributions}
+\subsection*{The Bernoulli, binomial and Beta distributions}
 \label{app:beta}
 
 Let us define some basic concepts. A Bernoulli trial is the outcome of a binary random variable $x$ knowing a probability bias $\mu$ (with $0 \geq \mu \geq 1$) and can be formalized as:
@@ -2052,7 +2164,7 @@ Inversely, $\alpha + \beta = \nu$ and $\mu = \frac{\alpha}{\alpha +\beta} = 1- \
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Appendix 2: BBCP algorithm}
+\subsection*{Appendix 2: BBCP algorithm}
 \label{app:bcp}
 
 To summarize, the algorithm that we presented is an implementation of the  ``Bayesian Online Changepoint Detection'' by~\citet{AdamsMackay2007}
@@ -2087,7 +2199,7 @@ extended for the class of binary inputs. Using the definition of the run-length~
 
 In the following, we  detail some intermediate steps and highlight some key differences with their implementation. We also provide a python implementation of the algorithm, which is openly available on \href{https://github.com/laurentperrinet/Bayesianchangepoint}{GitHub}.
 
-\subsubsection{Initialization}
+\subsubsection*{Initialization}
 %to represent our belief at trial $t$
 %or to determine the pdf for $x_1^t$ as a mixture of Beta distributions:
 %\eqa{
@@ -2119,7 +2231,7 @@ Jeffrey's prior was more adapted to that task.
 %Wikipedia: Beta(1/2, 1/2): The arcsine distribution probability density was proposed by Harold Jeffreys to represent uncertainty for a Bernoulli or a binomial distribution in Bayesian inference, and is now commonly referred to as Jeffreys prior: p−1/2(1 − p)−1/2. This distribution also appears in several random walk fundamental theorems
 
 
-\subsubsection{Prediction: run-length distribution}
+\subsubsection*{Prediction: run-length distribution}
 
 The steps to achieve the update rule are: 
  
@@ -2135,7 +2247,7 @@ Finally we obtain~\seeEq{pred_node}:
 }
 
 
-\subsubsection{Prediction: sufficient statistics}
+\subsubsection*{Prediction: sufficient statistics}
 
 The recursive formulation in~\seeEq{update_nu} and~\seeEq{update_mu} comes from the expression 
 
@@ -2150,14 +2262,14 @@ and therefore
 											&= \nu^{(r)}_{t} \cdot  \mu^{(r)}_{t} +  x_0^t
 }
 
-%\subsubsection{Readout}
+%\subsubsection*{Readout}
 %\label{app:readout}
 %
 %Perform Prediction $P (x_0^{t+1} | x_{0:t}) = P (x_0^{t+1}|x_{0:t} , r_t) P (r_t|x_{0:t})$,
 %
 %Can we get  $P (x_2^{t+1} | x_{0:t}) $ ? would be nice to see the inferrence of surprise / would fit with pupil size...
 
-\subsubsection{Quantitative evaluation}
+\subsubsection*{Quantitative evaluation}
 
 To quantitatively evaluate our results with respect to another probability bias, we computed in~\seeEq{KL} the cost as the Kullback-Leibler divergence  $\KL{\hat p}{p}$ between samples $\hat p$ and model $p$ under the hypothesis of a Bernoulli trial:
 
@@ -2167,7 +2279,7 @@ To quantitatively evaluate our results with respect to another probability bias,
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Appendix: likelihood function}
+\subsection*{Appendix: likelihood function}
 \label{app:likelihood}
 %\seeApp{likelihood}
 % TODO : check http://www.princeton.edu/~rcw2/papers/WilsonEtAl_PLOSCompBiol2013.pdf and Bernoulli case + evaluation
@@ -2183,7 +2295,7 @@ The likelihood of observing $o=1$ is that of a binomial (conjugate of a Beta dis
 	\end{itemize}
 More generally, by observing $o$, the new rate is $p^{'} = \frac{p\cdot r + o}{r+1}$.
 
-\subsubsection{Mathematical derivation}
+\subsubsection*{Mathematical derivation}
 
 The likelihood will give the probability of this novel rate given the known parameters and their update (in particular $r^{'}=r+1$):
 
@@ -2220,7 +2332,7 @@ This can also be written by isolating the part which depends on $o$ and for a gi
 }
 with $Z$ such that $\Ll(r | o=1) + \Ll(r | o=0)=1$, that is~\seeEq{likelihood}.
 
-\subsubsection{Python code}
+\subsubsection*{Python code}
 
 \begin{lstlisting}
 def likelihood(o, p, r):
@@ -2250,7 +2362,7 @@ def likelihood(o, p, r):
 
 \end{lstlisting}
 
-\subsubsection{Properties}
+\subsubsection*{Properties}
 This function has some properties, notably symmetries:
 	\begin{itemize}
 		\item for certain outcomes, $\forall r >0$, $\Ll(o|p=0, r)=1-o$ and $\Ll(o|p=1, r)=o$,
@@ -2264,7 +2376,7 @@ Note also that as $r$ grows, the likelihood gets sharper.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Appendix 4: Supplementary psychophysical results}
+%\subsection*{Appendix 4: Supplementary psychophysical results}
 %\label{app:results_psycho}
 %%\seeApp{results_psycho}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
