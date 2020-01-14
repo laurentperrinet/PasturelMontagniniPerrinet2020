@@ -13,7 +13,7 @@
 \newcommand{\EmailC}{Laurent.Perrinet@univ-amu.fr}%chloe.pasturel@univ-amu.fr
 \newcommand{\Title}{
 %Principles and psychophysics of Active Inference in anticipating a dynamic probabilistic bias
-% Should I stay or should I go? 
+% Should I stay or should I go?
 %Humans adapt their eye movements to the volatility of visual motion properties, and know about it
 Humans adapt their anticipatory eye movements to the volatility of visual motion properties
 %Anticipating a volatile probabilistic bias in visual motion direction
@@ -28,7 +28,7 @@ Animal behavior must constantly adapt to changes, for example when the statistic
 \documentclass[10pt,letterpaper]{article}
 \usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
 
-
+% hello
 % amsmath and amssymb packages, useful for mathematical formulas and symbols
 \usepackage{amsmath,amssymb}
 
@@ -79,13 +79,13 @@ Animal behavior must constantly adapt to changes, for example when the statistic
 
 
 % Remove comment for double spacing
-%\usepackage{setspace} 
+%\usepackage{setspace}
 %\doublespacing
 
 % Text layout
 \raggedright
 \setlength{\parindent}{0.5cm}
-\textwidth 5.25in 
+\textwidth 5.25in
 \textheight 8.75in
 
 % Bold the 'Figure #' in the caption and separate it from the title/caption with a period
@@ -301,8 +301,8 @@ Animal behavior must constantly adapt to changes, for example when the statistic
 \Abstract
 
 % Please keep the Author Summary between 150 and 200 words
-% Use first person. PLOS ONE authors please skip this step. 
-% Author Summary not valid for PLOS ONE submissions.   
+% Use first person. PLOS ONE authors please skip this step.
+% Author Summary not valid for PLOS ONE submissions.
 \section*{Author summary}
 Understanding how humans adapt to changing environments to make judgments or plan motor responses based on time-varying sensory information is crucial for psychology, neuroscience and artificial intelligence. Current theories for how we deal with the environment's uncertainty most rely on the equilibrium behavior in response to the introduction of some randomness change. Here we show that in the more ecological case where the context switches at random times all along the experiment, an adaptation to this volatility can be performed online. In particular, we show in two behavioral experiments that humans can adapt to such volatility at the early sensorimotor level, through their anticipatory eye movements, but also at a higher cognitive level, through explicit ratings. Our results suggest that humans (and future artificial systems) can use much richer adaptive strategies than previously assumed.
 \linenumbers
@@ -384,7 +384,7 @@ such that one can prepare to act upon them
 ahead of their occurrence~\citep{PerrinetAdamasFriston2014} ---
 or at least forming beliefs as precise as possible
 about a future environmental context ---
-is an ubiquitous challenge for cognitive systems~\citep{Barack16}. 
+is an ubiquitous challenge for cognitive systems~\citep{Barack16}.
 In the long term, how the human brain dynamically manages
 this trade-off between exploitation and exploration
 is essential to the adaptation
@@ -401,7 +401,7 @@ or even hours in the case of the adaptation to a persistent sensorimotor relatio
 Indeed, stimulus history of sensory events influences
 how the current stimulus is perceived~\citep{Sotiropoulos2011,Adams12,ChopinMamassian2012,FischerWhitney2014,Cicchini_PRSB_2018} and
 acted upon~\citep{WallmanFuchs1998,Carpenter1995, Maus2015,Damasse18}.
-Two qualitatively opposite effects of the stimulus history have been described: 
+Two qualitatively opposite effects of the stimulus history have been described:
 negative (adaptation), and positive (priming-like) effects.
 Adaptation reduces the sensitivity to recurrently presented stimuli,
 thus yielding to a re-calibrated perceptual experience~\citep{Clifford2007, Webster2011, Kohn2007}. Examples of negative biases in perceptual discrimination are numerous (see for instance~\citep{KanaiVerstraten2005,ChopinMamassian2012}) and show that the visual system tends
@@ -420,7 +420,7 @@ where new contingencies can arise at every moment.
 Interestingly, priming effects at cognitive levels
 are sometimes paralleled by anticipatory motor responses which are positively correlated with the repetition of stimulus properties.
 A well-known example of this behavior
-are anticipatory smooth eye movements (aSPEM), 
+are anticipatory smooth eye movements (aSPEM),
 as we will illustrate in the next section.
 
 %: Bayesian methods & role of predictive processing for this adaptive response
@@ -443,7 +443,7 @@ to deal with this question.
 In all generality, Bayesian methods allow to define and quantitatively assess
 a range of hypotheses about the processing of (possibly noisy) information by some formal agents~\citep{Deneve1999, Diaconescu2014, Daunizeau10a}.
 A key principle in the Bayesian inference approach is
-to introduce so-called latent variables 
+to introduce so-called latent variables
 which formalize how different hypotheses predict synthetic or experimental measurements.
 Each stated hypothesis is quantitatively formalized
 by defining a graph of probabilistic dependencies between specific variables
@@ -563,7 +563,7 @@ We tested the capacity of human participants to adapt to a volatile environment
 by using a simple, 3-layered generative model of fluctuations in target directions (TD)
 that we call the Binary Switching Model (BSM).
 This TD binary variable is chosen using a Bernoulli trial of a given probability bias.
-This probability bias is constant for as many trials until a switch is generated. 
+This probability bias is constant for as many trials until a switch is generated.
 At a switch, the bias is chosen at random from a given prior.
 Switches are generated in the third layer as binary events drawn from a Bernoulli trial
 with a given hazard rate (defined here as $1/40$ per trial).
@@ -672,7 +672,7 @@ the occurrence $x_2^t \in \{ 0, 1 \}$ of a switch ($1$ for true, $0$ for false)
 is  drawn from a Bernoulli trial $\Bb$ parameterized by its frequency $h$, or \emph{hazard rate}.
 The value of $\tau=\frac 1 h$ thus gives the average duration (in number of trials)
 between the occurrence of two switches.
-In the middle layer, the probability bias $p$ of target direction 
+In the middle layer, the probability bias $p$ of target direction
 is a random variable that we define as $x_1^t \in [0, 1]$.
 It is chosen at random from a prior distribution $\Pp$
 %(that will be described in more detail in the following sections)
@@ -705,7 +705,7 @@ In practice, we generated a sequence of $600$ trials,
 and there is by construction a switch at $t=0$ (that is, $x_2^0=1$).
 In addition, we imposed in our sequence that a switch
 occurs after trial numbers $200$ and $400$,
-in order to be able to compare adaptation properties 
+in order to be able to compare adaptation properties
 across different chunks of the trials sequence.
 %The model generating the experimental sequence of trial directions, as well as the experimental protocol are illustrated in~\seeFig{intro}-A.
 With such a three-layered structure, the model generates the randomized occurrence of switches,
@@ -715,8 +715,8 @@ and finally the random sequence of Target Direction (TD) occurrences at each tri
 To sum up, the system of three equations defined in~\seeEq{bsm}
 defines the Binary Switching Model (BSM)
 which we used for the generation of experimental sequences presented to human participants in the experiments.
-We will use that generative model as the basis of an ideal observer model 
-inverting that model to predict probability biases from the observations (TDs) and 
+We will use that generative model as the basis of an ideal observer model
+inverting that model to predict probability biases from the observations (TDs) and
 which we will test as a model for the adaptation of human behavior.
 
 %: 1Cd outline
@@ -729,7 +729,7 @@ To our knowledge, such algorithm was not yet available, and
 we will here provide with an exact analytical solution
 by extending previous results from~\citet{AdamsMackay2007}
 to the case of binary data as in the BSM presented above (see~\seeEq{bsm}).
-In addition, the proposed algorithm is biologically realistic 
+In addition, the proposed algorithm is biologically realistic
 as it uses simple computations and is \emph{online},
 that is, that all computations on the sequence may be done
 using solely a set of variables available at the present trial,
@@ -747,12 +747,12 @@ In one session, participants were asked to estimate
 ``how much they are confident that
 the target will move to the right or left in the next trial'' and
 to adjust the cursor's position on the screen accordingly~(see \seeFig{intro}-C).
-In the other experimental session on a different day, 
-we showed the same sequence of target directions and 
+In the other experimental session on a different day,
+we showed the same sequence of target directions and
 recorded participants' eye movements~(see \seeFig{intro}-B).
-Indeed, in order to understand the nature of 
+Indeed, in order to understand the nature of
 the representation of motion regularities underlying this adaptive behavior,
-it is crucial to collect both 
+it is crucial to collect both
 the recording of eye movements
 and the verbal explicit judgments about expectations on motion direction.
 %In such an explicit judgment task, we evaluated for each participant their confidence for the next trial direction
@@ -846,7 +846,7 @@ It may thus be equivalently written in the form of a time-weighted average:
 \eql{
 \hat{x_1}^{t+1} = (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
 \label{eq:leaky2}}
-The first term corresponds to the discounted effect of the prior value before any observation and it tends to $0$ when $t$ increases. 
+The first term corresponds to the discounted effect of the prior value before any observation and it tends to $0$ when $t$ increases.
 More importantly, as $1-h < 1$, the second term corresponds to the \emph{leaky} integration of novel observations.
 Inversely, let us now assume that
 the true probability bias for direction changes randomly with a mean rate of once
@@ -958,7 +958,7 @@ The green and orange line correspond to the mean run-length which is inferred,
 respectively, by the BBCP and leaky models:
 Note that in the BBCP, while it takes some trials to detect switches,
 they are in general correctly identified (transitions between diagonal lines) and
-that integration is thus faster than for the leaky integrator, 
+that integration is thus faster than for the leaky integrator,
 as illustrated by the inferred value of the probability bias.
 }
 \label{fig:Bayesianchangepoint}
@@ -1006,7 +1006,7 @@ knowing what has been observed until trial $t$
 that data is the output of a given (stochastic) generative model (here, the BSM).
 To derive a Bayesian predictive model, we introduce
 the run-length as a latent variable which gives to the agent the possibility to represent
-different parallel hypotheses about the input. 
+different parallel hypotheses about the input.
 We therefore draw a computational graph (see \seeFig{Bayesianchangepoint}-A) where, at any trial,
 an hypothesis is formed on as many ``nodes'' than there are run-lengths
 (and limited for instance by the total number of trials).
@@ -1058,13 +1058,13 @@ Then, at any trial $t>0$, as we observe a new datum $x_0^t$,
 we use a knowledge of $\beta^{(r)}_{t-1}$ at trial $t-1$,
 the likelihood $\pi^{(r)}_{t}=Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$  and
 the transition probabilities defined by the generative model
-to predict the beliefs over all nodes: % 
+to predict the beliefs over all nodes: %
 
 \eqa{
-\beta^{(r)}_t \propto \sum_{r^{t-1} \geq 0} \beta^{(r)}_{t-1} \cdot Pr(r^t | r^{t-1}) \cdot  \pi^{(r)}_{t}  
+\beta^{(r)}_t \propto \sum_{r^{t-1} \geq 0} \beta^{(r)}_{t-1} \cdot Pr(r^t | r^{t-1}) \cdot  \pi^{(r)}_{t}
 \label{eq:pred_node}
 }
-In the computational graph, % (\seeFig{Bayesianchangepoint}-A), 
+In the computational graph, % (\seeFig{Bayesianchangepoint}-A),
 \seeEq{pred_node} corresponds to a message passing from the nodes at time $t-1$
 to that at time $t$. % and formalized by the transition matrix $Pr(r^t | r^{t-1})$.
 We will now detail how to compute the transition probabilities and the likelihood.
@@ -1084,8 +1084,8 @@ or its length (in number of trials) is incremented by $1$ if no switch occurred:
 This may be illustrated by a graph
 in which information will be represented at the different nodes for each trial $t$.
 %In a switching model like the BSM, the transition matrix % defined by the graph,
-This defines the transition matrix $Pr(r^t | r^{t-1})$ 
-as a partition in two exclusive possibilities: 
+This defines the transition matrix $Pr(r^t | r^{t-1})$
+as a partition in two exclusive possibilities:
 Either there was a switch or not.
 It allows us to compute the \emph{growth probability} for each run-length. % $r \geq 0$.
 On the one hand, the belief of an increment of the run-length at the next trial is: %, before observing a new datum:
@@ -1094,7 +1094,7 @@ On the one hand, the belief of an increment of the run-length at the next trial 
 \beta^{(r+1)}_t = \frac{1}{B} \cdot \beta^{(r)}_{t-1} \cdot \pi^{(r)}_{t} \cdot (1-h)
 \label{eq:beta_noswitch}
 }
-where $h$ is the scalar defining the hazard rate. 
+where $h$ is the scalar defining the hazard rate.
 On the other hand, it also allows to express the change-point probability as:
 
 \eqa{
@@ -1120,7 +1120,7 @@ is that here the observed data is a Bernoulli trial and not a Gaussian random va
 The random variable $x_1^t$ is the probability bias used
 to generate the sequence of events $x_0^t$.
 We will infer it for all different hypotheses on $r^t$,
-that is, knowing there was a sequence of $r^t$ Bernoulli trials 
+that is, knowing there was a sequence of $r^t$ Bernoulli trials
 with a fixed probability bias in that epoch.
 Such an hypothesis will allow us to compute the distribution
 $Pr(x_0^{t+1} | r^{t}, x_0^{0:t})$
@@ -1139,7 +1139,7 @@ one can show that at any trial $t>0$,
 the sufficient statistics $(\mu^{(r)}_{t}, \nu^{(r)}_{t})$
 can be updated from the previous trial following:
 \eql{
-\nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1 
+\nu^{(r+1)}_{t} = \nu^{(r)}_{t-1} + 1
 \label{eq:update_nu}
 }
 As a consequence, $\forall r, t; \nu^{(r)}_{t}$ is the sample size corrected by the initial condition.
@@ -1159,7 +1159,7 @@ This updates for each node the sufficient statistics of the probability density 
 %-------------------------------------------------------------%
 We can now detail the computation of the likelihood of the current datum $x_0^{t}$ with respect to
 the current beliefs : $\pi^{(r)}_t = Pr( x_0^{t} |  \mu^{(r)}_{t-1}, \nu^{(r)}_{t-1})$. %}
-This scalar is returned by the binary function 
+This scalar is returned by the binary function
 $\Ll(r | o)$ which evaluates at each node $r$ the likelihood of the parameters of each node
 whenever we observe a counterfactual alternative outcome $o=1$ or $o=0$
 knowing a mean bias $p=\mu^{(r)}_{t-1}$
@@ -1205,7 +1205,7 @@ as it is marginalized over all run-lengths:
 }
 Interestingly, it can be proven that if,
 instead of updating beliefs with Equations~\ref{eq:beta_noswitch} and~\ref{eq:beta_switch},
-we set nodes' beliefs to the constant vector $\beta^{(r)}_t = h \cdot (1 -h) ^r$, 
+we set nodes' beliefs to the constant vector $\beta^{(r)}_t = h \cdot (1 -h) ^r$,
 then the marginal probability is equal to that obtained with the leaky integrator (see~\seeEq{leaky}).
 This highlights again that, contrary to the leaky integrator, % for which the inference $\hat{x_2}=h$ was fixed,
 the BBCP model uses a dynamical model for the estimation of the volatility.
@@ -1229,7 +1229,7 @@ constitutes the Binary Bayesian Change Point (BBCP) detection model.
 %-------------------------------------------------------------%
 %: 2Ca python scripts : qualitative analysis
 %-------------------------------------------------------------%
-We have implemented 
+We have implemented
 the BBCP algorithm % is detailed in~\seeApp{bcp} and
 using a set of Python scripts.
 This implementation provides also some control scripts
@@ -1255,25 +1255,25 @@ corresponding to the same sequence of $200$ trials.
 The BBCP model achieves a correct detection of the switches after a short delay of a few trials.
 
 Two main observations are noteworthy. First, after each detected switch, beliefs align along a linear ridge,
-as our model best estimate of the current run-length is steadily incremented by $1$ at each trial until a new switch, 
+as our model best estimate of the current run-length is steadily incremented by $1$ at each trial until a new switch,
 and the probability $\hat{x_1}^t$ is estimated  by integrating sensory evidence in this epoch (it 'stays').
 Then, we observe that shortly after a switch (hidden to the agent),
 the belief diffuses until the relative probability of a continuously increasing run-length
 is lower that that assigned to a smaller run-length:
 There is a transition to a new state (the model 'goes').
 Such adaptation is similar to the slow / fast heuristic model proposed in other studies~\citep{Schutz14}.
-Second, we can use this information to readout the most likely probability bias and 
+Second, we can use this information to readout the most likely probability bias and
 use it as a regressor for the behavioral data.
 Note that the leaky integrator model is implemented
 by the agent assuming a fixed run-length profile (see orange line in \seeFig{Bayesianchangepoint}-B),
 allowing for a simple comparison of the BBCP model with the leaky integrator.
 Again, we see that a fixed length model gives qualitatively a similar output
-but with two disadvantages compared to the BBCP model, namely that 
-there is a stronger inertia in the dynamics of the model estimates and 
+but with two disadvantages compared to the BBCP model, namely that
+there is a stronger inertia in the dynamics of the model estimates and
 that there is no improvement in the precision of the estimates after a switch.
 %1/ the delay after the occurrence of a switch will always be similar,
 %2/ there is no dynamic update of the inferred probability while in the BBCP model, the precision of each new datum is higher after a switch.
-In contrast, after a correct switch detection in the BBCP model, 
+In contrast, after a correct switch detection in the BBCP model,
 the value of the inferred probability converges rapidly to the true probability
 as the number of observations steadily increases after a switch.
 
@@ -1292,9 +1292,9 @@ and averaged over all $T$ trials:
 %\eql{
 \choice{
  \Cc = \frac 1 T  \sum_t \Cc(x_1^t, \hat{x_1}^t)
- \text{ with } 
+ \text{ with }
  \Cc(x_1^t, \hat{x_1}^t) = H(x_1^t, \hat{x_1}^t ) - H(x_1^t, x_1^t ) \\
- \text{where } H(x_1^t, \hat{x_1}^t ) = - {x_1}^t \log_2( \hat{x_1}^t ) - (1-{x_1}^t) \log_2( 1- \hat{x_1}^t) 
+ \text{where } H(x_1^t, \hat{x_1}^t ) = - {x_1}^t \log_2( \hat{x_1}^t ) - (1-{x_1}^t) \log_2( 1- \hat{x_1}^t)
 }
 \label{eq:KL}
 }
@@ -1306,21 +1306,21 @@ compared to the hidden true probability bias $x_1^t$.
 %gave similar results but would need more data to converge.
 We have tested $100$ blocks of $2000$ trials for each read-out.
 In general, we found that the inference is better for the BBCP algorithm ($\Cc = 0.171 \pm 0.030$)
-than for the leaky integrator ($\Cc = 0.522 \pm 0.128$), % cf  notebook 3}, 
+than for the leaky integrator ($\Cc = 0.522 \pm 0.128$), % cf  notebook 3},
 confirming that it provides overall a better description of the data.
 Note that the only free parameter of this model is the hazard rate $h$
 assumed by the agent (as in the fixed-length agent).
 Although more generic solutions exist~\citep{Nassar10,Wilson13,Glaze15}, % ,Wilson18% ~\citep{Glaze15}
-we decided as a first step to keep this parameter fixed for our agent, 
+we decided as a first step to keep this parameter fixed for our agent,
 and  evaluate how well it matches to the experimental outcomes at the different scales of the protocol:
 averaged over all observers, for each individual observer or independently in all individual sub-blocks.
 In a second step, by testing different values of $h$ assumed by the agent
 but for a fixed hazard rate $h=1/40$ in the BSM,
-we found that the distance given by~\seeEq{KL} is minimal 
+we found that the distance given by~\seeEq{KL} is minimal
 for the true hazard rate used to generate the data.
 In other words, this analysis shows that the agent's inference is best for a hazard rate
 equal to that implemented in the generative model and which is actually hidden to the BBCP agent.
-This property will be important in a following section 
+This property will be important in a following section
 to estimate the hazard rate implicitly assumed by an individual participant
 on the basis of the set of responses given to the  sequence of stimuli
 (see~\seeSec{inter}).
@@ -1331,8 +1331,8 @@ on the basis of the set of responses given to the  sequence of stimuli
 As a summary, for each trial of any given sequence,
 we obtain an estimate of the probability bias assumed by the ideal observer
 and which we may use as a regressor.
-We will now present the analysis of this model's match 
-to our experimental measures of anticipatory eye movements and 
+We will now present the analysis of this model's match
+to our experimental measures of anticipatory eye movements and
 explicit guesses about target motion direction.
 %\AM{I WOULD DELETE THIS In particular, we expect intuitively the results to be more variable
 %compared to the previous protocol with fixed-length blocks (see~\seeFig{intro}-C).}
@@ -1366,11 +1366,11 @@ We have overlaid the results of the BBCP model
 (see~\seeFig{Bayesianchangepoint}-B, green line).
 This shows qualitatively a good match between
 the experimental evidence and the model.
-Note that short pauses occurred every $50$ trials 
-(as denoted by vertical black lines, see main text), 
+Note that short pauses occurred every $50$ trials
+(as denoted by vertical black lines, see main text),
 and we added the assumption in the model
-that there was a switch at each pause. 
-This is reflected by the reset of the green curve close to the $0.5$ level and 
+that there was a switch at each pause.
+This is reflected by the reset of the green curve close to the $0.5$ level and
 the increase of the uncertainty after each pause. %multiple of $50$ trials.
 }
 \label{fig:results_psycho}
@@ -1385,19 +1385,19 @@ as the sequence of observations that were used in both sessions
 (see~\seeFig{results_psycho}).
 In one session, we recorded the participants' eye movements and
 %extracted the aSPEM velocity. (for details, see~\seeApp{em}).
-we show the anticipatory smooth pursuit velocity 
+we show the anticipatory smooth pursuit velocity
 for two representative participants (out of $12$ participants), throughout a sub-block of $200$ trials of the experimental sequence.
 Note that these participants were chosen as those
 whose fitting score was nearest to the median score in the quantitative analysis
 that will be illustrated below in~\seeSec{inter}.
 In the top panel  of~\seeFig{results_psycho} we show the actual sequence of binary choices
-(TD, leftward or rightward) of the Bernoulli trials, 
-whereas in the bottom panels, 
+(TD, leftward or rightward) of the Bernoulli trials,
+whereas in the bottom panels,
 we compare for each two participants
 the evolution of the recorded aSPEM (grey line) with
-the true value of the hidden probability bias $x_1$ 
+the true value of the hidden probability bias $x_1$
 (step-like blue curve),
-and the value inferred using the BBCP model (green line), 
+and the value inferred using the BBCP model (green line),
 along with the $.05$ to $.95$ quantile range (green shaded area).
 Comparing the raw aSPEM results with the BBCP agent predictions,
 it appears qualitatively that both traces evolve in good agreement.
@@ -1405,10 +1405,10 @@ First, one can observe a trend in the polarity of aSPEM velocity
 to be negative for probability bias values below~$.5$ and positive for values above~$.5$.
 %Moreover, both curves seem to lag by few trials the
 %occurrence of a switch of the probability bias (also hidden to the observers).
-Moreover, both curves (aSPEM and model) unveil similar delays in detecting and 
+Moreover, both curves (aSPEM and model) unveil similar delays in detecting and
 taking into account a switch of the probability bias (while being hidden to the observers),
 reflecting the time (in the order of a few trials) taken to integrate enough information
-to build up the estimation of a novel expectation about the probability bias value 
+to build up the estimation of a novel expectation about the probability bias value
 parameterizing the Bernoulli trial.
 In general, results are more variable when the bias is weak ($p\approx .5$)
 than when it is strong (close to zero or one),
@@ -1439,7 +1439,7 @@ The next outcome of $x_{0}^{t}$ will in general be correctly inferred,
 as compared to a random choice, as reported previously~\citep{Meyniel15}. %\AM{statistics to cite for this?}
 %\AM{I WOULD SKIP THIS Equipped with this generative BSM model and the ideal observer given by the BBCP model,
 %the agent is able to predict the next outcome better than chance level.}
-Moreover, we observe again that a stronger probability bias leads 
+Moreover, we observe again that a stronger probability bias leads
 to a lower variability in the bet scores, compared to bias values close to $0.5$.
 Again, a (hidden) switch in the value of the bias is
 most of the time correctly identified after only a few trials.
@@ -1447,9 +1447,9 @@ Finally, note that at every pause (black vertical bar in~\seeFig{results_psycho}
 participants tended to favor unbiased guesses, closer to $0.5$
 than at the end of a sub-block of trials.
 We can speculate that this phenomenon could correspond
-to a spontaneous resetting mechanism of the internal belief on the probability bias 
-and indeed we can introduce such an assumption in the model, %in the definition of the BBCP agent, 
-as a reset of the internal belief after each pause. 
+to a spontaneous resetting mechanism of the internal belief on the probability bias
+and indeed we can introduce such an assumption in the model, %in the definition of the BBCP agent,
+as a reset of the internal belief after each pause.
 %along with an increased uncertainty,.
 To conclude, the experiment performed in this session
 shows that the probability bias values that are explicitly estimated by participants
@@ -1475,19 +1475,19 @@ For all participants and for all trials, we collected an estimate of
 the strength of aSPEM and a bet score value.
 We analyze the relation between these experimental data with the corresponding prediction $P_{\text{BBCP}}$
 of the probability bias as inferred by the BBCP model.
-We display these functional relations 
+We display these functional relations
 using an error-bar plot showing the median with $.25$ and $.75$ quantiles
 over 5 equal partitions of the $[0, 1]$ probability segment.
-%contour plot over the Kernel Density Estimation (KDE) 
+%contour plot over the Kernel Density Estimation (KDE)
 The green regression line illustrates the relationship between the BBCP regressor in abscissa
 and in ordinate \textit{(A)} the strength of aSPEM and \textit{(B)} the bet score, respectively.
 %The density of strokes represent increasing probability strengths.
 As a comparison, we have plotted in blue and orange colors the regression lines
-with respectively 
+with respectively
 the true probability ($P_{\text{true}}=x_1^t$) and
 the probability bias estimates $P_{\text{leaky}}$ obtained with a leaky integrator.
-Insets summarize the quantitative measure of this match 
-by computing the Pearson correlation coefficient $r$ 
+Insets summarize the quantitative measure of this match
+by computing the Pearson correlation coefficient $r$
 and the mutual information (MI) over the whole data set.
 Dots correspond to these measures for each individual observer.
 This shows quantitatively that for both experimental measures
@@ -1506,16 +1506,16 @@ with the true probability and with the estimates obtained with the leaky integra
 Quantitatively, we now compare the experimental results
 with the value of the probability bias $\hat{x_1}$
 computed by the BBCP algorithm.
-Compiling results %(see~\seeFig{results_psycho}) 
+Compiling results %(see~\seeFig{results_psycho})
 from all participants,
 we have plotted in~\seeFig{results_psycho_all}
 the aSPEM strength (panel A) and the bet scores (panel B) as a function of the BBCP-inferred probability bias
 (we remind here that the true value of the probability bias was coded at the second layer of the BSM generative model and is hidden both to the agents and to the human observers).
-All trials from all participants were pooled together 
-and we show this joint data as an error bar plot 
+All trials from all participants were pooled together
+and we show this joint data as an error bar plot
 showing the median along with the $.25$ and $.75$ quantiles
 as computed for 5 equal partitions of the $[0, 1]$ probability segment. % to generate a scatter plot
-As a comparison, the same method was applied to the true value $P_{\text{true}}$ and 
+As a comparison, the same method was applied to the true value $P_{\text{true}}$ and
 to the estimate obtained by the leaky integrator.
 %which was then  converted to a kernel density estimate
 %for a better visualization (kernel size of $XX$).
@@ -1526,32 +1526,32 @@ between the raw data and the different models.
 %Details of this analysis is presented in~\seeApp{bcp}.
 First, as we can see in~\seeFig{results_psycho_all}-A,
 the probability bias $P_{\text{BBCP}}$ estimated by the BBCP algorithm
-is linearly correlated with the aSPEM velocity, both as computed on the whole data or 
+is linearly correlated with the aSPEM velocity, both as computed on the whole data or
 for each observer individually (see insets in the Figure).
 The respective values %($r = XXX \pm $)
 for the whole dataset
-%\CP{aSPEM / BCP : 
-($r = 0.657$ and $MI = 0.687$) %pour les sujet - 
+%\CP{aSPEM / BCP :
+($r = 0.657$ and $MI = 0.687$) %pour les sujet -
 and across subjects
 ($r = 0.673 \pm 0.079$ and $MI =  0.707 \pm 0.134$) %notebook 4}
-are slightly higher than that found by~\citet{Montagnini2010} and~\citet{Damasse18} 
+are slightly higher than that found by~\citet{Montagnini2010} and~\citet{Damasse18}
 for aSPEM measures gathered across experimental blocks with fixed direction biases %($r = XXX \pm $),
-and significantly\footnote{All following $p$-values are obtained from the \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html}{Wilcoxon signed-rank test}.} better than that estimated 
-with the true probability 
-($r = 0.613 \pm 0.069$ with $p=0.002$ and $MI = 0.562 \pm 0.107$ with $p=0.002$) % 
+and significantly\footnote{All following $p$-values are obtained from the \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html}{Wilcoxon signed-rank test}.} better than that estimated
+with the true probability
+($r = 0.613 \pm 0.069$ with $p=0.002$ and $MI = 0.562 \pm 0.107$ with $p=0.002$) %
 %\CP{aSPEM / true : ($r = 0.597$ $MI = 0.529$) pour les sujet - ($r = 0.6138 \pm 0.0698 $  $p=0.0022$ - $MI = 0.5622 \pm 0.1079$ $p=0.0022$)}
-and for that estimated by the leaky-integrator model 
+and for that estimated by the leaky-integrator model
 ($r = 0.600 \pm 0.079$ with $p=0.003$ and $MI =  0.622 \pm 0.102$ with $p=0.004$), see inset).
 %\CP{aSPEM / Leaky - ($r = 0.582$ $MI = 0.609$) pour les sujet - ($r = 0.6005 \pm 0.0790$ $p=0.0037$ - $MI =  0.6221 \pm 0.1025$  $p=0.0047$)}
 A similar analysis
 illustrates the relationship between
 the model-estimated probability bias
 and the rating value, or bet score, about the expected outcome, which was provided at each trial
-by participants 
+by participants
 and is shown in~\seeFig{results_psycho}.
 Similarly to the aSPEM strength, the rating values are nicely correlated
-with the probability bias given by the model, 
-as quantified by the Pearson correlation coefficient and mutual information 
+with the probability bias given by the model,
+as quantified by the Pearson correlation coefficient and mutual information
 across subjects ($r = 0.813 \pm 0.091$ and $MI = 1.312 \pm 0.364$).
 %\CP{synchroniser ces valeurs entre figure et texte... --> valeurs correctes -- sur la figure : un r et un MI pour tous les sujets en m\^eme temps, dans le texte : moyenne de r et MI trouv\'e pour chaque sujets individuellement}
 %\CP{BET / BCP : ($r = 0.795$ $MI = 1.134$) pour les sujet - ($r = 0.8134 \pm 0.0916 $ $MI = 1.3126 \pm 0.3644$)}
@@ -1559,29 +1559,29 @@ Importantly, this value is again higher for the BBCP model than
 for the leaky integrator ($r = 0.731 \pm 0.129$ with $p=0.007$ and $MI =  1.117 \pm 0.409$ with $p=0.028$),
 %\CP{BET / Leaky : ($r = 0.712$ $MI = 0.968$) pour les sujet - ($r = 0.7311 \pm 0.1298 $ $p=0.0076$ - $MI =  1.1178 \pm 0.4092$ $p=0.0280$)
 or with the true probability ($r = 0.694 \pm 0.086$ with $p=0.002$ and $MI =  0.940 \pm 0.255$ with $p=0.002$). % : ($r = 0.679$ $MI = 0.795$) pour les sujet -  }
-Further notice that, in order to account for some specific changes 
-observed in the behavioral data after the short pauses 
-occurring every $50$ trials, 
-we added the assumption %for both models, 
-that there was a switch at each pause. 
+Further notice that, in order to account for some specific changes
+observed in the behavioral data after the short pauses
+occurring every $50$ trials,
+we added the assumption %for both models,
+that there was a switch at each pause.
 However, removing this assumption did not significantly change the conclusions about the match of the model
-compared to $P_{\text{true}}$ or $P_{\text{leaky}}$ 
+compared to $P_{\text{true}}$ or $P_{\text{leaky}}$
 both for eye movements %\AM{I would skip all these tests, too long here, if they do not add anything significant!!
 ($P_{\text{BBCP}}$: $r = 0.667 \pm 0.078$ and $MI =  0.712 \pm 0.125$, $P_{\text{leaky}}$: $r = 0.548 \pm 0.074$ with $p=0.003$ and $MI =  0.577 \pm 0.096$ with $p=0.003$ ; $P_{\text{true}}$ : $r = 0.613 \pm 0.069$ with $p=0.002$ and  $MI =  0.562 \pm 0.107$ with $p=0.002$) % }
-and the bet experiment 
+and the bet experiment
 ($P_{\text{BBCP}}$: $r = 0.802 \pm 0.090$ and $MI =  1.255 \pm 0.349$, $P_{\text{leaky}}$: $r = 0.641 \pm 0.120$ with $p=0.002$ and $MI =  0.966 \pm 0.300$ with $p=0.002$ ; $P_{\text{true}}$ : $r = 0.694 \pm 0.086$ with $p=0.002$ and $MI =  0.940 \pm 0.255$ with $p=0.002$).
 %\CP{SANS PAUSE -- BET  / BCP :($r = 0.785$ $MI = 1.100$) pour les sujet - ($r = 0.8027 \pm 0.0905 $ $MI =  1.2557 \pm 0.3498$)
 %/ Leaky :($r = 0.625$ $MI = 0.879$) pour les sujet - ($r = 0.6413 \pm 0.1209$ $p=0.0028$ - $MI = 0.9666 \pm 0.3008$ $p=0.0022$)
 %/ true probability : ($r = 0.679$ $MI = 0.795$) pour les sujet - ($r = 0.6949 \pm 0.0861 $ $p=0.0022$ - $MI = 0.9400 \pm 0.2550$ $p=0.0022$) }
 To conclude, we deduce that the dynamic estimate of the probability bias produced by the BBCP model
-is a powerful regressor to explain 
-both the strength of anticipatory smooth pursuit eye movements 
+is a powerful regressor to explain
+both the strength of anticipatory smooth pursuit eye movements
 and the explicit ratings of human observers experiencing a volatile context for visual motion.
 
 This relatively strong correlation is surprising at a first sight
 as the epochs with constant probability bias (between two switches) have random lengths,
 and participants have to adapt to such a volatile environment.
-However, adaptivity to a volatile environment is one of the most exquisite human skills: 
+However, adaptivity to a volatile environment is one of the most exquisite human skills:
 When faced with some new observations,
 the observer has to constantly adapt his/her response
 to either exploit this information by considering that
@@ -1600,16 +1600,16 @@ to the dynamics of the behavior following a (hidden) switch.
 %-------------------------------------------------------------%
 %: 4A separate above analysis
 %-------------------------------------------------------------%
-So far, we have presented the qualitative behavior of individual participants and 
-we have reported the quantitative analysis of the group-pooled data 
+So far, we have presented the qualitative behavior of individual participants and
+we have reported the quantitative analysis of the group-pooled data
 for the fit between experimental and model-inferred estimates of the hidden probability bias.
 For instance, the experimental measures for two representative participants in~\seeFig{results_psycho},
 support the qualitative match between behavioral data and model predictions,
 which we then confirmed quantitatively on the whole group of participants.
 It is important to note that no model fitting procedure was used so far,
-but only the match of the results of the BBCP-model 
-applied to the sequence of binary target directions 
-presented to the human participants, 
+but only the match of the results of the BBCP-model
+applied to the sequence of binary target directions
+presented to the human participants,
 as shown in~\seeFig{Bayesianchangepoint}-B.
 However, we observed that in both sessions the qualitative match between model and data varied across participants.
 This was best characterized by differences
@@ -1618,8 +1618,8 @@ by the different characteristic delays after a switch.
 This reflects the spectrum of individual behavioral choices
 between exploration versus exploration~\citep{Behrens07}.
 As a consequence, we were interested in characterizing these individual preferences
-for each individual participant, 
-but also to investigate whether this preference co-varied 
+for each individual participant,
+but also to investigate whether this preference co-varied
 across the two experimental sessions (i.e.~across implicit vs explicit response modalities).
 Crucially, we have seen that the BBCP model is controlled by a single parameter,
 the hazard rate, or equivalently by its inverse, the characteristic time $\tau$.
@@ -1639,17 +1639,17 @@ We analyzed each participant's behavior individually, by searching
 the individual best value of the model's single free parameter, the hazard rate $h$.
 Estimates were performed independently on both experiments,
 such that we extracted different estimates of $h_{\text{aSPEM}}$ and $h_{\text{bet}}$
-respectively for the aSPEM strength and the rating value. 
+respectively for the aSPEM strength and the rating value.
 The dots correspond to independent estimates of the hazard rate in each $200$ trial sub-block and data belonging to
 each individual participant are joined by dotted lines.
-Dashed lines correspond to the median for the full dataset (black line) 
-or for each individual sub-block (colored line). 
+Dashed lines correspond to the median for the full dataset (black line)
+or for each individual sub-block (colored line).
 These should be compared to the values obtained for the BBCP model,
 showing a slight variability over sub-blocks.
 Stars correspond to the observers displayed in~\seeFig{results_psycho}.
-This plot shows that best fit hazard rates are in general higher than the ground truth (blue line), 
+This plot shows that best fit hazard rates are in general higher than the ground truth (blue line),
 and in general higher for eye movements (below the diagonal).
-Note that the histograms of hazard-rate best-fit estimates (grey shaded areas) is much more narrower 
+Note that the histograms of hazard-rate best-fit estimates (grey shaded areas) is much more narrower
 for the eye movement session than for the bet experiment,
 as also illustrated by the cumulative distributions (plain lines in black or colors).
 Such an analysis suggests that participants ultimately have
@@ -1665,9 +1665,9 @@ for guiding their tendency of exploration versus exploitation.
 %-------------------------------------------------------------%
 Hence, we have fitted the sequence of responses generated by each participant and
 for each experimental session, that is for the eye movements and the rating scale experiments.
-To avoid any possible bias from the fitting procedure, 
+To avoid any possible bias from the fitting procedure,
 we tested $1600$ linearly spaced values of $\tau$ from $1$ to $1600$ trials.
-For each, we computed the correlation coefficient with the BBCP-model responses parameterized 
+For each, we computed the correlation coefficient with the BBCP-model responses parameterized
 by the value of the hazard rate $h = \frac 1 \tau$.
 We then extracted different estimates of $h_{\text{aSPEM}}$ and $h_{\text{bet}}$,
 respectively for aSPEM and the rating scale,
@@ -1680,27 +1680,27 @@ This figure suggests, in the first place, that there is some variability
 in the best fitted value of the hazard rate in both sessions.
 Overall, the value of correlation coefficient of the best fit hazard rate
 was slightly higher than that computed in~\seeFig{results_psycho}
-with $r = 0.682 \pm 0.080 $ for the eye movement session 
+with $r = 0.682 \pm 0.080 $ for the eye movement session
 %$\text{MI} = XX~ \pm XX~$
 %\CP{$h_{va}$: un r par sujet : $0.6826033619391142 \pm 0.08006027539364491$ //
 %un MI par sujet : $ 0.479930369669249 \pm 0.12328555167152054$ //
-%moyenne de tous les r trouv\'e : $0.639744367840892 \pm 0.11445851404708901$ 
-%quand on prend un r par sujet il semble que ce soit un peut plus grand que quand on garde un h fixe, pas pour le MI ni pour quand on calcule la moyenne des 3 r par sujet (notebook 5)} 
+%moyenne de tous les r trouv\'e : $0.639744367840892 \pm 0.11445851404708901$
+%quand on prend un r par sujet il semble que ce soit un peut plus grand que quand on garde un h fixe, pas pour le MI ni pour quand on calcule la moyenne des 3 r par sujet (notebook 5)}
  and $r = 0.811 \pm 0.089 $ for the rating scale session.
 %$\text{MI} = XX \pm XX$
 %\CP{$h_{bet}$ un r par sujet : $0.8117056662563028 \pm 0.08911550300859927$ //
 %un MI par sujet :$0.8341219853735895 \pm 0.25926861033243437$ //
 %moyenne de tous les r trouv\'e : $0.7975617439810163 \pm 0.14310508337570083$
 %il semble que se soit moin bon que quand on garde un h fixe} for the second.
-A part of the variability in the estimated hazard rates comes 
+A part of the variability in the estimated hazard rates comes
 from the limited length of the data blocks,
 while another part is due to intra-individual and inter-individual variabilities.
-Overall, the median (with $25\%$ and $75\%$ quantiles) are $h_{\text{aSPEM}} = 0.069 ~ (0.038, 0.093)$ %\CP{moyenne : $0.06692999125125686 \pm 0.03628253053391533$, mediane : 0.06904761904761905 	25\% 0.038461538461538464 	75\% 0.09318181818181817} 
+Overall, the median (with $25\%$ and $75\%$ quantiles) are $h_{\text{aSPEM}} = 0.069 ~ (0.038, 0.093)$ %\CP{moyenne : $0.06692999125125686 \pm 0.03628253053391533$, mediane : 0.06904761904761905 	25\% 0.038461538461538464 	75\% 0.09318181818181817}
 for the aSPEM session and
 $h_{\text{bet}} = 0.025 ~ (0.011, 0.093)$ %\CP{moyenne : $0.06631464647744617 \pm 0.09970025861060718$, mediane : 0.02564102564102564 	25\% 0.011951909476661951 	75\% 0.09318181818181817
-%} 
+%}
 for the rating scale.
-We observe that these values are close to the (hidden) ground truth value ($h=1/40=0.025$) used to generate the sequence. 
+We observe that these values are close to the (hidden) ground truth value ($h=1/40=0.025$) used to generate the sequence.
 In addition, the best-fit hazard rate value is higher for aSPEM compared to the true value and the rating scale measures.
 %Quantitatively, the ratio of both hazard rates computed across participants was \CP{with a ratio $1.6460031261743702~ \pm 2.779003512890947~$ ($h_{bet} / h_{va}$),  $16.12429536779007~ \pm 40.37883398426319~$ ($h_{va} / h_{bet}$)},
 In addition, we observed a tendency for hazard rate to be higher in the eye movement recording session.
@@ -1732,7 +1732,7 @@ at a quantitative level.
 Moreover, there is a difference in the distribution of observed hazard rates in both sessions.
 Indeed, we observed that the marginal distribution for each session is different,
 with the distribution in the aSPEM session being narrower than
-that observed for the rating scale session. 
+that observed for the rating scale session.
 In particular, we also observed the same behavior for each sub-block independently,
 suggesting that the origin of this variability mainly comes from inter-subject variability.
 %In comparison if, similarly to bootstrap resampling,
@@ -1741,7 +1741,7 @@ suggesting that the origin of this variability mainly comes from inter-subject v
 Such an analysis suggests that even though the predictive processes
 at work in both sessions may reflect a common origin for the evaluation of volatility,
 this estimation is then more strongly modulated by individual preferences
-when a more conscious cognitive process is at stake. 
+when a more conscious cognitive process is at stake.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
@@ -1749,7 +1749,7 @@ when a more conscious cognitive process is at stake.
 \label{sec:outro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The capacity to adapt our behavior to the environmental regularities has been investigated in different research fields, from motor priming and sensory adaptation to reinforcement learning, machine learning and economics. Several studies have aimed at characterizing the typical time scale over which such adaptation occurs. However, the pattern of environmental regularities could very well change in time, thereby making a fixed time-scale for adaptation a suboptimal cognitive strategy. In addition, different behaviors are submitted to different constraints and respond to different challenges, thus it is reasonable to expect some differences in the way (and time scales) they adapt to the changing environment. This study is an attempt to address these crucial open questions. We have taken an original approach, by assuming a theoretically-defined volatility in the properties of the environment (in the specific context of visual motion tracking) and we have developed an optimal inferential agent, which best captures the hidden properties of the generative model solely based on the trial sequence of target motion. We have then compared the optimal agent's prediction, as well as a more classical \textit{forgetful agent}, to two sets of behavioral data, one rooted in the early visuomotor loop underlying anticipatory ocular tracking, and the other related to the explicit, conscious estimate of the likelihood of a future event. Our results point to a flexible adaptation strategy in humans, taking into account the volatility of the environmental statistics. The time-scale of this dynamic adaptive process would thus vary across time, but it would also be modulated by the specific behavioral task and by inter-individual differences. In this section we discuss the present work and its implications in view of the existing literature and some general open questions.      
+The capacity to adapt our behavior to the environmental regularities has been investigated in different research fields, from motor priming and sensory adaptation to reinforcement learning, machine learning and economics. Several studies have aimed at characterizing the typical time scale over which such adaptation occurs. However, the pattern of environmental regularities could very well change in time, thereby making a fixed time-scale for adaptation a suboptimal cognitive strategy. In addition, different behaviors are submitted to different constraints and respond to different challenges, thus it is reasonable to expect some differences in the way (and time scales) they adapt to the changing environment. This study is an attempt to address these crucial open questions. We have taken an original approach, by assuming a theoretically-defined volatility in the properties of the environment (in the specific context of visual motion tracking) and we have developed an optimal inferential agent, which best captures the hidden properties of the generative model solely based on the trial sequence of target motion. We have then compared the optimal agent's prediction, as well as a more classical \textit{forgetful agent}, to two sets of behavioral data, one rooted in the early visuomotor loop underlying anticipatory ocular tracking, and the other related to the explicit, conscious estimate of the likelihood of a future event. Our results point to a flexible adaptation strategy in humans, taking into account the volatility of the environmental statistics. The time-scale of this dynamic adaptive process would thus vary across time, but it would also be modulated by the specific behavioral task and by inter-individual differences. In this section we discuss the present work and its implications in view of the existing literature and some general open questions.
 
 %OVERVIEW OF MAIN FINDINGS
 
@@ -1886,7 +1886,7 @@ Future work will be needed to address the amplitude and dynamics of modulations 
 When we perceive the physical world, make a decision or take an action to interact with it,
 our brain must deal with an ubiquitous property of it, uncertainty. Uncertainty can arise at different levels and be structured around different characteristic time scales. During the past decades, modern science seems to have completed an epistemological transition, from struggling to reduce or neglect uncertainly to engaging in understanding it as a crucial constituent of the world. In the cognitive neurosciences
 this transition has been formalized in the theoretical framework of Bayesian probabilistic inference, which has become very popular as a
-benchmark of optimal behavior in perceptual, sensorimotor and cognitive tasks~\citep{KnillPouget2004} and gives a unified framework for studying the brain~\citep{Friston2010}. Furthermore, plausible hypotheses about the implementation of Bayesian computations ---or approximations of them--- in the activity of neuronal populations have been proposed~\citep{Bastos12, Fetsch2012,Ma2006}. 
+benchmark of optimal behavior in perceptual, sensorimotor and cognitive tasks~\citep{KnillPouget2004} and gives a unified framework for studying the brain~\citep{Friston2010}. Furthermore, plausible hypotheses about the implementation of Bayesian computations ---or approximations of them--- in the activity of neuronal populations have been proposed~\citep{Bastos12, Fetsch2012,Ma2006}.
 
 However, one should be careful when evaluating the quality of fit of Bayesian inference models for behavioral data, and avoid any over-interpretation of the results.
 Note that, if we assume that the inversion of the generative model is perfect
@@ -1998,7 +1998,7 @@ Eye movements were recorded continuously with an eye tracking system (Eyelink 10
 To minimize measurement errors, the participant's head movements were restrained using a chin and forehead rest, so that the eyes in primary gaze position were directed towards the center of the screen. In order to enforce accuracy in gaze position and tracking, we implemented an automatic procedure of fixation control. If the distance between the gaze position and the central fixation point during the fixation epoch exceeded $2\degree$ of visual angles, the fixation point started flickering and the counter for the fixation duration was reset to $0$.
 
 The recorded horizontal and vertical raw gaze position data were numerically differentiated to obtain velocity measures. We adopted an automatic conjoint acceleration and velocity threshold method (the default saccade detection implemented by SR Research) to detect ocular saccades. Saccades and eye-blinks were excluded from eye velocity traces (and replaced by \textit{Not-a-Number} values in the numerical arrays) before trial averaging and data fitting for the extraction of the oculomotor parameters of interest.
-In order to extract the relevant parameters of the oculomotor responses, we developed new tools based on a best-fitting procedure of predefined oculomotor patterns and in particular the typical smooth pursuit velocity profile that was recorded in our experiment. A piecewise-defined function was fitted to the different epochs of the eye velocity traces: a constant function during fixation, a ramp-like linear function during smooth pursuit anticipation, an increasing sigmoid-function during the initiation of visually-guided smooth pursuit, reaching its saturating value during the pursuit steady-state. This analysis was applied to each trial individually and it allowed in particular to estimate the anticipatory smooth pursuit velocity. 
+In order to extract the relevant parameters of the oculomotor responses, we developed new tools based on a best-fitting procedure of predefined oculomotor patterns and in particular the typical smooth pursuit velocity profile that was recorded in our experiment. A piecewise-defined function was fitted to the different epochs of the eye velocity traces: a constant function during fixation, a ramp-like linear function during smooth pursuit anticipation, an increasing sigmoid-function during the initiation of visually-guided smooth pursuit, reaching its saturating value during the pursuit steady-state. This analysis was applied to each trial individually and it allowed in particular to estimate the anticipatory smooth pursuit velocity.
 %are provided in Appendix \ref{app:em}
 Some trials were excluded from the analysis as the proportion of missing data-points, due to eye blinks or saccades was considered too large, namely when the missing data exceeded $45~\ms$ during the gap or one third of the total target motion epoch ($4.36\%$ of all trials). In addition, trials were also excluded when the eye-movement fitting procedure did not converge, after visual inspection, to a satisfactory match with the data ($3.25\%$ of all trials). The python scripts used to analyze eye movements are available at \url{https://github.com/invibe/ANEMO}.
 
@@ -2144,7 +2144,7 @@ Pr(x | \mu) = \mu^x \cdot (1-\mu)^{1-x}
 The binomial distribution is defined as the probability that the sum $X$ of $\nu$ independent Bernoulli trials is $k$:
 
 \eq{
-\Pr(k;\nu,\mu) = \Pr(X = k) = {\nu\choose k} \cdot \mu^k \cdot (1-\mu)^{\nu-k} 
+\Pr(k;\nu,\mu) = \Pr(X = k) = {\nu\choose k} \cdot \mu^k \cdot (1-\mu)^{\nu-k}
 }
 
 Knowing such a model for $X$ it can be of interest to find an estimate of the parameter of the Bernoulli trial, that is of the probability bias $\mu$. This distribution function is called the conjugate of the binomial distribution which is the Beta-distribution. For example, the beta distribution can be used in Bayesian analysis to describe initial knowledge concerning probability of success such as the probability that a product will successfully complete a stress test. The beta distribution is a suitable model for the random behavior of percentages and proportions.
@@ -2152,9 +2152,9 @@ Knowing such a model for $X$ it can be of interest to find an estimate of the pa
 It is usually defined using shape parameters $\alpha$ and $\beta$:
 
 \eq{
-Pr(p | \alpha, \beta ) = \frac{1}{B(\alpha, \beta)} \cdot p^{\alpha -1} \cdot (1-p)^{\beta - 1} 
+Pr(p | \alpha, \beta ) = \frac{1}{B(\alpha, \beta)} \cdot p^{\alpha -1} \cdot (1-p)^{\beta - 1}
 }
-Note that here, the variable is the probability bias $p$. The normalization constant $B(\alpha, \beta)$ is given by the beta function. By definition: 
+Note that here, the variable is the probability bias $p$. The normalization constant $B(\alpha, \beta)$ is given by the beta function. By definition:
 
 \eqs{
         \alpha &= \mu \cdot \nu \\
@@ -2209,7 +2209,7 @@ In the following, we  detail some intermediate steps and highlight some key diff
 % in Python.
 %
 %
-%* adapted from https://github.com/JackKelly/Bayesianchangepoint by Jack Kelly (2013) 
+%* adapted from https://github.com/JackKelly/Bayesianchangepoint by Jack Kelly (2013)
 
 %
 %* This code is based on the [MATLAB implementation](http://www.inference.phy.cam.ac.uk/rpa23/changepoint.php) provided by Ryan Adam. Was available at http://hips.seas.harvard.edu/content/Bayesian-online-changepoint-detection
@@ -2233,8 +2233,8 @@ Jeffrey's prior was more adapted to that task.
 
 \subsubsection{Prediction: run-length distribution}
 
-The steps to achieve the update rule are: 
- 
+The steps to achieve the update rule are:
+
  \eqs{
 %\hat{x_1}^{t} =
 Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  \beta^{(r)}_t \\
@@ -2249,7 +2249,7 @@ Finally we obtain~\seeEq{pred_node}:
 
 \subsubsection{Prediction: sufficient statistics}
 
-The recursive formulation in~\seeEq{update_nu} and~\seeEq{update_mu} comes from the expression 
+The recursive formulation in~\seeEq{update_nu} and~\seeEq{update_mu} comes from the expression
 
  \eq{
 \nu^{(r)}_{t} \cdot \mu^{(r)}_{t} = \sum_{i=t-r-1}^{t-1} x_0^i % + 2 - \nu_{prior}
@@ -2323,7 +2323,7 @@ since both likelihood sum to 1, the likelihood of drawing $o$ in the set $\{ 0, 
  }{
  {(p\cdot r + 1)}^{p\cdot r + 1}  \cdot {((1- p)\cdot r )}^{(1- p)\cdot r }  +
   {(p\cdot r )}^{p\cdot r }  \cdot {((1- p)\cdot r + 1)}^{(1- p)\cdot r + 1}
-}  
+}
 }
 This can also be written by isolating the part which depends on $o$ and for a given run-length and knowing sufficient statistics describing the sufficient statistics at each node $r$:
 
