@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Pasturel_etal2019_revision.aux
+The style file: plos2015.bst
+Database file #1: Pasturel_etal2019.bib
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--there's a number but no volume in Hoyer2003
+Warning--empty pages in Krauzlis2008
+You've used 80 entries,
+            3058 wiz_defined-function locations,
+            1314 strings with 25202 characters,
+and the built_in function-call counts, 135111 in all, are:
+= -- 17654
+> -- 1006
+< -- 4
++ -- 612
+- -- 251
+* -- 11161
+:= -- 14753
+add.period$ -- 387
+call.type$ -- 80
+change.case$ -- 6
+chr.to.int$ -- 6
+cite$ -- 82
+duplicate$ -- 12089
+empty$ -- 12573
+format.name$ -- 323
+if$ -- 31552
+int.to.chr$ -- 0
+int.to.str$ -- 80
+missing$ -- 719
+newline$ -- 471
+num.names$ -- 82
+pop$ -- 1084
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 1172
+stack$ -- 0
+substring$ -- 25207
+swap$ -- 1876
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 775
+width$ -- 82
+write$ -- 1019
+(There were 2 warnings)
