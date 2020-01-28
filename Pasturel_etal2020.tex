@@ -494,21 +494,20 @@ between ``sure left'', to ``unsure'' and finally ``sure right''.
 % ------------------------------------------------------------------
 %: 1Ca how we do it : or rather why we do it this way (and not like Matthys)
 The goal of this study is to generalize the adaptive process
-observed in the anticipatory pursuit response
-in previous studies~\citep{Montagnini2010,SantosKowler2017} to more ecological settings and
+observed in anticipatory pursuit~\citep{Montagnini2010,SantosKowler2017}
+to more ecological settings and
 also to broaden its scope by showing that such adaptive processes
-occur at the conscious level as well.
-%The equations for this protocol will be detailed below~(\seeSec{Bayesian_change_point}).
+occur as well at the conscious level.
 We already mentioned that by manipulating the probability bias for target motion direction,
-it is possible to modulate the direction and mean velocity of anticipatory pursuit.
-This suggests that probabilistic information may be used
+it is possible to modulate the strength (direction and mean velocity) of anticipatory pursuit.
+This suggests that probabilistic information about direction bias may be used
 to inform the internal representation of motion prediction
 for the initiation of anticipatory movements.
 However, it is yet unclear what generative model to use
 to dynamically manipulate the probability bias
 and generate an ecologically relevant input sequence of target directions.
 A possible confound comes from the fact that
-previous studies have used trial sequences (\textit{blocks}) of fixed lengths,
+previous studies have used sequences of trials (\textit{trial blocks}) of fixed lengths,
 stacked in a sequence of conditions defined by the different probability biases.
 Indeed, observers may potentially pick up
 the information on the fixed block's length
@@ -516,7 +515,7 @@ to predict the occurrence of a switch (a change in probability bias) during the 
 Second, we observed qualitatively that following a switch,
 the strength of anticipatory pursuit changed gradually,
 consistently with other adaptation paradigms~\citep{Fukushima1996,Kahlon1996,Souto13}.
-The estimate of the characteristic temporal parameters for this  adaptation mechanism
+The estimate of the characteristic temporal parameters for this adaptation mechanism
 may become particularly challenging in a dynamic context,
 where the probabilistic contingencies vary in time in an unpredictable way.
 Finally, whether and how the information processing underlying
@@ -533,9 +532,9 @@ with a parametric mechanism controlling for the volatility at each trial.
 In the Hierarchical Gaussian Filter model~\citep{Mathys11}, for instance,
 volatility is controlled as a non-linear transformation
 of a random walk (modeled itself by a Brownian motion with a given diffusion coefficient).
-\Rone{line 192: Is it meant to be "volatility" and not "variability"?}
+% \Rone{line 192: Is it meant to be "volatility" and not "variability"?}
 Ultimately, this hierarchical model allows to generate a sequence of binary choices
-where the variability fluctuates along a given trajectory.
+where volatility is controlled by fluctuating the variability along a given trajectory.
 Such a forward probabilistic model is invertible
 using some simplifying assumptions and allows
 to extract a time-varying inference of the agent's belief about volatility~\citep{Vossel14}.
@@ -546,8 +545,9 @@ is still fixed within blocks but that these blocks have variable lengths,
 that is, by introducing switches occurring at random times.
 Therefore, similarly to~\citet{Meyniel13}, we will use a model where
 the bias $p$ in target direction varies according to a piecewise-constant function.
-%We expect that within each sub-block, the uncertainty about of the value of $p$
-%will progressively decrease as we accumulate samples.
+We expect that within each of these sub-block theat we defined,
+the uncertainty about of the value of $p$
+will progressively decrease as we accumulate trials.
 In addition, in our previous study
 the range of possible biases was finite.
 In the present work, we extended the paradigm
@@ -1205,7 +1205,7 @@ as the Kullback-Leibler distance of $\hat{x_1}^t$ %along with its precision $r^t
 compared to the hidden true probability bias $x_1^t$.
 %Similar measures based on the predicted readout $\hat{x_0}^t$
 %gave similar results but would need more data to converge.
-We have tested $100$ blocks of $2000$ trials for each read-out.
+We have tested $100$ trial blocks of $2000$ trials for each read-out.
 In general, we found that the inference is better for the BBCP algorithm ($\Cc = 0.171 \pm 0.030$)
 than for the leaky integrator ($\Cc = 0.522 \pm 0.128$), % cf  notebook 3},
 confirming that it provides overall a better description of the data.
@@ -1214,7 +1214,7 @@ assumed by the agent (as in the fixed-length agent).
 Although more generic solutions exist~\citep{Nassar10,Wilson13,Glaze15}, % ,Wilson18% ~\citep{Glaze15}
 we decided as a first step to keep this parameter fixed for our agent,
 and  evaluate how well it matches to the experimental outcomes at the different scales of the protocol:
-averaged over all observers, for each individual observer or independently in all individual sub-blocks.
+averaged over all observers, for each individual observer or independently in all individual trial blocks.
 In a second step, by testing different values of $h$ assumed by the agent
 but for a fixed hazard rate $h=1/40$ in the BSM,
 we found that the distance given by~\seeEq{KL} is minimal
@@ -1235,8 +1235,6 @@ and which we may use as a regressor.
 We will now present the analysis of this model's match
 to our experimental measures of anticipatory eye movements and
 explicit guesses about target motion direction.
-%\AM{I WOULD DELETE THIS In particular, we expect intuitively the results to be more variable
-%compared to the previous protocol with fixed-length blocks (see~\seeFig{intro}-C).}
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\section{Results: psychophysics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1251,7 +1249,7 @@ explicit guesses about target motion direction.
 \textbf{Raw behavioral results, qualitative overview.} %
 The top row represents the sequence of target directions (TD)
 that were presented to observers
-in one sub-block of $200$ trials,
+in one trial block of $200$ trials,
 as generated by the binary switching model (see~\seeFig{intro}-A).
 Bottom two rows show the raw behavioral results
 for two representative observers:
@@ -1287,7 +1285,7 @@ as the sequence of observations that were used in both sessions
 In one session, we recorded the participants' eye movements and
 %extracted the anticipatory pursuit velocity. (for details, see~\seeApp{em}).
 we show the anticipatory pursuit velocity
-for two representative participants (out of $12$ participants), throughout a sub-block of $200$ trials of the experimental sequence.
+for two representative participants (out of $12$ participants), throughout a trial block of $200$ trials of the experimental sequence.
 Note that these participants were chosen as those
 whose fitting score was nearest to the median score in the quantitative analysis
 that will be illustrated below in~\seeSec{inter}.
@@ -1316,8 +1314,8 @@ than when it is strong (close to zero or one),
 consistent with the well-known dependence of the variance of a Bernoulli trial
 upon the probabilistic bias ($\textrm{Var}(p)= p \cdot (1-p)$).
 In addition, the precision (i.e. the inverse of the variance)
-of the inferred probability bias $\hat{x_1}$ seems to increase
-in longer epochs (inter-switch blocks) as information is integrated over more trials.
+of the inferred probability bias $\hat{x_1}$ increases
+in longer sub-blocks, as information is integrated over more trials.
 As a result, the inferred probability as a function of time
 seems qualitatively to constitute a reliable regressor
 for predicting the strength of anticipatory pursuit.
@@ -1437,7 +1435,7 @@ for the whole dataset
 and across subjects
 ($r = 0.673 \pm 0.079$ and $MI =  0.707 \pm 0.134$) %notebook 4}
 are slightly higher than that found by~\citet{Montagnini2010} and~\citet{Damasse18}
-for anticipatory pursuit measures gathered across experimental blocks with fixed direction biases %($r = XXX \pm $),
+for anticipatory pursuit measures gathered across experimental trial blocks with fixed direction biases %($r = XXX \pm $),
 and significantly\footnote{All following $p$-values are obtained from the \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html}{Wilcoxon signed-rank test}.} better than that estimated
 with the true probability
 ($r = 0.613 \pm 0.069$ with $p=0.002$ and $MI = 0.562 \pm 0.107$ with $p=0.002$) %
@@ -1545,12 +1543,13 @@ the individual best value of the model's single free parameter, the hazard rate 
 Estimates were performed independently on both experiments,
 such that we extracted different estimates of $h_{\text{aSPEM}}$ and $h_{\text{bet}}$
 respectively for the anticipatory pursuit strength and the rating value.
-The dots correspond to independent estimates of the hazard rate in each $200$ trial sub-block and data belonging to
+The dots correspond to independent estimates of the hazard rate
+in each trial block ($200$ trials) and data belonging to
 each individual participant are joined by dotted lines.
 Dashed lines correspond to the median for the full dataset (black line)
-or for each individual sub-block (colored line).
+or for each individual trial block (colored line).
 These should be compared to the values obtained for the BBCP model,
-showing a slight variability over sub-blocks.
+showing a slight variability over trial blocks.
 Stars correspond to the observers displayed in~\seeFig{results_psycho}.
 This plot shows that best fit hazard rates are in general higher than the ground truth (blue line),
 and in general higher for eye movements (below the diagonal).
@@ -1578,7 +1577,7 @@ We then extracted different estimates of $h_{\text{aSPEM}}$ and $h_{\text{bet}}$
 respectively for anticipatory pursuit and the rating scale,
 by choosing the hazard rate value corresponding to that with maximal correlation coefficient.
 To cross-validate our results for each individual participant,
-we have fitted the BBCP model to each of the $3$ sub-blocks of $200$ trials.
+we have fitted the BBCP model to each of the $3$ trial blocks of $200$ trials.
 This provides with $3$ values of the best fitted hazard rate for each session and observer.
 The scatter plot of the best fit values is shown in~\seeFig{results_inter}.
 This figure suggests, in the first place, that there is some variability
@@ -1638,7 +1637,7 @@ Moreover, there is a difference in the distribution of observed hazard rates in 
 Indeed, we observed that the marginal distribution for each session is different,
 with the distribution in the anticipatory pursuit session being narrower than
 that observed for the rating scale session.
-In particular, we also observed the same behavior for each sub-block independently,
+In particular, we also observed the same behavior for each trial block independently,
 suggesting that the origin of this variability mainly comes from inter-subject variability.
 %In comparison if, similarly to bootstrap resampling,
 %we would shuffle the joint fitted values across participants,
@@ -1724,7 +1723,7 @@ that agents may use. In his sense, the brain is probably only ``weakly Bayesian'
 
 \AM{The great interest of understanding why and how humans adapt to the fluctuations of the hierarchical probabilistic context is further highlighted by the fact that such adaptivity may deviate in some pathological disorders, such as schizophrenia~\citep{Adams12, Jardri2017}, or across the natural variability of autistic traits~\citep{Karvelis2018}.}
 %\subsection{Computational phenotyping of human participants}
-While it was not our original objective, we have analyzed in this study the individual best-fit parameters (hazard rates) of the BCCP model: despite a consistent variability of such parameters across sub-blocks of the trial sequence, we highlighted some noteworthy tendencies for participants to cluster around specific properties of the dynamic adaptation to a volatile probabilistic environment. Most important, this analysis corroborates and strengthens some recent attempts to realize a \textit{computational phenotyping} of human participants. However, more extensive studies should be conducted to be able to quantitatively titrate inter-individual tendencies \AM{and possibly their relation to traits of personality}.
+While it was not our original objective, we have analyzed in this study the individual best-fit parameters (hazard rates) of the BCCP model: despite a consistent variability of such parameters across trial blocks of the experiment, we highlighted some noteworthy tendencies for participants to cluster around specific properties of the dynamic adaptation to a volatile probabilistic environment. Most important, this analysis corroborates and strengthens some recent attempts to realize a \textit{computational phenotyping} of human participants. However, more extensive studies should be conducted to be able to quantitatively titrate inter-individual tendencies \AM{and possibly their relation to traits of personality}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
