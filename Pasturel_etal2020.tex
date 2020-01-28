@@ -10,59 +10,39 @@
 \newcommand{\AuthorC}{Laurent Perrinet}%
 \newcommand{\Address}{Institut de Neurosciences de la Timone (UMR 7289), Aix Marseille Univ, CNRS - Marseille, France}%
 \newcommand{\Website}{https://laurentperrinet.github.io}%
-\newcommand{\EmailC}{Laurent.Perrinet@univ-amu.fr}%chloe.pasturel@univ-amu.fr
+\newcommand{\EmailC}{Laurent.Perrinet@univ-amu.fr}%
 \newcommand{\Title}{
-%Principles and psychophysics of Active Inference in anticipating a dynamic probabilistic bias
-% Should I stay or should I go?
-%Humans adapt their eye movements to the volatility of visual motion properties, and know about it
 Humans adapt their anticipatory eye movements to the volatility of visual motion properties
-%Anticipating a volatile probabilistic bias in visual motion direction
-%Humans adapt to the volatility of visual motion properties :  eye movements and explicit guesses
 }
-\newcommand{\Acknowledgments}{This work was supported by EU Marie-Sklodowska-Curie Grant No 642961 (PACE-ITN) and by the Fondation pour le Recherche M\'edicale, under the program \textit{Equipe FRM} (DEQ20180339203/PredictEye/G Masson). Code and material on the \href{\Website/publication/pasturel-montagnini-perrinet-19}{corresponding author's website}. We thank Doctor Jean-Bernard Damasse, Guillaume S Masson and Professor Laurent Madelain for insightful discussions. }
+\newcommand{\Acknowledgments}{This work was supported by EU Marie-Sklodowska-Curie Grant No 642961 (PACE-ITN) and by the Fondation pour le Recherche M\'edicale, under the program \textit{Equipe FRM} (DEQ20180339203/PredictEye/G Masson). Code and material on the \href{\Website/publication/pasturel-montagnini-perrinet-20}{corresponding author's website}. We thank Doctor Jean-Bernard Damasse, Guillaume S Masson and Professor Laurent Madelain for insightful discussions. }
 \newcommand{\Abstract}{
 Animal behavior must constantly adapt to changes, for example when the statistical properties of the environment change unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of motion ramps of a visual target is biased to one direction (e.g. right or left), human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where the probability bias could change at random switching times. In addition, we also recorded the explicit direction prediction reported by observers as given by a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to the event switching generating model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploration and exploitation in the model, we were able to fit each individual experimental data-set with different levels of estimated volatility and derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test the diversity of human cognitive abilities in uncertain and dynamic environments.}
 \newcommand{\KeyWords}{eye movements, decision making, volatility, bayesian model; adaptation; perception}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\documentclass[profile,final,english,draft,24pt]{article}%
 \documentclass[10pt,letterpaper]{article}
 \usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
-
-% hello
-% amsmath and amssymb packages, useful for mathematical formulas and symbols
 \usepackage{amsmath,amssymb}
-
 % Use adjustwidth environment to exceed column width (see example table in text)
 \usepackage{changepage}
-
 % Use Unicode characters when possible
 \usepackage[utf8x]{inputenc}
-
 % textcomp package and marvosym package for additional characters
 \usepackage{textcomp,marvosym}
-
 % cite package, to clean up citations in the main text. Do not remove.
 \usepackage{cite}
-
 % Use nameref to cite supporting information files (see Supporting Information section for more info)
 \usepackage{nameref}
-
 % line numbers
 \usepackage[right]{lineno}
-
 % ligatures disabled
 \usepackage{microtype}
 \DisableLigatures[f]{encoding = *, family = * }
-
 % color can be used to apply background shading to table cells only
 \usepackage[table]{xcolor}
-
 % array package and thick rules for tables
 \usepackage{array}
-
 % create "+" rule type for thick vertical lines
 \newcolumntype{+}{!{\vrule width 2pt}}
-
 % create \thickcline for thick horizontal lines of variable length
 \newlength\savedwidth
 \newcommand\thickcline[1]{%
@@ -71,38 +51,28 @@ Animal behavior must constantly adapt to changes, for example when the statistic
   \noalign{\vskip\arrayrulewidth}%
   \noalign{\global\arrayrulewidth\savedwidth}%
 }
-
 % \thickhline command for thick horizontal lines that span the table
 \newcommand\thickhline{\noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
 \hline
 \noalign{\global\arrayrulewidth\savedwidth}}
-
-
 % Remove comment for double spacing
 %\usepackage{setspace}
 %\doublespacing
-
 % Text layout
 \raggedright
 \setlength{\parindent}{0.5cm}
 \textwidth 5.25in
 \textheight 8.75in
-
 % Bold the 'Figure #' in the caption and separate it from the title/caption with a period
 % Captions will be left justified
 \usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
 \renewcommand{\figurename}{Fig}
-
 % Use the PLoS provided BiBTeX style
 \bibliographystyle{plos2015}
-
 % Remove brackets from numbering in List of References
 \makeatletter
 \renewcommand{\@biblabel}[1]{\quad#1.}
 \makeatother
-
-
-
 % Header and Footer with logo
 \usepackage{lastpage,fancyhdr,graphicx}
 \usepackage{epstopdf}
@@ -117,27 +87,7 @@ Animal behavior must constantly adapt to changes, for example when the statistic
 \fancyheadoffset[L]{2.25in}
 \fancyfootoffset[L]{2.25in}
 \lfoot{\today}
-
-%% Include all macros below
-
-\newcommand{\lorem}{{\bf LOREM}}
-\newcommand{\ipsum}{{\bf IPSUM}}
-
 %% END MACROS SECTION
-
-%
-%%\documentclass[12pt,english]{article}%
-%\usepackage{fullpage}
-%% https://www.overleaf.com/learn/latex/Page_size_and_margins
-%%\usepackage[pass]{geometry}
-%\usepackage{babel}
-%\usepackage{csquotes}
-%\usepackage{gensymb}
-%% MATHS (AMS)
-%\usepackage{amsmath}
-%\usepackage{amsfonts}
-%\usepackage{amssymb}
-%\usepackage{amsthm}
 \newcommand{\KL}[2]{\text{KL}( #1 | #2 )}
 %% parenthesis
 \newcommand{\pa}[1]{\left( #1 \right)}
@@ -204,44 +154,13 @@ Animal behavior must constantly adapt to changes, for example when the statistic
 %============ graphics ===================
 \usepackage{graphicx}%
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}%
-\graphicspath{{./figures/}}% TODO remove {./figures/},  at the end
+\graphicspath{{./figures/}}%
 %============ bibliography ===================
-%\usepackage[numbers,comma,sort&compress,round]{natbib} %
-%\usepackage[
-%%style=alphabetic-verb,
-%style=plos2015, %authoryear-comp,
-%%style=apa,
-%maxcitenames=2,
-%maxnames=2,
-%%minnames=3,
-%maxbibnames=99,
-%giveninits=true,
-%uniquename=init,
-%url=false,
-%isbn=false,
-%eprint=false,
-%texencoding=utf8,
-%bibencoding=utf8,
-%autocite=superscript,
-%backend=bibtex,
-%%sorting=none,
-%sorting=nty,
-%sortcites=false,
-%%articletitle=false
-%]{biblatex}%
-%%\addbibresource{Pasturel_etal2018.bib}%
-%\bibliography{Pasturel_etal2020.bib} % the ref.bib file
-%\newcommand{\citep}[1]{\parencite{#1}}
-%\newcommand{\citet}[1]{\textcite{#1}}
 \newcommand{\citep}[1]{\cite{#1}}
 \newcommand{\citet}[1]{\cite{#1}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% OPTIONAL MACRO FILES
 \usepackage{tikz}
-%\usepackage{tikz,tkz-euclide} \usetkzobj{all} % loading all objects
-%\usetikzlibrary{positioning} \usetikzlibrary{calc}
-%\usepackage{sfmath}
-%\usepackage[noabbrev]{cleveref}
 \newcommand{\seeFig}[1]{Figure~\ref{fig:#1}}
 \newcommand{\seeEq}[1]{Equation~\ref{eq:#1}}
 \newcommand{\seeApp}[1]{Appendix~\ref{app:#1}}
@@ -256,10 +175,7 @@ Animal behavior must constantly adapt to changes, for example when the statistic
 \newcommand{\LP}[1]{\textbf{\textcolor{red}{[LP: #1]}}}
 \newcommand{\AM}[1]{\textbf{\textcolor{blue}{[AM: #1]}}}
 \newcommand{\CP}[1]{\textbf{\textcolor{green}{[CP: #1]}}}
-
 \usepackage{listings}
-\usepackage{color}
-
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
@@ -286,12 +202,7 @@ Animal behavior must constantly adapt to changes, for example when the statistic
 \author{\AuthorA,
 \AuthorB,
 \AuthorC\thanks{\Address} }
-
-% GUIDELINES : https://submit.elifesciences.org/html/elife_author_instructions.html#initial
-
-\usepackage{lineno}
 \linenumbers
-
 %%%%%%%%%%%% Her begynner selve dokumentet %%%%%%%%%%%%%%%
 \begin{document}%
 \maketitle%
@@ -299,14 +210,12 @@ Animal behavior must constantly adapt to changes, for example when the statistic
 %: Abstract
 \section*{Abstract}
 \Abstract
-
 % Please keep the Author Summary between 150 and 200 words
 % Use first person. PLOS ONE authors please skip this step.
 % Author Summary not valid for PLOS ONE submissions.
 \section*{Author summary}
 Understanding how humans adapt to changing environments to make judgments or plan motor responses based on time-varying sensory information is crucial for psychology, neuroscience and artificial intelligence. Current theories for how we deal with the environment's uncertainty most rely on the equilibrium behavior in response to the introduction of some randomness change. Here we show that in the more ecological case where the context switches at random times all along the experiment, an adaptation to this volatility can be performed online. In particular, we show in two behavioral experiments that humans can adapt to such volatility at the early sensorimotor level, through their anticipatory eye movements, but also at a higher cognitive level, through explicit ratings. Our results suggest that humans (and future artificial systems) can use much richer adaptive strategies than previously assumed.
 \linenumbers
-
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Motivation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -317,34 +226,10 @@ Understanding how humans adapt to changing environments to make judgments or pla
 %: 1A : cognitive adaptation to volatility; general volatility and perceptual learning
 %-------------------------------------------------------------%
 % ------------------------------------------------------------------
-% * the evolution  of prices on the stock market: Any Socio-economic contextual index may make the price evolve up or down, slowly or more Rapidly
-% * ecological change
-% * the side (left or right of the field) in which the ball is on a soccer field
-% \LP{Anna, I found a better example which was less dramatic than ``
-% Think for instance of the variability of environmental contingencies
-% present in global climate and
-% the probability of a change in its dynamic
-% since the switch of civilization in an industrialized organization:
-% We have access to (possibly noisy and heterogeneous) measurements
-% of some (few) markers, such as carbon dioxide concentration and
-% wish to predict the range of the mean temperature on Earth.
-% This reveals some of the dynamics of
-% the complex system constituted by the atmosphere
-% and of acceptable levels of temperature for civilization.
-% Based on past history and prior knowledge about
-% the effect of our own emissions of carbon dioxide
-% (for instance priming evidence of the link between carbon dioxide
-% concentration and an elevation of temperature),
-% one should be able to predict at best if either
-% one could continue to exploit a similar strategy (emit gases)
-% or if it is necessary to explore different paradigms (limit emissions).
-% '' Hope you like it :-) }
-% \AM{ I like the green example too: it only demands to define the variable that would correspond to the time series to be tracked: carbon dioxide measurements at a given critical location? Also, the fact that a switch detection may inform important decision is nice for the example but we do not really have an analogy to it in our task. Yet I am very happy with both examples, both very much on fashion, are we more ecology, or pro-vax activists?!}
 We live in a fundamentally volatile world for which
 our cognitive system has to constantly adapt.
 In particular, this volatility may be generated
 by processes with different time scales.
-%Imagine for instance you are a general practitioner and that you usually report an average number of three person infected by measles per week. However, this rate is variable and over the past week you observe that the rate increased to ten cases. As such, two alternate interpretations are available: Either, there is an outbreak of measles and one should estimate its incidence (as measured as the rate of new cases) since an estimate of the outbreak’s onset and which defines a new infection rate of this outbreak but also an updated value of volatility (as given by the probability of a new outbreak) at a longer time scale. Alternatively, these cases are “unlucky” coincidences that originate from the variability of the process which drives patients to the doctor and which are in a shorter term an instance of values drawn from a stationary random process. In that option, it may be possible to readjust the estimated baseline rate of infection with this new data.  This example illustrates one fundamental problem with which our cognitive system is faced: when observing new sensory evidence, should I stay and continue to exploit this novel data with respect to my current beliefs about the environment’s state or should I go and explore a new hypothesis about the random process generating the observations since the detection of a switch in the environment?
 Imagine for instance you are a general practitioner and
 that you usually report an average number of
 three persons infected by measles per week.
@@ -468,11 +353,6 @@ the prior over future beliefs~\citep{Montagnini2007}.
 In such models, the comparisons between expectations and actual data produces
 constant updates to the estimates of the latent variables
 but also on the validity of the model.
-%Such a process is formalized in all generality
-%within the~\textit{active inference} framework~\citep{Friston2003, Friston2010}.
-%In summary, Active Inference allows to predict latent variables
-%but also to understand longer time effects such as adaptation and learning.
-%
 There are numerous examples of Bayesian approaches
 applied to the study of the adaptation to volatility.
 For instance,~\citet{Meyniel16} simulated a hierarchical Bayesian model
@@ -481,9 +361,6 @@ Their main conclusion was that
 learning the local transition probabilities
 was sufficient to explain the large repertoire
 of experimental effects reported in all these studies.
-%
-%As a consequence, Bayesian inference allows to compare the explanatory power
-%of different models...
 Here we focus on an extension of this approach to the study of motion processing and eye movements.
 % ------------------------------------------------------------------
 \subsection{Anticipatory Smooth Pursuit Eye Movements (aSPEM)}
@@ -1567,7 +1444,8 @@ that there was a switch at each pause.
 However, removing this assumption did not significantly change the conclusions about the match of the model
 compared to $P_{\text{true}}$ or $P_{\text{leaky}}$
 both for eye movements %\AM{I would skip all these tests, too long here, if they do not add anything significant!!
-($P_{\text{BBCP}}$: $r = 0.667 \pm 0.078$ and $MI =  0.712 \pm 0.125$, $P_{\text{leaky}}$: $r = 0.548 \pm 0.074$ with $p=0.003$ and $MI =  0.577 \pm 0.096$ with $p=0.003$ ; $P_{\text{true}}$ : $r = 0.613 \pm 0.069$ with $p=0.002$ and  $MI =  0.562 \pm 0.107$ with $p=0.002$) % }
+($P_{\text{BBCP}}$: $r = 0.667 \pm 0.078$ and $MI =  0.712 \pm 0.125$, $P_{\text{leaky}}$: $r = 0.548 \pm 0.074$ with $p=0.003$ and $MI =  0.577 \pm 0.096$ with $p=0.003$ ; $P_{\text{true}}$ : $r = 0.613 \pm 0.069$ with $p=0.002$ and %
+$MI =  0.562 \pm 0.107$ with $p=0.002$ ) % }
 and the bet experiment
 ($P_{\text{BBCP}}$: $r = 0.802 \pm 0.090$ and $MI =  1.255 \pm 0.349$, $P_{\text{leaky}}$: $r = 0.641 \pm 0.120$ with $p=0.002$ and $MI =  0.966 \pm 0.300$ with $p=0.002$ ; $P_{\text{true}}$ : $r = 0.694 \pm 0.086$ with $p=0.002$ and $MI =  0.940 \pm 0.255$ with $p=0.002$).
 %\CP{SANS PAUSE -- BET  / BCP :($r = 0.785$ $MI = 1.100$) pour les sujet - ($r = 0.8027 \pm 0.0905 $ $MI =  1.2557 \pm 0.3498$)
@@ -1751,79 +1629,8 @@ when a more conscious cognitive process is at stake.
 
 The capacity to adapt our behavior to the environmental regularities has been investigated in different research fields, from motor priming and sensory adaptation to reinforcement learning, machine learning and economics. Several studies have aimed at characterizing the typical time scale over which such adaptation occurs. However, the pattern of environmental regularities could very well change in time, thereby making a fixed time-scale for adaptation a suboptimal cognitive strategy. In addition, different behaviors are submitted to different constraints and respond to different challenges, thus it is reasonable to expect some differences in the way (and time scales) they adapt to the changing environment. This study is an attempt to address these crucial open questions. We have taken an original approach, by assuming a theoretically-defined volatility in the properties of the environment (in the specific context of visual motion tracking) and we have developed an optimal inferential agent, which best captures the hidden properties of the generative model solely based on the trial sequence of target motion. We have then compared the optimal agent's prediction, as well as a more classical \textit{forgetful agent}, to two sets of behavioral data, one rooted in the early visuomotor loop underlying anticipatory ocular tracking, and the other related to the explicit, conscious estimate of the likelihood of a future event. Our results point to a flexible adaptation strategy in humans, taking into account the volatility of the environmental statistics. The time-scale of this dynamic adaptive process would thus vary across time, but it would also be modulated by the specific behavioral task and by inter-individual differences. In this section we discuss the present work and its implications in view of the existing literature and some general open questions.
 
-%OVERVIEW OF MAIN FINDINGS
-
-% From psychophysics at equilibrium to study the whole dynamics
-
-%%%
-%%%% FOR DISCUSSION?
-%%%%This analysis -the correlation between predicted bias and bet scores- exhibits a consistent relationship
-%%%%but which now follows a non-linear trace.
-%%%%We modeled this behavior as
-%%%%a logistic regression over
-%%%%the log-odd ratio estimated by the agent.
-%%%%TODO model this relationship by a logistic regression
-%%%%This analysis provides with regression factors for each participant.
-%%%%It shows that the bias (intercept)
-%%%%was negligible, while the slope (logistic factor)
-%%%%was always positive.
-%%%%This indicates a generic aversion to risk~\citep{Kahneman13}
-%%%%such that the value of a possible outcome
-%%%%is down-weighted by the precision of the inference.
-%%%%Our logistic regression analyses
-%%%%suggests that this may come from a multiplicative weight
-%%%%on the (log-) odd-ratio which is chosen as a rating scaled
-%%%%compared to the (log-)odd-ratio of the inferred probability. %\AM{Is it worth to discuss more in depth the different functional dependence on p of the two experimental measures? Cite Santos and Kowler discussion about this!} - LP: that would certainly be a great addition...
-%%%%%%%
-%%%
-%%%The compromise between speed and accuracy is shaped
-%%%by the variability introduced by the neural noise
-%%%at the neuro-motor junction~\citep{Harris98}.
-%%%
-
 %\subsection{Environmental regularities, cognitive properties and visual perception}
 \AM{\subsection{Different measures of adaptation to a probabilistic volatile environment}}
-
-%%%
-%%%PERCEPTION:
-%%%\AM{I PROPOSE to skip this, we detail this stuff in the next section and the part on perception is not appropriate here... First, it seems important to investigate the integration of environmental statistical regularities
-%%%in this smooth tracking task with
-%%%a large family of probability biases for the direction of target motion.
-%%%As such, instead of a finite set of probability biases, % ($.25$, $.5$, $.75$, $.9$ and $1.$, see \seeFig{intro}-B),
-%%%we decided to use a continuous range of probability biases.
-%%%%which we were sampling from a fixed prior distribution.
-%%%Second,~\citet{Maus2015} have recently shown that
-%%%both perceptual adaptation for speed estimation
-%%%and priming of aSPEM could occur simultaneously.
-%%%They found a robust repulsive adaptation effect
-%%%with perceptual judgements biased in favor of faster percepts
-%%%after seeing stimuli that were slower and~\textit{vice-versa}.
-%%%Concurrently, these authors also found
-%%%a positive effect on anticipatory smooth pursuit,
-%%%with faster anticipation after faster stimuli.
-%%%Indeed, both priming and adaptation can hypothetically share
-%%%a common internal representation of stimulus' speed,
-%%%reasonably built according to the mean velocity of the last observed movements.
-%%%The comparison of the internal representation of speed
-%%%with the current stimulus velocity could explain repulsive aftereffects and,
-%%%at the same time, be used to elicit
-%%%an aSPEM component at the appropriate velocity
-%%%for next stimulus occurrences.
-%%%\citet{Maus2015} estimated the past history effects over different times scales,
-%%%with the priming effects being maximized
-%%%for short stimulus histories (around $2$ trials) and
-%%%adaptation for longer stimulus history, around $15$ trials.
-%%%Their main conclusion was that
-%%%perceptual adaptation and oculomotor priming
-%%%are the result of two distinct readout processes
-%%%using the same internal representation of motion regularities.
-%%%Both these history lengths can be considered
-%%%short in comparison to the several hundreds
-%%%of trials that are commonly used in psychophysics and sensorimotor adaptation studies.}
-%%%In general, it seems \AM{important to disentangle the different cognitive processes and time scales}
-%%%and their respective role in adaptive processes.
-%%%
-%%%
 
 The time-varying statistical regularities that characterize the environment are likely to influence several cognitive functions. In this study, we have made the choice to focus on a largely unconscious motor behavior (aSPEM), as well as on the explicit rating of expectation for the forthcoming motion direction. In contrast, we have not addressed the question of whether and how statistical learning affects visual motion perception throughout our model-generated volatile sequences.
 In an empirical context similar to ours,~\citet{Maus2015} have recently shown that
@@ -1846,7 +1653,6 @@ Note that both these history lengths can be considered
 short in comparison to the several hundreds
 of trials that are commonly used in psychophysics and sensorimotor adaptation studies and that, similar to the present study, the inferred characteristic times are even shorter for the buildup of anticipatory eye movements. However, it is also important to note that in the study by \citet{Maus2015}, the generative model underlying the random sequence of motion trials was different and much simpler than in the present study: In particular the role of environmental volatility was not directly addressed there. This makes a direct comparison between their results and ours difficult beyond a qualitative level.
 
-%%%%The oculomotor system has to constantly update its knowledge about the environment. An ordeal is then to adapt to changes with the shortest delays. Early studies have proposed that stimuli provides information to modulate reaction times within sequences~\citep{Hyman1953, Tune1964, Schvaneveldt}. This theoretical approach is coherent with the notion of local transition probabilities that quantifies at which extent an observation deviates from the preceding ones~\citep{Meyniel16}. The way expectations act on cognitive processes has been investigated by a wide range of domains such as predictive coding~\citep{Wolpert2000, Wacongne2012}, active inference~\citep{Friston2010}, motor control~\citep{Sutton1998, Behrens07} and reinforcement learning~\citep{Nassar2012}. Non-stationary observations can also explain why both local and global effects emerge and why local effects persist in the long run even within purely random sequences~\citep{Cho2002, Yu2009}. This constant update of a general belief on the world can be a consequence of the constant attempt to learn the non-stationary structure of the environment that can change at unpredictable times~\citep{Yu2009}. Many studies have actually already pointed the brain's ability to apprehend non-stationary states in environments~\citep{Ossmy2013, Meyniel15}. As explained by~\citet{Meyniel16}, the belief upon an environment can be divided in two different ways:
 In spite of a multitude of existing studies investigating the dynamics of sequential effects on visual perception (see for example~\citet{Cicchini_PRSB_2018,ChopinMamassian2012}), only few of them have directly addressed the role of the environmental volatility on the different behavioral outcomes.~\citet{Meyniel16} have compared the predictions of different models, featuring a dynamic adaptation to the environment's volatility (equivalent to our \textit{forgetful agent model}) versus a fixed belief model, on five sets of previously acquired data, including reaction time, explicit reports and neurophysiological measures. Interestingly,~\citet{Meyniel16} concluded that the estimation of a time-varying transition probability matrix constitutes
 a core building block of sequence knowledge in the brain,
 which then applies to a variety of sensory modalities and
@@ -1869,21 +1675,6 @@ to more complex and ecological settings.
 
 The way expectations act on cognitive processes in general has been investigated in a wide range of domains such as predictive coding~\citep{Wacongne2012}, active inference~\citep{Friston2010}, motor control~\citep{WolpertGhahramani2000} and reinforcement learning~\citep{Behrens07,Wilson13,Damasse18}. Non-stationary observations can also explain why both local and global effects emerge and why local effects persist in the long run even within purely random sequences~\citep{Cho2002, Yu2009}. This constant update of a general belief on the world can be a consequence of the constant attempt to learn the non-stationary structure of the environment that can change at unpredictable times~\citep{Yu2009}. Many studies have actually already pointed out the brain's ability to apprehend non-stationary states in environments~\citep{Ossmy2013, Meyniel15}.
 Future work will be needed to address the amplitude and dynamics of modulations of visual perception and other cognitive functions in a model-based volatile environment like the one we formally defined in this study, and to compare them to other implicit and explicit behavioral measures (like anticipatory eye movements and explicit expectation ratings).
-%%%\AM{I WOULD PUT ALL THIS IN THE DISCUSSION: They concluded that transition probabilities constitute
-%%%a core building block of sequence knowledge in the brain,
-%%%which then applies to a variety of sensory modalities and
-%%%experimental situations.
-%%%As such, sequential effects in binary sequences would be better explained
-%%%by learning transition probabilities
-%%%compared to the absolute item frequencies or the frequencies of their alternations.
-%%%The critical difference lies in the content
-%%%of what is learned (transition probabilities versus item frequencies)
-%%%in an attempt to capture human behavior.}
-%%%%TODO say it is an optimization that is, a measure of the dynamic compromise between exploration and exploitation
-%%%%Chopin and %Mamassian and the use of visual confidence (see Ann rev of Vision 2016)}
-%%%\AM{Rather than on transition probabilities, here we focus on the analysis and modeling of human behavior as a function of the frequency of presentation (and its fluctuations in time) of a given event in a binary sequence of alternating visual motion direction.}
-%%%
-%%%
 
 \subsection{Hierarchical Bayesian inference in the brain}
 When we perceive the physical world, make a decision or take an action to interact with it,
@@ -1913,66 +1704,6 @@ Finally, neuroeconomists have pointed out a generic aversion to risk~\citep{Kahn
 such that the value of a possible outcome
 is weighted by the precision of the inference, leading in general to an under-weighting of high gains and losses. Importantly,~\citet{WuDelgadoMaloney2012} compared a classical economic decision task with a motor decision task: they found that participants were more risk seeking in the motor task compared to the first one. More recently, in a task similar to ours, where the behavioral choice was not specifically associated to a reward schedule,
 \citet{SantosKowler2017} found a weak non-linearity in the dependence of aSPEM upon the probability of motion direction, yielding an overweight of the extreme values of probability, whereas an opposite non-linearity (underweight) was observed when the target direction was visually-cued with a given probability of validity. In our data we have not found consistent evidence suggesting a clear non-linearity in either sense. Further work is needed to disentangle the possible specificities (e.g. non linearities), in this respect, of different cognitive tasks, as well as to investigate the dependence of non-linearities upon the environmental volatility.
-
-
-%%%%\begin{enumerate}[label=\Alph*)]
-%%%%\item Update the~\textit{a priori} likelihood of a sudden change, also known as the volatility and taken into account by the model~\citep{Behrens07}
-%%%%\item A leaky integrator factor imbedded in the model~\citep{Anderson2006, Yu2009, Ossmy2013, Wang2002}
-%%%%\end{enumerate}
-%%%%
-%%%
-%%%
-%%%However, one should be careful with conclusions based on this kind of data fitting.
-%%%For instance, if the inversion of the forward model is exact in the present case,
-%%%one has to use approximations in more complex models,
-%%%such as with the HGF~\citep{Mathys11}
-%%%or with the models developed by~\citet{Wilson13,Wilson18}.
-%%%As a result, some discrepancy could originate from these approximations
-%%%at the algorithmic level.
-%%%As such, it is essential to carefully control for these sources of discrepancy (intrinsic versus extrinsic) independently~\citep{Beck12}.
-%%%Second, if we assume that the inversion of the model is perfect
-%%%(that is, no algorithmic approximation has been done),
-%%%this means that by fitting different ideal observers
-%%%to the data, one evaluates as a matter of fact the adequacy of
-%%%a generative model, not of the probabilistic calculus in its detailed implementation.
-%%%This is a common confusion around the idea of a ``Bayesian brain''.
-%%%We believe here that the challenge is not to validate the hypothesis that the brain uses or not the Bayes' theorem,
-%%%but rather to test different hypotheses
-%%%about the different generative models
-%%%that agents may use.
-%%%This methodological point may be essential in designing the experimental protocol,
-%%%or in evaluating quantitatively the results.
-%%%
-%%%%: theory / computationnally-driven experiments
-%%%% it's a main novelty
-%%%generative models for changing environments allows to know the ground truth compared to natural stimulation (see Rust eand Movshon)%
-%%%Let's remember our hierarchical generative model.
-%%%
-%%%At any given trial, we wish to construct an algorithm which
-%%%
-%%%We will introduce a fundamental component of Bayesian models : a latent variable
-%%%
-%%%this new variable will be used to test different hypothesis which will be evaluated to predict future states. it is called latent because it aims at representing a variable that is latent (or hidden) to the observer
-%%%
-%%%in our case, we will assume that the Bayesian model knows about the structure of the generative model and we will set it to the current run-length $r$, that is, at any given trial, the hypothesis that the past r observations belong to the same block. of course a wrong choice of a latent variables (let's say the temperture in the experimental room) may give unexpected results, even is the Bayesian model is ``optimal'' - an essential point to understand in Bayesian inference
-%%%
-%%%extension to multi-nomioal( daniele + fred danion)
-%%%
-%%%
-%%%
-%%%% Still, only Bayesian models recover an explicit probabilistic representation of change in likelihood. Recent experimental studies suggest, indeed, that the brain is able of estimating a hierarchical model of the environment and that humans can explicitly report sudden changes in sequences~\citep{Meyniel15, Gallistel2014}. Ultimately, we passed over one of leaky integrator models' main default, having a too fixed and rigid memory parameter. In our work the memory parameter is constantly inferred by the BBCP algorithm over the observation of the number of trials where this inference stayed reliable and then globally represented probabilistic representation of changes in likelihood and actualization of~\textit{a priori} knowledge.
-%%%
-%%%
-%%%perspectives:
-%%%- RL : use hindsight example of localization for saccades: get the changepoints then improve estimate of reward allows to optimize the association between the set of measures and their utility (compared to Q-learning where it is a fixed length)
-%%%- interindividual differences : markers for the berhaviour traces - traces of the network implementation / testing different h
-%%%- the brain is weakly Bayesian (it does not care about equations but more about sugar)
-%%%
-%%%
-%%%One remaining question though, is to understand why in cognitive systems
-%%%this adaptation occurs and
-%%%in particular why it may deviate
-%%%in some pathological disorders such as schizophrenia~\citep{Adams12}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2021,9 +1752,6 @@ We called this experiment the \textit{ ``Bet''} experiment, as participants were
 \section*{Acknowledgments}
 \Acknowledgments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%{\tiny
-%\printbibliography
-%}
 \bibliography{Pasturel_etal2020}
 
 
