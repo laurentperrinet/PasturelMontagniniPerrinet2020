@@ -292,8 +292,9 @@ how the current stimulus is perceived~\citep{Sotiropoulos2011,Adams12,ChopinMama
 acted upon~\citep{WallmanFuchs1998,Carpenter1995, Maus2015,Damasse18}.
 Two qualitatively opposite effects of the stimulus history have been described:
 negative (adaptation), and positive (priming-like) effects.
+\Rone{line 82: not clear how adaptation "favors spatial stability of the stimulus"}
 Adaptation reduces the sensitivity to recurrently presented stimuli,
-thus yielding to a re-calibrated perceptual experience~\citep{Clifford2007, Webster2011, Kohn2007}. Examples of negative biases in perceptual discrimination are numerous (see for instance~\citep{KanaiVerstraten2005,ChopinMamassian2012}) and show that the visual system tends
+thus yielding a re-calibrated perceptual experience~\citep{Clifford2007, Webster2011, Kohn2007}. Examples of negative biases in perceptual discrimination are numerous (see for instance~\citep{KanaiVerstraten2005,ChopinMamassian2012}) and show that the visual system tends
 to favor temporal and spatial stability of the stimulus.
 On the other hand, priming is a facilitatory effect that
 enhances the identification of repeated stimuli~\citep{Verstraten1994, Tiest2009}.
@@ -302,6 +303,7 @@ enhances the identification of repeated stimuli~\citep{Verstraten1994, Tiest2009
 In sensorimotor control,
 the same stimulus presented several times could indeed
 lead to faster and more accurate responses and,
+\Rone{line 86: quite obscure}
 at the same time, lead to critically suboptimal behavior
 when a presented stimulus is not coherent
 with the participant's expectations~\citep{Hyman1953, Yu2009}. This process is highly dynamic especially in complex environments
@@ -516,11 +518,13 @@ with a parametric mechanism controlling for the volatility at each trial.
 In the Hierarchical Gaussian Filter model~\citep{Mathys11}, for instance,
 volatility is controlled as a non-linear transformation
 of a random walk (modeled itself by a Brownian motion with a given diffusion coefficient).
+\Rone{line 192: Is it meant to be "volatility" and not "variability"?}
 Ultimately, this hierarchical model allows to generate a sequence of binary choices
 where the variability fluctuates along a given trajectory.
 Such a forward probabilistic model is invertible
 using some simplifying assumptions and allows
 to extract a time-varying inference of the agent's belief about volatility~\citep{Vossel14}.
+\Rone{line 195-197 the term trial block may lead to some confusion, as it is meant to be the sequence of trials with the same probability but also commonly the number of trials in a full sequence.}
 Herein, to analyze the effect of history length in all generality,
 we  extended the protocol of~\citet{Montagnini2010} such that the probability bias
 is still fixed within blocks but that these blocks have variable lengths,
@@ -691,7 +695,7 @@ as defined by the forward probabilistic model in~\seeEq{bsm}.
 %: 2Aa justification from previous studies
 The leaky integrator ideal observer represents a classical, widespread and
 realistic model of how trial-history shapes
-adaptive processes in human behavior.
+adaptive processes in human behavior~\citet{Anderson2006}.
 It is also well adapted to model motion expectation in the direction-biased experiment which leads to anticipatory SPEMs.
 In this model, given the sequence of observations $x_0^t$ from trial $0$ to $t$,
 the expectation $p=\hat{x_1}^{t+1}$ of the probability for the next trial direction can be modeled by making a simple heuristic:
@@ -741,8 +745,8 @@ but ignoring the variability in the temporal occurrence of the switch,
 the optimal solution to this inference problem is the
 ideal observer defined in~\seeEq{leaky2},
 which finds an online recursive solution in~\seeEq{leaky}.
-We therefore proved here that the heuristic derived from~\citet{Anderson2006}
-is an ideal inversion of the two-layered generative model
+We therefore proved here that the heuristic derived for the leaky integrator
+is an exact inversion of the two-layered generative model
 which assumes a constant hazard rate for the probability bias.
 
 %: 2Ac  using \hat{p} as a regressor & limits of the leaky integrator
@@ -752,6 +756,7 @@ us to several interim conclusions.
 First, the time series of inferred $\hat{x_1}^{t+1}$ values
 can serve as a regressor for behavioral data
 to test whether human observers follow a similar strategy.
+\Rone{I can't make much sense of 324-326. The point that Equation 3 assumes a constant weight is also obscure to me. Doesn't a leaky-integrator amount to weighting past trials depending on trial number? This needs to be clarified.}
 In particular, the free parameter $h$
 may be fitted to variations of the behavioral data across the sequence,
 which itself is assumed to depend on the agents' belief in the weight decay.
@@ -807,7 +812,7 @@ At any new datum (trial), this defines a Hidden Markov Model
 as a graph (treillis), where % of possible run lengths.
 edges indicate that a message is being passed
 to update each node's probability (as represented by arrows from trial $13$ to $14$).
-Black lines denote a progression of the run length at the next step (no switch),
+Black arrows denote a progression of the run length at the next step (no switch),
 while gray lines stand for the possibility that a switch happened:
 In this case the run length would fall back to zero.
 The probability for each node is represented by the grey scale (darker grey colors denote higher probability)
@@ -1352,6 +1357,7 @@ which supposedly underlie the generation of anticipatory aSPEM with variable str
 }
 \caption{%
 \textbf{Behavioral results, quantitative analysis across participants.} %
+\Rone{Fig 4. An indication of n on the figure would be welcome (I assume it is n observers). "For all participants and for all trials" is an ambiguous description. Was it one estimate per participant, averaging all trials? or were all trials pooled together disregarding participants?}
 For all participants and for all trials, we collected an estimate of
 the strength of aSPEM and a bet score value.
 We analyze the relation between these experimental data with the corresponding prediction $P_{\text{BBCP}}$
@@ -1460,6 +1466,7 @@ is a powerful regressor to explain
 both the strength of anticipatory smooth pursuit eye movements
 and the explicit ratings of human observers experiencing a volatile context for visual motion.
 
+\Rone{Line 606 to 616 this seems more like a discussion point. Also I am not clear how one of the statements is tested, regarding the fact variability in the estimate scales with inferred probability.}
 This relatively strong correlation is surprising at a first sight
 as the epochs with constant probability bias (between two switches) have random lengths,
 and participants have to adapt to such a volatile environment.
