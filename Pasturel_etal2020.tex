@@ -788,9 +788,9 @@ can be potentially evaluated and used
 for precision-weighted estimation of the probability bias.
 To address this hypothesis, our next model is inspired
 by the Bayesian Change-point detection model~\citep{AdamsMackay2007}
-of an ideal agent inferring
-both the trajectory in time of the probability bias ($x_1^t$)
-but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
+of an ideal agent
+both inferring the trajectory in time of the probability bias ($x_1^t$)
+but also predicting the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 % ------------------------------------------------------------------
 \subsection{Binary Bayesian Change Point (BBCP) detection model}
 % ------------------------------------------------------------------
@@ -871,7 +871,7 @@ the agent may infer beliefs about the probability of the volatility $x_2^t$
 which itself is driving the trajectory of the probability bias $x_1^t$.
 Knowing that the latter is piece-wise constant,
 an agent may have a belief over the number of trials since the last switch.
-This number, that is called the \emph{run-length} $r^t$, is useful in two manners.
+This number, that is called the \emph{run-length} $r^t$~\citep{AdamsMackay2007}, is useful in two manners.
 First, it allows the agent to restrict the prediction $\hat{x}_1^{t+1}$ of $x_1^{t+1}$
 only based on those samples produced since the last switch, from $t-r^t$ until $t$.
 % and which we denote as $x_0^{(r^t)}=x_0^{r^t:t}$ .
@@ -879,14 +879,15 @@ Indeed, the samples $x_0^t$ which occurred before the last switch
 were drawn independently from the present true value $x_1^t$
 and thus cannot help estimating the latter.
 Second, it is known that for this estimate, the precision
-(the inverse of variance) on the estimate $\hat{x}_1^{t+1}$
+(that is, the inverse of variance) on the estimate $\hat{x}_1^{t+1}$
 grows linearly with the number of samples:
 The longer the run-length, the sharper the corresponding (probabilistic) belief.
 We have designed an agent inverting the BSM by extending
 the Bayesian Change-Point (BCP) detection model~\citep{AdamsMackay2007}.
 The latter model defines the agent as an inversion of a switching generative model
 for which the observed data (input) is Gaussian.
-We present here an exact solution for the case of the BSM, where the input is binary. % as in the BSM (see~\seeEq{bsm}).
+We present here an exact solution for the case of the BSM,
+that is, for which the input is binary. %
 
 %-------------------------------------------------------------%
 %: 2Bb prediction / update cycle
@@ -895,17 +896,18 @@ In order to define in all generality the switch detection model,
 we will initially describe the fundamental steps leading to its construction,
 while providing the full algorithmic details in~\seeApp{bcp}.
 %  by~\seeEq{run_length} (more details on this derivation in~\seeApp{bcp})
-The goal of predictive processing
+The goal of predictive processing at trial $t$
 is to infer the probability $Pr(x_0^{t+1} | x_0^{0:t})$ of the next datum
-knowing what has been observed until trial $t$
-(that we denote by $x_0^{0:t} = \{ x_0^0, \ldots, x_0^t \}$), as well the agent's prior knowledge
+knowing what has been observed until that trial
+(that we denote by $x_0^{0:t} = \{ x_0^0, \ldots, x_0^t \}$)
+This prediction uses the agent's prior knowledge
 that data is the output of a given (stochastic) generative model (here, the BSM).
 To derive a Bayesian predictive model, we introduce
 the run-length as a latent variable which gives to the agent the possibility to represent
-different parallel hypotheses about the input.
+different hypotheses about the input.
 We therefore draw a computational graph (see \seeFig{Bayesianchangepoint}-A) where, at any trial,
-an hypothesis is formed on as many ``nodes'' than there are run-lengths
-(and limited for instance by the total number of trials).
+an hypothesis is formed on as many ``nodes'' than there are run-lengths.
+Note that run-lenghts may be limited by the total number of trials $t$.
 %
 %This is for instance the task that we defined
 %for the bet experiment, where each participant
@@ -926,13 +928,13 @@ Pr(x_0^{t+1} | x_0^{0:t}) =
 \sum_{r^{t}\geq 0} Pr(x_0^{t+1} | r^{t}, x_0^{0:t}) \cdot \beta^{(r)}_t
 \label{eq:pred}
 }
-where $Pr(x_0^{t+1} | r^{t}, x_0^{0:t})$ is
-the Bernoulli trial modeling the probability of a future datum $x_0^{t+1}$
+where $Pr(x_0^{t+1} | r^{t}, x_0^{0:t})$ is the probability of
+the Bernoulli trial modeling the outcome of a future datum $x_0^{t+1}$,
 conditioned on the run-length and
 $\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability for each possible run-length given the observed data.
-Note that $\beta^{(r)}_t$ is scaled such that $\sum_{r \geq 0 } \beta^{(r)}_t = 1$.
-Indeed, we know that, at any trial, there is a single true value for this variable $r^{t}$
-and that $\beta^{(r)}_t$ thus represents the agent's inferred probability distribution over the run-length $r$. % (given the data).
+Note we know that, at any trial, there is a single true value for this variable $r^{t}$
+and that $\beta^{(r)}_t$ thus represents the agent's inferred probability distribution over the run-length $r$.
+As a consequence, $\beta^{(r)}_t$ is scaled such that $\sum_{r \geq 0 } \beta^{(r)}_t = 1$.
 %a previous value $Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$
 %and the likelihood associated to the new value $x_0^t$.
 %-------------------------------------------------------------%
@@ -969,13 +971,13 @@ We will now detail how to compute the transition probabilities and the likelihoo
 %using the graph defined in \seeFig{Bayesianchangepoint}-A.
 %Now that we have the vector of likelihoods $\pi^{(r)}_t=\Ll(x_0^t |  \mu^{(r)}_{t}, \nu^{(r)}_{t})$,
 %one can update probabilities and perform the next prediction for trial $t+1$.
-First, knowing that the data is generated by a switching model such as the BSM (see~\seeEq{bsm}),
+First, knowing that the data is generated by the BSM (see~\seeEq{bsm}),
 the run-length is either null at the moment of a switch,
 or its length (in number of trials) is incremented by $1$ if no switch occurred:
 
 \eql{\choice{
 \text{if} \quad x_2^t=1 \text{,} \quad r^t = 0\\
-\text{if} \quad x_2^t=0 \text{,} \quad r^t = r^{t-1} +1 }\label{eq:run_length}}%see~\seeEq{run_length}
+\text{else} \quad x_2^t=0 \text{,} \quad r^t = r^{t-1} +1 }\label{eq:run_length}}%see~\seeEq{run_length}
 %\text{and else} \quad r^t = r^{t-1} +1 }\label{eq:run_length}}%see~\seeEq{run_length}
 This may be illustrated by a graph
 in which information will be represented at the different nodes for each trial $t$.
@@ -1048,6 +1050,7 @@ $\nu^{(r)}_{t} = r + \nu_{prior}$. For the mean, the series defined by $\mu^{(r+
 \label{eq:update_mu}
 }
 This updates for each node the sufficient statistics of the probability density function at the current trial.
+
 %-------------------------------------------------------------%
 % Computing the likelihood
 % cf p.52 de 2017-10-05 chloe inverting the process rem jb
@@ -1116,9 +1119,9 @@ only the state at trial $t$ and the new datum $x_0^t$
 are sufficient to predict all probabilities for the next trial.
 %at the next trial $t+1$: $Pr(r_t | x_0^{0:t})$, $\mu^{(r)}_{t+1}$ and $\nu^{(r)}_{t+1}$.
 %projecting beliefs backwards and forward  : the algorithm is online et the price of memory
-Finally, this prediction/update cycle applied to the BSM and using~\seeEq{bsm}
-constitutes the Binary Bayesian Change Point (BBCP) detection model.
-
+In summary, this prediction/update cycle exactly inverts the BSM generative model %~\seeEq{bsm}
+and constitutes the Binary Bayesian Change Point (BBCP) detection model.
+%
 % ------------------------------------------------------------------
 \subsection{Quantitative analysis of the Binary Bayesian Change Point detection algorithm}
 % ------------------------------------------------------------------
