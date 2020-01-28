@@ -738,7 +738,8 @@ It may thus be equivalently written in the form of a time-weighted average:
 \eql{
 \hat{x}_1^{t+1} = (1-h)^{t+1} \cdot \hat{x}_1^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
 \label{eq:leaky2}}
-The first term corresponds to the discounted effect of the prior value before any observation and it tends to $0$ when $t$ increases.
+The first term corresponds to the discounted effect of the prior value,
+which tends to $0$ as $t$ increases.
 More importantly, as $1-h < 1$, the second term corresponds to the \emph{leaky} integration of novel observations.
 Inversely, let us now assume that
 the true probability bias for direction changes randomly with a mean rate of once
@@ -746,9 +747,8 @@ every $\tau$ trials.
 As a consequence, the probability that the bias does not change is $Pr(x_2^t=0)=1-h$ at each trial.
 Assuming independence of these occurrences, the estimated probability $p=\hat{x}_1^{t+1}$ is thus proportional to the sum
 of the past observations weighted by the belief that the bias has not changed during $i$ trials in the past, that is, exactly as defined by the second term of the right-hand side in~\seeEq{leaky2}.
-This shows that
-assuming that changes occur at a constant rate ($\hat{x}_2^t=h$)
-but ignoring the variability in the temporal occurrence of the switch,
+This shows that assuming that changes occur at a constant rate ($\hat{x}_2^t=h$)
+but ignoring more precise information on the temporal occurrence of the switch,
 the optimal solution to this inference problem is the
 ideal observer defined in~\seeEq{leaky2},
 which finds an online recursive solution in~\seeEq{leaky}.
@@ -763,10 +763,11 @@ us to several interim conclusions.
 First, the time series of inferred $\hat{x}_1^{t+1}$ values
 can serve as a regressor for behavioral data
 to test whether human observers follow a similar strategy.
-\Rone{I can't make much sense of 324-326. The point that Equation 3 assumes a constant weight is also obscure to me. Doesn't a leaky-integrator amount to weighting past trials depending on trial number? This needs to be clarified.}
-In particular, the free parameter $h$
-may be fitted to variations of the behavioral data across the sequence,
-which itself is assumed to depend on the agents' belief in the weight decay.
+% \Rone{I can't make much sense of 324-326. The point that Equation 3 assumes a constant weight is also obscure to me. Doesn't a leaky-integrator amount to weighting past trials depending on trial number? This needs to be clarified.}
+In particular, the free parameter of the model ($h$),
+may be fitted to the set of behavioral data.
+Testing different hypothesis for the value of $h$ thus allows
+to infer the agents' most likely belief in the (fixed) weight decay.
 %for instance to the data shown in~\seeFig{results_intro}.
 Now, since we have defined a first generative model
 and the corresponding ideal observer (the forgetful agent),
