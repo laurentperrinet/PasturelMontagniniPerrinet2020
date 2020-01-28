@@ -588,14 +588,14 @@ parameterized by the direction bias $p=x_1^t$.
 In short, this is described according to the following equations:
 %\begin{itemize}
 %    \item Occurrence of a switch: $x_2^t \propto \Bb(h)$
-%    \item Dynamics of probabilistic bias: \eql{\choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
+%    \item Dynamics of probability bias: \eql{\choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
 %\text{else} \quad x_1^t \propto \Pp  }\label{eq:bsm}}
 %    \item Sequence of directions:  $x_0^t \propto \Bb(x_1^t)$
 %\end{itemize}
  \eql{\choice{
 \text{Occurrence of a switch: } x_2^t \propto \Bb(1/\tau) \\
  % TODO: nest the choice
-\text{Dynamics of probabilistic bias $p=x_1^t$ }
+\text{Dynamics of probability bias $p=x_1^t$ }
  \choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
  \text{else} \quad x_1^t \propto \Pp  \\
  } \\
@@ -685,13 +685,14 @@ they could extract relevant descriptors at the different levels of the model
 and fit these parameters with the recorded behavior.
 Here, we use a similar approach, focusing specifically on the BSM generative model,
 as defined in~\seeEq{bsm}.
-To begin, we define a first ideal observer as a control, the \textit{leaky integrator} (or \textit{forgetful agent}),
+To begin, we define as a control a first ideal observer, the \textit{leaky integrator} (or \textit{forgetful agent}),
 which has an exponentially-decaying memory for the events that occurred in the past trials.
 This agent can equivalently be described as one
 which assumes that volatility is stationary with a fixed characteristic frequency of switches.
-Then, we will extend this model to an agent
+Then, we extend this model to an agent
 which assumes the existence of (randomly occurring) switches, that is,
-that the value of the probabilistic bias may change
+that the agent is equipped with the prior knowledge
+that the value of the probability bias may change
 at specific (yet randomly drawn) trials,
 as defined by the forward probabilistic model in~\seeEq{bsm}.
 %
@@ -702,23 +703,23 @@ as defined by the forward probabilistic model in~\seeEq{bsm}.
 The leaky integrator ideal observer represents a classical, widespread and
 realistic model of how trial-history shapes
 adaptive processes in human behavior~\citet{Anderson2006}.
-It is also well adapted to model motion expectation in the direction-biased experiment which leads to anticipatory SPEMs.
+It is also well adapted to model motion expectation in the direction-biased experiment which leads to anticipatory pursuit.
 In this model, given the sequence of observations $x_0^t$ from trial $0$ to $t$,
-the expectation $p=\hat{x_1}^{t+1}$ of the probability for the next trial direction can be modeled by making a simple heuristic:
-This probability for an event is the weighted average of
-the previously estimated probability, $\hat{x_1}^{t}$, with the new information $x_0^t$,
+the expectation $p=\hat{x}_1^{t+1}$ of the probability for the next trial direction can be modeled by making a simple heuristic:
+This probability is the weighted average of
+the previously estimated probability, $\hat{x}_1^{t}$, with the new information $x_0^t$,
 where the weight corresponds to a leak term (or discount)
 by a factor $(1 - h)$, with $h \in [0, 1]$~\citep{Anderson2006}.
 At trial $t$, this model can be expressed with the following equation:
 \eql{
-\hat{x_1}^{t+1} = (1 - h) \cdot \hat{x_1}^{t} + h \cdot x_0^t
+\hat{x}_1^{t+1} = (1 - h) \cdot \hat{x}_1^{t} + h \cdot x_0^t
 \label{eq:leaky}}
-where $\hat{x_1}^{t=0}$ is equal to some prior value ($0.5$ in the unbiased case),
+where $\hat{x}_1^{t=0}$ is equal to some prior value ($0.5$ in the unbiased case),
 corresponding to the best guess at $t=0$ (prior to the observation of any data).
 % NOTE: it's an AR(1) process https://stats.stackexchange.com/questions/358162/writing-ar1-as-a-ma-infty-process
 
 %: from heuristics to ideal observer
-In other words, the estimated probability $\hat{x_1}^{t+1}$ is computed
+In other words, the estimated probability $\hat{x}_1^{t+1}$ is computed
 from the integration of previous instances
 with a progressive discount of past information.
 The value of the scalar $h$ represents
@@ -735,7 +736,7 @@ the ``forgetful agent'' computed in \seeEq{leaky}
 consists of an exponentially-weighted moving average (see \seeApp{leaky}).
 It may thus be equivalently written in the form of a time-weighted average:
 \eql{
-\hat{x_1}^{t+1} = (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
+\hat{x}_1^{t+1} = (1-h)^{t+1} \cdot \hat{x}_1^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
 \label{eq:leaky2}}
 The first term corresponds to the discounted effect of the prior value before any observation and it tends to $0$ when $t$ increases.
 More importantly, as $1-h < 1$, the second term corresponds to the \emph{leaky} integration of novel observations.
@@ -743,10 +744,10 @@ Inversely, let us now assume that
 the true probability bias for direction changes randomly with a mean rate of once
 every $\tau$ trials.
 As a consequence, the probability that the bias does not change is $Pr(x_2^t=0)=1-h$ at each trial.
-Assuming independence of these occurrences, the estimated probability $p=\hat{x_1}^{t+1}$ is thus proportional to the sum
+Assuming independence of these occurrences, the estimated probability $p=\hat{x}_1^{t+1}$ is thus proportional to the sum
 of the past observations weighted by the belief that the bias has not changed during $i$ trials in the past, that is, exactly as defined by the second term of the right-hand side in~\seeEq{leaky2}.
 This shows that
-assuming that changes occur at a constant rate ($\hat{x_2}^t=h$)
+assuming that changes occur at a constant rate ($\hat{x}_2^t=h$)
 but ignoring the variability in the temporal occurrence of the switch,
 the optimal solution to this inference problem is the
 ideal observer defined in~\seeEq{leaky2},
@@ -759,7 +760,7 @@ which assumes a constant hazard rate for the probability bias.
 The correspondence that we proved between the weighted moving average heuristic
 and the forgetful agent model as an ideal solution to that generative model leads
 us to several interim conclusions.
-First, the time series of inferred $\hat{x_1}^{t+1}$ values
+First, the time series of inferred $\hat{x}_1^{t+1}$ values
 can serve as a regressor for behavioral data
 to test whether human observers follow a similar strategy.
 \Rone{I can't make much sense of 324-326. The point that Equation 3 assumes a constant weight is also obscure to me. Doesn't a leaky-integrator amount to weighting past trials depending on trial number? This needs to be clarified.}
@@ -861,7 +862,7 @@ as illustrated by the inferred value of the probability bias.
 %: 2Ba precision in our belief of \hat{p}
 %-------------------------------------------------------------%
 There is a crucial difference between the forgetful agent presented above
-%\AM{WE CAN SKIP THIS:which believes that changes occur at a constant rate ($\hat{x_2}^t=h$, see~\seeEq{leaky2})}
+%\AM{WE CAN SKIP THIS:which believes that changes occur at a constant rate ($\hat{x}_2^t=h$, see~\seeEq{leaky2})}
 and an ideal agent which would invert the Binary Switching Model (BSM, see~\seeEq{bsm}).
 Indeed, at any trial during the experiment,
 the agent may infer beliefs about the probability of the volatility $x_2^t$
@@ -869,14 +870,14 @@ which itself is driving the trajectory of the probability bias $x_1^t$.
 Knowing that the latter is piece-wise constant,
 an agent may have a belief over the number of trials since the last switch.
 This number, that is called the \emph{run-length} $r^t$, is useful in two manners.
-First, it allows the agent to restrict the prediction $\hat{x_1}^{t+1}$ of $x_1^{t+1}$
+First, it allows the agent to restrict the prediction $\hat{x}_1^{t+1}$ of $x_1^{t+1}$
 only based on those samples produced since the last switch, from $t-r^t$ until $t$.
 % and which we denote as $x_0^{(r^t)}=x_0^{r^t:t}$ .
 Indeed, the samples $x_0^t$ which occurred before the last switch
 were drawn independently from the present true value $x_1^t$
 and thus cannot help estimating the latter.
 Second, it is known that for this estimate, the precision
-(the inverse of variance) on the estimate $\hat{x_1}^{t+1}$
+(the inverse of variance) on the estimate $\hat{x}_1^{t+1}$
 grows linearly with the number of samples:
 The longer the run-length, the sharper the corresponding (probabilistic) belief.
 We have designed an agent inverting the BSM by extending
@@ -1088,19 +1089,19 @@ and uses the marginal predictive probability (see~\seeEq{pred}) as a readout.
 %and then the predicted probability bias is estimated
 %as the probability bias for that run-length:
 %\eql{
-%\hat{x_1}^t = \mu^{(r^\ast)}_{t} \quad \text{with} \quad r^\ast = \argmax_r \beta^{(r)}_{t}
+%\hat{x}_1^t = \mu^{(r^\ast)}_{t} \quad \text{with} \quad r^\ast = \argmax_r \beta^{(r)}_{t}
 %}
-This probability bias is best estimated by its expected value $\hat{x_1}^{t+1}=Pr(x_0^{t+1} | x_0^{0:t})$
+This probability bias is best estimated by its expected value $\hat{x}_1^{t+1}=Pr(x_0^{t+1} | x_0^{0:t})$
 as it is marginalized over all run-lengths:
 \eql{
-\hat{x_1}^{t+1} = \sum_{r \geq 0} \mu^{(r)}_{t} \cdot \beta^{(r)}_{t}
+\hat{x}_1^{t+1} = \sum_{r \geq 0} \mu^{(r)}_{t} \cdot \beta^{(r)}_{t}
 \label{eq:readout}
 }
 Interestingly, it can be proven that if,
 instead of updating beliefs with Equations~\ref{eq:beta_noswitch} and~\ref{eq:beta_switch},
 we set nodes' beliefs to the constant vector $\beta^{(r)}_t = h \cdot (1 -h) ^r$,
 then the marginal probability is equal to that obtained with the leaky integrator (see~\seeEq{leaky}).
-This highlights again that, contrary to the leaky integrator, % for which the inference $\hat{x_2}=h$ was fixed,
+This highlights again that, contrary to the leaky integrator, % for which the inference $\hat{x}_2=h$ was fixed,
 the BBCP model uses a dynamical model for the estimation of the volatility.
 Still, as for the latter, there is only one parameter~$h=\frac 1 \tau$ which informs the BBCP model
 that the probability bias switches \emph{on average} every~$\tau$ trials.
@@ -1134,11 +1135,11 @@ ultimately comparing it to the human behavior. % (see~\seeFig{results_raw}).
 \seeFig{Bayesianchangepoint}-A shows a graph-based representation of the BBCP estimate of the run-length for one instance of a short sequence ($14$ trials) of simulated data $x_0^t$
 of leftward and rightward trials, with a switch in the probability bias
 of moving rightward occurring at trial $7$ (see figure caption for a detailed explanation).
-%\textbf{It also shows the predicted probability $\hat{x_1}^t$
+%\textbf{It also shows the predicted probability $\hat{x}_1^t$
 %as computed using the BBCP algorithm.} \CP{pas dans \seeFig{Bayesianchangepoint}-A}
 %The bottom panel illustrates
 %the belief on the predicted probability $\hat{p}$ at a given trial.
-\seeFig{Bayesianchangepoint}-B, illustrates the predicted probability $\hat{x_1}^t$, as well as the corresponding uncertainty (the shaded areas correspond to $.05$ and $.95$ quantiles) when
+\seeFig{Bayesianchangepoint}-B, illustrates the predicted probability $\hat{x}_1^t$, as well as the corresponding uncertainty (the shaded areas correspond to $.05$ and $.95$ quantiles) when
 we applied respectively the BBCP (green curve) and the forgetful agent (orange curve) model to
 a longer sequence of $200$ trials,
 characteristic of our behavioral experiments.
@@ -1149,7 +1150,7 @@ The BBCP model achieves a correct detection of the switches after a short delay 
 
 Two main observations are noteworthy. First, after each detected switch, beliefs align along a linear ridge,
 as our model best estimate of the current run-length is steadily incremented by $1$ at each trial until a new switch,
-and the probability $\hat{x_1}^t$ is estimated  by integrating sensory evidence in this epoch (it 'stays').
+and the probability $\hat{x}_1^t$ is estimated  by integrating sensory evidence in this epoch (it 'stays').
 Then, we observe that shortly after a switch (hidden to the agent),
 the belief diffuses until the relative probability of a continuously increasing run-length
 is lower that that assigned to a smaller run-length:
@@ -1180,22 +1181,22 @@ we computed an overall cost $\Cc$ as the negative log-likelihood (in bits) of th
 % - isn't H the joint entropy and C something related to the mutual information? H and C should both be defines},
 and averaged over all $T$ trials:
 \eql{
-%\Cc =  \sum_{t} -\log_2 B(x_1^t ; \hat{x_1}^t, r^t )
+%\Cc =  \sum_{t} -\log_2 B(x_1^t ; \hat{x}_1^t, r^t )
 %}
 %\eql{
 \choice{
- \Cc = \frac 1 T  \sum_t \Cc(x_1^t, \hat{x_1}^t)
+ \Cc = \frac 1 T  \sum_t \Cc(x_1^t, \hat{x}_1^t)
  \text{ with }
- \Cc(x_1^t, \hat{x_1}^t) = H(x_1^t, \hat{x_1}^t ) - H(x_1^t, x_1^t ) \\
- \text{where } H(x_1^t, \hat{x_1}^t ) = - {x_1}^t \log_2( \hat{x_1}^t ) - (1-{x_1}^t) \log_2( 1- \hat{x_1}^t)
+ \Cc(x_1^t, \hat{x}_1^t) = H(x_1^t, \hat{x}_1^t ) - H(x_1^t, x_1^t ) \\
+ \text{where } H(x_1^t, \hat{x}_1^t ) = - {x_1}^t \log_2( \hat{x}_1^t ) - (1-{x_1}^t) \log_2( 1- \hat{x}_1^t)
 }
 \label{eq:KL}
 }
-The measure $\Cc(x_1^t, \hat{x_1}^t)$ explicitly corresponds to the average score of our model,
+The measure $\Cc(x_1^t, \hat{x}_1^t)$ explicitly corresponds to the average score of our model,
 %where this score is the log likelihood (in bits) of the inferred belief about the probability bias
-as the Kullback-Leibler distance of $\hat{x_1}^t$ %along with its precision $r^t$ and
+as the Kullback-Leibler distance of $\hat{x}_1^t$ %along with its precision $r^t$ and
 compared to the hidden true probability bias $x_1^t$.
-%Similar measures based on the predicted readout $\hat{x_0}^t$
+%Similar measures based on the predicted readout $\hat{x}_0^t$
 %gave similar results but would need more data to converge.
 We have tested $100$ trial blocks of $2000$ trials for each read-out.
 In general, we found that the inference is better for the BBCP algorithm ($\Cc = 0.171 \pm 0.030$)
@@ -1247,7 +1248,7 @@ Bottom two rows show the raw behavioral results
 for two representative observers:
 The recorded anticipatory pursuit strength as measured
 by the horizontal eye velocity estimated right before
-the onset of the visually-driven SPEM (dark gray line);
+the onset of the visually-driven pursuit (dark gray line);
 and the explicit ratings about the expected target direction (or \textit{bet scores}, red line).
 We also show the evolution of the value
 of the probability bias $P_{\text{true}}$ (blue line)
@@ -1304,9 +1305,9 @@ parameterizing the Bernoulli trial.
 In general, results are more variable when the bias is weak ($p\approx .5$)
 than when it is strong (close to zero or one),
 consistent with the well-known dependence of the variance of a Bernoulli trial
-upon the probabilistic bias ($\textrm{Var}(p)= p \cdot (1-p)$).
+upon the probability bias ($\textrm{Var}(p)= p \cdot (1-p)$).
 In addition, the precision (i.e. the inverse of the variance)
-of the inferred probability bias $\hat{x_1}$ increases
+of the inferred probability bias $\hat{x}_1$ increases
 in longer epochs, as information is integrated over more trials.
 As a result, the inferred probability as a function of time
 seems qualitatively to constitute a reliable regressor
@@ -1323,7 +1324,7 @@ seem to qualitatively follow the same trend.
 Indeed, similarly to the strength of anticipatory pursuit,
 we qualitatively compare in~\seeFig{results_psycho}
 the trace of the bet scores
-with the inferred probability bias $\hat{x_1}$.
+with the inferred probability bias $\hat{x}_1$.
 As with anticipatory pursuit, the series of the participants' bias guesses
 exhibits a positive correlation with the true probability bias:
 The next outcome of $x_{0}^{t}$ will in general be correctly inferred,
@@ -1396,7 +1397,7 @@ with the true probability and with the estimates obtained with the leaky integra
 %: 3C quantitative analysis
 %-------------------------------------------------------------%
 Quantitatively, we now compare the experimental results
-with the value of the probability bias $\hat{x_1}$
+with the value of the probability bias $\hat{x}_1$
 computed by the BBCP algorithm.
 Compiling results %(see~\seeFig{results_psycho})
 from all participants,
@@ -1690,7 +1691,7 @@ The generalization to the time-continuous case is beyond the scope of our curren
 but it would consist in a natural extension of it
 to more complex and ecological settings.
 
-Our results demonstrate that the BCCP model is relatively good in mimicking the adaptive changes of both (implicit) anticipatory eye movements and explicit ratings of direction expectation in a volatile context. However, these to different behavioral measures, the implicit and the explicit one, are not correlated across individuals. This observation is certainly worth deeper investigation in the future as it raises doubts on the existence of a unique hierarchical system for probabilistic inference. The distinction between implicit and explicit measures of adaptation to a volatile environment has also been addressed by previous work, especially in the field of experimental economics or statistical learning for language processing (REFFS ???). More related to the present study,~\citet{WuDelgadoMaloney2012} compared a classical economic decision task with a motor decision task: they found that participants were more risk seeking in the motor task compared to the first one. In addition,~\citet{SoutoGegenfurtnerSchuetz2016} have recently reported a lack of correlation between the rate of oculomotor adaptation to unexpected jumps of the visual target and the perceptual uncertainty estimated through an explicit jump direction-discrimination experiment. Finally, the degree of explicitness of the information provided to the participants may also play a role in the context of probabilistic learning. In a task similar to ours, where the behavioral choice was not specifically associated to a reward schedule,~\citet{SantosKowler2017} found large similarities but also some differences in the anticipatory eye movements depending on how the information about the probabilistic bias was conveyed, namely through the simple presentation of a biased sequence versus a an explicit probability-cueing procedure. In the first condition, the authors reported a weak non-linearity in the dependence of anticipatory pursuit upon the probability of motion direction, yielding an overweight of the extreme values of probability. In contrast, an opposite non-linearity (underweight) was observed when the target direction was visually-cued with a given probability of validity. Note that in our data we have not found consistent evidence suggesting a clear non-linearity in either sense. Further work is needed to disentangle the possible specificities (e.g. non linearities, also broadly reported in the economic literature, such as a generic aversion to risk~\citep{Kahneman13}) and the general inter-trial and inter-individual correlations across different tasks and different experimental measures of the cognitive adaptation to the environmental volatility.
+Our results demonstrate that the BCCP model is relatively good in mimicking the adaptive changes of both (implicit) anticipatory eye movements and explicit ratings of direction expectation in a volatile context. However, these to different behavioral measures, the implicit and the explicit one, are not correlated across individuals. This observation is certainly worth deeper investigation in the future as it raises doubts on the existence of a unique hierarchical system for probabilistic inference. The distinction between implicit and explicit measures of adaptation to a volatile environment has also been addressed by previous work, especially in the field of experimental economics or statistical learning for language processing (REFFS ???). More related to the present study,~\citet{WuDelgadoMaloney2012} compared a classical economic decision task with a motor decision task: they found that participants were more risk seeking in the motor task compared to the first one. In addition,~\citet{SoutoGegenfurtnerSchuetz2016} have recently reported a lack of correlation between the rate of oculomotor adaptation to unexpected jumps of the visual target and the perceptual uncertainty estimated through an explicit jump direction-discrimination experiment. Finally, the degree of explicitness of the information provided to the participants may also play a role in the context of probabilistic learning. In a task similar to ours, where the behavioral choice was not specifically associated to a reward schedule,~\citet{SantosKowler2017} found large similarities but also some differences in the anticipatory eye movements depending on how the information about the probability bias was conveyed, namely through the simple presentation of a biased sequence versus a an explicit probability-cueing procedure. In the first condition, the authors reported a weak non-linearity in the dependence of anticipatory pursuit upon the probability of motion direction, yielding an overweight of the extreme values of probability. In contrast, an opposite non-linearity (underweight) was observed when the target direction was visually-cued with a given probability of validity. Note that in our data we have not found consistent evidence suggesting a clear non-linearity in either sense. Further work is needed to disentangle the possible specificities (e.g. non linearities, also broadly reported in the economic literature, such as a generic aversion to risk~\citep{Kahneman13}) and the general inter-trial and inter-individual correlations across different tasks and different experimental measures of the cognitive adaptation to the environmental volatility.
 
 The way expectations act on cognitive processes in general has been investigated in a wide range of domains such as predictive coding~\citep{Wacongne2012}, active inference~\citep{Friston2010}, motor control~\citep{WolpertGhahramani2000} and reinforcement learning~\citep{Behrens07,Wilson13,Damasse18}. Non-stationary observations can also explain why both local and global effects emerge and why local effects persist in the long run even within purely random sequences~\citep{Cho2002, Yu2009}. This constant update of a general belief on the world can be a consequence of the constant attempt to learn the non-stationary structure of the environment that can change at unpredictable times~\citep{Yu2009}. Many studies have actually already pointed out the brain's ability to apprehend non-stationary states in environments~\citep{Ossmy2013, Meyniel15}.
 Future work will be needed to address the amplitude and dynamics of modulations of visual perception and other cognitive functions in a model-based volatile environment like the one we formally defined in this study, and to compare them to other implicit and explicit behavioral measures (like anticipatory eye movements and explicit expectation ratings).
@@ -1848,31 +1849,31 @@ Given a series of observations $\{x_0^i\}_{0\leq i \leq t}$
 with $\forall i, x_0^i \in \{0, 1 \}$, we defined
 
 \eqs{
-\hat{x_1}^{t} &= (1-1/\tau)^{t+1} \cdot \hat{x_1}^{t=0} + 1/\tau \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i}\\
-			  &= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
+\hat{x}_1^{t} &= (1-1/\tau)^{t+1} \cdot \hat{x}_1^{t=0} + 1/\tau \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i}\\
+			  &= (1-h)^{t+1} \cdot \hat{x}_1^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
 }
-%is true for $t=1$: by definition $\hat{x_1}^{0}=x_0^0$ and
+%is true for $t=1$: by definition $\hat{x}_1^{0}=x_0^0$ and
 %\eq{
-%\hat{x_1}^{1} = (1 - \rho) \cdot \hat{x_1}^{0} + \rho \cdot x_0^1
+%\hat{x}_1^{1} = (1 - \rho) \cdot \hat{x}_1^{0} + \rho \cdot x_0^1
 %}
 If we write it for trial $t-1$, we have
 
 \eqs{
-\hat{x_1}^{t-1}	&= (1-h)^{t} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t-1} (1 - h)^{i} \cdot x_0^{t-1-i} \\
-                &= (1-h)^{t} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{1\leq j \leq t} (1 - h)^{j-1} \cdot x_0^{t-j} \\ % j = i+1
-(1 - h) \cdot \hat{x_1}^{t-1} &= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} +  h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
+\hat{x}_1^{t-1}	&= (1-h)^{t} \cdot \hat{x}_1^{t=0} + h \cdot \sum_{0\leq i \leq t-1} (1 - h)^{i} \cdot x_0^{t-1-i} \\
+                &= (1-h)^{t} \cdot \hat{x}_1^{t=0} + h \cdot \sum_{1\leq j \leq t} (1 - h)^{j-1} \cdot x_0^{t-j} \\ % j = i+1
+(1 - h) \cdot \hat{x}_1^{t-1} &= (1-h)^{t+1} \cdot \hat{x}_1^{t=0} +  h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
                 }
 It follows that the integrative formula above becomes an iterative relation:
 
 \eqs{
-\hat{x_1}^{t}	&= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i} \\
-				&= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot x_0^{t} + h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i} \\
-				&= h \cdot x_0^{t} + (1 - h) \cdot \hat{x_1}^{t-1} \\
+\hat{x}_1^{t}	&= (1-h)^{t+1} \cdot \hat{x}_1^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i} \\
+				&= (1-h)^{t+1} \cdot \hat{x}_1^{t=0} + h \cdot x_0^{t} + h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i} \\
+				&= h \cdot x_0^{t} + (1 - h) \cdot \hat{x}_1^{t-1} \\
 }
 such that finally
 
 \eq{
-\hat{x_1}^{t} = (1 - h) \cdot \hat{x_1}^{t-1} + h \cdot x_0^t
+\hat{x}_1^{t} = (1 - h) \cdot \hat{x}_1^{t-1} + h \cdot x_0^t
 }
 As a result, the definitions in~\seeEq{leaky} and~\seeEq{leaky2} are equivalent.
 
@@ -1949,7 +1950,7 @@ In the following, we  detail some intermediate steps and highlight some key diff
 %to represent our belief at trial $t$
 %or to determine the pdf for $x_1^t$ as a mixture of Beta distributions:
 %\eqa{
-%\hat{x_1}^{t} = \sum_{r^{t}} Pr(x_1^t | r^{t}, x_0^{0:t}) \cdot Pr(r^{t} | x_0^{0:t})
+%\hat{x}_1^{t} = \sum_{r^{t}} Pr(x_1^t | r^{t}, x_0^{0:t}) \cdot Pr(r^{t} | x_0^{0:t})
 %}
 
 % in Python.
@@ -1982,7 +1983,7 @@ Jeffrey's prior was more adapted to that task.
 The steps to achieve the update rule are:
 
  \eqs{
-%\hat{x_1}^{t} =
+%\hat{x}_1^{t} =
 Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  \beta^{(r)}_t \\
 Pr(x_0^t | x_0^{0:t-1}) &= \sum_{r^{t}} Pr(x_0^t | r^{t}, x_0^{0:t-1}) \cdot  Pr(r^{t} | x_0^{0:t-1})\\
 \text{with} \quad Pr(r^{t} | x_0^{0:t-1}) &\propto \sum_{r^{t-1}}  Pr(r^t | r^{t-1}) \cdot  Pr(x_0^t | r^{t-1}, x_0^{0:t-1}) \cdot  Pr(r^{t-1} | x_0^{0:t-2})
