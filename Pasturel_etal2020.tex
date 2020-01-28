@@ -709,7 +709,7 @@ the expectation $p=\hat{x}_1^{t+1}$ of the probability for the next trial direct
 This probability is the weighted average of
 the previously estimated probability, $\hat{x}_1^{t}$, with the new information $x_0^t$,
 where the weight corresponds to a leak term (or discount)
-by a factor $(1 - h)$, with $h \in [0, 1]$~\citep{Anderson2006}.
+equal to $(1 - h)$, with $h \in [0, 1]$~\citep{Anderson2006}.
 At trial $t$, this model can be expressed with the following equation:
 \eql{
 \hat{x}_1^{t+1} = (1 - h) \cdot \hat{x}_1^{t} + h \cdot x_0^t
@@ -727,10 +727,11 @@ a compromise between responding rapidly
 to changes in the environment ($h \approx 1$) and
 not prematurely discarding information still of value
 for slowly changing contexts  ($h \approx 0$).
-For that reason, we will call this scalar the hazard rate.
-Similarly, one can define $\tau = 1 / h$ as
+For that reason, we call this scalar the hazard rate
+in the same way to that defined for the BSM generative model presented above (see~\seeEq{bsm}).
+Moreover, one can define $\tau = 1 / h$ as
 a characteristic time (in units of number of trials)
-for the integration of information.
+for the temporal integration of information.
 Looking more closely at this expression,
 the ``forgetful agent'' computed in \seeEq{leaky}
 consists of an exponentially-weighted moving average (see \seeApp{leaky}).
@@ -779,9 +780,9 @@ account for the dynamics of contextual changes~\citep{Behrens07}
 as the weight decay corresponds to assume \emph{a priori} a constant precision in the data sequence, contrary to more elaborate Bayesian models~\citep{Vilares2011}.
 It seems plausible that the memory size (or history length) used by the brain
 to infer any event probability can vary, and that this variation could be related
-to the environmental volatility inferred from past data.
+to an estimate of environmental volatility as inferred from past data.
 The model presented in~\seeEq{leaky2} uses a constant weight
-(decaying with the distance to the current trial)
+% (decaying with the temporal distance from the current trial)
 for all trials, while the actual precision of each trial
 can be potentially evaluated and used
 for precision-weighted estimation of the probability bias.
