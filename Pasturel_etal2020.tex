@@ -507,10 +507,10 @@ However, it is yet unclear what generative model to use
 to dynamically manipulate the probability bias
 and generate an ecologically relevant input sequence of target directions.
 A possible confound comes from the fact that
-previous studies have used sequences of trials (\textit{trial blocks}) of fixed lengths,
+previous studies have used fixed-lengths sequences of trials, % (\textit{trial blocks}),
 stacked in a sequence of conditions defined by the different probability biases.
 Indeed, observers may potentially pick up
-the information on the fixed block's length
+the information on the block's length
 to predict the occurrence of a switch (a change in probability bias) during the experiment.
 Second, we observed qualitatively that following a switch,
 the strength of anticipatory pursuit changed gradually,
@@ -538,38 +538,38 @@ where volatility is controlled by fluctuating the variability along a given traj
 Such a forward probabilistic model is invertible
 using some simplifying assumptions and allows
 to extract a time-varying inference of the agent's belief about volatility~\citep{Vossel14}.
-\Rone{line 195-197 the term trial block may lead to some confusion, as it is meant to be the sequence of trials with the same probability but also commonly the number of trials in a full sequence.}
-Herein, to analyze the effect of history length in all generality,
-we extended the protocol of~\citet{Montagnini2010} such that the probability bias
-is still fixed within blocks but that these blocks have variable lengths,
+% \Rone{line 195-197 the term trial block may lead to some confusion, as it is meant to be the sequence of trials with the same probability but also commonly the number of trials in a full sequence.}
+Herein, to explictly analyze the effect of history length,
+we rather extend the protocol of~\citet{Montagnini2010} such that the probability bias
+is still fixed within sub-blocks but that these sub-blocks have variable lengths,
 that is, by introducing switches occurring at random times.
-Therefore, similarly to~\citet{Meyniel13}, we will use a model where
+Therefore, similarly to~\citet{Meyniel13}, we use a model for which
 the bias $p$ in target direction varies according to a piecewise-constant function.
-We expect that within each of these sub-block theat we defined,
+We expect that within each of these sub-block that we defined,
 the uncertainty about of the value of $p$
 will progressively decrease as we accumulate trials.
-In addition, in our previous study
-the range of possible biases was finite.
-In the present work, we extended the paradigm
+In addition, the range of possible biases was finite ($p \in \{0, .1, .25, .5, .75, .9, 1\}$) in our previous study.
+In the present work, we also extend the paradigm
 by drawing $p$ as a continuous random variable
 within the whole range of possible probability biases (that is, the segment $[ 0, 1 ]$).
+
+%: 1Cc  equations
 As a summary, we first draw random events (that we denote as ``switches'')
-with a given mean frequency and which controls the strength of the volatility.
+with a given mean frequency (the ``hazard rate'') and which controls the strength of the volatility.
 Second, the value $p$ of the bias only changes at the moment of a switch,
 independently of the previous bias' value
-and is stationary between two switches, forming what we call an ``epoch''.
+and it is stationary between two switches, forming what we call an ``epoch''.
 Third, target direction is drawn as a Bernoulli trial using the current value of $p$.
 Such a hierarchical structure is presented in~\seeFig{intro}-A,
 where we show the realization of the target's directions sequence,
 the trajectory of the underlying probability bias (hidden to the observer), and
 the occurrences of switches.
-
-%: 1Cc  equations
 Mathematically, this can be considered as a three-layered hierarchical model
 defining the evolution of the model at each trial $t$ as the vector  $(x_2^t, x_1^t, x_0^t)$.
 At the topmost layer,
 the occurrence $x_2^t \in \{ 0, 1 \}$ of a switch ($1$ for true, $0$ for false)
-is  drawn from a Bernoulli trial $\Bb$ parameterized by its frequency $h$, or \emph{hazard rate}.
+is  drawn from a Bernoulli trial $\Bb$ parameterized by its hazard rate $h$
+(as the frequency of occurrence for each trial).
 The value of $\tau=\frac 1 h$ thus gives the average duration (in number of trials)
 between the occurrence of two switches.
 In the middle layer, the probability bias $p$ of target direction
@@ -585,7 +585,7 @@ Finally, a target moves either to the left or to the right,
 and we denote this variable (target direction, TD) as $x_0^t \in \{ 0, 1 \}$.
 This direction is drawn from a Bernoulli trial
 parameterized by the direction bias $p=x_1^t$.
-In summary, this is  described according to the following equations:
+In short, this is described according to the following equations:
 %\begin{itemize}
 %    \item Occurrence of a switch: $x_2^t \propto \Bb(h)$
 %    \item Dynamics of probabilistic bias: \eql{\choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
@@ -595,35 +595,35 @@ In summary, this is  described according to the following equations:
  \eql{\choice{
 \text{Occurrence of a switch: } x_2^t \propto \Bb(1/\tau) \\
  % TODO: nest the choice
-\text{Dynamics of probabilistic bias $p=x_1^t$: }
+\text{Dynamics of probabilistic bias $p=x_1^t$ }
  \choice{\text{if} \quad x_2^t=0 \quad \text{then} \quad  x_1^t = x_1^{t-1} \\
  \text{else} \quad x_1^t \propto \Pp  \\
  } \\
 \text{Sequence of directions: } x_0^t \propto \Bb(x_1^t)
  }\label{eq:bsm}}
-In practice, we generated a sequence of $600$ trials,
+In this study, we generated a sequence of $600$ trials,
 and there is by construction a switch at $t=0$ (that is, $x_2^0=1$).
 In addition, we imposed in our sequence that a switch
 occurs after trial numbers $200$ and $400$,
 in order to be able to compare adaptation properties
-across different chunks of the trials sequence.
+across these three different trial blocks.
 %The model generating the experimental sequence of trial directions, as well as the experimental protocol are illustrated in~\seeFig{intro}-A.
 With such a three-layered structure, the model generates the randomized occurrence of switches,
 itself generating epochs with constant direction probability %between two switches separated by a random length
 %and chosen in the continuous range of possible biases' values,
 and finally the random sequence of Target Direction (TD) occurrences at each trial.
-To sum up, the system of three equations defined in~\seeEq{bsm}
+This system of three equations defined in~\seeEq{bsm}
 defines the Binary Switching Model (BSM)
 which we used for the generation of experimental sequences presented to human participants in the experiments.
 We will use that generative model as the basis of an ideal observer model
-inverting that model to predict probability biases from the observations (TDs) and
-which we will test as a model for the adaptation of human behavior.
+inverting that generative model to predict probability biases from the observations (TDs).
+Their comparison will allow to test is as a model for the adaptation of human behavior.
 
 %: 1Cd outline
 This paper is organized in five parts.
 After this introduction where we presented the motivation for this study,
 the next section~(\seeSec{Bayesian_change_point}) will present
-an inversion of the BSM forward probabilistic model,
+an inversion of the BSM (forward) probabilistic model,
 coined the Binary Bayesian Change Point (BBCP) model.
 To our knowledge, such algorithm was not yet available, and
 we will here provide with an exact analytical solution
@@ -638,11 +638,12 @@ We will also provide a computational implementation
 and a quantitative evaluation of this algorithm.
 Then, we will present in~\seeSec{results_psycho} the analysis of experimental evidence
 to validate the generalization of previous results %.
-%In a first session, participants observe a target moving horizontally
-%with constant speed from the center
-%either to the right or left across trials
-with this novel protocol. %~(see \seeFig{intro}-A \& B).
-%The probability of either motion direction changes randomly in time.
+with this novel switching protocol.
+In order to understand the nature of
+the representation of motion regularities underlying adaptive behavior,
+it is crucial to collect both
+the recording of eye movements
+and the verbal explicit judgments about expectations on motion direction.
 In one session, participants were asked to estimate
 ``how much they are confident that
 the target will move to the right or left in the next trial'' and
@@ -650,21 +651,11 @@ to adjust the cursor's position on the screen accordingly~(see \seeFig{intro}-C)
 In the other experimental session on a different day,
 we showed the same sequence of target directions and
 recorded participants' eye movements~(see \seeFig{intro}-B).
-Indeed, in order to understand the nature of
-the representation of motion regularities underlying this adaptive behavior,
-it is crucial to collect both
-the recording of eye movements
-and the verbal explicit judgments about expectations on motion direction.
-%In such an explicit judgment task, we evaluated for each participant their confidence for the next trial direction
-%(\emph{prior} to the appearance of the target).
-%on a rating scale
-%between "sure left", to "unsure" and finally "sure right"~(see \seeFig{intro}-C).
-%These results will be compared to the results for eye movements.
-Another novelty of our approach is to use that agent as a regressor
-which will allow us to match experimental results with the BBCP
+Combining these theoretical and experimental results,
+a novelty of our approach is to use the BBCP agent as a regressor
+which will allow us to match experimental results
 and to compare its predictive power compared to classical models such as the leaky integrator model.
-Hence, we will show that behavioral results match well
-with the BBCP model.
+Hence, we will show that behavioral results match best with the BBCP model.
 In~\seeSec{inter}, we will synthesize these results
 by inferring the volatility parameters inherent to the models
 by best-fitting it to each each individual participant.
@@ -817,7 +808,8 @@ but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 \caption{\textbf{Binary Bayesian Change Point (BBCP) detection model.} ~\textit{(A)} This plot shows a synthesized sequence of $13$ events,
 %each of them corresponding to a binary choice,
 either a leftward or rightward movement of the target (TD).
-Run-length estimates are expressed as hypotheses about the length of a sub-block over which the probability bias was constant,
+Run-length estimates are expressed as hypotheses about the length of an epoch
+over which the probability bias was constant,
 that is, the number of trials since the last switch.
 Here, the true probability bias switched from a value of $.5$ to $.9$ at trial $7$,
 as can be seen by the trajectory of the true run-length (blue line).
@@ -841,7 +833,7 @@ and produce a prediction for the next trial (e.g. for $t=14$).
 %by one trial with respect to the true switch.
 %\CP{representation des valeurs du run length en haut a gauche pour les essais 5 (en gris) et 8 (en bleu), on peut voir que pour l'essais 5 et 8 la probabilit\'e qu'il n'y est pas eu de switch depuis le d\'ebut est la plus importante (peut \^etre prendre un autre essais plus parlant - trial 10: proba switch à l'essais 5 est plus importante (notebook3) ?)}
 ~\textit{(B)} On a longer sequence of $200$ trials,
-representative of a sub-block of our experimental sequence (see~\seeFig{intro}-A), % and~\seeFig{results_raw}),
+representative of a trial block of our experimental sequence (see~\seeFig{intro}-A), % and~\seeFig{results_raw}),
 we show %in the top plot
 the actual events which are observed by the agent (TD),
 along with the (hidden) dynamics of the true probability bias $P_{\text{true}}$ (blue line),
@@ -1315,7 +1307,7 @@ consistent with the well-known dependence of the variance of a Bernoulli trial
 upon the probabilistic bias ($\textrm{Var}(p)= p \cdot (1-p)$).
 In addition, the precision (i.e. the inverse of the variance)
 of the inferred probability bias $\hat{x_1}$ increases
-in longer sub-blocks, as information is integrated over more trials.
+in longer epochs, as information is integrated over more trials.
 As a result, the inferred probability as a function of time
 seems qualitatively to constitute a reliable regressor
 for predicting the strength of anticipatory pursuit.
