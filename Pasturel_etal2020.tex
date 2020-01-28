@@ -239,18 +239,19 @@ that you usually report an average number of
 three persons infected by measles per week.
 However, this rate is variable and
 over the past week you observe that the rate increased to ten cases.
-As such, two alternative interpretations are available:
+In consequence, two alternative interpretations are available:
 the first possibility is that there is an outbreak of measles and
 one should then estimate its incidence
 (i.e. the rate of new cases)
 since the inferred outbreak's onset, in order
 to quantify the infection rate specific to this outbreak,
-but also to update the value of the environmental volatility (as given by the probability of a new outbreak)
+but also to update the value of %the environmental volatility (as given by
+the probability of a new outbreak %)
 at a longer time scale.
 Alternatively, these cases are
 ``unlucky'' coincidences that originate from the natural variability
 of the underlying statistical process which drive patients to the doctor,
-but which are instances drawn from a stationary random process.
+and which are instances drawn from the same stationary random process.
 In that option, it may be possible to readjust
 the estimated baseline rate of infection with this new data.
 This example illustrates one fundamental problem
@@ -262,11 +263,12 @@ or \emph{should I go} and explore a new hypothesis
 about the random process generating the observations
 since the detection of a switch in the environment?
 
-By definition, volatility measures the temporal variability
+This uncertainty in the environment's state is characterized by its \emph{volatility}
+which by definition measures the temporal variability
 of the sufficient parameters of a random variable.
-Such \emph{meta-analysis} of the environment's statistical properties
+Such meta-analysis of the environment's statistical properties
 is an effective strategy at a large temporal scale level,
-\Rone{lines 61-63 the link to the measles outbreak could be made explicit.}\LP{Done... right?}
+% \Rone{lines 61-63 the link to the measles outbreak could be made explicit.}\LP{Done... right?}
 as that for the measle outbreak of our example,
 but also at all levels which are behaviorally relevant,
 such as contextual changes in our everyday life.
@@ -277,28 +279,30 @@ or at least forming beliefs as precise as possible
 about a future environmental context ---
 is an ubiquitous challenge for cognitive systems~\citep{Barack16}.
 In the long term, how the human brain dynamically manages
-this trade-off between exploitation and exploration
+this trade-off between exploration and exploitation
 is essential to the adaptation
 of the behavior through reinforcement learning~\citep{Cohen2007}.
-In controlled experimental settings which challenge visual perception or sensorimotor associations,
-such adaptive processes have been mostly put in evidence
-by precisely analyzing the participants' behavior in a sequence of experimental trials,
-typically highlighting sequential effects
-at the time scale of several seconds to minutes
-or even hours in the case of the adaptation to a persistent sensorimotor relation.
-% TODO: talk about Gallistel / Sugrue / Brody
 
 %: Past history of sensory event integration in vision
-\Rone{Paragraph 76-91 is rather obscure to me, it requires some more explanation. The link to adaptation and priming is probably misleading as the measure corresponds rather to a prediction of what happens next, those two effects are typically tested differently (a reduction of sensitivity and an increase in sensitivity)}
+In controlled psychophysical experimental settings which challenge visual perception or sensorimotor associations,
+such adaptive processes have been mostly put in evidence
+by precisely analyzing the participants' behavior in a sequence of experimental trials.
+These typically highlight sequential effects
+at the time scale of several seconds to minutes
+or even hours in the case of the adaptation to a persistent sensorimotor relation.
+% \Rone{Paragraph 76-91 is rather obscure to me, it requires some more explanation. The link to adaptation and priming is probably misleading as the measure corresponds rather to a prediction of what happens next, those two effects are typically tested differently (a reduction of sensitivity and an increase in sensitivity)}
 Indeed, stimulus history of sensory events influences
 how the current stimulus is perceived~\citep{Sotiropoulos2011,Adams12,ChopinMamassian2012,FischerWhitney2014,Cicchini_PRSB_2018} and
 acted upon~\citep{WallmanFuchs1998,Carpenter1995, Maus2015,Damasse18}.
 Two qualitatively opposite effects of the stimulus history have been described:
 negative (adaptation), and positive (priming-like) effects.
-\Rone{line 82: not clear how adaptation "favors spatial stability of the stimulus"}
+% \Rone{line 82: not clear how adaptation "favors spatial stability of the stimulus"}
 Adaptation reduces the sensitivity to recurrently presented stimuli,
-thus yielding a re-calibrated perceptual experience~\citep{Clifford2007, Webster2011, Kohn2007}. Examples of negative biases in perceptual discrimination are numerous (see for instance~\citep{KanaiVerstraten2005,ChopinMamassian2012}) and show that the visual system tends
-to favor temporal and spatial stability of the stimulus.
+thus yielding a re-calibrated perceptual experience~\citep{Clifford2007, Webster2011, Kohn2007}.
+Examples of negative biases in perceptual discrimination are numerous
+(see for instance~\citep{KanaiVerstraten2005,ChopinMamassian2012}) and
+show that the visual system tends
+to favor the temporal stability of the stimulus.
 On the other hand, priming is a facilitatory effect that
 enhances the identification of repeated stimuli~\citep{Verstraten1994, Tiest2009}.
 %\AM{I WOULD SKIP THIS This type of perceptual learning leads to improvements %in discrimination
@@ -306,13 +310,15 @@ enhances the identification of repeated stimuli~\citep{Verstraten1994, Tiest2009
 In sensorimotor control,
 the same stimulus presented several times could indeed
 lead to faster and more accurate responses and,
-\Rone{line 86: quite obscure}
-at the same time, lead to critically suboptimal behavior
-when a presented stimulus is not coherent
-with the participant's expectations~\citep{Hyman1953, Yu2009}. This process is highly dynamic especially in complex environments
+% \Rone{line 86: quite obscure}
+at the same time, lead to a suboptimal behavior
+when the enviroment changes and the presented stimulus is this time not coherent
+with the participant's expectations~\citep{Hyman1953, Yu2009}.
+This process is highly dynamic especially in complex environments
 where new contingencies can arise at every moment.
 Interestingly, priming effects at cognitive levels
-are sometimes paralleled by anticipatory motor responses which are positively correlated with the repetition of stimulus properties.
+are sometimes paralleled by anticipatory motor responses
+which are positively correlated with the repetition of stimulus properties.
 A well-known example of this behavior
 are anticipatory smooth eye movements (aSPEM),
 as we will illustrate in the next section.
@@ -332,9 +338,9 @@ to best understand the computation underlying behavioral adaptation to the envir
 and in particular how sequential effects are integrated
 within a hierarchical statistical framework.
 % TODO : clarify this paragraph
-As such, Bayesian inference offers an effective methodology
+Bayesian inference offers an effective methodology
 to deal with this question.
-In all generality, Bayesian methods allow to define and quantitatively assess
+Indeed, these methods allow to define and quantitatively assess
 a range of hypotheses about the processing of (possibly noisy) information by some formal agents~\citep{Deneve1999, Diaconescu2014, Daunizeau10a}.
 A key principle in the Bayesian inference approach is
 to introduce so-called latent variables
@@ -398,7 +404,7 @@ First, its buildup is relatively fast, such that only a few trials are sufficien
 to pick up some regularity in the properties of visual motion, such as speed, timing or direction~\citep{Kowler1984,Maus2015,Deravet_JOV2018}.
 Second, it is in general an unconscious process
 of which participants are not aware of.
-As such, this behavior is potentially a useful marker
+Therefore, this behavior is potentially a useful marker
 to study the internal representation of motion expectancy %(or Prior)
 and in particular to analyze how sensorimotor expectancy
 interacts dynamically with contextual contingencies in shaping oculomotor behavior.
@@ -529,7 +535,7 @@ using some simplifying assumptions and allows
 to extract a time-varying inference of the agent's belief about volatility~\citep{Vossel14}.
 \Rone{line 195-197 the term trial block may lead to some confusion, as it is meant to be the sequence of trials with the same probability but also commonly the number of trials in a full sequence.}
 Herein, to analyze the effect of history length in all generality,
-we  extended the protocol of~\citet{Montagnini2010} such that the probability bias
+we extended the protocol of~\citet{Montagnini2010} such that the probability bias
 is still fixed within blocks but that these blocks have variable lengths,
 that is, by introducing switches occurring at random times.
 Therefore, similarly to~\citet{Meyniel13}, we will use a model where
@@ -723,7 +729,7 @@ a compromise between responding rapidly
 to changes in the environment ($h \approx 1$) and
 not prematurely discarding information still of value
 for slowly changing contexts  ($h \approx 0$).
-As such, we will call this scalar the hazard rate.
+For that reason, we will call this scalar the hazard rate.
 Similarly, one can define $\tau = 1 / h$ as
 a characteristic time (in units of number of trials)
 for the integration of information.
@@ -1671,7 +1677,7 @@ In spite of a multitude of existing studies investigating the dynamics of sequen
 a core building block of sequence knowledge in the brain,
 which then applies to a variety of sensory modalities and
 experimental situations.
-As such, sequential effects in binary sequences would be better explained
+Consequently, sequential effects in binary sequences would be better explained
 by learning and updating transition probabilities
 compared to the absolute item frequencies (as in the present work) or the frequencies of their alternations.
 The critical difference lies in the content
@@ -1865,7 +1871,7 @@ If we write it for trial $t-1$, we have
                 &= (1-h)^{t} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{1\leq j \leq t} (1 - h)^{j-1} \cdot x_0^{t-j} \\ % j = i+1
 (1 - h) \cdot \hat{x_1}^{t-1} &= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} +  h \cdot \sum_{1\leq i \leq t} (1 - h)^{i} \cdot x_0^{t-i}
                 }
-As such, the integrative formula above becomes an iterative relation:
+It follows that the integrative formula above becomes an iterative relation:
 
 \eqs{
 \hat{x_1}^{t}	&= (1-h)^{t+1} \cdot \hat{x_1}^{t=0} + h \cdot \sum_{0\leq i \leq t} (1 - 1/\tau)^{i} \cdot x_0^{t-i} \\
@@ -1877,7 +1883,7 @@ such that finally
 \eq{
 \hat{x_1}^{t} = (1 - h) \cdot \hat{x_1}^{t-1} + h \cdot x_0^t
 }
-As such, the definitions in~\seeEq{leaky} and~\seeEq{leaky2} are equivalent.
+As a result, the definitions in~\seeEq{leaky} and~\seeEq{leaky2} are equivalent.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
