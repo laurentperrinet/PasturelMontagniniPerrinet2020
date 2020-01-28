@@ -1,15 +1,15 @@
-Pasturel_etal2018-blx.bib
-Pasturel_etal2018-mpgraph.mp
-Pasturel_etal2018.top
-Pasturel_etal2018.tui
-Pasturel_etal2018.aux
-Pasturel_etal2018.bbl
-Pasturel_etal2018.bcf
-Pasturel_etal2018.blg
-Pasturel_etal2018.log
-Pasturel_etal2018.pdf
-Pasturel_etal2018.run.xml
-Pasturel_etal2018.synctex.gz
+Pasturel_etal2020-blx.bib
+Pasturel_etal2020-mpgraph.mp
+Pasturel_etal2020.top
+Pasturel_etal2020.tui
+Pasturel_etal2020.aux
+Pasturel_etal2020.bbl
+Pasturel_etal2020.bcf
+Pasturel_etal2020.blg
+Pasturel_etal2020.log
+Pasturel_etal2020.pdf
+Pasturel_etal2020.run.xml
+Pasturel_etal2020.synctex.gz
 cover.aux
 cover.log
 cover.pdf
@@ -27,3 +27,6 @@ Pasturel_etal2019.fdb_latexmk
 Pasturel_etal2019.fls
 
 *.synctex(busy)
+Pasturel_etal2020.fls
+Pasturel_etal2020.fdb_latexmk
+Pasturel_etal2020.out
