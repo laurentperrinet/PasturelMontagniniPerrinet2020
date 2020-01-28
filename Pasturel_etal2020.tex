@@ -371,7 +371,8 @@ but also on the validity of the model.
 There are numerous examples of Bayesian approaches
 applied to the study of the adaptation to volatility.
 For instance,~\citet{Meyniel16} simulated a hierarchical Bayesian model
-over five previously published datasets~\citep{Squires1976, Huettel2002, Kolossa2013, Cho2002, Falk1997} in the domain of cognitive neuroscience.
+over five previously published datasets~\citep{Squires1976, Huettel2002, Kolossa2013, Cho2002, Falk1997}
+in the domain of cognitive neuroscience.
 Their main conclusion was that
 learning the local transition probabilities
 was sufficient to explain the large repertoire
@@ -384,21 +385,25 @@ Here we focus on an extension of this approach to the study of motion processing
 %: adaptation to volatility in EMs : seen as an anticipation in SPEM - principle and function
 Humans are able to accurately track a moving object
 with a combination of saccades and
-Smooth Pursuit Eye Movements (SPEM, for a review see~\citet{Krauzlis2008}).
+Smooth Pursuit Eye Movements (for a review see~\citet{Krauzlis2008}).
 These movements allow us to align and
 stabilize the object on the fovea,
 thus enabling high-resolution visual processing.
 This process is delayed by different factors such as axonal transduction,
 neural processing latencies and the inertia of the oculomotor system~\citep{Krauzlis89}.
-When predictive information is available about target motion,
-anticipatory SPEM (aSPEM or shortly, anticipatory pursuit) are
-efficiently generated before the target's appearance~\citep{Westheimer1954, Kowler1979a, Kowler1979b} thereby reducing visuomotor latency.
+When predictive information is available about target's motion,
+an anticipatory Smooth Pursuit Eye Movement (aSPEM or shortly, anticipatory pursuit)
+is generated before its appearance~\citep{Westheimer1954, Kowler1979a, Kowler1979b}
+thereby reducing visuomotor latency.
 Moreover, some experiments have demonstrated the existence
 of prediction-based smooth pursuit maintenance during
-the transient disappearance of a moving target~\citep{Badler2006,BeckerFuchs1985,OrbandeXivryMissalLefevre_JOV2012} and even predictive acceleration or deceleration during visual tracking~\citep{BeckerFuchs1985,CollinsBarnes2009}.
-Overall, although the initiation of SPEM is almost always driven by a visual motion signal, it is now clear that smooth pursuit behavior
+the transient disappearance of a moving target~\citep{Badler2006,BeckerFuchs1985,OrbandeXivryMissalLefevre_JOV2012}
+and even predictive acceleration or deceleration during visual tracking~\citep{BeckerFuchs1985,CollinsBarnes2009}.
+Overall, although the initiation of Smooth Pursuit Eye Movements
+is almost always driven by a visual motion signal,
+it is now clear that smooth pursuit behavior
 can be modulated at different stages by extra-retinal, predictive information even in the absence of a direct visual stimulation~\citep{Barnes2008}.
-Experience-based anticipatory smooth pursuit behavior is remarkable
+Experience-based anticipatory pursuit behavior is remarkable
 in different aspects.
 First, its buildup is relatively fast, such that only a few trials are sufficient
 to pick up some regularity in the properties of visual motion, such as speed, timing or direction~\citep{Kowler1984,Maus2015,Deravet_JOV2018}.
@@ -1281,7 +1286,7 @@ as the sequence of observations that were used in both sessions
 (see~\seeFig{results_psycho}).
 In one session, we recorded the participants' eye movements and
 %extracted the anticipatory pursuit velocity. (for details, see~\seeApp{em}).
-we show the anticipatory smooth pursuit velocity
+we show the anticipatory pursuit velocity
 for two representative participants (out of $12$ participants), throughout a sub-block of $200$ trials of the experimental sequence.
 Note that these participants were chosen as those
 whose fitting score was nearest to the median score in the quantitative analysis
@@ -1473,8 +1478,9 @@ and the bet experiment
 %/ true probability : ($r = 0.679$ $MI = 0.795$) pour les sujet - ($r = 0.6949 \pm 0.0861 $ $p=0.0022$ - $MI = 0.9400 \pm 0.2550$ $p=0.0022$) }
 To conclude, we deduce that the dynamic estimate of the probability bias produced by the BBCP model
 is a powerful regressor to explain
-both the strength of anticipatory smooth pursuit eye movements
-and the explicit ratings of human observers experiencing a volatile context for visual motion.
+both the strength of anticipatory pursuit
+and the explicit ratings of human observers
+experiencing a volatile context for visual motion.
 
 \Rone{Line 606 to 616 this seems more like a discussion point. Also I am not clear how one of the statements is tested, regarding the fact variability in the estimate scales with inferred probability.}
 This relatively strong correlation is surprising at a first sight
@@ -1660,8 +1666,9 @@ priming-based anticipatory pursuit throughout a sequence of motion tracking tria
 with perceptual judgements biased in favor of faster percepts
 after seeing stimuli that were slower and~\textit{vice-versa}.
 Concurrently, these authors also found
-a positive effect on anticipatory smooth pursuit,
-with faster anticipation after faster stimuli, somehow in agreement with the adaptive properties of anticipatory pursuit that we also report here.
+a positive effect on anticipatory pursuit,
+with faster anticipation after faster stimuli,
+somehow in agreement with the adaptive properties of anticipatory pursuit that we report here.
 \citet{Maus2015} quantified the trial-history effects on anticipatory pursuit and speed perception by fitting a fixed-size memory model similar to the forgetful agent. They found that anticipatory pursuit and speed perception change over different time scales,
 with the priming effects being maximized
 for short-term stimulus history (around $2$ trials) and
@@ -1757,7 +1764,7 @@ Eye movements were recorded continuously with an eye tracking system (Eyelink 10
 To minimize measurement errors, the participant's head movements were restrained using a chin and forehead rest, so that the eyes in primary gaze position were directed towards the center of the screen. In order to enforce accuracy in gaze position and tracking, we implemented an automatic procedure of fixation control. If the distance between the gaze position and the central fixation point during the fixation epoch exceeded $2\degree$ of visual angles, the fixation point started flickering and the counter for the fixation duration was reset to $0$.
 
 The recorded horizontal and vertical raw gaze position data were numerically differentiated to obtain velocity measures. We adopted an automatic conjoint acceleration and velocity threshold method (the default saccade detection implemented by SR Research) to detect ocular saccades. Saccades and eye-blinks were excluded from eye velocity traces (and replaced by \textit{Not-a-Number} values in the numerical arrays) before trial averaging and data fitting for the extraction of the oculomotor parameters of interest.
-In order to extract the relevant parameters of the oculomotor responses, we developed new tools based on a best-fitting procedure of predefined oculomotor patterns and in particular the typical smooth pursuit velocity profile that was recorded in our experiment. A piecewise-defined function was fitted to the different epochs of the eye velocity traces: a constant function during fixation, a ramp-like linear function during smooth pursuit anticipation, an increasing sigmoid-function during the initiation of visually-guided smooth pursuit, reaching its saturating value during the pursuit steady-state. This analysis was applied to each trial individually and it allowed in particular to estimate the anticipatory smooth pursuit velocity.
+In order to extract the relevant parameters of the oculomotor responses, we developed new tools based on a best-fitting procedure of predefined oculomotor patterns and in particular the typical smooth pursuit velocity profile that was recorded in our experiment. A piecewise-defined function was fitted to the different epochs of the eye velocity traces: a constant function during fixation, a ramp-like linear function during smooth pursuit anticipation, an increasing sigmoid-function during the initiation of visually-guided smooth pursuit, reaching its saturating value during the pursuit steady-state. This analysis was applied to each trial individually and it allowed in particular to estimate the velocity of anticipatory pursuit.
 %are provided in Appendix \ref{app:em}
 Some trials were excluded from the analysis as the proportion of missing data-points, due to eye blinks or saccades was considered too large, namely when the missing data exceeded $45~\ms$ during the gap or one third of the total target motion epoch ($4.36\%$ of all trials). In addition, trials were also excluded when the eye-movement fitting procedure did not converge, after visual inspection, to a satisfactory match with the data ($3.25\%$ of all trials). The python scripts used to analyze eye movements are available at \url{https://github.com/invibe/ANEMO}.
 
