@@ -808,8 +808,9 @@ but also predicting the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 \draw [anchor=north west] (0.382\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
 \end{tikzpicture}
 }
-\caption{\textbf{Binary Bayesian Change Point (BBCP) detection model.} ~\textit{(A)} This plot shows a synthesized sequence of $13$ events,
-%each of them corresponding to a binary choice,
+\caption{\textbf{Binary Bayesian Change Point (BBCP) detection model.}
+~\textit{(A)}
+This plot shows a synthesized sequence of $13$ events,
 either a leftward or rightward movement of the target (TD).
 Run-length estimates are expressed as hypotheses about the length of an epoch
 over which the probability bias was constant,
@@ -819,7 +820,7 @@ as can be seen by the trajectory of the true run-length (blue line).
 The BBCP model tries to capture the occurrences of a switch
 by inferring the probability of different possible run lengths.
 At any new datum (trial), this defines a Hidden Markov Model
-as a graph (treillis), where % of possible run lengths.
+as a graph (trellis), where % of possible run lengths.
 edges indicate that a message is being passed
 to update each node's probability (as represented by arrows from trial $13$ to $14$).
 Black arrows denote a progression of the run length at the next step (no switch),
@@ -907,7 +908,7 @@ the run-length as a latent variable which gives to the agent the possibility to 
 different hypotheses about the input.
 We therefore draw a computational graph (see \seeFig{Bayesianchangepoint}-A) where, at any trial,
 an hypothesis is formed on as many ``nodes'' than there are run-lengths.
-Note that run-lenghts may be limited by the total number of trials $t$.
+Note that run-lengths may be limited by the total number of trials $t$.
 %
 %This is for instance the task that we defined
 %for the bet experiment, where each participant
@@ -941,7 +942,7 @@ As a consequence, $\beta^{(r)}_t$ is scaled such that $\sum_{r \geq 0 } \beta^{(
 %: 2Bc prediction cycle
 %-------------------------------------------------------------%
 %-------------------------------------------------------------%
-% Computing sufficient stitistics
+% Computing sufficient statistics
 %-------------------------------------------------------------%
 
 With these premises, we define the BBCP
@@ -1239,7 +1240,7 @@ explicit guesses about target motion direction.
 %\section{Results: psychophysics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results: Anticipatory eye movements and explicit ratings}
+\section{Results: Anticipatory pursuit and explicit ratings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:results_psycho}
 %: FIGURE 2 fig:results_psycho~\seeFig{results_psycho}
@@ -1303,7 +1304,7 @@ it appears qualitatively that both traces evolve in good agreement.
 First, one can observe a trend in the polarity of anticipatory pursuit velocity
 to be negative for probability bias values below~$.5$ and positive for values above~$.5$.
 %Moreover, both curves seem to lag by few trials the
-%occurrence of a switch of the probability bias (also hidden to the observers).
+% occurrence of a switch of the probability bias (also hidden to the observers).
 Moreover, both curves (anticipatory pursuit and model) unveil similar delays in detecting and
 taking into account a switch of the probability bias (while being hidden to the observers),
 reflecting the time (in the order of a few trials) taken to integrate enough information
@@ -1342,14 +1343,12 @@ Moreover, we observe again that a stronger probability bias leads
 to a lower variability in the bet scores, compared to bias values close to $0.5$.
 Again, a (hidden) switch in the value of the bias is
 most of the time correctly identified after only a few trials.
-Finally, note that at every pause (black vertical bar in~\seeFig{results_psycho}),
-participants tended to favor unbiased guesses, closer to $0.5$
-than at the end of a sub-block of trials.
+Finally, note that after every pause (black vertical bar in~\seeFig{results_psycho}),
+participants tended to favor unbiased guesses, closer to $0.5$.
 We can speculate that this phenomenon could correspond
 to a spontaneous resetting mechanism of the internal belief on the probability bias
-and indeed we can introduce such an assumption in the model, %in the definition of the BBCP agent,
+and indeed we can introduce such an assumption in the model,
 as a reset of the internal belief after each pause.
-%along with an increased uncertainty,.
 To conclude, the experiment performed in this session
 shows that the probability bias values that are explicitly estimated by participants
 are qualitatively similar to the implicit (and largely unconscious) ones
@@ -1406,32 +1405,30 @@ with the true probability and with the estimates obtained with the leaky integra
 Quantitatively, we now compare the experimental results
 with the value of the probability bias $\hat{x}_1$
 computed by the BBCP algorithm.
-Compiling results %(see~\seeFig{results_psycho})
-from all participants,
+Compiling results from all participants,
 we have plotted in~\seeFig{results_psycho_all}
-the anticipatory pursuit strength (panel A) and the bet scores (panel B) as a function of the BBCP-inferred probability bias
-(we remind here that the true value of the probability bias was coded at the second layer of the BSM generative model and is hidden both to the agents and to the human observers).
+the anticipatory pursuit strength (panel A) and the bet scores (panel B)
+as a function of the BBCP-inferred probability bias  $P_{\text{BBCP}}$.
 All trials from all participants were pooled together
 and we show this joint data as an error bar plot
 showing the median along with the $.25$ and $.75$ quantiles
-as computed for 5 equal partitions of the $[0, 1]$ probability segment. % to generate a scatter plot
+as computed for 5 equal partitions of the $[0, 1]$ probability segment.
 As a comparison, the same method was applied to the true value $P_{\text{true}}$ and
-to the estimate obtained by the leaky integrator.
-%which was then  converted to a kernel density estimate
-%for a better visualization (kernel size of $XX$).
+to the estimate obtained by the leaky integrator  $P_{\text{leaky}}$.
+We remind here that the true value of the probability bias
+was coded at the second layer of the BSM generative model and
+is hidden both to the agents and to the human observers.
 
+\LP{update this section following changes in the figure}
 We quantitatively estimated the Pearson correlation coefficient
-and the mutual information %$\Cc$ (\seeEq{MI}) OR RATHER $MI$, as defined by ... NEW EQUATION}
+and the mutual information
 between the raw data and the different models.
-%Details of this analysis is presented in~\seeApp{bcp}.
 First, as we can see in~\seeFig{results_psycho_all}-A,
 the probability bias $P_{\text{BBCP}}$ estimated by the BBCP algorithm
 is linearly correlated with the anticipatory pursuit velocity, both as computed on the whole data or
 for each observer individually (see insets in the Figure).
-The respective values %($r = XXX \pm $)
-for the whole dataset
-%\CP{aSPEM / BCP :
-($r = 0.657$ and $MI = 0.687$) %pour les sujet -
+The respective values for the whole dataset
+($r = 0.657$ and $MI = 0.687$)
 and across subjects
 ($r = 0.673 \pm 0.079$ and $MI =  0.707 \pm 0.134$) %notebook 4}
 are slightly higher than that found by~\citet{Montagnini2010} and~\citet{Damasse18}
@@ -1439,10 +1436,8 @@ for anticipatory pursuit measures gathered across experimental trial blocks with
 and significantly\footnote{All following $p$-values are obtained from the \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html}{Wilcoxon signed-rank test}.} better than that estimated
 with the true probability
 ($r = 0.613 \pm 0.069$ with $p=0.002$ and $MI = 0.562 \pm 0.107$ with $p=0.002$) %
-%\CP{aSPEM / true : ($r = 0.597$ $MI = 0.529$) pour les sujet - ($r = 0.6138 \pm 0.0698 $  $p=0.0022$ - $MI = 0.5622 \pm 0.1079$ $p=0.0022$)}
 and for that estimated by the leaky-integrator model
 ($r = 0.600 \pm 0.079$ with $p=0.003$ and $MI =  0.622 \pm 0.102$ with $p=0.004$), see inset).
-%\CP{aSPEM / Leaky - ($r = 0.582$ $MI = 0.609$) pour les sujet - ($r = 0.6005 \pm 0.0790$ $p=0.0037$ - $MI =  0.6221 \pm 0.1025$  $p=0.0047$)}
 A similar analysis
 illustrates the relationship between
 the model-estimated probability bias
@@ -1453,12 +1448,9 @@ Similarly to the anticipatory pursuit strength, the rating values are nicely cor
 with the probability bias given by the model,
 as quantified by the Pearson correlation coefficient and mutual information
 across subjects ($r = 0.813 \pm 0.091$ and $MI = 1.312 \pm 0.364$).
-%\CP{synchroniser ces valeurs entre figure et texte... --> valeurs correctes -- sur la figure : un r et un MI pour tous les sujets en m\^eme temps, dans le texte : moyenne de r et MI trouv\'e pour chaque sujets individuellement}
-%\CP{BET / BCP : ($r = 0.795$ $MI = 1.134$) pour les sujet - ($r = 0.8134 \pm 0.0916 $ $MI = 1.3126 \pm 0.3644$)}
 Importantly, this value is again higher for the BBCP model than
 for the leaky integrator ($r = 0.731 \pm 0.129$ with $p=0.007$ and $MI =  1.117 \pm 0.409$ with $p=0.028$),
-%\CP{BET / Leaky : ($r = 0.712$ $MI = 0.968$) pour les sujet - ($r = 0.7311 \pm 0.1298 $ $p=0.0076$ - $MI =  1.1178 \pm 0.4092$ $p=0.0280$)
-or with the true probability ($r = 0.694 \pm 0.086$ with $p=0.002$ and $MI =  0.940 \pm 0.255$ with $p=0.002$). % : ($r = 0.679$ $MI = 0.795$) pour les sujet -  }
+or with the true probability ($r = 0.694 \pm 0.086$ with $p=0.002$ and $MI =  0.940 \pm 0.255$ with $p=0.002$).
 Further notice that, in order to account for some specific changes
 observed in the behavioral data after the short pauses
 occurring every $50$ trials,
@@ -1466,14 +1458,11 @@ we added the assumption %for both models,
 that there was a switch at each pause.
 However, removing this assumption did not significantly change the conclusions about the match of the model
 compared to $P_{\text{true}}$ or $P_{\text{leaky}}$
-both for eye movements %\AM{I would skip all these tests, too long here, if they do not add anything significant!!
+both for eye movements
 ($P_{\text{BBCP}}$: $r = 0.667 \pm 0.078$ and $MI =  0.712 \pm 0.125$, $P_{\text{leaky}}$: $r = 0.548 \pm 0.074$ with $p=0.003$ and $MI =  0.577 \pm 0.096$ with $p=0.003$ ; $P_{\text{true}}$ : $r = 0.613 \pm 0.069$ with $p=0.002$ and %
 $MI =  0.562 \pm 0.107$ with $p=0.002$ ) % }
 and the bet experiment
 ($P_{\text{BBCP}}$: $r = 0.802 \pm 0.090$ and $MI =  1.255 \pm 0.349$, $P_{\text{leaky}}$: $r = 0.641 \pm 0.120$ with $p=0.002$ and $MI =  0.966 \pm 0.300$ with $p=0.002$ ; $P_{\text{true}}$ : $r = 0.694 \pm 0.086$ with $p=0.002$ and $MI =  0.940 \pm 0.255$ with $p=0.002$).
-%\CP{SANS PAUSE -- BET  / BCP :($r = 0.785$ $MI = 1.100$) pour les sujet - ($r = 0.8027 \pm 0.0905 $ $MI =  1.2557 \pm 0.3498$)
-%/ Leaky :($r = 0.625$ $MI = 0.879$) pour les sujet - ($r = 0.6413 \pm 0.1209$ $p=0.0028$ - $MI = 0.9666 \pm 0.3008$ $p=0.0022$)
-%/ true probability : ($r = 0.679$ $MI = 0.795$) pour les sujet - ($r = 0.6949 \pm 0.0861 $ $p=0.0022$ - $MI = 0.9400 \pm 0.2550$ $p=0.0022$) }
 To conclude, we deduce that the dynamic estimate of the probability bias produced by the BBCP model
 is a powerful regressor to explain
 both the strength of anticipatory pursuit
@@ -1495,7 +1484,7 @@ and which is well captured by the BBCP model.
 In particular, the model predicts different aspects
 of the experimental results,
 from the variability as a function of the inferred probability,
-to the dynamics of the behavior following a (hidden) switch.
+to the dynamic of the behavior following a (hidden) switch.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results: Analyzing inter-individual differences}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1715,8 +1704,7 @@ a specific generative inferential model, not of the probabilistic calculus in it
 \AM{I WOULD CUT THIS Note that, if we assume that the inversion of the generative model is perfect
 (that is, if no algorithmic approximation has been done, like in the present study),
 this means that by fitting different ideal observers
-to the data, one evaluates as a matter of fact the adequacy of
-a specific generative model, not of the probabilistic calculus in its detailed implementation.}
+to the data, one evaluates as a matter of fact the adequacy of a specific generative model, not of the probabilistic calculus in its detailed implementation.}
 There is actually a common confusion around the idea of a ``Bayesian brain'', and
 we believe that the challenge here is not to validate the hypothesis that the brain implements or not the Bayes' theorem, or a more complex hierarchical combinations of inferential computations, but rather to test hypotheses about the different generative models
 that agents may use. In his sense, the brain is probably only ``weakly Bayesian''. This methodological point will be essential in designing future experimental protocols, and in evaluating quantitatively the results.
