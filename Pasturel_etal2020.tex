@@ -1133,7 +1133,7 @@ the BBCP algorithm % is detailed in~\seeApp{bcp} and
 using a set of Python scripts.
 This implementation provides also some control scripts
 to test the behavior of the algorithm with synthetic data.
-Indeed, this allows to qualitatively and quantitatively assess
+This strategy allows to qualitatively and quantitatively assess
 this ideal observer model against a ground truth before applying it
 on the trial sequence that was used for the experiments and
 ultimately comparing it to the human behavior. % (see~\seeFig{results_raw}).
@@ -1155,12 +1155,14 @@ The BBCP model achieves a correct detection of the switches after a short delay 
 
 Two main observations are noteworthy. First, after each detected switch, beliefs align along a linear ridge,
 as our model best estimate of the current run-length is steadily incremented by $1$ at each trial until a new switch,
-and the probability $\hat{x}_1^t$ is estimated  by integrating sensory evidence in this epoch (it 'stays').
-Then, we observe that shortly after a switch (hidden to the agent),
-the belief diffuses until the relative probability of a continuously increasing run-length
-is lower that that assigned to a smaller run-length:
-There is a transition to a new state (the model 'goes').
-Such adaptation is similar to the slow / fast heuristic model proposed in other studies~\citep{Schutz14}.
+and the probability $\hat{x}_1^t$ is estimated  by integrating sensory evidence in this epoch: the model  ``stays''.
+Then, we observe that shortly after a switch (an event that is hidden to the agent),
+the belief assigned to a smaller run-length smoothly increases while
+while the belief on the previous epoch decreases.
+At the trial for which the relative probability of the previous epoch
+is lower that that of the new,
+there is a transition to a new state: the model ``goes''.
+Such dynamic is similar to the slow / fast heuristic model proposed in other studies~\citep{Schutz14}.
 Second, we can use this information to readout the most likely probability bias and
 use it as a regressor for the behavioral data.
 Note that the leaky integrator model is implemented
