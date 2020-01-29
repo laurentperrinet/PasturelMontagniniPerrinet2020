@@ -16,7 +16,7 @@ Humans adapt their anticipatory eye movements to the volatility of visual motion
 }
 \newcommand{\Acknowledgments}{This work was supported by EU Marie-Sk\l{}odowska-Curie Grant No 642961 (PACE-ITN) and by the Fondation pour le Recherche M\'edicale, under the program \textit{Equipe FRM} (DEQ20180339203/PredictEye/G Masson). Code and material on the \href{\Website/publication/pasturel-montagnini-perrinet-20}{corresponding author's website}. We thank Doctor Jean-Bernard Damasse, Guillaume S Masson and Professor Laurent Madelain for insightful discussions. }
 \newcommand{\Abstract}{
-Animal behavior constantly adapts to changes, for example when the statistical properties of the environment change unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of motion ramps of a visual target is biased to one direction (e.g. right or left), human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where the probability bias could change at random switching times. In addition, we also recorded the explicit prediction of the next outcome as reported by observers using a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to such generative model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploration and exploitation in the model, we were able to fit each individual experimental data-set with different levels of estimated volatility and derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test the diversity of human cognitive abilities in uncertain and dynamic environments.
+Animal behavior constantly adapts to changes, for example when the statistical properties of the environment change unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of motion ramps of a visual target is biased to one direction (e.g. right or left), human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where the probability bias could change at random switching times. In addition, we also recorded the explicit prediction of the next outcome as reported by observers using a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to such generative model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploitation and exploration in the model, we were able to fit each individual experimental data-set with different levels of estimated volatility and derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test the diversity of human cognitive abilities in uncertain and dynamic environments.
 }
 \newcommand{\AuthorSummary}{
 Understanding how humans adapt to changing environments to make judgments or plan motor responses based on time-varying sensory information is crucial for psychology, neuroscience and artificial intelligence. Current theories for how we deal with the environment's uncertainty, that is, in response to the introduction of some randomness change, mostly rely on the behavior at equilibrium. Here, we show that in the more ecological case where the context switches at random times all along the experiment, an adaptation to this volatility can be performed online. In particular, we show in two behavioral experiments that humans can adapt to such volatility at the early sensorimotor level, through their anticipatory eye movements, but also at a higher cognitive level, through explicit ratings. Our results suggest that humans (and future artificial systems) can use much richer adaptive strategies than previously assumed.
@@ -279,7 +279,7 @@ or at least forming beliefs as precise as possible
 about a future environmental context ---
 is an ubiquitous challenge for cognitive systems~\citep{Barack16}.
 In the long term, how the human brain dynamically manages
-this trade-off between exploration and exploitation
+this trade-off between exploitation and exploration
 is essential to the adaptation
 of the behavior through reinforcement learning~\citep{Cohen2007}.
 
@@ -661,8 +661,8 @@ by inferring the volatility parameters inherent to the models
 by best-fitting it to each each individual participant.
 This will allow the analysis of inter-individual behavioral responses for each session.
 In particular, we will test if one could predict observers' prior (preferred) volatility,
-that is, a measure of the dynamic compromise between exploration (``should I go?'')
-and exploitation (``should I stay?'')
+that is, a measure of the dynamic compromise between
+exploitation (``should I stay?'') and exploration (``should I go?'')
 across the two different sessions challenging predictive adaptive processes
 at the unconscious and conscious levels.
 Finally, we will summarize and conclude this study and
@@ -1492,7 +1492,7 @@ This was best characterized by differences
 in the variability of the responses, but also, for instance,
 by the different characteristic delays after a switch.
 This reflects the spectrum of individual behavioral choices
-between exploration versus exploitation~\citep{Behrens07}.
+between exploitation versus exploration~\citep{Behrens07}.
 As a consequence, we were interested in characterizing these individual preferences
 for each individual participant,
 but also to investigate whether this preference co-varied
@@ -1531,7 +1531,7 @@ for the eye movement session than for the bet experiment,
 as also illustrated by the cumulative distributions (plain lines in black or colors).
 Such an analysis suggests that participants ultimately have
 different mechanisms at the unconscious and conscious levels
-for guiding their tendency of exploration versus exploitation.
+for guiding their tendency of exploitation versus exploration.
  }
 \label{fig:results_inter}
 \end{figure}
@@ -1597,8 +1597,7 @@ As a consequence, this analysis reveals
 that relaxing the free parameter of the BBCP model
 improves the match of the model to the behavioral data and
 that we could represent the distribution of individual differences in the choice behavior
-between exploration and exploitation
-in both sessions for each subject.
+between exploitation and exploration in both sessions for each subject.
 
 %-------------------------------------------------------------%
 %: 4C analysis
@@ -1681,7 +1680,7 @@ While it was not our original objective, we have analyzed in this study the indi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{itemize}\setlength{\itemsep}{0ex}
 \item We have developed a Bayesian model of an agent estimating the probability bias of a volatile environment with changing points (switches), such that the agent may decide \textit{to stay} on the current hypothesis about the environment, or \textit{to go} for a novel one. This allows to dynamically infer the probability bias across time and directly compare model predictions and experimental data, such as measures of human behavior.
