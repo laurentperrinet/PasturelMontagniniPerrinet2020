@@ -1878,7 +1878,7 @@ The binomial distribution is defined as the probability that the sum $X$ of $\nu
 \Pr(k;\nu,\mu) = \Pr(X = k) = {\nu\choose k} \cdot \mu^k \cdot (1-\mu)^{\nu-k}
 }
 
-Knowing such a model for $X$ it can be of interest to find an estimate of the parameter of the Bernoulli trial, that is of the probability bias $\mu$. This distribution function is called the conjugate of the binomial distribution which is the Beta-distribution. For example, the beta distribution can be used in Bayesian analysis to describe initial knowledge concerning probability of success such as the probability that a product will successfully complete a stress test. The beta distribution is a suitable model for the random behavior of percentages and proportions.
+Knowing such a model for $X$, it can be of interest to find an estimate of the parameter of the Bernoulli trial, that is of the probability bias $\mu$. This distribution function is called the conjugate of the binomial distribution which is the Beta-distribution. For example, the beta distribution can be used in Bayesian analysis to describe initial knowledge concerning probability of success such as the probability that a product will successfully complete a stress test. The beta distribution is a suitable model for the random behavior of percentages and proportions.
 
 It is usually defined using shape parameters $\alpha$ and $\beta$:
 
@@ -1928,7 +1928,7 @@ extended for the class of binary inputs. Using the definition of the run-length~
 \end{enumerate}
 
 
-In the following, we  detail some intermediate steps and highlight some key differences with their implementation. We also provide a python implementation of the algorithm, which is openly available on \href{https://github.com/laurentperrinet/Bayesianchangepoint}{GitHub}.
+In the following, we  detail some intermediate steps and highlight some key differences with their implementation. We also provide a python implementation of the algorithm, which is available at \url{https://github.com/laurentperrinet/Bayesianchangepoint}.
 
 \subsubsection{Initialization}
 %to represent our belief at trial $t$
@@ -1956,7 +1956,7 @@ Concerning the shape, it can be for instance
 the uniform distribution $\Uu$ on $ [ 0, 1 ] $, that is $\nu_{prior}=2$ or
 Jeffrey's prior $\Jj$, that is $\nu_{prior}=1$.
 We chose the latter for the generation of trials
-as the uniform distribution would yield more sample around $.5$.
+as the uniform distribution would yield more samples around $.5$.
 Qualitatively, this would result in more difficult task in discriminating a probability bias from another.
 Jeffrey's prior was more adapted to that task.
 %Wikipedia: Beta(1/2, 1/2): The arcsine distribution probability density was proposed by Harold Jeffreys to represent uncertainty for a Bernoulli or a binomial distribution in Bayesian inference, and is now commonly referred to as Jeffreys prior: p−1/2(1 − p)−1/2. This distribution also appears in several random walk fundamental theorems
@@ -2093,6 +2093,7 @@ def likelihood(o, p, r):
 
 \end{lstlisting}
 
+See the code \href{https://github.com/laurentperrinet/bayesianchangepoint/blob/master/bayesianchangepoint/bcp.py#L65}{online}.
 \subsubsection{Properties}
 This function has some properties, notably symmetries:
 	\begin{itemize}
@@ -2101,7 +2102,7 @@ This function has some properties, notably symmetries:
 		\item $Pr(o | p, r)=Pr(1-o | 1-p, r)$.
 	\end{itemize}
 
-Note also that as $r$ grows, the likelihood gets sharper.
+\noindent Note also that as $r$ grows, the likelihood gets sharper.
 
 % TODO : put figure from https://github.com/laurentperrinet/Bayesianchangepoint/blob/master/notebooks/test_tracebase.ipynb
 
@@ -2114,4 +2115,3 @@ Note also that as $r$ grows, the likelihood gets sharper.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}%
-&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
