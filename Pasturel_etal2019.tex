@@ -22,6 +22,9 @@ Humans adapt their anticipatory eye movements to the volatility of visual motion
 \newcommand{\Acknowledgments}{This work was supported by EU Marie-Sklodowska-Curie Grant No 642961 (PACE-ITN) and by the Fondation pour le Recherche M\'edicale, under the program \textit{Equipe FRM} (DEQ20180339203/PredictEye/G Masson). Code and material on the \href{\Website/publication/pasturel-montagnini-perrinet-19}{corresponding author's website}. We thank Doctor Jean-Bernard Damasse, Guillaume S Masson and Professor Laurent Madelain for insightful discussions. }
 \newcommand{\Abstract}{
 Animal behavior must constantly adapt to changes, for example when the statistical properties of the environment change unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of motion ramps of a visual target is biased to one direction (e.g. right or left), human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where the probability bias could change at random switching times. In addition, we also recorded the explicit direction prediction reported by observers as given by a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to the event switching generating model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploration and exploitation in the model, we were able to fit each individual experimental data-set with different levels of estimated volatility and derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test the diversity of human cognitive abilities in uncertain and dynamic environments.}
+\newcommand{\AuthorSummary}{
+Understanding how humans adapt to changing environments to make judgments or plan motor responses based on time-varying sensory information is crucial for psychology, neuroscience and artificial intelligence. Current theories for how we deal with the environment's uncertainty most rely on the equilibrium behavior in response to the introduction of some randomness change. Here we show that in the more ecological case where the context switches at random times all along the experiment, an adaptation to this volatility can be performed online. In particular, we show in two behavioral experiments that humans can adapt to such volatility at the early sensorimotor level, through their anticipatory eye movements, but also at a higher cognitive level, through explicit ratings. Our results suggest that humans (and future artificial systems) can use much richer adaptive strategies than previously assumed.
+}
 \newcommand{\KeyWords}{eye movements, decision making, volatility, bayesian model; adaptation; perception}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\documentclass[profile,final,english,draft,24pt]{article}%
@@ -204,7 +207,7 @@ Animal behavior must constantly adapt to changes, for example when the statistic
 %============ graphics ===================
 \usepackage{graphicx}%
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}%
-\graphicspath{{./figures/}}% TODO remove {./figures/},  at the end
+%\graphicspath{{./2019_figures/}}% TODO remove {./figures/},  at the end
 %============ bibliography ===================
 %\usepackage[numbers,comma,sort&compress,round]{natbib} %
 %\usepackage[
@@ -304,9 +307,7 @@ Animal behavior must constantly adapt to changes, for example when the statistic
 % Use first person. PLOS ONE authors please skip this step.
 % Author Summary not valid for PLOS ONE submissions.
 \section*{Author summary}
-Understanding how humans adapt to changing environments to make judgments or plan motor responses based on time-varying sensory information is crucial for psychology, neuroscience and artificial intelligence. Current theories for how we deal with the environment's uncertainty most rely on the equilibrium behavior in response to the introduction of some randomness change. Here we show that in the more ecological case where the context switches at random times all along the experiment, an adaptation to this volatility can be performed online. In particular, we show in two behavioral experiments that humans can adapt to such volatility at the early sensorimotor level, through their anticipatory eye movements, but also at a higher cognitive level, through explicit ratings. Our results suggest that humans (and future artificial systems) can use much richer adaptive strategies than previously assumed.
-\linenumbers
-
+\AuthorSummary
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Motivation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -548,9 +549,9 @@ driving anticipatory behavior.
 \centering{
 \begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
 \node [anchor=north west]  (imgA) at (0.000\linewidth,.600\linewidth){\includegraphics[width=0.325
-\linewidth]{1_A_Experiment_randomblock}};
-\node [anchor=north west]  (imgB) at (0.335\linewidth,.595\linewidth){\includegraphics[width=0.350\linewidth]{1_B_protocol_recording}};
-\node [anchor=north west]  (imgC) at (0.650\linewidth,.595\linewidth){\includegraphics[width=0.350\linewidth]{1_C_protocol_bet}};
+\linewidth]{2019_figures/1_A_Experiment_randomblock}};
+\node [anchor=north west]  (imgB) at (0.335\linewidth,.595\linewidth){\includegraphics[width=0.350\linewidth]{2019_figures/1_B_protocol_recording}};
+\node [anchor=north west]  (imgC) at (0.650\linewidth,.595\linewidth){\includegraphics[width=0.350\linewidth]{2019_figures/1_C_protocol_bet}};
 \draw [anchor=north west] (0.000\linewidth, .62\linewidth) node {$\mathsf{(A)}$};
 \draw [anchor=north west] (0.350\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
 \draw [anchor=north west] (0.665\linewidth, .62\linewidth) node {$\mathsf{(C)}$};
@@ -907,8 +908,8 @@ but also of the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 \centering{
 \begin{tikzpicture}[thick,scale=.95]
 \node [anchor=north west]  (imgA) at (0.\linewidth,.55\linewidth){\includegraphics[width=0.33
-\linewidth]{3_BCP_model}};
-\node [anchor=north west]  (imgB) at (0.36\linewidth,.580\linewidth){\includegraphics[width=0.64\linewidth]{3_BCP_readouts}};
+\linewidth]{2019_figures/3_BCP_model}};
+\node [anchor=north west]  (imgB) at (0.36\linewidth,.580\linewidth){\includegraphics[width=0.64\linewidth]{2019_figures/3_BCP_readouts}};
 \draw [anchor=north west] (0.000\linewidth, .62\linewidth) node {$\mathsf{(A)}$};
 \draw [anchor=north west] (0.382\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
 \end{tikzpicture}
@@ -1345,7 +1346,7 @@ explicit guesses about target motion direction.
 \label{sec:results_psycho}
 %: FIGURE 2 fig:results_psycho~\seeFig{results_psycho}
 \begin{figure}%[b!]
-\centering{\includegraphics[width=\linewidth]{2_results_enregistrement}}
+\centering{\includegraphics[width=\linewidth]{2019_figures/2_results_enregistrement}}
 \caption{
 \textbf{Raw behavioral results, qualitative overview.} %
 The top row represents the sequence of target directions (TD)
@@ -1461,8 +1462,8 @@ which supposedly underlie the generation of anticipatory aSPEM with variable str
 \begin{figure}%[b!]
 \centering{
 \begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
-\node [anchor=north west]  (img4) at (0.000\linewidth,.618\linewidth){\includegraphics[width=0.49\linewidth]{4_A_result_psycho_aSPEM}};
-\node [anchor=north west]  (img4) at (0.51\linewidth,.618\linewidth){\includegraphics[width=0.49\linewidth]{4_B_result_psycho_bet}};
+\node [anchor=north west]  (img4) at (0.000\linewidth,.618\linewidth){\includegraphics[width=0.49\linewidth]{2019_figures/4_A_result_psycho_aSPEM}};
+\node [anchor=north west]  (img4) at (0.51\linewidth,.618\linewidth){\includegraphics[width=0.49\linewidth]{2019_figures/4_B_result_psycho_bet}};
 %
 \draw [anchor=north west] (0.000\linewidth, .638\linewidth) node {$\mathsf{(A)}$};
 \draw [anchor=north west] (0.5\linewidth, .638\linewidth) node {$\mathsf{(B)}$};
@@ -1633,7 +1634,7 @@ we expect to better understand the variety of inter individual differences. % an
 % cf https://github.com/laurentperrinet/Bayesianchangepoint/blob/master/notebooks/test_hazardrate.ipynb
 % cf : 4_Meta_analysis.ipynb
 \begin{figure}%[b!]
-\centering{\includegraphics[width=0.618\linewidth]{5_inter-individual_differences_fit}}
+\centering{\includegraphics[width=0.618\linewidth]{2019_figures/5_inter-individual_differences_fit}}
 \caption{\textbf{Analysis of inter-individual differences.} %
 We analyzed each participant's behavior individually, by searching
 the individual best value of the model's single free parameter, the hazard rate $h$.

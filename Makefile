@@ -17,7 +17,7 @@ cover.pdf: cover.tex $(SRC).tex $(SRC).bib
 
 # post-production
 diff.pdf: $(SRC).tex $(SRC).bib Pasturel_etal2019.tex
-	latexdiff --flatten Pasturel_etal2019.tex $(SRC).tex > diff.tex
+	latexdiff --graphics-markup=both Pasturel_etal2019.tex $(SRC).tex > diff.tex
 	$(LATEXMK) diff.tex
 	open diff.pdf
 
