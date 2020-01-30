@@ -15,6 +15,12 @@
 Humans adapt their anticipatory eye movements to the volatility of visual motion properties
 }
 \newcommand{\Acknowledgments}{This work was supported by EU Marie-Sk\l{}odowska-Curie Grant No 642961 (PACE-ITN) and by the Fondation pour le Recherche M\'edicale, under the program \textit{Equipe FRM} (DEQ20180339203/PredictEye/G Masson). Code and material on the \href{\Website/publication/pasturel-montagnini-perrinet-20}{corresponding author's website}. We thank Doctor Jean-Bernard Damasse, Guillaume S Masson and Professor Laurent Madelain for insightful discussions. }
+\newcommand{\Abstract}{
+Animal behavior constantly adapts to changes, for example when the statistical properties of the environment change unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of motion ramps of a visual target is biased to one direction (e.g. right or left), human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where the probability bias could change at random switching times. In addition, we also recorded the explicit prediction of the next outcome as reported by observers using a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to such generative model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploration and exploitation in the model, we were able to fit each individual experimental data-set with different levels of estimated volatility and derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test the diversity of human cognitive abilities in uncertain and dynamic environments.
+}
+\newcommand{\AuthorSummary}{
+Understanding how humans adapt to changing environments to make judgments or plan motor responses based on time-varying sensory information is crucial for psychology, neuroscience and artificial intelligence. Current theories for how we deal with the environment's uncertainty, that is, in response to the introduction of some randomness change, mostly rely on the behavior at equilibrium. Here, we show that in the more ecological case where the context switches at random times all along the experiment, an adaptation to this volatility can be performed online. In particular, we show in two behavioral experiments that humans can adapt to such volatility at the early sensorimotor level, through their anticipatory eye movements, but also at a higher cognitive level, through explicit ratings. Our results suggest that humans (and future artificial systems) can use much richer adaptive strategies than previously assumed.
+}
 \newcommand{\KeyWords}{eye movements; decision making; volatility; bayesian model; adaptation; perception}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[10pt,letterpaper]{article}
@@ -208,12 +214,12 @@ Humans adapt their anticipatory eye movements to the volatility of visual motion
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: Abstract
 \section*{Abstract}
-Animal behavior constantly adapts to changes, for example when the statistical properties of the environment change unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of motion ramps of a visual target is biased to one direction (e.g. right or left), human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where the probability bias could change at random switching times. In addition, we also recorded the explicit prediction of the next outcome as reported by observers using a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to such generative model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploitation and exploration in the model, we were able to fit each individual experimental data-set with different levels of estimated volatility and derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test the diversity of human cognitive abilities in uncertain and dynamic environments.
+\Abstract
 % Please keep the Author Summary between 150 and 200 words
 % Use first person. PLOS ONE authors please skip this step.
 % Author Summary not valid for PLOS ONE submissions.
 \section*{Author summary}
-Understanding how humans adapt to changing environments to make judgments or plan motor responses based on time-varying sensory information is crucial for psychology, neuroscience and artificial intelligence. Current theories for how we deal with the environment's uncertainty, that is, in response to the introduction of some randomness change, mostly rely on the behavior at equilibrium. Here, we show that in the more ecological case where the context switches at random times all along the experiment, an adaptation to this volatility can be performed online. In particular, we show in two behavioral experiments that humans can adapt to such volatility at the early sensorimotor level, through their anticipatory eye movements, but also at a higher cognitive level, through explicit ratings. Our results suggest that humans (and future artificial systems) can use much richer adaptive strategies than previously assumed.
+\AuthorSummary
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Motivation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -273,7 +279,7 @@ or at least forming beliefs as precise as possible
 about a future environmental context ---
 is an ubiquitous challenge for cognitive systems~\citep{Barack16}.
 In the long term, how the human brain dynamically manages
-this trade-off between exploitation and exploration
+this trade-off between exploration and exploitation
 is essential to the adaptation
 of the behavior through reinforcement learning~\citep{Cohen2007}.
 
@@ -423,7 +429,7 @@ It has been observed that the strength of anticipation,
 as measured by the mean anticipatory eye velocity,
 increases when the target repeatedly moves in the same direction~\citep{Kowler1984, Kowler1989, Heinen2005}.
 We similarly found a graded effect of both the speed and the direction-bias
-on the strength of anticipatory pursuit. % (see \seeFig{intro}-B).
+on the velocity of anticipatory pursuit. % (see \seeFig{intro}-B).
 In particular, this effect is linearly related
 to the probability of motion's speed or direction. %~(see \seeFig{intro}-B).
 These results are coherent with previous oculomotor findings
@@ -507,7 +513,7 @@ Indeed, observers may potentially pick up
 the information on the block's length
 to predict the occurrence of a switch (a change in probability bias) during the experiment.
 Second, we observed qualitatively that following a switch,
-the strength of anticipatory pursuit changed gradually,
+the amplitude of anticipatory pursuit velocity changed gradually,
 consistently with other adaptation paradigms~\citep{Fukushima1996,Kahlon1996,Souto13}.
 The estimate of the characteristic temporal parameters for this adaptation mechanism
 may become particularly challenging in a dynamic context,
@@ -655,8 +661,8 @@ by inferring the volatility parameters inherent to the models
 by best-fitting it to each each individual participant.
 This will allow the analysis of inter-individual behavioral responses for each session.
 In particular, we will test if one could predict observers' prior (preferred) volatility,
-that is, a measure of the dynamic compromise between
-exploitation (``should I stay?'') and exploration (``should I go?'')
+that is, a measure of the dynamic compromise between exploration (``should I go?'')
+and exploitation (``should I stay?'')
 across the two different sessions challenging predictive adaptive processes
 at the unconscious and conscious levels.
 Finally, we will summarize and conclude this study and
@@ -1248,8 +1254,8 @@ in one trial block of $200$ trials,
 as generated by the binary switching model (see~\seeFig{intro}-A).
 Bottom two rows show the raw behavioral results
 for two representative observers:
-The recorded anticipatory pursuit strength as measured
-by the horizontal eye velocity estimated right before
+The anticipatory pursuit velocity, defined
+as the horizontal best-fit eye velocity estimated right before
 the onset of the visually-driven pursuit (dark gray line);
 and the explicit ratings about the expected target direction (or \textit{bet scores}, red line).
 We also show the evolution of the value
@@ -1313,7 +1319,7 @@ of the inferred probability bias $\hat{x}_1$ increases
 in longer epochs, as information is integrated over more trials.
 As a result, the inferred probability as a function of time
 seems qualitatively to constitute a reliable regressor
-for predicting the strength of anticipatory pursuit.
+for predicting the amplitude of anticipatory pursuit velocity.
 
 %-------------------------------------------------------------%
 %: 3B Results: bias rating scale measurements
@@ -1323,7 +1329,7 @@ In addition, the explicit ratings
 for the next trial's expected motion direction (or \textit{bet scores}, red curve in~\seeFig{results_psycho})
 provided in the other experimental session
 seem to qualitatively follow the same trend.
-Indeed, similarly to the strength of anticipatory pursuit,
+Indeed, similarly to the estimated velocity of anticipatory pursuit,
 we qualitatively compare in~\seeFig{results_psycho}
 the trace of the bet scores
 with the inferred probability bias $\hat{x}_1$.
@@ -1365,7 +1371,7 @@ which supposedly underlie the generation of anticipatory anticipatory pursuit wi
 \textbf{Behavioral results, quantitative analysis across participants.} %
 \Rone{Fig 4. An indication of n on the figure would be welcome (I assume it is n observers). "For all participants and for all trials" is an ambiguous description. Was it one estimate per participant, averaging all trials? or were all trials pooled together disregarding participants?}
 For all participants and for all trials, we collected an estimate of
-the strength of anticipatory pursuit (aSPEM) and a bet score value.
+the amplitude of anticipatory pursuit (aSPEM) velocity, and a bet score value.
 We analyze the relation between these experimental data with the corresponding prediction $P_{\text{BBCP}}$
 of the probability bias as inferred by the BBCP model.
 We display these functional relations
@@ -1373,7 +1379,7 @@ using an error-bar plot showing the median with $.25$ and $.75$ quantiles
 over 5 equal partitions of the $[0, 1]$ probability segment.
 %contour plot over the Kernel Density Estimation (KDE)
 The green regression line illustrates the relationship between the BBCP regressor in abscissa
-and in ordinate \textit{(A)} the strength of anticipatory pursuit and \textit{(B)} the bet score, respectively.
+and in ordinate \textit{(A)} the anticipatory pursuit velocity and \textit{(B)} the bet score, respectively.
 %The density of strokes represent increasing probability strengths.
 As a comparison, we have plotted in blue and orange colors the regression lines
 with respectively
@@ -1401,7 +1407,7 @@ with the value of the probability bias $\hat{x}_1$
 computed by the BBCP algorithm.
 Compiling results from all participants,
 we have plotted in~\seeFig{results_psycho_all}
-the anticipatory pursuit strength (panel A) and the bet scores (panel B)
+the anticipatory pursuit velocity (panel A) and the bet scores (panel B)
 as a function of the BBCP-inferred probability bias  $P_{\text{BBCP}}$.
 All trials from all participants were pooled together
 and we show this joint data as an error bar plot
@@ -1438,7 +1444,7 @@ the model-estimated probability bias
 and the rating value, or bet score, about the expected outcome, which was provided at each trial
 by participants
 and is shown in~\seeFig{results_psycho}.
-Similarly to the anticipatory pursuit strength, the rating values are nicely correlated
+Similarly to the anticipatory pursuit velocity, the rating values are nicely correlated
 with the probability bias given by the model,
 as quantified by the Pearson correlation coefficient and mutual information
 across subjects ($r = 0.813 \pm 0.091$ and $MI = 1.312 \pm 0.364$).
@@ -1486,7 +1492,7 @@ This was best characterized by differences
 in the variability of the responses, but also, for instance,
 by the different characteristic delays after a switch.
 This reflects the spectrum of individual behavioral choices
-between exploitation versus exploration~\citep{Behrens07}.
+between exploration versus exploitation~\citep{Behrens07}.
 As a consequence, we were interested in characterizing these individual preferences
 for each individual participant,
 but also to investigate whether this preference co-varied
@@ -1509,7 +1515,7 @@ We analyzed each participant's behavior individually, by searching
 the individual best value of the model's single free parameter, the hazard rate $h$.
 Estimates were performed independently on both experiments,
 such that we extracted different estimates of $h_{\text{aSPEM}}$ and $h_{\text{bet}}$
-respectively for the anticipatory pursuit strength and the rating value.
+respectively for the anticipatory pursuit velocity and the rating value.
 The dots correspond to independent estimates of the hazard rate
 in each trial block ($200$ trials) and data belonging to
 each individual participant are joined by dotted lines.
@@ -1525,7 +1531,7 @@ for the eye movement session than for the bet experiment,
 as also illustrated by the cumulative distributions (plain lines in black or colors).
 Such an analysis suggests that participants ultimately have
 different mechanisms at the unconscious and conscious levels
-for guiding their tendency of exploitation versus exploration.
+for guiding their tendency of exploration versus exploitation.
  }
 \label{fig:results_inter}
 \end{figure}
@@ -1591,7 +1597,8 @@ As a consequence, this analysis reveals
 that relaxing the free parameter of the BBCP model
 improves the match of the model to the behavioral data and
 that we could represent the distribution of individual differences in the choice behavior
-between exploitation and exploration in both sessions for each subject.
+between exploration and exploitation
+in both sessions for each subject.
 
 %-------------------------------------------------------------%
 %: 4C analysis
@@ -1692,7 +1699,7 @@ Twelve observers ($29$ years old $\pm 5.15$, $7$ female) with normal or correcte
 
 Visual stimuli were generated using PsychoPy 1.85.2~\citep{Peirce19} on a Mac running OS 10.6.8 and displayed on a 22" Samsung SyncMaster 2233 monitor with $1680\times 1050$ pixels resolution at 100~\si{\Hz} refresh rate. Experimental routines were also written using PsychoPy and controlled the stimulus display (see~\seeFig{intro}). Observers sat 57~\si{\cm} from the screen in a dark room.
 
-The moving target used in our experiments was a white ring ($0.35\degree$ outer diameter and $0.27\degree$ inner diameter) with a luminance of $102~cd/m2$ that moved horizontally on a grey background (luminance $42~cd/m^2$). Each trial started with a central fixation point displayed for a random duration drawn from a uniform distribution ranging between $400$ and $800~\ms$. Then a fixed-duration $300~\ms$ gap occurred between the offset of the fixation point and the onset of the moving target, which was presented slightly offset from the fixation location~\citep{Rashbass1961} and immediately started moving horizontally at a constant speed of $15\degree/s$, either to the right or to the left for $1000~\ms$. The probability $p$ of rightward trials was a time-varying random variable which was constant within an epoch of the sequence of a given random size (see main text for the description of the generative model).
+The moving target used in our experiments was a white ring ($0.35\degree$ outer diameter and $0.27\degree$ inner diameter) with a luminance of $102~cd/m2$ that moved horizontally on a grey background (luminance $42~cd/m^2$). Each trial started with a central fixation point displayed for a random duration drawn from a uniform distribution ranging between $400$ and $800~\ms$. Then a fixed-duration $300~\ms$ gap occurred between the offset of the fixation point and the onset of the moving target. The target was then presented slightly offset from the fixation location (\emph{step-ramp} paradigm~\citet{Rashbass1961}), either to the right or to the left, and immediately started moving horizontally toward the center at a constant speed of $15\degree/s$,  for $1000~\ms$. The probability $p$ of rightward motion trials was a time-varying random variable which was constant within an epoch of the sequence of a given random size (see main text for the description of the generative model).
 
 The paradigm included two experimental sessions performed on two distinct (in general consecutive) days by each participant. The two sessions involved the presentation of the same sequence of trials, while collecting a different behavioral response: explicit rating judgments in the first session (the \textit{bet} experiment), and eye movement recordings in the second session. Asked after the experiment, no observer noticed that the same pseudo-random sequence of target directions was used in both experiments.
 
@@ -1700,10 +1707,10 @@ The paradigm included two experimental sessions performed on two distinct (in ge
 Eye movements were recorded continuously with an eye tracking system (Eyelink 1000, SR Research Ltd., sampled at 1000 Hz), using the Python module Pylink 0.1.0 provided by PsychoPy. Horizontal and vertical eye position data were transferred, stored, and analyzed offline using programs written using Jupyter notebooks. The data analyses were implemented using the Python libraries numpy, pandas and pylab. All the scripts for data analysis, as well as for stimulus presentation, data collection, and preparation of figures are available at \url{https://github.com/chloepasturel/AnticipatorySPEM}. To minimize measurement errors, the participant's head movements were restrained using a chin and forehead rest, so that the eyes in primary gaze position were directed towards the center of the screen. In order to enforce accuracy in gaze position and tracking, we implemented an automatic procedure of fixation control. If the distance between the gaze position and the central fixation point during the fixation epoch exceeded $2\degree$ of visual angles, the fixation point started flickering and the counter for the fixation duration was reset to $0$.
 
 The recorded horizontal and vertical raw gaze position data were numerically differentiated to obtain velocity measures. We adopted an automatic conjoint acceleration and velocity threshold method (the default saccade detection implemented by SR Research) to detect ocular saccades. Saccades and eye-blinks were excluded from eye velocity traces (and replaced by \textit{Not-a-Number} values in the numerical arrays) before trial averaging and data fitting for the extraction of the oculomotor parameters of interest.
-In order to extract the relevant parameters of the oculomotor responses, we developed new tools based on a best-fitting procedure of predefined oculomotor patterns and in particular the typical smooth pursuit velocity profile that was recorded in our experiment. A piecewise-defined function was fitted to the different epochs of the eye velocity traces: a constant function during fixation, a ramp-like linear function during smooth pursuit anticipation, an increasing sigmoid function during the initiation of visually-guided smooth pursuit, reaching its saturating value during the pursuit steady-state. \LP{à vérifier :}Note that the results were qualitatively similar to the computation of the anticipatory velocity that we performed in a previous study~\citep{Damasse18}. This analysis was applied to each trial individually and it allowed in particular to estimate the velocity of anticipatory pursuit. Some trials were excluded from the analysis as the proportion of missing data-points, due to eye blinks or saccades was considered too large, namely when the missing data exceeded $45~\ms$ during the gap or one third of the total target motion epoch ($4.36\%$ of all trials). In addition, trials were also excluded when the eye-movement fitting procedure did not converge, after visual inspection, to a satisfactory match with the data ($3.25\%$ of all trials). The python scripts used to analyze eye movements are available at \url{https://github.com/invibe/ANEMO}.
+In order to extract the relevant parameters of the oculomotor responses, we developed new tools based on a best-fitting procedure of predefined oculomotor patterns and in particular the typical smooth pursuit velocity profile that was recorded in our experiment. A piecewise-defined function was fitted to the different phases of the eye velocity traces: a constant function during fixation, a ramp-like linear function during smooth pursuit anticipation, an increasing sigmoid function during the initiation of visually-guided smooth pursuit, reaching its saturating value during the pursuit steady-state. This analysis was applied to each trial individually and it allowed in particular to estimate the velocity of anticipatory pursuit  \AM{as the best-fit value of the modeled eye velocity at the moment where the visually-guided pursuit is initiated.} \LP{Note that this method for estimating anticipatory velocity led to qualitatively identical results to the estimation of the mean eye velocity within an arbitrary temporal window of anticipation, a more classical method that we implemented for instance in a previous study~\cite{Damasse18}.}  Some trials were excluded from the analysis as the proportion of missing data-points, due to eye blinks or saccades was considered too large, namely when the missing data exceeded $45~\ms$ during the gap or one third of the total target motion epoch ($4.36\%$ of all trials). In addition, trials were also excluded when the eye-movement fitting procedure did not converge, after visual inspection, to a satisfactory match with the data ($3.25\%$ of all trials). The python scripts used to analyze eye movements are available at \url{https://github.com/invibe/ANEMO}.
 
 \subsection{The Bet experiment}
-The aim of the Bet experiment was to collect data related to the individual explicit estimates of the probability for the next outcome of a target motion direction. At the beginning of each trial, before the presentation of the moving target, participants had to answer to the question \textit{ ``How sure are you that the target will go left or right''}. This was performed by adjusting a cursor on the screen using the mouse (see Figure~\seeFig{intro}-C). The cursor could be placed at any point along a horizontal segment representing a linear rating scale with three ticks labeled as \textit{ ``Left''}, \textit{``Right''} (at the extreme left and right end of the segment respectively), and \textit{``Unsure''} in the middle. Participants had to validate their choice by clicking on the mouse left-button and the actual target motion was shown thereafter. The rationale to collect rating responses on a continuous scale instead of a simple binary prediction (Right/Left) was to be able to infer the individual estimate of the direction bias at the single trial scale (in analogy to the continuous interval for the strength of anticipatory pursuit velocity). We called this experiment the \textit{ ``Bet''} experiment, as participants were explicitly encouraged to make reasonable rating estimates, just like if they had to bet money on the next trial outcome. Every $50$ trials, a \textit{``score''} was displayed on the screen, corresponding to the proportion of correct direction predictions (Right or Left of the \textit{``Unsure''} tick) and weighted by the confidence attributed to each answer (the distance of the cursor from the center).
+The aim of the Bet experiment was to collect data related to the individual explicit estimates of the probability for the next outcome of a target motion direction. At the beginning of each trial, before the presentation of the moving target, participants had to answer to the question \textit{ ``How sure are you that the target will go left or right''}. This was performed by adjusting a cursor on the screen using the mouse (see Figure~\seeFig{intro}-C). The cursor could be placed at any point along a horizontal segment representing a linear rating scale with three ticks labeled as \textit{ ``Left''}, \textit{``Right''} (at the extreme left and right end of the segment respectively), and \textit{``Unsure''} in the middle. Participants had to validate their choice by clicking on the mouse left-button and the actual target motion was shown thereafter. The rationale to collect rating responses on a continuous scale instead of a simple binary prediction (Right/Left) was to be able to infer the individual estimate of the direction bias at the single trial scale (in analogy to the continuous interval for the anticipatory pursuit velocity). We called this experiment the \textit{ ``Bet''} experiment, as participants were explicitly encouraged to make reasonable rating estimates, just like if they had to bet money on the next trial outcome. Every $50$ trials, a \textit{``score''} was displayed on the screen, corresponding to the proportion of correct direction predictions (Right or Left of the \textit{``Unsure''} tick) and weighted by the confidence attributed to each answer (the distance of the cursor from the center).
 
 \section*{Acknowledgments}
 \Acknowledgments
