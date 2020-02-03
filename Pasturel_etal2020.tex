@@ -4,6 +4,7 @@
 %!BIB TS-program = bibtex
 % -*- coding: UTF-8; -*-
 % vim: set fenc=utf-8
+% https://www.biorxiv.org/content/10.1101/784116v1.full.pdf
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\AuthorA}{Chlo\'e Pasturel}
 \newcommand{\AuthorB}{Anna Montagnini}%
@@ -344,7 +345,7 @@ by defining a graph of probabilistic dependencies between specific variables
 using a generative model for the prior knowledge about its structure.
 In practice, the generative model is parameterized by structural variables
 (such as weights or non-linear gain functions)
-such that %, knowing incoming measurements, 
+such that %, knowing incoming measurements,
 beliefs about latent variables
 may be represented as probabilities.
 Then, using the rules of probability calculus and knowing incoming measurements,
@@ -429,9 +430,8 @@ is dynamically modulated by probabilistic contingencies in shaping oculomotor be
 \begin{figure}%[b!]
 \centering{
 \begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
-\node [anchor=north west]  (imgA) at (0.000\linewidth,.600\linewidth){\includegraphics[width=0.325
-\linewidth]{1_A_Experiment_randomblock}};
-\node [anchor=north west]  (imgB) at (0.335\linewidth,.595\linewidth){\includegraphics[width=0.350\linewidth]{1_B_protocol_recording}};
+\node [anchor=north west] (imgA) at (0.000\linewidth,.600\linewidth){\includegraphics[width=0.325\linewidth]{1_A_Experiment_randomblock}};
+\node [anchor=north west] (imgB) at (0.335\linewidth,.595\linewidth){\includegraphics[width=0.350\linewidth]{1_B_protocol_recording}};
 \node [anchor=north west]  (imgC) at (0.650\linewidth,.595\linewidth){\includegraphics[width=0.350\linewidth]{1_C_protocol_bet}};
 \draw [anchor=north west] (0.000\linewidth, .62\linewidth) node {$\mathsf{(A)}$};
 \draw [anchor=north west] (0.350\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
@@ -601,7 +601,7 @@ and finally the random sequence of Target Direction (TD) occurrences at each tri
 This system of three equations defined in~\seeEq{bsm}
 defines the Binary Switching Model (BSM)
 which we used for the generation of experimental sequences presented to human participants in the experiments.
-We will use that generative model as the basis for an ideal observer model \AM{equipped to 
+We will use that generative model as the basis for an ideal observer model \AM{equipped to
 invert that generative model in order to estimate the time-varying probability bias for a given sequence of observations (TDs).
 The comparison of human behavior with the ideal observer model's predicitons will allow us to test it as a model for the adaptation of human behavior to the environment's volatility.}
 
@@ -1349,7 +1349,7 @@ which supposedly underlie the generation of graded anticipatory pursuit.
 \end{tikzpicture}
 }
 \caption{%
-\textbf{Behavioral results, quantitative analysis across participants.} %
+\textbf{Behavioral results, quantitative analysis across participants ($n=12$).} %
 % \Rone{Fig 4. An indication of n on the figure would be welcome (I assume it is n observers). "For all participants and for all trials" is an ambiguous description. Was it one estimate per participant, averaging all trials? or were all trials pooled together disregarding participants?}
 To analyze the relation between these behavioral data with the predictions made by models,
 we first looked at the variability of all these measures
@@ -1364,7 +1364,7 @@ and by the BBCP model ($P_{\text{BBCP}}$, green color).
 We display these functional relations
 using an error-bar plot showing the median with $.25$ and $.75$ quantiles
 over the 5 partitions.
-This shows for both behavioral measures exhibit a monotonous dependency on the probability measures,
+This shows a monotonous dependency for both behavioral measures with respect to the probability,
 close to a linear regression, but with different strengths.
 Second, we summarize in insets  quantitative measures of the strength of this dependence for each participant individually,
 by computing the squared Pearson correlation coefficient $r^2$
@@ -1512,8 +1512,8 @@ we expect to better understand the variety of inter-individual differences. % an
 
 %\centering{\includegraphics[width=0.618\linewidth]{5_inter-individual_differences_fit}}
 \caption{\textbf{Analysis of inter-individual differences.} %
-We analyzed each participant's behavior individually, by searching
-the individual best value of the model's single free parameter, the hazard rate $h$.
+We analyzed the behavior of the $n=12$ participants individually, by searching for each participant
+the best value of the model's single free parameter, the hazard rate $h$.
 Estimates were performed independently on both experiments,
 such that we extracted different estimates of $h_{\text{aSPEM}}$ and $h_{\text{bet}}$
 respectively for the anticipatory pursuit velocity and the rating value.
@@ -1721,7 +1721,7 @@ The aim of the Bet experiment was to collect data related to the individual expl
 \bibliography{Pasturel_etal2020}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Supporting information} 
+\section{Supporting information}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\subsection{Appendix 1: Analysis of eye movements}
