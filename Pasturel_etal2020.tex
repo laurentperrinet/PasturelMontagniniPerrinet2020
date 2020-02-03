@@ -610,7 +610,7 @@ This paper is organized in five parts.
 After this introduction where we presented the motivation for this study,
 the next section~(\seeSec{Bayesian_change_point}) will present
 an inversion of the (forward) binary switching generative model,
-coined the Binary Bayesian Change Point (BBCP) model.
+coined the Binary Bayesian Change-Point (BBCP) model.
 To our knowledge, such algorithm was not yet available, and
 we will here provide with an exact analytical solution
 by extending previous results from~\citet{AdamsMackay2007}
@@ -655,7 +655,7 @@ Finally, we will summarize and conclude this study and
 offer some perspectives for future work in~\seeSec{outro}.
 %
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results: Binary Bayesian Change Point (BBCP) detection model}
+\section{Results: Binary Bayesian Change-Point (BBCP) detection model}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Bayesian_change_point}
@@ -691,11 +691,11 @@ realistic model of how trial-history shapes
 adaptive processes in human behavior~\citet{Anderson2006}.
 It is also well adapted to model motion expectation in the direction-biased experiment which leads to anticipatory pursuit.
 In this model, given the sequence of observations $x_0^t$ from trial $0$ to $t$,
-the expectation $p=\hat{x}_1^{t+1}$ of the probability for the next trial direction can be modeled by making a simple heuristic:
+the expectation $p=\hat{x}_1^{t+1}$ of the probability for the next trial direction can be modeled by making a simple heuristic~\citep{Anderson2006}:
 This probability is the weighted average of
-the previously estimated probability, $\hat{x}_1^{t}$, with the new information $x_0^t$,
+the previously predicted probability, $\hat{x}_1^{t}$, with the new information $x_0^t$,
 where the weight corresponds to a leak term (or discount)
-equal to $(1 - h)$, with $h \in [0, 1]$~\citep{Anderson2006}.
+equal to $(1 - h)$, with $h \in [0, 1]$.
 At trial $t$, this model can be expressed with the following equation:
 \eql{
 \hat{x}_1^{t+1} = (1 - h) \cdot \hat{x}_1^{t} + h \cdot x_0^t
@@ -705,7 +705,7 @@ corresponding to the best guess at $t=0$ (prior to the observation of any data).
 % NOTE: it's an AR(1) process https://stats.stackexchange.com/questions/358162/writing-ar1-as-a-ma-infty-process
 
 %: from heuristics to ideal observer
-In other words, the estimated probability $\hat{x}_1^{t+1}$ is computed
+In other words, the predicted probability $\hat{x}_1^{t+1}$ is computed
 from the integration of previous instances
 with a progressive discount of past information.
 The value of the scalar $h$ represents
@@ -730,9 +730,9 @@ which tends to $0$ as $t$ increases.
 More importantly, as $1-h < 1$, the second term corresponds to the \emph{leaky} integration of novel observations.
 Inversely, let us now assume that
 the true probability bias for direction changes randomly with a mean rate of once
-every $\tau$ trials.
+every $\tau$ trials: $Pr(x_2^t=1)=h$.
 As a consequence, the probability that the bias does not change is $Pr(x_2^t=0)=1-h$ at each trial.
-Assuming independence of these occurrences, the estimated probability $p=\hat{x}_1^{t+1}$ is thus proportional to the sum
+Assuming independence of these occurrences, the predicted probability $p=\hat{x}_1^{t+1}$ is thus proportional to the sum
 of the past observations weighted by the belief that the bias has not changed during $i$ trials in the past, that is, exactly as defined by the second term of the right-hand side in~\seeEq{leaky2}.
 This shows that assuming that changes occur at a constant rate ($\hat{x}_2^t=h$)
 but ignoring more precise information on the temporal occurrence of the switch,
@@ -752,7 +752,7 @@ can serve as a regressor for behavioral data
 to test whether human observers follow a similar strategy.
 % \Rone{I can't make much sense of 324-326. The point that Equation 3 assumes a constant weight is also obscure to me. Doesn't a leaky-integrator amount to weighting past trials depending on trial number? This needs to be clarified.}
 In particular, the free parameter of the model ($h$),
-may be fitted to the set of behavioral data.
+may be fitted to the behavioral dataset.
 Testing different hypothesis for the value of $h$ thus allows
 to infer the agents' most likely belief in the (fixed) weight decay.
 %for instance to the data shown in~\seeFig{results_intro}.
@@ -773,12 +773,12 @@ for all trials, while the actual precision of each trial
 can be potentially evaluated and used
 for precision-weighted estimation of the probability bias.
 To address this hypothesis, our next model is inspired
-by the Bayesian Change-point detection model~\citep{AdamsMackay2007}
+by the Bayesian Change-Point detection model~\citep{AdamsMackay2007}
 of an ideal agent
 both inferring the trajectory in time of the probability bias ($x_1^t$)
 but also predicting the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 % ------------------------------------------------------------------
-\subsection{Binary Bayesian Change Point (BBCP) detection model}
+\subsection{Binary Bayesian Change-Point (BBCP) detection model}
 % ------------------------------------------------------------------
 \label{sec:Binary_Bayesian_change_point}
 %-------------------------------------------------------------%
@@ -794,7 +794,7 @@ but also predicting the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 \draw [anchor=north west] (0.382\linewidth, .62\linewidth) node {$\mathsf{(B)}$};
 \end{tikzpicture}
 }
-\caption{\textbf{Binary Bayesian Change Point (BBCP) detection model.}
+\caption{\textbf{Binary Bayesian Change-Point (BBCP) detection model.}
 ~\textit{(A)}
 This plot shows a synthesized sequence of $13$ events,
 either a leftward or rightward movement of the target (TD).
@@ -832,7 +832,7 @@ and the results of the BBCP model
 in estimating the probability bias $P_{\text{BBCP}}$ (green line),
 along with $.05$ and $.95$ quantiles (shaded area).
 This shows that for the BBCP model,
-the accuracy of the estimated value of the probability bias
+the accuracy of the predicted value of the probability bias
 is higher than for the leaky integrator.
 Below we show the belief (as grayscales) for the different possible run lengths.
 %as a function of the trial number.
@@ -1078,12 +1078,12 @@ and uses the marginal predictive probability (see~\seeEq{pred}) as a readout.
 %More precisely, we define these two strategies as following.
 %For the maximum a posteriori readout
 %at each trial the run-length with maximal probability is selected
-%and then the predicted probability bias is estimated
+%and then the predicted probability bias is predicted
 %as the probability bias for that run-length:
 %\eql{
 %\hat{x}_1^t = \mu^{(r^\ast)}_{t} \quad \text{with} \quad r^\ast = \argmax_r \beta^{(r)}_{t}
 %}
-This probability bias is best estimated by its expected value $\hat{x}_1^{t+1}=Pr(x_0^{t+1} | x_0^{0:t})$
+This probability bias is best predicted by its expected value $\hat{x}_1^{t+1}=Pr(x_0^{t+1} | x_0^{0:t})$
 as it is marginalized over all run-lengths:
 \eql{
 \hat{x}_1^{t+1} = \sum_{r \geq 0} \mu^{(r)}_{t} \cdot \beta^{(r)}_{t}
@@ -1107,7 +1107,7 @@ are sufficient to predict all probabilities for the next trial.
 %at the next trial $t+1$: $Pr(r_t | x_0^{0:t})$, $\mu^{(r)}_{t+1}$ and $\nu^{(r)}_{t+1}$.
 %projecting beliefs backwards and forward  : the algorithm is online et the price of memory
 In summary, this prediction/update cycle exactly inverts the binary switching generative model %~\seeEq{bsm}
-and constitutes the Binary Bayesian Change Point (BBCP) detection model.
+and constitutes the Binary Bayesian Change-Point (BBCP) detection model.
 %
 % ------------------------------------------------------------------
 \subsection{Quantitative analysis of the BBCP detection model}
@@ -1142,7 +1142,7 @@ The BBCP model achieves a correct detection of the switches after a short delay 
 
 Two main observations are noteworthy. First, after each detected switch, beliefs align along a linear ridge,
 as our model best estimate of the current run-length is steadily incremented by $1$ at each trial until a new switch,
-and the probability $\hat{x}_1^t$ is estimated  by integrating sensory evidence in this epoch: the model  ``stays''.
+and the probability $\hat{x}_1^t$ is predicted  by integrating sensory evidence in this epoch: the model  ``stays''.
 Then, we observe that shortly after a switch (an event that is hidden to the agent),
 the belief assigned to a smaller run-length smoothly increases while
 while the belief on the previous epoch decreases.
@@ -1171,7 +1171,7 @@ as the number of observations steadily increases after a switch.
 % TODO include these quantitative results in a figure
 %-------------------------------------------------------------%
 In order to quantitatively evaluate the algorithm and following a similar strategy as~\citet{Norton18},
-we computed an overall cost $\Cc$ as the negative log-likelihood (in bits) of the estimated probability bias, knowing the true probability
+we computed an overall cost $\Cc$ as the negative log-likelihood (in bits) of the predicted probability bias, knowing the true probability
 % - isn't H the joint entropy and C something related to the mutual information? H and C should both be defines},
 and averaged over all $T$ trials:
 \eql{
@@ -1405,7 +1405,7 @@ Qualitatively, as we can see in~\seeFig{results_psycho_all}-A,
 the predicted probability bias
 is linearly correlated with the anticipatory pursuit velocity
 and this dependence is stronger with the
-the probability bias $P_{\text{BBCP}}$ estimated by the BBCP algorithm.
+the probability bias $P_{\text{BBCP}}$ predicted by the BBCP algorithm.
 In a second analysis, we quantitatively estimated the squared Pearson correlation coefficient
 and the mutual information
 between the raw data and the different models, both as computed on the whole data or
