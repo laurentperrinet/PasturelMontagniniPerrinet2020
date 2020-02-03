@@ -1279,29 +1279,24 @@ We used the BSM model to generate the (pseudo-)random sequence of
 the dot's directions (the alternation of leftward/rightward trials)
 as the sequence of observations that were used in both sessions
 (see~\seeFig{results_psycho}).
-In one session, we recorded the participants' eye movements and
-%extracted the anticipatory pursuit velocity. (for details, see~\seeApp{em}).
-we show the anticipatory pursuit velocity
-for two representative participants (out of $12$ participants), throughout a trial block of $200$ trials of the experimental sequence.
-Note that these participants were chosen as those
-whose fitting score was nearest to the median score in the quantitative analysis
-that will be illustrated below in~\seeSec{inter}.
 In the top panel  of~\seeFig{results_psycho} we show the actual sequence of binary choices
 (TD, leftward or rightward) of the Bernoulli trials,
-whereas in the bottom panels,
-we compare for each two participants
-the evolution of the recorded anticipatory pursuit (grey line) with
-the true value of the hidden probability bias $x_1$
-(step-like blue curve),
-and the value inferred using the BBCP model (green line),
-along with the $.05$ to $.95$ quantile range (green shaded area).
-Comparing the raw anticipatory pursuit results with the BBCP agent predictions,
-it appears qualitatively that both traces evolve in good agreement.
+whereas in the panel below we compare the evolution of the recorded anticipatory pursuit (grey line) with
+the true value of the hidden probability bias $x_1$ (step-like blue curve),
+and the value inferred using the leaky and BBCP model (green line),
+along with the $.05$ to $.95$ quantile range (green shaded area),
+just as in~\seeFig{Bayesianchangepoint}-B.
+In the first session, we recorded the participants' eye movements and
+we show the distribution of anticipatory pursuit velocity (for details see Materials and Methods in ~\seeSec{methods})
+for the $12$ participants, throughout a trial block of $200$ trials of the experimental sequence.
+% Note that these participants were chosen as those
+% whose fitting score was nearest to the median score in the quantitative analysis
+% that will be illustrated below in~\seeSec{inter}.
 First, one can observe a trend in the polarity of anticipatory pursuit velocity
 to be negative for probability bias values below~$.5$ and positive for values above~$.5$.
-%Moreover, both curves seem to lag by few trials the
-% occurrence of a switch of the probability bias (also hidden to the observers).
-Moreover, both curves (anticipatory pursuit and model) unveil similar delays in detecting and
+Comparing the raw anticipatory pursuit results with the BBCP agent predictions,
+it appears qualitatively that both traces evolve in good agreement.
+In particular, both curves (anticipatory pursuit and model) unveil similar delays in detecting and
 taking into account a switch of the probability bias (while being hidden to the observers),
 reflecting the time (in the order of a few trials) taken to integrate enough information
 to build up the estimation of a novel expectation about the probability bias value
@@ -1687,6 +1682,7 @@ While it was not our original objective, we have analyzed in this study the indi
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Material and Methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Participants, visual stimuli and experimental design}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
