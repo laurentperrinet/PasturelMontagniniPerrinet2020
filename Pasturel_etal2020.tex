@@ -293,23 +293,23 @@ negative (adaptation), and positive (priming-like) effects.
 % \Rone{line 82: not clear how adaptation "favors spatial stability of the stimulus"}
 Adaptation reduces the sensitivity to recurrently presented stimuli,
 thus yielding a re-calibrated perceptual experience~\citep{Clifford2007, Webster2011, Kohn2007}.
-Examples of negative biases in perceptual discrimination are numerous
+\AM{I WOULD DELETE Examples of negative biases in perceptual discrimination are numerous
 (see for instance~\citep{KanaiVerstraten2005,ChopinMamassian2012}) and
 show that the visual system tends
-to favor the temporal stability of the stimulus.
+to favor the temporal stability of the stimulus.}
 On the other hand, priming is a facilitatory effect that
-enhances the identification of repeated stimuli~\citep{Verstraten1994, Tiest2009}.
+enhances the identification of repeated stimuli~\citep{Verstraten1994, Tiest2009}:
 %\AM{I WOULD SKIP THIS This type of perceptual learning leads to improvements %in discrimination
 %with long-term training on a perceptual judgment~\citep{Lu2009}.}
-In sensorimotor control,
+in sensorimotor control,
 the same stimulus presented several times could indeed
-lead to faster and more accurate responses and,
+lead to faster and more precise responses \AM{I WOULD DELETE and,
 % \Rone{line 86: quite obscure}
 at the same time, lead to a suboptimal behavior
 as the enviroment changes and the presented stimulus is this time not coherent
 with the participant's expectations~\citep{Hyman1953, Yu2009}.
 This process is highly dynamic especially in complex environments
-where new contingencies can arise at every moment.
+where new contingencies can arise at every moment.}
 Interestingly, priming effects %at cognitive levels
 are sometimes paralleled by anticipatory motor responses
 which are positively correlated with the repetition of stimulus properties.
@@ -318,13 +318,13 @@ are anticipatory smooth eye movements (aSPEM or shortly, anticipatory pursuit),
 as we will illustrate in the next section.
 
 %: Bayesian methods & role of predictive processing for this adaptive response
-Overall, the ability to detect
+Overall, the ability to take into account
 statistical regularities in the event sequence appears as a fundamental ability
 for the adaptive behavior of living species.
 Importantly, few studies have addressed the question of whether
 the estimate of such regularities is explicit,
-and whether verbal reports of the dynamic statistical
-estimates would eventually correlate to the measures of behavioral adaptation or priming.
+and whether explicit reports of the dynamic statistical
+estimates would eventually correlate with the measures of behavioral adaptation or priming.
 Here we aim at investigating this question
 in the specific case of the  processing of a target's motion direction.
 In addition, we attempt to palliate to the lack of a solid modeling approach
@@ -335,7 +335,7 @@ within a hierarchical statistical framework.
 Bayesian inference offers an effective methodology
 to deal with this question.
 Indeed, these methods allow to define and quantitatively assess
-a range of hypotheses about the processing of (possibly noisy) information by some formal agents~\citep{Deneve1999, Diaconescu2014, Daunizeau10a}.
+a range of hypotheses about the processing of possibly noisy information by some formal agents~\citep{Deneve1999, Diaconescu2014, Daunizeau10a}.
 A key principle in the Bayesian inference approach is
 to introduce so-called latent variables
 which formalize how different hypotheses predict synthetic or experimental measurements.
@@ -344,13 +344,14 @@ by defining a graph of probabilistic dependencies between specific variables
 using a generative model for the prior knowledge about its structure.
 In practice, the generative model is parameterized by structural variables
 (such as weights or non-linear gain functions)
-such that, knowing incoming measurements, beliefs about latent variables
+such that %, knowing incoming measurements, 
+beliefs about latent variables
 may be represented as probabilities.
-Then, using the rules of probability calculus
+Then, using the rules of probability calculus and knowing incoming measurements,
 one can progressively update beliefs about the latent variables,
-such that one can finally infer the hidden structure of received inputs~\citep{Hoyer2003, Ma2014}.
+and eventually infer the hidden structure underlying the received inputs~\citep{Hoyer2003, Ma2014}.
 For instance, using Bayes's rule, one can combine
-the likelihood of observations given the generative model and
+the likelihood of observations given the assumed generative model and
 the prior of these latent variables~\citep{Jaynes2014}.
 Of particular interest for us is the possibility to
 quantitatively represent in this kind of probabilistic model
@@ -359,18 +360,18 @@ Indeed, once the belief about latent variables
 is formed from the sensory input,
 this belief can be used to update
 the prior over future beliefs~\citep{Montagnini2007}.
-In such models, the comparisons between expectations and actual data produces
-constant updates to the estimates of the latent variables
-but also on the validity of the model.
+In such models, the comparisons between expectations and actual data leads to
+continuous updates of the estimates of the latent variables,
+but also of the validity of the model.
 There are numerous examples of Bayesian approaches
 applied to the study of the adaptation to volatility.
 For instance,~\citet{Meyniel16} simulated a hierarchical Bayesian model
 over five previously published datasets~\citep{Squires1976, Huettel2002, Kolossa2013, Cho2002, Falk1997}
 in the domain of cognitive neuroscience.
-Their main conclusion was that
+\AM{NOT NECESSARY HERE Their main conclusion was that
 learning the local transition probabilities
 was sufficient to explain the large repertoire
-of experimental effects reported in all these studies.
+of experimental effects reported in all these studies.}
 Here we focus on an extension of this approach to the study of motion processing and eye movements.
 % ------------------------------------------------------------------
 \subsection{Anticipatory Smooth Pursuit Eye Movements (aSPEM)}
@@ -402,39 +403,26 @@ Several functional and computational models have been proposed in the literature
 Experience-based anticipatory pursuit behavior is remarkable
 in different aspects.
 First, its buildup is relatively fast, such that only a few trials are sufficient
-to pick up some regularity in the properties of visual motion, such as speed, timing or direction~\citep{Kowler1984,Maus2015,Deravet_JOV2018}.
-Second, it is in general an unconscious process
-of which participants are not aware of.
+to observe the effects of specific regularities in the properties of visual motion, such as speed, timing or direction~\citep{Kowler1984,Maus2015,Deravet_JOV2018}.
 Second, phenomenologically it is a robust phenomenon, which has been observed on a large population of human participants and even in non-human primates (for a recent review see~\citet{Kowler_AnnRev2019}). Note also, that human participants seem to be largely unaware of this behavior (as inferred from informal questioning). Finally, this kind of behavior has proven to be exquisitely sensitive to the probabilistic properties of the sensorimotor context.
-Therefore, this behavior is potentially a useful marker
+
+%: linear relationship (talk about santos & kowler and others)
+Typically, anticipatory pursuit is observed after a temporal cue and
+before target motion onset~\citep{Kowler1979a,Kowler1979b, Kowler1984}. %~(see \seeFig{intro}-A).
+In previous studies~\citep{Montagnini2010,Damasse18},
+we have analyzed how forthcoming motion properties,
+such as target speed or direction, can be anticipated with coherently oriented eye movements. %~(see \seeFig{intro}-A).
+We have observed that the amplitude of anticipation,
+as measured by the mean anticipatory eye velocity,
+increases when the target repeatedly moves in the same direction.
+In particular, the mean anticipatory eye velocity is linearly related
+to the probability of motion's speed or direction. %~(see \seeFig{intro}-B).
+These results are coherent with findings
+by other groups~\citep{Kowler1984, Kowler1989, Heinen2005,SantosKowler2017} and
+they indicate that anticipatory pursuit behavior is potentially a useful marker
 to study the internal representation of motion expectancy, %(or Prior)
 and in particular to analyze how such expectancy
 is dynamically modulated by probabilistic contingencies in shaping oculomotor behavior.
-
-%: linear relationship (talk about santos & kowler and others)
-Typically, an anticipatory pursuit is observed after a temporal cue and
-before target motion onset~\citep{Kowler1979a,Kowler1979b, Kowler1984}. %~(see \seeFig{intro}-A).
-It is generally assumed that the role of anticipatory pursuit is
-to minimize as fast as possible the visual impairment due
-to the eye-to-target position and velocity mismatch.
-Overall, anticipation can potentially reduce the typical sensorimotor delay
-between target motion onset and foveation. In a previous study~\citep{Montagnini2010},
-we have analyzed how forthcoming motion properties,
-such as target speed or direction, can be
-predicted and anticipated with coherently oriented eye movements. %~(see \seeFig{intro}-A).
-It has been observed that the amplitude of anticipation,
-as measured by the mean anticipatory eye velocity,
-increases when the target repeatedly moves in the same direction~\citep{Kowler1984, Kowler1989, Heinen2005}.
-We similarly found a graded effect of both the speed and the direction-bias
-on the velocity of anticipatory pursuit. % (see \seeFig{intro}-B).
-In particular, this effect is linearly related
-to the probability of motion's speed or direction. %~(see \seeFig{intro}-B).
-These results are coherent with previous oculomotor findings
-by our and also other groups~\citep{SantosKowler2017}.
-These results imply that the probability bias over a target's direction is
-one additional factor beyond other physical and cognitive cues~\citep{Kowler2014, SantosKowler2017,Damasse18}
-that modulate the common predictive framework
-driving anticipatory behavior.
 %
 %-------------------------------------------------------------%
 %: FIGURE 1 fig:intro~\seeFig{intro}
@@ -470,7 +458,7 @@ a moving ring-shaped target (TARGET, with $15~\degree/s$ velocity) which the obs
 The direction of the target (right or left) was drawn pseudo-randomly
 according to the generative model defined above.
 \textit{(C)}~In order to titrate the adaptation
-to the environmental volatility of target direction at the conscious level,
+to the environmental volatility of target direction at the explicit and conscious level,
 we invited each observer to perform on a different day a new variant of the direction-biased experiment,
 where we asked participants to predict, \emph{before each trial}, %the level of confidence for
 their estimate of the forthcoming direction of the target.
@@ -494,15 +482,15 @@ The goal of this study is to generalize the adaptive process
 observed in anticipatory pursuit~\citep{Montagnini2010,SantosKowler2017}
 to more ecological settings and
 also to broaden its scope by showing that such adaptive processes
-occur as well at the conscious level.
+occur also at an explicit level.
 We already mentioned that by manipulating the probability bias for target motion direction,
 it is possible to modulate the strength (direction and mean velocity) of anticipatory pursuit.
 This suggests that probabilistic information about direction bias may be used
 to inform the internal representation of motion prediction
 for the initiation of anticipatory movements.
-However, it is yet unclear what generative model to use
-to dynamically manipulate the probability bias
-and generate an ecologically relevant input sequence of target directions.
+\AM{However, %it is yet unclear what generative model to use
+previous studies have overlooked the importance to design a realistic generative model to dynamically manipulate the probability bias
+and generate an ecologically relevant input sequence of target directions}.
 A possible confound comes from the fact that
 previous studies have used fixed-lengths sequences of trials, % (\textit{trial blocks}),
 stacked in a sequence of conditions defined by the different probability biases.
@@ -531,7 +519,8 @@ volatility is controlled as a non-linear transformation
 of a random walk (modeled itself by a Brownian motion with a given diffusion coefficient).
 % \Rone{line 192: Is it meant to be "volatility" and not "variability"?}
 Ultimately, this hierarchical model allows to generate a sequence of binary choices
-where volatility is controlled by fluctuating the variability along a given trajectory.
+where volatility is controlled by %fluctuating the variability along a given trajectory.
+\AM{a specific random variable which fluctuates in time according to some probabilistic law.}
 Such a forward probabilistic model is invertible
 using some simplifying assumptions and allows
 to extract a time-varying inference of the agent's belief about volatility~\citep{Vossel14}.
@@ -612,9 +601,9 @@ and finally the random sequence of Target Direction (TD) occurrences at each tri
 This system of three equations defined in~\seeEq{bsm}
 defines the Binary Switching Model (BSM)
 which we used for the generation of experimental sequences presented to human participants in the experiments.
-We will use that generative model as the basis of an ideal observer model
-inverting that generative model to predict probability biases from the observations (TDs).
-Their comparison will allow to test is as a model for the adaptation of human behavior.
+We will use that generative model as the basis for an ideal observer model \AM{equipped to 
+invert that generative model in order to estimate the time-varying probability bias for a given sequence of observations (TDs).
+The comparison of human behavior with the ideal observer model's predicitons will allow us to test it as a model for the adaptation of human behavior to the environment's volatility.}
 
 %: 1Cd outline
 This paper is organized in five parts.
@@ -628,7 +617,7 @@ by extending previous results from~\citet{AdamsMackay2007}
 to the case of binary data as in the binary switching generative modelpresented above (see~\seeEq{bsm}).
 In addition, the proposed algorithm is biologically realistic
 as it uses simple computations and is \emph{online},
-that is, that all computations on the sequence may be done
+that is, all computations on the sequence may be done
 using solely a set of variables available at the present trial,
 compactly representing all the sequence history seen in previous trials.
 We will also provide a computational implementation
@@ -638,7 +627,7 @@ to validate the generalization of previous results %.
 with this novel switching protocol.
 In order to understand the nature of
 the representation of motion regularities underlying adaptive behavior,
-it is crucial to collect both
+we collected both
 the recording of eye movements
 and the verbal explicit judgments about expectations on motion direction.
 In one session, participants were asked to estimate
@@ -661,7 +650,7 @@ In particular, we will test if one could predict observers' prior (preferred) vo
 that is, a measure of the dynamic compromise between
 exploitation (``should I stay?'') and exploration (``should I go?'')
 across the two different sessions challenging predictive adaptive processes
-at the unconscious and conscious levels.
+both at the implicit and explicit levels.
 Finally, we will summarize and conclude this study and
 offer some perspectives for future work in~\seeSec{outro}.
 %
@@ -1343,8 +1332,8 @@ and indeed we can introduce such an assumption in the model,
 as a reset of the internal belief after each pause.
 To conclude, the experiment performed in this session
 shows that the probability bias values that are explicitly estimated by participants
-are qualitatively similar to the implicit (and largely unconscious) ones
-which supposedly underlie the generation of anticipatory anticipatory pursuit with variable strength.
+are qualitatively similar to the implicit ones
+which supposedly underlie the generation of graded anticipatory pursuit.
 
 %-------------------------------------------------------------%
 %: FIGURE 4  fig:results_psycho_all \seeFig{results_psycho_all}
@@ -1542,7 +1531,7 @@ Note that the histograms of hazard-rate best-fit estimates (grey shaded areas) i
 for the eye movement session than for the bet experiment,
 as also illustrated by the cumulative distributions (plain lines in black or colors).
 Such an analysis suggests that participants ultimately have
-different mechanisms at the unconscious and conscious levels
+different mechanisms at the implicit (anticipatory pursuit) and explicit (ratings) levels
 for guiding their tendency of exploitation versus exploration.
 }
 \label{fig:results_inter}
@@ -1631,7 +1620,7 @@ that this originates from the experimental setup or rather by separate processin
 Such an analysis would suggest that even though the predictive processes
 at work in both sessions may reflect a common origin for the evaluation of volatility,
 this estimation is then more strongly modulated by individual preferences
-when a more conscious cognitive process is at stake.
+when a more explicit cognitive process is at stake.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
@@ -1639,13 +1628,13 @@ when a more conscious cognitive process is at stake.
 \label{sec:outro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The capacity to adapt our behavior to the environmental regularities has been investigated in different research fields, from motor priming and sensory adaptation to reinforcement learning, machine learning and economics. Several studies have aimed at characterizing the typical time scale over which such adaptation occurs. However, the pattern of environmental regularities could very well change in time, thereby making a fixed time-scale for adaptation a suboptimal cognitive strategy. In addition, different behaviors are submitted to different constraints and respond to different challenges, thus it is reasonable to expect some differences in the way (and time scales) they adapt to the changing environment. This study is an attempt to address these crucial open questions. We have taken an original approach, by assuming a theoretically-defined volatility in the properties of the environment (in the specific context of visual motion tracking) and we have developed an optimal inferential agent, which best captures the hidden properties of the generative model solely based on the trial sequence of target motion. We have then compared the optimal agent's prediction, as well as a more classical \textit{forgetful agent}, to two sets of behavioral data, one rooted in the early visuomotor loop underlying anticipatory ocular tracking, and the other related to the explicit, conscious estimate of the likelihood of a future event. Our results point to a flexible adaptation strategy in humans, taking into account the volatility of the environmental statistics. The time-scale of this dynamic adaptive process would thus vary across time, but it would also be modulated by the specific behavioral task and by inter-individual differences. In this section we discuss the present work and its implications in view of the existing literature and some general open questions.
+The capacity to adapt our behavior to the environmental regularities has been investigated in different research fields, from motor priming and sensory adaptation to reinforcement learning, machine learning and economics. Several studies have aimed at characterizing the typical time scale over which such adaptation occurs. However, the pattern of environmental regularities could very well change in time, thereby making a fixed time-scale for adaptation a suboptimal cognitive strategy. In addition, different behaviors are submitted to different constraints and respond to different challenges, thus it is reasonable to expect some differences in the way (and time scales) they adapt to the changing environment. This study is an attempt to address these crucial open questions. We have taken an original approach, by assuming a theoretically-defined volatility in the properties of the environment (in the specific context of visual motion tracking) and we have developed an optimal inferential agent, which best captures the hidden properties of the generative model solely based on the trial sequence of target motion. We have then compared the optimal agent's prediction, as well as a more classical \textit{forgetful agent}, to two sets of behavioral data, one rooted in the early visuomotor loop underlying anticipatory ocular tracking, and the other related to the explicit estimate of the likelihood of a future event. Our results point to a flexible adaptation strategy in humans, taking into account the volatility of the environmental statistics. The time-scale of this dynamic adaptive process would thus vary across time, but it would also be modulated by the specific behavioral task and by inter-individual differences. In this section we discuss the present work and its implications in view of the existing literature and some general open questions.
 
 %\subsection{Environmental regularities, cognitive properties and visual perception}
 % \AM{
 \subsection{Different measures of adaptation to a probabilistic volatile environment}
 %}
-The time-varying statistical regularities that characterize the environment are likely to influence several cognitive functions. In this study, we have made the choice to focus on a largely unconscious motor behavior (anticipatory pursuit), as well as on the explicit rating of expectation for the forthcoming motion direction. In contrast, we have not addressed the question of whether and how statistical learning affects visual motion perception throughout our model-generated volatile sequences. In an empirical context similar to ours, Maus et al~\citet{Maus2015} have recently shown that perceptual adaptation for speed estimation occurs concurrently to priming-based anticipatory pursuit throughout a sequence of motion tracking trials with randomly varying speed. They actually found a robust \emph{repulsive} adaptation effect, with perceptual judgements biased in favor of faster percepts after seeing stimuli that were slower and~\textit{vice-versa}. Concurrently, these authors also found a positive effect on anticipatory pursuit, with faster anticipation after faster stimuli, somehow in agreement with the adaptive properties of anticipatory pursuit that we report here. Moreover, they quantified the trial-history effects on anticipatory pursuit and speed perception by fitting a fixed-size memory model similar to the forgetful agent. They found that anticipatory pursuit and speed perception change over different time scales, with the priming effects being maximized for short-term stimulus history (around $2$ trials) and adaptation for longer stimulus history, around $15$ trials. Their main conclusion was that perceptual adaptation and oculomotor priming are the result of two distinct readout processes using the same internal representation of motion regularities. Note that both these history lengths can be considered short in comparison to the several hundreds of trials that are commonly used in psychophysics and sensorimotor adaptation studies and that, similar to the present study, the inferred characteristic times are even shorter for the buildup of anticipatory eye movements. However, it is also important to note that in the study by Maus et al~\citet{Maus2015}, the generative model underlying the random sequence of motion trials was different and much simpler than in the present study: In particular the role of environmental volatility was not directly addressed there. This makes a direct comparison between their results and ours difficult beyond a qualitative level.
+The time-varying statistical regularities that characterize the environment are likely to influence several cognitive functions. In this study, we have made the choice to focus on a simple and probably mostly unconscious motor behavior (anticipatory pursuit), as well as on the explicit rating of expectation for the forthcoming motion direction. In contrast, we have not addressed the question of whether and how statistical learning affects visual motion perception throughout our model-generated volatile sequences. In an empirical context similar to ours, Maus et al~\citet{Maus2015} have recently shown that perceptual adaptation for speed estimation occurs concurrently to priming-based anticipatory pursuit throughout a sequence of motion tracking trials with randomly varying speed. They actually found a robust \emph{repulsive} adaptation effect, with perceptual judgements biased in favor of faster percepts after seeing stimuli that were slower and~\textit{vice-versa}. Concurrently, these authors also found a positive effect on anticipatory pursuit, with faster anticipation after faster stimuli, somehow in agreement with the adaptive properties of anticipatory pursuit that we report here. Moreover, they quantified the trial-history effects on anticipatory pursuit and speed perception by fitting a fixed-size memory model similar to the forgetful agent. They found that anticipatory pursuit and speed perception change over different time scales, with the priming effects being maximized for short-term stimulus history (around $2$ trials) and adaptation for longer stimulus history, around $15$ trials. Their main conclusion was that perceptual adaptation and oculomotor priming are the result of two distinct readout processes using the same internal representation of motion regularities. Note that both these history lengths can be considered short in comparison to the several hundreds of trials that are commonly used in psychophysics and sensorimotor adaptation studies and that, similar to the present study, the inferred characteristic times are even shorter for the buildup of anticipatory eye movements. However, it is also important to note that in the study by Maus et al~\citet{Maus2015}, the generative model underlying the random sequence of motion trials was different and much simpler than in the present study: In particular the role of environmental volatility was not directly addressed there. This makes a direct comparison between their results and ours difficult beyond a qualitative level.
 
 In spite of a multitude of existing studies investigating the dynamics of sequential effects on visual perception (see for example~\citet{Cicchini_PRSB_2018,ChopinMamassian2012}), only few of them have directly addressed the role of the environmental volatility on the different behavioral outcomes. Meyniel et al~\citet{Meyniel16} have compared the predictions of different models, featuring a dynamic adaptation to the environment's volatility (equivalent to our \textit{forgetful agent model}) versus a fixed belief model, on five sets of previously acquired data, including reaction time, explicit reports and neurophysiological measures. Interestingly, they concluded that the estimation of a time-varying transition probability matrix constitutes a core building block of sequence knowledge in the brain,
 which then applies to a variety of sensory modalities and experimental situations. Consequently, sequential effects in binary sequences would be better explained by learning and updating transition probabilities compared to the absolute item frequencies (as in the present work) or the frequencies of their alternations. The critical difference lies in the content of what is learned (transition probabilities versus item frequencies) in an attempt to capture human behavior. Rather than on transition probabilities, here we focused on the analysis and modeling of human behavior as a function of the frequency of presentation (and its fluctuations in time) of a given event in a binary sequence of alternating visual motion direction. We can speculate that different statistics can play different roles depending on the context, but altogether the study by Meyniel et al~\citet{Meyniel16} and the present one converge to highlight the importance of a dynamic estimate of the hierarchical statistical properties of the environment for efficient behavior. There are also other limits to the agent that we have defined. In this study, we assume that data is provided as a sequence of discrete steps. A similar approach using a Poisson point process
@@ -1698,9 +1687,9 @@ While it was not our original objective, we have analyzed in this study the indi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{itemize}\setlength{\itemsep}{0ex}
 \item We have developed a Bayesian model of an agent estimating the probability bias of a volatile environment with changing points (switches), such that the agent may decide \textit{to stay} on the current hypothesis about the environment, or \textit{to go} for a novel one. This allows to dynamically infer the probability bias across time and directly compare model predictions and experimental data, such as measures of human behavior.
-\item We applied such a framework to the case of a probability bias in a visual motion task where we manipulated the target direction probability. We observed a good match between the largely unconscious anticipatory smooth eye movements and the results of the model, replicating and providing a novel solid theoretical framework for previous findings~\citep{Montagnini2010, SantosKowler2017, Damasse18}.
-\item We also found a good match between model predictions and the explicit rating of the expected target motion direction, a novel result suggesting that this model captures some of the brain computations underlying expectancy based motion prediction, both at the unconscious and conscious level.
-\item Finally, we found that the experimental data of each different participant matched to different types of belief about the volatile environment, some being more or less conservative than others. Interestingly, each of the two experiments (namely for the unconscious anticipatory eye movements and the conscious rating) provided different distributions, opening the perspective for future \emph{computational phenotyping} using such a volatile setting.
+\item We applied such a framework to the case of a probability bias in a visual motion task where we manipulated the target direction probability. We observed a good match between anticipatory smooth eye movements and the predictions of the model, replicating and providing a novel solid theoretical framework for previous findings~\citep{Montagnini2010, SantosKowler2017, Damasse18}.
+\item We also found a good match between model predictions and the explicit rating of the expected target motion direction, a novel result suggesting that this model captures some of the brain computations underlying expectancy based motion prediction, at different cognitive levels.
+\item Finally, we found that the experimental data of each different participant matched to different types of belief about the volatile environment, some being more or less conservative than others. Interestingly, each of the two experiments (anticipatory eye movements and explicit rating) provided different distributions, opening the perspective for future \emph{computational phenotyping} using such a volatile setting.
 \end{itemize}
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Material and Methods}
