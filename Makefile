@@ -2,6 +2,7 @@
 SRC = Pasturel_etal2020
 default: $(SRC)_trackedchanges.pdf
 pdf: $(SRC).pdf
+diff: $(SRC)_trackedchanges.pdf
 ################################################
 LATEXMK = latexmk -bibtex -pdf
 ################################################

@@ -15,12 +15,6 @@
 Humans adapt their anticipatory eye movements to the volatility of visual motion properties
 }
 \newcommand{\Acknowledgments}{This work was supported by EU Marie-Sk\l{}odowska-Curie Grant No 642961 (PACE-ITN) and by the Fondation pour le Recherche M\'edicale, under the program \textit{Equipe FRM} (DEQ20180339203/PredictEye/G Masson). Code and material on the \href{\Website/publication/pasturel-montagnini-perrinet-20}{corresponding author's website}. We thank Doctor Jean-Bernard Damasse, Guillaume S Masson and Professor Laurent Madelain for insightful discussions. }
-\newcommand{\Abstract}{
-Animal behavior constantly adapts to changes, for example when the statistical properties of the environment change unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of motion ramps of a visual target is biased to one direction (e.g. right or left), human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where the probability bias could change at random switching times. In addition, we also recorded the explicit prediction of the next outcome as reported by observers using a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to such generative model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploration and exploitation in the model, we were able to fit each individual experimental data-set with different levels of estimated volatility and derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test the diversity of human cognitive abilities in uncertain and dynamic environments.
-}
-\newcommand{\AuthorSummary}{
-Understanding how humans adapt to changing environments to make judgments or plan motor responses based on time-varying sensory information is crucial for psychology, neuroscience and artificial intelligence. Current theories for how we deal with the environment's uncertainty, that is, in response to the introduction of some randomness change, mostly rely on the behavior at equilibrium. Here, we show that in the more ecological case where the context switches at random times all along the experiment, an adaptation to this volatility can be performed online. In particular, we show in two behavioral experiments that humans can adapt to such volatility at the early sensorimotor level, through their anticipatory eye movements, but also at a higher cognitive level, through explicit ratings. Our results suggest that humans (and future artificial systems) can use much richer adaptive strategies than previously assumed.
-}
 \newcommand{\KeyWords}{eye movements; decision making; volatility; bayesian model; adaptation; perception}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[10pt,letterpaper]{article}
@@ -214,12 +208,12 @@ Understanding how humans adapt to changing environments to make judgments or pla
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: Abstract
 \section*{Abstract}
-\Abstract
+Animal behavior constantly adapts to changes, for example when the statistical properties of the environment change unexpectedly. For an agent that interacts with this volatile setting, it is important to react accurately and as quickly as possible. It has already been shown that when a random sequence of motion ramps of a visual target is biased to one direction (e.g. right or left), human observers adapt to accurately anticipate the expected direction with their eye movements. Here, we prove that this ability extends to a volatile environment where the probability bias could change at random switching times. In addition, we also recorded the explicit prediction of the next outcome as reported by observers using a rating scale. Both results were compared to the estimates of a probabilistic agent that is optimal in relation to such generative model. Compared to the classical leaky integrator model, we found a better match between our probabilistic agent and the behavioral responses, both for the anticipatory eye movements and the explicit task. Furthermore, by titrating the level of preference between exploitation and exploration in the model, we were able to fit each individual experimental data-set with different levels of estimated volatility and derive a common marker for the inter-individual variability of participants. These results prove that in such an unstable environment, human observers can still represent an internal belief about the environmental contingencies, and use this representation both for sensory-motor control and for explicit judgments. This work offers an innovative approach to more generically test the diversity of human cognitive abilities in uncertain and dynamic environments.
 % Please keep the Author Summary between 150 and 200 words
 % Use first person. PLOS ONE authors please skip this step.
 % Author Summary not valid for PLOS ONE submissions.
 \section*{Author summary}
-\AuthorSummary
+Understanding how humans adapt to changing environments to make judgments or plan motor responses based on time-varying sensory information is crucial for psychology, neuroscience and artificial intelligence. Current theories for how we deal with the environment's uncertainty, that is, in response to the introduction of some randomness change, mostly rely on the behavior at equilibrium. Here, we show that in the more ecological case where the context switches at random times all along the experiment, an adaptation to this volatility can be performed online. In particular, we show in two behavioral experiments that humans can adapt to such volatility at the early sensorimotor level, through their anticipatory eye movements, but also at a higher cognitive level, through explicit ratings. Our results suggest that humans (and future artificial systems) can use much richer adaptive strategies than previously assumed.
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Motivation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -279,7 +273,7 @@ or at least forming beliefs as precise as possible
 about a future environmental context ---
 is an ubiquitous challenge for cognitive systems~\citep{Barack16}.
 In the long term, how the human brain dynamically manages
-this trade-off between exploration and exploitation
+this trade-off between exploitation and exploration
 is essential to the adaptation
 of the behavior through reinforcement learning~\citep{Cohen2007}.
 
@@ -316,7 +310,7 @@ as the enviroment changes and the presented stimulus is this time not coherent
 with the participant's expectations~\citep{Hyman1953, Yu2009}.
 This process is highly dynamic especially in complex environments
 where new contingencies can arise at every moment.
-Interestingly, priming effects
+Interestingly, priming effects at cognitive levels
 are sometimes paralleled by anticipatory motor responses
 which are positively correlated with the repetition of stimulus properties.
 A well-known example of this behavior
@@ -399,22 +393,23 @@ Moreover, some experiments have demonstrated the existence
 of prediction-based smooth pursuit maintenance during
 the transient disappearance of a moving target~\citep{Badler2006,BeckerFuchs1985,OrbandeXivryMissalLefevre_JOV2012}
 and even predictive acceleration or deceleration during visual tracking~\citep{BeckerFuchs1985,CollinsBarnes2009}.
-Overall, although the initiation of smooth pursuit eye movements
+Overall, although the initiation of Smooth Pursuit Eye Movements
 is almost always driven by a visual motion signal,
 it is now clear that smooth pursuit behavior
 can be modulated at different stages by extra-retinal, predictive information even in the absence of a direct visual stimulation~\citep{Barnes2008}.
-\AM{Several functional and computational models have been proposed in the literature for the different forms of prediction-based smooth eye movements, such as zero-lag tracking of a periodic target~\citep{DallosJones1963} or pursuit maintenance during target occlusion~\citep{CollinsBarnes2009}. More recently an effort has been made to provide a more general theoretical framework, which is based on Bayesian inference and the reliability-based cue combination. Although the mapping of this theoretical framework onto neuronal functions remains to be elucidated, it has the clear advantage of generality, as for instance, it would encompass all forms of smooth pursuit behavior, including prediction-based and visually-guided tracking,  ~\citep{Bogadhi2013,Orban2013,Deravet_JOV2018,Darlington_NatNeu2018}. Here, we present a model extending this recent theoretical effort to include the adaptivity to a volatile environment.}
+\AM{PARAGRAPH ON PREVIOUS MODELS OF ANTICIPATORY EMS}
 
 Experience-based anticipatory pursuit behavior is remarkable
 in different aspects.
 First, its buildup is relatively fast, such that only a few trials are sufficient
 to pick up some regularity in the properties of visual motion, such as speed, timing or direction~\citep{Kowler1984,Maus2015,Deravet_JOV2018}.
-\AM{Second, phenomenologically it is a robust phenomenon, which has been observed on a large population of human participants and even in non-human primates (for a recent review see~\citet{Kowler_AnnRev2019}). Note also, that human participants seem to be largely unaware of this behaviour (as inferred from informal questioning). Finally, this kind of behavior has proven to be exquisitely sensitive to the probabilistic properties of the sensorimotor context.} 
-
+Second, it is in general an unconscious process
+of which participants are not aware of.
+\AM{Second, phenomenologically it is a robust phenomenon, which has been observed on a large population of human participants and even in non-human primates (REF). Note also, that human participants seem to be largely unaware of this behaviour (as inferred from informal questioning).}
 Therefore, this behavior is potentially a useful marker
 to study the internal representation of motion expectancy, %(or Prior)
 and in particular to analyze how such expectancy
-is dynamically modulated by probabilistic contingencies in shaping oculomotor behavior.
+is dynamically modulated by contextual contingencies in shaping oculomotor behavior.
 
 %: linear relationship (talk about santos & kowler and others)
 Typically, an anticipatory pursuit is observed after a temporal cue and
@@ -427,7 +422,7 @@ between target motion onset and foveation. In a previous study~\citep{Montagnini
 we have analyzed how forthcoming motion properties,
 such as target speed or direction, can be
 predicted and anticipated with coherently oriented eye movements. %~(see \seeFig{intro}-A).
-It has been observed that the strength of anticipation,
+It has been observed that the amplitude of anticipation,
 as measured by the mean anticipatory eye velocity,
 increases when the target repeatedly moves in the same direction~\citep{Kowler1984, Kowler1989, Heinen2005}.
 We similarly found a graded effect of both the speed and the direction-bias
@@ -663,8 +658,8 @@ by inferring the volatility parameters inherent to the models
 by best-fitting it to each each individual participant.
 This will allow the analysis of inter-individual behavioral responses for each session.
 In particular, we will test if one could predict observers' prior (preferred) volatility,
-that is, a measure of the dynamic compromise between exploration (``should I go?'')
-and exploitation (``should I stay?'')
+that is, a measure of the dynamic compromise between
+exploitation (``should I stay?'') and exploration (``should I go?'')
 across the two different sessions challenging predictive adaptive processes
 at the unconscious and conscious levels.
 Finally, we will summarize and conclude this study and
@@ -1249,32 +1244,33 @@ explicit guesses about target motion direction.
 \begin{figure}%[b!]
 \centering{\includegraphics[width=\linewidth]{2_results_enregistrement}}
 \caption{
-\textbf{Raw behavioral results, qualitative overview.} %
-\CP{The top row represents the sequence of target directions (TD)
-that were presented to observers
-in one trial block of $200$ trials,
+\textbf{Behavioral results, qualitative overview.} %
+We synthesize for one trial block of $200$ trials the predicted probabilities by agents with respect the behavioral results.
+The top row represents the sequence of target directions (TD)
+that were presented to observers and agents,
 as generated by the binary switching model (see~\seeFig{intro}-A).
-Bottom two rows show the raw behavioral results
-for two representative observers:
-The anticipatory pursuit velocity, defined
-as the horizontal best-fit eye velocity estimated right before
-the onset of the visually-driven pursuit (dark gray line);
-and the explicit ratings about the expected target direction (or \textit{bet scores}, red line).
-We also show the evolution of the value
-of the probability bias $P_{\text{true}}$ (blue line)
+We show the evolution of the value
+of the (true) probability bias $P_{\text{true}}$ (blue line)
 which is hidden to observers
 and used to generate the TD sequence above.
-We have overlaid the results of the BBCP model
-(see~\seeFig{Bayesianchangepoint}-B, green line).
+We have overlaid the results of
+the probability bias estimates obtained with a leaky integrator ($P_{\text{leaky}}$)
+and with the BBCP model ($P_{\text{BBCP}}$, see~\seeFig{Bayesianchangepoint}-B, green line).
+Bottom two rows show the raw behavioral results
+for the $n=12$ observers, by showing the median (lines) and the .25 and .75 quantiles (shaded areas):
+First, we show the  anticipatory pursuit strength, defined
+as the horizontal eye velocity estimated right before
+the onset of the visually-driven pursuit (dark gray line).
+Below, we show the explicit ratings about the expected target direction (or \textit{bet scores}, red line).
 This shows qualitatively a good match between
-the experimental evidence and the model.
+the experimental evidence and the BBCP model,
+in particular after switches.
 Note that short pauses occurred every $50$ trials
 (as denoted by vertical black lines, see main text),
 and we added the assumption in the model
 that there was a switch at each pause.
 This is reflected by the reset of the green curve close to the $0.5$ level and
 the increase of the uncertainty after each pause. %multiple of $50$ trials.
-}
 }
 \label{fig:results_psycho}
 \end{figure}
@@ -1286,33 +1282,28 @@ We used the BSM model to generate the (pseudo-)random sequence of
 the dot's directions (the alternation of leftward/rightward trials)
 as the sequence of observations that were used in both sessions
 (see~\seeFig{results_psycho}).
-In one session, we recorded the participants' eye movements and
-%extracted the anticipatory pursuit velocity. (for details, see~\seeApp{em}).
-we show the anticipatory pursuit velocity
-for two representative participants (out of $12$ participants), throughout a trial block of $200$ trials of the experimental sequence.
-Note that these participants were chosen as those
-whose fitting score was nearest to the median score in the quantitative analysis
-that will be illustrated below in~\seeSec{inter}.
 In the top panel  of~\seeFig{results_psycho} we show the actual sequence of binary choices
 (TD, leftward or rightward) of the Bernoulli trials,
-whereas in the bottom panels,
-we compare for each two participants
-the evolution of the recorded anticipatory pursuit (grey line) with
-the true value of the hidden probability bias $x_1$
-(step-like blue curve),
-and the value inferred using the BBCP model (green line),
-along with the $.05$ to $.95$ quantile range (green shaded area).
-Comparing the raw anticipatory pursuit results with the BBCP agent predictions,
-it appears qualitatively that both traces evolve in good agreement.
+whereas in the panel below we compare the evolution of the recorded anticipatory pursuit (grey line) with
+the true value of the hidden probability bias $x_1$ (step-like blue curve),
+and the value inferred using the leaky and BBCP model (green line),
+along with the $.05$ to $.95$ quantile range (green shaded area),
+just as in~\seeFig{Bayesianchangepoint}-B.
+In the first session, we recorded the participants' eye movements and
+we show the distribution of anticipatory pursuit velocity (for details see Materials and Methods in ~\seeSec{methods})
+for the $12$ participants, throughout a trial block of $200$ trials of the experimental sequence.
+% Note that these participants were chosen as those
+% whose fitting score was nearest to the median score in the quantitative analysis
+% that will be illustrated below in~\seeSec{inter}.
 First, one can observe a trend in the polarity of anticipatory pursuit velocity
 to be negative for probability bias values below~$.5$ and positive for values above~$.5$.
-%Moreover, both curves seem to lag by few trials the
-% occurrence of a switch of the probability bias (also hidden to the observers).
-Moreover, both curves (anticipatory pursuit and model) unveil similar delays in detecting and
+Comparing the raw anticipatory pursuit results with the BBCP agent predictions,
+it appears qualitatively that both traces evolve in good agreement.
+In particular, both curves unveil similar delays in detecting and
 taking into account a switch of the probability bias (while being hidden to the observers),
 reflecting the time (in the order of a few trials) taken to integrate enough information
 to build up the estimation of a novel expectation about the probability bias value
-parameterizing the Bernoulli trial.
+which parameterizes this Bernoulli trial.
 In general, results are more variable when the bias is weak ($p\approx .5$)
 than when it is strong (close to zero or one),
 consistent with the well-known dependence of the variance of a Bernoulli trial
@@ -1332,16 +1323,14 @@ In addition, the explicit ratings
 for the next trial's expected motion direction (or \textit{bet scores}, red curve in~\seeFig{results_psycho})
 provided in the other experimental session
 seem to qualitatively follow the same trend.
-Indeed, similarly to the estimated velocity of anticipatory pursuit,
-we qualitatively compare in~\seeFig{results_psycho}
-the trace of the bet scores
-with the inferred probability bias $\hat{x}_1$.
-As with anticipatory pursuit, the series of the participants' bias guesses
+ As with anticipatory pursuit, the series of the participants' bias guesses
 exhibits a positive correlation with the true probability bias:
 The next outcome of $x_{0}^{t}$ will in general be correctly inferred,
-as compared to a random choice, as reported previously~\citep{Meyniel15}. %\AM{statistics to cite for this?}
-%\AM{I WOULD SKIP THIS Equipped with this generative BSM model and the ideal observer given by the BBCP model,
-%the agent is able to predict the next outcome better than chance level.}
+as compared to a random choice, as reported previously~\citep{Meyniel15}.
+Indeed, similarly to the amplitude of anticipatory pursuit velocity,
+we qualitatively compare in~\seeFig{results_psycho}
+the trace of the bet scores
+with the probability bias $\hat{x}_1$ inferred by the BBCP model.
 Moreover, we observe again that a stronger probability bias leads
 to a lower variability in the bet scores, compared to bias values close to $0.5$.
 Again, a (hidden) switch in the value of the bias is
@@ -1373,8 +1362,8 @@ which supposedly underlie the generation of anticipatory anticipatory pursuit wi
 \caption{%
 \textbf{Behavioral results, quantitative analysis across participants.} %
 \Rone{Fig 4. An indication of n on the figure would be welcome (I assume it is n observers). "For all participants and for all trials" is an ambiguous description. Was it one estimate per participant, averaging all trials? or were all trials pooled together disregarding participants?}
-\CP{For all participants and for all trials, we collected an estimate of
-the amplitude of anticipatory pursuit (aSPEM) velocity, and a bet score value.
+For all participants and for all trials, we collected an estimate of
+the amplitude of anticipatory pursuit velocity (aSPEM) and a bet score value.
 We analyze the relation between these experimental data with the corresponding prediction $P_{\text{BBCP}}$
 of the probability bias as inferred by the BBCP model.
 We display these functional relations
@@ -1382,7 +1371,7 @@ using an error-bar plot showing the median with $.25$ and $.75$ quantiles
 over 5 equal partitions of the $[0, 1]$ probability segment.
 %contour plot over the Kernel Density Estimation (KDE)
 The green regression line illustrates the relationship between the BBCP regressor in abscissa
-and in ordinate \textit{(A)} the anticipatory pursuit velocity and \textit{(B)} the bet score, respectively.
+and in ordinate \textit{(A)} the amplitude of anticipatory pursuit velocity and \textit{(B)} the bet score, respectively.
 %The density of strokes represent increasing probability strengths.
 As a comparison, we have plotted in blue and orange colors the regression lines
 with respectively
@@ -1411,7 +1400,7 @@ with the value of the probability bias $\hat{x}_1$
 computed by the BBCP algorithm.
 Compiling results from all participants,
 we have plotted in~\seeFig{results_psycho_all}
-the anticipatory pursuit velocity (panel A) and the bet scores (panel B)
+the anticipatory pursuit strength (panel A) and the bet scores (panel B)
 as a function of the BBCP-inferred probability bias  $P_{\text{BBCP}}$.
 All trials from all participants were pooled together
 and we show this joint data as an error bar plot
@@ -1453,7 +1442,7 @@ the model-estimated probability bias
 and the rating value, or bet score, about the expected outcome, which was provided at each trial
 by participants
 and is shown in~\seeFig{results_psycho}.
-Similarly to the anticipatory pursuit velocity, the rating values are nicely correlated
+Similarly to the anticipatory pursuit strength, the rating values are nicely correlated
 with the probability bias given by the model,
 as quantified by the Pearson correlation coefficient and mutual information
 across subjects ($r = 0.813 \pm 0.091$ and $MI = 1.312 \pm 0.364$)
@@ -1484,7 +1473,7 @@ and the bet experiment
 .
 To conclude, we deduce that the dynamic estimate of the probability bias produced by the BBCP model
 is a powerful regressor to explain
-both the strength of anticipatory pursuit
+both the amplitude of anticipatory pursuit velocity
 and the explicit ratings of human observers
 experiencing a volatile context for visual motion.
 
@@ -1511,7 +1500,7 @@ This was best characterized by differences
 in the variability of the responses, but also, for instance,
 by the different characteristic delays after a switch.
 This reflects the spectrum of individual behavioral choices
-between exploration versus exploitation~\citep{Behrens07}.
+between exploitation versus exploration~\citep{Behrens07}.
 As a consequence, we were interested in characterizing these individual preferences
 for each individual participant,
 but also to investigate whether this preference co-varied
@@ -1544,7 +1533,7 @@ we expect to better understand the variety of inter individual differences. % an
 the individual best value of the model's single free parameter, the hazard rate $h$.
 Estimates were performed independently on both experiments,
 such that we extracted different estimates of $h_{\text{aSPEM}}$ and $h_{\text{bet}}$
-respectively for the anticipatory pursuit velocity and the rating value.
+respectively for the anticipatory pursuit strength and the rating value.
 The dots correspond to independent estimates of the hazard rate
 in each trial block ($200$ trials) and data belonging to
 each individual participant are joined by dotted lines.
@@ -1562,7 +1551,6 @@ Such an analysis suggests that participants ultimately have
 different mechanisms at the unconscious and conscious levels
 for guiding their tendency of exploration versus exploitation.
 }
- }
 \label{fig:results_inter}
 \end{figure}
 %-------------------------------------------------------------%
@@ -1614,7 +1602,7 @@ for the rating scale.
 We observe that these values are close to the (hidden) ground truth value ($h=1/40=0.025$) used to generate the sequence.
 In addition, the best-fit hazard rate value is higher for anticipatory pursuit compared to the true value and the rating scale measures.
 %Quantitatively, the ratio of both hazard rates computed across participants was \CP{with a ratio $1.6460031261743702~ \pm 2.779003512890947~$ ($h_{bet} / h_{va}$),  $16.12429536779007~ \pm 40.37883398426319~$ ($h_{va} / h_{bet}$)},
-% In addition, we observed a tendency for hazard rate to be higher in the eye movement recording session.
+In addition, we observed a tendency for hazard rate to be higher in the eye movement recording session.
 %as was previously suggested~\citep{Meyniel??}.
 %Importantly, there is a part of the variability
 %which seems characteristic of the spectrum of individual choices.
@@ -1627,11 +1615,11 @@ In addition, the best-fit hazard rate value is higher for anticipatory pursuit c
 %showed that such accuracy would drop to $XX\%$,
 %close to the chance level of $8.33\%$.
 %} \CP{n'a pas fonctionn\'e !}
-In summary, this analysis reveals
+As a consequence, this analysis reveals
 that relaxing the free parameter of the BBCP model
-improves the match of the model to the behavioral data, \AM{and that individual best-fitting hazard-rates are variable, especially for the Bet task.
-% and that we could represent the distribution of individual differences in the choice behavior between exploration and exploitation in both sessions for each subject 
-Future work might provide important insight about the analysis of these inter-individual differences in terms of subjective preference for exploration vs exploitation across different cognitive tasks.}
+improves the match of the model to the behavioral data and
+that we could represent the distribution of individual differences in the choice behavior
+between exploitation and exploration in both sessions for each subject.
 
 %-------------------------------------------------------------%
 %: 4C analysis
@@ -1671,7 +1659,7 @@ In spite of a multitude of existing studies investigating the dynamics of sequen
 which then applies to a variety of sensory modalities and experimental situations. Consequently, sequential effects in binary sequences would be better explained by learning and updating transition probabilities compared to the absolute item frequencies (as in the present work) or the frequencies of their alternations. The critical difference lies in the content of what is learned (transition probabilities versus item frequencies) in an attempt to capture human behavior. Rather than on transition probabilities, here we focused on the analysis and modeling of human behavior as a function of the frequency of presentation (and its fluctuations in time) of a given event in a binary sequence of alternating visual motion direction. We can speculate that different statistics can play different roles depending on the context, but altogether the study by Meyniel et al~\citet{Meyniel16} and the present one converge to highlight the importance of a dynamic estimate of the hierarchical statistical properties of the environment for efficient behavior. There are also other limits to the agent that we have defined. In this study, we assume that data is provided as a sequence of discrete steps. A similar approach using a Poisson point process
 allows to extend our model to the continuous time domain, such as addressed by Radillo et al~\citet{RadilloBrady2017}: In their experiments, authors analyzed the licking behavior of rats in a dynamic environment. The generalization to the time-continuous case is beyond the scope of our current protocol, but it would consist in a natural extension of it to more complex and ecological settings.
 
-Our results demonstrate that the BCCP model is relatively good in mimicking the adaptive changes of both (implicit) anticipatory eye movements and explicit ratings of direction expectation in a volatile context. However, these two different behavioral measures, the implicit and the explicit one, are not correlated across individuals. This observation is certainly worth deeper investigation in the future as it raises doubts on the existence of a unique hierarchical system for probabilistic inference. The distinction between implicit and explicit processes in the adaptation to a volatile environment has also been addressed by previous work, especially in the field of statistical learning for language processing (see for example ~\citet{Batterink_etal_2015,SaffranAslinNewport1996}). More related to the present study, Wu et al~\citet{WuDelgadoMaloney2012} compared a classical economic decision task with a motor decision task: they found that participants were more risk seeking in the motor task compared to the first one. In addition, Souto et al~\citet{SoutoGegenfurtnerSchuetz2016} have recently reported a lack of correlation between the rate of oculomotor adaptation to unexpected jumps of the visual target and the perceptual uncertainty estimated through an explicit jump direction-discrimination experiment. Finally, the degree of explicitness of the information provided to the participants may also play a role in the context of probabilistic learning. In a task similar to ours, where the behavioral choice was not specifically associated to a reward schedule, Santos and Kowler~\citet{SantosKowler2017} found large similarities but also some differences in the anticipatory eye movements depending on how the information about the probability bias was conveyed, namely through the simple presentation of a biased sequence versus a an explicit probability-cueing procedure. In the first condition, the authors reported a weak non-linearity in the dependence of anticipatory pursuit upon the probability of motion direction, yielding an overweight of the extreme values of probability. In contrast, an opposite non-linearity (underweight) was observed when the target direction was visually-cued with a given probability of validity. Note that in our data we have not found consistent evidence suggesting a clear non-linearity in either sense. Further work is needed to disentangle the possible specificities (e.g. non linearities, also broadly reported in the economic literature, such as a generic aversion to risk~\citep{Kahneman13}) and the general inter-trial and inter-individual correlations across different tasks and different experimental measures of the cognitive adaptation to the environmental volatility.
+Our results demonstrate that the BCCP model is relatively good in mimicking the adaptive changes of both (implicit) anticipatory eye movements and explicit ratings of direction expectation in a volatile context. However, these two different behavioral measures, the implicit and the explicit one, are not correlated across individuals. This observation is certainly worth deeper investigation in the future as it raises doubts on the existence of a unique hierarchical system for probabilistic inference. The distinction between implicit and explicit measures of adaptation to a volatile environment has also been addressed by previous work, especially in the field of experimental economics or statistical learning for language processing \AM{(REFFS ???)}. More related to the present study, Wu et al~\citet{WuDelgadoMaloney2012} compared a classical economic decision task with a motor decision task: they found that participants were more risk seeking in the motor task compared to the first one. In addition, Souto et al~\citet{SoutoGegenfurtnerSchuetz2016} have recently reported a lack of correlation between the rate of oculomotor adaptation to unexpected jumps of the visual target and the perceptual uncertainty estimated through an explicit jump direction-discrimination experiment. Finally, the degree of explicitness of the information provided to the participants may also play a role in the context of probabilistic learning. In a task similar to ours, where the behavioral choice was not specifically associated to a reward schedule, Santos and Kowler~\citet{SantosKowler2017} found large similarities but also some differences in the anticipatory eye movements depending on how the information about the probability bias was conveyed, namely through the simple presentation of a biased sequence versus a an explicit probability-cueing procedure. In the first condition, the authors reported a weak non-linearity in the dependence of anticipatory pursuit upon the probability of motion direction, yielding an overweight of the extreme values of probability. In contrast, an opposite non-linearity (underweight) was observed when the target direction was visually-cued with a given probability of validity. Note that in our data we have not found consistent evidence suggesting a clear non-linearity in either sense. Further work is needed to disentangle the possible specificities (e.g. non linearities, also broadly reported in the economic literature, such as a generic aversion to risk~\citep{Kahneman13}) and the general inter-trial and inter-individual correlations across different tasks and different experimental measures of the cognitive adaptation to the environmental volatility.
 
 
 \subsection{Hierarchical Bayesian inference in the brain}
@@ -1685,8 +1673,7 @@ has become very popular as a benchmark of optimal behavior in perceptual, sensor
 % to the data, one evaluates as a matter of fact the adequacy of a specific generative model, not of the probabilistic calculus in its detailed implementation.}
 Still, there is actually a common confusion around the idea of a ``Bayesian brain'', and
 we believe that the challenge here is not to validate the hypothesis that the brain implements or not the Bayes' theorem, or a more complex hierarchical combinations of inferential computations, but rather to test hypotheses about the different generative models
-that agents may use. 
-\AM{I WOULD CUT THIS In his sense, the brain is probably only ``weakly Bayesian''. This methodological point will be essential in designing future experimental protocols, and in evaluating quantitatively the results.}
+that agents may use. In his sense, the brain is probably only ``weakly Bayesian''. This methodological point will be essential in designing future experimental protocols, and in evaluating quantitatively the results.
 
  % \Rone{Line 606 to 616 this seems more like a discussion point. Also I am not clear how one of the statements is tested, regarding the fact  variability in the estimate scales with inferred probability.}
 The way expectations act on cognitive processes in general has been investigated in a wide range of domains such as predictive coding~\citep{Wacongne2012}, active inference~\citep{Friston2010}, motor control~\citep{WolpertGhahramani2000} and reinforcement learning~\citep{Behrens07,Wilson13,Damasse18}. Non-stationary observations can also explain why both local and global effects emerge and why local effects persist in the long run even within purely random sequences~\citep{Cho2002, Yu2009}. This constant update of a general belief on the world can be a consequence of the constant attempt to learn the non-stationary structure of the environment that can change at unpredictable times~\citep{Yu2009}. Many studies have actually already pointed out the brain's ability to apprehend non-stationary states in environments~\citep{Ossmy2013, Meyniel15}.
@@ -1726,6 +1713,7 @@ While it was not our original objective, we have analyzed in this study the indi
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Material and Methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Participants, visual stimuli and experimental design}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
