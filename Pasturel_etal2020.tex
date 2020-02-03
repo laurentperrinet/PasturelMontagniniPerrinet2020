@@ -333,25 +333,25 @@ In addition, we attempt to palliate the lack of a solid modeling approach
 to best understand the computation underlying behavioral adaptation to the environment's statistics,
 and in particular how sequential effects are integrated
 within a hierarchical statistical framework.
+
 Bayesian inference offers an effective methodology
 to deal with this question.
 Indeed, these methods allow to define and quantitatively assess
 a range of hypotheses about the processing of possibly noisy information by some formal agents~\citep{Deneve1999, Diaconescu2014, Daunizeau10a}.
 A key principle in the Bayesian inference approach is
 to introduce so-called \emph{latent variables}
-which explicitly represent different hypotheses and how these may predict experimental measurements.
-Each hypothesis defines a graph of probabilistic dependencies between specific variables 
-(for instance between the number of patients at a practitionner and the reality of a flu pandemic)
-using a generative model for the prior knowledge about its structure.
-In practice, the generative model is parameterized by structural variables
-(such as weights or non-linear gain functions) 
-which are for instance tuned by past statistics extracted from observations.
+which explicitly represent different hypotheses by the agent and how these may predict experimental outcomes.
+Each hypothesis defines different weights in the graph of probabilistic dependencies between variables 
+(for instance between the number of patients at a practitioner and the reality of a flu pandemic).
+%In practice, a generative model is used to to define such graph and  is parameterized by structural variables
+%(such as weights or non-linear gain functions) 
+%which are for instance tuned by past statistics extracted from observations.
 Then, using the rules of probability calculus and knowing incoming measurements,
 one can progressively update beliefs about the latent variables,
 and eventually infer the hidden structure underlying the received inputs~\citep{Hoyer2003, Ma2014}.
 For instance, using Bayes's rule, one can combine
-the likelihood of observations given the assumed generative model and
-the prior of these latent variables~\citep{Jaynes2014}
+the likelihood of observations given a given generative model and
+the prior on these latent variables~\citep{Jaynes2014}
 such that beliefs about latent variables
 may be represented as probabilities.
 Of particular interest for us is the possibility to
@@ -361,7 +361,7 @@ Indeed, once the belief about latent variables
 is formed from the sensory input,
 this belief can be used to update
 the prior over future beliefs~\citep{Montagnini2007}.
-In such models, the comparisons between expectations and actual data leads to
+In such models, the comparison between expectations and actual data leads to
 continuous updates of the estimates of the latent variables,
 but also of the validity of the model.
 There are numerous examples of Bayesian approaches
