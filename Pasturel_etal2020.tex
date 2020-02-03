@@ -1156,9 +1156,9 @@ Such dynamic is similar to the slow / fast heuristic model proposed in other stu
 Second, we can use this information to readout the most likely probability bias and
 use it as a regressor for the behavioral data.
 Note that the leaky integrator model is implemented
-by the agent assuming a fixed run-length profile (see orange line in \seeFig{Bayesianchangepoint}-B),
+by the agent assuming a fixed-length profile (see orange line in \seeFig{Bayesianchangepoint}-B),
 allowing for a simple comparison of the BBCP model with the leaky integrator.
-Again, we see that a fixed length model gives qualitatively a similar output
+Again, we see that a fixed-length model gives qualitatively a similar output
 but with two disadvantages compared to the BBCP model, namely that
 there is a stronger inertia in the dynamics of the model estimates and
 that there is no improvement in the precision of the estimates after a switch.
@@ -1212,7 +1212,7 @@ for the true hazard rate used to generate the data.
 In other words, this analysis shows that the agent's inference is best for a hazard rate
 equal to that implemented in the generative model and which is actually hidden to the BBCP agent.
 This property will be important in a following section
-to estimate the hazard rate implicitly assumed by an individual participant
+to validate the estimated hazard rate implicitly assumed by an individual participant
 on the basis of the set of responses given to the  sequence of stimuli
 (see~\seeSec{inter}).
 %
