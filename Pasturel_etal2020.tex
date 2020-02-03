@@ -419,11 +419,11 @@ between target motion onset and foveation. In a previous study~\citep{Montagnini
 we have analyzed how forthcoming motion properties,
 such as target speed or direction, can be
 predicted and anticipated with coherently oriented eye movements. %~(see \seeFig{intro}-A).
-It has been observed that the strength of anticipation,
+It has been observed that the amplitude of anticipation,
 as measured by the mean anticipatory eye velocity,
 increases when the target repeatedly moves in the same direction~\citep{Kowler1984, Kowler1989, Heinen2005}.
 We similarly found a graded effect of both the speed and the direction-bias
-on the strength of anticipatory pursuit. % (see \seeFig{intro}-B).
+on the velocity of anticipatory pursuit. % (see \seeFig{intro}-B).
 In particular, this effect is linearly related
 to the probability of motion's speed or direction. %~(see \seeFig{intro}-B).
 These results are coherent with previous oculomotor findings
@@ -507,7 +507,7 @@ Indeed, observers may potentially pick up
 the information on the block's length
 to predict the occurrence of a switch (a change in probability bias) during the experiment.
 Second, we observed qualitatively that following a switch,
-the strength of anticipatory pursuit changed gradually,
+the amplitude of anticipatory pursuit velocity changed gradually,
 consistently with other adaptation paradigms~\citep{Fukushima1996,Kahlon1996,Souto13}.
 The estimate of the characteristic temporal parameters for this adaptation mechanism
 may become particularly challenging in a dynamic context,
@@ -1255,8 +1255,8 @@ the probability bias estimates obtained with a leaky integrator ($P_{\text{leaky
 and with the BBCP model ($P_{\text{BBCP}}$, see~\seeFig{Bayesianchangepoint}-B, green line).
 Bottom two rows show the raw behavioral results
 for the $n=12$ observers, by showing the median (lines) and the .25 and .75 quantiles (shaded areas):
-First, we show the recorded anticipatory pursuit strength as measured
-by the horizontal eye velocity estimated right before
+First, we show the  anticipatory pursuit strength, defined
+as the horizontal eye velocity estimated right before
 the onset of the visually-driven pursuit (dark gray line).
 Below, we show the explicit ratings about the expected target direction (or \textit{bet scores}, red line).
 This shows qualitatively a good match between
@@ -1310,7 +1310,7 @@ of the inferred probability bias $\hat{x}_1$ increases
 in longer epochs, as information is integrated over more trials.
 As a result, the inferred probability as a function of time
 seems qualitatively to constitute a reliable regressor
-for predicting the strength of anticipatory pursuit.
+for predicting the amplitude of anticipatory pursuit velocity.
 
 %-------------------------------------------------------------%
 %: 3B Results: bias rating scale measurements
@@ -1324,7 +1324,7 @@ seem to qualitatively follow the same trend.
 exhibits a positive correlation with the true probability bias:
 The next outcome of $x_{0}^{t}$ will in general be correctly inferred,
 as compared to a random choice, as reported previously~\citep{Meyniel15}.
-Indeed, similarly to the strength of anticipatory pursuit,
+Indeed, similarly to the amplitude of anticipatory pursuit velocity,
 we qualitatively compare in~\seeFig{results_psycho}
 the trace of the bet scores
 with the probability bias $\hat{x}_1$ inferred by the BBCP model.
@@ -1360,7 +1360,7 @@ which supposedly underlie the generation of anticipatory anticipatory pursuit wi
 \textbf{Behavioral results, quantitative analysis across participants.} %
 \Rone{Fig 4. An indication of n on the figure would be welcome (I assume it is n observers). "For all participants and for all trials" is an ambiguous description. Was it one estimate per participant, averaging all trials? or were all trials pooled together disregarding participants?}
 For all participants and for all trials, we collected an estimate of
-the strength of anticipatory pursuit (aSPEM) and a bet score value.
+the amplitude of anticipatory pursuit velocity (aSPEM) and a bet score value.
 We analyze the relation between these experimental data with the corresponding prediction $P_{\text{BBCP}}$
 of the probability bias as inferred by the BBCP model.
 We display these functional relations
@@ -1368,7 +1368,7 @@ using an error-bar plot showing the median with $.25$ and $.75$ quantiles
 over 5 equal partitions of the $[0, 1]$ probability segment.
 %contour plot over the Kernel Density Estimation (KDE)
 The green regression line illustrates the relationship between the BBCP regressor in abscissa
-and in ordinate \textit{(A)} the strength of anticipatory pursuit and \textit{(B)} the bet score, respectively.
+and in ordinate \textit{(A)} the amplitude of anticipatory pursuit velocity and \textit{(B)} the bet score, respectively.
 %The density of strokes represent increasing probability strengths.
 As a comparison, we have plotted in blue and orange colors the regression lines
 with respectively
@@ -1454,7 +1454,7 @@ and the bet experiment
 ($P_{\text{BBCP}}$: $r = 0.802 \pm 0.090$ and $MI =  1.255 \pm 0.349$, $P_{\text{leaky}}$: $r = 0.641 \pm 0.120$ with $p=0.002$ and $MI =  0.966 \pm 0.300$ with $p=0.002$ ; $P_{\text{true}}$ : $r = 0.694 \pm 0.086$ with $p=0.002$ and $MI =  0.940 \pm 0.255$ with $p=0.002$).
 To conclude, we deduce that the dynamic estimate of the probability bias produced by the BBCP model
 is a powerful regressor to explain
-both the strength of anticipatory pursuit
+both the amplitude of anticipatory pursuit velocity
 and the explicit ratings of human observers
 experiencing a volatile context for visual motion.
 
@@ -1688,7 +1688,7 @@ Twelve observers ($29$ years old $\pm 5.15$, $7$ female) with normal or correcte
 
 Visual stimuli were generated using PsychoPy 1.85.2~\citep{Peirce19} on a Mac running OS 10.6.8 and displayed on a 22" Samsung SyncMaster 2233 monitor with $1680\times 1050$ pixels resolution at 100~\si{\Hz} refresh rate. Experimental routines were also written using PsychoPy and controlled the stimulus display (see~\seeFig{intro}). Observers sat 57~\si{\cm} from the screen in a dark room.
 
-The moving target used in our experiments was a white ring ($0.35\degree$ outer diameter and $0.27\degree$ inner diameter) with a luminance of $102~cd/m2$ that moved horizontally on a grey background (luminance $42~cd/m^2$). Each trial started with a central fixation point displayed for a random duration drawn from a uniform distribution ranging between $400$ and $800~\ms$. Then a fixed-duration $300~\ms$ gap occurred between the offset of the fixation point and the onset of the moving target, which was presented slightly offset from the fixation location~\citep{Rashbass1961} and immediately started moving horizontally at a constant speed of $15\degree/s$, either to the right or to the left for $1000~\ms$. The probability $p$ of rightward trials was a time-varying random variable which was constant within an epoch of the sequence of a given random size (see main text for the description of the generative model).
+The moving target used in our experiments was a white ring ($0.35\degree$ outer diameter and $0.27\degree$ inner diameter) with a luminance of $102~cd/m2$ that moved horizontally on a grey background (luminance $42~cd/m^2$). Each trial started with a central fixation point displayed for a random duration drawn from a uniform distribution ranging between $400$ and $800~\ms$. Then a fixed-duration $300~\ms$ gap occurred between the offset of the fixation point and the onset of the moving target. The target was then presented slightly offset from the fixation location (\emph{step-ramp} paradigm~\citet{Rashbass1961}), either to the right or to the left, and immediately started moving horizontally toward the center at a constant speed of $15\degree/s$,  for $1000~\ms$. The probability $p$ of rightward motion trials was a time-varying random variable which was constant within an epoch of the sequence of a given random size (see main text for the description of the generative model).
 
 The paradigm included two experimental sessions performed on two distinct (in general consecutive) days by each participant. The two sessions involved the presentation of the same sequence of trials, while collecting a different behavioral response: explicit rating judgments in the first session (the \textit{bet} experiment), and eye movement recordings in the second session. Asked after the experiment, no observer noticed that the same pseudo-random sequence of target directions was used in both experiments.
 
@@ -1696,10 +1696,10 @@ The paradigm included two experimental sessions performed on two distinct (in ge
 Eye movements were recorded continuously with an eye tracking system (Eyelink 1000, SR Research Ltd., sampled at 1000 Hz), using the Python module Pylink 0.1.0 provided by PsychoPy. Horizontal and vertical eye position data were transferred, stored, and analyzed offline using programs written using Jupyter notebooks. The data analyses were implemented using the Python libraries numpy, pandas and pylab. All the scripts for data analysis, as well as for stimulus presentation, data collection, and preparation of figures are available at \url{https://github.com/chloepasturel/AnticipatorySPEM}. To minimize measurement errors, the participant's head movements were restrained using a chin and forehead rest, so that the eyes in primary gaze position were directed towards the center of the screen. In order to enforce accuracy in gaze position and tracking, we implemented an automatic procedure of fixation control. If the distance between the gaze position and the central fixation point during the fixation epoch exceeded $2\degree$ of visual angles, the fixation point started flickering and the counter for the fixation duration was reset to $0$.
 
 The recorded horizontal and vertical raw gaze position data were numerically differentiated to obtain velocity measures. We adopted an automatic conjoint acceleration and velocity threshold method (the default saccade detection implemented by SR Research) to detect ocular saccades. Saccades and eye-blinks were excluded from eye velocity traces (and replaced by \textit{Not-a-Number} values in the numerical arrays) before trial averaging and data fitting for the extraction of the oculomotor parameters of interest.
-In order to extract the relevant parameters of the oculomotor responses, we developed new tools based on a best-fitting procedure of predefined oculomotor patterns and in particular the typical smooth pursuit velocity profile that was recorded in our experiment. A piecewise-defined function was fitted to the different epochs of the eye velocity traces: a constant function during fixation, a ramp-like linear function during smooth pursuit anticipation, an increasing sigmoid function during the initiation of visually-guided smooth pursuit, reaching its saturating value during the pursuit steady-state. \LP{à vérifier :}Note that the results were qualitatively similar to the computation of the anticipatory velocity that we performed in a previous study~\citep{Damasse18}. This analysis was applied to each trial individually and it allowed in particular to estimate the velocity of anticipatory pursuit. Some trials were excluded from the analysis as the proportion of missing data-points, due to eye blinks or saccades was considered too large, namely when the missing data exceeded $45~\ms$ during the gap or one third of the total target motion epoch ($4.36\%$ of all trials). In addition, trials were also excluded when the eye-movement fitting procedure did not converge, after visual inspection, to a satisfactory match with the data ($3.25\%$ of all trials). The python scripts used to analyze eye movements are available at \url{https://github.com/invibe/ANEMO}.
+In order to extract the relevant parameters of the oculomotor responses, we developed new tools based on a best-fitting procedure of predefined oculomotor patterns and in particular the typical smooth pursuit velocity profile that was recorded in our experiment. A piecewise-defined function was fitted to the different phases of the eye velocity traces: a constant function during fixation, a ramp-like linear function during smooth pursuit anticipation, an increasing sigmoid function during the initiation of visually-guided smooth pursuit, reaching its saturating value during the pursuit steady-state. This analysis was applied to each trial individually and it allowed in particular to estimate the velocity of anticipatory pursuit  \AM{as the best-fit value of the modeled eye velocity at the moment where the visually-guided pursuit is initiated.} \LP{Note that this method for estimating anticipatory velocity led to qualitatively identical results to the estimation of the mean eye velocity within an arbitrary temporal window of anticipation, a more classical method that we implemented for instance in a previous study~\cite{Damasse18}.}  Some trials were excluded from the analysis as the proportion of missing data-points, due to eye blinks or saccades was considered too large, namely when the missing data exceeded $45~\ms$ during the gap or one third of the total target motion epoch ($4.36\%$ of all trials). In addition, trials were also excluded when the eye-movement fitting procedure did not converge, after visual inspection, to a satisfactory match with the data ($3.25\%$ of all trials). The python scripts used to analyze eye movements are available at \url{https://github.com/invibe/ANEMO}.
 
 \subsection{The Bet experiment}
-The aim of the Bet experiment was to collect data related to the individual explicit estimates of the probability for the next outcome of a target motion direction. At the beginning of each trial, before the presentation of the moving target, participants had to answer to the question \textit{ ``How sure are you that the target will go left or right''}. This was performed by adjusting a cursor on the screen using the mouse (see Figure~\seeFig{intro}-C). The cursor could be placed at any point along a horizontal segment representing a linear rating scale with three ticks labeled as \textit{ ``Left''}, \textit{``Right''} (at the extreme left and right end of the segment respectively), and \textit{``Unsure''} in the middle. Participants had to validate their choice by clicking on the mouse left-button and the actual target motion was shown thereafter. The rationale to collect rating responses on a continuous scale instead of a simple binary prediction (Right/Left) was to be able to infer the individual estimate of the direction bias at the single trial scale (in analogy to the continuous interval for the strength of anticipatory pursuit velocity). We called this experiment the \textit{ ``Bet''} experiment, as participants were explicitly encouraged to make reasonable rating estimates, just like if they had to bet money on the next trial outcome. Every $50$ trials, a \textit{``score''} was displayed on the screen, corresponding to the proportion of correct direction predictions (Right or Left of the \textit{``Unsure''} tick) and weighted by the confidence attributed to each answer (the distance of the cursor from the center).
+The aim of the Bet experiment was to collect data related to the individual explicit estimates of the probability for the next outcome of a target motion direction. At the beginning of each trial, before the presentation of the moving target, participants had to answer to the question \textit{ ``How sure are you that the target will go left or right''}. This was performed by adjusting a cursor on the screen using the mouse (see Figure~\seeFig{intro}-C). The cursor could be placed at any point along a horizontal segment representing a linear rating scale with three ticks labeled as \textit{ ``Left''}, \textit{``Right''} (at the extreme left and right end of the segment respectively), and \textit{``Unsure''} in the middle. Participants had to validate their choice by clicking on the mouse left-button and the actual target motion was shown thereafter. The rationale to collect rating responses on a continuous scale instead of a simple binary prediction (Right/Left) was to be able to infer the individual estimate of the direction bias at the single trial scale (in analogy to the continuous interval for the anticipatory pursuit velocity). We called this experiment the \textit{ ``Bet''} experiment, as participants were explicitly encouraged to make reasonable rating estimates, just like if they had to bet money on the next trial outcome. Every $50$ trials, a \textit{``score''} was displayed on the screen, corresponding to the proportion of correct direction predictions (Right or Left of the \textit{``Unsure''} tick) and weighted by the confidence attributed to each answer (the distance of the cursor from the center).
 
 \section*{Acknowledgments}
 \Acknowledgments
