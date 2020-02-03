@@ -804,24 +804,24 @@ that is, the number of trials since the last switch.
 Here, the true probability bias switched from a value of $.5$ to $.9$ at trial $7$,
 as can be seen by the trajectory of the true run-length (blue line).
 The BBCP model tries to capture the occurrences of a switch
-by inferring the probability of different possible run lengths.
+by inferring the probability of different possible run-lengths.
 At any new datum (trial), this defines a Hidden Markov Model
-as a graph (trellis), where % of possible run lengths.
+as a graph (trellis), where % of possible run-lengths.
 edges indicate that a message is being passed
 to update each node's probability (as represented by arrows from trial $13$ to $14$).
-Black arrows denote a progression of the run length at the next step (no switch),
+Black arrows denote a progression of the run-length at the next step (no switch),
 while gray lines stand for the possibility that a switch happened:
-In this case the run length would fall back to zero.
+In this case the run-length would fall back to zero.
 The probability for each node is represented by the grey scale (darker grey colors denote higher probability)
 and the distribution is shown in the inset for two representative trials: $5$ and $11$.
 Overall, this graph shows how the model integrates information to accurately identify a switch
 and produce a prediction for the next trial (e.g. for $t=14$).
 %The black \CP{Bleu} [and green] \CP{plus de courbe verte} curve respectively represent
-%the actual [and inferred] run length of the simulated data
+%the actual [and inferred] run-length of the simulated data
 %as a function of trial number.
 %In this instance, the inferred switch is delayed
 %by one trial with respect to the true switch.
-%\CP{representation des valeurs du run length en haut a gauche pour les essais 5 (en gris) et 8 (en bleu), on peut voir que pour l'essais 5 et 8 la probabilit\'e qu'il n'y est pas eu de switch depuis le d\'ebut est la plus importante (peut \^etre prendre un autre essais plus parlant - trial 10: proba switch à l'essais 5 est plus importante (notebook3) ?)}
+%\CP{representation des valeurs du run-length en haut a gauche pour les essais 5 (en gris) et 8 (en bleu), on peut voir que pour l'essais 5 et 8 la probabilit\'e qu'il n'y est pas eu de switch depuis le d\'ebut est la plus importante (peut \^etre prendre un autre essais plus parlant - trial 10: proba switch à l'essais 5 est plus importante (notebook3) ?)}
 ~\textit{(B)} On a longer sequence of $200$ trials,
 representative of a trial block of our experimental sequence (see~\seeFig{intro}-A), % and~\seeFig{results_raw}),
 we show %in the top plot
@@ -834,7 +834,7 @@ along with $.05$ and $.95$ quantiles (shaded area).
 This shows that for the BBCP model,
 the accuracy of the predicted value of the probability bias
 is higher than for the leaky integrator.
-Below we show the belief (as grayscales) for the different possible run lengths.
+Below we show the belief (as grayscales) for the different possible run-lengths.
 %as a function of the trial number.
 %A darker color denotes a higher probability.
 The green and orange line correspond to the mean run-length which is inferred,
@@ -865,28 +865,30 @@ only based on those samples produced since the last switch, from $t-r^t$ until $
 Indeed, the samples $x_0^t$ which occurred before the last switch
 were drawn independently from the present true value $x_1^t$
 and thus cannot help estimating the latter.
+As a consequence, the run-length is a latent variable 
+that captures at any given trial all the hypotheses that may be occurring.
 Second, it is known that for this estimate, the precision
 (that is, the inverse of variance) on the estimate $\hat{x}_1^{t+1}$
 grows linearly with the number of samples:
 The longer the run-length, the sharper the corresponding (probabilistic) belief.
-We have designed an agent inverting the binary switching generative modelby extending
+We have designed an agent inverting the binary switching generative model by extending
 the Bayesian Change-Point (BCP) detection model~\citep{AdamsMackay2007}.
 The latter model defines the agent as an inversion of a switching generative model
 for which the observed data (input) is Gaussian.
 We present here an exact solution for the case of the Binary Switching model,
-that is, for which the input is binary. %
+that is, for which the input is binary (here, left or right). %
 
 %-------------------------------------------------------------%
 %: 2Bb prediction / update cycle
 %-------------------------------------------------------------%
-In order to define in all generality the switch detection model,
+In order to define in all generality the change-point (switch) detection model,
 we will initially describe the fundamental steps leading to its construction,
 while providing the full algorithmic details in~\seeApp{bcp}.
 %  by~\seeEq{run_length} (more details on this derivation in~\seeApp{bcp})
 The goal of predictive processing at trial $t$
 is to infer the probability $Pr(x_0^{t+1} | x_0^{0:t})$ of the next datum
 knowing what has been observed until that trial
-(that we denote by $x_0^{0:t} = \{ x_0^0, \ldots, x_0^t \}$)
+(that we denote by $x_0^{0:t} = \{ x_0^0, \ldots, x_0^t \}$).
 This prediction uses the agent's prior knowledge
 that data is the output of a given (stochastic) generative model (here, the Binary Switching model).
 To derive a Bayesian predictive model, we introduce
@@ -901,7 +903,7 @@ Note that run-lengths may be limited by the total number of trials $t$.
 %was asked to report their level of confidence for the next outcome
 %for the next trial.
 %
-%Using the run length $r^t$ as a latent variable at each trial $t$,
+%Using the run-length $r^t$ as a latent variable at each trial $t$,
 %we define the distribution which represents our belief
 %for all different hypotheses on $r^t$.
 %which
@@ -919,7 +921,7 @@ where $Pr(x_0^{t+1} | r^{t}, x_0^{0:t})$ is the probability of
 the Bernoulli trial modeling the outcome of a future datum $x_0^{t+1}$,
 conditioned on the run-length and
 $\beta^{(r)}_t=Pr(r^t | x_0^{0:t})$ is the probability for each possible run-length given the observed data.
-Note we know that, at any trial, there is a single true value for this variable $r^{t}$
+Note that we know that, at any trial, there is a single true value for this variable $r^{t}$
 and that $\beta^{(r)}_t$ thus represents the agent's inferred probability distribution over the run-length $r$.
 As a consequence, $\beta^{(r)}_t$ is scaled such that $\sum_{r \geq 0 } \beta^{(r)}_t = 1$.
 %a previous value $Pr(x_0^{t} | r^{t-1}, x_0^{0:t-1})$
@@ -1136,7 +1138,7 @@ we applied respectively the BBCP (green curve) and the forgetful agent (orange c
 a longer sequence of $200$ trials,
 characteristic of our behavioral experiments.
 In the bottom panel,
-we show the dynamical evolution of the belief on the latent variable (run length),
+we show the dynamical evolution of the belief on the latent variable (run-length),
 corresponding to the same sequence of $200$ trials.
 The BBCP model achieves a correct detection of the switches after a short delay of a few trials.
 
@@ -1884,7 +1886,7 @@ extended for the class of binary inputs. Using the definition of the run-length~
 	    \item    Calculate Growth Probabilities $P(r_t=r_{t-1}+1, x_{0:t}) = P(r_{t-1}, x_{0:t-1}) \pi^{(r)}_t (1-h)$,
 	    \item    Calculate Changepoint Probabilities $P(r_t=0, x_{0:t})= \sum_{r_{t-1}} P(r_{t-1}, x_{0:t-1}) \pi^{(r)}_t \cdot h$,
 	    \item    Calculate Evidence $P(x_{0:t}) = \sum_{r_{t-1}} P (r_t, x_{0:t})$,
-	    \item    Determine Run Length Distribution $P (r_t | x_{0:t}) = P (r_t, x_{0:t})/P (x_{0:t}) $.
+	    \item    Determine run-length Distribution $P (r_t | x_{0:t}) = P (r_t, x_{0:t})/P (x_{0:t}) $.
 	\end{enumerate}
 
 	\item     Update sufficient statistics
