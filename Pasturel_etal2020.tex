@@ -1402,7 +1402,7 @@ Compiling results from all participants,
 we have plotted in~\seeFig{results_psycho_all}
 the anticipatory pursuit velocity (panel A) and the bet scores (panel B)
 as a function of the BBCP-inferred probability bias  $P_{\text{BBCP}}$.
-All trials from all participants were pooled together
+In a first analysis, all trials from all participants were pooled together
 and we show this joint data as an error bar plot
 showing the median along with the $.25$ and $.75$ quantiles
 as computed for 5 equal partitions of the $[0, 1]$ probability segment.
@@ -1411,15 +1411,16 @@ to the estimate obtained by the leaky integrator  $P_{\text{leaky}}$.
 We remind here that the true value of the probability bias
 was coded at the second layer of the binary switching generative model and
 is hidden both to the agents and to the human observers.
-
-\LP{update this section following changes in the figure}
-We quantitatively estimated the Pearson correlation coefficient
+%
+Qualitatively, as we can see in~\seeFig{results_psycho_all}-A,
+the predicted probability bias
+is linearly correlated with the anticipatory pursuit velocity
+and this dependence is stronger with the
+the probability bias $P_{\text{BBCP}}$ estimated by the BBCP algorithm.
+In a second analysis, we quantitatively estimated the squared Pearson correlation coefficient
 and the mutual information
-between the raw data and the different models.
-First, as we can see in~\seeFig{results_psycho_all}-A,
-the probability bias $P_{\text{BBCP}}$ estimated by the BBCP algorithm
-is linearly correlated with the anticipatory pursuit velocity, both as computed on the whole data or
-for each observer individually (see insets in the Figure).
+between the raw data and the different models, both as computed on the whole data or
+for each observer individually (see insets in~\seeFig{results_psycho_all}).
 The respective values for the whole dataset
 ($r^{2} = 0.486$ and $MI = 0.729$) and across participants
 %notebook 4}
@@ -1436,6 +1437,7 @@ and for that estimated by the leaky-integrator model
 % ($r = 0.600 \pm 0.079$ with $p=0.003$ and $MI =  0.622 \pm 0.102$ with $p=0.004$),
 ($r^{2} = 0.366 \pm 0.089$ with $p=0.002$ and $MI = 0.622 \pm 0.102$ with $p=0.004$)
 see inset).
+
 A similar analysis
 illustrates the relationship between
 the model-estimated probability bias
@@ -1444,7 +1446,7 @@ by participants
 and is shown in~\seeFig{results_psycho}.
 Similarly to the anticipatory pursuit velocity, the rating values are nicely correlated
 with the probability bias given by the model,
-as quantified by the Pearson correlation coefficient and mutual information
+as quantified by the squared Pearson correlation coefficient and mutual information
 across participants ($r^{2} = 0.670 \pm 0.145$ and $MI = 1.312 \pm 0.364$).
 Importantly, this value is again higher for the BBCP model than
 for the leaky integrator ($r^{2} = 0.551 \pm 0.19$ with $p=0.018$ and $MI = 1.117 \pm 0.409$ with $p=0.028$),
