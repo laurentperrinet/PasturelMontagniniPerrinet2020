@@ -1260,8 +1260,8 @@ Bottom two rows show the raw behavioral results
 for the $n=12$ observers, by showing the median (lines) and the .25 and .75 quantiles (shaded areas):
 First, we show the  anticipatory pursuit strength, defined
 as the horizontal eye velocity estimated right before
-the onset of the visually-driven pursuit (dark gray line).
-Below, we show the explicit ratings about the expected target direction (or \textit{bet scores}, red line).
+the onset of the visually-driven pursuit.
+Below, we show the explicit ratings about the expected target direction (or \textit{bet scores}).
 This shows qualitatively a good match between
 the experimental evidence and the BBCP model,
 in particular after switches.
@@ -1361,32 +1361,33 @@ which supposedly underlie the generation of anticipatory anticipatory pursuit wi
 }
 \caption{%
 \textbf{Behavioral results, quantitative analysis across participants.} %
-\Rone{Fig 4. An indication of n on the figure would be welcome (I assume it is n observers). "For all participants and for all trials" is an ambiguous description. Was it one estimate per participant, averaging all trials? or were all trials pooled together disregarding participants?}
-For all participants and for all trials, we collected an estimate of
-the amplitude of anticipatory pursuit (aSPEM) and a bet score value.
-We analyze the relation between these experimental data with the corresponding prediction $P_{\text{BBCP}}$
-of the probability bias as inferred by the BBCP model.
+% \Rone{Fig 4. An indication of n on the figure would be welcome (I assume it is n observers). "For all participants and for all trials" is an ambiguous description. Was it one estimate per participant, averaging all trials? or were all trials pooled together disregarding participants?}
+To analyze the relation between these behavioral data with the predictions made by models,
+we first looked at the variability of all these measures
+conditioned on the predicted probability and
+gathered over 5 equal partitions of the $[0, 1]$ probability segment.
+For the $12$ participants, we collected an estimate of
+\textit{(A)} the amplitude of anticipatory pursuit (aSPEM)
+and \textit{(B)} the bet score value.
+As a regressor, we have used the true probability ($P_{\text{true}}=x_1^t$, blue color),
+and the probability bias estimates obtained with a leaky integrator ($P_{\text{leaky}}$, orange color).
+and by the BBCP model ($P_{\text{BBCP}}$, green color).
 We display these functional relations
 using an error-bar plot showing the median with $.25$ and $.75$ quantiles
-over 5 equal partitions of the $[0, 1]$ probability segment.
-%contour plot over the Kernel Density Estimation (KDE)
-The green regression line illustrates the relationship between the BBCP regressor in abscissa
-and in ordinate \textit{(A)} the anticipatory pursuit velocity and \textit{(B)} the bet score, respectively.
-%The density of strokes represent increasing probability strengths.
-As a comparison, we have plotted in blue and orange colors the regression lines
-with respectively
-the true probability ($P_{\text{true}}=x_1^t$) and
-the probability bias estimates $P_{\text{leaky}}$ obtained with a leaky integrator.
-Insets summarize the quantitative measure of this match
-by computing the Pearson correlation coefficient $r$
-and the mutual information (MI) over the whole data set.
-Dots correspond to these measures for each individual observer.
-This shows quantitatively that for both experimental measures
+over the 5 partitions.
+This shows for both behavioral measures exhibit a monotonous dependency on the probability measures,
+close to a linear regression, but with different strengths.
+Second, we summarize in insets  quantitative measures of the strength of this dependence for each participant individually,
+by computing the squared Pearson correlation coefficient $r^2$
+and the mutual information (MI).
+Dots correspond to these measures for each individual observer,
+while the bar gives the median value over the population.
+This confirms quantitatively that for both experimental measures,
 there is a strong statistical dependency between
 the behavioral results and the prediction of the BBCP model,
 but also that this dependency is significantly stronger than that obtained
 with the true probability and with the estimates obtained with the leaky integrator
-(see text). %(respectively $p=XXX$ and $p=XXX$ for $r$ and  $p=XXX$ and $p=XXX$ for MI).
+(stars denote significative differences, see text for details).
 }
 \label{fig:results_psycho_all}
 \end{figure}
