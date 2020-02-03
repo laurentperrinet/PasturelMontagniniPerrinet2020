@@ -294,23 +294,24 @@ negative (adaptation), and positive (priming-like) effects.
 % \Rone{line 82: not clear how adaptation "favors spatial stability of the stimulus"}
 Adaptation reduces the sensitivity to recurrently presented stimuli,
 thus yielding a re-calibrated perceptual experience~\citep{Clifford2007, Webster2011, Kohn2007}.
-\AM{I WOULD DELETE Examples of negative biases in perceptual discrimination are numerous
-(see for instance~\citep{KanaiVerstraten2005,ChopinMamassian2012}) and
-show that the visual system tends
-to favor the temporal stability of the stimulus.}
+%\AM{I WOULD DELETE Examples of negative biases in perceptual discrimination are numerous
+%(see for instance~\citep{KanaiVerstraten2005,ChopinMamassian2012}) and
+%show that the visual system tends
+%to favor the temporal stability of the stimulus.}
 On the other hand, priming is a facilitatory effect that
 enhances the identification of repeated stimuli~\citep{Verstraten1994, Tiest2009}:
 %\AM{I WOULD SKIP THIS This type of perceptual learning leads to improvements %in discrimination
 %with long-term training on a perceptual judgment~\citep{Lu2009}.}
 in sensorimotor control,
 the same stimulus presented several times could indeed
-lead to faster and more precise responses \AM{I WOULD DELETE and,
-% \Rone{line 86: quite obscure}
-at the same time, lead to a suboptimal behavior
-as the enviroment changes and the presented stimulus is this time not coherent
-with the participant's expectations~\citep{Hyman1953, Yu2009}.
-This process is highly dynamic especially in complex environments
-where new contingencies can arise at every moment.}
+lead to faster and more precise responses 
+%\AM{I WOULD DELETE and,
+%% \Rone{line 86: quite obscure}
+%at the same time, lead to a suboptimal behavior
+%as the enviroment changes and the presented stimulus is this time not coherent
+%with the participant's expectations~\citep{Hyman1953, Yu2009}.
+%This process is highly dynamic especially in complex environments
+%where new contingencies can arise at every moment.}
 Interestingly, priming effects %at cognitive levels
 are sometimes paralleled by anticipatory motor responses
 which are positively correlated with the repetition of stimulus properties.
@@ -369,10 +370,10 @@ applied to the study of the adaptation to volatility.
 For instance,~\citet{Meyniel16} simulated a hierarchical Bayesian model
 over five previously published datasets~\citep{Squires1976, Huettel2002, Kolossa2013, Cho2002, Falk1997}
 in the domain of cognitive neuroscience.
-\AM{NOT NECESSARY HERE Their main conclusion was that
-learning the local transition probabilities
-was sufficient to explain the large repertoire
-of experimental effects reported in all these studies.}
+%\AM{NOT NECESSARY HERE Their main conclusion was that
+%learning the local transition probabilities
+%was sufficient to explain the large repertoire
+%of experimental effects reported in all these studies.}
 Here we focus on an extension of this approach to the study of motion processing and eye movements.
 % ------------------------------------------------------------------
 \subsection{Anticipatory Smooth Pursuit Eye Movements (aSPEM)}
@@ -488,9 +489,9 @@ it is possible to modulate the strength (direction and mean velocity) of anticip
 This suggests that probabilistic information about direction bias may be used
 to inform the internal representation of motion prediction
 for the initiation of anticipatory movements.
-\AM{However, %it is yet unclear what generative model to use
+However, %it is yet unclear what generative model to use
 previous studies have overlooked the importance to design a realistic generative model to dynamically manipulate the probability bias
-and generate an ecologically relevant input sequence of target directions}.
+and generate an ecologically relevant input sequence of target directions.
 A possible confound comes from the fact that
 previous studies have used fixed-lengths sequences of trials, % (\textit{trial blocks}),
 stacked in a sequence of conditions defined by the different probability biases.
@@ -601,9 +602,9 @@ and finally the random sequence of Target Direction (TD) occurrences at each tri
 This system of three equations defined in~\seeEq{bsm}
 defines the Binary Switching Model (BSM)
 which we used for the generation of experimental sequences presented to human participants in the experiments.
-We will use that generative model as the basis for an ideal observer model \AM{equipped to
+We will use that generative model as the basis for an ideal observer model equipped to
 invert that generative model in order to estimate the time-varying probability bias for a given sequence of observations (TDs).
-The comparison of human behavior with the ideal observer model's predicitons will allow us to test it as a model for the adaptation of human behavior to the environment's volatility.}
+The comparison of human behavior with the ideal observer model's predictions will allow us to test it as a model for the adaptation of human behavior to the environment's volatility.
 
 %: 1Cd outline
 This paper is organized in five parts.
@@ -614,7 +615,7 @@ coined the Binary Bayesian Change Point (BBCP) model.
 To our knowledge, such algorithm was not yet available, and
 we will here provide with an exact analytical solution
 by extending previous results from~\citet{AdamsMackay2007}
-to the case of binary data as in the binary switching generative modelpresented above (see~\seeEq{bsm}).
+to the case of binary data as in the binary switching generative model presented above (see~\seeEq{bsm}).
 In addition, the proposed algorithm is biologically realistic
 as it uses simple computations and is \emph{online},
 that is, all computations on the sequence may be done
@@ -1654,7 +1655,7 @@ has become very popular as a benchmark of optimal behavior in perceptual, sensor
 Still, there is actually a common confusion around the idea of a ``Bayesian brain'', and
 we believe that the challenge here is not to validate the hypothesis that the brain implements or not the Bayes' theorem, or a more complex hierarchical combinations of inferential computations, but rather to test hypotheses about the different generative models
 that agents may use.
-\AM{I WOULD CUT THIS In his sense, the brain is probably only ``weakly Bayesian''. This methodological point will be essential in designing future experimental protocols, and in evaluating quantitatively the results.}
+%\AM{I WOULD CUT THIS In his sense, the brain is probably only ``weakly Bayesian''. This methodological point will be essential in designing future experimental protocols, and in evaluating quantitatively the results.}
 
  % \Rone{Line 606 to 616 this seems more like a discussion point. Also I am not clear how one of the statements is tested, regarding the fact  variability in the estimate scales with inferred probability.}
 The way expectations act on cognitive processes in general has been investigated in a wide range of domains such as predictive coding~\citep{Wacongne2012}, active inference~\citep{Friston2010}, motor control~\citep{WolpertGhahramani2000} and reinforcement learning~\citep{Behrens07,Wilson13,Damasse18}. Non-stationary observations can also explain why both local and global effects emerge and why local effects persist in the long run even within purely random sequences~\citep{Cho2002, Yu2009}. This constant update of a general belief on the world can be a consequence of the constant attempt to learn the non-stationary structure of the environment that can change at unpredictable times~\citep{Yu2009}. Many studies have actually already pointed out the brain's ability to apprehend non-stationary states in environments~\citep{Ossmy2013, Meyniel15}.
