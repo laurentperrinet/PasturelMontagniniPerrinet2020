@@ -1,5 +1,7 @@
 ################################################
 SRC = Pasturel_etal2020
+# SRC_rev = Pasturel_etal2019
+SRC_rev = Pasturel_etal2020_R1
 default: $(SRC)_trackedchanges.pdf
 pdf: $(SRC).pdf
 diff: $(SRC)_trackedchanges.pdf
@@ -17,8 +19,8 @@ cover.pdf: cover.tex $(SRC).tex $(SRC).bib
 	$(LATEXMK) cover.tex
 
 # post-production
-$(SRC)_trackedchanges.pdf: $(SRC).tex $(SRC).bib Pasturel_etal2019.tex
-	latexdiff --graphics-markup=both Pasturel_etal2019.tex $(SRC).tex > $(SRC)_trackedchanges.tex
+$(SRC)_trackedchanges.pdf: $(SRC).tex $(SRC).bib $(SRC_rev).tex
+	latexdiff --graphics-markup=both $(SRC_rev).tex $(SRC).tex > $(SRC)_trackedchanges.tex
 	$(LATEXMK) $(SRC)_trackedchanges.tex
 	open $(SRC)_trackedchanges.pdf
 
