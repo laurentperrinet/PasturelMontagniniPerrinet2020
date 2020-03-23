@@ -5,18 +5,19 @@
 % -*- coding: UTF-8; -*-
 % vim: set fenc=utf-8
 % R0 https://www.biorxiv.org/content/10.1101/784116v1.full.pdf
+% TODO R1 sur biorxiv
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \newcommand{\AuthorA}{Chlo\'e Pasturel}
-% \newcommand{\AuthorB}{Anna Montagnini}%
-% \newcommand{\AuthorC}{Laurent Udo Perrinet}%
-% \newcommand{\Address}{Institut de Neurosciences de la Timone (UMR 7289), Aix Marseille Univ, CNRS - Marseille, France}%
-% \newcommand{\Website}{https://laurentperrinet.github.io}%
-% \newcommand{\EmailC}{Laurent.Perrinet@univ-amu.fr}%
-% \newcommand{\Title}{
-% Humans adapt their anticipatory eye movements to the volatility of visual motion properties
-% }
-% \newcommand{\Acknowledgments}{This work was supported by EU Marie-Sk\l{}odowska-Curie Grant No 642961 (PACE-ITN) and by the Fondation pour le Recherche M\'edicale, under the program \textit{Equipe FRM} (DEQ20180339203/PredictEye/G Masson). Code and material on the \href{\Website/publication/pasturel-montagnini-perrinet-20}{corresponding author's website}. We thank Doctor Jean-Bernard Damasse, Guillaume S Masson and Professor Laurent Madelain for insightful discussions. }
-% \newcommand{\KeyWords}{eye movements; decision making; volatility; Bayesian model; adaptation; perception}
+\newcommand{\AuthorA}{Chlo\'e Pasturel}
+\newcommand{\AuthorB}{Anna Montagnini}%
+\newcommand{\AuthorC}{Laurent Udo Perrinet}%
+\newcommand{\Address}{Institut de Neurosciences de la Timone (UMR 7289), Aix Marseille Univ, CNRS - Marseille, France}%
+\newcommand{\Website}{https://laurentperrinet.github.io}%
+\newcommand{\EmailC}{Laurent.Perrinet@univ-amu.fr}%
+\newcommand{\Title}{
+Humans adapt their anticipatory eye movements to the volatility of visual motion properties
+}
+\newcommand{\Acknowledgments}{This work was supported by EU Marie-Sk\l{}odowska-Curie Grant No 642961 (PACE-ITN) and by the Fondation pour le Recherche M\'edicale, under the program \textit{Equipe FRM} (DEQ20180339203/PredictEye/G Masson). Code and material on the \href{\Website/publication/pasturel-montagnini-perrinet-20}{corresponding author's website}. We thank Doctor Jean-Bernard Damasse, Guillaume S Masson and Professor Laurent Madelain for insightful discussions. }
+\newcommand{\KeyWords}{eye movements; decision making; volatility; Bayesian model; adaptation; perception}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[10pt,letterpaper]{article}
 \usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
@@ -160,8 +161,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% OPTIONAL MACRO FILES
 \usepackage{tikz}
-\usetikzlibrary{external}
-\tikzexternalize[prefix=figures_eps/]
 \newcommand{\seeFig}[1]{Figure~\ref{fig:#1}}
 \newcommand{\seeEq}[1]{Equation~\ref{eq:#1}}
 \newcommand{\seeApp}[1]{Appendix~\ref{app:#1}}
@@ -200,11 +199,11 @@
   tabsize=3
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Humans adapt their anticipatory eye movements to the volatility of visual motion properties}%
+\title{\Title}%
 \author{
-Chlo\'e Pasturel\thanks{Institut de Neurosciences de la Timone (UMR 7289), Aix Marseille Univ, CNRS - Marseille, France},
-Anna Montagnini\footnotemark[1],
-Laurent Udo Perrinet\footnotemark[1] \thanks{Corresponding author:\url{Laurent.Perrinet@univ-amu.fr}}
+\AuthorA\thanks{\Address},
+\AuthorB\footnotemark[1],
+\AuthorC\footnotemark[1] \thanks{Corresponding author:\url{\EmailC}}
 %\thanks{\Address}
 }
 \linenumbers
@@ -221,12 +220,12 @@ Animal behavior constantly adapts to changes, for example when the statistical p
 \section*{Author summary}
 Understanding how humans adapt to changing environments to make judgments or plan motor responses based on time-varying sensory information is crucial for psychology, neuroscience and artificial intelligence. Current theories for how we deal with the environment's uncertainty, that is, in response to the introduction of some randomness change, mostly rely on the behavior at equilibrium, long after after a change. Here, we show that in the more ecological case where the context switches at random times all along the experiment, an adaptation to this volatility can be performed online. In particular, we show in two behavioral experiments that humans can adapt to such volatility at the early sensorimotor level, through their anticipatory eye movements, but also at a higher cognitive level, through explicit ratings. Our results suggest that humans (and future artificial systems) can use much richer adaptive strategies than previously assumed.
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Motivation}
+\section{Motivation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Volatility of sensory contingencies and the adaptation of cognitive systems}
+\subsection{Volatility of sensory contingencies and the adaptation of cognitive systems}
 %: 1A : cognitive adaptation to volatility; general volatility and perceptual learning
 %-------------------------------------------------------------%
 % ------------------------------------------------------------------
@@ -380,7 +379,7 @@ in the domain of cognitive neuroscience.
 %of experimental effects reported in all these studies.}
 Here we focus on an extension of this approach to the study of motion processing and eye movements.
 % ------------------------------------------------------------------
-\subsection*{Anticipatory Smooth Pursuit Eye Movements (aSPEM)}
+\subsection{Anticipatory Smooth Pursuit Eye Movements (aSPEM)}
 % ------------------------------------------------------------------
 %: 1B : particular case of anticipatory pursuit
 %: adaptation to volatility in EMs : seen as an anticipation in SPEM - principle and function
@@ -478,7 +477,7 @@ between ``Left'', to ``Unsure'' and finally ``Right''.
 %In order to generalize such results to more ecological conditions,
 %it is thus necessary to extend the experimental protocol of~\citet{Montagnini2010} in three aspects that will be illustrated in the next section.
 % ------------------------------------------------------------------
-\subsection*{Contributions}%Outline}
+\subsection{Contributions}%Outline}
 % ------------------------------------------------------------------
 %: 1C : what is novel in our work
 % ------------------------------------------------------------------
@@ -660,7 +659,7 @@ Finally, we will summarize and conclude this study and
 offer some perspectives for future work in~\seeSec{outro}.
 %
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Results: Binary Bayesian Change-Point (BBCP) detection model}
+\section{Results: Binary Bayesian Change-Point (BBCP) detection model}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Bayesian_change_point}
@@ -688,7 +687,7 @@ at specific (yet randomly drawn) trials,
 as defined by the forward probabilistic model in~\seeEq{bsm}.
 %
 % ------------------------------------------------------------------
-\subsection*{Forgetful agent (Leaky integrator) detection model}%
+\subsection{Forgetful agent (Leaky integrator) detection model}%
 % ------------------------------------------------------------------
 %: 2Aa justification from previous studies
 The leaky integrator ideal observer represents a classical, widespread and
@@ -783,7 +782,7 @@ of an ideal agent
 inferring the trajectory in time of the probability bias ($x_1^t$),
 but also predicting the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 % ------------------------------------------------------------------
-\subsection*{Binary Bayesian Change-Point (BBCP) detection model}
+\subsection{Binary Bayesian Change-Point (BBCP) detection model}
 % ------------------------------------------------------------------
 \label{sec:Binary_Bayesian_change_point}
 %-------------------------------------------------------------%
@@ -1118,7 +1117,7 @@ In summary, this prediction/update cycle exactly inverts the binary switching ge
 and constitutes the Binary Bayesian Change-Point (BBCP) detection model.
 %
 % ------------------------------------------------------------------
-\subsection*{Quantitative analysis of the BBCP detection model}
+\subsection{Quantitative analysis of the BBCP detection model}
 % ------------------------------------------------------------------
 %-------------------------------------------------------------%
 %: 2Ca python scripts : qualitative analysis
@@ -1231,10 +1230,10 @@ We will now present the analysis of this model's match
 to our experimental measures of anticipatory eye movements and
 explicit guesses about target motion direction.
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section*{Results: psychophysics}
+%\section{Results: psychophysics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Results: Anticipatory pursuit and explicit ratings}
+\section{Results: Anticipatory pursuit and explicit ratings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:results_psycho}
 %: FIGURE 2 fig:results_psycho~\seeFig{results_psycho}
@@ -1424,7 +1423,7 @@ The respective values for the whole dataset
 ($r^2 = 0.459 \pm 0.104$ and $MI = 0.707 \pm 0.134$)
 are slightly higher than that found by~\citet{Montagnini2010} and~\citet{Damasse18}
 for anticipatory pursuit measures gathered across experimental trial blocks with fixed direction biases %($r = XXX \pm $),
-and significantly better than that estimated
+and significantly\footnote{All following $p$-values are obtained from the \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html}{Wilcoxon signed-rank test}.} better than that estimated
 with the true probability
 % ($r = 0.613 \pm 0.069$ with $p=0.002$ and $MI = 0.562 \pm 0.107$ with $p=0.002$) %
 ($r^{2} = 0.381 \pm 0.083$ with $p=0.002$
@@ -1432,7 +1431,7 @@ and $MI = 0.562 \pm 0.107$ with $p=0.002$)
 and for that estimated by the leaky-integrator model
 % ($r = 0.600 \pm 0.079$ with $p=0.003$ and $MI =  0.622 \pm 0.102$ with $p=0.004$),
 ($r^{2} = 0.366 \pm 0.089$ with $p=0.002$ and $MI = 0.622 \pm 0.102$ with $p=0.004$)
-see inset). Note that $p$-values were obtained from the \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html}{Wilcoxon signed-rank test}.
+see inset).
 
 A similar analysis
 illustrates the relationship between
@@ -1468,7 +1467,7 @@ and the explicit ratings of human observers
 experiencing a volatile context for visual motion.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Results: Analyzing inter-individual differences}
+\section{Results: Analyzing inter-individual differences}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:inter}
 %-------------------------------------------------------------%
@@ -1630,16 +1629,16 @@ this estimation is then more strongly modulated by individual preferences
 when a more explicit cognitive process is at stake.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Discussion}
+\section{Discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:outro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The capacity to adapt our behavior to the environmental regularities has been investigated in different research fields, from motor priming and sensory adaptation to reinforcement learning, machine learning and economics. Several studies have aimed at characterizing the typical time scale over which such adaptation occurs. However, the pattern of environmental regularities could very well change in time, thereby making a fixed time-scale for adaptation a suboptimal cognitive strategy. In addition, different behaviors are submitted to different constraints and respond to different challenges, thus it is reasonable to expect some differences in the way (and time scales) they adapt to the changing environment. This study is an attempt to address these crucial open questions. We have taken an original approach, by assuming a theoretically-defined volatility in the properties of the environment (in the specific context of visual motion tracking) and we have developed an optimal inferential agent, which best captures the hidden properties of the generative model solely based on the trial sequence of target motion. We have then compared the optimal agent's prediction, as well as a more classical \textit{forgetful} agent, to two sets of behavioral data, one rooted in the early oculomotor network underlying anticipatory  tracking, and the other related to the explicit estimate of the likelihood of a future event. Our results point to a flexible adaptation strategy in humans, taking into account the volatility of the environmental statistics. The time-scale of this dynamic adaptive process would thus vary across time, but it would also be modulated by the specific behavioral task and by inter-individual differences. In this section we discuss the present work and its implications in view of the existing literature and some general open questions.
 
-%\subsection*{Environmental regularities, cognitive properties and visual perception}
+%\subsection{Environmental regularities, cognitive properties and visual perception}
 % \AM{
-\subsection*{Measuring adaptation to volatile environments}
+\subsection{Measuring adaptation to volatile environments}
 %}
 The time-varying statistical regularities that characterize the environment are likely to influence several cognitive functions. In this study, we have made the choice to focus on a simple and probably mostly unconscious motor behavior (anticipatory pursuit), as well as on the explicit rating of expectation for the forthcoming motion direction. In contrast, we have not addressed the question of whether and how statistical learning affects visual motion perception throughout our model-generated volatile sequences. In an empirical context similar to ours, Maus et al~\citet{Maus2015} have recently shown that perceptual adaptation for speed estimation occurs concurrently to priming-based anticipatory pursuit throughout a sequence of motion tracking trials with randomly varying speed. They actually found a robust \emph{repulsive} adaptation effect, with perceptual judgements biased in favor of faster percepts after seeing stimuli that were slower and~\textit{vice-versa}. Concurrently, these authors also found a positive effect on anticipatory pursuit, with faster anticipation after faster stimuli, somehow in agreement with the adaptive properties of anticipatory pursuit that we report here. Moreover, they quantified the trial-history effects on anticipatory pursuit and speed perception by fitting a fixed-size memory model similar to our forgetful agent. They found that anticipatory pursuit and speed perception change over different time scales, with the priming effects being maximized for short-term stimulus history (around $2$ trials) and adaptation for longer stimulus history, around $15$ trials. Their main conclusion was that perceptual adaptation and oculomotor priming are the result of two distinct readout processes using the same internal representation of motion regularities. Note that both these history lengths can be considered short in comparison to the several hundreds of trials that are commonly used in psychophysics and sensorimotor adaptation studies and that, similar to the present study, the inferred characteristic times are even shorter for the buildup of anticipatory eye movements. However, it is also important to note that in the study by Maus et al~\citet{Maus2015}, the generative model underlying the random sequence of motion trials was different and much simpler than in the present study: In particular the role of environmental volatility was not directly addressed there. This makes a direct comparison between their results and ours difficult beyond a qualitative level.
 
@@ -1649,7 +1648,7 @@ allows to extend our model to the continuous time domain, such as addressed by R
 
 Our results demonstrate that the BCCP model is relatively good in mimicking the adaptive changes of both (implicit) anticipatory eye movements and (explicit) ratings of direction expectation in a volatile context. However, these two different behavioral measures, the implicit and the explicit one, are not correlated across individuals. This observation is certainly worth deeper investigation in the future as it raises doubts on the existence of a unique hierarchical system for probabilistic inference. The distinction between implicit and explicit processes in the adaptation to a volatile environment has also been addressed by previous work, especially in the field of statistical learning for language processing (see for example ~\citet{Batterink_etal_2015,SaffranAslinNewport1996}). More related to the present study, Wu et al~\citet{WuDelgadoMaloney2012} compared a classical economic decision task with a motor decision task: they found that participants were more risk seeking in the motor task compared to the first one. In addition, Souto et al~\citet{SoutoGegenfurtnerSchuetz2016} have recently reported a lack of correlation between the rate of oculomotor adaptation to unexpected jumps of the visual target and the perceptual uncertainty estimated through an explicit jump direction-discrimination experiment. Finally, the degree of explicitness of the information provided to the participants may also play a role in the context of probabilistic learning. In a task similar to ours, where the behavioral choice was not specifically associated to a reward schedule, Santos and Kowler~\citet{SantosKowler2017} found large similarities but also some differences in the anticipatory eye movements depending on how the information about the probability bias was conveyed, namely through the simple presentation of a biased sequence versus an explicit probability-cueing procedure. In the first condition, the authors reported a weak non-linearity in the dependence of anticipatory pursuit upon the probability of motion direction, yielding an overweight of the extreme values of probability. In contrast, an opposite non-linearity (underweight) was observed when the target direction was visually-cued with a given probability of validity. Note that in our data, we have not found consistent evidence suggesting a clear non-linearity in either sense. Further work is needed to disentangle the possible specificities (e.g. non linearities, also broadly reported in the economic literature, such as a generic aversion to risk~\citep{Kahneman13}) and the general inter-trial and inter-individual correlations across different tasks and different experimental measures of the cognitive adaptation to the environmental volatility.
 
-\subsection*{Hierarchical Bayesian inference in the brain}
+\subsection{Hierarchical Bayesian inference in the brain}
 When we perceive the physical world, make a decision or take an action to interact with it, our brain must deal with an ubiquitous property of it, uncertainty. Uncertainty can arise at different levels and be structured around different characteristic time scales. %\AM{I WOULD CUT THIS During the past decades, modern science seems to have completed an epistemological transition, from struggling to reduce or neglect uncertainly to engaging in understanding it as a crucial constituent of the world. In the cognitive neurosciences this transition has been formalized in the.}
 %\AM{
 The theoretical framework of Bayesian probabilistic inference, which provides a formal account for the role of uncertainty at multiple levels, %}
@@ -1684,12 +1683,12 @@ Future work will be needed to address the amplitude and dynamics of modulations 
 
 % \AM{
 The great interest of understanding why and how humans adapt to the fluctuations of the hierarchical probabilistic context is further highlighted by the fact that such adaptivity may deviate in some pathological disorders, such as schizophrenia~\citep{Adams12, Jardri2017}, or across the natural variability of autistic traits~\citep{Karvelis2018}. %}
-%\subsection*{Computational phenotyping of human participants}
+%\subsection{Computational phenotyping of human participants}
 While it was not our original objective, we have analyzed in this study the individual best-fit parameters (hazard rates) of the BCCP model: despite a consistent variability of such parameters across trial blocks of the experiment, we highlighted some noteworthy tendencies for participants to cluster around specific properties of the dynamic adaptation to a volatile probabilistic environment. Most important, this analysis corroborates and strengthens some recent attempts to realize a \textit{computational phenotyping} of human participants. However, more extensive studies should be conducted to be able to quantitatively titrate inter-individual tendencies and possibly their relation to traits of personality.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Conclusions}
+\section{Conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{itemize}\setlength{\itemsep}{0ex}
@@ -1699,11 +1698,11 @@ While it was not our original objective, we have analyzed in this study the indi
 \item Finally, we found that the experimental data of each different participant matched to different types of belief about the volatile environment, some being more or less conservative than others. Interestingly, each of the two experiments (anticipatory eye movements and explicit rating) provided different distributions, opening the perspective for future \emph{computational phenotyping} using such a volatile setting.
 \end{itemize}
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Material and Methods}
+\section{Material and Methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Participants, visual stimuli and experimental design}
+\subsection{Participants, visual stimuli and experimental design}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Twelve observers ($29$ years old $\pm 5.15$, $7$ female) with normal or corrected-to-normal vision took part in these experiments. They gave their informed consent and the experiments had received ethical approval from the Aix-Marseille Ethics Committee (approval 2014-12-3-05), in accordance with the declaration of Helsinki.
 
@@ -1713,581 +1712,19 @@ The moving target used in our experiments was a white ring ($0.35\degree$ outer 
 
 The paradigm included two experimental sessions performed on two distinct (in general consecutive) days by each participant. The two sessions involved the presentation of the same sequence of trials, while collecting a different behavioral response: explicit rating judgments in the first session (the \textit{bet} experiment), and eye movement recordings in the second session. Asked after the experiment, no observer noticed that the same pseudo-random sequence of target directions was used in both experiments.
 
-\subsection*{Eye movements experiment}
+\subsection{Eye movements experiment}
 Eye movements were recorded continuously with an eye tracking system (Eyelink 1000, SR Research Ltd., sampled at 1000 Hz), using the Python module Pylink 0.1.0 provided by PsychoPy. Horizontal and vertical eye position data were transferred, stored, and analyzed offline using programs written using Jupyter notebooks. The data analyses were implemented using the Python libraries numpy, pandas and pylab. All the scripts for data analysis, as well as for stimulus presentation, data collection, and preparation of figures are available at \url{https://github.com/chloepasturel/AnticipatorySPEM}. To minimize measurement errors, the participant's head movements were restrained using a chin and forehead rest, so that the eyes in primary gaze position were directed towards the center of the screen. In order to enforce accuracy in gaze position and tracking, we implemented an automatic procedure of fixation control. If the distance between the gaze position and the central fixation point during the fixation epoch exceeded $2\degree$ of visual angles, the fixation point started flickering and the counter for the fixation duration was reset to $0$.
 
 The recorded horizontal and vertical raw gaze position data were numerically differentiated to obtain velocity measures. We adopted an automatic conjoint acceleration and velocity threshold method (the default saccade detection implemented by SR Research) to detect ocular saccades. Saccades and eye-blinks were excluded from eye velocity traces (and replaced by \textit{Not-a-Number} values in the numerical arrays) before trial averaging and data fitting for the extraction of the oculomotor parameters of interest.
 In order to extract the relevant parameters of the oculomotor responses, we developed new tools based on a best-fitting procedure of predefined oculomotor patterns and in particular the typical smooth pursuit velocity profile that was recorded in our experiment. A piecewise-defined function was fitted to the different phases of the eye velocity traces: a constant function during fixation, a ramp-like linear function during smooth pursuit anticipation, an increasing sigmoid function during the initiation of visually-guided smooth pursuit, reaching its saturating value during the pursuit steady-state. This analysis was applied to each trial individually and it allowed in particular to estimate the velocity of anticipatory pursuit  as the best-fit value of the modeled eye velocity at the moment where the visually-guided pursuit is initiated. Note that this method for estimating anticipatory velocity led to qualitatively identical results to the estimation of the mean eye velocity within an arbitrary temporal window of anticipation, a more classical method that we implemented for instance in a previous study~\cite{Damasse18}.  Some trials were excluded from the analysis as the proportion of missing data-points, due to eye blinks or saccades was considered too large, namely when the missing data exceeded $45~\ms$ during the gap or one third of the total target motion epoch ($4.36\%$ of all trials). In addition, trials were also excluded when the eye-movement fitting procedure did not converge, after visual inspection, to a satisfactory match with the data ($3.25\%$ of all trials). The python scripts used to analyze eye movements are available at \url{https://github.com/invibe/ANEMO}.
 
-\subsection*{The Bet experiment}
+\subsection{The Bet experiment}
 The aim of the Bet experiment was to collect data related to the individual explicit estimates of the probability for the next outcome of a target motion direction. At the beginning of each trial, before the presentation of the moving target, participants had to answer to the question \textit{ ``How sure are you that the target will go left or right''}. This was performed by adjusting a cursor on the screen using the mouse (see Figure~\seeFig{intro}-C). The cursor could be placed at any point along a horizontal segment representing a linear rating scale with three ticks labeled as \textit{ ``Left''}, \textit{``Right''} (at the extreme left and right end of the segment respectively), and \textit{``Unsure''} in the middle. Participants had to validate their choice by clicking on the mouse left-button and the actual target motion was shown thereafter. The rationale to collect rating responses on a continuous scale instead of a simple binary prediction (Right/Left) was to be able to infer the individual estimate of the direction bias at the single trial scale (in analogy to the continuous interval for the anticipatory pursuit velocity). We called this experiment the \textit{ ``Bet''} experiment, as participants were explicitly encouraged to make reasonable rating estimates, just like if they had to bet money on the next trial outcome. Every $50$ trials, a \textit{``score''} was displayed on the screen, corresponding to the proportion of correct direction predictions (Right or Left of the \textit{``Unsure''} tick) and weighted by the confidence attributed to each answer (the distance of the cursor from the center).
 
-% \section*{Acknowledgments}
-% This work was supported by EU Marie-Sk\l{}odowska-Curie Grant No 642961 (PACE-ITN) and by the Fondation pour le Recherche M\'edicale, under the program \textit{Equipe FRM} (DEQ20180339203/PredictEye/G Masson). Code and material on the \href{https://laurentperrinet.github.io/publication/pasturel-montagnini-perrinet-20}{corresponding author's website}. We thank Doctor Jean-Bernard Damasse, Guillaume S Masson and Professor Laurent Madelain for insightful discussions.
+\section*{Acknowledgments}
+\Acknowledgments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \bibliography{Pasturel_etal2020}
-\begin{thebibliography}{10}
-
-\bibitem{Barack16}
-Barack DL, Gold JI.
-\newblock Temporal Trade-Offs in Psychophysics.
-\newblock Current opinion in neurobiology. 2016;37:121--125.
-\newblock doi:{10.1016/j.conb.2016.01.015}.
-
-\bibitem{Cohen2007}
-Cohen JD, McClure SM, Yu AJ.
-\newblock Should I stay or should I go? How the human brain manages the
-  trade-off between exploitation and exploration.
-\newblock Philosophical Transactions of the Royal Society of London B:
-  Biological Sciences. 2007;362(1481):933--942.
-
-\bibitem{Sotiropoulos2011}
-Sotiropoulos G, Seitz AR, Seri\`es P.
-\newblock Changing Expectations about Speed Alters Perceived Motion Direction.
-\newblock Current Biology. 2011;21(21):R883----R884.
-\newblock doi:{10.1016/j.cub.2011.09.013}.
-
-\bibitem{Adams12}
-Adams RA, Perrinet LU, Friston K.
-\newblock Smooth pursuit and visual occlusion: active inference and oculomotor
-  control in schizophrenia.
-\newblock {PLoS ONE}. 2012;7(10):e47502.
-\newblock doi:{10.1371/journal.pone.0047502}.
-
-\bibitem{ChopinMamassian2012}
-Chopin A, Mamassian P.
-\newblock {Predictive Properties of Visual Adaptation}.
-\newblock Current Biology. 2012;22(7):622--626.
-\newblock doi:{10.1016/j.cub.2012.02.021}.
-
-\bibitem{FischerWhitney2014}
-Fischer J, Whitney D.
-\newblock {Serial dependence in visual perception}.
-\newblock Nature Neuroscience. 2014;17(5):738--743.
-\newblock doi:{10.1038/nn.3689}.
-
-\bibitem{Cicchini_PRSB_2018}
-Cicchini GM, Mikellidou K, Burr DC.
-\newblock {The functional role of serial dependence}.
-\newblock Proceedings of the Royal Society B: Biological Sciences.
-  2018;285(1890):20181722.
-\newblock doi:{10.1098/rspb.2018.1722}.
-
-\bibitem{WallmanFuchs1998}
-Wallman J, Fuchs AF.
-\newblock {Saccadic Gain Modification: Visual Error Drives Motor Adaptation}.
-\newblock Journal of Neurophysiology. 1998;80(5):2405--2416.
-\newblock doi:{10.1152/jn.1998.80.5.2405}.
-
-\bibitem{Carpenter1995}
-Carpenter RH, Williams ML.
-\newblock Neural Computation of Log Likelihood in Control of Saccadic Eye
-  Movements.
-\newblock Nature. 1995;377(6544):59--62.
-\newblock doi:{10/bjktb8}.
-
-\bibitem{Maus2015}
-Maus GW, Potapchuk E, Watamaniuk SNJ, Heinen SJ.
-\newblock Different Time Scales of Motion Integration for Anticipatory Smooth
-  Pursuit and Perceptual Adaptation.
-\newblock Journal of Vision. 2015;15(2).
-\newblock doi:{10.1167/15.2.16}.
-
-\bibitem{Damasse18}
-Damasse JB, Perrinet LU, Madelain L, Montagnini A.
-\newblock Reinforcement effects in anticipatory smooth eye movements.
-\newblock Journal of Vision. 2018;doi:{10.1167/18.11.14}.
-
-\bibitem{Clifford2007}
-Clifford CWG, Webster MA, Stanley GB, Stocker AA, Kohn A, Sharpee TO, et~al.
-\newblock {Visual adaptation: Neural, psychological and computational aspects}.
-\newblock Vision Research. 2007;47(25):3125--3131.
-\newblock doi:{10.1016/j.visres.2007.08.023}.
-
-\bibitem{Webster2011}
-Webster MA.
-\newblock {Adaptation and visual coding}.
-\newblock Journal of Vision. 2011;11(5):3--3.
-\newblock doi:{10.1167/11.5.3}.
-
-\bibitem{Kohn2007}
-Kohn A, Kohn A.
-\newblock {Visual Adaptation: Physiology, Mechanisms, and Functional Bene ts}.
-\newblock Journal of Neurophysiology. 2007;10461:3155--3164.
-\newblock doi:{10.1152/jn.00086.2007.}
-
-\bibitem{Verstraten1994}
-Verstraten FAJ, Fredericksen RE, Gr{\"{u}}sser OJ, {Van De Grind} WA.
-\newblock {Recovery from motion adaptation is delayed by successively presented
-  orthogonal motion}.
-\newblock Vision Research. 1994;34(9):1149--1155.
-\newblock doi:{10.1016/0042-6989(94)90297-6}.
-
-\bibitem{Tiest2009}
-Tiest WMB, Kappers AML.
-\newblock {Tactile perception of thermal diffusivity.}
-\newblock Attention, perception {\&} psychophysics. 2009;71(3):481--489.
-\newblock doi:{10.3758/APP}.
-
-\bibitem{Deneve1999}
-Deneve S, Latham PE, Pouget A.
-\newblock {Reading population codes: a neural implementation of ideal
-  observers.}
-\newblock Nature neuroscience. 1999;2(8):740--5.
-\newblock doi:{10.1038/11205}.
-
-\bibitem{Diaconescu2014}
-Diaconescu AO, Mathys C, Weber LAE, Daunizeau J, Kasper L, Lomakina EI, et~al.
-\newblock {Inferring on the Intentions of Others by Hierarchical Bayesian
-  Learning}.
-\newblock PLoS Computational Biology. 2014;10(9).
-\newblock doi:{10.1371/journal.pcbi.1003810}.
-
-\bibitem{Daunizeau10a}
-Daunizeau J, den Ouden HEM, Pessiglione M, Kiebel SJ, Stephan KE, Friston KJ.
-\newblock Observing the Observer (I): Meta-Bayesian Models of Learning and
-  Decision-Making.
-\newblock {PLoS} {ONE}. 2010;5(12):e15554.
-\newblock doi:{10.1371/journal.pone.0015554}.
-
-\bibitem{Hoyer2003}
-Hoyer PO, Hyvarinen A.
-\newblock {Interpreting neural response variability as Monte Carlo sampling of
-  the posterior}.
-\newblock In: Advances in neural information processing systems. vol.~15; 2003.
-  p. 293--300.
-\newblock Available from:
-  \url{http://books.google.com/books?hl=en{\&}lr={\&}id=AAVSDw4Rw9UC{\&}oi=fnd{\&}pg=PA293{\&}dq=Interpreting+Neural+Response+Variability+as+Monte+Carlo+Sampling+of+the+Posterior{\&}ots=U5tjvCjwAR{\&}sig=8EU3--mLxGZtqKQmDaaQSkNVuMA{\%}5Cnpapers3://publication/uuid/CFA8AACE-D8A0-4D64-9F}.
-
-\bibitem{Ma2014}
-Ma WJ, Jazayeri M.
-\newblock {Neural Coding of Uncertainty and Probability}.
-\newblock Annual Review of Neuroscience. 2014;37(1):205--220.
-\newblock doi:{10.1146/annurev-neuro-071013-014017}.
-
-\bibitem{Jaynes2014}
-Jaynes ET.
-\newblock Probability Theory: The Logic of Science.
-\newblock Cambridge university press; 2014.
-
-\bibitem{Montagnini2007}
-Montagnini A, Mamassian P, Perrinet LU, Castet E, Masson GS.
-\newblock {Bayesian modeling of dynamic motion integration.}
-\newblock Journal of physiology, Paris. 2007;101(1-3):64--77.
-\newblock doi:{10.1016/j.jphysparis.2007.10.013}.
-
-\bibitem{Meyniel16}
-Meyniel F, Maheu M, Dehaene S.
-\newblock {Human Inferences about Sequences: A Minimal Transition Probability
-  Model}.
-\newblock PLoS Computational Biology. 2016;12(12):1--26.
-\newblock doi:{10.1371/journal.pcbi.1005260}.
-
-\bibitem{Squires1976}
-Squires KC, Wickens C, Squires K, Donchin E.
-\newblock {The Effect of Stimulus Sequence}.
-\newblock Science. 1976;193(6):1142--1146.
-
-\bibitem{Huettel2002}
-Huettel SA, Mack PB, McCarthy G.
-\newblock {Perceiving patterns in random series: Dynamic processing of sequence
-  in prefrontal cortex}.
-\newblock Nature Neuroscience. 2002;5(5):485--490.
-\newblock doi:{10.1038/nn841}.
-
-\bibitem{Kolossa2013}
-Kolossa A, Fingscheidt T, Wessel K, Kopp B.
-\newblock {A Model-Based Approach to Trial-By-Trial P300 Amplitude
-  Fluctuations}.
-\newblock Frontiers in Human Neuroscience. 2013;6(February):1--18.
-\newblock doi:{10.3389/fnhum.2012.00359}.
-
-\bibitem{Cho2002}
-Cho R, Nystrom L, Jones a, Braver T, Holmes P, Cohen J.
-\newblock {Mechanisms underlying performance dependencies on stimulus history
-  in a two-alternative forced choice task}.
-\newblock Cog Aff Behav Neurosci. 2002;2(412):283--299.
-
-\bibitem{Falk1997}
-Falk R, Konold C.
-\newblock {Making Sense of Randomness: Implicit Encoding as a Basis for
-  Judgment}.
-\newblock Psychological Review. 1997;104(2):301--318.
-\newblock doi:{10.1037/0033-295X.104.2.301}.
-
-\bibitem{Krauzlis2008}
-Krauzlis RJ.
-\newblock Eye Movements.
-\newblock In: Squires LR, Berg D, editors. Eye Movements. 3rd ed. Amsterdam,
-  NL: Elsevier; 2008. p. 775--795.
-
-\bibitem{Krauzlis89}
-Krauzlis RJ, Lisberger SGS.
-\newblock A control systems model of smooth pursuit eye movements with
-  realistic emergent properties.
-\newblock Neural Computation. 1989;1(1):116--122.
-\newblock doi:{10.1162/neco.1989.1.1.116}.
-
-\bibitem{Westheimer1954}
-Westheimer G.
-\newblock {Eye movement responses to a horizontally moving visual stimulus}.
-\newblock AMA Archives of Ophthalmology. 1954;52(6):932--941.
-\newblock doi:{10.1001/archopht.1954.00920050938013}.
-
-\bibitem{Kowler1979a}
-Kowler E, Steinman R.
-\newblock The effect of expectations on slow oculomotor control-I. Periodic
-  target steps.
-\newblock Vision Research. 1979;19(6):619 -- 632.
-\newblock doi:{10.1016/0042-6989(79)90238-4}.
-
-\bibitem{Kowler1979b}
-Kowler E, Steinman RM.
-\newblock The effect of expectations on slow oculomotor control---II. Single
-  target displacements.
-\newblock Vision Research. 1979;19(6):633 -- 646.
-\newblock doi:{10.1016/0042-6989(79)90239-6}.
-
-\bibitem{PerrinetAdamasFriston2014}
-Perrinet LU, Adams RA, Friston KJ.
-\newblock {Active inference, eye movements and oculomotor delays}.
-\newblock Biological Cybernetics. 2014;108(6):777--801.
-\newblock doi:{10.1007/s00422-014-0620-8}.
-
-\bibitem{Badler2006}
-Badler JB, Heinen SJ.
-\newblock {Anticipatory Movement Timing Using Prediction and External Cues}.
-\newblock Journal of Neuroscience. 2006;26(17):4519--4525.
-\newblock doi:{10.1523/JNEUROSCI.3739-05.2006}.
-
-\bibitem{BeckerFuchs1985}
-Becker W, Fuchs aF.
-\newblock {Prediction in the oculomotor system: smooth pursuit during transient
-  disappearance of a visual target}.
-\newblock Experimental Brain Research. 1985;57:562--575.
-\newblock doi:{10.1007/BF00237843}.
-
-\bibitem{OrbandeXivryMissalLefevre_JOV2012}
-{Orban de Xivry} JJ, Missal M, Lefevre P.
-\newblock {A dynamic representation of target motion drives predictive smooth
-  pursuit during target blanking}.
-\newblock Journal of Vision. 2008;8(15):6--6.
-\newblock doi:{10.1167/8.15.6}.
-
-\bibitem{CollinsBarnes2009}
-Collins CJS, Barnes GR.
-\newblock {Predicting the unpredictable: weighted averaging of past stimulus
-  timing facilitates ocular pursuit of randomly timed stimuli.}
-\newblock The Journal of neuroscience : the official journal of the Society for
-  Neuroscience. 2009;29(42):13302--14.
-\newblock doi:{10.1523/JNEUROSCI.1636-09.2009}.
-
-\bibitem{Barnes2008}
-Barnes GR.
-\newblock {Cognitive processes involved in smooth pursuit eye movements}.
-\newblock Brain and Cognition. 2008;68(3):309--326.
-\newblock doi:{10.1016/j.bandc.2008.08.020}.
-
-\bibitem{DallosJones1963}
-Dallos P, Jones R.
-\newblock Learning behavior of the eye fixation control system.
-\newblock IEEE Transactions on automatic control. 1963;8(3):218--227.
-
-\bibitem{Bogadhi2013}
-Bogadhi AR, Montagnini A, Masson GS.
-\newblock {Dynamic interaction between retinal and extraretinal signals in
-  motion integration for smooth pursuit}.
-\newblock Journal of Vision. 2013;13(13):5--5.
-\newblock doi:{10.1167/13.13.5}.
-
-\bibitem{Orban2013}
-Orban~de Xivry JJ, Coppe S, Blohm G, Lef{\`{e}}vre P.
-\newblock {Kalman filtering naturally accounts for visually guided and
-  predictive smooth pursuit dynamics}.
-\newblock Journal of Neuroscience. 2013;33(44):17301--17313.
-\newblock doi:{10.1523/JNEUROSCI.2321-13.2013}.
-
-\bibitem{Deravet_JOV2018}
-Deravet N, Blohm G, de~Xivry JJO, Lef{\`{e}}vre P.
-\newblock {Weighted integration of short-term memory and sensory signals in the
-  oculomotor system}.
-\newblock Journal of Vision. 2018;18(5):16.
-\newblock doi:{10.1167/18.5.16}.
-
-\bibitem{Darlington_NatNeu2018}
-Darlington TR, Beck JM, Lisberger SG.
-\newblock {Neural implementation of Bayesian inference in a sensorimotor
-  behavior.}
-\newblock Nature neuroscience. 2018;21(10):1442--1451.
-\newblock doi:{10.1038/s41593-018-0233-y}.
-
-\bibitem{Kowler1984}
-Kowler E, Martins AJ, Pavel M.
-\newblock {The effect of expectations on slow oculomotor control-IV.
-  Anticipatory smooth eye movements depend on prior target motions}.
-\newblock Vision Research. 1984;24(3):197--210.
-\newblock doi:{10.1016/0042-6989(84)90122-6}.
-
-\bibitem{Kowler_AnnRev2019}
-Kowler E, Rubinstein JF, Santos EM, Wang J.
-\newblock {Predictive Smooth Pursuit Eye Movements}.
-\newblock Annual Review of Vision Science. 2019;5(1):223--246.
-\newblock doi:{10.1146/annurev-vision-091718-014901}.
-
-\bibitem{Montagnini2010}
-Montagnini A, Souto D, Masson GS.
-\newblock Anticipatory eye-movements under uncertainty: a window onto the
-  internal representation of a visuomotor prior.
-\newblock Journal of Vision. 2010;10(7):554a.
-
-\bibitem{Kowler1989}
-Kowler E.
-\newblock {Cognitive expectations, not habits, control anticipatory smooth
-  oculomotor pursuit}.
-\newblock Vision Research. 1989;29(9):1049--1057.
-\newblock doi:{10.1016/0042-6989(89)90052-7}.
-
-\bibitem{Heinen2005}
-Heinen SJ, Badler JB, Ting W.
-\newblock {Timing and velocity randomization similarly affect anticipatory
-  pursuit}.
-\newblock Journal of Vision. 2005;5(6):1--1.
-\newblock doi:{10.1167/5.6.1}.
-
-\bibitem{SantosKowler2017}
-Santos EM, Kowler E.
-\newblock {Anticipatory smooth pursuit eye movements evoked by probabilistic
-  cues}.
-\newblock Journal of Vision. 2017;17(2017):1--16.
-\newblock doi:{10.1167/17.13.13.doi}.
-
-\bibitem{Fukushima1996}
-Fukushima K, Tanaka M, Suzuki Y, Fukushima J, Yoshida T.
-\newblock Adaptive Changes in Human Smooth Pursuit Eye Movement.
-\newblock Neuroscience research. 1996;25(4):391--398.
-\newblock doi:{10/ff6s3h}.
-
-\bibitem{Kahlon1996}
-Kahlon M, Lisberger SG.
-\newblock Coordinate System for Learning in the Smooth Pursuit Eye Movements of
-  Monkeys.
-\newblock The Journal of neuroscience : the official journal of the Society for
-  Neuroscience. 1996;16(22):7270--7283.
-
-\bibitem{Souto13}
-Souto D, Kerzel D.
-\newblock Like a rolling stone: Naturalistic visual kinematics facilitate
-  tracking eye movements.
-\newblock Journal of Vision. 2013;13(2):9--9.
-\newblock doi:{10.1167/13.2.9}.
-
-\bibitem{Mathys11}
-Mathys C, Daunizeau J, Friston KJ, Stephan KE.
-\newblock A bayesian foundation for individual learning under uncertainty.
-\newblock Frontiers in human neuroscience. 2011;5(May):39.
-\newblock doi:{10.3389/fnhum.2011.00039}.
-
-\bibitem{Vossel14}
-Vossel S, Mathys C, Daunizeau J, Bauer M, Driver J, Friston KJ, et~al.
-\newblock Spatial {Attention}, {Precision}, and {Bayesian} {Inference}: {A}
-  {Study} of {Saccadic} {Response} {Speed}.
-\newblock Cerebral Cortex. 2014;24(6):1436--1450.
-\newblock doi:{10.1093/cercor/bhs418}.
-
-\bibitem{Meyniel13}
-Meyniel F, Sergent C, Rigoux L, Daunizeau J, Pessiglione M.
-\newblock {Neurocomputational account of how the human brain decides when to
-  have a break.}
-\newblock Proceedings of the National Academy of Sciences of the United States
-  of America. 2013;110(7):2641--2646.
-\newblock doi:{10.1073/pnas.1211925110}.
-
-\bibitem{AdamsMackay2007}
-Adams RP, MacKay DJC.
-\newblock Bayesian Online Changepoint Detection.
-\newblock ArXiv e-prints. 2007;.
-
-\bibitem{Anderson2006}
-Anderson AJ, Carpenter RHS.
-\newblock Changes in expectation consequent on experience , modeled by a simple
-  , forgetful neural circuit.
-\newblock Journal of Vision 2006. 2006;6:822--835.
-\newblock doi:{10.1167/6.8.5}.
-
-\bibitem{Behrens07}
-Behrens TEJ, Woolrich MW, Walton ME, Rushworth MFS.
-\newblock Learning the value of information in an uncertain world.
-\newblock Nature Neuroscience. 2007;10(9):1214--1221.
-\newblock doi:{10.1038/nn1954}.
-
-\bibitem{Vilares2011}
-Vilares I, Kording K.
-\newblock {Bayesian models: The structure of the world, uncertainty, behavior,
-  and the brain}.
-\newblock Annals of the New York Academy of Sciences. 2011;1224(1):22--39.
-\newblock doi:{10.1111/j.1749-6632.2011.05965.x}.
-
-\bibitem{Schutz14}
-Sch{\"u}tz AC, Kerzel D, Souto D.
-\newblock Saccadic Adaptation Induced by a Perceptual Task.
-\newblock Journal of Vision. 2014;14(5):4--4.
-\newblock doi:{10/f56tvm}.
-
-\bibitem{Norton18}
-Norton EH, Acerbi L, Ma WJ, Landy MS.
-\newblock Human Online Adaptation to Changes in Prior Probability.
-\newblock PLOS Computational Biology doi: 101371/journalpcbi1006681. 2018; p.
-  483842.
-\newblock doi:{10/gfrhgk}.
-
-\bibitem{Nassar10}
-Nassar MR, Wilson RC, Heasly B, Gold JI.
-\newblock An {{Approximately Bayesian Delta}}-{{Rule Model Explains}} the
-  {{Dynamics}} of {{Belief Updating}} in a {{Changing Environment}}.
-\newblock Journal of Neuroscience. 2010;30(37):12366--12378.
-\newblock doi:{10.1523/JNEUROSCI.0822-10.2010}.
-
-\bibitem{Wilson13}
-Wilson RC, Nassar MR, Gold JI, Behrens T.
-\newblock A Mixture of Delta-Rules Approximation to Bayesian Inference in
-  Change-Point Problems.
-\newblock {PLoS} Comput Biol. 2013;9(7).
-\newblock doi:{10.1371/journal.pcbi.1003150}.
-
-\bibitem{Glaze15}
-Glaze CM, Kable JW, Gold JI.
-\newblock Normative Evidence Accumulation in Unpredictable Environments.
-\newblock eLife. 2015;4:e08825.
-\newblock doi:{10/gf7rb6}.
-
-\bibitem{Meyniel15}
-Meyniel F, Schlunegger D, Dehaene S.
-\newblock {The Sense of Confidence during Probabilistic Learning: A Normative
-  Account}.
-\newblock PLOS Computational Biology. 2015;11(6):1--25.
-\newblock doi:{10.1371/journal.pcbi.1004305}.
-
-\bibitem{RadilloBrady2017}
-Radillo AE, Veliz-Cuba A, Josi{\'c} K, Kilpatrick ZP.
-\newblock Evidence accumulation and change rate inference in dynamic
-  environments.
-\newblock Neural computation. 2017;29(6):1561--1610.
-
-\bibitem{Batterink_etal_2015}
-Batterink LJ, Reber PJ, Neville HJ, Paller KA.
-\newblock {Implicit and explicit contributions to statistical learning}.
-\newblock Journal of Memory and Language. 2015;83:62--78.
-\newblock doi:{10.1016/j.jml.2015.04.004}.
-
-\bibitem{SaffranAslinNewport1996}
-Saffran JR, Aslin RN, Newport EL.
-\newblock {Statistical learning by 8-month-old infants}.
-\newblock Science. 1996;274(5294):1926--1928.
-\newblock doi:{10.1126/science.274.5294.1926}.
-
-\bibitem{WuDelgadoMaloney2012}
-Wu SW, Delgado MR, Maloney LT.
-\newblock {Economic decision-making compared with an equivalent motor task}.
-\newblock Proceedings of the National Academy of Sciences.
-  2009;106(15):6088--6093.
-\newblock doi:{10.1073/PNAS.0900102106}.
-
-\bibitem{SoutoGegenfurtnerSchuetz2016}
-Souto D, Gegenfurtner KR, Sch{\"{u}}tz AC.
-\newblock {Saccade adaptation and visual uncertainty}.
-\newblock Frontiers in Human Neuroscience. 2016;10(MAY2016).
-\newblock doi:{10.3389/fnhum.2016.00227}.
-
-\bibitem{Kahneman13}
-Kahneman D, Tversky A.
-\newblock Prospect theory: An analysis of decision under risk.
-\newblock In: Handbook of the fundamentals of financial decision making: Part
-  I. World Scientific; 2013. p. 99--127.
-
-\bibitem{KnillPouget2004}
-Knill DC, Pouget A.
-\newblock {The Bayesian brain: the role of uncertainty in neural coding and
-  computation}.
-\newblock Trends in Neurosciences. 2004;27(12):712--719.
-\newblock doi:{10.1016/j.tins.2004.10.007}.
-
-\bibitem{Friston2010}
-Friston K.
-\newblock The free-energy principle: A unified brain theory?
-\newblock Nature Reviews Neuroscience. 2010;11(2):127--138.
-\newblock doi:{10.1038/nrn2787}.
-
-\bibitem{Bastos12}
-Bastos AM, Usrey WM, Adams RA, Mangun GR, Fries P, Friston KJ.
-\newblock {Canonical microcircuits for predictive coding}.
-\newblock Neuron. 2012;76(4):695--711.
-\newblock doi:{10.1016/j.neuron.2012.10.038}.
-
-\bibitem{Fetsch2012}
-Fetsch CR, Pouget A, DeAngelis GC, Angelaki DE.
-\newblock {Neural correlates of reliability-based cue weighting during
-  multisensory integration}.
-\newblock Nature Neuroscience. 2012;15(1):146--154.
-\newblock doi:{10.1038/nn.2983}.
-
-\bibitem{Ma2006}
-Ma WJ, Beck JM, Latham PE, Pouget A.
-\newblock {Bayesian inference with probabilistic population codes}.
-\newblock Nature Neuroscience. 2006;9(11):1432--1438.
-\newblock doi:{10.1038/nn1790}.
-
-\bibitem{Wacongne2012}
-Wacongne C, Changeux JP, Dehaene S.
-\newblock {A Neuronal Model of Predictive Coding Accounting for the Mismatch
-  Negativity}.
-\newblock Journal of Neuroscience. 2012;32(11):3665--3678.
-\newblock doi:{10.1523/JNEUROSCI.5003-11.2012}.
-
-\bibitem{WolpertGhahramani2000}
-Wolpert DM, Ghahramani Z.
-\newblock {Computational principles of movement neuroscience}.
-\newblock Nature Neuroscience. 2000;3(S11):1212--1217.
-\newblock doi:{10.1038/81497}.
-
-\bibitem{Yu2009}
-Yu AJ, Cohen JD.
-\newblock {Sequential effects: Superstition or rational behavior?}
-\newblock Advances in Neural Information Processing Systems. 2009;21:1873--80.
-
-\bibitem{Ossmy2013}
-Ossmy O, Moran R, Pfeffer T, Tsetsos K, Usher M, Donner TH.
-\newblock {The Timescale of Perceptual Evidence Integration Can Be Adapted to
-  the Environment}.
-\newblock Current Biology. 2013;23(11):981--986.
-\newblock doi:{10.1016/j.cub.2013.04.039}.
-
-\bibitem{Jardri2017}
-Jardri R, Duverne S, Litvinova AS, Den{\`{e}}ve S.
-\newblock {Experimental evidence for circular inference in schizophrenia}.
-\newblock Nature Communications. 2017;8(1):14218.
-\newblock doi:{10.1038/ncomms14218}.
-
-\bibitem{Karvelis2018}
-Karvelis P, Seitz AR, Lawrie SM, Seri{\`{e}}s P.
-\newblock {Autistic traits, but not schizotypy, predict increased weighting of
-  sensory information in Bayesian visual integration}.
-\newblock eLife. 2018;7.
-\newblock doi:{10.7554/eLife.34115}.
-
-\bibitem{Peirce19}
-Peirce J, Gray JR, Simpson S, MacAskill M, H{\"o}chenberger R, Sogo H, et~al.
-\newblock {{PsychoPy2}}: {{Experiments}} in Behavior Made Easy.
-\newblock Behavior Research Methods. 2019;51(1):195--203.
-\newblock doi:{10/gft89w}.
-
-\bibitem{Rashbass1961}
-Rashbass C.
-\newblock {The relationship between saccadic and smooth tracking eye
-  movements}.
-\newblock The Journal of Physiology. 1961;159(2):326--338.
-\newblock doi:{10.1113/jphysiol.1961.sp006811}.
-
-\end{thebibliography}
+\bibliography{Pasturel_etal2020}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Supporting information}

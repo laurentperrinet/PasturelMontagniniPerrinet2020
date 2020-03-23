@@ -19,10 +19,14 @@ cover.pdf: cover.tex $(SRC).tex $(SRC).bib
 	$(LATEXMK) cover.tex
 
 # post-production
-$(SRC)_trackedchanges.pdf: $(SRC).tex $(SRC).bib $(SRC_rev).tex
-	latexdiff --graphics-markup=both $(SRC_rev).tex $(SRC).tex > $(SRC)_trackedchanges.tex
+$(SRC)_trackedchanges.pdf: $(SRC)_PLoS-CB.tex $(SRC).bib $(SRC_rev).tex
+	latexdiff --graphics-markup=both $(SRC_rev).tex $(SRC)_PLoS-CB.tex > $(SRC)_trackedchanges.tex
 	$(LATEXMK) $(SRC)_trackedchanges.tex
 	open $(SRC)_trackedchanges.pdf
+
+convert_eps:
+	mkdir -p figures_eps
+
 
 ################################################
 
