@@ -164,7 +164,8 @@
 \tikzexternalize[prefix=figures_eps/]
 \newcommand{\seeFig}[1]{Figure~\ref{fig:#1}}
 \newcommand{\seeEq}[1]{Equation~\ref{eq:#1}}
-\newcommand{\seeApp}[1]{Appendix~\ref{app:#1}}
+%\newcommand{\seeApp}[1]{Appendix~\ref{app:#1}}
+\newcommand{\seeApp}[1]{Appendix}
 \newcommand{\seeSec}[1]{Section~\ref{sec:#1}}
 %============ hyperref ===================
 \usepackage[unicode,linkcolor=red,citecolor=red,filecolor=red,urlcolor=red,pdfborder={0 0 0}]{hyperref}%
@@ -614,7 +615,8 @@ The comparison of human behavior with the ideal observer model's predictions wil
 %: 1Cd outline
 This paper is organized in five parts.
 After this introduction where we presented the motivation for this study,
-the next section~(\seeSec{Bayesian_change_point}) will present
+the next section %~(\seeSec{Bayesian_change_point}) 
+will present
 an inversion of the (forward) binary switching generative model,
 coined the Binary Bayesian Change-Point (BBCP) model.
 To our knowledge, such algorithm was not yet available, and
@@ -628,7 +630,8 @@ using solely a set of variables available at the present trial,
 compactly representing all the sequence history seen in previous trials.
 We will also provide a computational implementation
 and a quantitative evaluation of this algorithm.
-Then, we will present in~\seeSec{results_psycho} the analysis of experimental evidence
+Then, we will present %in~\seeSec{results_psycho} 
+the analysis of experimental evidence
 to validate the generalization of previous results %.
 with this novel switching protocol.
 In order to understand the nature of
@@ -648,7 +651,9 @@ a novelty of our approach is to use the BBCP agent as a regressor
 which will allow us to match experimental results
 and to compare its predictive power compared to classical models such as the leaky integrator model.
 Hence, we will show that behavioral results match best with the BBCP model.
-In~\seeSec{inter}, we will synthesize these results
+%In~\seeSec{inter}, 
+In the following section, 
+we will synthesize these results
 by inferring the volatility parameters inherent to the models
 by best-fitting it to each each individual participant.
 This will allow the analysis of inter-individual behavioral responses for each session.
@@ -658,7 +663,7 @@ exploitation (``should I stay?'') and exploration (``should I go?'')
 for the two different sessions challenging predictive adaptive processes
 both at the implicit and explicit levels.
 Finally, we will summarize and conclude this study and
-offer some perspectives for future work in~\seeSec{outro}.
+offer some perspectives for future work. % in~\seeSec{outro}.
 %
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Results: Binary Bayesian Change-Point (BBCP) detection model}
@@ -1220,8 +1225,8 @@ In other words, this analysis shows that the agent's inference is best for a haz
 equal to that implemented in the generative model and which is actually hidden to the BBCP agent.
 This property will be important in a following section
 to validate the estimated hazard rate implicitly assumed by an individual participant
-on the basis of the set of responses given to the  sequence of stimuli
-(see~\seeSec{inter}).
+on the basis of the set of responses given to the  sequence of stimuli.
+%(see~\seeSec{inter}).
 %
 %-------------------------------------------------------------%
 %: 2Cc perspectives
@@ -1289,7 +1294,9 @@ the true value of the hidden probability bias $x_1$ (step-like blue curve),
 and the median predicted values using the leaky integrator ($P_{\text{leaky}}$, orange color) and BBCP model ($P_{\text{BBCP}}$, green color),
 along with the $.05$ to $.95$ quantile range (green shaded area),
 just as in~\seeFig{Bayesianchangepoint}-B.
-In the middle panel of~\seeFig{results_psycho}, we show the median (with the $0.25$ ans $0.75$ quantiles) anticipatory pursuit velocity (for details see Materials and Methods in ~\seeSec{methods})
+In the middle panel of~\seeFig{results_psycho}, we show the median (with the $0.25$ ans $0.75$ quantiles) anticipatory pursuit velocity (for details see Materials and Methods
+% in ~\seeSec{methods}
+ )
 for the $12$ participants, throughout a trial block of $200$ trials of the experimental sequence.
 % Note that these participants were chosen as those
 % whose fitting score was nearest to the median score in the quantitative analysis
@@ -1728,8 +1735,9 @@ In order to extract the relevant parameters of the oculomotor responses, we deve
 \subsection*{The Bet experiment}
 The aim of the Bet experiment was to collect data related to the individual explicit estimates of the probability for the next outcome of a target motion direction. At the beginning of each trial, before the presentation of the moving target, participants had to answer to the question \textit{ ``How sure are you that the target will go left or right''}. This was performed by adjusting a cursor on the screen using the mouse (see Figure~\seeFig{intro}-C). The cursor could be placed at any point along a horizontal segment representing a linear rating scale with three ticks labeled as \textit{ ``Left''}, \textit{``Right''} (at the extreme left and right end of the segment respectively), and \textit{``Unsure''} in the middle. Participants had to validate their choice by clicking on the mouse left-button and the actual target motion was shown thereafter. The rationale to collect rating responses on a continuous scale instead of a simple binary prediction (Right/Left) was to be able to infer the individual estimate of the direction bias at the single trial scale (in analogy to the continuous interval for the anticipatory pursuit velocity). We called this experiment the \textit{ ``Bet''} experiment, as participants were explicitly encouraged to make reasonable rating estimates, just like if they had to bet money on the next trial outcome. Every $50$ trials, a \textit{``score''} was displayed on the screen, corresponding to the proportion of correct direction predictions (Right or Left of the \textit{``Unsure''} tick) and weighted by the confidence attributed to each answer (the distance of the cursor from the center).
 
-% \section*{Acknowledgments}
-% This work was supported by EU Marie-Sk\l{}odowska-Curie Grant No 642961 (PACE-ITN) and by the Fondation pour le Recherche M\'edicale, under the program \textit{Equipe FRM} (DEQ20180339203/PredictEye/G Masson). Code and material on the \href{https://laurentperrinet.github.io/publication/pasturel-montagnini-perrinet-20}{corresponding author's website}. We thank Doctor Jean-Bernard Damasse, Guillaume S Masson and Professor Laurent Madelain for insightful discussions.
+\section*{Acknowledgments}
+% This work was supported by EU Marie-Sk\l{}odowska-Curie Grant No 642961 (PACE-ITN) and by the Fondation pour le Recherche M\'edicale, under the program \textit{Equipe FRM} (DEQ20180339203/PredictEye/G Masson). Code and material on the \href{https://laurentperrinet.github.io/publication/pasturel-montagnini-perrinet-20}{corresponding author's website}. 
+We thank Doctor Jean-Bernard Damasse, Guillaume S Masson and Professor Laurent Madelain for insightful discussions.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \bibliography{Pasturel_etal2020}
 \begin{thebibliography}{10}

@@ -24,8 +24,14 @@ $(SRC)_trackedchanges.pdf: $(SRC)_PLoS-CB.tex $(SRC).bib $(SRC_rev).tex
 	$(LATEXMK) $(SRC)_trackedchanges.tex
 	open $(SRC)_trackedchanges.pdf
 
+INK = inkscape  --without-gui --export-type=eps  --export-ignore-filters
 convert_eps:
-	mkdir -p figures_eps
+	mkdir -p figures_PLoS-CB/
+	$(INK) figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure1.pdf -o figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure1.eps
+	$(INK) figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure2.pdf -o figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure2.eps
+	$(INK) figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure3.pdf -o figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure3.eps
+	$(INK) figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure4.pdf -o figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure4.eps
+	$(INK) figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure5.pdf -o figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure5.eps
 
 
 ################################################
