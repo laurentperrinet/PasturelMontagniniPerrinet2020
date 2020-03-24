@@ -2366,7 +2366,7 @@ Laurent Udo Perrinet\footnotemark[1] \thanks{Corresponding author:\url{Laurent.P
 %While being sensible to recording errors, this allows us to extract the
 % anticipatory component of SPEMs and..
 
-Note: Equation numbers are those appearing in the main text.
+Note: Equation numbers are those appearing in the main text. More information available at \url{https://github.com/laurentperrinet/PasturelMontagniniPerrinet2020}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Appendix : leaky integrator}
 \label{app:leaky}
@@ -2500,7 +2500,7 @@ Concerning the shape, it can be for instance
 the uniform distribution $\Uu$ on $ [ 0, 1 ] $, that is $\nu_{prior}=2$ or
 Jeffrey's prior $\Jj$, that is $\nu_{prior}=1$.
 We chose the latter for the generation of trials
-as the uniform distribution would yield more samples around $.5$.
+as the uniform distribution would yield more samples around $p=.5$.
 Qualitatively, this would result in more difficult task in discriminating a probability bias from another.
 Jeffrey's prior was more adapted to that task.
 %Wikipedia: Beta(1/2, 1/2): The arcsine distribution probability density was proposed by Harold Jeffreys to represent uncertainty for a Bernoulli or a binomial distribution in Bayesian inference, and is now commonly referred to as Jeffreys prior: p−1/2(1 − p)−1/2. This distribution also appears in several random walk fundamental theorems
@@ -2548,7 +2548,7 @@ and therefore
 
 \subsection{Quantitative evaluation}
 
-To quantitatively evaluate our results with respect to another probability bias, we computed in Equation~(13)%\seeEq{KL}
+To quantitatively evaluate our results with respect to another probability bias, we computed in Equation~(13) %\seeEq{KL}
 the cost as the Kullback-Leibler divergence  $\KL{\hat p}{p}$ between samples $\hat p$ and model $p$ under the hypothesis of a Bernoulli trial:
 
 \begin{equation}
@@ -2640,7 +2640,9 @@ def likelihood(o, p, r):
 
 \end{lstlisting}
 
-See the code \href{https://github.com/laurentperrinet/bayesianchangepoint/blob/master/bayesianchangepoint/bcp.py#L65}{online}.
+See the code 
+%\href{https://github.com/laurentperrinet/bayesianchangepoint/blob/master/bayesianchangepoint/bcp.py#L65}{online}.
+online at \url{https://github.com/laurentperrinet/bayesianchangepoint}.
 \subsection{Properties}
 This function has some properties, notably symmetries:
 	\begin{itemize}
