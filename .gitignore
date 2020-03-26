@@ -64,7 +64,6 @@ figures_eps/
 Pasturel_etal2020_PLoS-CB.auxlock
 Pasturel_etal2020_PLoS-CB.pdf
 Pasturel_etal2020_PLoS-CB.synctex.gz
-Pasturel_etal2020_PLoS-CB_SI.pdf
 Pasturel_etal2020_trackedchanges.auxlock
 Pasturel_etal2020_PLoS-CB.aux
 Pasturel_etal2020_PLoS-CB.log
@@ -75,3 +74,5 @@ figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure3.eps
 figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure4.eps
 figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure5.eps
 .Pasturel_etal2020_PLoS-CB.tex.~5607c23b
+Pasturel_etal2020_PLoS-CB.fdb_latexmk
+Pasturel_etal2020_PLoS-CB.fls

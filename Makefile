@@ -33,6 +33,15 @@ convert_eps:
 	$(INK) figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure4.pdf -o figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure4.eps
 	$(INK) figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure5.pdf -o figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure5.eps
 
+CONV = convert -density 600  -flatten  -compress lzw -units pixelsperinch  -depth 8 
+convert_tiff:
+	mkdir -p figures_PLoS-CB/
+	$(CONV) figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure1.pdf figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure1.tiff
+	$(CONV) figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure2.pdf figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure2.tiff
+	$(CONV) figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure3.pdf figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure3.tiff
+	$(CONV) figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure4.pdf figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure4.tiff
+	$(CONV) figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure5.pdf figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure5.tiff
+
 
 ################################################
 

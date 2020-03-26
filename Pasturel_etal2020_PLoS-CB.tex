@@ -222,7 +222,7 @@ Animal behavior constantly adapts to changes, for example when the statistical p
 \section*{Author summary}
 Understanding how humans adapt to changing environments to make judgments or plan motor responses based on time-varying sensory information is crucial for psychology, neuroscience and artificial intelligence. Current theories for how we deal with the environment's uncertainty, that is, in response to the introduction of some randomness change, mostly rely on the behavior at equilibrium, long after after a change. Here, we show that in the more ecological case where the context switches at random times all along the experiment, an adaptation to this volatility can be performed online. In particular, we show in two behavioral experiments that humans can adapt to such volatility at the early sensorimotor level, through their anticipatory eye movements, but also at a higher cognitive level, through explicit ratings. Our results suggest that humans (and future artificial systems) can use much richer adaptive strategies than previously assumed.
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Motivation}
+\section*{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -435,7 +435,7 @@ is dynamically modulated by probabilistic contingencies in shaping oculomotor be
 %: FIGURE 1 fig:intro~\seeFig{intro}
 \begin{figure}%[b!]
 \centering{
-\includegraphics[width=\linewidth]{figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure1}
+% \includegraphics[width=\linewidth]{figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure1}
 %\begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
 %\node [anchor=north west] (imgA) at (0.000\linewidth,.600\linewidth){\includegraphics[width=0.325\linewidth]{figures/1_A_Experiment_randomblock.pdf}};
 %\node [anchor=north west] (imgB) at (0.335\linewidth,.595\linewidth){\includegraphics[width=0.350\linewidth]{figures/1_B_protocol_recording.pdf}};
@@ -615,7 +615,7 @@ The comparison of human behavior with the ideal observer model's predictions wil
 %: 1Cd outline
 This paper is organized in five parts.
 After this introduction where we presented the motivation for this study,
-the next section %~(\seeSec{Bayesian_change_point}) 
+the next section %~(\seeSec{Bayesian_change_point})
 will present
 an inversion of the (forward) binary switching generative model,
 coined the Binary Bayesian Change-Point (BBCP) model.
@@ -630,7 +630,7 @@ using solely a set of variables available at the present trial,
 compactly representing all the sequence history seen in previous trials.
 We will also provide a computational implementation
 and a quantitative evaluation of this algorithm.
-Then, we will present %in~\seeSec{results_psycho} 
+Then, we will present %in~\seeSec{results_psycho}
 the analysis of experimental evidence
 to validate the generalization of previous results %.
 with this novel switching protocol.
@@ -651,8 +651,8 @@ a novelty of our approach is to use the BBCP agent as a regressor
 which will allow us to match experimental results
 and to compare its predictive power compared to classical models such as the leaky integrator model.
 Hence, we will show that behavioral results match best with the BBCP model.
-%In~\seeSec{inter}, 
-In the following section, 
+%In~\seeSec{inter},
+In the following section,
 we will synthesize these results
 by inferring the volatility parameters inherent to the models
 by best-fitting it to each each individual participant.
@@ -665,8 +665,9 @@ both at the implicit and explicit levels.
 Finally, we will summarize and conclude this study and
 offer some perspectives for future work. % in~\seeSec{outro}.
 %
+\section*{Results}
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Results: Binary Bayesian Change-Point (BBCP) detection model}
+\subsection*{Binary Bayesian Change-Point (BBCP) detection model}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Bayesian_change_point}
@@ -694,7 +695,7 @@ at specific (yet randomly drawn) trials,
 as defined by the forward probabilistic model in~\seeEq{bsm}.
 %
 % ------------------------------------------------------------------
-\subsection*{Forgetful agent (Leaky integrator) detection model}%
+\subsubsection*{Forgetful agent (Leaky integrator) detection model}%
 % ------------------------------------------------------------------
 %: 2Aa justification from previous studies
 The leaky integrator ideal observer represents a classical, widespread and
@@ -789,7 +790,7 @@ of an ideal agent
 inferring the trajectory in time of the probability bias ($x_1^t$),
 but also predicting the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 % ------------------------------------------------------------------
-\subsection*{Binary Bayesian Change-Point (BBCP) detection model}
+\subsubsection*{Binary Bayesian Change-Point (BBCP) detection model}
 % ------------------------------------------------------------------
 \label{sec:Binary_Bayesian_change_point}
 %-------------------------------------------------------------%
@@ -797,7 +798,7 @@ but also predicting the probability $Pr(x_2^t=1)$ of the occurrence of switches.
 \begin{figure}%[b!]
 % cf 3_Results_2.ipynb
 \centering{
-\includegraphics[width=\linewidth]{figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure3}
+% \includegraphics[width=\linewidth]{figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure3}
 %\begin{tikzpicture}[thick,scale=.95]
 %\node [anchor=north west]  (imgA) at (0.\linewidth,.55\linewidth){\includegraphics[width=0.33
 %\linewidth]{3_BCP_model}};
@@ -1125,7 +1126,7 @@ In summary, this prediction/update cycle exactly inverts the binary switching ge
 and constitutes the Binary Bayesian Change-Point (BBCP) detection model.
 %
 % ------------------------------------------------------------------
-\subsection*{Quantitative analysis of the BBCP detection model}
+\subsubsection*{Quantitative analysis of the BBCP detection model}
 % ------------------------------------------------------------------
 %-------------------------------------------------------------%
 %: 2Ca python scripts : qualitative analysis
@@ -1241,13 +1242,13 @@ explicit guesses about target motion direction.
 %\section*{Results: psychophysics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Results: Anticipatory pursuit and explicit ratings}
+\subsection*{Anticipatory pursuit and explicit ratings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:results_psycho}
 %: FIGURE 2 fig:results_psycho~\seeFig{results_psycho}
 \begin{figure}%[b!]
 \centering{
-\includegraphics[width=\linewidth]{figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure2}
+% \includegraphics[width=\linewidth]{figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure2}
 }
 \caption{
 \textbf{Behavioral results, qualitative overview.} %
@@ -1356,7 +1357,7 @@ which supposedly underlie the generation of graded anticipatory pursuit.
 %: FIGURE 4  fig:results_psycho_all \seeFig{results_psycho_all}
 \begin{figure}%[b!]
 \centering{
-\includegraphics[width=\linewidth]{figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure4}
+% \includegraphics[width=\linewidth]{figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure4}
 %\begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
 %\node [anchor=north west]  (img4) at (0.000\linewidth,.618\linewidth){\includegraphics[width=0.49\linewidth]{4_A_result_psycho_aSPEM}};
 %\node [anchor=north west]  (img4) at (0.51\linewidth,.618\linewidth){\includegraphics[width=0.49\linewidth]{4_B_result_psycho_bet}};
@@ -1480,7 +1481,7 @@ and the explicit ratings of human observers
 experiencing a volatile context for visual motion.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Results: Analyzing inter-individual differences}
+\subsection*{Analyzing inter-individual differences}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:inter}
 %-------------------------------------------------------------%
@@ -1520,7 +1521,7 @@ we expect to better understand the variety of inter-individual differences. % an
 % cf : 4_Meta_analysis.ipynb
 \begin{figure}%[b!]
 \centering{
-\includegraphics[width=\linewidth]{figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure5}
+% \includegraphics[width=\linewidth]{figures_PLoS-CB/Pasturel_etal2020_PLoS-CB-figure5}
 %\begin{tikzpicture}%[thick,scale=1, every node/.style={scale=1} ]
 %\node [anchor=north west]  (img4) at (0.000\linewidth,.57\linewidth){\includegraphics[width=0.38\linewidth]{5A_inter-individual_differences_fit}};
 %\node [anchor=north west]  (img4) at (0.4\linewidth,.59\linewidth){\includegraphics[width=0.58\linewidth]{5B_inter-individual_differences_fit}};
@@ -1702,7 +1703,7 @@ While it was not our original objective, we have analyzed in this study the indi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Conclusions}
+\subsection*{Conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{itemize}\setlength{\itemsep}{0ex}
@@ -1735,9 +1736,14 @@ In order to extract the relevant parameters of the oculomotor responses, we deve
 \subsection*{The Bet experiment}
 The aim of the Bet experiment was to collect data related to the individual explicit estimates of the probability for the next outcome of a target motion direction. At the beginning of each trial, before the presentation of the moving target, participants had to answer to the question \textit{ ``How sure are you that the target will go left or right''}. This was performed by adjusting a cursor on the screen using the mouse (see Figure~\seeFig{intro}-C). The cursor could be placed at any point along a horizontal segment representing a linear rating scale with three ticks labeled as \textit{ ``Left''}, \textit{``Right''} (at the extreme left and right end of the segment respectively), and \textit{``Unsure''} in the middle. Participants had to validate their choice by clicking on the mouse left-button and the actual target motion was shown thereafter. The rationale to collect rating responses on a continuous scale instead of a simple binary prediction (Right/Left) was to be able to infer the individual estimate of the direction bias at the single trial scale (in analogy to the continuous interval for the anticipatory pursuit velocity). We called this experiment the \textit{ ``Bet''} experiment, as participants were explicitly encouraged to make reasonable rating estimates, just like if they had to bet money on the next trial outcome. Every $50$ trials, a \textit{``score''} was displayed on the screen, corresponding to the proportion of correct direction predictions (Right or Left of the \textit{``Unsure''} tick) and weighted by the confidence attributed to each answer (the distance of the cursor from the center).
 
+
+\section*{Supporting Information} 
+S1 Algorithm. Detailed explanation of the BBCP algorithm.
+
 \section*{Acknowledgments}
-% This work was supported by EU Marie-Sk\l{}odowska-Curie Grant No 642961 (PACE-ITN) and by the Fondation pour le Recherche M\'edicale, under the program \textit{Equipe FRM} (DEQ20180339203/PredictEye/G Masson). Code and material on the \href{https://laurentperrinet.github.io/publication/pasturel-montagnini-perrinet-20}{corresponding author's website}. 
+% This work was supported by EU Marie-Sk\l{}odowska-Curie Grant No 642961 (PACE-ITN) and by the Fondation pour le Recherche M\'edicale, under the program \textit{Equipe FRM} (DEQ20180339203/PredictEye/G Masson). Code and material on the \href{https://laurentperrinet.github.io/publication/pasturel-montagnini-perrinet-20}{corresponding author's website}.
 We thank Doctor Jean-Bernard Damasse, Guillaume S Masson and Professor Laurent Madelain for insightful discussions.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \bibliography{Pasturel_etal2020}
 \begin{thebibliography}{10}
