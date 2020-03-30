@@ -1,6 +1,8 @@
 # Manuscript "Humans adapt their anticipatory eye movements to the volatility of visual motion properties"
 
-{{< video src="https://raw.githubusercontent.com/chloepasturel/AnticipatorySPEM/master/2020-03_video-abstract/PasturelMontagniniPerrinet2020_video-abstract.mp4" controls="yes" >}}
+<p align="center">
+  <img width="80%" src="https://raw.githubusercontent.com/chloepasturel/AnticipatorySPEM/master/2020-03_video-abstract/PasturelMontagniniPerrinet2020_video-abstract.mp4">
+</p>
 
  * get a [preprint](https://www.biorxiv.org/content/10.1101/784116v1)
  * [Abstract](https://www.biorxiv.org/content/10.1101/784116v2)
