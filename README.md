@@ -13,10 +13,10 @@ The current health situation has shown us how abruptly our environment can chang
 These theoretical and experimental results show that in this realistic situation in which the context changes at random moments throughout the experiment, our sensory system adapts to volatility in an adaptive manner over the course of the trials. In particular, the experiments show in two behavioural experiments that humans adapt to volatility at the early sensorimotor level, through their anticipatory eye movements, but also at a higher cognitive level, through explicit evaluations. These results thus suggest that humans (and future artificial systems) can use much richer adaptation strategies than previously assumed. They provide a better understanding of how humans adapt to changing environments in order to make judgements or plan responses based on information that varies over time.
 
  * read the [publication](https://doi.org/10.1371/journal.pcbi.1007438) (or in [PDF](https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1007438&type=printable))
- * get a [preprint](https://www.biorxiv.org/content/10.1101/784116v2)
- * [Abstract](https://www.biorxiv.org/content/10.1101/784116v2)
- * [HTML](https://www.biorxiv.org/content/10.1101/784116v2)
- * [PDF](https://www.biorxiv.org/content/10.1101/784116v2.full.pdf)
+ * get a [preprint](https://www.biorxiv.org/content/10.1101/784116v3)
+ * [Abstract](https://www.biorxiv.org/content/10.1101/784116v3)
+ * [HTML](https://www.biorxiv.org/content/10.1101/784116v3)
+ * [PDF](https://www.biorxiv.org/content/10.1101/784116v3.full.pdf)
  * supplementary info : https://github.com/laurentperrinet/PasturelMontagniniPerrinet2020/blob/master/Pasturel_etal2020_PLoS-CB_SI.pdf
  * code for paper: https://github.com/laurentperrinet/PasturelMontagniniPerrinet2020
  * code for framework: https://github.com/chloepasturel/AnticipatorySPEM
