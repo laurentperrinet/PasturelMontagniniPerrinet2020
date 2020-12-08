@@ -1,7 +1,10 @@
 
 # "Humans adapt their anticipatory eye movements to the volatility of visual motion properties"
 
-{{< video src="https://raw.githubusercontent.com/chloepasturel/AnticipatorySPEM/master/2020-03_video-abstract/PasturelMontagniniPerrinet2020_video-abstract.mp4" controls="yes" >}}
+
+<video controls >
+  <source src="https://raw.githubusercontent.com/chloepasturel/AnticipatorySPEM/master/2020-03_video-abstract/PasturelMontagniniPerrinet2020_video-abstract.mp4" type="video/mp4">
+</video>
 
 ## At what point should we become alarmed? When faced with changes in the environment, the sensory system provides an effective response.
 
