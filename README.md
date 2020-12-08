@@ -11,9 +11,9 @@ The current health situation has shown us how abruptly our environment can chang
 
 <p align="center">
   <img width="80%" src="https://raw.githubusercontent.com/laurentperrinet/PasturelMontagniniPerrinet2020/master/figures/synthesis.svg">
+  <br>
   By manipulating the probability bias of the presentation of a visual target on a screen, this experiment manipulates the volatility of the environment in a controlled way by introducing switches in the probability bias. These switches randomly change the bias among different degrees of probability (both left and right). At each trial, the bias then generates a realization, either left (L) or right (R).  The target moves in blocks of 50 trials (1 to 50) and these realizations are the only ones to be observed, the evolution of the bias and its shifts remaining hidden from the observer. Compared to the floating average that is conventionally used, a mathematical model can be deduced as a predictive average that allows to better follow the dynamics of the probability bias. Thanks to psychophysical experiments, we have shown that observers preferentially follow the predictive mean, rather than the floating mean, both in explicit judgements (predictive betting) and, more surprisingly, in the anticipatory movements of the eyes that are carried out without the observers being aware of them. " 
 </p>
-
 
 These theoretical and experimental results show that in this realistic situation in which the context changes at random moments throughout the experiment, our sensory system adapts to volatility in an adaptive manner over the course of the trials. In particular, the experiments show in two behavioural experiments that humans adapt to volatility at the early sensorimotor level, through their anticipatory eye movements, but also at a higher cognitive level, through explicit evaluations. These results thus suggest that humans (and future artificial systems) can use much richer adaptation strategies than previously assumed. They provide a better understanding of how humans adapt to changing environments in order to make judgements or plan responses based on information that varies over time.
 
