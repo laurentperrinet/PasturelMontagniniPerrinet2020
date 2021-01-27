@@ -22,10 +22,6 @@ These theoretical and experimental results show that in this realistic situation
  * [PDF](https://www.biorxiv.org/content/10.1101/784116v3.full.pdf)
  * official [publication](https://doi.org/10.1371/journal.pcbi.1007438) (or in [PDF](https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1007438&type=printable)) with [EDITOR CORRECTION](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008385) (or as [PDF](https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1008385&type=printable))
 
- * get a [preprint](https://www.biorxiv.org/content/10.1101/784116v3)
- * [Abstract](https://www.biorxiv.org/content/10.1101/784116v3)
- * [HTML](https://www.biorxiv.org/content/10.1101/784116v3)
- * [PDF](https://www.biorxiv.org/content/10.1101/784116v3.full.pdf)
  * supplementary info : https://github.com/laurentperrinet/PasturelMontagniniPerrinet2020/blob/master/Pasturel_etal2020_PLoS-CB_SI.pdf
  * code for paper: https://github.com/laurentperrinet/PasturelMontagniniPerrinet2020
  * code for framework: https://github.com/chloepasturel/AnticipatorySPEM
