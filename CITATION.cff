@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: If you use this software, please cite the accompanying publication (preferred-citation below).
 type: software
-title: Humans adapt their anticipatory eye movements to the volatility of visual motion properties
+title: Humans adapt their anticipatory eye movements to the volatility of visual motion properties.
 authors:
 - family-names: Pasturel
   given-names: Chloé
@@ -18,7 +18,7 @@ keywords:
 - motion-perception
 preferred-citation:
   type: article
-  title: Humans adapt their anticipatory eye movements to the volatility of visual motion properties
+  title: Humans adapt their anticipatory eye movements to the volatility of visual motion properties.
   authors:
   - family-names: Pasturel
     given-names: Chloé
